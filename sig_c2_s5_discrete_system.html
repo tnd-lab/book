@@ -1,0 +1,779 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Discrete System and Equivalent Discrete Model &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sig_c2_s5_discrete_system';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_complex_Gaussian_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_stochastic_process.html">Stochastic Process</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">COMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_p1_intro.html">Introduction to Communication Theory</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_extra_rician.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Discrete System and Equivalent Discrete Model</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-process">Sampling Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-continuous-time-signals">Sampling Continuous-Time Signals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-discrete-time-model">Equivalent Discrete-Time Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-channel-impulse-response-h-b-m">Discrete Channel Impulse Response <span class="math notranslate nohighlight">\( h_b[m] \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-received-signal-y-b-m">Discrete Received Signal <span class="math notranslate nohighlight">\( y_b[m] \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-noise-model-n-b-m">Discrete-Time Noise Model <span class="math notranslate nohighlight">\( n_b[m] \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-discrete-model">Summary of Discrete Model</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="discrete-system-and-equivalent-discrete-model">
+<h1>Discrete System and Equivalent Discrete Model<a class="headerlink" href="#discrete-system-and-equivalent-discrete-model" title="Link to this heading">#</a></h1>
+<p>Transitioning from continuous-time to discrete-time models is fundamental in modern communication systems, primarily due to the prevalence of digital processing techniques.</p>
+<p>This section elaborates on sampling continuous-time signals <span class="math notranslate nohighlight">\( x(t) \)</span> and <span class="math notranslate nohighlight">\( y(t) \)</span> at a sampling rate of <span class="math notranslate nohighlight">\( W_s \)</span> samples/second.</p>
+<section id="sampling-process">
+<h2>Sampling Process<a class="headerlink" href="#sampling-process" title="Link to this heading">#</a></h2>
+<p><strong>Sampling Rate (<span class="math notranslate nohighlight">\( W_s \)</span>)</strong>: The number of samples taken per second from the continuous-time signals <span class="math notranslate nohighlight">\( x(t) \)</span> and <span class="math notranslate nohighlight">\( y(t) \)</span>.</p>
+<p>It must satisfy the Nyquist-Shannon Sampling Theorem to prevent aliasing.</p>
+<div class="math notranslate nohighlight">
+\[
+W_s \geq 2W_{\text{max}}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( W_{\text{max}} \)</span> is the <strong>maximum frequency component</strong> present in the signal.</p>
+<p><strong>Bandwidth (<span class="math notranslate nohighlight">\( B \)</span>) vs. Sampling Rate (<span class="math notranslate nohighlight">\( W_s \)</span>)</strong>: To avoid confusion, it’s crucial to distinguish between the <strong>signal bandwidth</strong> and the <strong>sampling rate</strong>.</p>
+<p>Ensure that the signal bandwidth <span class="math notranslate nohighlight">\( B \)</span> satisfies <span class="math notranslate nohighlight">\( B \leq \frac{W_s}{2} \)</span>.</p>
+<section id="sampling-continuous-time-signals">
+<h3>Sampling Continuous-Time Signals<a class="headerlink" href="#sampling-continuous-time-signals" title="Link to this heading">#</a></h3>
+<p>Given continuous-time signals <span class="math notranslate nohighlight">\( x(t) \)</span> (transmitted signal) and <span class="math notranslate nohighlight">\( y(t) \)</span> (received signal), sampling at rate <span class="math notranslate nohighlight">\( W_s \)</span> yields discrete-time sequences <span class="math notranslate nohighlight">\( x_b[m] \)</span> and <span class="math notranslate nohighlight">\( y_b[m] \)</span>, where <span class="math notranslate nohighlight">\( m \)</span> is an integer index representing the sample number.</p>
+<div class="math notranslate nohighlight">
+\[
+x_b[m] = x\left( \frac{m}{W_s} \right) \quad \text{and} \quad y_b[m] = y\left( \frac{m}{W_s} \right)
+\]</div>
+<p><strong>Reconstruction Theorem:</strong></p>
+<p>The continuous-time baseband signal <span class="math notranslate nohighlight">\( x_b(t) \)</span> can be reconstructed from its samples <span class="math notranslate nohighlight">\( x_b[m] \)</span> using the sinc interpolation formula:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+x_b(t) = \sum_{m=-\infty}^{\infty} x_b[m] \cdot \text{sinc}\left( W_s t - m \right)
+}
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p>Sampling Rate (<span class="math notranslate nohighlight">\( W_s \)</span>): Explicitly denoted as <span class="math notranslate nohighlight">\( W_s \)</span>, which equals <span class="math notranslate nohighlight">\( 2W_{\max} \)</span>.</p></li>
+<li><p>Sampling Interval: <span class="math notranslate nohighlight">\( T_s = \frac{1}{W_s} = \frac{1}{2W_{\max}} \)</span></p></li>
+<li><p>Samples: <span class="math notranslate nohighlight">\( x_b[m] \)</span> represents the sampled values of <span class="math notranslate nohighlight">\( x_b(t) \)</span> at integer multiples of <span class="math notranslate nohighlight">\( T_s \)</span>, i.e., <span class="math notranslate nohighlight">\( x_b[m] = x\left(\frac{m}{W_s}\right) = x\left(\frac{m}{2W_{\max}}\right) \)</span></p></li>
+<li><p>Sinc Function Argument: <span class="math notranslate nohighlight">\( \text{sinc}\left( W_s t - m \right) = \text{sinc}\left(2W_{\max} t - m \right) \)</span></p></li>
+</ul>
+<p>Note that</p>
+<div class="math notranslate nohighlight">
+\[
+\text{sinc}(x) = \frac{\sin(\pi x)}{\pi x}
+\]</div>
+<p>The sinc functions act as ideal low-pass filters that interpolate between samples to reconstruct the original continuous-time signal.</p>
+<p><strong>Alternative Expression</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+x(t) = \sum_{n=-\infty}^{\infty} x\left(\frac{n}{2W_{\max}}\right) \cdot \text{sinc}\left(2W_{\max} \left(t - \frac{n}{2W_{\max}}\right)\right)
+}
+\]</div>
+<ul class="simple">
+<li><p>Sampling Rate (<span class="math notranslate nohighlight">\( W_s \)</span>): Here, <span class="math notranslate nohighlight">\( 2W_{\max} \)</span> is the Nyquist sampling rate (<span class="math notranslate nohighlight">\( W_s \)</span>), where <span class="math notranslate nohighlight">\( W_{\max} \)</span> is the maximum frequency of the band-limited signal <span class="math notranslate nohighlight">\( x(t) \)</span>.</p></li>
+<li><p>Sampling Interval: <span class="math notranslate nohighlight">\( T_s = \frac{1}{W_s} = \frac{1}{2W_{\max}} \)</span></p></li>
+<li><p>Samples: <span class="math notranslate nohighlight">\( x\left(\frac{n}{2W_{\max}}\right) \)</span> represents the sampled values of <span class="math notranslate nohighlight">\( x(t) \)</span> at intervals of <span class="math notranslate nohighlight">\( T_s \)</span>.</p></li>
+<li><p>Sinc Function Argument: <span class="math notranslate nohighlight">\( \text{sinc}\left(2W_{\max} \left(t - \frac{n}{2W_{\max}}\right)\right) = \text{sinc}(2W_{\max} t - n) \)</span></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">square</span>
+
+<span class="c1"># Define the frequency of the rectangular signal</span>
+<span class="n">f0</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># frequency in Hz</span>
+
+<span class="c1"># Define the time vector with a high enough resolution</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Create the rectangular signal using the square function</span>
+<span class="n">rect_signal</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># Define the Nyquist rate, which is twice the highest frequency</span>
+<span class="n">W_max</span> <span class="o">=</span> <span class="n">f0</span>  <span class="c1"># highest frequency contained in the signal is f0</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">W_max</span>  <span class="c1"># Nyquist rate (twice the highest frequency)</span>
+
+<span class="c1"># Example of undersampling (below the Nyquist rate)</span>
+<span class="c1"># fs = 0.7 * W  # Note: This is below the Nyquist rate and may cause aliasing</span>
+
+<span class="c1"># Sample the signal at the Nyquist rate</span>
+<span class="n">sample_times</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span>
+<span class="n">sampled_signal</span> <span class="o">=</span> <span class="n">square</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">*</span> <span class="n">sample_times</span><span class="p">)</span>
+
+<span class="c1"># Reconstruction using sinc interpolation</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">fs</span>  <span class="c1"># sampling interval</span>
+<span class="n">reconstructed_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">sampled_signal</span><span class="p">)):</span>
+    <span class="c1"># Shifted sinc functions for each sample</span>
+    <span class="n">reconstructed_signal</span> <span class="o">+=</span> <span class="n">sampled_signal</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sinc</span><span class="p">((</span><span class="n">t</span> <span class="o">-</span> <span class="n">sample_times</span><span class="p">[</span><span class="n">n</span><span class="p">])</span> <span class="o">/</span> <span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Plotting the original and sampled signals along with the reconstructed signal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Original signal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">rect_signal</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original Signal&#39;</span><span class="p">)</span>
+
+<span class="c1"># Sampled signal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">sample_times</span><span class="p">,</span> <span class="n">sampled_signal</span><span class="p">,</span> <span class="n">linefmt</span><span class="o">=</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">markerfmt</span><span class="o">=</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">basefmt</span><span class="o">=</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Sampled Signal&#39;</span><span class="p">)</span>
+
+<span class="c1"># Reconstructed signal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">reconstructed_signal</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Reconstructed Signal&#39;</span><span class="p">)</span>
+
+<span class="c1"># Labels and title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Sampling and Reconstruction of a Rectangular Signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f8461d96a459b9a7e3991d7b420c9167a2a29072f0757a63cd50c7ba6c3b4ba7.png" src="_images/f8461d96a459b9a7e3991d7b420c9167a2a29072f0757a63cd50c7ba6c3b4ba7.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="equivalent-discrete-time-model">
+<h2>Equivalent Discrete-Time Model<a class="headerlink" href="#equivalent-discrete-time-model" title="Link to this heading">#</a></h2>
+<p>The equivalent discrete-time baseband model of the discrete passband communication system is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+y_b[m] = h_b[m] \ast x_b[m] + n_b[m]
+}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( y_b[m] \)</span>: Received discrete-time signal.</p></li>
+<li><p><span class="math notranslate nohighlight">\( h_b[m] \)</span>: Discrete-time channel impulse response.</p></li>
+<li><p><span class="math notranslate nohighlight">\( x_b[m] \)</span>: Transmitted discrete-time signal.</p></li>
+<li><p><span class="math notranslate nohighlight">\( n_b[m] \)</span>: Discrete-time additive noise.</p></li>
+<li><p>Convolution (<span class="math notranslate nohighlight">\( \ast \)</span>): Represents the discrete convolution operation between <span class="math notranslate nohighlight">\( h_b[m] \)</span> and <span class="math notranslate nohighlight">\( x_b[m] \)</span>.</p></li>
+</ul>
+</section>
+<section id="discrete-channel-impulse-response-h-b-m">
+<h2>Discrete Channel Impulse Response <span class="math notranslate nohighlight">\( h_b[m] \)</span><a class="headerlink" href="#discrete-channel-impulse-response-h-b-m" title="Link to this heading">#</a></h2>
+<p>The discrete-time channel impulse response <span class="math notranslate nohighlight">\( h_b[m] \)</span> is derived from the continuous-time baseband channel <span class="math notranslate nohighlight">\( h_b(t) \)</span> as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+h_b[m] = h_b\left( \frac{m}{W_s} \right) \ast \text{sinc}\left( Wt \right) \Big|_{t = \frac{m}{W_s}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+h_b[m] = \int_{-\infty}^{\infty} h_b(\tau) \cdot \text{sinc}\left( W\left( \tau - \frac{m}{W_s} \right) \right) d\tau
+\]</div>
+<p><strong>Explanation:</strong></p>
+<ul class="simple">
+<li><p><strong>Projection onto Sinc Function:</strong> This integral projects the continuous-time channel <span class="math notranslate nohighlight">\( h_b(t) \)</span> onto the discrete-time domain by convolving it with the sinc function and sampling at <span class="math notranslate nohighlight">\( t = \frac{m}{W_s} \)</span>.</p></li>
+<li><p><strong>Ideal Low-Pass Filter Assumption:</strong> The sinc function acts as an ideal low-pass filter that preserves the baseband characteristics during sampling.</p></li>
+</ul>
+</section>
+<section id="discrete-received-signal-y-b-m">
+<h2>Discrete Received Signal <span class="math notranslate nohighlight">\( y_b[m] \)</span><a class="headerlink" href="#discrete-received-signal-y-b-m" title="Link to this heading">#</a></h2>
+<p>The discrete-time received signal <span class="math notranslate nohighlight">\( y_b[m] \)</span> is obtained by sampling the baseband received signal <span class="math notranslate nohighlight">\( y_b(t) \)</span> at <span class="math notranslate nohighlight">\( t = \frac{m}{W_s} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+y_b[m] = y_b\left( \frac{m}{W_s} \right)
+\]</div>
+<p><strong>Explanation:</strong></p>
+<ul class="simple">
+<li><p><strong>Baseband Received Signal:</strong> <span class="math notranslate nohighlight">\( y_b(t) = h_b(t) \ast x_b(t) + n_b(t) \)</span>, where <span class="math notranslate nohighlight">\( n_b(t) \)</span> is the baseband noise.</p></li>
+<li><p><strong>Sampling:</strong> Sampling <span class="math notranslate nohighlight">\( y_b(t) \)</span> at discrete intervals <span class="math notranslate nohighlight">\( \frac{m}{W_s} \)</span> yields <span class="math notranslate nohighlight">\( y_b[m] \)</span>.</p></li>
+</ul>
+</section>
+<section id="discrete-time-noise-model-n-b-m">
+<h2>Discrete-Time Noise Model <span class="math notranslate nohighlight">\( n_b[m] \)</span><a class="headerlink" href="#discrete-time-noise-model-n-b-m" title="Link to this heading">#</a></h2>
+<p>The discrete-time noise <span class="math notranslate nohighlight">\( n_b[m] \)</span> is derived from the continuous-time baseband noise <span class="math notranslate nohighlight">\( n_b(t) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+n_b[m] = n_b\left( \frac{m}{W_s} \right)
+\]</div>
+<p><strong>Autocorrelation Function <span class="math notranslate nohighlight">\( R_{n_b}[l] \)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+R_{n_b}[l] = \mathbb{E}\{ n_b[m] \cdot {n_b}^*[m + l] \} = R_{n_b}\left( \frac{l}{W_s} \right)
+\]</div>
+<p>It should be clarified that <span class="math notranslate nohighlight">\( R_{n_b}[l] \)</span> is derived from the continuous autocorrelation function <span class="math notranslate nohighlight">\( R_{n_b}(t) \)</span> evaluated at <span class="math notranslate nohighlight">\( t = \frac{l}{W_s} \)</span>.</p>
+<p><strong>Explanation:</strong></p>
+<ul class="simple">
+<li><p><strong>Discrete Autocorrelation:</strong> <span class="math notranslate nohighlight">\( R_{n_b}[l] \)</span> represents the autocorrelation of the discrete noise <span class="math notranslate nohighlight">\( n_b[m] \)</span> at lag <span class="math notranslate nohighlight">\( l \)</span>.</p></li>
+<li><p><strong>Continuous-to-Discrete Mapping:</strong> The autocorrelation at discrete lag <span class="math notranslate nohighlight">\( l \)</span> corresponds to the continuous autocorrelation at <span class="math notranslate nohighlight">\( \frac{l}{W_s} \)</span>.</p></li>
+<li><p><strong>Stationarity Assumption:</strong> It is assumed that the noise <span class="math notranslate nohighlight">\( n_b[m] \)</span> is Wide-Sense Stationary (WSS), meaning <span class="math notranslate nohighlight">\( R_{n_b}[l] \)</span> depends only on the lag <span class="math notranslate nohighlight">\( l \)</span>, not on the absolute time index <span class="math notranslate nohighlight">\( m \)</span>.</p></li>
+</ul>
+</section>
+<section id="summary-of-discrete-model">
+<h2>Summary of Discrete Model<a class="headerlink" href="#summary-of-discrete-model" title="Link to this heading">#</a></h2>
+<p>The complete discrete-time model is as follows:</p>
+<ol class="arabic">
+<li><p><strong>Discrete-Time Received Signal:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   y_b[m] = h_b[m] \ast x_b[m] + n_b[m]
+   \]</div>
+</li>
+<li><p><strong>Reconstruction of Baseband Transmitted Signal:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   x_b(t) = \sum_{m=-\infty}^{\infty} x_b[m] \cdot \text{sinc}\left( Wt - m \right)
+   \]</div>
+</li>
+<li><p><strong>Sampling of Baseband Received Signal:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   y_b[m] = y_b\left( \frac{m}{W_s} \right)
+   \]</div>
+</li>
+<li><p><strong>Discrete-Time Channel Impulse Response:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   h_b[m] = \int_{-\infty}^{\infty} h_b(\tau) \cdot \text{sinc}\left( W\left( \tau - \frac{m}{W_s} \right) \right) d\tau
+   \]</div>
+</li>
+<li><p><strong>Discrete-Time Noise Autocorrelation:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   \boxed{
+   R_{n_b}[l] = R_{n_b}\left( \frac{l}{W_s} \right)
+   }
+   \]</div>
+</li>
+</ol>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-process">Sampling Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sampling-continuous-time-signals">Sampling Continuous-Time Signals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#equivalent-discrete-time-model">Equivalent Discrete-Time Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-channel-impulse-response-h-b-m">Discrete Channel Impulse Response <span class="math notranslate nohighlight">\( h_b[m] \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-received-signal-y-b-m">Discrete Received Signal <span class="math notranslate nohighlight">\( y_b[m] \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-time-noise-model-n-b-m">Discrete-Time Noise Model <span class="math notranslate nohighlight">\( n_b[m] \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-discrete-model">Summary of Discrete Model</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

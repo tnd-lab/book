@@ -1,0 +1,1202 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>The Optimum Digital Detector in Additive Gaussian Noise &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c5_s6_Optimum_Digital_Detector';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Filtering Alternatives" href="c5_s8_Filters.html" />
+    <link rel="prev" title="Example: Detection with Real Additive Gaussian Noise" href="c5_s5_c_example_b.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <script>document.write(`<img src="_static/web_logo.png" class="logo__image only-dark" alt="Telecom Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Signal Detection and Estimation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c1_s0.html">Chapter 1: Review of Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s4_s6a_func_one_RV.html">Functions of A Single Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s6b_generation_RV_from_Uniform.html">Generating Random Variables From A Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c1_s7_mean_of_func_RV.html">First Moment of a Function of Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s8_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s9_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s10_s11_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s12_complex_Gaussian_RV.html">Complex Random Vector</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s13_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s14_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a_stochastic_process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Chapter 3: Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c4_s0_intro.html">Chapter 4: Signal Representation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c4_s3_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s7_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s8_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s10_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s13_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s15_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Chapter 5: Vector and Multi-Hypothesis Detection</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>The Optimum Digital Detector in Additive Gaussian Noise</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-hypothesis-testing">Binary Hypothesis Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-modelling">Signal Modelling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-probability-density-function">Joint Probability Density Function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-matrix">Covariance Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-q">I/Q</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-ratio">Likelihood Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-likelihood-ratio">Log-Likelihood Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-statistic">Test Statistic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-threshold">Decision Threshold</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making-comparing-ell-vec-y-to-a-threshold">Decision Making: Comparing <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> to a Threshold</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-weight-vector-vec-h-and-final-decision-rule">Defining the Weight Vector <span class="math notranslate nohighlight">\( \vec{h} \)</span> and Final Decision Rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-3">Example 5.3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-white-gaussian-noise">Special Case: White Gaussian Noise</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="the-optimum-digital-detector-in-additive-gaussian-noise">
+<h1>The Optimum Digital Detector in Additive Gaussian Noise<a class="headerlink" href="#the-optimum-digital-detector-in-additive-gaussian-noise" title="Link to this heading">#</a></h1>
+<p>In this section, we extend the previous analysis of signal detection in the presence of real-valued additive Gaussian noise to a more general and practical scenario where both the signals and the noise are <strong>complex-valued</strong>.</p>
+<p>This generalization is significant because many real-world communication systems, such as wireless communications and radar, utilize complex signals to convey information efficiently.</p>
+<p>Complex signals allow for modulation techniques like Quadrature Amplitude Modulation (QAM) and Phase Shift Keying (PSK), which exploit both amplitude and phase information.</p>
+<section id="binary-hypothesis-testing">
+<h2>Binary Hypothesis Testing<a class="headerlink" href="#binary-hypothesis-testing" title="Link to this heading">#</a></h2>
+<p>As before, we consider a fundamental <strong>binary hypothesis testing</strong> problem where we aim to decide between two possible scenarios based on observed data:</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( H_0 \)</span></strong>: The null hypothesis, representing one possible state of the system (e.g., no signal present or a specific known signal).</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( H_1 \)</span></strong>: The alternative hypothesis, representing another state (e.g., signal present or a different known signal).</p></li>
+</ul>
+<p>Our objective is to determine, using <strong>statistical methods</strong>, which hypothesis is more likely to be true given the measurements we collect.</p>
+</section>
+<section id="signal-modelling">
+<h2>Signal Modelling<a class="headerlink" href="#signal-modelling" title="Link to this heading">#</a></h2>
+<p>Under each hypothesis <span class="math notranslate nohighlight">\( H_i \)</span> (where <span class="math notranslate nohighlight">\( i = 0 \)</span> or <span class="math notranslate nohighlight">\( 1 \)</span>), there is an associated set of <span class="math notranslate nohighlight">\( k \)</span> complex signal values</p>
+<div class="math notranslate nohighlight">
+\[ 
+u_{i,j}, \quad i = 0, 1, \quad j = 1, \ldots, k
+\]</div>
+<p>These signals represent the expected or known signal components under each hypothesis.</p>
+<ul class="simple">
+<li><p><strong>Under <span class="math notranslate nohighlight">\( H_0 \)</span></strong>: The signal is <span class="math notranslate nohighlight">\( \{ u_{0,1}, u_{0,2}, \ldots, u_{0,k} \} \)</span>.</p></li>
+<li><p><strong>Under <span class="math notranslate nohighlight">\( H_1 \)</span></strong>: The signal is <span class="math notranslate nohighlight">\( \{ u_{1,1}, u_{1,2}, \ldots, u_{1,k} \} \)</span>.</p></li>
+</ul>
+<p>For example, these complex values could represent samples of a modulated signal, where each sample carries both amplitude and phase information.</p>
+<p>We collect <span class="math notranslate nohighlight">\( k \)</span> measurements <span class="math notranslate nohighlight">\( y_j \)</span>, where each measurement is a <strong>complex number</strong>.</p>
+<p>These measurements represent the observed data and are affected by <strong>additive complex Gaussian noise</strong>.</p>
+<p>This means that the noise added to each measurement is a complex-valued random variable with Gaussian statistical properties.</p>
+<p>In practical terms, each measurement <span class="math notranslate nohighlight">\( y_j \)</span> can be thought of as the received signal at a specific time or frequency, which includes both the desired signal component and the noise introduced by the communication channel or receiver electronics.</p>
+<p>Since the measurements are complex, we model each one as the sum of the signal component <span class="math notranslate nohighlight">\( u_{i,j} \)</span> and the noise component <span class="math notranslate nohighlight">\( z_j \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+y_j = u_{i,j} + z_j
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( y_j \)</span></strong>: The <span class="math notranslate nohighlight">\( j \)</span>-th complex measurement.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( u_{i,j} \)</span></strong>: The <span class="math notranslate nohighlight">\( j \)</span>-th complex signal value under hypothesis <span class="math notranslate nohighlight">\( H_i \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( z_j \)</span></strong>: The <span class="math notranslate nohighlight">\( j \)</span>-th complex Gaussian noise random variable.</p></li>
+</ul>
+<p>Thus, each observed data point is a combination of the true signal (which depends on the hypothesis) and random noise.</p>
+<p>The noise component <span class="math notranslate nohighlight">\( z_j \)</span> is assumed to be a <strong>zero-mean complex Gaussian random variable</strong>. This means:</p>
+<ul class="simple">
+<li><p>The <strong>real part</strong> and the <strong>imaginary part</strong> of <span class="math notranslate nohighlight">\( z_j \)</span> are each zero-mean Gaussian random variables.</p></li>
+<li><p>The noise is fully characterized by its <strong>covariance matrix</strong>, which captures the variance and correlation between different noise components.</p></li>
+<li><p>The zero-mean assumption implies that the noise does not introduce any bias in the measurements; on average, it does not shift the signal.</p></li>
+</ul>
+<p>This is a common assumption in communication theory because Gaussian noise models (like additive white Gaussian noise, AWGN) are mathematically tractable and often provide a good approximation of real-world noise.</p>
+<p>We can represent all measurements collectively using vector notation:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{y} = \vec{u}_i + \vec{z}
+\]</div>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( \vec{y} \)</span></strong>: The measurement vector, comprising <span class="math notranslate nohighlight">\( y_1, y_2, \ldots, y_k \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \vec{u}_i \)</span></strong>: The signal vector under hypothesis <span class="math notranslate nohighlight">\( H_i \)</span>, containing <span class="math notranslate nohighlight">\( u_{i,1}, u_{i,2}, \ldots, u_{i,k} \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \vec{z} \)</span></strong>: The noise vector, consisting of <span class="math notranslate nohighlight">\( z_1, z_2, \ldots, z_k \)</span>.</p></li>
+</ul>
+<p>Therefore, under hypothesis <span class="math notranslate nohighlight">\( H_i \)</span>, the measurement vector is the sum of the signal vector and the noise vector:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{y} = \vec{u}_i + \vec{z}
+\]</div>
+<p>This compact representation simplifies mathematical manipulations and is especially useful when dealing with multiple measurements and complex signals.</p>
+</section>
+<section id="joint-probability-density-function">
+<h2>Joint Probability Density Function<a class="headerlink" href="#joint-probability-density-function" title="Link to this heading">#</a></h2>
+<p>Because the noise vector <span class="math notranslate nohighlight">\( \vec{z} \)</span> consists of <span class="math notranslate nohighlight">\( k \)</span> zero-mean complex Gaussian random variables, its statistical properties are fully described by its <strong>joint probability density function (PDF)</strong>.</p>
+<p>The joint PDF for <span class="math notranslate nohighlight">\( \vec{z} \)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{z}) = \frac{1}{(2\pi)^k \det(\mathbf{M})} \exp\left( -\frac{1}{2} \vec{z}^T \mathbf{M}^{-1} \vec{z}^* \right)
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( (2\pi)^k \det(\mathbf{M}) \)</span></strong>: This term normalizes the PDF, ensuring that the total probability integrates to 1.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \det(\mathbf{M}) \)</span></strong>: The determinant of the covariance matrix <span class="math notranslate nohighlight">\( \mathbf{M} \)</span>, representing the volume scaling in the multivariate distribution.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \vec{z}^T \)</span></strong>: The transpose of the noise vector <span class="math notranslate nohighlight">\( \vec{z} \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \vec{z}^* \)</span></strong>: The complex conjugate of <span class="math notranslate nohighlight">\( \vec{z} \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \mathbf{M}^{-1} \)</span></strong>: The inverse of the covariance matrix <span class="math notranslate nohighlight">\( \mathbf{M} \)</span>.</p></li>
+<li><p><strong>Exponential Term</strong>: Represents the quadratic form that defines the shape of the multivariate Gaussian distribution in the complex domain.</p></li>
+</ul>
+<section id="covariance-matrix">
+<h3>Covariance Matrix<a class="headerlink" href="#covariance-matrix" title="Link to this heading">#</a></h3>
+<p>The <strong>covariance matrix <span class="math notranslate nohighlight">\( \mathbf{M} \)</span></strong> characterizes the second-order statistical properties of the complex noise vector <span class="math notranslate nohighlight">\( \vec{z} \)</span>. It is defined by:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{M} = \frac{1}{2} E \{ \vec{z} \vec{z}^T \}
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( E \{ \vec{z} \vec{z}^T \} \)</span></strong>: The expected value (mean) of the outer product of <span class="math notranslate nohighlight">\( \vec{z} \)</span> with its transpose <span class="math notranslate nohighlight">\( \vec{z}^T \)</span>. This captures the correlations between the different components of <span class="math notranslate nohighlight">\( \vec{z} \)</span>.</p></li>
+<li><p><strong>Factor of <span class="math notranslate nohighlight">\( \frac{1}{2} \)</span></strong>: In complex random variables, the covariance is often defined with this factor to maintain consistency with real-valued covariance definitions.</p></li>
+<li><p><strong>Complex Covariance Matrix</strong>: Since <span class="math notranslate nohighlight">\( \vec{z} \)</span> is complex, <span class="math notranslate nohighlight">\( \mathbf{M} \)</span> is also a complex matrix, which may contain both real and imaginary components.</p></li>
+</ul>
+</section>
+<section id="i-q">
+<h3>I/Q<a class="headerlink" href="#i-q" title="Link to this heading">#</a></h3>
+<p>Since <span class="math notranslate nohighlight">\( \vec{z} \)</span> is a complex vector, it can be decomposed into its <strong>real (in-phase)</strong> and <strong>imaginary (quadrature)</strong> components:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{z} = \vec{z}_I + j \vec{z}_Q
+\]</div>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( \vec{z}_I \)</span></strong>: The real part (in-phase component) of <span class="math notranslate nohighlight">\( \vec{z} \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \vec{z}_Q \)</span></strong>: The imaginary part (quadrature component) of <span class="math notranslate nohighlight">\( \vec{z} \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( j \)</span></strong>: The imaginary unit, where <span class="math notranslate nohighlight">\( j^2 = -1 \)</span>.</p></li>
+</ul>
+<p>Thus, when we write <span class="math notranslate nohighlight">\( p(\vec{z}) \)</span>, it is a shorthand notation for the joint PDF <span class="math notranslate nohighlight">\( p(\vec{z}_I, \vec{z}_Q) \)</span>, which describes the probability distribution over both the real and imaginary parts of the noise vector.</p>
+<p>This decomposition allows us to work with real-valued quantities, facilitating certain mathematical manipulations and interpretations.</p>
+<p>The <strong>probability density functions (PDFs)</strong> of the measurement vector <span class="math notranslate nohighlight">\( \vec{y} \)</span> under hypotheses <span class="math notranslate nohighlight">\( H_1 \)</span> and <span class="math notranslate nohighlight">\( H_0 \)</span> are given by:</p>
+<p><strong>Under <span class="math notranslate nohighlight">\( H_1 \)</span></strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+p_1(\vec{y}) = \frac{1}{(2\pi)^k \det(\mathbf{M})} \exp\left( -\frac{1}{2} [\vec{y} - \vec{u}_1]^T \mathbf{M}^{-1} [\vec{y}^* - \vec{u}_1^*] \right)
+\]</div>
+<p><strong>Under <span class="math notranslate nohighlight">\( H_0 \)</span></strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+p_0(\vec{y}) = \frac{1}{(2\pi)^k \det(\mathbf{M})} \exp\left( -\frac{1}{2} [\vec{y} - \vec{u}_0]^T \mathbf{M}^{-1} [\vec{y}^* - \vec{u}_0^*] \right)
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( [\vec{y} - \vec{u}_i] \)</span></strong>: The difference between the observed measurements and the expected signal under hypothesis <span class="math notranslate nohighlight">\( H_i \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( [\vec{y}^* - \vec{u}_i^*] \)</span></strong>: The complex conjugate of the difference.</p></li>
+<li><p><strong>Quadratic Form</strong>: The exponent involves a quadratic form that measures the “distance” between the observed data and the expected signal, weighted by the inverse covariance matrix <span class="math notranslate nohighlight">\( \mathbf{M}^{-1} \)</span>.</p></li>
+<li><p><strong>Normalization</strong>: The denominator ensures that the PDF integrates to 1 over the entire complex space.</p></li>
+</ul>
+</section>
+</section>
+<section id="likelihood-ratio">
+<h2>Likelihood Ratio<a class="headerlink" href="#likelihood-ratio" title="Link to this heading">#</a></h2>
+<p>We derive the likelihood ratio <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span> and the log-likelihood ratio <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> for the complex-valued signal detection problem</p>
+<p>The likelihood ratio <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \frac{p_1(\vec{y})}{p_0(\vec{y})}
+\]</div>
+<p>Substituting the expressions for <span class="math notranslate nohighlight">\( p_1(\vec{y}) \)</span> and <span class="math notranslate nohighlight">\( p_0(\vec{y}) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \frac{\exp\left( -\frac{1}{2} [\vec{y} - \vec{u}_1]^T \mathbf{M}^{-1} [\vec{y}^* - \vec{u}_1^*] \right)}{\exp\left( -\frac{1}{2} [\vec{y} - \vec{u}_0]^T \mathbf{M}^{-1} [\vec{y}^* - \vec{u}_0^*] \right)}
+\]</div>
+<p>Note that the denominators <span class="math notranslate nohighlight">\( (2\pi)^k \det(\mathbf{M}) \)</span> cancel out.</p>
+<p><strong>Simplifying the Likelihood Ratio</strong></p>
+<p>The ratio of exponentials simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \exp\left( -\frac{1}{2} [\vec{y} - \vec{u}_1]^T \mathbf{M}^{-1} [\vec{y}^* - \vec{u}_1^*] + \frac{1}{2} [\vec{y} - \vec{u}_0]^T \mathbf{M}^{-1} [\vec{y}^* - \vec{u}_0^*] \right)
+\]</div>
+<p>We denote the exponent by <span class="math notranslate nohighlight">\( \mathsf{EXP} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathsf{EXP} = -\frac{1}{2} [\vec{y} - \vec{u}_1]^T \mathbf{M}^{-1} [\vec{y}^* - \vec{u}_1^*] + \frac{1}{2} [\vec{y} - \vec{u}_0]^T \mathbf{M}^{-1} [\vec{y}^* - \vec{u}_0^*]
+\]</div>
+<p>Next, we will expand both quadratic forms in <span class="math notranslate nohighlight">\( \mathsf{EXP} \)</span>.</p>
+<p>Expand <span class="math notranslate nohighlight">\( [\vec{y} - \vec{u}_1]^T \mathbf{M}^{-1} [\vec{y}^* - \vec{u}_1^*] \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+[\vec{y} - \vec{u}_1]^T \mathbf{M}^{-1} [\vec{y}^* - \vec{u}_1^*] &amp;= \vec{y}^T \mathbf{M}^{-1} \vec{y}^* - \vec{y}^T \mathbf{M}^{-1} \vec{u}_1^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{y}^* + \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^*
+\end{aligned}
+\]</div>
+<p>Similarly for <span class="math notranslate nohighlight">\( [\vec{y} - \vec{u}_0]^T \mathbf{M}^{-1} [\vec{y}^* - \vec{u}_0^*] \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+[\vec{y} - \vec{u}_0]^T \mathbf{M}^{-1} [\vec{y}^* - \vec{u}_0^*] &amp;= \vec{y}^T \mathbf{M}^{-1} \vec{y}^* - \vec{y}^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_0^T \mathbf{M}^{-1} \vec{y}^* + \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^*
+\end{aligned}
+\]</div>
+<p>Now, substitute the expanded forms back into <span class="math notranslate nohighlight">\( \mathsf{EXP} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathsf{EXP} &amp;= -\frac{1}{2} \left( \vec{y}^T \mathbf{M}^{-1} \vec{y}^* - \vec{y}^T \mathbf{M}^{-1} \vec{u}_1^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{y}^* + \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right) \\
+&amp;\quad + \frac{1}{2} \left( \vec{y}^T \mathbf{M}^{-1} \vec{y}^* - \vec{y}^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_0^T \mathbf{M}^{-1} \vec{y}^* + \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* \right)
+\end{aligned}
+\end{split}\]</div>
+<p>Simplify <span class="math notranslate nohighlight">\( \mathsf{EXP} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathsf{EXP} &amp;= -\frac{1}{2} \vec{y}^T \mathbf{M}^{-1} \vec{y}^* + \frac{1}{2} \vec{y}^T \mathbf{M}^{-1} \vec{u}_1^* + \frac{1}{2} \vec{u}_1^T \mathbf{M}^{-1} \vec{y}^* - \frac{1}{2} \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \\
+&amp;\quad + \frac{1}{2} \vec{y}^T \mathbf{M}^{-1} \vec{y}^* - \frac{1}{2} \vec{y}^T \mathbf{M}^{-1} \vec{u}_0^* - \frac{1}{2} \vec{u}_0^T \mathbf{M}^{-1} \vec{y}^* + \frac{1}{2} \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^*
+\end{aligned}
+\end{split}\]</div>
+<p>Simplify terms:</p>
+<ul class="simple">
+<li><p>The terms <span class="math notranslate nohighlight">\( -\frac{1}{2} \vec{y}^T \mathbf{M}^{-1} \vec{y}^* \)</span> and <span class="math notranslate nohighlight">\( +\frac{1}{2} \vec{y}^T \mathbf{M}^{-1} \vec{y}^* \)</span> cancel out.</p></li>
+</ul>
+<p>Combining like terms:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathsf{EXP} &amp;= \frac{1}{2} \vec{y}^T \mathbf{M}^{-1} \vec{u}_1^* + \frac{1}{2} \vec{u}_1^T \mathbf{M}^{-1} \vec{y}^* - \frac{1}{2} \vec{y}^T \mathbf{M}^{-1} \vec{u}_0^* - \frac{1}{2} \vec{u}_0^T \mathbf{M}^{-1} \vec{y}^* \\
+&amp;\quad + \frac{1}{2} \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \frac{1}{2} \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^*
+\end{aligned}
+\end{split}\]</div>
+<p>Rewriting:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathsf{EXP} &amp;= \frac{1}{2} \left( \vec{y}^T \mathbf{M}^{-1} \vec{u}_1^* - \vec{y}^T \mathbf{M}^{-1} \vec{u}_0^* + \vec{u}_1^T \mathbf{M}^{-1} \vec{y}^* - \vec{u}_0^T \mathbf{M}^{-1} \vec{y}^* \right) \\
+&amp;\quad + \frac{1}{2} \left( \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right)
+\end{aligned}
+\end{split}\]</div>
+<p><strong>Expressing <span class="math notranslate nohighlight">\( \mathsf{EXP} \)</span> in Terms of Differences</strong></p>
+<p><strong>Combine Terms Involving <span class="math notranslate nohighlight">\( \vec{y} \)</span></strong></p>
+<p>We factor out <span class="math notranslate nohighlight">\( \vec{y}^T \mathbf{M}^{-1} \)</span> and <span class="math notranslate nohighlight">\( \vec{u}_i \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathsf{EXP} &amp;= \frac{1}{2} \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) + \frac{1}{2} (\vec{u}_1^T - \vec{u}_0^T) \mathbf{M}^{-1} \vec{y}^* \\
+&amp;\quad + \frac{1}{2} \left( \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right)
+\end{aligned}
+\end{split}\]</div>
+<p><strong>Utilizing the Symmetry in <span class="math notranslate nohighlight">\( \mathbf{M}^{-1} \)</span></strong></p>
+<p>Given that <span class="math notranslate nohighlight">\( \mathbf{M} \)</span> is complex conjugate symmetric, i.e., <span class="math notranslate nohighlight">\( \mathbf{M} = \mathbf{M}^{*T} \)</span>, it follows that <span class="math notranslate nohighlight">\( \mathbf{M}^{-1} \)</span> is also complex conjugate symmetric:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{M}^{-1} = (\mathbf{M}^{-1})^{*T}
+\]</div>
+<p>Additionally, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+(\mathbf{M}^{-1})^T = \mathbf{M}^{-1}
+\]</div>
+<p>These properties allow us to manipulate terms involving <span class="math notranslate nohighlight">\( \vec{u}_i \)</span> and <span class="math notranslate nohighlight">\( \vec{y} \)</span>.</p>
+<p><strong>Lemma.</strong> Show that</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{u}_i^T \mathbf{M}^{-1} \vec{y}^* = \vec{y}^T \mathbf{M}^{-1} \vec{u}_i^*
+\]</div>
+<p><strong>Proof</strong>:</p>
+<p>Take the left-hand side (LHS):</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{u}_i^T \mathbf{M}^{-1} \vec{y}^*
+\]</div>
+<p>Take the complex conjugate of the right-hand side (RHS):</p>
+<div class="math notranslate nohighlight">
+\[
+\left( \vec{y}^T \mathbf{M}^{-1} \vec{u}_i^* \right)^* = \vec{u}_i^T (\mathbf{M}^{-1})^* \vec{y}^*
+\]</div>
+<p>Given that <span class="math notranslate nohighlight">\( \mathbf{M}^{-1} = (\mathbf{M}^{-1})^{*T} \)</span>, so <span class="math notranslate nohighlight">\( (\mathbf{M}^{-1})^* = (\mathbf{M}^{-1})^T \)</span>.</p>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{u}_i^T (\mathbf{M}^{-1})^* \vec{y}^* = \vec{u}_i^T (\mathbf{M}^{-1})^T \vec{y}^* = \left( \vec{u}_i^T \mathbf{M}^{-1} \vec{y}^* \right)^T
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\( \left( \vec{u}_i^T \mathbf{M}^{-1} \vec{y}^* \right)^T = \vec{y}^T \mathbf{M}^{-1} \vec{u}_i^* \)</span>, the equality holds.</p>
+<p>Thus:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{u}_i^T \mathbf{M}^{-1} \vec{y}^* = \vec{y}^T \mathbf{M}^{-1} \vec{u}_i^*
+\]</div>
+<p><strong>Apply the Equality to Simplify <span class="math notranslate nohighlight">\( \mathsf{EXP} \)</span></strong></p>
+<p>Using the equality, we can combine the terms:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+\mathsf{EXP} &amp;= \frac{1}{2} \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) + \frac{1}{2} \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \\
+&amp;\quad + \frac{1}{2} \left( \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right)
+\end{aligned}
+\end{split}\]</div>
+<p>Simplify:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathsf{EXP} = \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) + \frac{1}{2} \left( \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right)
+\]</div>
+<p><strong>Expressing <span class="math notranslate nohighlight">\( \mathsf{EXP} \)</span> in Terms of Real Parts</strong></p>
+<p>Since <span class="math notranslate nohighlight">\( \mathsf{EXP} \)</span> involves <span class="math notranslate nohighlight">\( \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \)</span>, which is a complex scalar, we can consider its real part.</p>
+<p>Although <span class="math notranslate nohighlight">\( \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \)</span> may be complex, <span class="math notranslate nohighlight">\( \mathsf{EXP} \)</span> must be real because it’s in the exponent of a real-valued exponential function.</p>
+<p>We can write:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathsf{EXP} = 2 \operatorname{Re} \left\{ \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right\} + \frac{1}{2} \left( \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right)
+\]</div>
+<p>But earlier, we had:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathsf{EXP} = \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) + \frac{1}{2} \left( \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right)
+\]</div>
+<p>Given that <span class="math notranslate nohighlight">\( \mathsf{EXP} \)</span> is real, the imaginary part of <span class="math notranslate nohighlight">\( \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \)</span> must be canceled out by the complex conjugate terms.</p>
+<p>Therefore, we can write:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathsf{EXP} = \operatorname{Re} \left\{ 2 \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right\} + \frac{1}{2} \left( \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right)
+\]</div>
+<p><strong>Final Expression for the Likelihood Ratio</strong></p>
+<p>Substitute <span class="math notranslate nohighlight">\( \mathsf{EXP} \)</span> back into <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \exp(E) = \exp\left( \operatorname{Re} \left\{ 2 \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right\} + \frac{1}{2} \left( \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right) \right)
+\]</div>
+<p>Simplify:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \exp\left( 2 \operatorname{Re} \left\{ \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right\} + \frac{1}{2} \left( \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right) \right)
+\]</div>
+<p>But since <span class="math notranslate nohighlight">\( \exp(a + b) = \exp(a) \exp(b) \)</span>, and <span class="math notranslate nohighlight">\( 2 \operatorname{Re}\{ w \} = w + w^* \)</span>, we can keep the expression as:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \exp\left( \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) + \left[ \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right]^* + \frac{1}{2} \left( \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right) \right)
+\]</div>
+<p>Recognizing that <span class="math notranslate nohighlight">\( \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) + \left[ \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right]^* = 2 \operatorname{Re} \left\{ \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right\} \)</span>.</p>
+<p>Alternatively, write <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+L(\vec{y}) = \exp\left( \frac{1}{2} (\vec{u}_1 - \vec{u}_0)^T \mathbf{M}^{-1} \vec{y}^* + \frac{1}{2} \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) + \frac{1}{2} \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \frac{1}{2} \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right)
+}
+\]</div>
+</section>
+<section id="log-likelihood-ratio">
+<h2>Log-Likelihood Ratio<a class="headerlink" href="#log-likelihood-ratio" title="Link to this heading">#</a></h2>
+<p>The log-likelihood ratio <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) = \ln L(\vec{y})
+\]</div>
+<p>From the expression of <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) = \frac{1}{2} (\vec{u}_1 - \vec{u}_0)^T \mathbf{M}^{-1} \vec{y}^* + \frac{1}{2} \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) + \frac{1}{2} \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \frac{1}{2} \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^*
+\]</div>
+<p><strong>Simplify Using Real Part</strong></p>
+<p>Since <span class="math notranslate nohighlight">\( \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) + (\vec{u}_1 - \vec{u}_0)^T \mathbf{M}^{-1} \vec{y}^* \)</span> is twice the real part of <span class="math notranslate nohighlight">\( \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \)</span>, we can write:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\ell(\vec{y}) = \operatorname{Re} \left\{ \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right\} + \frac{1}{2} \left( \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right)
+}
+\]</div>
+<p><strong>Constants in the Log-Likelihood Ratio</strong></p>
+<p>The last two terms in <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{2} \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \frac{1}{2} \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^*
+\]</div>
+<p>are <strong>constants</strong> with respect to <span class="math notranslate nohighlight">\( \vec{y} \)</span>. They depend only on the known signal vectors <span class="math notranslate nohighlight">\( \vec{u}_0 \)</span>, <span class="math notranslate nohighlight">\( \vec{u}_1 \)</span>, and the noise covariance matrix <span class="math notranslate nohighlight">\( \mathbf{M} \)</span>.</p>
+<p>Therefore, they can be computed in advance. This is important in detection design.</p>
+<p><strong>Note</strong>: This derivation assumes that all vectors and matrices are of compatible dimensions and that the noise covariance matrix <span class="math notranslate nohighlight">\( \mathbf{M} \)</span> is invertible.</p>
+</section>
+<section id="test-statistic">
+<h2>Test Statistic<a class="headerlink" href="#test-statistic" title="Link to this heading">#</a></h2>
+<p><strong>Weighted Sum: <span class="math notranslate nohighlight">\( \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \)</span></strong></p>
+<p>We have that</p>
+<p><strong><span class="math notranslate nohighlight">\( \mathbf{M}^{-1} \)</span></strong>:</p>
+<ul class="simple">
+<li><p>It’s the inverse of the noise covariance matrix <span class="math notranslate nohighlight">\( \mathbf{M} \)</span>.</p></li>
+<li><p>As <span class="math notranslate nohighlight">\( \mathbf{M} \)</span> is a <span class="math notranslate nohighlight">\( k \times k \)</span> matrix, so is <span class="math notranslate nohighlight">\( \mathbf{M}^{-1} \)</span>.</p></li>
+</ul>
+<p><strong><span class="math notranslate nohighlight">\( (\vec{u}_1^* - \vec{u}_0^*) \)</span></strong>:</p>
+<ul class="simple">
+<li><p>This represents the difference between the complex conjugates of the signal vectors under hypotheses <span class="math notranslate nohighlight">\( H_1 \)</span> and <span class="math notranslate nohighlight">\( H_0 \)</span>.</p></li>
+<li><p>It is a column vector of size <span class="math notranslate nohighlight">\( k \times 1 \)</span>.</p></li>
+</ul>
+<p><strong>Computation of <span class="math notranslate nohighlight">\( \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \)</span>:</strong></p>
+<p>Multiply <span class="math notranslate nohighlight">\( \mathbf{M}^{-1} \)</span> (size <span class="math notranslate nohighlight">\( k \times k \)</span>) with <span class="math notranslate nohighlight">\( (\vec{u}_1^* - \vec{u}_0^*) \)</span> (size <span class="math notranslate nohighlight">\( k \times 1 \)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \quad \text{is a} \quad k \times 1 \quad \text{vector}.
+\]</div>
+<p>Multiply the transpose of <span class="math notranslate nohighlight">\( \vec{y} \)</span> (size <span class="math notranslate nohighlight">\( 1 \times k \)</span>) with the resulting vector:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{y}^T \left( \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right) \quad \text{results in a scalar}.
+\]</div>
+<p><strong>Interpretation as a Weighted Sum:</strong></p>
+<p>The scalar <span class="math notranslate nohighlight">\( \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \)</span> is essentially a <strong>linear combination</strong> of the components of the measurement vector <span class="math notranslate nohighlight">\( \vec{y} \)</span>.</p>
+<p>The <strong>weights</strong> in this linear combination are determined by the elements of <span class="math notranslate nohighlight">\( \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \)</span>, which encapsulate:</p>
+<ul class="simple">
+<li><p>The <strong>difference between the signal vectors</strong> under the two hypotheses.</p></li>
+<li><p>The <strong>inverse of the noise covariance matrix</strong>, accounting for the noise characteristics.</p></li>
+</ul>
+<p>This operation projects the measurement vector <span class="math notranslate nohighlight">\( \vec{y} \)</span> onto a specific direction in the signal space, emphasizing components that are most informative for distinguishing between <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>.</p>
+</section>
+<section id="decision-threshold">
+<h2>Decision Threshold<a class="headerlink" href="#decision-threshold" title="Link to this heading">#</a></h2>
+<p>The general decision rule using likelihood statistic:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) \underset{H_0}{\overset{H_1}{\gtrless}} \eta
+\]</div>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\( L(\vec{y}) &gt; \eta \)</span>, decide <span class="math notranslate nohighlight">\( H_1 \)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( L(\vec{y}) \leq \eta \)</span>, decide <span class="math notranslate nohighlight">\( H_0 \)</span>.</p></li>
+</ul>
+<p>or using log-likelihood statistic:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) \underset{H_0}{\overset{H_1}{\gtrless}} \ln\eta \triangleq \eta_L
+\]</div>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\( \ell(\vec{y}) &gt; \eta_L \)</span>, decide <span class="math notranslate nohighlight">\( H_1 \)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( \ell(\vec{y}) \leq \eta_L \)</span>, decide <span class="math notranslate nohighlight">\( H_0 \)</span>.</p></li>
+</ul>
+<p><strong>Constants in the Log-Likelihood Ratio:</strong></p>
+<p>The expression for <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> includes terms that are <strong>constants</strong>, independent of the measurements <span class="math notranslate nohighlight">\( \vec{y} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{2} \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \frac{1}{2} \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^*
+\]</div>
+<p>These constants depend only on:</p>
+<ul class="simple">
+<li><p>The known signal vectors <span class="math notranslate nohighlight">\( \vec{u}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{u}_1 \)</span>.</p></li>
+<li><p>The noise covariance matrix <span class="math notranslate nohighlight">\( \mathbf{M} \)</span>.</p></li>
+</ul>
+<p>Since these constants do not vary with <span class="math notranslate nohighlight">\( \vec{y} \)</span>, they can be <strong>incorporated into the threshold</strong> <span class="math notranslate nohighlight">\( \eta \)</span>.</p>
+<p>This simplifies the decision rule to focus on the part of <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> that depends on the observed data.</p>
+</section>
+<section id="decision-making-comparing-ell-vec-y-to-a-threshold">
+<h2>Decision Making: Comparing <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> to a Threshold<a class="headerlink" href="#decision-making-comparing-ell-vec-y-to-a-threshold" title="Link to this heading">#</a></h2>
+<p>The decision rule compares the log-likelihood ratio <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> to a threshold <span class="math notranslate nohighlight">\( \eta \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) = \operatorname{Re} \left\{ \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right\} + \frac{1}{2} \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \frac{1}{2} \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \underset{H_0}{\overset{H_1}{\gtrless}} \eta_L
+\]</div>
+<p>Note that: <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> is rewritten as:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) = \operatorname{Re} \left\{ \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right\} + C
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \operatorname{Re} \left\{ \cdot \right\} \)</span> denotes the real part of a complex number.</p></li>
+<li><p><span class="math notranslate nohighlight">\( C = \frac{1}{2} \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \frac{1}{2} \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \)</span> is the constant term.</p></li>
+</ul>
+<p>where the components include:</p>
+<ul class="simple">
+<li><p><strong>Data-Dependent Term:</strong></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( \operatorname{Re} \left\{ \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right\} \)</span> depends on the observed measurements <span class="math notranslate nohighlight">\( \vec{y} \)</span>.</p></li>
+<li><p>This term captures the alignment between the observed data and the difference between the signals under <span class="math notranslate nohighlight">\( H_1 \)</span> and <span class="math notranslate nohighlight">\( H_0 \)</span>, adjusted by the noise characteristics.</p></li>
+</ul>
+</li>
+<li><p><strong>Constant Term:</strong></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( C \)</span> depends only on known quantities and does not vary with <span class="math notranslate nohighlight">\( \vec{y} \)</span>.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Simplified Decision Rule</strong></p>
+<p>We can redefine the threshold to include the constant term:</p>
+<div class="math notranslate nohighlight">
+\[
+\eta_0 = \eta_L - C = \eta_L - \left( \frac{1}{2} \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \frac{1}{2} \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right)
+\]</div>
+<p>The decision rule now focuses solely on the data-dependent term:</p>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{Re} \left\{ \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right\} \underset{H_0}{\overset{H_1}{\gtrless}} \eta_0
+\]</div>
+<p><strong>Advantages of Simplification:</strong></p>
+<ul class="simple">
+<li><p><strong>Computational Efficiency:</strong> Reduces the number of operations required during real-time processing, as constants are precomputed.</p></li>
+<li><p><strong>Clarity in Implementation:</strong> Highlights the key computation involving the observed data, making it easier to understand and implement in practical systems.</p></li>
+<li><p><strong>Flexibility:</strong> Allows for dynamic adjustment of the threshold <span class="math notranslate nohighlight">\( \eta_0 \)</span> based on desired performance metrics (e.g., probability of false alarm).</p></li>
+</ul>
+</section>
+<section id="defining-the-weight-vector-vec-h-and-final-decision-rule">
+<h2>Defining the Weight Vector <span class="math notranslate nohighlight">\( \vec{h} \)</span> and Final Decision Rule<a class="headerlink" href="#defining-the-weight-vector-vec-h-and-final-decision-rule" title="Link to this heading">#</a></h2>
+<p>From this:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) = \operatorname{Re} \left\{ \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right\} + \frac{1}{2} \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \frac{1}{2} \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \underset{H_0}{\overset{H_1}{\gtrless}} \eta_L
+\]</div>
+<p>We define <strong>Weight Vector <span class="math notranslate nohighlight">\( \vec{h} \)</span></strong> as follows.</p>
+<p><strong>Complex Conjugate Weight Vector <span class="math notranslate nohighlight">\( \vec{h}^* \)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\vec{h}^* = \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*)
+\]</div>
+<p><span class="math notranslate nohighlight">\( \vec{h}^* \)</span> is a <span class="math notranslate nohighlight">\( k \times 1 \)</span> column vector.</p>
+<p><strong>Transpose of the Weight Vector <span class="math notranslate nohighlight">\( \vec{h}^T \)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\vec{h}^T = (\vec{u}_1 - \vec{u}_0)^T \mathbf{M}^{-1}
+\]</div>
+<p><span class="math notranslate nohighlight">\( \vec{h}^T \)</span> is a <span class="math notranslate nohighlight">\( 1 \times k \)</span> row vector.</p>
+<p><strong>Why we need <span class="math notranslate nohighlight">\( \vec{h} \)</span>?</strong></p>
+<ul class="simple">
+<li><p>It represents the <strong>optimal weighting coefficients</strong> applied to the measurements <span class="math notranslate nohighlight">\( \vec{y} \)</span> to maximize detection performance.</p></li>
+<li><p><strong>Dependence on Signals and Noise:</strong>
+<span class="math notranslate nohighlight">\( \vec{h} \)</span> encapsulates the difference between the signal vectors and the inverse noise covariance, effectively balancing the signal differences against the noise characteristics.</p></li>
+</ul>
+<p><strong>Alternative Expression of the Weight Vector:</strong></p>
+<p>Since <span class="math notranslate nohighlight">\( \vec{h}^T = (\vec{u}_1 - \vec{u}_0)^T \mathbf{M}^{-1} \)</span>, it follows that:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{h}^* = \left( \vec{h}^T \right)^*
+\]</div>
+<p><strong>Final Decision Rule with <span class="math notranslate nohighlight">\( \vec{h} \)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[\boxed{
+\operatorname{Re} \left\{ \vec{y}^T \vec{h}^* \right\} \underset{H_0}{\overset{H_1}{\gtrless}} \eta_0
+}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \eta_0 = \eta_L + \frac{1}{2} \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* - \frac{1}{2} \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* \)</span></p></li>
+</ul>
+<p><img alt="Image" src="_images/fig_5_1.png" /></p>
+<p><img alt="Image" src="_images/fig_5_2.png" /></p>
+</section>
+<section id="example-5-3">
+<h2>Example 5.3<a class="headerlink" href="#example-5-3" title="Link to this heading">#</a></h2>
+<p>Let us consider the common communication scenario where the <em>a priori</em> probabilities for <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span> are equally likely (<span class="math notranslate nohighlight">\( \pi_0 = \pi_1 = \frac{1}{2} \)</span>), the costs for correct decisions are zero (<span class="math notranslate nohighlight">\( C_{00} = C_{11} = 0 \)</span>), and the costs for errors are equal (<span class="math notranslate nohighlight">\( C_{01} = C_{10} = 1 \)</span>).</p>
+<p>In this case, the likelihood ratio threshold is 1.0, and the log-likelihood ratio threshold is 0.0.</p>
+<p><strong>Defining the Correlator Vectors</strong></p>
+<p>The measurement vector <span class="math notranslate nohighlight">\( \vec{y} \)</span> is correlated with two locally generated vectors <span class="math notranslate nohighlight">\( \vec{h}_0^* \)</span> and <span class="math notranslate nohighlight">\( \vec{h}_1^* \)</span>, where</p>
+<p><strong>Locally Generated Vectors <span class="math notranslate nohighlight">\( \vec{h}_i^* \)</span>:</strong></p>
+<p>For each hypothesis <span class="math notranslate nohighlight">\( H_i \)</span> (<span class="math notranslate nohighlight">\( i = 0, 1 \)</span>), we generate a vector <span class="math notranslate nohighlight">\( \vec{h}_i^* \)</span> defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{h}_i^* = \mathbf{M}^{-1} \vec{u}_i^*
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \mathbf{M}^{-1} \)</span> is the inverse of the noise covariance matrix <span class="math notranslate nohighlight">\( \mathbf{M} \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \vec{u}_i^* \)</span> is the complex conjugate of the signal vector under <span class="math notranslate nohighlight">\( H_i \)</span>.</p></li>
+</ul>
+<p><strong>Correlation Process:</strong></p>
+<p>We compute the correlation between the measurement vector <span class="math notranslate nohighlight">\( \vec{y} \)</span> and each <span class="math notranslate nohighlight">\( \vec{h}_i^* \)</span> to form a test statistic that emphasizes the signal components while mitigating the noise impact.</p>
+<p><strong>Introducing the Bias Term and Decision Variables</strong></p>
+<p><strong>Bias Term:</strong></p>
+<p>For each hypothesis <span class="math notranslate nohighlight">\( H_i \)</span>, we calculate a bias term:</p>
+<div class="math notranslate nohighlight">
+\[
+B_i = \frac{1}{2} \vec{u}_i^T \mathbf{M}^{-1} \vec{u}_i^*
+\]</div>
+<p><strong>Decision Variable <span class="math notranslate nohighlight">\( U_i \)</span>:</strong></p>
+<p>The decision variable for hypothesis <span class="math notranslate nohighlight">\( H_i \)</span> is computed as:</p>
+<div class="math notranslate nohighlight">
+\[
+U_i = \operatorname{Re} \left[ \vec{y}^T \mathbf{M}^{-1} \vec{u}_i^* \right] - B_i
+\]</div>
+<p><strong>Decision Rule:</strong></p>
+<p>We compare <span class="math notranslate nohighlight">\( U_0 \)</span> and <span class="math notranslate nohighlight">\( U_1 \)</span>:</p>
+<ul class="simple">
+<li><p><strong>If</strong> <span class="math notranslate nohighlight">\( U_1 &gt; U_0 \)</span>, <strong>decide</strong> <span class="math notranslate nohighlight">\( H_1 \)</span>.</p></li>
+<li><p><strong>If</strong> <span class="math notranslate nohighlight">\( U_0 \geq U_1 \)</span>, <strong>decide</strong> <span class="math notranslate nohighlight">\( H_0 \)</span>.</p></li>
+</ul>
+<p><strong>Derivation of <span class="math notranslate nohighlight">\( U_i \)</span></strong></p>
+<p><strong>Starting from the Log-Likelihood Ratio:</strong></p>
+<p>Recall that the log-likelihood ratio is:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) = \operatorname{Re} \left\{ \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right\} + \frac{1}{2} \left( \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right)
+\]</div>
+<p><strong>Expressing <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> in Terms of <span class="math notranslate nohighlight">\( U_i \)</span>:</strong></p>
+<p>Define <span class="math notranslate nohighlight">\( U_1 \)</span> and <span class="math notranslate nohighlight">\( U_0 \)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+U_1 = \operatorname{Re} \left[ \vec{y}^T \mathbf{M}^{-1} \vec{u}_1^* \right] - \frac{1}{2} \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^*
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+U_0 = \operatorname{Re} \left[ \vec{y}^T \mathbf{M}^{-1} \vec{u}_0^* \right] - \frac{1}{2} \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^*
+\]</div>
+<p>Then, the difference <span class="math notranslate nohighlight">\( U_1 - U_0 \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+U_1 - U_0 = \operatorname{Re} \left\{ \vec{y}^T \mathbf{M}^{-1} (\vec{u}_1^* - \vec{u}_0^*) \right\} + \frac{1}{2} \left( \vec{u}_0^T \mathbf{M}^{-1} \vec{u}_0^* - \vec{u}_1^T \mathbf{M}^{-1} \vec{u}_1^* \right)
+\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\( \ell(\vec{y}) = U_1 - U_0 \)</span>.</p>
+<p><strong>Decision Rule Based on <span class="math notranslate nohighlight">\( U_i \)</span>:</strong></p>
+<p>Since <span class="math notranslate nohighlight">\( \ell(\vec{y}) = U_1 - U_0 \)</span>, the decision rule <span class="math notranslate nohighlight">\( \ell(\vec{y}) \underset{H_0}{\overset{H_1}{\gtrless}} 0 \)</span> becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+U_1 - U_0 \underset{H_0}{\overset{H_1}{\gtrless}} 0
+\]</div>
+<p>or equivalently,</p>
+<div class="math notranslate nohighlight">
+\[
+U_1 \underset{H_0}{\overset{H_1}{\gtrless}} U_0
+\]</div>
+<p>Thus, the decision is made by computing <span class="math notranslate nohighlight">\( U_i \)</span> for each hypothesis and selecting the one with the <strong>higher value.</strong></p>
+</section>
+<section id="special-case-white-gaussian-noise">
+<h2>Special Case: White Gaussian Noise<a class="headerlink" href="#special-case-white-gaussian-noise" title="Link to this heading">#</a></h2>
+<p><strong>White Noise Characteristics:</strong></p>
+<p>The noise vector <span class="math notranslate nohighlight">\( \vec{z} \)</span> has the following properties:</p>
+<ul class="simple">
+<li><p>Zero Mean: <span class="math notranslate nohighlight">\( E[\vec{z}] = \vec{0} \)</span>.</p></li>
+<li><p>Uncorrelated Components: The noise components are uncorrelated, implying no cross-correlation between different elements.</p></li>
+<li><p>Equal Variance: Each component has the same variance.</p></li>
+<li><p>Covariance Matrix <span class="math notranslate nohighlight">\( \mathbf{M} \)</span>:</p></li>
+</ul>
+<p>For white noise, the covariance matrix simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{M} = \frac{\sigma_z^2}{2} \mathbf{I}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \mathbf{I} \)</span> is the <span class="math notranslate nohighlight">\( k \times k \)</span> identity matrix.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \sigma_z^2 \)</span> is the variance of the complex noise components.</p></li>
+<li><p>The factor <span class="math notranslate nohighlight">\( \frac{1}{2} \)</span> accounts for the division of variance between the real and imaginary parts of the complex noise.</p></li>
+</ul>
+<p><strong>Defining <span class="math notranslate nohighlight">\( \sigma^2 \)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\sigma^2 = \frac{\sigma_z^2}{2}
+\]</div>
+<p>so that:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{M} = \sigma^2 \mathbf{I}
+\]</div>
+<p><strong>Simplifying the Correlator Terms <span class="math notranslate nohighlight">\( \vec{h}_i^* \)</span>:</strong></p>
+<p>Since <span class="math notranslate nohighlight">\( \mathbf{M} = \sigma^2 \mathbf{I} \)</span>, its inverse is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{M}^{-1} = \frac{1}{\sigma^2} \mathbf{I}
+\]</div>
+<p>Substitute <span class="math notranslate nohighlight">\( \mathbf{M}^{-1} \)</span> into the expression for <span class="math notranslate nohighlight">\( \vec{h}_i^* \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{h}_i^* = \mathbf{M}^{-1} \vec{u}_i^* = \frac{1}{\sigma^2} \mathbf{I} \vec{u}_i^* = \frac{1}{\sigma^2} \vec{u}_i^*, \quad i = 0, 1
+\]</div>
+<p><strong>Simplifying the Bias Terms:</strong></p>
+<p>Substitute <span class="math notranslate nohighlight">\( \mathbf{M}^{-1} = \frac{1}{\sigma^2} \mathbf{I} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+B_i = \frac{1}{2} \vec{u}_i^T \mathbf{M}^{-1} \vec{u}_i^* = \frac{1}{2} \vec{u}_i^T \left( \frac{1}{\sigma^2} \mathbf{I} \right) \vec{u}_i^* = \frac{1}{2 \sigma^2} \vec{u}_i^T \vec{u}_i^*, \quad i = 0, 1
+\]</div>
+<p>The term <span class="math notranslate nohighlight">\( \vec{u}_i^T \vec{u}_i^* \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{u}_i^T \vec{u}_i^* = \sum_{k=1}^{N} u_{i,k} u_{i,k}^*
+\]</div>
+<p>It represents the <strong>energy <span class="math notranslate nohighlight">\( \mathcal{E}_i \)</span></strong> of the signal <span class="math notranslate nohighlight">\( \vec{u}_i \)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+B_i = \frac{1}{2 \sigma^2} \mathcal{E}_i
+\]</div>
+<p><strong>Simplifying the Decision Variables <span class="math notranslate nohighlight">\( U_i \)</span>:</strong></p>
+<p>The decision variable becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+U_i = \operatorname{Re} \left[ \vec{y}^T \vec{h}_i^* \right] - B_i = \operatorname{Re} \left[ \vec{y}^T \left( \frac{1}{\sigma^2} \vec{u}_i^* \right) \right] - \frac{1}{2 \sigma^2} \mathcal{E}_i
+\]</div>
+<p>Factor out <span class="math notranslate nohighlight">\( \frac{1}{\sigma^2} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+U_i = \frac{1}{\sigma^2} \left( \operatorname{Re} \left[ \vec{y}^T \vec{u}_i^* \right] - \frac{1}{2} \mathcal{E}_i \right)
+\]</div>
+<p><strong>Decision Rule Simplification:</strong></p>
+<p>Since <span class="math notranslate nohighlight">\( \frac{1}{\sigma^2} \)</span> is common to both <span class="math notranslate nohighlight">\( U_0 \)</span> and <span class="math notranslate nohighlight">\( U_1 \)</span>, and positive, it does not affect the comparison.</p>
+<p>The decision rule simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+\operatorname{Re} \left[ \vec{y}^T \vec{u}_1^* \right] - \frac{1}{2} \mathcal{E}_1 \underset{H_0}{\overset{H_1}{\gtrless}} \operatorname{Re} \left[ \vec{y}^T \vec{u}_0^* \right] - \frac{1}{2} \mathcal{E}_0
+\]</div>
+<p>Decide in favor of the hypothesis corresponding to the larger <span class="math notranslate nohighlight">\( U_i \)</span>.</p>
+<p><img alt="Image" src="_images/fig_5_3.png" /></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c5_s5_c_example_b.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Example: Detection with Real Additive Gaussian Noise</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c5_s8_Filters.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Filtering Alternatives</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#binary-hypothesis-testing">Binary Hypothesis Testing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-modelling">Signal Modelling</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#joint-probability-density-function">Joint Probability Density Function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-matrix">Covariance Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#i-q">I/Q</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-ratio">Likelihood Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-likelihood-ratio">Log-Likelihood Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#test-statistic">Test Statistic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-threshold">Decision Threshold</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making-comparing-ell-vec-y-to-a-threshold">Decision Making: Comparing <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> to a Threshold</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-the-weight-vector-vec-h-and-final-decision-rule">Defining the Weight Vector <span class="math notranslate nohighlight">\( \vec{h} \)</span> and Final Decision Rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-5-3">Example 5.3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-white-gaussian-noise">Special Case: White Gaussian Noise</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

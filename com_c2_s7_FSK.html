@@ -1,0 +1,1387 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Frequency-Shift Keying (FSK) &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'com_c2_s7_FSK';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Signal Waveforms from Binary Codes" href="com_c2_s8_Waveform_Binary_Codes.html" />
+    <link rel="prev" title="Orthogonal Signaling" href="com_c2_s6_Orthogonal_Signalling.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Frequency-Shift Keying (FSK)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Frequency-Shift Keying (FSK)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fsk-waveform">FSK Waveform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-of-fsk-signals">Orthogonality of FSK Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-of-two-signals">Correlation of Two Signals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-for-orthogonality">Condition for Orthogonality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-frequency-separation">Minimum Frequency Separation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-in-baseband-and-bandpass">Orthogonality in Baseband and Bandpass</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-fsk-waveform">Energy of FSK Waveform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-derivation-of-the-energy-of-the-bandpass-waveform">Direct Derivation of the Energy of the Bandpass Waveform</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthonormal-basic-for-fsk">Orthonormal Basic for FSK</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fsk-signal-space">FSK Signal Space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-and-minimum-distance">Euclidean and Minimum Distance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-distance-between-two-fsk-signals">Euclidean Distance Between Two FSK Signals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance">Minimum Distance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-interpretation">Geometric Interpretation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance-in-terms-of-mathcal-e-b">Minimum Distance in terms of <span class="math notranslate nohighlight">\(\mathcal{E}_b\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-vs-nonlinear-modulation">Linear vs. Nonlinear Modulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-derivation-of-the-correlation-of-two-fsk-signals">Appendix: Derivation of The Correlation of Two FSK Signals</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-now-want-mathrm-re-bigl-langle-s-m-lp-t-s-n-lp-t-rangle-bigr">We now want
+$$
+\mathrm{Re} \Bigl[\langle s_{m,lp}(t),  s_{n,lp}(t)\rangle\Bigr]</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="frequency-shift-keying-fsk">
+<h1>Frequency-Shift Keying (FSK)<a class="headerlink" href="#frequency-shift-keying-fsk" title="Link to this heading">#</a></h1>
+<p>Frequency-Shift Keying (FSK) is a digital modulation technique in which the frequency of a carrier signal is varied to represent distinct symbol states. Each symbol is associated with a specific (sub) carrier frequency.</p>
+<section id="fsk-waveform">
+<h2>FSK Waveform<a class="headerlink" href="#fsk-waveform" title="Link to this heading">#</a></h2>
+<p>The FSK signal can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+s_m(t) = \sqrt{\frac{2\mathcal{E}}{T}} \cos\bigl(2\pi f_c t + 2\pi m \Delta f  t \bigr),}
+\quad 1 \le m \le M,\quad 0 \le t \le T
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathcal{E}\)</span> is the signal energy,</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span> is the symbol duration,</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_c\)</span> is the carrier frequency,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta f\)</span> is the frequency separation between successive signals,</p></li>
+<li><p><span class="math notranslate nohighlight">\(m\)</span> indexes the different frequencies.</p></li>
+</ul>
+<p>The <strong>lowpass equivalent</strong> of <span class="math notranslate nohighlight">\(s_m(t)\)</span>, denoted <span class="math notranslate nohighlight">\(s_{m,lp}(t)\)</span>, is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+s_{m,lp}(t) = \sqrt{\frac{2\mathcal{E}}{T}}   e^{j 2\pi m \Delta f   t}
+}
+\]</div>
+<p>Note that, <span class="math notranslate nohighlight">\(s_m(t)\)</span> is a <strong>real-valued, bandpass</strong> waveform (a cosine at frequency <span class="math notranslate nohighlight">\(f_c + m \Delta f\)</span>).</p>
+<p>By contrast, the <strong>lowpass-equivalent</strong> signal <span class="math notranslate nohighlight">\(s_{m,lp}(t)\)</span> is <strong>complex-valued</strong>, capturing the in-phase and quadrature components of the bandpass signal at baseband.</p>
+</section>
+<section id="orthogonality-of-fsk-signals">
+<h2>Orthogonality of FSK Signals<a class="headerlink" href="#orthogonality-of-fsk-signals" title="Link to this heading">#</a></h2>
+<section id="correlation-of-two-signals">
+<h3>Correlation of Two Signals<a class="headerlink" href="#correlation-of-two-signals" title="Link to this heading">#</a></h3>
+<p>The correlation of the <strong>lowpass equivalents</strong> <span class="math notranslate nohighlight">\(s_{m,lp}(t)\)</span> and <span class="math notranslate nohighlight">\(s_{n,lp}(t)\)</span> is calculated as</p>
+<div class="math notranslate nohighlight">
+\[
+\langle s_{m,lp}(t), s_{n,lp}(t)\rangle
+ = 
+\int_0^T 
+s_{m,lp}(t) s_{n,lp}^*(t) \mathrm{d}t
+ = 
+\frac{2\mathcal{E}}{T}\int_{0}^{T} 
+e^{ j 2\pi (m-n) \Delta f t} \mathrm{d}t
+\]</div>
+<p>Evaluating this integral yields:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle s_{m,lp}(t), s_{n,lp}(t)\rangle
+ = 
+\frac{2\mathcal{E}}{T}
+ \frac{\sin \bigl(\pi T (m-n) \Delta f\bigr)}
+{\pi (m-n) \Delta f}
+ \mathcal{E}^{ j \pi T (m-n) \Delta f}
+\]</div>
+<p>Taking its <strong>real part</strong>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\mathrm{Re} \bigl[\langle s_{m,lp}(t),s_{n,lp}(t)\rangle\bigr]
+ = 
+\frac{2\mathcal{E}}{T}
+ \mathrm{sinc} \bigl(2 T (m-n) \Delta f\bigr)
+}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mathrm{sinc}(x) \equiv \dfrac{\sin(\pi x)}{\pi x}\)</span>.</p>
+<p><strong>Proof</strong>: See Appendix.</p>
+</section>
+<section id="condition-for-orthogonality">
+<h3>Condition for Orthogonality<a class="headerlink" href="#condition-for-orthogonality" title="Link to this heading">#</a></h3>
+<p>For <strong>orthogonality</strong>, we need this inner product to be zero for <span class="math notranslate nohighlight">\(m \neq n\)</span>. Hence,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{Re} \bigl[\langle s_{m,lp}(t), s_{n,lp}(t)\rangle\bigr]
+ = 
+\frac{2\mathcal{E}}{T} 
+\mathrm{sinc} \bigl(2 T (m-n) \Delta f\bigr)
+ = 0
+\]</div>
+<p>Since the nonzero constant <span class="math notranslate nohighlight">\(\tfrac{2\mathcal{E}}{T}\)</span> just scales the expression, the condition boils down to</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{sinc} \bigl(2 T (m-n) \Delta f\bigr) = 0,
+\quad
+\text{for all } m \neq n
+\]</div>
+<p><strong>Zeros of the Sinc Function</strong></p>
+<p>Recall that</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{sinc}(x) = \frac{\sin(\pi x)}{\pi x}
+\]</div>
+<p>has zeros at <strong>all nonzero integer</strong> values of <span class="math notranslate nohighlight">\(x\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+x = \pm 1, \pm 2, \pm 3,\dots
+\]</div>
+<p>Hence</p>
+<div class="math notranslate nohighlight">
+\[
+2 T (m-n) \Delta f = k
+\quad
+\text{for } k \in \{\pm1, \pm2, \pm3, \ldots\},  k \neq 0
+\]</div>
+</section>
+<section id="minimum-frequency-separation">
+<h3>Minimum Frequency Separation<a class="headerlink" href="#minimum-frequency-separation" title="Link to this heading">#</a></h3>
+<p><strong>Adjacent Frequencies</strong>:<br />
+For <span class="math notranslate nohighlight">\(M\)</span>-FSK, the frequencies are typically spaced in increments of <span class="math notranslate nohighlight">\(\Delta f\)</span>. Adjacent signals correspond to <span class="math notranslate nohighlight">\((m-n)=1\)</span>. So the simplest (lowest nonzero) orthogonality condition is</p>
+<div class="math notranslate nohighlight">
+\[
+   2 T (m-n) \Delta f = 2 T \Delta f = k=1
+   \quad\Longrightarrow\quad
+   \Delta f = \frac{1}{2T}
+   \]</div>
+<p>In other words, for <strong>adjacent</strong> frequency indices <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(m+1\)</span>, the separation must be</p>
+<div class="math notranslate nohighlight">
+\[
+   \Delta f = \frac{1}{2T}
+   \]</div>
+<p>(if we choose <span class="math notranslate nohighlight">\(k=1\)</span> for the first zero of <span class="math notranslate nohighlight">\(\mathrm{sinc}\)</span>).</p>
+<p><strong>General <span class="math notranslate nohighlight">\(k\)</span>-multiple</strong>:<br />
+More generally, we could choose</p>
+<div class="math notranslate nohighlight">
+\[
+   2 T \Delta f = k
+   \quad\Longrightarrow\quad
+   \Delta f = \frac{k}{2T}, \quad k=1,2,3,\dots
+   \]</div>
+<p>But the <strong>minimum</strong> spacing that still guarantees orthogonality for adjacent channels is with <span class="math notranslate nohighlight">\(k=1\)</span>. This is why we say</p>
+<div class="math notranslate nohighlight">
+\[
+   \boxed{
+   \Delta f_{\min}  = \frac{1}{2T}
+   }
+   \]</div>
+</section>
+<section id="orthogonality-in-baseband-and-bandpass">
+<h3>Orthogonality in Baseband and Bandpass<a class="headerlink" href="#orthogonality-in-baseband-and-bandpass" title="Link to this heading">#</a></h3>
+<p>Because the bandpass signals <span class="math notranslate nohighlight">\(s_{m}(t)\)</span> differ by frequency increments of <span class="math notranslate nohighlight">\(\Delta f\)</span>, their <strong>lowpass equivalents</strong> differ by the same increments in baseband (just “shifted” from the carrier). The condition</p>
+<div class="math notranslate nohighlight">
+\[
+2 T (m-n) \Delta f  \in \mathbb{Z}
+\]</div>
+<p>ensures <strong>pairwise orthogonality</strong> of <span class="math notranslate nohighlight">\(\{s_{m,lp}(t)\}\)</span>. It equally implies the real bandpass signals <span class="math notranslate nohighlight">\(\{s_{m}(t)\}\)</span> are orthogonal (their integrals over one symbol period vanish). Thus, no symbol‐to‐symbol interference occurs when <span class="math notranslate nohighlight">\(\Delta f\)</span> meets or exceeds that minimum value.</p>
+</section>
+</section>
+<section id="energy-of-fsk-waveform">
+<h2>Energy of FSK Waveform<a class="headerlink" href="#energy-of-fsk-waveform" title="Link to this heading">#</a></h2>
+<p>When <span class="math notranslate nohighlight">\(m = n\)</span>, we are effectively taking the <strong>autocorrelation</strong> of the same signal <span class="math notranslate nohighlight">\(s_{m,lp}(t)\)</span> with itself. In that case, the exponential term inside the integral becomes</p>
+<div class="math notranslate nohighlight">
+\[
+e^{j 2\pi (m-n) \Delta f t} = \mathcal{E}^{j 2\pi (0) \Delta f t} = 1
+\]</div>
+<p>so the integral simplifies to</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{0}^{T} 1  \mathrm{d}t = T
+\]</div>
+<p>Given the factor <span class="math notranslate nohighlight">\(\frac{2\mathcal{E}}{T}\)</span> out front, the correlation becomes</p>
+<div class="math notranslate nohighlight">
+\[
+\langle s_{m,lp}(t), s_{m,lp}(t)\rangle 
+= \frac{2\mathcal{E}}{T} \times T
+= 2\mathcal{E}
+\]</div>
+<p>Thus, when <span class="math notranslate nohighlight">\(m=n\)</span>,</p>
+<ul class="simple">
+<li><p>The correlation is <strong>nonzero</strong> and equals the signal energy <span class="math notranslate nohighlight">\(2\mathcal{E}\)</span>.</p></li>
+<li><p>This makes sense physically: the energy of the signal over one symbol interval is <span class="math notranslate nohighlight">\(2\mathcal{E}\)</span> (based on the factor <span class="math notranslate nohighlight">\(\sqrt{\tfrac{2\mathcal{E}}{T}}\)</span> in the signal definition).</p></li>
+</ul>
+<p>Hence, <strong>orthogonality</strong> pertains only to the case <span class="math notranslate nohighlight">\(m\neq n\)</span>. When <span class="math notranslate nohighlight">\(m=n\)</span>, the “correlation with itself” is simply the (nonzero) autocorrelation/energy of that signal.</p>
+<section id="direct-derivation-of-the-energy-of-the-bandpass-waveform">
+<h3>Direct Derivation of the Energy of the Bandpass Waveform<a class="headerlink" href="#direct-derivation-of-the-energy-of-the-bandpass-waveform" title="Link to this heading">#</a></h3>
+<p><strong>Given Definitions</strong></p>
+<ul>
+<li><p><strong>Bandpass FSK signal</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+     s_m(t)  =  \sqrt{\frac{2\mathcal{E}}{T}}  \cos \bigl(2\pi f_c t  +  2\pi m \Delta f t\bigr),
+     \quad 0 \le t \le T
+     \]</div>
+</li>
+<li><p><strong>Complex baseband equivalent</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+     s_{m,lp}(t)  =  \sqrt{\frac{2\mathcal{E}}{T}} e^{ j 2\pi m \Delta f t}
+     \]</div>
+</li>
+</ul>
+<p><strong>Energy of <span class="math notranslate nohighlight">\(s_{m,lp}(t)\)</span></strong><br />
+The energy of the <em>complex</em> lowpass signal <span class="math notranslate nohighlight">\(s_{m,lp}(t)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+   \int_{0}^{T} \bigl|s_{m,lp}(t)\bigr|^2 dt
+    = 
+   \int_{0}^{T} \left(\sqrt{\frac{2\mathcal{E}}{T}}\right)^2  dt
+    = 
+   \int_{0}^{T} \frac{2\mathcal{E}}{T} \mathrm{d}t
+    = 
+   2\mathcal{E}
+   \]</div>
+<p>Thus, its <em>complex</em> representation has total energy <span class="math notranslate nohighlight">\(2\mathcal{E}\)</span>.</p>
+<p><strong>Energy of <span class="math notranslate nohighlight">\(s_m(t)\)</span></strong><br />
+The <em>real</em> bandpass signal is</p>
+<div class="math notranslate nohighlight">
+\[
+   s_m(t)  =  \sqrt{\frac{2\mathcal{E}}{T}}  \cos \bigl(\omega t + \phi\bigr)
+   \]</div>
+<p>where <span class="math notranslate nohighlight">\(\omega = 2\pi (f_c + m \Delta f)\)</span>.</p>
+<p>To find its energy over <span class="math notranslate nohighlight">\(t \in [0, T]\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \int_{0}^{T} s_m^2(t) \mathrm{d}t
+    = 
+   \int_{0}^{T} \left(\sqrt{\frac{2\mathcal{E}}{T}}\right)^2 
+                \cos^2(\omega t + \phi) \mathrm{d}t
+   \]</div>
+<p>Inside the integral, <span class="math notranslate nohighlight">\(\cos^2(\omega t + \phi)\)</span> has an average value of <span class="math notranslate nohighlight">\(1/2\)</span> over an integer number of cycles.  For FSK over one symbol interval <span class="math notranslate nohighlight">\(T\)</span>, we typically choose <span class="math notranslate nohighlight">\(\omega\)</span> (or <span class="math notranslate nohighlight">\(\Delta f\)</span>) so that the signal completes an integer number of half‐cycles or full cycles, making</p>
+<div class="math notranslate nohighlight">
+\[
+   \int_0^T \cos^2(\omega t + \phi) dt  =  \frac{T}{2}
+   \]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+   \int_{0}^{T} s_m^2(t) dt 
+    = 
+   \int_{0}^{T}
+   \frac{2\mathcal{E}}{T} \cdot \cos^2(\omega t + \phi) \mathrm{d}t
+    = 
+   \frac{2\mathcal{E}}{T}  \times \frac{T}{2}
+    = 
+   \mathcal{E}
+   \]</div>
+<p>So the passband signal <span class="math notranslate nohighlight">\(s_m(t)\)</span> has total energy <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>.</p>
+<p><strong>Interpretation</strong></p>
+<ul class="simple">
+<li><p>The <strong>baseband equivalent</strong> signal <span class="math notranslate nohighlight">\(s_{m,lp}(t)\)</span> is a <span class="math notranslate nohighlight">\(\textit{complex}\)</span>-valued representation: it keeps track of the in-phase (I) and quadrature (Q) components. In this representation, the “energy” is found by integrating <span class="math notranslate nohighlight">\(\lvert s_{m,lp}(t)\rvert^2\)</span>, and turns out to be <span class="math notranslate nohighlight">\(2\mathcal{E}\)</span>.</p></li>
+<li><p>The <strong>actual physical (bandpass)</strong> signal <span class="math notranslate nohighlight">\(s_m(t)\)</span> is <span class="math notranslate nohighlight">\(\textit{real}\)</span>. Because the complex representation effectively accounts for two orthogonal dimensions (I and Q), it naturally has twice the energy when viewed as a complex 2D vector. In the real bandpass world, we only send one dimension (the cosine), so the integral of <span class="math notranslate nohighlight">\(s_m^2(t)\)</span> over the symbol interval is <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>.</p></li>
+</ul>
+<p>Hence, seeing a factor of 2 difference between the energies of the complex baseband signal and the real passband signal is completely normal in digital communications.</p>
+</section>
+</section>
+<section id="orthonormal-basic-for-fsk">
+<h2>Orthonormal Basic for FSK<a class="headerlink" href="#orthonormal-basic-for-fsk" title="Link to this heading">#</a></h2>
+<p>We construct an <strong>orthonormal basis</strong> for orthogonal M‐FSK waveforms and then represent each FSK signal as a point in an <span class="math notranslate nohighlight">\(M\)</span>‐dimensional Euclidean space.</p>
+<p>We assume that the frequency separation <span class="math notranslate nohighlight">\(\Delta f\)</span> is chosen so that the signals <span class="math notranslate nohighlight">\( \{s_m(t)\} \)</span> are pairwise orthogonal over the symbol interval <span class="math notranslate nohighlight">\([0, T]\)</span>. In particular, the <em>minimum</em> spacing ensuring orthogonality of adjacent frequencies is</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta f  = \frac{1}{2T}
+\]</div>
+<p><strong>Definition of the FSK Signals</strong></p>
+<p>We start with the real, bandpass M‐FSK signals:</p>
+<div class="math notranslate nohighlight">
+\[
+s_m(t)
+ = 
+\sqrt{\frac{2\mathcal{E}}{T}}
+ \cos \Bigl(2\pi f_c t + 2\pi m \Delta f t\Bigr),
+\quad
+m=1,2,\dots, M,
+\quad
+0 \le t \le T
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathcal{E}\)</span> is the <em>energy parameter</em> used in normalizing the signals,</p></li>
+<li><p><span class="math notranslate nohighlight">\(T\)</span> is the symbol duration,</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_c\)</span> is the carrier frequency,</p></li>
+<li><p><span class="math notranslate nohighlight">\(\Delta f\)</span> is the frequency separation between adjacent FSK tones (typically <span class="math notranslate nohighlight">\(\Delta f = \tfrac{1}{2T}\)</span> for <em>minimum</em> orthogonal spacing).</p></li>
+</ul>
+<p><strong>Constructing the Orthonormal Basis <span class="math notranslate nohighlight">\(\{\phi_k(t)\}\)</span></strong></p>
+<p>To form an <strong>orthonormal</strong> set of basis functions that spans all <span class="math notranslate nohighlight">\(M\)</span> FSK signals, define for <span class="math notranslate nohighlight">\(k = 1,2,\dots, M\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\phi_k(t)
+ = 
+\sqrt{\frac{2}{T}} \cos \Bigl(2\pi f_c t + 2\pi (k-1) \Delta f t\Bigr),
+\quad
+0 \le t \le T
+\]</div>
+<p><strong>Orthogonality</strong></p>
+<p>Consider the inner product over one symbol interval,</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \phi_k, \phi_\ell \rangle
+ = 
+\int_{0}^{T} 
+\phi_k(t) \phi_\ell(t) \mathrm{d}t
+\]</div>
+<p>By design—assuming <span class="math notranslate nohighlight">\(\Delta f\)</span> is chosen such that different tones are orthogonal—these basis functions satisfy</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \phi_k, \phi_\ell \rangle 
+ = 
+\delta_{k\ell}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\delta_{k\ell}\)</span> is the Kronecker delta (1 if <span class="math notranslate nohighlight">\(k=\ell\)</span>, 0 otherwise).</p>
+<p><strong>Normalization</strong></p>
+<p>Each <span class="math notranslate nohighlight">\(\phi_k(t)\)</span> has unit energy:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^T \phi_k^2(t) \mathrm{d}t
+ = 
+1
+\]</div>
+<p>(This follows from the factor <span class="math notranslate nohighlight">\(\sqrt{2/T}\)</span> in front of a <span class="math notranslate nohighlight">\(\cos^2\)</span> function, which integrates to <span class="math notranslate nohighlight">\(T/2\)</span> over the interval.)</p>
+<p>Hence, <span class="math notranslate nohighlight">\(\{\phi_k(t)\}_{k=1}^M\)</span> is an <em>orthonormal</em> set in the real signal space.</p>
+<p><strong>Expressing <span class="math notranslate nohighlight">\(s_m(t)\)</span> in Terms of <span class="math notranslate nohighlight">\(\{\phi_k(t)\}\)</span></strong></p>
+<p>Observe that</p>
+<div class="math notranslate nohighlight">
+\[
+s_m(t)
+ = 
+\sqrt{\frac{2\mathcal{E}}{T}} \cos \Bigl(2\pi f_c t + 2\pi m \Delta f t\Bigr)
+\]</div>
+<p>Compare this with</p>
+<div class="math notranslate nohighlight">
+\[
+\phi_m(t)
+ = 
+\sqrt{\frac{2}{T}} \cos \Bigl(2\pi f_c t + 2\pi (m-1) \Delta f t\Bigr)
+\]</div>
+<p>If we choose the index consistently (say we shift <span class="math notranslate nohighlight">\(m\to m-1\)</span> in the definition of <span class="math notranslate nohighlight">\(\phi\)</span> or vice versa), each <span class="math notranslate nohighlight">\(s_m(t)\)</span> differs from its corresponding <span class="math notranslate nohighlight">\(\phi_m(t)\)</span> <em>only</em> by an amplitude factor <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span>. Indeed:</p>
+<div class="math notranslate nohighlight">
+\[
+\phi_m(t)
+=
+\sqrt{\frac{2}{T}}
+ \cos \Bigl(2\pi f_c t + 2\pi (m-1) \Delta f t\Bigr)
+\]</div>
+<p>But if we re‐label or if we define</p>
+<div class="math notranslate nohighlight">
+\[
+s_{m}(t) 
+ = 
+\sqrt{\mathcal{E}} \phi_{m+1}(t)
+\]</div>
+<p>(depending on indexing), we get exactly the same waveform shape with amplitude <span class="math notranslate nohighlight">\(\sqrt{2\mathcal{E}/T}\)</span>. The key takeaway is:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+s_m(t)
+ = 
+\sqrt{\mathcal{E}} \phi_m(t)}
+\quad
+\text{(up to a small frequency‐index shift)}
+\]</div>
+<p>Hence, each FSK signal <span class="math notranslate nohighlight">\(s_m(t)\)</span> is essentially <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span> times one of the orthonormal basis functions <span class="math notranslate nohighlight">\(\phi_m(t)\)</span>.</p>
+</section>
+<section id="fsk-signal-space">
+<h2>FSK Signal Space<a class="headerlink" href="#fsk-signal-space" title="Link to this heading">#</a></h2>
+<p><strong>Mapping to an <span class="math notranslate nohighlight">\(M\)</span>‐Dimensional Euclidean Space</strong></p>
+<p>Once we have an orthonormal set <span class="math notranslate nohighlight">\(\{\phi_k(t)\}_{k=1}^M\)</span>, <strong>any</strong> signal <span class="math notranslate nohighlight">\(x(t)\)</span> living in the span can be written uniquely as:</p>
+<div class="math notranslate nohighlight">
+\[
+x(t)  =  \sum_{k=1}^M \alpha_k \phi_k(t)
+\]</div>
+<ul>
+<li><p>The <strong>coordinate</strong> of <span class="math notranslate nohighlight">\(x(t)\)</span> in this <span class="math notranslate nohighlight">\(M\)</span>‐dimensional space is<br />
+<span class="math notranslate nohighlight">\(\bigl(\alpha_1, \alpha_2, \dots, \alpha_M\bigr)\)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\(x(t) = s_m(t)\)</span>, then all but the <span class="math notranslate nohighlight">\(m\)</span>th coordinate will be zero, and that <span class="math notranslate nohighlight">\(m\)</span>th coordinate will be <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span>. Symbolically,</p>
+<div class="math notranslate nohighlight">
+\[
+   s_1(t)  \longmapsto  (\sqrt{\mathcal{E}}, 0, 0,\dots, 0)
+   \]</div>
+<div class="math notranslate nohighlight">
+\[
+   s_2(t)  \longmapsto  (0, \sqrt{\mathcal{E}}, 0,\dots, 0)
+   \]</div>
+<div class="math notranslate nohighlight">
+\[
+   \quad \dots \quad
+   \]</div>
+<div class="math notranslate nohighlight">
+\[
+   s_M(t)  \longmapsto  (0, 0, \dots, 0, \sqrt{\mathcal{E}})
+   \]</div>
+</li>
+</ul>
+<p>Therefore, <strong>orthogonal M‐FSK</strong> can be viewed geometrically as placing each symbol at a vertex of an <span class="math notranslate nohighlight">\(M\)</span>‐dimensional simplex whose edges have length <span class="math notranslate nohighlight">\(\sqrt{2 \mathcal{E}}\)</span>. Each symbol waveform is “one basis function turned on” (multiplied by <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span>).</p>
+</section>
+<section id="euclidean-and-minimum-distance">
+<h2>Euclidean and Minimum Distance<a class="headerlink" href="#euclidean-and-minimum-distance" title="Link to this heading">#</a></h2>
+<p>We compute the <strong>pairwise Euclidean distance</strong> between FSK signals (assuming they are orthogonal) and determine the <strong>minimum distance</strong>.</p>
+<p><strong>Definition of the FSK Signals</strong></p>
+<p>Consider an <span class="math notranslate nohighlight">\(M\)</span>-ary FSK system with signals:</p>
+<div class="math notranslate nohighlight">
+\[
+s_m(t) 
+ = 
+\sqrt{\frac{2\mathcal{E}}{T}} \cos \Bigl(2\pi \bigl(f_c + m \Delta f\bigr) t\Bigr),
+\quad
+m = 1, 2, \ldots, M,
+\quad
+0 \le t \le T
+\]</div>
+<p>Each signal has energy</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{0}^{T} s_m^2(t) \mathrm{d}t
+ =  \mathcal{E}
+\]</div>
+<p>(As discussed previously, the factor <span class="math notranslate nohighlight">\(\sqrt{\tfrac{2\mathcal{E}}{T}}\)</span> in front of a cosine means each real passband signal integrates to <span class="math notranslate nohighlight">\(\mathcal{E}\)</span> over the interval <span class="math notranslate nohighlight">\([0,T]\)</span>.)</p>
+<p>We assume <span class="math notranslate nohighlight">\(\Delta f\)</span> is chosen so that the signals <span class="math notranslate nohighlight">\(\{s_m(t)\}\)</span> are <strong>orthogonal</strong>—i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{0}^{T} s_m(t) s_n(t) \mathrm{d}t 
+ =  0,
+\quad m \neq n
+\]</div>
+<section id="euclidean-distance-between-two-fsk-signals">
+<h3>Euclidean Distance Between Two FSK Signals<a class="headerlink" href="#euclidean-distance-between-two-fsk-signals" title="Link to this heading">#</a></h3>
+<p>In signal space, the <strong>squared Euclidean distance</strong> between two distinct signals <span class="math notranslate nohighlight">\(s_m(t)\)</span> and <span class="math notranslate nohighlight">\(s_n(t)\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+d^2(m,n)
+ = 
+\int_{0}^{T} \Bigl[s_m(t)  -  s_n(t)\Bigr]^{2} \mathrm{d}t
+\]</div>
+<p>Expanding this:</p>
+<div class="math notranslate nohighlight">
+\[
+d^2(m,n)
+ = 
+\int_{0}^{T} \Bigl[s_m^2(t) - 2 s_m(t) s_n(t) + s_n^2(t)\Bigr] \mathrm{d}t
+\]</div>
+<p>Using orthogonality, we have:</p>
+<div class="math notranslate nohighlight">
+\[\displaystyle \int_{0}^{T} s_m^2(t) \mathrm{d}t = \mathcal{E}\]</div>
+<div class="math notranslate nohighlight">
+\[ \displaystyle \int_{0}^{T} s_n^2(t) \mathrm{d}t = \mathcal{E}\]</div>
+<div class="math notranslate nohighlight">
+\[ \displaystyle \int_{0}^{T} s_m(t) s_n(t) \mathrm{d}t = 0\quad \text{for }m \neq n\]</div>
+<p>Hence,</p>
+<div class="math notranslate nohighlight">
+\[
+d^2(m,n)
+ = 
+\mathcal{E}  +  \mathcal{E}  -  2 \times 0
+ = 
+2 \mathcal{E}
+\]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+d(m,n)  =  \sqrt{2 \mathcal{E}}
+\]</div>
+</section>
+<section id="minimum-distance">
+<h3>Minimum Distance<a class="headerlink" href="#minimum-distance" title="Link to this heading">#</a></h3>
+<p>Because <strong>all</strong> pairs of distinct signals are orthogonal and have the same energy <span class="math notranslate nohighlight">\(\mathcal{E}\)</span>, their pairwise distances are all the same, namely <span class="math notranslate nohighlight">\(\sqrt{2 \mathcal{E}}\)</span>. Therefore, the <strong>minimum distance</strong> (among all possible pairs) is</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+d_{\min} 
+ =  \sqrt{2 \mathcal{E}}
+}
+\]</div>
+<p>In an <span class="math notranslate nohighlight">\(M\)</span>-FSK constellation (with ideal orthogonality), every pair of signals is separated by the same distance <span class="math notranslate nohighlight">\(\sqrt{2 \mathcal{E}}\)</span>.</p>
+</section>
+</section>
+<section id="geometric-interpretation">
+<h2>Geometric Interpretation<a class="headerlink" href="#geometric-interpretation" title="Link to this heading">#</a></h2>
+<p>When mapped into an <span class="math notranslate nohighlight">\(M\)</span>-dimensional orthonormal basis (each basis vector corresponding to one frequency tone), the signals <span class="math notranslate nohighlight">\(s_m(t)\)</span> simply become vectors whose coordinates are all zero except for the <span class="math notranslate nohighlight">\(m\)</span>th entry, which is <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span>. For example:</p>
+<div class="math notranslate nohighlight">
+\[
+s_1(t)  \longmapsto  (\sqrt{\mathcal{E}}, 0, 0, \dots)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+s_2(t)  \longmapsto  (0, \sqrt{\mathcal{E}}, 0, \dots)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\vdots
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+s_M(t)  \longmapsto  (0, 0, \dots, \sqrt{\mathcal{E}})
+\]</div>
+<p>Each vector thus has length <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span>. The distance between any two distinct vertices in this orthonormal “simplex” is</p>
+<div class="math notranslate nohighlight">
+\[
+\sqrt{(\sqrt{\mathcal{E}} - 0)^2 + (0 - \sqrt{\mathcal{E}})^2 + \dots} 
+ =  \sqrt{\mathcal{E} + \mathcal{E}} = \sqrt{2 \mathcal{E}}
+\]</div>
+<section id="minimum-distance-in-terms-of-mathcal-e-b">
+<h3>Minimum Distance in terms of <span class="math notranslate nohighlight">\(\mathcal{E}_b\)</span><a class="headerlink" href="#minimum-distance-in-terms-of-mathcal-e-b" title="Link to this heading">#</a></h3>
+<p>The <strong>minimum Euclidean distance</strong> of orthogonal M‐FSK signals can be expressed in terms of the <strong>energy per bit</strong> <span class="math notranslate nohighlight">\(\mathcal{E}_b\)</span> as follows.</p>
+<p><strong>Relationship Between <span class="math notranslate nohighlight">\(\mathcal{E}_s\)</span> (Energy per Symbol) and <span class="math notranslate nohighlight">\(\mathcal{E}_b\)</span> (Energy per Bit)</strong></p>
+<p>For an <span class="math notranslate nohighlight">\(M\)</span>‐ary scheme, each symbol carries <span class="math notranslate nohighlight">\(\log_2(M)\)</span> bits. If <span class="math notranslate nohighlight">\(\mathcal{E}_s\)</span> denotes the energy to send one symbol, and <span class="math notranslate nohighlight">\(\mathcal{E}_b\)</span> denotes the energy to send one bit, the relationship is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_s  =  (\log_2 M) \mathcal{E}_b
+\]</div>
+<p>This simply says that the energy for a symbol of <span class="math notranslate nohighlight">\(\log_2(M)\)</span> bits is <span class="math notranslate nohighlight">\(\log_2(M)\)</span> times the energy per bit.</p>
+<p><strong>Minimum Distance of Orthogonal M‐FSK in Terms of <span class="math notranslate nohighlight">\(\mathcal{E}_s\)</span></strong></p>
+<p>For <strong>orthogonal M‐FSK</strong>, each signal (of duration <span class="math notranslate nohighlight">\(T\)</span>) has energy <span class="math notranslate nohighlight">\(\mathcal{E}_s\)</span>. The pairwise Euclidean distance <span class="math notranslate nohighlight">\(d(m,n)\)</span> between any two distinct signals <span class="math notranslate nohighlight">\(s_m(t)\)</span> and <span class="math notranslate nohighlight">\(s_n(t)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+d(m,n)
+ = 
+\sqrt{
+  \int_0^T \bigl[s_m(t) - s_n(t)\bigr]^2 \mathrm{d}t
+}
+ = 
+\sqrt{ 2 \mathcal{E}_s }
+\]</div>
+<p>Because all signals are mutually orthogonal, <strong>all pairs</strong> have the same distance <span class="math notranslate nohighlight">\(\sqrt{2\mathcal{E}_s}\)</span>. Hence,</p>
+<div class="math notranslate nohighlight">
+\[
+d_{\min} = \sqrt{2 \mathcal{E}_s}
+\]</div>
+<p><strong>Expressing <span class="math notranslate nohighlight">\(d_{\min}\)</span> in Terms of <span class="math notranslate nohighlight">\(\mathcal{E}_b\)</span></strong></p>
+<p>Using <span class="math notranslate nohighlight">\(\mathcal{E}_s = (\log_2 M) \mathcal{E}_b\)</span>, substitute into <span class="math notranslate nohighlight">\(d_{\min} = \sqrt{2 \mathcal{E}_s}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+d_{\min} 
+ = 
+\sqrt{2  (\log_2 M) \mathcal{E}_b}
+ = 
+\sqrt{2 \log_2(M)} \sqrt{\mathcal{E}_b}
+\]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+d_{\min}
+ = 
+\sqrt{2 \log_2(M) \mathcal{E}_b}
+}
+\]</div>
+</section>
+</section>
+<section id="linear-vs-nonlinear-modulation">
+<h2>Linear vs. Nonlinear Modulation<a class="headerlink" href="#linear-vs-nonlinear-modulation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>In <strong>linear modulation schemes</strong> (e.g., ASK, PSK, QAM), the sum of two signals is still a valid signal within the same modulation scheme.</p></li>
+<li><p>In <strong>nonlinear modulation schemes</strong> like FSK, this is not true because the frequencies used in FSK are distinct, and the sum of two FSK signals does not belong to the same scheme.</p></li>
+</ul>
+</section>
+<section id="appendix-derivation-of-the-correlation-of-two-fsk-signals">
+<h2>Appendix: Derivation of The Correlation of Two FSK Signals<a class="headerlink" href="#appendix-derivation-of-the-correlation-of-two-fsk-signals" title="Link to this heading">#</a></h2>
+<p>We have two lowpass signals:</p>
+<div class="math notranslate nohighlight">
+\[
+s_{m,lp}(t)  =  \sqrt{\frac{2\mathcal{E}}{T}}  e^{ j 2\pi m \Delta f t},
+\quad
+s_{n,lp}(t)  =  \sqrt{\frac{2\mathcal{E}}{T}}  e^{ j 2\pi n \Delta f t}
+\]</div>
+<p>The correlation (inner product) over <span class="math notranslate nohighlight">\(0\le t \le T\)</span> is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+\langle s_{m,lp}(t), s_{n,lp}(t)\rangle
+ = \int_{0}^{T} s_{m,lp}(t) \bigl(s_{n,lp}(t)\bigr)^{*} \mathrm{d}t
+\]</div>
+<p>Since
+<span class="math notranslate nohighlight">\(\bigl(s_{n,lp}(t)\bigr)^{*} = \sqrt{\tfrac{2\mathcal{E}}{T}}  e^{- j 2\pi n \Delta f t},\)</span><br />
+we get</p>
+<div class="math notranslate nohighlight">
+\[
+\langle s_{m,lp}(t), s_{n,lp}(t)\rangle
+ = \int_{0}^{T} 
+\sqrt{\frac{2\mathcal{E}}{T}}  e^{j 2\pi m \Delta f t}
+ \sqrt{\frac{2\mathcal{E}}{T}}  e^{- j 2\pi n \Delta f t} \mathrm{d}t 
+ = \frac{2\mathcal{E}}{T}\int_0^T e^{j 2\pi (m-n) \Delta f t} \mathrm{d}t
+\]</div>
+<p>Thus, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\langle s_{m,lp}(t), s_{n,lp}(t)\rangle 
+ = \frac{2\mathcal{E}}{T}\int_0^T e^{j 2\pi (m-n) \Delta f t} \mathrm{d}t 
+\]</div>
+<p>Next, we evaluate</p>
+<div class="math notranslate nohighlight">
+\[
+I 
+ = \int_0^T e^{j 2\pi (m-n) \Delta f t} \mathrm{d}t 
+ = 
+\left.
+\frac{ \mathcal{E}^{ j 2\pi (m-n) \Delta f t} }{ j 2\pi (m-n) \Delta f }
+\right\rvert_{ 0}^{ T}
+\]</div>
+<p>That is,</p>
+<div class="math notranslate nohighlight">
+\[
+I
+= \frac{ \mathcal{E}^{ j 2\pi (m-n) \Delta f T} - 1 }
+       { j 2\pi (m-n) \Delta f }
+\]</div>
+<p>A common way to rewrite <span class="math notranslate nohighlight">\(e^{j\alpha} - 1\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+e^{j\alpha} - 1
+ = 
+e^{ j \tfrac{\alpha}{2}}
+\Bigl(e^{ j \tfrac{\alpha}{2}} - e^{- j \tfrac{\alpha}{2}}\Bigr)
+ = 
+2 j \mathcal{E}^{ j \tfrac{\alpha}{2}} \sin \Bigl(\tfrac{\alpha}{2}\Bigr)
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\(\alpha = 2\pi (m-n)\Delta f  T.\)</span> Then</p>
+<div class="math notranslate nohighlight">
+\[
+e^{j\alpha} - 1
+= 2 j \mathcal{E}^{ j \alpha/2} \sin \Bigl(\tfrac{\alpha}{2}\Bigr)
+= 2 j \mathcal{E}^{ j \pi T (m-n) \Delta f} \sin\Bigl(\pi T (m-n) \Delta f\Bigr)
+\]</div>
+<p>Hence,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+I
+&amp;= \frac{ 2 j \mathcal{E}^{ j \pi T (m-n) \Delta f} \sin\bigl( \pi T (m-n) \Delta f\bigr) }
+       { j 2\pi (m-n) \Delta f } \\
+&amp;= 
+\frac{ \mathcal{E}^{ j \pi T (m-n) \Delta f} \sin\bigl( \pi T (m-n) \Delta f\bigr) }
+     { \pi (m-n) \Delta f }
+\end{align*}
+\end{split}\]</div>
+<p>Consequently,</p>
+<div class="math notranslate nohighlight">
+\[
+\langle s_{m,lp}(t), s_{n,lp}(t)\rangle
+ = 
+\frac{2\mathcal{E}}{T} \frac{\sin\bigl( \pi T (m-n) \Delta f\bigr) \mathcal{E}^{ j \pi T (m-n) \Delta f}}
+          {\pi (m-n) \Delta f}
+\]</div>
+<p>Thus, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\langle s_{m,lp}(t), s_{n,lp}(t)\rangle
+ = 
+\frac{2\mathcal{E}}{T} \frac{\sin\bigl(\pi T (m-n)\Delta f\bigr)}{\pi (m-n)\Delta f} 
+e^{ j \pi T (m-n) \Delta f}
+\]</div>
+<p><strong>Real Part of the Correlation</strong></p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="we-now-want-mathrm-re-bigl-langle-s-m-lp-t-s-n-lp-t-rangle-bigr">
+<h1>We now want
+$$
+\mathrm{Re} \Bigl[\langle s_{m,lp}(t),  s_{n,lp}(t)\rangle\Bigr]<a class="headerlink" href="#we-now-want-mathrm-re-bigl-langle-s-m-lp-t-s-n-lp-t-rangle-bigr" title="Link to this heading">#</a></h1>
+<p>\mathrm{Re} \biggl[
+\frac{2\mathcal{E}}{T}
+\frac{\sin\bigl( \pi T (m-n) \Delta f\bigr)}
+{\pi (m-n) \Delta f}
+e^{ j \pi T (m-n) \Delta f}
+\biggr].
+$$</p>
+<p>Let <span class="math notranslate nohighlight">\(\theta = \pi T (m-n) \Delta f\)</span>. Then</p>
+<div class="math notranslate nohighlight">
+\[
+\sin(\theta) \mathcal{E}^{ j \theta}
+ = 
+\sin(\theta) \bigl[\cos(\theta) + j \sin(\theta)\bigr]
+ = 
+\sin(\theta) \cos(\theta)  +  j \sin^2(\theta)
+\]</div>
+<p>Hence, the <em>real part</em> is</p>
+<div class="math notranslate nohighlight">
+\[
+\sin(\theta) \cos(\theta)
+ = 
+\tfrac12 \sin\bigl(2\theta\bigr)
+\quad\text{(since }\sin(\theta)\cos(\theta) 
+  = \tfrac12[\sin(\theta+\theta) + \sin(\theta-\theta)] 
+  = \tfrac12 \sin(2\theta)\bigl)
+\]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{Re} \bigl[\langle s_{m,lp}(t), s_{n,lp}(t)\rangle\bigr]
+ = 
+\frac{2\mathcal{E}}{T} \frac{1}{\pi (m-n) \Delta f} \sin(\theta) \cos(\theta)
+ = 
+\frac{2\mathcal{E}}{T} \frac{1}{\pi (m-n) \Delta f} \frac12 \sin\bigl(2\theta\bigr)
+\]</div>
+<p>Simplify:</p>
+<div class="math notranslate nohighlight">
+\[
+= \frac{\mathcal{E}}{T} \frac{\sin\bigl(2 \theta\bigr)}{\pi (m-n) \Delta f}
+ = 
+\frac{\mathcal{E}}{T} \frac{\sin\Bigl(2 \pi T (m-n) \Delta f\Bigr)}
+           {\pi (m-n) \Delta f}
+\]</div>
+<p><strong>Expressing in Terms of <span class="math notranslate nohighlight">\(\mathrm{sinc}(\cdot)\)</span></strong></p>
+<p>Recall the standard definition:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{sinc}(x)  =  \frac{\sin(\pi x)}{\pi x}
+\]</div>
+<p>In our case,</p>
+<div class="math notranslate nohighlight">
+\[
+\sin\bigl(2\pi x\bigr) 
+ =  2\pi x  \mathrm{sinc}(2x) \times\text{(up to factors of 2)}
+\]</div>
+<p>More precisely,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\sin\bigl(2\pi x\bigr)}{\pi x}
+ = 
+2 \mathrm{sinc}\bigl(2x\bigr)
+\]</div>
+<p>Hence if we let <span class="math notranslate nohighlight">\(x = T (m-n) \Delta f\)</span>, then</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\sin\bigl(2\pi T (m-n) \Delta f\bigr)}{\pi (m-n) \Delta f}
+ = 
+2  \mathrm{sinc}\bigl(2 T (m-n) \Delta f\bigr)
+\]</div>
+<p>Therefore,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathrm{Re} \bigl[\langle s_{m,lp}(t), s_{n,lp}(t)\rangle\bigr]
+ = 
+\frac{\mathcal{E}}{T} \times
+2 \mathrm{sinc} \Bigl(2 T (m-n) \Delta f\Bigr)
+ = 
+\frac{2\mathcal{E}}{T} \mathrm{sinc} \Bigl(2 T (m-n) \Delta f\Bigr)
+\]</div>
+<p>Thus, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\mathrm{Re} \bigl[\langle s_{m,lp}(t), s_{n,lp}(t)\rangle \bigr]
+ = 
+\frac{2\mathcal{E}}{T}
+ \mathrm{sinc} \Bigl(2 T (m-n) \Delta f\Bigr)
+}
+\]</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="com_c2_s6_Orthogonal_Signalling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Orthogonal Signaling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="com_c2_s8_Waveform_Binary_Codes.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Signal Waveforms from Binary Codes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Frequency-Shift Keying (FSK)</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fsk-waveform">FSK Waveform</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-of-fsk-signals">Orthogonality of FSK Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-of-two-signals">Correlation of Two Signals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-for-orthogonality">Condition for Orthogonality</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-frequency-separation">Minimum Frequency Separation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonality-in-baseband-and-bandpass">Orthogonality in Baseband and Bandpass</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-fsk-waveform">Energy of FSK Waveform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#direct-derivation-of-the-energy-of-the-bandpass-waveform">Direct Derivation of the Energy of the Bandpass Waveform</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthonormal-basic-for-fsk">Orthonormal Basic for FSK</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fsk-signal-space">FSK Signal Space</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-and-minimum-distance">Euclidean and Minimum Distance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-distance-between-two-fsk-signals">Euclidean Distance Between Two FSK Signals</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance">Minimum Distance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#geometric-interpretation">Geometric Interpretation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance-in-terms-of-mathcal-e-b">Minimum Distance in terms of <span class="math notranslate nohighlight">\(\mathcal{E}_b\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-vs-nonlinear-modulation">Linear vs. Nonlinear Modulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix-derivation-of-the-correlation-of-two-fsk-signals">Appendix: Derivation of The Correlation of Two FSK Signals</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#we-now-want-mathrm-re-bigl-langle-s-m-lp-t-s-n-lp-t-rangle-bigr">We now want
+$$
+\mathrm{Re} \Bigl[\langle s_{m,lp}(t),  s_{n,lp}(t)\rangle\Bigr]</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

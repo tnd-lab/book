@@ -1,0 +1,1329 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Signal Space &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sig_c3_s0_vector_space';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Signal Space" href="sig_c3_s1_signal_space.html" />
+    <link rel="prev" title="Sampling Theorem for Band-Limited Random Processes" href="sig_c2_s9_Sampling_Theory.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Signal Space</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Signal Space</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-space">Vector Space</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-representation">Vector Representation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-inner-product-of-two-vectors">Definition: Inner Product of Two Vectors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-vectors-as-linear-combinations">Representing Vectors as Linear Combinations</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthonormality">Orthonormality</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-orthogonality-of-vectors">Definition: Orthogonality of Vectors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-vector-norm">Definition: Vector Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-orthonormality">Definition of Orthonormality</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-simulation">Python Simulation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gram-schmidt-orthogonalization-process">Gram-Schmidt Orthogonalization Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-normalize-the-first-vector">Step 1: Normalize the First Vector</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-orthogonalize-the-second-vector">Step 2: Orthogonalize the Second Vector</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-orthogonalize-subsequent-vectors">Step 3: Orthogonalize Subsequent Vectors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-step-repeat-for-all-remaining-vectors">Iterative Step: Repeat for All Remaining Vectors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-example">Python Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-description">Example Description</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#using-vec-v-5-instead-of-vec-v-3">Using <span class="math notranslate nohighlight">\( \vec{v}_5 \)</span> Instead of <span class="math notranslate nohighlight">\( \vec{v}_3 \)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="signal-space">
+<h1>Signal Space<a class="headerlink" href="#signal-space" title="Link to this heading">#</a></h1>
+<p>The idea of an <strong>orthonormal basis</strong> is analogous to the <strong>alphabet</strong> in language, providing the foundational elements needed to construct more complex entities.</p>
+<p><strong>Alphabet and Vector Space Analogy:</strong></p>
+<ul class="simple">
+<li><p>The 26 letters of the English alphabet are the fundamental building blocks used to form all words and vocabularies. Similarly, an orthonormal basis is a set of fundamental vectors that spans the entire vector space.</p></li>
+<li><p>Just as any word can be constructed by combining letters in different proportions, any vector in a space can be expressed as a unique linear combination of orthonormal basis vectors.</p></li>
+<li><p>This analogy highlights the <strong>simplicity</strong> and <strong>universality</strong> of orthonormal bases: they reduce complexity by defining a minimal set of independent “building blocks” for representing elements in a vector space.</p></li>
+</ul>
+<p><strong>Signal Space Analogy:</strong></p>
+<ul class="simple">
+<li><p>In communication and signal processing, we often work within a <strong>signal space</strong>, where signals are represented as vectors. For specific tasks, such as modulation, it is sufficient to define an <strong>orthonormal signal basis</strong> for that space.</p></li>
+<li><p>Just as an orthonormal basis in a vector space allows any vector to be uniquely represented, an orthonormal signal basis allows any signal to be uniquely decomposed into a weighted combination of these basis signals.</p></li>
+<li><p>For example, in modulation schemes like QAM or PSK, orthonormal basis functions (e.g., sine and cosine waves) serve as the building blocks for representing transmitted signals.</p></li>
+</ul>
+<p><strong>Why This Works:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Simplicity:</strong> Orthonormal bases simplify projections, decompositions, and computations due to their independence and normalization properties.</p></li>
+<li><p><strong>Uniqueness:</strong> Each vector or signal has a unique representation in terms of the orthonormal basis, ensuring clarity and efficiency.</p></li>
+<li><p><strong>Efficiency:</strong> In signal processing, orthonormal bases eliminate redundancy and provide compact representations (e.g., Fourier or wavelet transforms).</p></li>
+</ol>
+<p>In summary, just as the alphabet provides the fundamental structure for constructing meaningful language, an orthonormal basis serves as the foundational framework for representing, analyzing, and processing elements in vector and signal spaces.</p>
+<section id="vector-space">
+<h2>Vector Space<a class="headerlink" href="#vector-space" title="Link to this heading">#</a></h2>
+<p>We introduce key concepts related to vectors in <span class="math notranslate nohighlight">\(n\)</span>-dimensional space.</p>
+<section id="vector-representation">
+<h3>Vector Representation<a class="headerlink" href="#vector-representation" title="Link to this heading">#</a></h3>
+<p><strong>Vector Space Concepts</strong><br />
+A vector <span class="math notranslate nohighlight">\( \vec{v} \)</span> in an <span class="math notranslate nohighlight">\( n \)</span>-dimensional space is defined by its <span class="math notranslate nohighlight">\( n \)</span> components <span class="math notranslate nohighlight">\( v_1, v_2, ..., v_n \)</span>. It is often represented as a <strong>column vector</strong>, i.e., <span class="math notranslate nohighlight">\( \vec{v} = [v_1, v_2, ..., v_n]^T \)</span>, where <span class="math notranslate nohighlight">\( A^T \)</span> denotes the transpose of a matrix <span class="math notranslate nohighlight">\( A \)</span>.</p>
+<p><strong>Additional Concepts</strong></p>
+<ul class="simple">
+<li><p>Two vectors are said to be <strong>orthogonal</strong> if their inner product is zero, i.e., <span class="math notranslate nohighlight">\( \langle \vec{v}_1, \vec{v}_2 \rangle = 0 \)</span>.</p></li>
+<li><p>A set of <span class="math notranslate nohighlight">\( m \)</span> vectors is <strong>linearly independent</strong> if no vector can be expressed as a linear combination of the others.</p></li>
+</ul>
+<section id="definition-inner-product-of-two-vectors">
+<h4>Definition: Inner Product of Two Vectors<a class="headerlink" href="#definition-inner-product-of-two-vectors" title="Link to this heading">#</a></h4>
+<p>The <em>inner product</em> of two <span class="math notranslate nohighlight">\( n \)</span>-dimensional vectors <span class="math notranslate nohighlight">\( \vec{v}_1 = [v_{11}, v_{12}, ..., v_{1n}]^T \)</span> and <span class="math notranslate nohighlight">\( \vec{v}_2 = [v_{21}, v_{22}, ..., v_{2n}]^T \)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \vec{v}_1, \vec{v}_2 \rangle = \vec{v}_1 \cdot \vec{v}_2 = \sum_{i=1}^{n} v_{1i} v_{2i}^* = \vec{v}_2^H \vec{v}_1
+\]</div>
+<p>where, <span class="math notranslate nohighlight">\( A^H \)</span> (the <em>Hermitian transpose</em>) refers to the transpose of <span class="math notranslate nohighlight">\( A \)</span> followed by conjugating its elements.</p>
+</section>
+<section id="representing-vectors-as-linear-combinations">
+<h4>Representing Vectors as Linear Combinations<a class="headerlink" href="#representing-vectors-as-linear-combinations" title="Link to this heading">#</a></h4>
+<p>A vector can be expressed as a <em>linear combination</em> of orthonormal <strong>basis vectors</strong> <span class="math notranslate nohighlight">\( \vec{e}_i \)</span>, where <span class="math notranslate nohighlight">\( i = 1, 2, ..., n \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{v} = \sum_{i=1}^{n} v_i \vec{e}_i
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p>Each <span class="math notranslate nohighlight">\( \vec{e}_i \)</span> is a unit vector (i.e., it has a length of 1).</p></li>
+<li><p><span class="math notranslate nohighlight">\( v_i \)</span> is the projection of <span class="math notranslate nohighlight">\( \vec{v} \)</span> onto <span class="math notranslate nohighlight">\( \vec{e}_i \)</span>, computed as <span class="math notranslate nohighlight">\( v_i = \langle \vec{v}, \vec{e}_i \rangle \)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="orthonormality">
+<h3>Orthonormality<a class="headerlink" href="#orthonormality" title="Link to this heading">#</a></h3>
+<section id="definition-orthogonality-of-vectors">
+<h4>Definition: Orthogonality of Vectors<a class="headerlink" href="#definition-orthogonality-of-vectors" title="Link to this heading">#</a></h4>
+<p>Two vectors <span class="math notranslate nohighlight">\( \vec{v}_1 \)</span> and <span class="math notranslate nohighlight">\( \vec{v}_2 \)</span> are <strong>orthogonal</strong> if their inner product equals zero:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \vec{v}_1, \vec{v}_2 \rangle = 0
+\]</div>
+<p>More generally, a set of <span class="math notranslate nohighlight">\( m \)</span> vectors <span class="math notranslate nohighlight">\( \vec{v}_1, \vec{v}_2, ..., \vec{v}_m \)</span> is orthogonal if:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \vec{v}_i, \vec{v}_j \rangle = 0 \quad \text{for all } i \neq j.
+\]</div>
+</section>
+<section id="definition-vector-norm">
+<h4>Definition: Vector Norm<a class="headerlink" href="#definition-vector-norm" title="Link to this heading">#</a></h4>
+<p>The <em>norm</em> of a vector <span class="math notranslate nohighlight">\( \vec{v} \)</span>, denoted <span class="math notranslate nohighlight">\( \| \vec{v} \| \)</span>, is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\| \vec{v} \| = \sqrt{\langle \vec{v}, \vec{v} \rangle} = \sqrt{\sum_{i=1}^{n} |v_i|^2}
+\]</div>
+<p>This represents the <strong>length</strong> of the vector in <span class="math notranslate nohighlight">\( n \)</span>-dimensional space.</p>
+</section>
+<section id="definition-of-orthonormality">
+<h4>Definition of Orthonormality<a class="headerlink" href="#definition-of-orthonormality" title="Link to this heading">#</a></h4>
+<p><strong>Orthonormality</strong> is a property of a set of vectors in a vector space that combines <strong>orthogonality</strong> and <strong>normalization</strong>:</p>
+<ol class="arabic">
+<li><p><strong>Orthogonality:</strong> The vectors in the set are pairwise orthogonal. This means that for any two distinct vectors <span class="math notranslate nohighlight">\( \vec{v}_i \)</span> and <span class="math notranslate nohighlight">\( \vec{v}_j \)</span> in the set, their inner product is zero:</p>
+<div class="math notranslate nohighlight">
+\[
+   \langle \vec{v}_i, \vec{v}_j \rangle = 0 \quad \text{for } i \neq j.
+   \]</div>
+</li>
+<li><p><strong>Normalization:</strong> Each vector in the set has unit length, i.e., its norm (or magnitude) is 1:</p>
+<div class="math notranslate nohighlight">
+\[
+   \|\vec{v}_i\| = \sqrt{\langle \vec{v}_i, \vec{v}_i \rangle} = 1.
+   \]</div>
+</li>
+</ol>
+<p><strong>Key Properties of Orthonormal Sets</strong></p>
+<ul class="simple">
+<li><p><strong>Simplicity of Representation:</strong> Any vector in the space can be represented as a linear combination of the orthonormal vectors.</p></li>
+<li><p><strong>Independence:</strong> An orthonormal set of vectors is linearly independent.</p></li>
+</ul>
+<p><strong>Example of Orthonormal Vectors in 3D Cartesian Space</strong></p>
+<p>In 3D space, the standard basis vectors are:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{e}_1 = [1, 0, 0]^T, \quad \vec{e}_2 = [0, 1, 0]^T, \quad \vec{e}_3 = [0, 0, 1]^T
+\]</div>
+<p>These vectors are orthonormal because:</p>
+<ol class="arabic">
+<li><p><strong>Orthogonality:</strong> The dot product of any pair of distinct vectors is zero:</p>
+<div class="math notranslate nohighlight">
+\[
+   \langle \vec{e}_1, \vec{e}_2 \rangle = 0, \quad \langle \vec{e}_2, \vec{e}_3 \rangle = 0, \quad \langle \vec{e}_1, \vec{e}_3 \rangle = 0.
+   \]</div>
+</li>
+<li><p><strong>Normalization:</strong> Each vector has unit length:</p>
+<div class="math notranslate nohighlight">
+\[
+   \|\vec{e}_1\| = 1, \quad \|\vec{e}_2\| = 1, \quad \|\vec{e}_3\| = 1.
+   \]</div>
+</li>
+</ol>
+<p>These vectors form the standard orthonormal basis for 3D Cartesian space.</p>
+</section>
+<section id="python-simulation">
+<h4>Python Simulation<a class="headerlink" href="#python-simulation" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">mpl_toolkits.mplot3d</span> <span class="kn">import</span> <span class="n">Axes3D</span>
+
+<span class="c1"># Define the orthonormal basis vectors in 3D Cartesian space</span>
+<span class="c1"># These are unit vectors along the x, y, and z axes</span>
+<span class="n">e1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># x-axis unit vector</span>
+<span class="n">e2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># y-axis unit vector</span>
+<span class="n">e3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># z-axis unit vector</span>
+
+<span class="c1"># Generate a random vector v in 3D space</span>
+<span class="c1"># The vector v_sim represents an arbitrary vector</span>
+<span class="n">v_sim</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>  <span class="c1"># Random vector scaled to have components in [0, 5]</span>
+
+<span class="c1"># Calculate the projections (coefficients) of v onto the orthonormal basis vectors</span>
+<span class="c1"># Each coefficient represents the contribution of the corresponding basis vector</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v_sim</span><span class="p">,</span> <span class="n">e1</span><span class="p">)</span>  <span class="c1"># Projection of v onto e1</span>
+<span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v_sim</span><span class="p">,</span> <span class="n">e2</span><span class="p">)</span>  <span class="c1"># Projection of v onto e2</span>
+<span class="n">v3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">v_sim</span><span class="p">,</span> <span class="n">e3</span><span class="p">)</span>  <span class="c1"># Projection of v onto e3</span>
+
+<span class="c1"># Reconstruct the vector v as a linear combination of the orthonormal basis vectors</span>
+<span class="c1"># The linear combination verifies that the original vector can be expressed</span>
+<span class="c1"># entirely in terms of the orthonormal basis</span>
+<span class="n">v_reconstructed</span> <span class="o">=</span> <span class="n">v1</span> <span class="o">*</span> <span class="n">e1</span> <span class="o">+</span> <span class="n">v2</span> <span class="o">*</span> <span class="n">e2</span> <span class="o">+</span> <span class="n">v3</span> <span class="o">*</span> <span class="n">e3</span>
+
+<span class="c1"># Display the original and reconstructed vectors to verify they are identical</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original vector v:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v_sim</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Reconstructed vector from orthonormal basis:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">v_reconstructed</span><span class="p">)</span>
+
+<span class="c1"># Plot the original and reconstructed vectors, along with the orthonormal basis vectors</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the original vector in blue</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v_sim</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v_sim</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v_sim</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original vector v&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the reconstructed vector in red (dashed line)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">v_reconstructed</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">v_reconstructed</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">v_reconstructed</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> 
+          <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Reconstructed vector from basis&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the orthonormal basis vectors in green</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">e1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">e1</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Basis vector e1&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">e2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">e2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Basis vector e2&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">e3</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e3</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">e3</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Basis vector e3&#39;</span><span class="p">)</span>
+
+<span class="c1"># Finalize the plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Original, Reconstructed Vectors and Orthonormal Basis Vectors&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original vector v:
+[3.42715791 4.15348269 0.22169592]
+Reconstructed vector from orthonormal basis:
+[3.42715791 4.15348269 0.22169592]
+</pre></div>
+</div>
+<img alt="_images/ba506f12d600d6981fe843282e8c518dee028030134f4fc94b2544589f885818.png" src="_images/ba506f12d600d6981fe843282e8c518dee028030134f4fc94b2544589f885818.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example of linear combinations of the orthonormal basis vectors</span>
+<span class="c1"># Linear combination coefficients</span>
+<span class="n">coefficients</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>  <span class="c1"># Example 1: A specific linear combination</span>
+    <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>  <span class="c1"># Example 2: A linear combination with negative and positive coefficients</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>   <span class="c1"># Example 3: A trivial combination (zero vector)</span>
+    <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">]</span>   <span class="c1"># Example 4: A mix with a negative coefficient</span>
+<span class="p">]</span>
+
+<span class="c1"># Generate the vectors from the linear combinations</span>
+<span class="n">linear_combination_vectors</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">e1</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">e2</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="o">*</span><span class="n">e3</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">coefficients</span><span class="p">]</span>
+
+<span class="c1"># Display the coefficients and corresponding vectors</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Linear Combination Examples:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">vec</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">coefficients</span><span class="p">,</span> <span class="n">linear_combination_vectors</span><span class="p">),</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Combination </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: Coefficients </span><span class="si">{</span><span class="n">c</span><span class="si">}</span><span class="s2"> -&gt; Vector </span><span class="si">{</span><span class="n">vec</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot the linear combination vectors alongside the basis vectors</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot the orthonormal basis vectors in green</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">e1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">e1</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Basis vector e1&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">e2</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e2</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">e2</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Basis vector e2&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">e3</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">e3</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">e3</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Basis vector e3&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot each linear combination vector in a different color</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">]</span>  <span class="c1"># Colors for different linear combinations</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">vec</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">linear_combination_vectors</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">vec</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">vec</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">vec</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> 
+              <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Combination </span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">: </span><span class="si">{</span><span class="n">coefficients</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># Finalize the plot</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">([</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Linear Combinations of Orthonormal Basis Vectors&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Linear Combination Examples:
+Combination 1: Coefficients [2, 3, 1] -&gt; Vector [2 3 1]
+Combination 2: Coefficients [-1, 4, 2] -&gt; Vector [-1  4  2]
+Combination 3: Coefficients [0, 0, 0] -&gt; Vector [0 0 0]
+Combination 4: Coefficients [5, 1, -3] -&gt; Vector [ 5  1 -3]
+</pre></div>
+</div>
+<img alt="_images/1abc8f8e496c82e206d29d8674151c7efae93a236bc3c1d537acd70b35c3245b.png" src="_images/1abc8f8e496c82e206d29d8674151c7efae93a236bc3c1d537acd70b35c3245b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verify orthonormality of the set {e1, e2, e3}</span>
+
+<span class="c1"># Check orthogonality: Dot product of distinct basis vectors should be zero</span>
+<span class="n">orthogonality_checks</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;e1 · e2&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">e1</span><span class="p">,</span> <span class="n">e2</span><span class="p">),</span>
+    <span class="s2">&quot;e2 · e3&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">e2</span><span class="p">,</span> <span class="n">e3</span><span class="p">),</span>
+    <span class="s2">&quot;e1 · e3&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">e1</span><span class="p">,</span> <span class="n">e3</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Orthogonality checks (dot products between distinct basis vectors):&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">pair</span><span class="p">,</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">orthogonality_checks</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">pair</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">result</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Check normalization: Norm of each basis vector should be 1</span>
+<span class="n">normalization_checks</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;||e1||&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">e1</span><span class="p">),</span>
+    <span class="s2">&quot;||e2||&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">e2</span><span class="p">),</span>
+    <span class="s2">&quot;||e3||&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">e3</span><span class="p">),</span>
+<span class="p">}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Normalization checks (norms of each basis vector):&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">vec</span><span class="p">,</span> <span class="n">norm</span> <span class="ow">in</span> <span class="n">normalization_checks</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">vec</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">norm</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Orthogonality checks (dot products between distinct basis vectors):
+e1 · e2 = 0.00
+e2 · e3 = 0.00
+e1 · e3 = 0.00
+
+Normalization checks (norms of each basis vector):
+||e1|| = 1.00
+||e2|| = 1.00
+||e3|| = 1.00
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="gram-schmidt-orthogonalization-process">
+<h3>Gram-Schmidt Orthogonalization Process<a class="headerlink" href="#gram-schmidt-orthogonalization-process" title="Link to this heading">#</a></h3>
+<p>The <strong>Gram-Schmidt process</strong> is a method for constructing a set of orthonormal vectors from a set of <span class="math notranslate nohighlight">\( n \)</span>-dimensional vectors <span class="math notranslate nohighlight">\( \vec{v}_i \)</span>, where <span class="math notranslate nohighlight">\( 1 \leq i \leq m \)</span>. This procedure ensures that the resulting vectors are both orthogonal to each other and normalized to unit length.</p>
+<section id="step-1-normalize-the-first-vector">
+<h4>Step 1: Normalize the First Vector<a class="headerlink" href="#step-1-normalize-the-first-vector" title="Link to this heading">#</a></h4>
+<p>Start by selecting the first vector <span class="math notranslate nohighlight">\( \vec{v}_1 \)</span> from the set. Normalize its length to obtain the first orthonormal vector <span class="math notranslate nohighlight">\( \vec{u}_1 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{u}_1 = \frac{\vec{v}_1}{\| \vec{v}_1 \|}
+\]</div>
+</section>
+<section id="step-2-orthogonalize-the-second-vector">
+<h4>Step 2: Orthogonalize the Second Vector<a class="headerlink" href="#step-2-orthogonalize-the-second-vector" title="Link to this heading">#</a></h4>
+<p>Next, take the second vector <span class="math notranslate nohighlight">\( \vec{v}_2 \)</span> and subtract its projection onto <span class="math notranslate nohighlight">\( \vec{u}_1 \)</span> to make it orthogonal to <span class="math notranslate nohighlight">\( \vec{u}_1 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{u}'_2 = \vec{v}_2 - \langle \vec{v}_2, \vec{u}_1 \rangle \vec{u}_1
+\]</div>
+<p>Normalize this result to obtain the second orthonormal vector <span class="math notranslate nohighlight">\( \vec{u}_2 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{u}_2 = \frac{\vec{u}'_2}{\| \vec{u}'_2 \|}
+\]</div>
+</section>
+<section id="step-3-orthogonalize-subsequent-vectors">
+<h4>Step 3: Orthogonalize Subsequent Vectors<a class="headerlink" href="#step-3-orthogonalize-subsequent-vectors" title="Link to this heading">#</a></h4>
+<p>For the third vector <span class="math notranslate nohighlight">\( \vec{v}_3 \)</span>, subtract its projections onto both <span class="math notranslate nohighlight">\( \vec{u}_1 \)</span> and <span class="math notranslate nohighlight">\( \vec{u}_2 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{u}'_3 = \vec{v}_3 - \langle \vec{v}_3, \vec{u}_1 \rangle \vec{u}_1 - \langle \vec{v}_3, \vec{u}_2 \rangle \vec{u}_2
+\]</div>
+<p>Normalize this to get the third orthonormal vector <span class="math notranslate nohighlight">\( \vec{u}_3 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{u}_3 = \frac{\vec{u}'_3}{\| \vec{u}'_3 \|}
+\]</div>
+</section>
+<section id="iterative-step-repeat-for-all-remaining-vectors">
+<h4>Iterative Step: Repeat for All Remaining Vectors<a class="headerlink" href="#iterative-step-repeat-for-all-remaining-vectors" title="Link to this heading">#</a></h4>
+<p>Continue this process for all subsequent vectors <span class="math notranslate nohighlight">\( \vec{v}_i \)</span>, subtracting their projections onto all previously computed orthonormal vectors <span class="math notranslate nohighlight">\( \vec{u}_1, \vec{u}_2, ..., \vec{u}_{i-1} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{u}'_i = \vec{v}_i - \sum_{j=1}^{i-1} \langle \vec{v}_i, \vec{u}_j \rangle \vec{u}_j
+\]</div>
+<p>Normalize to obtain the orthonormal vector <span class="math notranslate nohighlight">\( \vec{u}_i \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{u}_i = \frac{\vec{u}'_i}{\| \vec{u}'_i \|}
+\]</div>
+<p><strong>Orthonormal Vector Set</strong><br />
+By following this procedure, you construct a set of <span class="math notranslate nohighlight">\( N \)</span> orthonormal vectors, where <span class="math notranslate nohighlight">\( N \leq \min(m, n) \)</span>. These vectors form an orthonormal basis for the subspace spanned by the original set of vectors.</p>
+</section>
+<section id="python-example">
+<h4>Python Example<a class="headerlink" href="#python-example" title="Link to this heading">#</a></h4>
+<section id="example-description">
+<h5>Example Description<a class="headerlink" href="#example-description" title="Link to this heading">#</a></h5>
+<ol class="arabic">
+<li><p><strong>Input Parameters:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( m \)</span>: Number of input vectors.</p></li>
+<li><p><span class="math notranslate nohighlight">\( n \)</span>: Dimension of the vectors.</p></li>
+</ul>
+</li>
+<li><p><strong>Random Vector Generation:</strong></p>
+<ul>
+<li><p>A matrix <span class="math notranslate nohighlight">\( V \)</span> of size <span class="math notranslate nohighlight">\( n \times m \)</span> is created, where each column represents a random vector:</p>
+<div class="math notranslate nohighlight">
+\[
+     V = [\vec{v}_1, \vec{v}_2, \dots, \vec{v}_m], \quad V \in \mathbb{R}^{n \times m}.
+     \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Gram-Schmidt Process for Orthonormalization:</strong></p>
+<ul>
+<li><p><strong>Step 1: Normalize <span class="math notranslate nohighlight">\( \vec{v}_1 \)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+     \vec{u}_1 = \frac{\vec{v}_1}{\|\vec{v}_1\|}
+     \]</div>
+</li>
+<li><p><strong>Step 2: Orthogonalize <span class="math notranslate nohighlight">\( \vec{v}_2 \)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+     \text{proj}_{\vec{u}_1}(\vec{v}_2) = \langle \vec{v}_2, \vec{u}_1 \rangle \vec{u}_1
+     \]</div>
+<div class="math notranslate nohighlight">
+\[
+     \vec{v}_2' = \vec{v}_2 - \text{proj}_{\vec{u}_1}(\vec{v}_2)
+     \]</div>
+<p>Normalize to get <span class="math notranslate nohighlight">\( \vec{u}_2 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+     \vec{u}_2 = \frac{\vec{v}_2'}{\|\vec{v}_2'\|}
+     \]</div>
+</li>
+<li><p><strong>Step 3: Orthogonalize <span class="math notranslate nohighlight">\( \vec{v}_3 \)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+     \text{proj}_{\vec{u}_1}(\vec{v}_3) = \langle \vec{v}_3, \vec{u}_1 \rangle \vec{u}_1, \quad \text{proj}_{\vec{u}_2}(\vec{v}_3) = \langle \vec{v}_3, \vec{u}_2 \rangle \vec{u}_2
+     \]</div>
+<div class="math notranslate nohighlight">
+\[
+     \vec{v}_3' = \vec{v}_3 - \text{proj}_{\vec{u}_1}(\vec{v}_3) - \text{proj}_{\vec{u}_2}(\vec{v}_3)
+     \]</div>
+<p>Normalize to get <span class="math notranslate nohighlight">\( \vec{u}_3 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+     \vec{u}_3 = \frac{\vec{v}_3'}{\|\vec{v}_3'\|}
+     \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Output:</strong></p>
+<ul>
+<li><p>An orthonormal set <span class="math notranslate nohighlight">\( U \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+     U = \{\vec{u}_1, \vec{u}_2, \vec{u}_3\}.
+     \]</div>
+</li>
+</ul>
+</li>
+</ol>
+<p>The Gram-Schmidt process stops at 3 vectors because the <strong>dimension of the space (<span class="math notranslate nohighlight">\(n = 3\)</span>)</strong> limits the number of mutually orthonormal vectors that can be formed.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># Number of vectors</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>  <span class="c1"># Dimension of vectors</span>
+
+<span class="c1"># Generate a set of random vectors V = [v1, v2, ..., vm]</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+
+<span class="c1"># Plot the random vectors</span>
+<span class="n">fig_random</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax_random</span> <span class="o">=</span> <span class="n">fig_random</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">]</span>  <span class="c1"># Colors for plotting</span>
+
+<span class="c1"># Plot each random vector</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">m</span><span class="p">):</span>
+    <span class="n">ax_random</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">V</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">V</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax_random</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">V</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">V</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">V</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;v_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)])</span>
+
+<span class="c1"># Configure the random vectors plot</span>
+<span class="n">ax_random</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V</span><span class="p">))])</span>
+<span class="n">ax_random</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V</span><span class="p">))])</span>
+<span class="n">ax_random</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">([</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">V</span><span class="p">))])</span>
+<span class="n">ax_random</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X-axis&#39;</span><span class="p">)</span>
+<span class="n">ax_random</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y-axis&#39;</span><span class="p">)</span>
+<span class="n">ax_random</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z-axis&#39;</span><span class="p">)</span>
+<span class="n">ax_random</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Random 3D Vectors&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Gram-Schmidt Process</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>  <span class="c1"># Orthonormal basis vectors (only n can be orthonormal in n-dimensional space)</span>
+
+<span class="c1"># Normalize the first vector</span>
+<span class="n">U</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">V</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">V</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Orthogonalize and normalize remaining vectors</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">):</span>
+    <span class="n">orthogonal</span> <span class="o">=</span> <span class="n">V</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="p">):</span>
+        <span class="n">orthogonal</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="n">j</span><span class="p">],</span> <span class="n">V</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">U</span><span class="p">[:,</span> <span class="n">j</span><span class="p">]</span>  <span class="c1"># Subtract projection onto previous basis vectors</span>
+    <span class="n">U</span><span class="p">[:,</span> <span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">orthogonal</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">orthogonal</span><span class="p">)</span>
+
+<span class="c1"># Plot the orthonormal vectors</span>
+<span class="n">fig_orthonormal</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax_orthonormal</span> <span class="o">=</span> <span class="n">fig_orthonormal</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">]</span>  <span class="c1"># Colors for orthonormal vectors</span>
+
+<span class="c1"># Plot each orthonormal vector</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">U</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">U</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">U</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;u_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)])</span>
+
+<span class="c1"># Configure the orthonormal vectors plot</span>
+<span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
+<span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
+<span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
+<span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X-axis&#39;</span><span class="p">)</span>
+<span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y-axis&#39;</span><span class="p">)</span>
+<span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z-axis&#39;</span><span class="p">)</span>
+<span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Orthonormal Vectors from Gram-Schmidt Process&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/dbef5fca2d4a0f42e1291b78db6f715baa5cb6a6414f5d5e995b18ea4f801e2c.png" src="_images/dbef5fca2d4a0f42e1291b78db6f715baa5cb6a6414f5d5e995b18ea4f801e2c.png" />
+<img alt="_images/c9a3f0e9e83b07a84580d8365f7ee411bb2e95f4e3295e99d22b831ed35cd79d.png" src="_images/c9a3f0e9e83b07a84580d8365f7ee411bb2e95f4e3295e99d22b831ed35cd79d.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Threshold for considering a value as zero</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">1e-10</span>
+
+<span class="c1"># Check orthogonality: Dot products between distinct vectors should be zero</span>
+<span class="n">orthogonality_results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>  <span class="c1"># Matrix to store dot products</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">dot_product</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span> <span class="n">j</span><span class="p">])</span>
+        <span class="n">orthogonality_results</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dot_product</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dot_product</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">threshold</span> <span class="k">else</span> <span class="mf">0.0</span>
+
+<span class="c1"># Check normalization: Norms of each vector should be 1</span>
+<span class="n">normalization_results</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="n">normalization_results</span> <span class="o">=</span> <span class="p">[</span><span class="n">norm</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">norm</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">threshold</span> <span class="k">else</span> <span class="mf">1.0</span> <span class="k">for</span> <span class="n">norm</span> <span class="ow">in</span> <span class="n">normalization_results</span><span class="p">]</span>
+
+<span class="c1"># Display results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Orthogonality check (dot product matrix):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">orthogonality_results</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Normalization check (vector norms):&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">norm</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">normalization_results</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;||u_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">|| = </span><span class="si">{</span><span class="n">norm</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Orthogonality check (dot product matrix):
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+Normalization check (vector norms):
+||u_1|| = 1.000000
+||u_2|| = 1.000000
+||u_3|| = 1.000000
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Why The Process Stops at 3 Vectors</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Dimension of the Space:</strong></p>
+<ul class="simple">
+<li><p>In a 3-dimensional space (<span class="math notranslate nohighlight">\(n = 3\)</span>), at most 3 orthonormal vectors can exist, as they must span the entire space.</p></li>
+<li><p>If you attempt to add a fourth vector, it will always lie in the subspace spanned by the first three vectors, making it impossible to orthogonalize it further.</p></li>
+</ul>
+</li>
+<li><p><strong>Rank of the Matrix <span class="math notranslate nohighlight">\( V \)</span>:</strong></p>
+<ul class="simple">
+<li><p>The random matrix <span class="math notranslate nohighlight">\( V \)</span> has dimensions <span class="math notranslate nohighlight">\( n \times m \)</span> (3 rows, 5 columns). However, the rank of <span class="math notranslate nohighlight">\( V \)</span> cannot exceed <span class="math notranslate nohighlight">\( n = 3 \)</span> because there are only 3 linearly independent directions in a 3D space.</p></li>
+<li><p>Therefore, only 3 orthonormal vectors can be generated.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="using-vec-v-5-instead-of-vec-v-3">
+<h5>Using <span class="math notranslate nohighlight">\( \vec{v}_5 \)</span> Instead of <span class="math notranslate nohighlight">\( \vec{v}_3 \)</span><a class="headerlink" href="#using-vec-v-5-instead-of-vec-v-3" title="Link to this heading">#</a></h5>
+<p>We can use <span class="math notranslate nohighlight">\( \vec{v}_5 \)</span> (or any other vector from the input set <span class="math notranslate nohighlight">\( V \)</span>) instead of <span class="math notranslate nohighlight">\( \vec{v}_3 \)</span> for constructing <span class="math notranslate nohighlight">\( \vec{u}_3 \)</span>. The Gram-Schmidt process does not require a strict order of vectors from the original set <span class="math notranslate nohighlight">\( V \)</span>. What matters is that the chosen vectors <span class="math notranslate nohighlight">\( \vec{v}_1, \vec{v}_2, \vec{v}_5 \)</span> are linearly independent to successfully construct <span class="math notranslate nohighlight">\( \vec{u}_1, \vec{u}_2, \vec{u}_3 \)</span>.</p>
+<p><strong>Steps to Replace <span class="math notranslate nohighlight">\( \vec{v}_3 \)</span> with <span class="math notranslate nohighlight">\( \vec{v}_5 \)</span>:</strong></p>
+<ol class="arabic">
+<li><p><strong>Step 1:</strong> Compute <span class="math notranslate nohighlight">\( \vec{u}_1 \)</span> from <span class="math notranslate nohighlight">\( \vec{v}_1 \)</span> (normalization of <span class="math notranslate nohighlight">\( \vec{v}_1 \)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+   \vec{u}_1 = \frac{\vec{v}_1}{\|\vec{v}_1\|}
+   \]</div>
+</li>
+<li><p><strong>Step 2:</strong> Compute <span class="math notranslate nohighlight">\( \vec{u}_2 \)</span> from <span class="math notranslate nohighlight">\( \vec{v}_2 \)</span> (orthogonalization and normalization):</p>
+<div class="math notranslate nohighlight">
+\[
+   \text{proj}_{\vec{u}_1}(\vec{v}_2) = \langle \vec{v}_2, \vec{u}_1 \rangle \vec{u}_1
+   \]</div>
+<div class="math notranslate nohighlight">
+\[
+   \vec{u}_2' = \vec{v}_2 - \text{proj}_{\vec{u}_1}(\vec{v}_2), \quad \vec{u}_2 = \frac{\vec{u}_2'}{\|\vec{u}_2'\|}
+   \]</div>
+</li>
+<li><p><strong>Step 3:</strong> Use <span class="math notranslate nohighlight">\( \vec{v}_5 \)</span> for <span class="math notranslate nohighlight">\( \vec{u}_3 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \text{proj}_{\vec{u}_1}(\vec{v}_5) = \langle \vec{v}_5, \vec{u}_1 \rangle \vec{u}_1, \quad \text{proj}_{\vec{u}_2}(\vec{v}_5) = \langle \vec{v}_5, \vec{u}_2 \rangle \vec{u}_2
+   \]</div>
+<div class="math notranslate nohighlight">
+\[
+   \vec{u}_3' = \vec{v}_5 - \text{proj}_{\vec{u}_1}(\vec{v}_5) - \text{proj}_{\vec{u}_2}(\vec{v}_5), \quad \vec{u}_3 = \frac{\vec{u}_3'}{\|\vec{u}_3'\|}
+   \]</div>
+</li>
+</ol>
+<p><strong>Why This Works:</strong></p>
+<p>The Gram-Schmidt process is flexible. As long as the selected vectors are linearly independent:</p>
+<ul class="simple">
+<li><p>You can replace <span class="math notranslate nohighlight">\( \vec{v}_3 \)</span> with <span class="math notranslate nohighlight">\( \vec{v}_5 \)</span> (or any other vector in the set <span class="math notranslate nohighlight">\( V \)</span>).</p></li>
+<li><p>The orthonormal basis <span class="math notranslate nohighlight">\( \{\vec{u}_1, \vec{u}_2, \vec{u}_3\} \)</span> will still span the same subspace as <span class="math notranslate nohighlight">\( \{\vec{v}_1, \vec{v}_2, \vec{v}_5\} \)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gram-Schmidt Process using v1, v2, and v5 for u1, u2, and u3</span>
+
+<span class="c1"># Normalize the first vector (v1)</span>
+<span class="n">U</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">V</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">V</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># u1</span>
+
+<span class="c1"># Orthogonalize and normalize the second vector (v2)</span>
+<span class="n">orthogonal_v2</span> <span class="o">=</span> <span class="n">V</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">V</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">])</span> <span class="o">*</span> <span class="n">U</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>  <span class="c1"># Remove projection on u1</span>
+<span class="n">U</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">orthogonal_v2</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">orthogonal_v2</span><span class="p">)</span>  <span class="c1"># u2</span>
+
+<span class="c1"># Use v5 for u3</span>
+<span class="n">orthogonal_v5</span> <span class="o">=</span> <span class="n">V</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">V</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">])</span> <span class="o">*</span> <span class="n">U</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">V</span><span class="p">[:,</span> <span class="mi">4</span><span class="p">])</span> <span class="o">*</span> <span class="n">U</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>  <span class="c1"># Remove projections on u1 and u2</span>
+<span class="n">U</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">orthogonal_v5</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">orthogonal_v5</span><span class="p">)</span>  <span class="c1"># u3</span>
+
+<span class="c1"># Plot the orthonormal vectors</span>
+<span class="n">fig_orthonormal</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">ax_orthonormal</span> <span class="o">=</span> <span class="n">fig_orthonormal</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">111</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">]</span>  <span class="c1"># Colors for orthonormal vectors</span>
+
+<span class="c1"># Plot each orthonormal vector</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">U</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">U</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)],</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="n">U</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="n">i</span><span class="p">],</span> <span class="sa">f</span><span class="s1">&#39;u_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">colors</span><span class="p">[</span><span class="n">i</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">colors</span><span class="p">)])</span>
+
+<span class="c1"># Configure the orthonormal vectors plot</span>
+<span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
+<span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
+<span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">set_zlim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">])</span>
+<span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X-axis&#39;</span><span class="p">)</span>
+<span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Y-axis&#39;</span><span class="p">)</span>
+<span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;Z-axis&#39;</span><span class="p">)</span>
+<span class="n">ax_orthonormal</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Orthonormal Vectors from Gram-Schmidt Process&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/53ccc70eb4f8cf20a7c07c3fbc18d477e2a54cc144fe5b350c04cb9c27f1bb5c.png" src="_images/53ccc70eb4f8cf20a7c07c3fbc18d477e2a54cc144fe5b350c04cb9c27f1bb5c.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Threshold for considering a value as zero</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mf">1e-10</span>
+
+<span class="c1"># Check orthogonality: Dot products between distinct vectors should be zero</span>
+<span class="n">orthogonality_results</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>  <span class="c1"># Matrix to store dot products</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+        <span class="n">dot_product</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="n">i</span><span class="p">],</span> <span class="n">U</span><span class="p">[:,</span> <span class="n">j</span><span class="p">])</span>
+        <span class="n">orthogonality_results</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">dot_product</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">dot_product</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">threshold</span> <span class="k">else</span> <span class="mf">0.0</span>
+
+<span class="c1"># Check normalization: Norms of each vector should be 1</span>
+<span class="n">normalization_results</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">U</span><span class="p">[:,</span> <span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">)]</span>
+<span class="n">normalization_results</span> <span class="o">=</span> <span class="p">[</span><span class="n">norm</span> <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">norm</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="n">threshold</span> <span class="k">else</span> <span class="mf">1.0</span> <span class="k">for</span> <span class="n">norm</span> <span class="ow">in</span> <span class="n">normalization_results</span><span class="p">]</span>
+
+<span class="c1"># Display results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Orthogonality check (dot product matrix):&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">orthogonality_results</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Normalization check (vector norms):&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">norm</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">normalization_results</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;||u_</span><span class="si">{</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">|| = </span><span class="si">{</span><span class="n">norm</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Orthogonality check (dot product matrix):
+[[1. 0. 0.]
+ [0. 1. 0.]
+ [0. 0. 1.]]
+
+Normalization check (vector norms):
+||u_1|| = 1.000000
+||u_2|| = 1.000000
+||u_3|| = 1.000000
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sig_c2_s9_Sampling_Theory.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Sampling Theorem for Band-Limited Random Processes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sig_c3_s1_signal_space.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Signal Space</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-space">Vector Space</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-representation">Vector Representation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-inner-product-of-two-vectors">Definition: Inner Product of Two Vectors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-vectors-as-linear-combinations">Representing Vectors as Linear Combinations</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthonormality">Orthonormality</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-orthogonality-of-vectors">Definition: Orthogonality of Vectors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-vector-norm">Definition: Vector Norm</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-orthonormality">Definition of Orthonormality</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-simulation">Python Simulation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gram-schmidt-orthogonalization-process">Gram-Schmidt Orthogonalization Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-normalize-the-first-vector">Step 1: Normalize the First Vector</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-orthogonalize-the-second-vector">Step 2: Orthogonalize the Second Vector</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-orthogonalize-subsequent-vectors">Step 3: Orthogonalize Subsequent Vectors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#iterative-step-repeat-for-all-remaining-vectors">Iterative Step: Repeat for All Remaining Vectors</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-example">Python Example</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#example-description">Example Description</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#using-vec-v-5-instead-of-vec-v-3">Using <span class="math notranslate nohighlight">\( \vec{v}_5 \)</span> Instead of <span class="math notranslate nohighlight">\( \vec{v}_3 \)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

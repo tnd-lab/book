@@ -1,0 +1,1887 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Comparison of Estimators &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c3_s14_comparison_of_estimators';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Vector and Multi-Hypothesis Detection" href="c5_s0_intro_copy.html" />
+    <link rel="prev" title="Maximum Likelihood (ML) Estimation" href="c3_s13_ML_estimator.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Comparison of Estimators</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-previous-results">Summary of Previous Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-signal-reception-in-noise">Example: Signal Reception in Noise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method-1-maximum-likelihood-estimate">Method 1: Maximum Likelihood Estimate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-hat-s-text-ml">Finding <span class="math notranslate nohighlight">\( \hat{s}_{\text{ML}} \)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-maximum-a-posteriori-estimate-map">Method 2: Maximum A Posteriori Estimate (MAP)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-differential-equation">Solving the differential equation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method-3-minimum-mean-squared-error-mmse-estimate">Method 3: Minimum Mean Squared Error (MMSE) Estimate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-formulation">Problem Formulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-mmse-estimate">Derivation of the MMSE Estimate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-calculation">Example Calculation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#biasness-of-mmse">Biasness of MMSE</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#schonhoff-s-method">Schonhoff’s Method</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-of-3-methods">Simulation of 3 Methods</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="comparison-of-estimators">
+<h1>Comparison of Estimators<a class="headerlink" href="#comparison-of-estimators" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>MMSE estimator</p></li>
+<li><p>MAP estimator</p></li>
+<li><p>ML estimator</p></li>
+</ul>
+<section id="summary-of-previous-results">
+<h2>Summary of Previous Results<a class="headerlink" href="#summary-of-previous-results" title="Link to this heading">#</a></h2>
+<p><strong>Problem Statement</strong></p>
+<p>In this example, based on [B2, Ex 10.7], we want to find the estimate <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\mu}}\)</span> of the unknown random  mean <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>, using the set of observations <span class="math notranslate nohighlight">\(\mathbf{y}_1, \ldots, \mathbf{y}_m\)</span>.</p>
+<p>Assume further that the observations are statistically independent, normal random variables, each with unknown mean <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> and known variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<p>The conditional pdf <span class="math notranslate nohighlight">\(p(\vec{y}|\mu)\)</span> is then</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}|\mu) = \frac{1}{(2\pi \sigma^2)^{m/2}} \exp\left(-\frac{1}{2\sigma^2} \sum_{k=1}^{m} (y_k - \mu)^2\right)
+\]</div>
+<p>Next, assume that the <em>a priori</em> pdf <span class="math notranslate nohighlight">\(p(\mu)\)</span> is normal with mean <span class="math notranslate nohighlight">\(m_1\)</span> and variance <span class="math notranslate nohighlight">\(\beta^2\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+p(\mu) = \frac{1}{\sqrt{2\pi \beta^2}} \exp\left(-\frac{(\mu - m_1)^2}{2\beta^2}\right)
+\]</div>
+<p>Note that the prior <span class="math notranslate nohighlight">\( p(\mu) \)</span> represents our knowledge about <span class="math notranslate nohighlight">\(\mu\)</span> before observing any data.</p>
+<p>The MMSE, MAP, and ML estimates are, respectively:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\hat{\boldsymbol{\mu}}_{\text{MMSE}} &amp;= \frac{\beta^2 \bar{\mathbf{y}} + m_1 \sigma^2 / m}{\beta^2 + \sigma^2 / m} \\
+\hat{\boldsymbol{\mu}}_{\text{MAP}} &amp;= \frac{m \beta^2 \bar{\mathbf{y}} + m_1 \sigma^2}{m \beta^2 + \sigma^2}  = \hat{\boldsymbol{\mu}}_{\text{MMSE}} \\
+\hat{\boldsymbol{\mu}}_{\text{ML}} &amp;= \bar{\mathbf{y}}
+\end{align*}
+\end{split}\]</div>
+<p>Comparison of Estimators of Parameters</p>
+<ul class="simple">
+<li><p>The first two estimates, <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\mu}}_{\text{MMSE}}\)</span> and <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\mu}}_{\text{MAP}}\)</span>, are described as identical and biased.</p></li>
+<li><p>The third estimate, <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\mu}}_{\text{ML}}\)</span>, is unbiased and efficient.</p></li>
+<li><p>For large sample sizes <span class="math notranslate nohighlight">\( m \)</span> or large <span class="math notranslate nohighlight">\( \beta^2 \)</span>, it is noted that <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\mu}}_{\text{MMSE}} (= \hat{\boldsymbol{\mu}}_{\text{MAP}}) \approx \bar{\mathbf{y}} = \hat{\boldsymbol{\mu}}_{\text{ML}} \)</span> are approximately equal.</p></li>
+<li><p><em>Large</em> <span class="math notranslate nohighlight">\( \beta^2 \)</span> corresponds to an a priori probability density function (pdf) with a <em>wide dispersion</em>, meaning that little statistical information is gained from the prior knowledge.</p></li>
+<li><p>In this case, the MMSE and MAP estimates reduce to the ML estimate, which <em>does not require</em> an a priori pdf.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Set random seed for reproducibility (optional)</span>
+<span class="c1"># np.random.seed(42)</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="mf">0.0</span>        <span class="c1"># Prior mean of mu</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mf">1.0</span>      <span class="c1"># Prior standard deviation of mu</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">1.0</span>     <span class="c1"># Known standard deviation of observations</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">10</span>          <span class="c1"># Number of observations per trial</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>          <span class="c1"># Number of trials</span>
+
+<span class="c1"># To store results</span>
+<span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Trial&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">&#39;True_mu&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">&#39;Observations&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">&#39;Sample_mean_y_bar&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">&#39;MLE&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">&#39;MAP&#39;</span><span class="p">:</span> <span class="p">[],</span>
+    <span class="s1">&#39;MMSE&#39;</span><span class="p">:</span> <span class="p">[]</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># 1. Generate true mu based on prior</span>
+    <span class="n">true_mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+    
+    <span class="c1"># 2. Generate observations based on true mu</span>
+    <span class="n">observations</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">true_mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="n">y_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">observations</span><span class="p">)</span>
+    
+    <span class="c1"># 3. Compute estimates</span>
+    <span class="c1"># MLE: Sample mean</span>
+    <span class="n">mle</span> <span class="o">=</span> <span class="n">y_bar</span>
+    
+    <span class="c1"># MAP: (beta^2 * y_bar + sigma^2 * m1) / (beta^2 + sigma^2)</span>
+    <span class="n">map_estimate</span> <span class="o">=</span> <span class="p">(</span><span class="n">beta</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">y_bar</span> <span class="o">+</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">m1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">beta</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># MMSE: Same as MAP in Gaussian case</span>
+    <span class="n">mmse</span> <span class="o">=</span> <span class="n">map_estimate</span>
+    
+    <span class="c1"># 4. Store the results</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Trial&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">trial</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;True_mu&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">true_mu</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Observations&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">observations</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Sample_mean_y_bar&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_bar</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;MLE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mle</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;MAP&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">map_estimate</span><span class="p">)</span>
+    <span class="n">results</span><span class="p">[</span><span class="s1">&#39;MMSE&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mmse</span><span class="p">)</span>
+    
+    <span class="c1"># 5. Print the results for the current trial</span>
+    <span class="n">observations_str</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array2string</span><span class="p">(</span><span class="n">observations</span><span class="p">,</span> <span class="n">precision</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">separator</span><span class="o">=</span><span class="s1">&#39;, &#39;</span><span class="p">,</span> <span class="n">suppress_small</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trial </span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;True μ: </span><span class="si">{</span><span class="n">true_mu</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Observations (vector y): </span><span class="si">{</span><span class="n">observations_str</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Statistic (sample mean ȳ): </span><span class="si">{</span><span class="n">y_bar</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MLE Estimate: </span><span class="si">{</span><span class="n">mle</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MAP Estimate: </span><span class="si">{</span><span class="n">map_estimate</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;MMSE Estimate: </span><span class="si">{</span><span class="n">mmse</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Convert results to a DataFrame for better visualization</span>
+<span class="c1"># Since &#39;Observations&#39; is an array, we&#39;ll keep it as is or process separately if needed</span>
+<span class="n">df_results</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;Trial&#39;</span><span class="p">:</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Trial&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;True_mu&#39;</span><span class="p">:</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;True_mu&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;Sample_mean_y_bar&#39;</span><span class="p">:</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;Sample_mean_y_bar&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MLE&#39;</span><span class="p">:</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;MLE&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MAP&#39;</span><span class="p">:</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;MAP&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;MMSE&#39;</span><span class="p">:</span> <span class="n">results</span><span class="p">[</span><span class="s1">&#39;MMSE&#39;</span><span class="p">]</span>
+<span class="p">})</span>
+
+<span class="c1"># Display the results table</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Summary of Results:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_results</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="c1"># Visualization: Compare estimates with true mu across trials</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;Trial&#39;</span><span class="p">],</span> <span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;True_mu&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True μ&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;Trial&#39;</span><span class="p">],</span> <span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;MLE&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MLE Estimate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;Trial&#39;</span><span class="p">],</span> <span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;MAP&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MAP Estimate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;Trial&#39;</span><span class="p">],</span> <span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;MMSE&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MMSE Estimate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Estimates of μ Across Trials&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Trial Number&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Optional: Compute and display estimation errors</span>
+<span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;MLE_Error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;MLE&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;True_mu&#39;</span><span class="p">]</span>
+<span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;MAP_Error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;MAP&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;True_mu&#39;</span><span class="p">]</span>
+<span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;MMSE_Error&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;MMSE&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;True_mu&#39;</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Estimation Errors:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_results</span><span class="p">[[</span><span class="s1">&#39;Trial&#39;</span><span class="p">,</span> <span class="s1">&#39;MLE_Error&#39;</span><span class="p">,</span> <span class="s1">&#39;MAP_Error&#39;</span><span class="p">,</span> <span class="s1">&#39;MMSE_Error&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">to_string</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
+
+<span class="c1"># Optional: Plot estimation errors</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;Trial&#39;</span><span class="p">],</span> <span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;MLE_Error&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MLE Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;Trial&#39;</span><span class="p">],</span> <span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;MAP_Error&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MAP Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;Trial&#39;</span><span class="p">],</span> <span class="n">df_results</span><span class="p">[</span><span class="s1">&#39;MMSE_Error&#39;</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;^&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MMSE Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Estimation Errors of μ Across Trials&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Trial Number&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Error (Estimate - True μ)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trial 1:
+True μ: 0.8193
+Observations (vector y): [ 2.1743,  0.905 ,  1.6846,  0.0631,  1.1597,  1.6086,  2.9175, -0.4643,
+ -0.7197,  0.1486]
+Statistic (sample mean ȳ): 0.9477
+MLE Estimate: 0.9477
+MAP Estimate: 0.4739
+MMSE Estimate: 0.4739
+
+Trial 2:
+True μ: 1.1935
+Observations (vector y): [-0.379 ,  3.1874, -0.6197,  1.6783,  0.7355, -0.5886,  2.1176,  1.289 ,
+  0.8837,  1.7972]
+Statistic (sample mean ȳ): 1.0101
+MLE Estimate: 1.0101
+MAP Estimate: 0.5051
+MMSE Estimate: 0.5051
+
+Trial 3:
+True μ: 1.1528
+Observations (vector y): [ 2.6225,  0.9805, -0.1892,  2.4647,  0.8227,  1.5908,  0.3552,  2.4536,
+  1.2346,  1.0021]
+Statistic (sample mean ȳ): 1.3337
+MLE Estimate: 1.3337
+MAP Estimate: 0.6669
+MMSE Estimate: 0.6669
+
+Trial 4:
+True μ: -0.6195
+Observations (vector y): [-0.7227, -0.795 , -1.567 , -1.3811, -1.4331, -2.0088,  0.9924,  1.7117,
+  1.1856, -2.1459]
+Statistic (sample mean ȳ): -0.6164
+MLE Estimate: -0.6164
+MAP Estimate: -0.3082
+MMSE Estimate: -0.3082
+
+Trial 5:
+True μ: 0.4501
+Observations (vector y): [ 2.5458,  0.4679,  1.1959, -1.2552, -1.0884, -0.1493, -1.6052, -1.8537,
+  2.4189,  0.7099]
+Statistic (sample mean ȳ): 0.1387
+MLE Estimate: 0.1387
+MAP Estimate: 0.0693
+MMSE Estimate: 0.0693
+
+Summary of Results:
+ Trial   True_mu  Sample_mean_y_bar       MLE       MAP      MMSE
+     1  0.819300           0.947741  0.947741  0.473871  0.473871
+     2  1.193471           1.010134  1.010134  0.505067  0.505067
+     3  1.152803           1.333739  1.333739  0.666869  0.666869
+     4 -0.619528          -0.616388 -0.616388 -0.308194 -0.308194
+     5  0.450150           0.138650  0.138650  0.069325  0.069325
+</pre></div>
+</div>
+<img alt="_images/943f1ec5f8caee71f073026e50b13f1f1e484be9764d32516df7a1d4611868f1.png" src="_images/943f1ec5f8caee71f073026e50b13f1f1e484be9764d32516df7a1d4611868f1.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Estimation Errors:
+ Trial  MLE_Error  MAP_Error  MMSE_Error
+     1   0.128441  -0.345429   -0.345429
+     2  -0.183338  -0.688404   -0.688404
+     3   0.180936  -0.485934   -0.485934
+     4   0.003140   0.311334    0.311334
+     5  -0.311499  -0.380825   -0.380825
+</pre></div>
+</div>
+<img alt="_images/71c116a3522c5a72fac17e54a9b324a6c74f6f0014a18a45731ea8daca32282f.png" src="_images/71c116a3522c5a72fac17e54a9b324a6c74f6f0014a18a45731ea8daca32282f.png" />
+</div>
+</div>
+</section>
+<section id="example-signal-reception-in-noise">
+<h2>Example: Signal Reception in Noise<a class="headerlink" href="#example-signal-reception-in-noise" title="Link to this heading">#</a></h2>
+<p>In this example, based on [B2, Ex 10.20], we consider the reception of a signal embedded in noise, a common scenario in communications theory.</p>
+<p><strong>Problem Statement</strong></p>
+<p>We have <span class="math notranslate nohighlight">\( L \)</span> independent observations (or received-signal samples) <span class="math notranslate nohighlight">\( \mathbf{y}_i \)</span>, which are expressed as the sum of a random signal <span class="math notranslate nohighlight">\( \mathbf{s} \)</span> and noise samples <span class="math notranslate nohighlight">\( \mathbf{n}_i \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{y}_i = \mathbf{s} + \mathbf{n}_i, \quad i = 1, 2, \dots, L
+\]</div>
+<p><strong>Assumptions and PDFs</strong></p>
+<p>The random signal <span class="math notranslate nohighlight">\( \mathbf{s} \)</span> is <em>uniformly distributed</em> in the interval <span class="math notranslate nohighlight">\( (0, a) \)</span>.</p>
+<p>The pdf of the signal <span class="math notranslate nohighlight">\( s \)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+p_{\mathbf{s}} (s) = 
+\begin{cases} 
+\frac{1}{a}, &amp; 0 &lt; s &lt; a \\
+0, &amp; \text{otherwise}
+\end{cases}
+\end{split}\]</div>
+<p>The random noise <span class="math notranslate nohighlight">\( \mathbf{n}_i \)</span> is Gaussian with <em>zero mean</em> and <em>variance</em> <span class="math notranslate nohighlight">\( \sigma^2 \)</span>.</p>
+<p>The pdf of the noise <span class="math notranslate nohighlight">\( \mathbf{n}_i \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+p_{\mathbf{n}_i} (n_i) = \frac{1}{\sqrt{2\pi \sigma^2}} \exp\left( -\frac{n_i^2}{2\sigma^2} \right)
+\]</div>
+<p><strong>Conditional Distribution of <span class="math notranslate nohighlight">\( \mathbf{y}_i \)</span> given <span class="math notranslate nohighlight">\( s \)</span></strong></p>
+<p>For a constant <span class="math notranslate nohighlight">\( s \)</span>, <span class="math notranslate nohighlight">\( \mathbf{y}_i \)</span> is Gaussian with mean <span class="math notranslate nohighlight">\( s \)</span> and variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>.</p>
+<p>Thus, the pdf <span class="math notranslate nohighlight">\( p(\vec{y} | s) \)</span> can be written as:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y} | s) = \frac{1}{(2\pi \sigma^2)^{L/2}} \exp\left( -\frac{1}{2\sigma^2} \sum_{i=1}^{L} (y_i - s)^2 \right)
+\]</div>
+<p><strong>Task</strong></p>
+<p>We want to estimate the random <span class="math notranslate nohighlight">\(\mathbf{s}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>          <span class="c1"># Upper bound for the true signal</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>    <span class="c1"># Standard deviation of the noise</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">10</span>         <span class="c1"># Number of observations per trial</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>          <span class="c1"># Number of trials</span>
+
+<span class="c1"># To store signals and observations for analysis</span>
+<span class="n">signals</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">observations</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="c1"># Generate a random true signal within (0, a)</span>
+    <span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    
+    <span class="c1"># Generate Gaussian noise</span>
+    <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+    
+    <span class="c1"># Generate observations by adding noise to the signal</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">signal</span> <span class="o">+</span> <span class="n">noise</span>
+    
+    <span class="c1"># Store the results</span>
+    <span class="n">signals</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    <span class="n">observations</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    
+    <span class="c1"># Display the results for the current trial</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Trial </span><span class="si">{</span><span class="n">trial</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;True Signal (fixed parameter s): </span><span class="si">{</span><span class="n">signal</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Observations (vector y): </span><span class="si">{</span><span class="n">y</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Trial 1:
+True Signal (fixed parameter s): 0.4516
+Observations (vector y): [ 1.32064602 -0.5077289  -0.66214343  1.44271647 -0.82477021  1.81397064
+ -0.80037337 -0.19763709  0.37709459  0.27959563]
+
+Trial 2:
+True Signal (fixed parameter s): 0.2683
+Observations (vector y): [-0.52152635  0.38722607  0.35052791  1.02839825  1.951469   -0.62050193
+  0.63186598 -0.77860689  1.50367162 -0.24161981]
+
+Trial 3:
+True Signal (fixed parameter s): 0.1999
+Observations (vector y): [ 1.43114502 -1.42366952 -0.05386208  0.39046     0.04691115  1.44249959
+ -1.57316783  0.05206321  0.56235636  0.17916296]
+
+Trial 4:
+True Signal (fixed parameter s): 0.3236
+Observations (vector y): [-1.7656375   1.89771449 -0.05695857  0.94111807  2.5332734  -0.54548923
+ -0.80319628 -0.61812149  0.46580735 -0.09023442]
+
+Trial 5:
+True Signal (fixed parameter s): 0.0654
+Observations (vector y): [ 0.00732296  0.30873143 -1.37173128  1.80500289 -0.22437932 -0.70756438
+  0.8684864   1.24873887  0.26297671  1.87421202]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="method-1-maximum-likelihood-estimate">
+<h2>Method 1: Maximum Likelihood Estimate<a class="headerlink" href="#method-1-maximum-likelihood-estimate" title="Link to this heading">#</a></h2>
+<p>Recall that the Maximum Likelihood Estimator seeks the value of <span class="math notranslate nohighlight">\( s \)</span> that <strong>maximizes the likelihood</strong> of the observed data <span class="math notranslate nohighlight">\( \vec{y} = (y_1, y_2, \dots, y_L) \)</span>.</p>
+<p>Mathematically, the ML estimator is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{ML}} = \arg\max_{s} \, p(\vec{y} | s)
+\]</div>
+<p>Unlike MAP estimation, ML does <strong>not</strong> consider the prior distribution <span class="math notranslate nohighlight">\( p(s) \)</span>.</p>
+<section id="finding-hat-s-text-ml">
+<h3>Finding <span class="math notranslate nohighlight">\( \hat{s}_{\text{ML}} \)</span><a class="headerlink" href="#finding-hat-s-text-ml" title="Link to this heading">#</a></h3>
+<p>We need to maximize the likelihood <span class="math notranslate nohighlight">\( p(\vec{y} | s) \)</span> with respect to <span class="math notranslate nohighlight">\( s \)</span>.</p>
+<p>Maximizing the likelihood is equivalent to maximizing the <strong>log-likelihood</strong> since the logarithm is a monotonically increasing function.</p>
+<p>The log-likelihood <span class="math notranslate nohighlight">\( \mathcal{L}(s) \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{L}(s) = \ln p(\vec{y} | s) = -\frac{L}{2} \ln(2\pi \sigma^2) - \frac{1}{2\sigma^2} \sum_{i=1}^{L} (y_i - s)^2
+\]</div>
+<p>To maximize <span class="math notranslate nohighlight">\( \mathcal{L}(s) \)</span>, we can equivalently <strong>minimize</strong> the negative log-likelihood:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Minimize} \quad \sum_{i=1}^{L} (y_i - s)^2
+\]</div>
+<p>This is a <strong>quadratic function</strong> in <span class="math notranslate nohighlight">\( s \)</span>, which is minimized when its derivative with respect to <span class="math notranslate nohighlight">\( s \)</span> is zero.</p>
+<p>Compute the derivative of the sum of squared errors with respect to <span class="math notranslate nohighlight">\( s \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{ds} \left( \sum_{i=1}^{L} (y_i - s)^2 \right) = -2 \sum_{i=1}^{L} (y_i - s)
+\]</div>
+<p>Set the derivative to zero for minimization:</p>
+<div class="math notranslate nohighlight">
+\[
+-2 \sum_{i=1}^{L} (y_i - s) = 0
+\]</div>
+<p>Simplifying:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^{L} y_i - L s = 0 \quad \Rightarrow \quad s = \frac{1}{L} \sum_{i=1}^{L} y_i = \bar{y}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \bar{y} \)</span> is the sample mean of the observations.</p>
+<p>The Maximum Likelihood Estimator for <span class="math notranslate nohighlight">\( s \)</span> is the sample mean of the observations:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{ \hat{s}_{\text{ML}} = \bar{y} = \frac{1}{L} \sum_{i=1}^{L} y_i }
+\]</div>
+<p>In general</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\mathbf{s}}_{ML} = \bar{\mathbf{y}}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \bar{\mathbf{y}} \)</span> is the sample mean.</p>
+<p>Note that, unless explicitly stated, ML estimation typically assumes an <strong>unconstrained parameter space</strong>.</p>
+</section>
+</section>
+<section id="method-2-maximum-a-posteriori-estimate-map">
+<h2>Method 2: Maximum A Posteriori Estimate (MAP)<a class="headerlink" href="#method-2-maximum-a-posteriori-estimate-map" title="Link to this heading">#</a></h2>
+<p>The MAP estimator seeks the value of <span class="math notranslate nohighlight">\( s \)</span> that maximizes the posterior distribution <span class="math notranslate nohighlight">\( p(s | \vec{y}) \)</span>, where <span class="math notranslate nohighlight">\( \vec{y} = (y_1, y_2, \dots, y_L) \)</span> represents all observations.</p>
+<p>Mathematically, the MAP estimator is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MAP}} = \arg\max_{s} \, p(s | \vec{y})
+\]</div>
+<p>By Bayes’ theorem:</p>
+<div class="math notranslate nohighlight">
+\[
+p(s | \vec{y}) = \frac{p(\vec{y} | s) p(s)}{p(\vec{y})}
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\( p(\vec{y}) \)</span> is constant with respect to <span class="math notranslate nohighlight">\( s \)</span>, maximizing <span class="math notranslate nohighlight">\( p(s | \vec{y}) \)</span> is equivalent to maximizing the <strong>product</strong> of the <strong>likelihood</strong> <span class="math notranslate nohighlight">\( p(\vec{y} | s) \)</span> and the <strong>prior</strong> <span class="math notranslate nohighlight">\( p(s) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MAP}} = \arg\max_{s} \, p(\vec{y} | s) p(s)
+\]</div>
+<p>Combining the likelihood and the prior, the MAP estimator maximizes:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y} | s) p(s)
+\]</div>
+<p>Substituting the expressions:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\hat{s}_{\text{MAP}} = \arg\max_{s} \left[ \left( \frac{1}{\sqrt{2\pi \sigma^2}} \right)^L \exp\left( -\frac{1}{2\sigma^2} \sum_{i=1}^{L} (y_i - s)^2 \right) \times 
+\begin{cases} 
+\frac{1}{a}, &amp; 0 &lt; s &lt; a \\
+0, &amp; \text{otherwise}
+\end{cases}
+\right]
+\end{split}\]</div>
+<p>Since <span class="math notranslate nohighlight">\( \left( \frac{1}{\sqrt{2\pi \sigma^2}} \right)^L \)</span> and <span class="math notranslate nohighlight">\( \frac{1}{a} \)</span> are constants (when <span class="math notranslate nohighlight">\( 0 &lt; s &lt; a \)</span>), maximizing the above expression reduces to minimizing the exponent term within the allowed range of <span class="math notranslate nohighlight">\( s \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MAP}} = \arg\min_{s \in (0, a)} \sum_{i=1}^{L} (y_i - s)^2
+\]</div>
+<section id="solving-the-differential-equation">
+<h3>Solving the differential equation<a class="headerlink" href="#solving-the-differential-equation" title="Link to this heading">#</a></h3>
+<p>The expression to minimize is a <strong>quadratic function</strong> in <span class="math notranslate nohighlight">\( s \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^{L} (y_i - s)^2 = \sum_{i=1}^{L} y_i^2 - 2s \sum_{i=1}^{L} y_i + L s^2
+\]</div>
+<p>Taking the derivative with respect to <span class="math notranslate nohighlight">\( s \)</span> and setting it to zero to find the minimum:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{ds} \left( \sum_{i=1}^{L} (y_i - s)^2 \right) = -2 \sum_{i=1}^{L} y_i + 2L s = 0
+\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\( s \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+s = \frac{1}{L} \sum_{i=1}^{L} y_i = \bar{y}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \bar{y} \)</span> is the sample mean of the observations.</p>
+<p>The MAP estimator <strong>must respect</strong> the prior constraints <span class="math notranslate nohighlight">\( 0 &lt; s &lt; a \)</span>. Therefore, the estimator is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\hat{s}_{\text{MAP}} = 
+\begin{cases} 
+0, &amp; \text{if } \bar{y} \leq 0 \\
+\bar{y}, &amp; \text{if } 0 &lt; \bar{y} &lt; a \\
+a, &amp; \text{if } \bar{y} \geq a
+\end{cases}
+\end{split}\]</div>
+<p>This can be compactly written using the <strong>clipping</strong> (or <strong>saturation</strong>) function:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MAP}} = \min\left( a, \max\left( 0, \bar{y} \right) \right)
+\]</div>
+<p>Putting it all together, the MAP estimator for <span class="math notranslate nohighlight">\( s \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{ \hat{s}_{\text{MAP}} = \min\left( a, \max\left( 0, \frac{1}{L} \sum_{i=1}^{L} y_i \right) \right) }
+\]</div>
+</section>
+</section>
+<section id="method-3-minimum-mean-squared-error-mmse-estimate">
+<h2>Method 3: Minimum Mean Squared Error (MMSE) Estimate<a class="headerlink" href="#method-3-minimum-mean-squared-error-mmse-estimate" title="Link to this heading">#</a></h2>
+<section id="problem-formulation">
+<h3>Problem Formulation<a class="headerlink" href="#problem-formulation" title="Link to this heading">#</a></h3>
+<p>The <strong>MMSE Estimator</strong> seeks to minimize the <strong>mean squared error</strong> between the estimated signal <span class="math notranslate nohighlight">\( \hat{s} \)</span> and the true signal <span class="math notranslate nohighlight">\( s \)</span>. Mathematically, it is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = \mathbb{E}[s | \vec{y}]
+\]</div>
+<p>Using Bayesian estimation, this expectation can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = \frac{\int_{-\infty}^{\infty} s \cdot p(\vec{y}|s) \cdot p(s) \, ds}{\int_{-\infty}^{\infty} p(\vec{y}|s) \cdot p(s) \, ds}
+\]</div>
+<p>Substituting the expressions for <span class="math notranslate nohighlight">\( p(\vec{y}|s) \)</span> and <span class="math notranslate nohighlight">\( p(s) \)</span> into the MMSE formula:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = \frac{ \int_{-\infty}^{\infty} s \cdot p(\vec{y}|s) \cdot p(s) \, ds }{ \int_{-\infty}^{\infty} p(\vec{y}|s) \cdot p(s) \, ds }
+\]</div>
+<p>Given the support of <span class="math notranslate nohighlight">\( p(s) \)</span> is <span class="math notranslate nohighlight">\( (0, a) \)</span>, the integrals simplify to:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = \frac{ \int_{0}^{a} s \cdot p(\vec{y}|s) \cdot \frac{1}{a} \, ds }{ \int_{0}^{a} p(\vec{y}|s) \cdot \frac{1}{a} \, ds }
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\( \frac{1}{a} \)</span> is a constant, it cancels out in the numerator and denominator:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = \frac{ \int_{0}^{a} s \cdot p(\vec{y}|s) \, ds }{ \int_{0}^{a} p(\vec{y}|s) \, ds }
+\]</div>
+<p>Notice that:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^{L} (y_i - s)^2 = \sum_{i=1}^{L} (y_i - \bar{y} + \bar{y} - s)^2 = \sum_{i=1}^{L} (y_i - \bar{y})^2 + L (\bar{y} - s)^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \bar{y} = \frac{1}{L} \sum_{i=1}^{L} y_i \)</span> is the sample mean.</p>
+<p>Thus, the joint likelihood becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}|s) = \left( \frac{1}{\sqrt{2\pi \sigma^2}} \right)^L \exp\left( -\frac{1}{2\sigma^2} \sum_{i=1}^{L} (y_i - \bar{y})^2 \right) \exp\left( -\frac{L (\bar{y} - s)^2}{2\sigma^2} \right)
+\]</div>
+<p>The term <span class="math notranslate nohighlight">\( \sum_{i=1}^{L} (y_i - \bar{y})^2 \)</span> is <strong>independent</strong> of <span class="math notranslate nohighlight">\( s \)</span>, so it acts as a constant in both the numerator and denominator and cancels out. Therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = \frac{ \int_{0}^{a} s \cdot \exp\left( -\frac{L (\bar{y} - s)^2}{2\sigma^2} \right) ds }{ \int_{0}^{a} \exp\left( -\frac{L (\bar{y} - s)^2}{2\sigma^2} \right) ds }
+\]</div>
+</section>
+<section id="derivation-of-the-mmse-estimate">
+<h3>Derivation of the MMSE Estimate<a class="headerlink" href="#derivation-of-the-mmse-estimate" title="Link to this heading">#</a></h3>
+<p>To evaluate the integrals, perform a change of variables to standardize the Gaussian exponent.</p>
+<p>Let:</p>
+<div class="math notranslate nohighlight">
+\[
+z = \frac{ s - \bar{y} }{ \tau }, \quad \text{where } \tau = \frac{ \sigma }{ \sqrt{L} }
+\]</div>
+<p>Thus:</p>
+<div class="math notranslate nohighlight">
+\[
+s = \bar{y} + z \tau \quad \text{and} \quad ds = \tau \, dz
+\]</div>
+<p>Constraints from the prior probability <span class="math notranslate nohighlight">\(p(s)\)</span>:</p>
+<ul>
+<li><p>When <span class="math notranslate nohighlight">\( s = 0 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  z_1 = \frac{ 0 - \bar{y} }{ \tau } = -\frac{ \bar{y} \sqrt{L} }{ \sigma }
+  \]</div>
+</li>
+<li><p>When <span class="math notranslate nohighlight">\( s = a \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  z_2 = \frac{ a - \bar{y} }{ \tau } = \frac{ (a - \bar{y}) \sqrt{L} }{ \sigma }
+  \]</div>
+</li>
+</ul>
+<p>Substituting into the integrals:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = \frac{ \int_{z_1}^{z_2} (\bar{y} + z \tau) \exp\left( -\frac{z^2}{2} \right) \tau \, dz }{ \int_{z_1}^{z_2} \exp\left( -\frac{z^2}{2} \right) \tau \, dz }
+\]</div>
+<p>Simplifying, the <span class="math notranslate nohighlight">\( \tau \)</span> terms cancel out:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = \frac{ \int_{z_1}^{z_2} (\bar{y} + z \tau) \exp\left( -\frac{z^2}{2} \right) dz }{ \int_{z_1}^{z_2} \exp\left( -\frac{z^2}{2} \right) dz }
+\]</div>
+<p>Split the numerator:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{z_1}^{z_2} (\bar{y} + z \tau) e^{ -z^2 / 2 } dz = \bar{y} \int_{z_1}^{z_2} e^{ -z^2 / 2 } dz + \tau \int_{z_1}^{z_2} z e^{ -z^2 / 2 } dz
+\]</div>
+<p>For the first integral</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{z_1}^{z_2} e^{ -z^2 / 2 } dz = \sqrt{2\pi} \left[ \Phi(z_2) - \Phi(z_1) \right]
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \Phi(z) \)</span> is the <strong>standard normal cumulative distribution function (CDF)</strong>, i.e., <span class="math notranslate nohighlight">\(\Phi(z) = 1- Q(z)\)</span>.</p>
+<p>For the second integral</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{z_1}^{z_2} z e^{ -z^2 / 2 } dz = -e^{ -z^2 / 2 } \Big|_{z_1}^{z_2} = e^{ -z_1^2 / 2 } - e^{ -z_2^2 / 2 }
+\]</div>
+<p>Thus, the numerator becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{y} \cdot \sqrt{2\pi} \left[ \Phi(z_2) - \Phi(z_1) \right] + \tau \left[ e^{ -z_1^2 / 2 } - e^{ -z_2^2 / 2 } \right]
+\]</div>
+<p>And the denominator is:</p>
+<div class="math notranslate nohighlight">
+\[
+\sqrt{2\pi} \left[ \Phi(z_2) - \Phi(z_1) \right]
+\]</div>
+<p>Therefore, the MMSE estimator is:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = \bar{y} + \frac{ \tau \left[ e^{ -z_1^2 / 2 } - e^{ -z_2^2 / 2 } \right] }{ \sqrt{2\pi} \left[ \Phi(z_2) - \Phi(z_1) \right] }
+\]</div>
+<p>Recall that:</p>
+<div class="math notranslate nohighlight">
+\[
+\tau = \frac{ \sigma }{ \sqrt{L} }, \quad z_1 = -\frac{ \bar{y} \sqrt{L} }{ \sigma }, \quad z_2 = \frac{ (a - \bar{y}) \sqrt{L} }{ \sigma }
+\]</div>
+<p>Substituting these back:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = \bar{y} + \frac{ \frac{ \sigma }{ \sqrt{L} } \left[ e^{ -\frac{ (\bar{y} \sqrt{L})^2 }{ 2 \sigma^2 } } - e^{ -\frac{ (a - \bar{y})^2 L }{ 2 \sigma^2 } } \right] }{ \sqrt{2\pi} \left[ \Phi\left( \frac{ (a - \bar{y}) \sqrt{L} }{ \sigma } \right) - \Phi\left( -\frac{ \bar{y} \sqrt{L} }{ \sigma } \right) \right] }
+\]</div>
+<p>Simplifying:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = \bar{y} + \frac{ \sigma }{ \sqrt{2\pi L} } \cdot \frac{ e^{ -\frac{ \bar{y}^2 L }{ 2 \sigma^2 } } - e^{ -\frac{ (a - \bar{y})^2 L }{ 2 \sigma^2 } } }{ \Phi\left( \frac{ (a - \bar{y}) \sqrt{L} }{ \sigma } \right) - \Phi\left( -\frac{ \bar{y} \sqrt{L} }{ \sigma } \right) }
+\]</div>
+<p><strong>Note</strong>: <span class="math notranslate nohighlight">\( \Phi(-x) = 1 - \Phi(x) \)</span>, so:</p>
+<div class="math notranslate nohighlight">
+\[
+\Phi\left( -\frac{ \bar{y} \sqrt{L} }{ \sigma } \right) = 1 - \Phi\left( \frac{ \bar{y} \sqrt{L} }{ \sigma } \right)
+\]</div>
+<p>Thus, the denominator can be rewritten as:</p>
+<div class="math notranslate nohighlight">
+\[
+\Phi\left( \frac{ (a - \bar{y}) \sqrt{L} }{ \sigma } \right) - \left( 1 - \Phi\left( \frac{ \bar{y} \sqrt{L} }{ \sigma } \right) \right) = \Phi\left( \frac{ (a - \bar{y}) \sqrt{L} }{ \sigma } \right) + \Phi\left( \frac{ \bar{y} \sqrt{L} }{ \sigma } \right) - 1
+\]</div>
+<p>Therefore, the MMSE estimator simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = \bar{y} + \frac{ \sigma }{ \sqrt{2\pi L} } \cdot \frac{ e^{ -\frac{ \bar{y}^2 L }{ 2 \sigma^2 } } - e^{ -\frac{ (a - \bar{y})^2 L }{ 2 \sigma^2 } } }{ \Phi\left( \frac{ (a - \bar{y}) \sqrt{L} }{ \sigma } \right) + \Phi\left( \frac{ \bar{y} \sqrt{L} }{ \sigma } \right) - 1 }
+\]</div>
+<p>Alternatively, using the <strong>error function</strong> <span class="math notranslate nohighlight">\( \text{erf}(x) \)</span>, which is related to the standard normal CDF <span class="math notranslate nohighlight">\( \Phi(x) \)</span> by:</p>
+<div class="math notranslate nohighlight">
+\[
+\Phi(x) = \frac{1}{2} \left[ 1 + \text{erf}\left( \frac{x}{\sqrt{2}} \right) \right]
+\]</div>
+<p>We can express the MMSE estimator as:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = \bar{y} + \frac{ \sigma }{ \sqrt{2\pi L} } \cdot \frac{ e^{ -\frac{ \bar{y}^2 L }{ 2 \sigma^2 } } - e^{ -\frac{ (a - \bar{y})^2 L }{ 2 \sigma^2 } } }{ \frac{1}{2} \left[ 1 + \text{erf}\left( \frac{ (a - \bar{y}) \sqrt{L} }{ \sigma \sqrt{2} } \right) \right] + \frac{1}{2} \left[ 1 + \text{erf}\left( \frac{ \bar{y} \sqrt{L} }{ \sigma \sqrt{2} } \right) \right] - 1 }
+\]</div>
+<p>Simplifying the denominator:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\Phi\left( \frac{ (a - \bar{y}) \sqrt{L} }{ \sigma } \right) + \Phi\left( \frac{ \bar{y} \sqrt{L} }{ \sigma } \right) - 1 &amp;= \frac{1}{2} \left[ 1 + \text{erf}\left( \frac{ (a - \bar{y}) \sqrt{L} }{ \sigma \sqrt{2} } \right) \right] + \frac{1}{2} \left[ 1 + \text{erf}\left( \frac{ \bar{y} \sqrt{L} }{ \sigma \sqrt{2} } \right) \right] - 1
+\\
+&amp;= \frac{1}{2} \text{erf}\left( \frac{ (a - \bar{y}) \sqrt{L} }{ \sigma \sqrt{2} } \right) + \frac{1}{2} \text{erf}\left( \frac{ \bar{y} \sqrt{L} }{ \sigma \sqrt{2} } \right)
+\end{align*}
+\end{split}\]</div>
+<p>Thus, the MMSE estimator becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = \bar{y} + \frac{ \sigma }{ \sqrt{2\pi L} } \cdot \frac{ e^{ -\frac{ \bar{y}^2 L }{ 2 \sigma^2 } } - e^{ -\frac{ (a - \bar{y})^2 L }{ 2 \sigma^2 } } }{ \frac{1}{2} \left[ \text{erf}\left( \frac{ (a - \bar{y}) \sqrt{L} }{ \sigma \sqrt{2} } \right) + \text{erf}\left( \frac{ \bar{y} \sqrt{L} }{ \sigma \sqrt{2} } \right) \right] }
+\]</div>
+<p>This expression neatly encapsulates the MMSE estimator in terms of the sample mean <span class="math notranslate nohighlight">\( \bar{y} \)</span>, the <strong>error function</strong>, and the system parameters <span class="math notranslate nohighlight">\( a \)</span>, <span class="math notranslate nohighlight">\( \sigma \)</span>, and <span class="math notranslate nohighlight">\( L \)</span>.</p>
+<p><strong>Summary: Expressions for the MMSE Estimator</strong></p>
+<p>To present the MMSE estimator in a compact and interpretable form, we can express it as:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\hat{s}_{\text{MMSE}} = \bar{y} + \frac{ \sigma }{ \sqrt{2\pi L} } \cdot \frac{ e^{ -\frac{ \bar{y}^2 L }{ 2 \sigma^2 } } - e^{ -\frac{ (a - \bar{y})^2 L }{ 2 \sigma^2 } } }{ \Phi\left( \frac{ (a - \bar{y}) \sqrt{L} }{ \sigma } \right) + \Phi\left( \frac{ \bar{y} \sqrt{L} }{ \sigma } \right) - 1 }
+}
+\]</div>
+<p>Alternatively, using the error function <span class="math notranslate nohighlight">\( \text{erf}(x) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\hat{s}_{\text{MMSE}} = \bar{y} + \frac{ \sigma }{ \sqrt{2\pi L} } \cdot \frac{ e^{ -\frac{ \bar{y}^2 L }{ 2 \sigma^2 } } - e^{ -\frac{ (a - \bar{y})^2 L }{ 2 \sigma^2 } } }{ \frac{1}{2} \left[ \text{erf}\left( \frac{ (a - \bar{y}) \sqrt{L} }{ \sigma \sqrt{2} } \right) + \text{erf}\left( \frac{ \bar{y} \sqrt{L} }{ \sigma \sqrt{2} } \right) \right] }
+}
+\]</div>
+<p>where</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( \bar{y} = \frac{1}{L} \sum_{i=1}^{L} y_i \)</span> is the sample mean.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Phi(x) \)</span> is the <strong>standard normal CDF</strong>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \text{erf}(x) \)</span> is the <strong>error function</strong>, related to the standard normal CDF by:</p>
+<div class="math notranslate nohighlight">
+\[
+  \Phi(x) = \frac{1}{2} \left[ 1 + \text{erf}\left( \frac{x}{\sqrt{2}} \right) \right]
+  \]</div>
+</li>
+</ul>
+</section>
+<section id="example-calculation">
+<h3>Example Calculation<a class="headerlink" href="#example-calculation" title="Link to this heading">#</a></h3>
+<p><strong>Given</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( L = 10 \)</span> observations:</p>
+<div class="math notranslate nohighlight">
+\[
+  \vec{y} = [2.0, 2.2, 1.8, 2.1, 2.3, 2.0, 2.1, 2.2, 1.9, 2.0]
+  \]</div>
+</li>
+<li><p><span class="math notranslate nohighlight">\( a = 3 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \sigma = 0.5 \)</span></p></li>
+</ul>
+<p><strong>Calculate the Sample Mean</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{y} = \frac{2.0 + 2.2 + 1.8 + 2.1 + 2.3 + 2.0 + 2.1 + 2.2 + 1.9 + 2.0}{10} = 2.06
+\]</div>
+<p><strong>Compute the MMSE Estimator</strong>:</p>
+<p>Substitute the values into the MMSE estimator formula:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} = 2.06 + \frac{0.5}{\sqrt{2\pi \times 10}} \cdot \frac{ e^{ -\frac{(2.06)^2 \times 10}{2 \times 0.5^2} } - e^{ -\frac{(3 - 2.06)^2 \times 10}{2 \times 0.5^2} } }{ \Phi\left( \frac{(3 - 2.06) \times \sqrt{10}}{0.5} \right) + \Phi\left( \frac{2.06 \times \sqrt{10}}{0.5} \right) - 1 }
+\]</div>
+<p>Calculating each component:</p>
+<p>Exponentials</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{(2.06)^2 \times 10}{2 \times 0.25} = 84.86 \quad \Rightarrow \quad e^{-84.86} \approx 0 \quad (\text{negligible})
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{(3 - 2.06)^2 \times 10}{2 \times 0.25} = 17.672 \quad \Rightarrow \quad e^{-17.672} \approx 2.10 \times 10^{-8}
+\]</div>
+<p>CDFs</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{(3 - 2.06) \times \sqrt{10}}{0.5} \approx 5.95
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{2.06 \times \sqrt{10}}{0.5} \approx 13.04
+\]</div>
+<p>Thus:</p>
+<div class="math notranslate nohighlight">
+\[
+\Phi(5.95) \approx 1 \quad (\text{since 5.95 is far in the tail})
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Phi(13.04) \approx 1 \quad (\text{even more in the tail})
+\]</div>
+<p>Substituting Back</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\hat{s}_{\text{MMSE}} &amp;= 2.06 + \frac{0.5}{\sqrt{2\pi \times 10}} \cdot \frac{ 0 - 2.10 \times 10^{-8} }{ 1 + 1 - 1 } \\
+&amp;\approx 2.06
+\end{align*}
+\end{split}\]</div>
+<p>Thus, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{s}_{\text{MMSE}} \approx 2.06 
+\]</div>
+<p>Since the sample mean <span class="math notranslate nohighlight">\( \bar{y} = 2.06 \)</span> lies well within the interval <span class="math notranslate nohighlight">\( (0, 3) \)</span>, the MMSE estimator closely aligns (not identical, because this is an approximation) with the sample mean, as expected.</p>
+</section>
+<section id="biasness-of-mmse">
+<h3>Biasness of MMSE<a class="headerlink" href="#biasness-of-mmse" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Bias</strong>: The final expression shows that the MMSE estimate <span class="math notranslate nohighlight">\( \hat{s}_{MS} \)</span> is <strong>biased</strong>. This contrasts with the <strong>ML</strong> and <strong>MAP</strong> estimates, which are <strong>unbiased</strong>.</p></li>
+<li><p>The bias term (involving <span class="math notranslate nohighlight">\( \bar{y} \)</span>) can be numerically evaluated to show how its bias is affected by a parameter defined in decibels (dB).</p></li>
+<li><p>The quality of the estimate depends on the parameter <span class="math notranslate nohighlight">\( L / (2\sigma^2) \)</span>, which is expressed in decibels as:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+g_{dB} = 10 \log \left( \frac{L}{2 \sigma^2} \right)
+\]</div>
+<p>The MMSE estimator expressed as a function of <span class="math notranslate nohighlight">\( g = \frac{L}{2\sigma^2} \)</span> (linear) as</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\hat{s}_{\text{MMSE}} (g) = \bar{y} + \frac{1}{\sqrt{\pi g}} \cdot \frac{ e^{-g\bar{y}^2} - e^{-g(a - \bar{y})^2} }{ \text{erf}\left( (a - \bar{y}) \sqrt{g} \right) + \text{erf}\left( \bar{y} \sqrt{g} \right) }
+}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span>
+
+<span class="c1"># Define the MMSE estimator function</span>
+<span class="k">def</span> <span class="nf">mmse_estimator</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">numerator</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">g</span> <span class="o">*</span> <span class="n">y_bar</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">g</span> <span class="o">*</span> <span class="p">(</span><span class="n">a</span> <span class="o">-</span> <span class="n">y_bar</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">denominator</span> <span class="o">=</span> <span class="n">erf</span><span class="p">((</span><span class="n">a</span> <span class="o">-</span> <span class="n">y_bar</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">g</span><span class="p">))</span> <span class="o">+</span> <span class="n">erf</span><span class="p">(</span><span class="n">y_bar</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">g</span><span class="p">))</span>
+    <span class="c1"># To handle division by zero, we add a small epsilon to the denominator</span>
+    <span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1e-12</span>
+    <span class="n">denominator</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">denominator</span> <span class="o">==</span> <span class="mi">0</span><span class="p">,</span> <span class="n">epsilon</span><span class="p">,</span> <span class="n">denominator</span><span class="p">)</span>
+    <span class="n">estimator</span> <span class="o">=</span> <span class="n">y_bar</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">g</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">estimator</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">y_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">g_dB_values</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">g_values</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">g_dB_values</span><span class="p">)</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">g_dB</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">g_dB_values</span><span class="p">,</span> <span class="n">g_values</span><span class="p">):</span>
+    <span class="n">estimator</span> <span class="o">=</span> <span class="n">mmse_estimator</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">g</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">bias</span> <span class="o">=</span> <span class="n">estimator</span> <span class="o">-</span> <span class="n">y_bar</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">bias</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;g = </span><span class="si">{</span><span class="n">g_dB</span><span class="si">}</span><span class="s1"> dB&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bias of MMSE Estimator vs. Sample Mean&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Mean ȳ&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Bias&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/220682f62539d7f281af9d8f6727ff16e645b1718c8c20e3156b9516d2c8927d.png" src="_images/220682f62539d7f281af9d8f6727ff16e645b1718c8c20e3156b9516d2c8927d.png" />
+</div>
+</div>
+<section id="schonhoff-s-method">
+<h4>Schonhoff’s Method<a class="headerlink" href="#schonhoff-s-method" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+<span class="k">def</span> <span class="nf">bias</span><span class="p">(</span><span class="n">gdb</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculate the bias of the MMSE Estimate for a given gdb.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        gdb (float): g in decibels, defined as 10 * log10(L / (2 * sigma^2))</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        b (numpy.ndarray): Bias of the MMSE estimate for y ranging from 0 to 1 in steps of 0.1</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Convert gdb from decibels to linear scale</span>
+    <span class="n">g</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="mf">0.1</span> <span class="o">*</span> <span class="n">gdb</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate coefficients</span>
+    <span class="n">coef</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span>
+    <span class="n">sig</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span>
+    
+    <span class="c1"># Initialize bias array</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">11</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate bias for y values from 0 to 1 in steps of 0.1</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.1</span>
+        <span class="n">t1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">y</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span>
+        <span class="n">t2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">g</span><span class="p">)</span>
+        
+        <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">t1</span><span class="p">,</span> <span class="n">t2</span><span class="p">):</span>
+            <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">td1</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sig</span><span class="p">)</span>
+            <span class="n">td2</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sig</span><span class="p">)</span>
+            <span class="n">denominator</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">td1</span> <span class="o">-</span> <span class="n">td2</span><span class="p">)</span>
+            
+            <span class="c1"># To avoid division by zero, check if denominator is not zero</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">denominator</span><span class="p">,</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">coef</span> <span class="o">*</span> <span class="p">(</span><span class="n">t1</span> <span class="o">-</span> <span class="n">t2</span><span class="p">)</span> <span class="o">/</span> <span class="n">denominator</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">b</span><span class="p">[</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Assign zero or handle as needed</span>
+    
+    <span class="k">return</span> <span class="n">b</span>
+
+<span class="k">def</span> <span class="nf">plot_bias</span><span class="p">(</span><span class="n">gdb_values</span><span class="p">,</span> <span class="n">y_range</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">step</span><span class="o">=</span><span class="mf">0.1</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Plot the bias of the MMSE Estimate for multiple gdb values.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        gdb_values (list or array-like): List of gdb values in decibels to plot</span>
+<span class="sd">        y_range (tuple): The range of y values (start, end)</span>
+<span class="sd">        step (float): Step size for y values</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># Create y-axis values based on the specified range and step</span>
+    <span class="n">y_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">y_range</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_range</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">step</span><span class="p">,</span> <span class="n">step</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+    
+    <span class="k">for</span> <span class="n">gdb</span> <span class="ow">in</span> <span class="n">gdb_values</span><span class="p">:</span>
+        <span class="n">bias_values</span> <span class="o">=</span> <span class="n">bias</span><span class="p">(</span><span class="n">gdb</span><span class="p">)</span>
+        <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_values</span><span class="p">,</span> <span class="n">bias_values</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;gdb = </span><span class="si">{</span><span class="n">gdb</span><span class="si">}</span><span class="s1"> dB&#39;</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Mean ȳ&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Bias&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bias of MMSE Estimate for Various gdb Values&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s1">&#39;gdb Values&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Example usage</span>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="c1"># Define multiple gdb values</span>
+    <span class="n">gdb_values</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>  <span class="c1"># You can add more values as needed</span>
+    
+    <span class="c1"># Plot bias for the specified gdb values</span>
+    <span class="n">plot_bias</span><span class="p">(</span><span class="n">gdb_values</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4f309d376b4c4c4e4df22b600ee305dc4afe2c89f83e0785a2984045956e2cc0.png" src="_images/4f309d376b4c4c4e4df22b600ee305dc4afe2c89f83e0785a2984045956e2cc0.png" />
+</div>
+</div>
+<p>The bias decreases as <span class="math notranslate nohighlight">\( g_{dB} \)</span> increases, and as <span class="math notranslate nohighlight">\( g_{dB} \)</span> becomes large, the bias term approaches zero, meaning the MMSE estimate becomes closer to unbiased.</p>
+<p>We can say that the larger the signal-to-noise ratio (expressed by <span class="math notranslate nohighlight">\( g_{dB} \)</span>), the smaller the bias in the MMSE estimate.</p>
+</section>
+</section>
+<section id="discussion">
+<h3>Discussion<a class="headerlink" href="#discussion" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Data Integration</strong>: The MMSE estimator <span class="math notranslate nohighlight">\( \hat{s}_{\text{MMSE}} \)</span> integrates both the <strong>observed data</strong> (through the sample mean <span class="math notranslate nohighlight">\( \bar{y} \)</span>) and the <strong>prior information</strong> about <span class="math notranslate nohighlight">\( s \)</span> (uniformly distributed over <span class="math notranslate nohighlight">\( (0, a) \)</span>). This ensures that the estimator not only fits the data but also adheres to the known constraints on <span class="math notranslate nohighlight">\( s \)</span>.</p></li>
+<li><p><strong>Bias-Variance Trade-off</strong>: Unlike the <strong>Maximum Likelihood</strong> estimator, which solely relies on data and can be biased when data suggests estimates outside <span class="math notranslate nohighlight">\( (0, a) \)</span>, the MMSE estimator incorporates prior knowledge to potentially introduce bias that reduces the overall mean squared error.</p></li>
+<li><p><strong>Behavior Near Boundaries</strong>:</p>
+<ul>
+<li><p><strong>Central Estimates</strong> (<span class="math notranslate nohighlight">\( \bar{y} \)</span> well within <span class="math notranslate nohighlight">\( (0, a) \)</span>): The MMSE estimator closely aligns with the sample mean, similar to the ML estimator.</p></li>
+<li><p><strong>Boundary Estimates</strong> (<span class="math notranslate nohighlight">\( \bar{y} \)</span> near 0 or <span class="math notranslate nohighlight">\( a \)</span>): The estimator adjusts the estimate to respect the prior constraints, preventing it from exceeding the bounds. This results in a smoother transition compared to the ML estimator, which might abruptly clip estimates.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="simulation-of-3-methods">
+<h2>Simulation of 3 Methods<a class="headerlink" href="#simulation-of-3-methods" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span>
+
+<span class="c1"># Simulation Parameters</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">10</span>              <span class="c1"># Number of observations</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">3.0</span>             <span class="c1"># Upper bound for s</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>         <span class="c1"># Noise standard deviation</span>
+<span class="n">num_trials</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Number of simulation trials</span>
+
+<span class="c1"># Function to compute MMSE estimator via numerical integration</span>
+<span class="k">def</span> <span class="nf">mmse_estimator_numerical</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="c1"># Define the integrand for the numerator: s * exp(- (L/(2*sigma^2)) * (s - y_bar)^2)</span>
+    <span class="k">def</span> <span class="nf">numerator_integrand</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">s</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">y_bar</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Define the integrand for the denominator: exp(- (L/(2*sigma^2)) * (s - y_bar)^2)</span>
+    <span class="k">def</span> <span class="nf">denominator_integrand</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span> <span class="p">(</span><span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">s</span> <span class="o">-</span> <span class="n">y_bar</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Compute the integrals numerically</span>
+    <span class="n">numerator</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">numerator_integrand</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">denominator</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">denominator_integrand</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    
+    <span class="c1"># Avoid division by zero</span>
+    <span class="k">if</span> <span class="n">denominator</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+
+<span class="c1"># Function to compute MMSE estimator via closed-form expression</span>
+<span class="k">def</span> <span class="nf">mmse_estimator_closed_form</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="c1"># Compute the exponent terms</span>
+    <span class="n">exponent1</span> <span class="o">=</span> <span class="o">-</span> <span class="p">(</span><span class="n">y_bar</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">exponent2</span> <span class="o">=</span> <span class="o">-</span> <span class="p">((</span><span class="n">a</span> <span class="o">-</span> <span class="n">y_bar</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">L</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Compute the numerator and denominator</span>
+    <span class="n">numerator</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">exponent1</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">exponent2</span><span class="p">)</span>
+    
+    <span class="c1"># Compute the error functions</span>
+    <span class="n">erf1</span> <span class="o">=</span> <span class="n">erf</span><span class="p">((</span><span class="n">a</span> <span class="o">-</span> <span class="n">y_bar</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+    <span class="n">erf2</span> <span class="o">=</span> <span class="n">erf</span><span class="p">(</span><span class="n">y_bar</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+    
+    <span class="c1"># Compute the denominator of the fraction inside the formula</span>
+    <span class="n">denominator</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">erf1</span> <span class="o">+</span> <span class="n">erf2</span><span class="p">)</span>
+    
+    <span class="c1"># Avoid division by zero</span>
+    <span class="k">if</span> <span class="n">denominator</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">adjustment</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">adjustment</span> <span class="o">=</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">L</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span><span class="p">)</span>
+    
+    <span class="c1"># Compute the closed-form MMSE estimator</span>
+    <span class="n">s_mmse_closed</span> <span class="o">=</span> <span class="n">y_bar</span> <span class="o">+</span> <span class="n">adjustment</span>
+    <span class="k">return</span> <span class="n">s_mmse_closed</span>
+
+<span class="c1"># Function to compute MAP estimator via theory</span>
+<span class="k">def</span> <span class="nf">map_estimator_closed_form</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_bar</span><span class="p">))</span>
+
+<span class="c1"># Function to compute MAP estimator via numerical root-finding (generalized approach)</span>
+<span class="k">def</span> <span class="nf">map_estimator_numerical</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">a</span><span class="p">):</span>
+    <span class="c1"># Define the derivative of log p(s | y) with respect to s</span>
+    <span class="k">def</span> <span class="nf">derivative_log_posterior</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+        <span class="c1"># For uniform prior, p(s) is constant within [0, a]</span>
+        <span class="c1"># So derivative is same as derivative of log p(y | s)</span>
+        <span class="c1"># p(y | s) ~ exp(- (sum (y_i - s)^2)/(2 sigma^2))</span>
+        <span class="c1"># derivative: d/ds log p(y | s) = sum (y_i - s) / sigma^2 = L (y_bar - s) / sigma^2</span>
+        <span class="k">return</span> <span class="n">L</span> <span class="o">*</span> <span class="p">(</span><span class="n">y_bar</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Attempt to find the root within [0, a]</span>
+    <span class="c1"># Given the derivative is linear in s, the root is at s = y_bar</span>
+    <span class="c1"># Clamp the root to [0, a]</span>
+    <span class="n">s_root</span> <span class="o">=</span> <span class="n">y_bar</span>
+    <span class="n">s_root_clamped</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">s_root</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">s_root_clamped</span>
+
+<span class="c1"># Initialize arrays to store results</span>
+<span class="n">ml_estimates</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_trials</span><span class="p">)</span>
+<span class="n">map_estimates_closed_form</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_trials</span><span class="p">)</span>
+<span class="n">map_estimates_numerical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_trials</span><span class="p">)</span>
+<span class="n">mmse_estimates_numerical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_trials</span><span class="p">)</span>
+<span class="n">mmse_estimates_closed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_trials</span><span class="p">)</span>
+<span class="n">true_signals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num_trials</span><span class="p">)</span>
+
+<span class="c1"># Simulation Loop</span>
+<span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_trials</span><span class="p">):</span>
+    <span class="c1"># Randomly choose a true signal s within (0, a)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">true_signals</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span>
+    
+    <span class="c1"># Generate L observations with Gaussian noise</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+    <span class="n">y_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    
+    <span class="c1"># ML Estimator</span>
+    <span class="n">s_ml</span> <span class="o">=</span> <span class="n">y_bar</span>
+    <span class="n">ml_estimates</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_ml</span>
+    
+    <span class="c1"># MAP Estimator via Closed-Form</span>
+    <span class="n">s_map_proj</span> <span class="o">=</span> <span class="n">map_estimator_closed_form</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">map_estimates_closed_form</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_map_proj</span>
+    
+    <span class="c1"># MAP Estimator via Numerical Root-Finding</span>
+    <span class="n">s_map_num</span> <span class="o">=</span> <span class="n">map_estimator_numerical</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">map_estimates_numerical</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_map_num</span>
+    
+    <span class="c1"># MMSE Estimator via Numerical Integration</span>
+    <span class="n">s_mmse_num</span> <span class="o">=</span> <span class="n">mmse_estimator_numerical</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">mmse_estimates_numerical</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_mmse_num</span>
+    
+    <span class="c1"># MMSE Estimator via Closed-Form Expression</span>
+    <span class="n">s_mmse_closed</span> <span class="o">=</span> <span class="n">mmse_estimator_closed_form</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">mmse_estimates_closed</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_mmse_closed</span>
+
+<span class="c1"># Compute Squared Errors</span>
+<span class="n">ml_errors</span> <span class="o">=</span> <span class="p">(</span><span class="n">true_signals</span> <span class="o">-</span> <span class="n">ml_estimates</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">map_errors_proj</span> <span class="o">=</span> <span class="p">(</span><span class="n">true_signals</span> <span class="o">-</span> <span class="n">map_estimates_closed_form</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">map_errors_num</span> <span class="o">=</span> <span class="p">(</span><span class="n">true_signals</span> <span class="o">-</span> <span class="n">map_estimates_numerical</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">mmse_errors_num</span> <span class="o">=</span> <span class="p">(</span><span class="n">true_signals</span> <span class="o">-</span> <span class="n">mmse_estimates_numerical</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+<span class="n">mmse_errors_closed_form</span> <span class="o">=</span> <span class="p">(</span><span class="n">true_signals</span> <span class="o">-</span> <span class="n">mmse_estimates_closed</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1"># Compute Mean Squared Errors</span>
+<span class="n">mse_ml</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ml_errors</span><span class="p">)</span>
+<span class="n">mse_map_proj</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">map_errors_proj</span><span class="p">)</span>
+<span class="n">mse_map_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">map_errors_num</span><span class="p">)</span>
+<span class="n">mse_mmse_num</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mmse_errors_num</span><span class="p">)</span>
+<span class="n">mse_mmse_closed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mmse_errors_closed_form</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error (ML Estimator): </span><span class="si">{</span><span class="n">mse_ml</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error (MAP Estimator - Closed-Form): </span><span class="si">{</span><span class="n">mse_map_proj</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error (MAP Estimator - Numerical): </span><span class="si">{</span><span class="n">mse_map_num</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error (MMSE Estimator - Closed-Form): </span><span class="si">{</span><span class="n">mse_mmse_closed</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Mean Squared Error (MMSE Estimator - Numerical): </span><span class="si">{</span><span class="n">mse_mmse_num</span><span class="si">:</span><span class="s2">.5f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Mean Squared Error (ML Estimator): 0.41932
+Mean Squared Error (MAP Estimator - Closed-Form): 0.32206
+Mean Squared Error (MAP Estimator - Numerical): 0.32206
+Mean Squared Error (MMSE Estimator - Closed-Form): 0.26368
+Mean Squared Error (MMSE Estimator - Numerical): 0.26368
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Additional Plot: True Signals vs Selected Estimators with Trial Index on X-axis</span>
+<span class="c1"># To visualize how estimates evolve over trials, we can plot the estimators against trial index.</span>
+
+<span class="c1"># To make the plot readable, especially with huge trials, we&#39;ll plot a subset, e.g., every k-th trial.</span>
+<span class="n">subset_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_trials</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">subset_trials</span> <span class="o">=</span> <span class="n">subset_indices</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Trial indices starting from 1</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subset_trials</span><span class="p">,</span> <span class="n">true_signals</span><span class="p">[</span><span class="n">subset_indices</span><span class="p">],</span> 
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True Signal&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subset_trials</span><span class="p">,</span> <span class="n">ml_estimates</span><span class="p">[</span><span class="n">subset_indices</span><span class="p">],</span> 
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ML Estimator&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subset_trials</span><span class="p">,</span> <span class="n">map_estimates_closed_form</span><span class="p">[</span><span class="n">subset_indices</span><span class="p">],</span> 
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MAP Estimator - Closed-Form&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">subset_trials</span><span class="p">,</span> <span class="n">mmse_estimates_closed</span><span class="p">[</span><span class="n">subset_indices</span><span class="p">],</span> 
+         <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MMSE Estimator - Closed-Form&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;True Signals and Estimates Across Trials&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Trial Index&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Signal Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e8f10ea62794236d5d1ee67ec0270705ae06065dc8351daa240e93f00902f074.png" src="_images/e8f10ea62794236d5d1ee67ec0270705ae06065dc8351daa240e93f00902f074.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting Histograms of Squared Errors and True Signal vs Estimates in pairs</span>
+
+<span class="c1"># Pair 1: ML Estimator</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ml_errors</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ML Estimator&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Squared Errors (ML)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Squared Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">true_signals</span><span class="p">,</span> <span class="n">ml_estimates</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ML Estimator&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ideal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;True Signal vs ML Estimates&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;True Signal (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated Signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Pair 2: MAP Estimator - Closed-Form</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">map_errors_proj</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MAP Estimator - Closed-Form&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Squared Errors (MAP - Closed-Form)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Squared Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">true_signals</span><span class="p">,</span> <span class="n">map_estimates_closed_form</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MAP Estimator - Closed-Form&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ideal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;True Signal vs MAP Estimates (Closed-Form)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;True Signal (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated Signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Pair 3: MMSE Estimator - Closed-Form</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">mmse_errors_closed_form</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MMSE Estimator - Closed-Form&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Squared Errors (MMSE - Closed-Form)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Squared Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">true_signals</span><span class="p">,</span> <span class="n">mmse_estimates_closed</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MMSE Estimator - Closed-Form&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Ideal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;True Signal vs MMSE Estimates (Closed-Form)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;True Signal (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimated Signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9d8b76a2944c11c75c72e401cb90ad580e8b73a72735f3cbfdbdcc91fec634cb.png" src="_images/9d8b76a2944c11c75c72e401cb90ad580e8b73a72735f3cbfdbdcc91fec634cb.png" />
+<img alt="_images/86304e6357ed58e420d51a67fe8f834f59f01441787cbb4e46c284d55d2a45ee.png" src="_images/86304e6357ed58e420d51a67fe8f834f59f01441787cbb4e46c284d55d2a45ee.png" />
+<img alt="_images/b5196c7cc5215f0982d94eec334b8324eb0e0de2a44a0399edecf98c4b0bb16f.png" src="_images/b5196c7cc5215f0982d94eec334b8324eb0e0de2a44a0399edecf98c4b0bb16f.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># To store y_bar for selected trials</span>
+<span class="n">selected_trials</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_trials</span><span class="p">)]</span>  <span class="c1"># First, random</span>
+<span class="n">selected_y_bars</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">selected_s_true</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Simulation Loop</span>
+<span class="k">for</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_trials</span><span class="p">):</span>
+    <span class="c1"># Randomly choose a true signal s within (0, a)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">true_signals</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span> <span class="o">=</span> <span class="n">s</span>
+    
+    <span class="c1"># Generate L observations with Gaussian noise</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">s</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+    <span class="n">y_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    
+    <span class="c1"># ML Estimator</span>
+    <span class="n">s_ml</span> <span class="o">=</span> <span class="n">y_bar</span>
+    <span class="n">ml_estimates</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_ml</span>
+    
+    <span class="c1"># MAP Estimator via Closed-Form</span>
+    <span class="n">s_map_proj</span> <span class="o">=</span> <span class="n">map_estimator_closed_form</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">map_estimates_closed_form</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_map_proj</span>
+    
+    <span class="c1"># MAP Estimator via Numerical Root-Finding</span>
+    <span class="n">s_map_num</span> <span class="o">=</span> <span class="n">map_estimator_numerical</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">map_estimates_numerical</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_map_num</span>
+    
+    <span class="c1"># MMSE Estimator via Numerical Integration</span>
+    <span class="n">s_mmse_num</span> <span class="o">=</span> <span class="n">mmse_estimator_numerical</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">mmse_estimates_numerical</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_mmse_num</span>
+    
+    <span class="c1"># MMSE Estimator via Closed-Form Expression</span>
+    <span class="n">s_mmse_closed</span> <span class="o">=</span> <span class="n">mmse_estimator_closed_form</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+    <span class="n">mmse_estimates_closed</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span> <span class="o">=</span> <span class="n">s_mmse_closed</span>
+    
+    <span class="c1"># Store data for selected trials</span>
+    <span class="k">if</span> <span class="n">trial</span> <span class="ow">in</span> <span class="n">selected_trials</span><span class="p">:</span>
+        <span class="n">selected_y_bars</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_bar</span><span class="p">)</span>
+        <span class="n">selected_s_true</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+
+
+<span class="c1"># To make the plot readable, especially with huge trials, we&#39;ll plot a subset, e.g., every k-th trial.</span>
+<span class="n">subset_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">num_trials</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">subset_trials</span> <span class="o">=</span> <span class="n">subset_indices</span> <span class="o">+</span> <span class="mi">1</span>  <span class="c1"># Trial indices starting from 1</span>
+
+
+<span class="c1"># Plotting PDFs for Selected Trials</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">trial</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">selected_trials</span><span class="p">):</span>
+    <span class="n">s_true</span> <span class="o">=</span> <span class="n">selected_s_true</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    <span class="n">y_bar</span> <span class="o">=</span> <span class="n">selected_y_bars</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+    
+    <span class="c1"># Define s range for plotting</span>
+    <span class="n">s_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+    
+    <span class="c1"># Prior p(s): Uniform distribution</span>
+    <span class="n">p_s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">s_values</span><span class="p">)</span> <span class="o">/</span> <span class="n">a</span>  <span class="c1"># Uniform on [0,a]</span>
+    
+    <span class="c1"># Likelihood p(y | s): Gaussian centered at y_bar with variance sigma^2 / L</span>
+    <span class="c1"># Since y_bar is the sample mean of L observations, the likelihood of y_bar given s is N(s, sigma^2 / L)</span>
+    <span class="n">p_y_given_s</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">y_bar</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">s_values</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">L</span><span class="p">))</span>
+    
+    <span class="c1"># Posterior p(s | y): p(y | s) * p(s) normalized</span>
+    <span class="n">p_s_given_y</span> <span class="o">=</span> <span class="n">p_y_given_s</span> <span class="o">*</span> <span class="n">p_s</span>
+    <span class="n">p_s_given_y</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">p_s_given_y</span><span class="p">,</span> <span class="n">s_values</span><span class="p">)</span>  <span class="c1"># Normalize</span>
+    
+    <span class="c1"># Estimators</span>
+    <span class="n">s_ml</span> <span class="o">=</span> <span class="n">ml_estimates</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span>
+    <span class="n">s_map</span> <span class="o">=</span> <span class="n">map_estimates_closed_form</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span>
+    <span class="n">s_mmse</span> <span class="o">=</span> <span class="n">mmse_estimates_closed</span><span class="p">[</span><span class="n">trial</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s_values</span><span class="p">,</span> <span class="n">p_s</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Prior p(s)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s_values</span><span class="p">,</span> <span class="n">p_y_given_s</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Likelihood p(y|s)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s_values</span><span class="p">,</span> <span class="n">p_s_given_y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Posterior p(s|y)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mark estimators on the posterior</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">s_ml</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ML Estimate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">s_map</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;magenta&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MAP Estimate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">s_mmse</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;MMSE Estimate&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;PDFs for Trial </span><span class="si">{</span><span class="n">trial</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s1"> (s_true=</span><span class="si">{</span><span class="n">s_true</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">, y_bar=</span><span class="si">{</span><span class="n">y_bar</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Signal Value (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c9c4b83d1d0ba9d587d34b60748911ab2c141ec075eed924c05727eedd4860a8.png" src="_images/c9c4b83d1d0ba9d587d34b60748911ab2c141ec075eed924c05727eedd4860a8.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c3_s13_ML_estimator.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Maximum Likelihood (ML) Estimation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c5_s0_intro_copy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Vector and Multi-Hypothesis Detection</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary-of-previous-results">Summary of Previous Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-signal-reception-in-noise">Example: Signal Reception in Noise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method-1-maximum-likelihood-estimate">Method 1: Maximum Likelihood Estimate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-hat-s-text-ml">Finding <span class="math notranslate nohighlight">\( \hat{s}_{\text{ML}} \)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-maximum-a-posteriori-estimate-map">Method 2: Maximum A Posteriori Estimate (MAP)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solving-the-differential-equation">Solving the differential equation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#method-3-minimum-mean-squared-error-mmse-estimate">Method 3: Minimum Mean Squared Error (MMSE) Estimate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-formulation">Problem Formulation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-mmse-estimate">Derivation of the MMSE Estimate</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-calculation">Example Calculation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#biasness-of-mmse">Biasness of MMSE</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#schonhoff-s-method">Schonhoff’s Method</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-of-3-methods">Simulation of 3 Methods</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

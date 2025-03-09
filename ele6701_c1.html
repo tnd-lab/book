@@ -1,0 +1,846 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 1: Review of Probability Theory &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ele6701_c1';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Telecom Book" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <script>document.write(`<img src="_static/web_logo.png" class="logo__image only-dark" alt="Telecom Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Signal Detection and Estimation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Chapter 1: Review of Probability Theory</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 1: Review of Probability Theory</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability">Conditional Probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independence">Independence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-and-cdf">PDF and CDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-of-a-random-variable">Function of a Random Variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-and-second-moments">First and Second Moments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-random-variables">Two Random Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-scalar-gaussian-random-variable">Real Scalar Gaussian Random Variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-gaussian-random-vector">Real Gaussian Random Vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Real Gaussian Random Vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-random-vector">Complex Random Vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zmccsg">ZMCCSG</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-gaussian-vector">Complex Gaussian Vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-a-stochastic-process">Definition of a Stochastic Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationarity">Stationarity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectral-density">Power Spectral Density</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power">Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ergodicity">Ergodicity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-systems">Linear Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-process">Gaussian Process</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-1-review-of-probability-theory">
+<h1>Chapter 1: Review of Probability Theory<a class="headerlink" href="#chapter-1-review-of-probability-theory" title="Link to this heading">#</a></h1>
+<p>This chapter provides a comprehensive review of fundamental concepts in probability theory that are essential for understanding more advanced topics in wireless communications. We will cover key topics such as conditional probability, independence, probability density functions (PDF), cumulative distribution functions (CDF), and functions of random variables. Additionally, we will delve into moments, random variables, and stochastic processes, including stationarity, ergodicity, and power spectral density. The chapter also includes detailed discussions on Gaussian random variables and vectors, both real and complex, which are crucial for modeling and analysis in communication systems.</p>
+<section id="conditional-probability">
+<h2>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Link to this heading">#</a></h2>
+<ul>
+<li><p><strong>Definition:</strong></p>
+<div class="math notranslate nohighlight">
+\[ 
+  P(A|L)=\frac{P(AL)}{P(L)}
+  \]</div>
+</li>
+<li><p><strong>Total Probability Theorem:</strong></p>
+<div class="math notranslate nohighlight">
+\[ 
+  P(B)=\sum{P(B|A_i)P(A_i)}, \quad S=\sum{A_i} \text{ and } A_iA_j=0
+  \]</div>
+</li>
+<li><p><strong>Bayes’ Theorem:</strong></p>
+<div class="math notranslate nohighlight">
+\[ 
+  P(s|y)=\frac{P(y|s)P(s)}{P(y)}
+  \]</div>
+</li>
+</ul>
+</section>
+<section id="independence">
+<h2>Independence<a class="headerlink" href="#independence" title="Link to this heading">#</a></h2>
+<p><span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(B\)</span> are independent if and only if</p>
+<div class="math notranslate nohighlight">
+\[ 
+P(AB) = P(A)P(B)
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+P(A|B) = P(A)
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+P(B|A) = P(B)
+\]</div>
+</section>
+<section id="pdf-and-cdf">
+<h2>PDF and CDF<a class="headerlink" href="#pdf-and-cdf" title="Link to this heading">#</a></h2>
+<ul>
+<li><p><strong>CDF (Cumulative Density Function):</strong></p>
+<div class="math notranslate nohighlight">
+\[ 
+  F_{\mathbf{x}}(x)=P(\mathbf{x}\leq x)
+  \]</div>
+</li>
+<li><p><strong>PDF (Probability Density Function):</strong></p>
+<div class="math notranslate nohighlight">
+\[ 
+  f_{\mathbf{x}}(x)=\frac{dF_{\mathbf{x}}(x)}{dx}
+  \]</div>
+<div class="math notranslate nohighlight">
+\[ 
+  F_{\mathbf{x}}(x)=\int_{-\infty}^{x}f_{\mathbf{x}}(x)dx
+  \]</div>
+</li>
+</ul>
+</section>
+<section id="function-of-a-random-variable">
+<h2>Function of a Random Variable<a class="headerlink" href="#function-of-a-random-variable" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\(X\)</span> be a random variable with a distribution function <span class="math notranslate nohighlight">\(f_X(x)\)</span>, we define:</p>
+<div class="math notranslate nohighlight">
+\[ 
+y=g(x)
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+P(\mathbf{y}\leq y)=P(\mathbf{x}\leq g^{-1}(y))
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+f_{\mathbf{y}}(y)=\frac{f_{\mathbf{x}}(g^{-1}(y))}{\left|\frac{dy}{dx}\right|}
+\]</div>
+<p>If <span class="math notranslate nohighlight">\(\mathbf{x}\sim U(0,1)\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{y}=F_{\mathbf{y}}^{-1}(x)\sim f_{\mathbf{y}}(y)\]</div>
+<p>In the case of a function <span class="math notranslate nohighlight">\(y=g(x)\)</span> having multiple roots (<span class="math notranslate nohighlight">\(x_1,x_2,\dots,x_m\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[ 
+f_Y(x)=\frac{f_X(x_1)}{|g'(x_1)|}+\frac{f_X(x_2)}{|g'(x_2)|}+...+\frac{f_X(x_m)}{|g'(x_m)|}
+\]</div>
+</section>
+<section id="first-and-second-moments">
+<h2>First and Second Moments<a class="headerlink" href="#first-and-second-moments" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[ 
+E\{\mathbf{x}\}=\sum_kx_kp_k \quad \text{and} \quad E\{\mathbf{x}\}=\int_{-\infty}^{\infty}xf_{\mathbf{x}}(x)dx 
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+E\{\mathbf{x}|M\}=\sum_kx_kP(\mathbf{x}=x_k|M) \quad \text{and} \quad E\{\mathbf{x}|M\}=\int_{-\infty}^{\infty}xf_{\mathbf{x}}(x|M)dx 
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+E\{g(\mathbf{x})\}=\sum_kg(x_k)p_k \quad \text{and} \quad E\{g(\mathbf{x})\}=\int_{-\infty}^{\infty}g(x)f_{\mathbf{x}}(x)dx 
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+V\{\mathbf{x}\}=\sum_k(x_k-E\{\mathbf{x}\})^2p_k  \quad \text{and} \quad  V\{\mathbf{x}\}=\int_{-\infty}^{\infty}(x-E\{\mathbf{x}\})^2f_{\mathbf{x}}(x)dx
+\]</div>
+</section>
+<section id="two-random-variables">
+<h2>Two Random Variables<a class="headerlink" href="#two-random-variables" title="Link to this heading">#</a></h2>
+<div class="math notranslate nohighlight">
+\[ 
+F_{\mathbf{x}\mathbf{y}}(x,y)=P(\mathbf{x}\leq x,\mathbf{y}\leq y)
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+f_{\mathbf{x}\mathbf{y}}(x,y)=\frac{\partial F_{\mathbf{x}\mathbf{y}}(x,y)}{\partial x \partial y}
+\]</div>
+<div class="math notranslate nohighlight">
+\[ 
+F_{\mathbf{x}\mathbf{y}}(x,y)=\int_{-\infty}^{x}\int_{-\infty}^{y}f_{\mathbf{x}\mathbf{y}}(x,y)dx dy
+\]</div>
+<p>Marginal PDF:</p>
+<div class="math notranslate nohighlight">
+\[ 
+f_{\mathbf{x}}(x)=\int_{-\infty}^{\infty}f_{\mathbf{x}\mathbf{y}}(x,y)dy
+\]</div>
+<ul class="simple">
+<li><p>Let <span class="math notranslate nohighlight">\(\mathbf{z}=\mathbf{x}+\mathbf{y}\)</span> where <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> and <span class="math notranslate nohighlight">\(\mathbf{y}\)</span> are independent, then</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[f_{\mathbf{z}}(z)=f_{\mathbf{x}}(z) \ast f_{\mathbf{y}}(z)\]</div>
+<ul class="simple">
+<li><p>All previous results can be generalized to vectors of random variables.</p></li>
+</ul>
+</section>
+<section id="real-scalar-gaussian-random-variable">
+<h2>Real Scalar Gaussian Random Variable<a class="headerlink" href="#real-scalar-gaussian-random-variable" title="Link to this heading">#</a></h2>
+<ul>
+<li><p><strong>PDF of a real scalar Gaussian random variable with mean <span class="math notranslate nohighlight">\(\mu\)</span> and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[ 
+  f_{\mathbf{x}}(x)=\frac{1}{\sqrt{2\pi}\sigma}\exp\left(\frac{(x-\mu)^2}{2\sigma^2}\right)
+  \]</div>
+</li>
+<li><p>The random variable <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is denoted by <span class="math notranslate nohighlight">\(\mathbf{x}\sim\mathcal{N}(\mu,\sigma^2)\)</span> and the standard Gaussian by <span class="math notranslate nohighlight">\(w\sim\mathcal{N}(0,1)\)</span>.</p></li>
+<li><p>The function <span class="math notranslate nohighlight">\(Q(\cdot)\)</span> is the complementary CDF of the standard Gaussian and decreases exponentially:</p>
+<div class="math notranslate nohighlight">
+\[ 
+  Q(a)=P(w&gt;a)=\int_a^\infty\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}} dx
+  \]</div>
+<div class="math notranslate nohighlight">
+\[ 
+  \frac{1}{\sqrt{2\pi}a}\left(1-\frac{1}{a^2}\right)e^{-\frac{a^2}{2}}&lt;Q(a)&lt;e^{-\frac{a^2}{2}}
+  \]</div>
+</li>
+</ul>
+</section>
+<section id="real-gaussian-random-vector">
+<h2>Real Gaussian Random Vector<a class="headerlink" href="#real-gaussian-random-vector" title="Link to this heading">#</a></h2>
+<ul>
+<li><p><strong>PDF of a real Gaussian vector with mean <span class="math notranslate nohighlight">\(\vec{\mu}\)</span> and covariance matrix <span class="math notranslate nohighlight">\(\vec{C}\)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[ 
+  f_{\vec{\mathbf{x}}}(\vec{x})=\frac{1}{(2\pi)^{(n/2)}\sqrt{\det \vec{C}}}e^{\frac{-1}{2}(\vec{x}-\vec{\mu})^T\vec{C}^{-1}(\vec{x}-\vec{\mu})} 
+  \]</div>
+<div class="math notranslate nohighlight">
+\[ 
+  \vec{\mu}= E\{\vec{\mathbf{x}}\} \text{ and } \vec{C}=E\{(\vec{\mathbf{x}}-\vec{\mu})(\vec{\mathbf{x}}-\vec{\mu})^T\}
+  \]</div>
+</li>
+<li><p>The vector <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span> is denoted by <span class="math notranslate nohighlight">\(\vec{\mathbf{x}} \sim \mathcal{N}(\vec{\mu},\vec{C})\)</span></p></li>
+<li><p>Standard Gaussian vector: <span class="math notranslate nohighlight">\(n\)</span> iid standard Gaussian elements:</p>
+<div class="math notranslate nohighlight">
+\[ 
+  \vec{\mathbf{w}} \sim \mathcal{N}(0,\vec{I})
+  \]</div>
+<div class="math notranslate nohighlight">
+\[ 
+  f_{\vec{\mathbf{w}}}(\vec{w})=\frac{1}{(2\pi)^{(n/2)}}e^{-\frac{||\vec{w}||^2}{2}}
+  \]</div>
+</li>
+<li><p>The PDF of the standard Gaussian vector depends only on the magnitude of <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span></p></li>
+</ul>
+</section>
+<section id="id1">
+<h2>Real Gaussian Random Vector<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>If <span class="math notranslate nohighlight">\(\vec{\mathbf{x}} \sim \mathcal{N}(\vec{\mu}_x,\vec{C}_x)\)</span> then</p>
+<div class="math notranslate nohighlight">
+\[ 
+  \vec{\mathbf{y}}=\vec{A}\vec{\mathbf{x}}+\vec{b} \sim \mathcal{N}(\vec{A}\vec{\mu}_x+\vec{b},\vec{A}\vec{C}_x\vec{A}^T)
+  \]</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(\vec{O}\)</span> be an orthonormal transform (<span class="math notranslate nohighlight">\(\vec{O}^T\vec{O}=I\)</span>), then <span class="math notranslate nohighlight">\(\vec{O}\vec{\mathbf{w}}\)</span> is also a standard Gaussian vector:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> is invariant under coordinate system rotations</p></li>
+<li><p>Projections of a standard Gaussian vector in orthonormal directions are independent</p></li>
+<li><p>These results can be generalized for vectors of iid Gaussian elements with zero mean and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="complex-random-vector">
+<h2>Complex Random Vector<a class="headerlink" href="#complex-random-vector" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>For the analysis of communication systems, we use the baseband representation which requires complex random vectors:</p>
+<div class="math notranslate nohighlight">
+\[ 
+  \vec{\mathbf{x}}=\vec{\mathbf{x}}_R+j\vec{\mathbf{x}}_I \quad \text{where $\vec{\mathbf{x}}_R$ and $\vec{\mathbf{x}}_I$ are real random vectors}
+  \]</div>
+</li>
+<li><p>Additionally, in communication systems, we mainly work with complex random vectors that have the same distribution for different phase shifts:</p>
+<div class="math notranslate nohighlight">
+\[ 
+  \text{$\vec{\mathbf{x}}$ is circularly symmetric if } e^{j\theta}\vec{\mathbf{x}}\sim\vec{\mathbf{x}}, \forall \theta
+  \]</div>
+</li>
+<li><p>The first and second-order statistics of a circularly symmetric vector are completely described by <span class="math notranslate nohighlight">\(E[\vec{\mathbf{x}}\vec{\mathbf{x}}^H]\)</span> where <span class="math notranslate nohighlight">\((\cdot)^H\)</span> denotes the Hermitian transpose (conjugate transpose)</p></li>
+</ul>
+</section>
+<section id="zmccsg">
+<h2>ZMCCSG<a class="headerlink" href="#zmccsg" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x}=\mathbf{x}_R+j\mathbf{x}_I\)</span> where <span class="math notranslate nohighlight">\(\mathbf{x}_R\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_I\)</span> are iid <span class="math notranslate nohighlight">\(\mathcal{N}(0,\frac{\sigma^2}{2})\)</span> is a zero mean complex circularly symmetric Gaussian (ZMCCSG) vector with zero mean and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span></p></li>
+<li><p>The ZMCCSG random variable <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is denoted by <span class="math notranslate nohighlight">\(\mathbf{x}\sim\mathcal{CN}(0,\sigma^2)\)</span> and the standard ZMCCSG random variable <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is denoted by <span class="math notranslate nohighlight">\(\mathbf{w}\sim\mathcal{CN}(0,1)\)</span></p></li>
+<li><p>The phase of <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is uniformly distributed between 0 and <span class="math notranslate nohighlight">\(2\pi\)</span>, <span class="math notranslate nohighlight">\(|\mathbf{w}|\)</span> follows a Rayleigh distribution, and <span class="math notranslate nohighlight">\(\mathbf{|w|^2}\)</span> follows an exponential distribution</p></li>
+</ul>
+</section>
+<section id="complex-gaussian-vector">
+<h2>Complex Gaussian Vector<a class="headerlink" href="#complex-gaussian-vector" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>A vector of <span class="math notranslate nohighlight">\(n\)</span> iid elements <span class="math notranslate nohighlight">\(\mathcal{CN}(0,1)\)</span> is a standard complex Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\sim\mathcal{CN}(0,I)\)</span></p>
+<div class="math notranslate nohighlight">
+\[ 
+  f_{\vec{\mathbf{w}}}(\vec{w})=\frac{1}{\pi^{n}}e^{-||\vec{w}||^2} \quad \vec{w} \in \mathcal{C}^n
+  \]</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(\vec{A}\)</span> be a complex matrix then</p>
+<div class="math notranslate nohighlight">
+\[ 
+  \vec{\mathbf{x}}=\vec{A}\vec{\mathbf{w}}\sim\mathcal{CN}(0,\vec{K}=\vec{A}\vec{A}^*) 
+  \]</div>
+<div class="math notranslate nohighlight">
+\[ 
+  f_{\vec{\mathbf{x}}}(\vec{x})=\frac{1}{\pi^{n}\det\vec{K}}e^{-\vec{x}^*\vec{K}\vec{x}}
+  \]</div>
+</li>
+<li><p>Let <span class="math notranslate nohighlight">\(\vec{U}\)</span> be a unitary transform (<span class="math notranslate nohighlight">\(\vec{U}^*\vec{U}=I\)</span>), then <span class="math notranslate nohighlight">\(\vec{U}\vec{\mathbf{w}}\sim\vec{\mathbf{w}}\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> has the same distribution in different orthonormal bases (i.e., <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> is isotropic)</p></li>
+<li><p>The projections of <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> in orthonormal directions are independent</p></li>
+<li><p>These results can be generalized for <span class="math notranslate nohighlight">\(\mathcal{CN}(0,\sigma^2I)\)</span></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="definition-of-a-stochastic-process">
+<h2>Definition of a Stochastic Process<a class="headerlink" href="#definition-of-a-stochastic-process" title="Link to this heading">#</a></h2>
+<p><strong>Definition:</strong>
+A stochastic process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> is a function <span class="math notranslate nohighlight">\(x(t)\)</span> that depends on the outcome of a random experiment <span class="math notranslate nohighlight">\(\zeta\)</span>.</p>
+<p>Interpretations of <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span>:</p>
+<ul class="simple">
+<li><p>A set of functions when <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(\zeta\)</span> are variable</p></li>
+<li><p>A non-random function (or a sample of the process) when <span class="math notranslate nohighlight">\(t\)</span> is variable and <span class="math notranslate nohighlight">\(\zeta\)</span> is fixed</p></li>
+<li><p>A random variable when <span class="math notranslate nohighlight">\(t\)</span> is fixed and <span class="math notranslate nohighlight">\(\zeta\)</span> is variable</p></li>
+<li><p>A specific value when both <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(\zeta\)</span> are fixed</p></li>
+</ul>
+</section>
+<section id="stationarity">
+<h2>Stationarity<a class="headerlink" href="#stationarity" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>A process is strictly stationary if</p>
+<div class="math notranslate nohighlight">
+\[ 
+  f_{\mathbf{x}(t_1),\dots,\mathbf{x}(t_n)}(x_1,\dots,x_n)=f_{\mathbf{x}(t_1+\tau),\dots,\mathbf{x}(t_n+\tau)}(x_1,\dots,x_n), \forall \tau, \forall n
+  \]</div>
+</li>
+<li><p>A process is strictly cyclo-stationary if</p>
+<div class="math notranslate nohighlight">
+\[ 
+  f_{\mathbf{x}(t_1),\dots,\mathbf{x}(t_n)}(x_1,\dots,x_n)=f_{\mathbf{x}(t_1+\tau),\dots,\mathbf{x}(t_n+\tau)}(x_1,\dots,x_n) \quad \tau=kT\text{ ($k$ is an integer)}, \forall n
+  \]</div>
+</li>
+<li><p>A process is wide-sense stationary (WSS) if</p>
+<div class="math notranslate nohighlight">
+\[ 
+  E\{\mathbf{x}(t)\}=\mu, \forall t 
+  \]</div>
+<div class="math notranslate nohighlight">
+\[ 
+  E\{\mathbf{x}(t)\mathbf{x}(t+\tau)\}=R(t,t+\tau)=R(\tau), \forall t, \forall \tau
+  \]</div>
+</li>
+<li><p>A process is wide-sense cyclo-stationary if</p>
+<div class="math notranslate nohighlight">
+\[ 
+  E\{\mathbf{x}(t)\}=E\{\mathbf{x}(t+kT)\}, \forall t, \text{ ($k$ is an integer)} 
+  \]</div>
+<div class="math notranslate nohighlight">
+\[ 
+  R(t_1,t_2)=R(t_1+kT,t_2+kT)
+  \]</div>
+</li>
+<li><p>If <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> is wide-sense cyclo-stationary then <span class="math notranslate nohighlight">\(\mathbf{x}(t+\theta)\)</span>, <span class="math notranslate nohighlight">\(\theta\sim U(0,T)\)</span>, is wide-sense stationary.</p></li>
+</ul>
+</section>
+<section id="power-spectral-density">
+<h2>Power Spectral Density<a class="headerlink" href="#power-spectral-density" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>The power spectral density of a continuous stationary process is defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[ 
+  S(f)=\int_{-\infty}^{\infty}R(\tau)e^{-j2\pi f\tau}d\tau 
+  \]</div>
+<div class="math notranslate nohighlight">
+\[ 
+  R(\tau)=\int_{-\infty}^{\infty}S(f)e^{j2\pi f\tau}df
+  \]</div>
+</li>
+<li><p>The power spectral density of a discrete stationary process</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\{\mathbf{x}(n),\text{ ($n$ is an integer)}\}\]</div>
+<p>is defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[ 
+  R(n)=E\{\mathbf{x}(m)\mathbf{x}(m+n)\} 
+  \]</div>
+<div class="math notranslate nohighlight">
+\[ 
+  S(f)=\sum_{n=-\infty}^{\infty}R(n)e^{-j2\pi f n}
+  \]</div>
+<div class="math notranslate nohighlight">
+\[ 
+  R(n)=\int_{-\infty}^{\infty}S(f)e^{j2\pi f n}df
+  \]</div>
+</section>
+<section id="power">
+<h2>Power<a class="headerlink" href="#power" title="Link to this heading">#</a></h2>
+<p>Power in a band from <span class="math notranslate nohighlight">\(f_1\)</span> to <span class="math notranslate nohighlight">\(f_2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ 
+P_{f_1-f_2}=\int_{f_1}^{f_2}S(f)df
+\]</div>
+<p>Physical interpretations:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(E\{X(t)\}\)</span>: DC component</p></li>
+<li><p><span class="math notranslate nohighlight">\(E\{X(t)^2\}=R(0)=\int_{-\infty}^{\infty}S(f)df\)</span>: total power</p></li>
+<li><p><span class="math notranslate nohighlight">\(E\{X(t)\}^2\)</span>: DC power</p></li>
+<li><p><span class="math notranslate nohighlight">\(V\{X(t)\}=E\{X(t)^2\}-E\{X(t)\}^2\)</span>: AC power</p></li>
+</ul>
+</section>
+<section id="ergodicity">
+<h2>Ergodicity<a class="headerlink" href="#ergodicity" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>A stationary process is ergodic if</p>
+<div class="math notranslate nohighlight">
+\[ 
+  E\{\mathbf{x}^m(t_1)\}=\lim_{T\rightarrow\infty}\frac{1}{2T}\int_{-T}^T\mathbf{x}^m(t)dt
+  \]</div>
+</li>
+<li><p>For an ergodic process, the statistics and power spectral density can be extracted from a single realization of the process</p></li>
+<li><p>Complete ergodicity is difficult to demonstrate but is often assumed</p></li>
+<li><p>A process is ergodic in the mean if the previous relation is true for <span class="math notranslate nohighlight">\(m=1\)</span></p></li>
+<li><p>A stationary process is ergodic in the mean if</p>
+<div class="math notranslate nohighlight">
+\[ 
+  \lim_{T\rightarrow\infty}\frac{1}{T}\int_{0}^T(R(\tau)-\mu^2)d\tau=0
+  \]</div>
+</li>
+</ul>
+</section>
+<section id="linear-systems">
+<h2>Linear Systems<a class="headerlink" href="#linear-systems" title="Link to this heading">#</a></h2>
+<p>The WSS process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> is filtered by a linear time-invariant system as follows:</p>
+<p><img alt="Linear System" src="_images/fig_c1_linear_system.png" /></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{y}(t)\)</span> is a WSS process</p></li>
+<li><p>The power spectral density of <span class="math notranslate nohighlight">\(\mathbf{y}(t)\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[ 
+  S_{\mathbf{y}}(f)=S_{\mathbf{x}}(f)\left|H(f)\right|^2
+  \]</div>
+</li>
+</ul>
+</section>
+<section id="gaussian-process">
+<h2>Gaussian Process<a class="headerlink" href="#gaussian-process" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>A process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> is Gaussian if</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+  \vec{\mathbf{x}}=\begin{pmatrix}
+  \mathbf{x}(t_1) \\
+  \vdots \\
+  \mathbf{x}(t_n)
+  \end{pmatrix}=
+  \begin{pmatrix}
+  \mathbf{x}_1 \\
+  \vdots \\
+  \mathbf{x}_n
+  \end{pmatrix} \forall n
+  \end{split}\]</div>
+<p>follows the PDF of a Gaussian vector.</p>
+</li>
+<li><p>The output of a linear time-invariant system with a WSS Gaussian process as input is also a WSS Gaussian process.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Telecom Book</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability">Conditional Probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independence">Independence</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-and-cdf">PDF and CDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#function-of-a-random-variable">Function of a Random Variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-and-second-moments">First and Second Moments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#two-random-variables">Two Random Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-scalar-gaussian-random-variable">Real Scalar Gaussian Random Variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#real-gaussian-random-vector">Real Gaussian Random Vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Real Gaussian Random Vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-random-vector">Complex Random Vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zmccsg">ZMCCSG</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-gaussian-vector">Complex Gaussian Vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-a-stochastic-process">Definition of a Stochastic Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationarity">Stationarity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectral-density">Power Spectral Density</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power">Power</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ergodicity">Ergodicity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-systems">Linear Systems</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-process">Gaussian Process</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

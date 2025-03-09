@@ -1,0 +1,1236 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Quadrature Amplitude Modulation &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'com_c2_s4_QAM';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Multidimensional Signaling" href="com_c2_s5_Multidimensional_Signaling.html" />
+    <link rel="prev" title="Phase Modulation" href="com_c2_s3_PSK.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Quadrature Amplitude Modulation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qam-waveform">QAM Waveform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-qam">Key Features of QAM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-representation-of-qam-waveform">Alternative Representation of QAM Waveform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qam-signal-in-amplitude-phase-representation">QAM Signal in Amplitude-Phase Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-pam-psk-constellation">Combined PAM-PSK Constellation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-space-of-qam-waveforms-using-basis-functions">Signal Space of QAM Waveforms Using Basis Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthonormal-basis-for-qam">Orthonormal Basis for QAM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qam-signal-representation">QAM Signal Representation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-decomposition-using-orthonormal-basis">Signal Decomposition Using Orthonormal Basis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-representation-in-signal-space">Vector Representation in Signal Space</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-q-constellation">I/Q Constellation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-qam-signals">Energy of QAM Signals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-distance-in-qam">Euclidean Distance in QAM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-rectangular-constellation">Special Case: Rectangular Constellation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#average-energy-in-rectangular-qam">Average Energy in Rectangular QAM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-per-bit-in-qam">Energy Per Bit in QAM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance-in-terms-of-mathcal-e-text-b-avg">Minimum Distance in Terms of <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{b,avg}} \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unifying-bandpass-pam-psk-and-qam-signaling-schemes">Unifying Bandpass PAM, PSK, and QAM Signaling Schemes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-form-of-bandpass-signaling">General Form of Bandpass Signaling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-a-m-for-different-schemes">Definition of <span class="math notranslate nohighlight">\( A_m \)</span> for Different Schemes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-pam-psk-and-qam">Relationship Between PAM, PSK, and QAM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-of-the-signal-space">Dimensionality of the Signal Space</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="quadrature-amplitude-modulation">
+<h1>Quadrature Amplitude Modulation<a class="headerlink" href="#quadrature-amplitude-modulation" title="Link to this heading">#</a></h1>
+<p>Quadrature Amplitude Modulation (QAM) achieves <strong>high bandwidth efficiency</strong> by simultaneously transmitting two separate <span class="math notranslate nohighlight">\( k \)</span>-bit symbols on <strong>quadrature carriers</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+&amp;\cos(2\pi f_c t) \quad \text{(in-phase component)} \\
+&amp;\sin(2\pi f_c t) \quad \text{(quadrature component)}.
+\end{align*}
+\end{split}\]</div>
+<p>This technique combines the concepts of amplitude modulation and quadrature modulation, enabling the transmission of more data in a given bandwidth.</p>
+<section id="qam-waveform">
+<h2>QAM Waveform<a class="headerlink" href="#qam-waveform" title="Link to this heading">#</a></h2>
+<p>The transmitted QAM signal can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{
+s_m(t) = \Re \left[ (A_{mi} + jA_{mq}) g(t) e^{j2\pi f_c t} \right]
+}
+\]</div>
+<p>Expanding this expression:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{
+s_m(t) = A_{mi} g(t) \cos(2\pi f_c t) - A_{mq} g(t) \sin(2\pi f_c t)
+}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( A_{mi} \)</span>: The <strong>in-phase amplitude</strong>, representing one part of the transmitted symbol.</p></li>
+<li><p><span class="math notranslate nohighlight">\( A_{mq} \)</span>: The <strong>quadrature amplitude</strong>, representing the other part of the transmitted symbol.</p></li>
+<li><p><span class="math notranslate nohighlight">\( g(t) \)</span>: The <strong>signal pulse</strong>, which determines the spectral characteristics of the transmission.</p></li>
+<li><p><span class="math notranslate nohighlight">\( f_c \)</span>: The <strong>carrier frequency</strong>.</p></li>
+</ul>
+<p>Each QAM symbol <span class="math notranslate nohighlight">\( s_m(t) \)</span> carries information in both the in-phase (<span class="math notranslate nohighlight">\( A_{mi} \)</span>) and quadrature (<span class="math notranslate nohighlight">\( A_{mq} \)</span>) components, allowing the transmission of two <span class="math notranslate nohighlight">\( k \)</span>-bit symbols per modulation interval.</p>
+<section id="key-features-of-qam">
+<h3>Key Features of QAM<a class="headerlink" href="#key-features-of-qam" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Constellation Diagram</strong>:</p>
+<ul>
+<li><p>QAM symbols are represented as points in a two-dimensional signal space.</p></li>
+<li><p>The <strong>in-phase (I)</strong> and <strong>quadrature (Q)</strong> components form the axes of the constellation.</p></li>
+<li><p>Higher-order QAM constellations (e.g., 16-QAM, 64-QAM) allow for the transmission of more bits per symbol by increasing the number of constellation points.</p></li>
+</ul>
+</li>
+<li><p><strong>Bandwidth Efficiency</strong>:</p>
+<ul>
+<li><p>By transmitting two separate symbols on orthogonal carriers, QAM doubles the data rate compared to simple modulation schemes like PAM or PSK for the same bandwidth.</p></li>
+</ul>
+</li>
+<li><p><strong>Information-Bearing Amplitudes</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( A_{mi} \)</span> and <span class="math notranslate nohighlight">\( A_{mq} \)</span> are the amplitude levels associated with the in-phase and quadrature components, respectively.</p></li>
+<li><p>These levels are typically chosen from a discrete set of values (e.g., <span class="math notranslate nohighlight">\( \pm 1, \pm 3 \)</span>).</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="alternative-representation-of-qam-waveform">
+<h2>Alternative Representation of QAM Waveform<a class="headerlink" href="#alternative-representation-of-qam-waveform" title="Link to this heading">#</a></h2>
+<section id="qam-signal-in-amplitude-phase-representation">
+<h3>QAM Signal in Amplitude-Phase Representation<a class="headerlink" href="#qam-signal-in-amplitude-phase-representation" title="Link to this heading">#</a></h3>
+<p>The Quadrature Amplitude Modulation (QAM) signal can alternatively be expressed in terms of <strong>amplitude</strong> and <strong>phase</strong> modulation:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+s_m(t) = \Re \left[ r_m e^{j\theta_m} e^{j2\pi f_c t} \right]
+}
+\]</div>
+<p>Expanding this expression:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+s_m(t) = r_m \cos \left( 2\pi f_c t + \theta_m \right)
+}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( r_m = \sqrt{A_{mi}^2 + A_{mq}^2} \)</span> is the <strong>amplitude</strong> of the signal, representing the distance of the symbol from the origin in the constellation diagram.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \theta_m = \tan^{-1} \left( \frac{A_{mq}}{A_{mi}} \right) \)</span> is the <strong>phase</strong> of the signal, representing the angle of the symbol in the signal space.</p></li>
+</ul>
+<p>This formulation highlights that QAM can be viewed as a combination of <strong>amplitude modulation</strong> (via <span class="math notranslate nohighlight">\( r_m \)</span>) and <strong>phase modulation</strong> (via <span class="math notranslate nohighlight">\( \theta_m \)</span>).</p>
+</section>
+<section id="combined-pam-psk-constellation">
+<h3>Combined PAM-PSK Constellation<a class="headerlink" href="#combined-pam-psk-constellation" title="Link to this heading">#</a></h3>
+<p>By combining <strong>amplitude modulation (PAM)</strong> and <strong>phase modulation (PSK)</strong>, it is possible to construct more versatile QAM constellations. Specifically:</p>
+<ul>
+<li><p><strong>Signal Construction</strong>:</p>
+<ul class="simple">
+<li><p>Use <span class="math notranslate nohighlight">\( M_1 \)</span>-level PAM for amplitude modulation (defining <span class="math notranslate nohighlight">\( r_m \)</span>).</p></li>
+<li><p>Use <span class="math notranslate nohighlight">\( M_2 \)</span>-phase PSK for phase modulation (defining <span class="math notranslate nohighlight">\( \theta_m \)</span>).</p></li>
+<li><p>The resulting constellation will have <span class="math notranslate nohighlight">\( M = M_1 M_2 \)</span> symbols.</p></li>
+</ul>
+</li>
+<li><p><strong>Binary Digit Transmission</strong>:</p>
+<ul>
+<li><p>If <span class="math notranslate nohighlight">\( M_1 = 2^n \)</span> and <span class="math notranslate nohighlight">\( M_2 = 2^m \)</span>, the combined constellation allows for the transmission of <span class="math notranslate nohighlight">\( m + n \)</span> bits per symbol.</p></li>
+<li><p>The total number of bits per symbol is:</p>
+<div class="math notranslate nohighlight">
+\[
+     \boxed{
+     m + n = \log_2(M_1 M_2)
+     }
+     \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Symbol Rate</strong>:</p>
+<ul>
+<li><p>For a binary transmission rate <span class="math notranslate nohighlight">\( R \)</span> (bits per second), the <strong>symbol rate</strong> is:</p>
+<div class="math notranslate nohighlight">
+\[
+     \text{Symbol rate} = \frac{R}{m + n}
+     \]</div>
+</li>
+</ul>
+<p>This means fewer symbols are transmitted per second compared to binary modulation schemes, reducing the required bandwidth.</p>
+</li>
+</ul>
+<p><strong>Key Features</strong></p>
+<ul class="simple">
+<li><p><strong>Amplitude-Phase Modulation</strong>: The QAM signal combines amplitude <span class="math notranslate nohighlight">\( r_m \)</span> and phase <span class="math notranslate nohighlight">\( \theta_m \)</span> modulation, making it versatile and highly spectrally efficient.</p></li>
+<li><p><strong>Custom Constellations</strong>: Any combination of <span class="math notranslate nohighlight">\( M_1 \)</span>-PAM and <span class="math notranslate nohighlight">\( M_2 \)</span>-PSK can be used to create <span class="math notranslate nohighlight">\( M_1 M_2 \)</span>-QAM, offering flexibility in designing modulation schemes.</p></li>
+<li><p><strong>Efficient Data Transmission</strong>: By increasing <span class="math notranslate nohighlight">\( M \)</span>, more bits can be transmitted per symbol, improving bandwidth efficiency.</p></li>
+</ul>
+</section>
+</section>
+<section id="signal-space-of-qam-waveforms-using-basis-functions">
+<h2>Signal Space of QAM Waveforms Using Basis Functions<a class="headerlink" href="#signal-space-of-qam-waveforms-using-basis-functions" title="Link to this heading">#</a></h2>
+<section id="orthonormal-basis-for-qam">
+<h3>Orthonormal Basis for QAM<a class="headerlink" href="#orthonormal-basis-for-qam" title="Link to this heading">#</a></h3>
+<p>Similar to Phase-Shift Keying (PSK), Quadrature Amplitude Modulation (QAM) signals can be expanded using an <strong>orthonormal basis</strong>. The basis functions <span class="math notranslate nohighlight">\( \phi_1(t) \)</span> and <span class="math notranslate nohighlight">\( \phi_2(t) \)</span>, defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boxed{
+\begin{align*}
+\phi_1(t) &amp;= \sqrt{\frac{2}{\mathcal{E}_g}} g(t) \cos(2\pi f_c t) \\
+\phi_2(t) &amp;= -\sqrt{\frac{2}{\mathcal{E}_g}} g(t) \sin(2\pi f_c t)
+\end{align*}
+}
+\end{split}\]</div>
+<p>are used to represent QAM signals. These functions are orthogonal, ensuring no interference between the in-phase (<span class="math notranslate nohighlight">\( \cos \)</span>) and quadrature (<span class="math notranslate nohighlight">\( \sin \)</span>) components.</p>
+<p><strong>Signal Space Dimensionality</strong></p>
+<ul class="simple">
+<li><p>QAM signals are <strong>two-dimensional</strong> (<span class="math notranslate nohighlight">\( N = 2 \)</span>).</p></li>
+<li><p>The signal space consists of two axes: one for the in-phase component (<span class="math notranslate nohighlight">\( \phi_1(t) \)</span>) and one for the quadrature component (<span class="math notranslate nohighlight">\( \phi_2(t) \)</span>).</p></li>
+</ul>
+</section>
+</section>
+<section id="qam-signal-representation">
+<h2>QAM Signal Representation<a class="headerlink" href="#qam-signal-representation" title="Link to this heading">#</a></h2>
+<p>In Quadrature Amplitude Modulation (QAM), each transmitted signal is designed to carry information in both its amplitude and phase. To analyze and process these signals efficiently, they are represented in a two-dimensional signal space using two orthonormal basis functions.</p>
+<section id="signal-decomposition-using-orthonormal-basis">
+<h3>Signal Decomposition Using Orthonormal Basis<a class="headerlink" href="#signal-decomposition-using-orthonormal-basis" title="Link to this heading">#</a></h3>
+<p>Any QAM signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> is expressed as a linear combination of two orthogonal basis functions, typically denoted as <span class="math notranslate nohighlight">\( \phi_1(t) \)</span> and <span class="math notranslate nohighlight">\( \phi_2(t) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+s_m(t) = A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}} \, \phi_1(t) + A_{mq} \sqrt{\frac{\mathcal{E}_g}{2}} \, \phi_2(t)
+}
+\]</div>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( A_{mi} \)</span></strong>: This is the amplitude (or scaling factor) for the <strong>in-phase component</strong>, which multiplies the basis function <span class="math notranslate nohighlight">\( \phi_1(t) \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( A_{mq} \)</span></strong>: This is the amplitude for the <strong>quadrature component</strong>, which multiplies the basis function <span class="math notranslate nohighlight">\( \phi_2(t) \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \sqrt{\frac{\mathcal{E}_g}{2}} \)</span></strong>: The factor ensures that each component of the signal is normalized with respect to the total energy <span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span> of the pulse <span class="math notranslate nohighlight">\( g(t) \)</span>. Since the energy is split equally between the two orthogonal components, each gets a factor of <span class="math notranslate nohighlight">\( \frac{1}{2} \)</span>.</p></li>
+</ul>
+<p>Because the basis functions are <strong>orthonormal</strong>, they satisfy:</p>
+<ul class="simple">
+<li><p><strong>Orthogonality</strong>: <span class="math notranslate nohighlight">\( \int \phi_1(t) \phi_2(t) \, dt = 0 \)</span> (no interference between the components),</p></li>
+<li><p><strong>Normalization</strong>: <span class="math notranslate nohighlight">\( \int \phi_1^2(t) \, dt = \int \phi_2^2(t) \, dt = 1 \)</span>.</p></li>
+</ul>
+<p>This decomposition allows us to treat the two parts of the signal independently in both analysis and receiver design.</p>
+</section>
+<section id="vector-representation-in-signal-space">
+<h3>Vector Representation in Signal Space<a class="headerlink" href="#vector-representation-in-signal-space" title="Link to this heading">#</a></h3>
+<p>We can express the QAM signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> as a linear combination of the basis functions <span class="math notranslate nohighlight">\( \phi_1(t) \)</span> and <span class="math notranslate nohighlight">\( \phi_2(t) \)</span> using vector notation. Recall that the signal is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+s_m(t) = s_{m1}\,\phi_1(t) + s_{m2}\,\phi_2(t)
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+s_{m1} = A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}}, \quad s_{m2} = A_{mq} \sqrt{\frac{\mathcal{E}_g}{2}}
+\]</div>
+<p>This can be compactly written in vector-matrix form as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+s_m(t) = \begin{bmatrix} s_{m1} &amp; s_{m2} \end{bmatrix} \begin{bmatrix} \phi_1(t) \\ \phi_2(t) \end{bmatrix}
+\end{split}\]</div>
+<p>Here’s what each component represents:</p>
+<ul class="simple">
+<li><p><strong>Coefficient Vector</strong>: <span class="math notranslate nohighlight">\(\begin{bmatrix} s_{m1} &amp; s_{m2} \end{bmatrix}\)</span> contains the weights (or amplitudes) for the corresponding basis functions.</p></li>
+<li><p><strong>Basis Vector</strong>: <span class="math notranslate nohighlight">\(\begin{bmatrix} \phi_1(t) \\ \phi_2(t) \end{bmatrix}\)</span> holds the orthonormal basis functions.</p></li>
+</ul>
+<p>Thus, by mapping the two components of <span class="math notranslate nohighlight">\( s_m(t) \)</span> onto a two-dimensional plane, we can represent each signal as a vector. The coordinates of the vector are defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{
+\vec{s}_m = (s_{m1}, s_{m2})
+}
+\]</div>
+<p>with</p>
+<div class="math notranslate nohighlight">
+\[
+s_{m1} = A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}}, \quad s_{m2} = A_{mq} \sqrt{\frac{\mathcal{E}_g}{2}}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( s_{m1} \)</span></strong>: Represents the projection of the signal onto the in-phase axis (associated with <span class="math notranslate nohighlight">\( \phi_1(t) \)</span>).</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( s_{m2} \)</span></strong>: Represents the projection onto the quadrature axis (associated with <span class="math notranslate nohighlight">\( \phi_2(t) \)</span>).</p></li>
+</ul>
+<p>Each QAM symbol corresponds to a unique point <span class="math notranslate nohighlight">\((s_{m1}, s_{m2})\)</span> in this two-dimensional signal space, often visualized as a <strong>constellation diagram</strong>. The position of each point in the constellation is determined by the amplitudes <span class="math notranslate nohighlight">\( A_{mi} \)</span> and <span class="math notranslate nohighlight">\( A_{mq} \)</span>, which encode the digital information.</p>
+<p><strong>Advantages of QAM Space Representation</strong></p>
+<ul class="simple">
+<li><p><strong>Geometric Interpretation</strong>: Viewing QAM signals as points in a plane makes it easier to understand how they relate to each other. For example, the <strong>Euclidean distance</strong> between two points in the constellation indicates how easily one signal can be mistaken for another in the presence of noise.</p></li>
+<li><p><strong>Design and Analysis</strong>: This representation simplifies the analysis of system performance (such as error probabilities) and helps in designing optimal detectors (like the maximum likelihood detector).</p></li>
+<li><p><strong>Energy Distribution</strong>: The factor <span class="math notranslate nohighlight">\( \sqrt{\frac{\mathcal{E}_g}{2}} \)</span> ensures that the energy is correctly apportioned between the two orthogonal components, which is critical for maintaining the overall signal power and achieving the desired performance.</p></li>
+</ul>
+</section>
+</section>
+<section id="i-q-constellation">
+<h2>I/Q Constellation<a class="headerlink" href="#i-q-constellation" title="Link to this heading">#</a></h2>
+<p>In QAM modulation, the basis functions <span class="math notranslate nohighlight">\( \phi_1(t) \)</span> and <span class="math notranslate nohighlight">\( \phi_2(t) \)</span> are deliberately chosen to be the in-phase (I) and quadrature (Q) components of the signal.</p>
+<p><strong>Choice of Basis Functions</strong>:<br />
+In QAM, we select two orthonormal basis functions:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \phi_1(t) \)</span> is typically a cosine (or another waveform representing the in-phase component).</p></li>
+<li><p><span class="math notranslate nohighlight">\( \phi_2(t) \)</span> is typically a sine (or a waveform that is <span class="math notranslate nohighlight">\(\pi/2\)</span> out of phase with the cosine), representing the quadrature component.</p></li>
+</ul>
+<p>Because these functions are orthonormal, any signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> can be uniquely expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+s_m(t) = s_{m1}\,\phi_1(t) + s_{m2}\,\phi_2(t)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( s_{m1} \)</span> and <span class="math notranslate nohighlight">\( s_{m2} \)</span> are the projection coefficients (or amplitudes) onto <span class="math notranslate nohighlight">\( \phi_1(t) \)</span> and <span class="math notranslate nohighlight">\( \phi_2(t) \)</span>, respectively.</p>
+<p><strong>Mapping to the I/Q Diagram</strong>:<br />
+When we plot the QAM constellation, we are essentially plotting the vector</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{s}_m = \begin{bmatrix} s_{m1} \\ s_{m2} \end{bmatrix}
+\end{split}\]</div>
+<p>on a two-dimensional plane:</p>
+<ul class="simple">
+<li><p>The horizontal axis is aligned with the in-phase component (corresponding to <span class="math notranslate nohighlight">\( \phi_1(t) \)</span>).</p></li>
+<li><p>The vertical axis is aligned with the quadrature component (corresponding to <span class="math notranslate nohighlight">\( \phi_2(t) \)</span>).</p></li>
+</ul>
+<p>Thus, <span class="math notranslate nohighlight">\( s_{m1} \)</span> represents the coordinate along the I-axis, and <span class="math notranslate nohighlight">\( s_{m2} \)</span> represents the coordinate along the Q-axis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># 1. Define the time axis and basis functions</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Duration of the pulse (symbol period)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># Time vector</span>
+
+<span class="c1"># Define orthonormal basis functions over [0, T].</span>
+<span class="c1"># A common choice is:</span>
+<span class="c1">#   φ₁(t) = √(2/T) cos(2πt/T)   -&gt; In-phase component</span>
+<span class="c1">#   φ₂(t) = √(2/T) sin(2πt/T)   -&gt; Quadrature component</span>
+<span class="n">phi1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">t</span> <span class="o">/</span> <span class="n">T</span><span class="p">)</span>
+<span class="n">phi2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="n">T</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">t</span> <span class="o">/</span> <span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># 2. Generate the 16-QAM constellation points</span>
+<span class="c1"># Define amplitude levels for 16-QAM (commonly -3, -1, 1, 3)</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+
+<span class="c1"># Create a grid of constellation points (each point is [I, Q])</span>
+<span class="n">I</span><span class="p">,</span> <span class="n">Q</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">levels</span><span class="p">,</span> <span class="n">levels</span><span class="p">)</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">I</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>  <span class="c1"># In-phase coordinates (s_m1)</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">Q</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>  <span class="c1"># Quadrature coordinates (s_m2)</span>
+
+<span class="c1"># 3. Select a specific constellation point (symbol)</span>
+<span class="c1"># For demonstration, we choose the constellation point (s_m1, s_m2) = (3, -1)</span>
+<span class="n">s_m1</span> <span class="o">=</span> <span class="mi">3</span>    <span class="c1"># In-phase amplitude</span>
+<span class="n">s_m2</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>   <span class="c1"># Quadrature amplitude</span>
+
+<span class="c1"># Plot the constellation again, highlighting the selected symbol</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">I</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Constellation Points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">s_m1</span><span class="p">,</span> <span class="n">s_m2</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Selected Symbol (3, -1)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;16-QAM Constellation Diagram with Selected Symbol&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;In-phase Component (s_m1)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Quadrature Component (s_m2)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">4.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 4. Generate the time-domain QAM signal s_m(t)</span>
+<span class="c1"># According to the signal model:</span>
+<span class="c1">#   s_m(t) = s_m1 * φ₁(t) + s_m2 * φ₂(t)</span>
+<span class="n">s_m_t</span> <span class="o">=</span> <span class="n">s_m1</span> <span class="o">*</span> <span class="n">phi1</span> <span class="o">+</span> <span class="n">s_m2</span> <span class="o">*</span> <span class="n">phi2</span>
+
+<span class="c1"># Optionally, compute the energy of s_m(t) via numerical integration.</span>
+<span class="c1"># Because φ₁ and φ₂ are orthonormal, the energy should be s_m1² + s_m2².</span>
+<span class="n">energy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">trapz</span><span class="p">(</span><span class="n">s_m_t</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Computed Energy of s_m(t): </span><span class="si">{</span><span class="n">energy</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">  (Expected: </span><span class="si">{</span><span class="n">s_m1</span><span class="o">**</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">s_m2</span><span class="o">**</span><span class="mi">2</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># 5. Plot the basis functions and the resulting signal s_m(t)</span>
+
+<span class="c1"># Plot φ₁(t)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">phi1</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\phi_1(t)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Basis Function $\phi_1(t)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Plot φ₂(t)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">phi2</span><span class="p">,</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\phi_2(t)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Basis Function $\phi_2(t)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Plot the QAM signal s_m(t)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s_m_t</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$s_m(t) = s_</span><span class="si">{m1}</span><span class="s1">\phi_1(t) + s_</span><span class="si">{m2}</span><span class="s1">\phi_2(t)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;QAM Signal $s_m(t)$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/85ecb0630a1c474d969d95b6e8a4fb662b1e37403ebbf06e492771f1a14bff61.png" src="_images/85ecb0630a1c474d969d95b6e8a4fb662b1e37403ebbf06e492771f1a14bff61.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Computed Energy of s_m(t): 10.00  (Expected: 10)
+</pre></div>
+</div>
+<img alt="_images/f3bd2d402656904afe48e64e29ec1b997d38e554dd345a8285d2224630a55965.png" src="_images/f3bd2d402656904afe48e64e29ec1b997d38e554dd345a8285d2224630a55965.png" />
+<img alt="_images/0984fd327f92dc100c5232b3b2a9155c9a6b904e9b937bd7b677f8689debdd13.png" src="_images/0984fd327f92dc100c5232b3b2a9155c9a6b904e9b937bd7b677f8689debdd13.png" />
+<img alt="_images/99cc893357d044ee29621d655d69b087d0f4f89ef64cd4e40bfdd585b4110997.png" src="_images/99cc893357d044ee29621d655d69b087d0f4f89ef64cd4e40bfdd585b4110997.png" />
+</div>
+</div>
+<section id="energy-of-qam-signals">
+<h3>Energy of QAM Signals<a class="headerlink" href="#energy-of-qam-signals" title="Link to this heading">#</a></h3>
+<p>The energy <span class="math notranslate nohighlight">\( \mathcal{E}_m \)</span> of the signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> is defined as the squared norm of its vector representation:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_m = \|\vec{s}_m\|^2 = s_{m1}^2 + s_{m2}^2
+\]</div>
+<p>Substitute the expressions for <span class="math notranslate nohighlight">\( s_{m1} \)</span> and <span class="math notranslate nohighlight">\( s_{m2} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+s_{m1}^2 = \left(A_{mi} \sqrt{\frac{\mathcal{E}_g}{2}}\right)^2 = A_{mi}^2 \frac{\mathcal{E}_g}{2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+s_{m2}^2 = \left(A_{mq} \sqrt{\frac{\mathcal{E}_g}{2}}\right)^2 = A_{mq}^2 \frac{\mathcal{E}_g}{2}
+\]</div>
+<p>Therefore, the total energy becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\mathcal{E}_m = \frac{\mathcal{E}_g}{2} \left( A_{mi}^2 + A_{mq}^2 \right)
+}
+\]</div>
+</section>
+</section>
+<section id="euclidean-distance-in-qam">
+<h2>Euclidean Distance in QAM<a class="headerlink" href="#euclidean-distance-in-qam" title="Link to this heading">#</a></h2>
+<p>The Euclidean distance between two signal vectors in a QAM constellation is:</p>
+<div class="math notranslate nohighlight">
+\[
+d_{mn} = \sqrt{\|\vec{s}_m - \vec{s}_n\|^2}
+= \sqrt{\frac{\mathcal{E}_g}{2} \left[ (A_{mi} - A_{ni})^2 + (A_{mq} - A_{nq})^2 \right]}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( A_{mi} \)</span> and <span class="math notranslate nohighlight">\( A_{mq} \)</span>: In-phase and quadrature amplitudes of symbol <span class="math notranslate nohighlight">\( m \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( A_{ni} \)</span> and <span class="math notranslate nohighlight">\( A_{nq} \)</span>: In-phase and quadrature amplitudes of symbol <span class="math notranslate nohighlight">\( n \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span>: Energy of the pulse <span class="math notranslate nohighlight">\( g(t) \)</span>.</p></li>
+</ul>
+<section id="special-case-rectangular-constellation">
+<h3>Special Case: Rectangular Constellation<a class="headerlink" href="#special-case-rectangular-constellation" title="Link to this heading">#</a></h3>
+<p>In a rectangular QAM constellation, the signal amplitudes take discrete values:</p>
+<div class="math notranslate nohighlight">
+\[
+A_m = \pm1, \pm3, \ldots, \pm(M - 1)
+\]</div>
+<p>The <strong>minimum distance</strong> between adjacent constellation points is:</p>
+<div class="math notranslate nohighlight">
+\[
+d_{\text{min}} = \sqrt{2\mathcal{E}_g}
+\]</div>
+<p>which is the same as for PAM. This indicates that the spacing between neighboring points in the constellation determines noise resilience.</p>
+</section>
+<section id="average-energy-in-rectangular-qam">
+<h3>Average Energy in Rectangular QAM<a class="headerlink" href="#average-energy-in-rectangular-qam" title="Link to this heading">#</a></h3>
+<p>For a rectangular QAM constellation with <span class="math notranslate nohighlight">\( M = 2^{2k_1} \)</span> (e.g., <span class="math notranslate nohighlight">\( M = 4, 16, 64, 256, \ldots \)</span>) and amplitudes <span class="math notranslate nohighlight">\( \pm 1, \pm 3, \ldots, \pm (\sqrt{M} - 1) \)</span> in both directions:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_{\text{avg}} = \frac{1}{M} \frac{\mathcal{E}_g}{2} \sum_{m=1}^{\sqrt{M}} \sum_{n=1}^{\sqrt{M}} \left(A_m^2 + A_n^2\right)
+\]</div>
+<p>Substituting and simplifying:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_{\text{avg}} = \frac{\mathcal{E}_g}{2M} \times 2M \frac{(M - 1)}{3} = \frac{M - 1}{3} \mathcal{E}_g
+\]</div>
+</section>
+<section id="energy-per-bit-in-qam">
+<h3>Energy Per Bit in QAM<a class="headerlink" href="#energy-per-bit-in-qam" title="Link to this heading">#</a></h3>
+<p>The average energy per bit in QAM is:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\mathcal{E}_{\text{b,avg}} = \frac{\mathcal{E}_{\text{avg}}}{\log_2 M} = \frac{(M - 1)}{3 \log_2 M} \mathcal{E}_g
+}
+\]</div>
+</section>
+</section>
+<section id="minimum-distance-in-terms-of-mathcal-e-text-b-avg">
+<h2>Minimum Distance in Terms of <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{b,avg}} \)</span><a class="headerlink" href="#minimum-distance-in-terms-of-mathcal-e-text-b-avg" title="Link to this heading">#</a></h2>
+<p>Using <span class="math notranslate nohighlight">\( d_{\text{min}} = \sqrt{2\mathcal{E}_g} \)</span> and substituting <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{b,avg}} \)</span>, the minimum distance can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+d_{\text{min}} = \sqrt{\frac{6 \log_2 M}{M - 1} \mathcal{E}_{\text{b,avg}}}
+\]</div>
+</section>
+<section id="unifying-bandpass-pam-psk-and-qam-signaling-schemes">
+<h2>Unifying Bandpass PAM, PSK, and QAM Signaling Schemes<a class="headerlink" href="#unifying-bandpass-pam-psk-and-qam-signaling-schemes" title="Link to this heading">#</a></h2>
+<section id="general-form-of-bandpass-signaling">
+<h3>General Form of Bandpass Signaling<a class="headerlink" href="#general-form-of-bandpass-signaling" title="Link to this heading">#</a></h3>
+<p>All bandpass signaling schemes (PAM, PSK, and QAM) can be expressed in the <strong>general form</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+s_m(t) = \Re \left[ A_m g(t) e^{j2\pi f_c t} \right], \quad m = 1, 2, \ldots, M
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( g(t) \)</span>: Signal pulse that defines the time-domain waveform.</p></li>
+<li><p><span class="math notranslate nohighlight">\( f_c \)</span>: Carrier frequency.</p></li>
+<li><p><span class="math notranslate nohighlight">\( A_m \)</span>: A parameter determined by the specific signaling scheme.</p></li>
+</ul>
+</section>
+<section id="definition-of-a-m-for-different-schemes">
+<h3>Definition of <span class="math notranslate nohighlight">\( A_m \)</span> for Different Schemes<a class="headerlink" href="#definition-of-a-m-for-different-schemes" title="Link to this heading">#</a></h3>
+<p>The parameter <span class="math notranslate nohighlight">\( A_m \)</span> distinguishes the signaling schemes:</p>
+<ul>
+<li><p><strong>PAM (Pulse Amplitude Modulation)</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( A_m \)</span> is <strong>real</strong> and typically takes values:</p>
+<div class="math notranslate nohighlight">
+\[
+     A_m = \pm1, \pm3, \ldots, \pm(M - 1)
+     \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>PSK (<span class="math notranslate nohighlight">\( M \)</span>-ary Phase Shift Keying)</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( A_m \)</span> is <strong>complex</strong> and represents a phase shift:</p>
+<div class="math notranslate nohighlight">
+\[
+     A_m = e^{j \frac{2\pi}{M} (m-1)}
+     \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>QAM (Quadrature Amplitude Modulation)</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( A_m \)</span> is a general <strong>complex number</strong>, representing both amplitude and phase:</p>
+<div class="math notranslate nohighlight">
+\[
+     A_m = A_{mi} + jA_{mq}
+     \]</div>
+<p>where <span class="math notranslate nohighlight">\( A_{mi} \)</span> and <span class="math notranslate nohighlight">\( A_{mq} \)</span> are the in-phase and quadrature components, respectively.</p>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="relationship-between-pam-psk-and-qam">
+<h3>Relationship Between PAM, PSK, and QAM<a class="headerlink" href="#relationship-between-pam-psk-and-qam" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Unified Family</strong>:</p>
+<ul>
+<li><p>PAM, PSK, and QAM belong to the same family of modulation schemes because they share the same general mathematical structure.</p></li>
+<li><p>PAM and PSK can be seen as <strong>special cases</strong> of QAM:</p>
+<ul>
+<li><p>PAM only uses amplitude variations (<span class="math notranslate nohighlight">\( A_m \)</span> is real).</p></li>
+<li><p>PSK only uses phase variations (<span class="math notranslate nohighlight">\( A_m \)</span> is purely rotational).</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Information Carrying Mechanism</strong>:</p>
+<ul>
+<li><p><strong>PAM</strong>: Only the <strong>amplitude</strong> of <span class="math notranslate nohighlight">\( A_m \)</span> carries information.</p></li>
+<li><p><strong>PSK</strong>: Only the <strong>phase</strong> of <span class="math notranslate nohighlight">\( A_m \)</span> carries information.</p></li>
+<li><p><strong>QAM</strong>: Both <strong>amplitude</strong> and <strong>phase</strong> of <span class="math notranslate nohighlight">\( A_m \)</span> carry information.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="dimensionality-of-the-signal-space">
+<h3>Dimensionality of the Signal Space<a class="headerlink" href="#dimensionality-of-the-signal-space" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The <strong>dimensionality</strong> of the signal space for these schemes is determined by the number of orthogonal components required to represent the signal:</p>
+<ul>
+<li><p><strong>PAM</strong>: <span class="math notranslate nohighlight">\( N = 1 \)</span> (one-dimensional).</p></li>
+<li><p><strong>PSK and QAM</strong>: <span class="math notranslate nohighlight">\( N = 2 \)</span> (two-dimensional, using orthogonal basis functions for the in-phase and quadrature components).</p></li>
+</ul>
+</li>
+<li><p>Importantly, the signal space dimensionality is <strong>independent of the constellation size</strong> <span class="math notranslate nohighlight">\( M \)</span>. For example:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( M = 4 \)</span> (QPSK) and <span class="math notranslate nohighlight">\( M = 16 \)</span> (16-QAM) both use a two-dimensional signal space.</p></li>
+</ul>
+</li>
+</ul>
+<p>A table comparing <strong>PAM</strong>, <strong>PSK</strong>, and <strong>QAM</strong>:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Signaling Scheme</strong></p></th>
+<th class="head"><p><strong>Signal Expression <span class="math notranslate nohighlight">\( s_m(t) \)</span></strong></p></th>
+<th class="head"><p><strong>Vector Representation <span class="math notranslate nohighlight">\( s_m \)</span></strong></p></th>
+<th class="head"><p><strong>Average Energy <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{avg}} \)</span></strong></p></th>
+<th class="head"><p><strong>Energy per Bit <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{b,avg}} \)</span></strong></p></th>
+<th class="head"><p><strong>Minimum Distance <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span></strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>PAM</strong> using <span class="math notranslate nohighlight">\(p(t)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( A_m p(t) \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( A_m \sqrt{\mathcal{E}_p} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{2(M^2 - 1)}{3} \mathcal{E}_p \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{2(M^2 - 1)}{3 \log_2 M} \mathcal{E}_p \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( 2 \sqrt{\mathcal{E}_p} \)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>PAM</strong> using <span class="math notranslate nohighlight">\(g(t)\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( A_m g(t) \cos(2\pi f_c t) \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( A_m \sqrt{\frac{\mathcal{E}_g}{2}} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{M^2 - 1}{3} \mathcal{E}_g \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{M^2 - 1}{3 \log_2 M} \mathcal{E}_g \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \sqrt{2 \mathcal{E}_g} \)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>PSK</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\( g(t) \cos \left[ 2\pi f_c t + \frac{2\pi}{M} (m - 1) \right] \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \sqrt{\frac{\mathcal{E}_g}{2}} \left[ \cos \frac{2\pi(m-1)}{M}, \sin \frac{2\pi(m-1)}{M} \right] \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \mathcal{E}_g \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{\mathcal{E}_g}{\log_2 M} \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( 2 \sqrt{\log_2 M \sin^2 \frac{\pi}{M} \mathcal{E}_{\text{b,avg}}} \)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>QAM</strong></p></td>
+<td><p><span class="math notranslate nohighlight">\( A_{mi} g(t) \cos(2\pi f_c t) - A_{mq} g(t) \sin(2\pi f_c t) \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \sqrt{\frac{\mathcal{E}_g}{2}} \left[ A_{mi}, A_{mq} \right] \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{M - 1}{3} \mathcal{E}_g \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \frac{(M - 1)}{3 \log_2 M} \mathcal{E}_g \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( \sqrt{\frac{6 \log_2 M}{M - 1} \mathcal{E}_{\text{b,avg}}} \)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Explanation of Columns</strong>:</p>
+<ul class="simple">
+<li><p><strong>Signal Expression <span class="math notranslate nohighlight">\( s_m(t) \)</span></strong>: The time-domain representation of the transmitted signal.</p></li>
+<li><p><strong>Vector Representation <span class="math notranslate nohighlight">\( s_m \)</span></strong>: The signal’s representation in signal space, with dimensionality dependent on the scheme.</p></li>
+<li><p><strong>Average Energy <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{avg}} \)</span></strong>: Average energy per symbol.</p></li>
+<li><p><strong>Energy per Bit <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{b,avg}} \)</span></strong>: Derived by dividing <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{avg}} \)</span> by the number of bits per symbol (<span class="math notranslate nohighlight">\( \log_2 M \)</span>).</p></li>
+<li><p><strong>Minimum Distance <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span></strong>: The minimum Euclidean distance between constellation points, which determines noise resilience.</p></li>
+</ul>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="com_c2_s3_PSK.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Phase Modulation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="com_c2_s5_Multidimensional_Signaling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Multidimensional Signaling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qam-waveform">QAM Waveform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-qam">Key Features of QAM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-representation-of-qam-waveform">Alternative Representation of QAM Waveform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#qam-signal-in-amplitude-phase-representation">QAM Signal in Amplitude-Phase Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#combined-pam-psk-constellation">Combined PAM-PSK Constellation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-space-of-qam-waveforms-using-basis-functions">Signal Space of QAM Waveforms Using Basis Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthonormal-basis-for-qam">Orthonormal Basis for QAM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qam-signal-representation">QAM Signal Representation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-decomposition-using-orthonormal-basis">Signal Decomposition Using Orthonormal Basis</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-representation-in-signal-space">Vector Representation in Signal Space</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#i-q-constellation">I/Q Constellation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-qam-signals">Energy of QAM Signals</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-distance-in-qam">Euclidean Distance in QAM</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-rectangular-constellation">Special Case: Rectangular Constellation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#average-energy-in-rectangular-qam">Average Energy in Rectangular QAM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-per-bit-in-qam">Energy Per Bit in QAM</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance-in-terms-of-mathcal-e-text-b-avg">Minimum Distance in Terms of <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{b,avg}} \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unifying-bandpass-pam-psk-and-qam-signaling-schemes">Unifying Bandpass PAM, PSK, and QAM Signaling Schemes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-form-of-bandpass-signaling">General Form of Bandpass Signaling</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-a-m-for-different-schemes">Definition of <span class="math notranslate nohighlight">\( A_m \)</span> for Different Schemes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-pam-psk-and-qam">Relationship Between PAM, PSK, and QAM</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensionality-of-the-signal-space">Dimensionality of the Signal Space</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

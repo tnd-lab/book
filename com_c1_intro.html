@@ -1,0 +1,958 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Introduction to Communications Theory &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'com_c1_intro';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modulation" href="com_c2_s0_Modulation.html" />
+    <link rel="prev" title="Karhunen-Loève (KL) Expansion" href="sig_c3_s5_KL_expansion.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Introduction to Communications Theory</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-a-communications-system">Overview of A Communications System</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-components">Fundamental Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transmitter-communications-channel-and-receiver">Transmitter, Communications Channel, and Receiver</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modes-of-communications">Modes of Communications</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#point-to-point-communication">Point-to-Point Communication</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-communications-channels">Types of Communications Channels</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wireline-channels">Wireline Channels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fiber-optic-channels">Fiber-Optic Channels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wireless-electromagnetic-channels">Wireless Electromagnetic Channels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#underwater-acoustic-channels">Underwater Acoustic Channels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-channels">Storage Channels</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-components-of-a-digital-communications-system">Key Components of a Digital Communications System</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#information-sequence">Information Sequence</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#source-encoder">Source Encoder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#channel-encoder">Channel Encoder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modulator">Modulator</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#communications-channel">Communications Channel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demodulator">Demodulator</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#channel-decoder">Channel Decoder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#source-decoder">Source Decoder</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-models-for-communications-channels">Mathematical Models for Communications Channels</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-additive-noise-channel">The Additive Noise Channel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-the-model">Key Features of the Model</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-of-additive-noise-channel">Simulation of Additive Noise Channel</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References:</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-communications-theory">
+<h1>Introduction to Communications Theory<a class="headerlink" href="#introduction-to-communications-theory" title="Link to this heading">#</a></h1>
+<section id="overview-of-a-communications-system">
+<h2>Overview of A Communications System<a class="headerlink" href="#overview-of-a-communications-system" title="Link to this heading">#</a></h2>
+<section id="fundamental-components">
+<h3>Fundamental Components<a class="headerlink" href="#fundamental-components" title="Link to this heading">#</a></h3>
+<p>In a Communications system, the fundamental components include the <strong>transmitter</strong>, the <strong>Communications channel</strong>, and the <strong>receiver</strong>.</p>
+</section>
+<section id="transmitter-communications-channel-and-receiver">
+<h3>Transmitter, Communications Channel, and Receiver<a class="headerlink" href="#transmitter-communications-channel-and-receiver" title="Link to this heading">#</a></h3>
+<p><strong>Transmitter</strong>:  The transmitter converts the message into a suitable format for transmission.</p>
+<ul class="simple">
+<li><p>This involves <strong>modulation</strong>, which follows a specific sequence:</p>
+<ol class="arabic simple">
+<li><p><strong>Mapping to a Complex Symbol</strong>:</p>
+<ul>
+<li><p>The input bitstream is divided into groups of bits, each representing a symbol.</p></li>
+<li><p>Each symbol is mapped to a point in a complex plane, defined by the modulation scheme’s constellation (e.g., QPSK, 16-QAM). This results in a complex-valued baseband signal.</p></li>
+<li><p>The complex symbol represents the in-phase (I) and quadrature-phase (Q) components of the signal.</p></li>
+</ul>
+</li>
+<li><p><strong>Combining with a Carrier</strong>:</p>
+<ul>
+<li><p>The complex baseband signal modulates a high-frequency carrier signal for transmission.</p></li>
+<li><p>The in-phase (real) component modulates the cosine of the carrier frequency, while the quadrature (imaginary) component modulates the sine of the carrier frequency.</p></li>
+<li><p>These two components are combined to form the passband (RF) signal.</p></li>
+</ul>
+</li>
+</ol>
+</li>
+<li><p>The modulated signal is then amplified and transmitted.</p></li>
+<li><p>The transmitter’s design depends on factors like the type of signal, the transmission distance, and the specific Communications technology being used.</p></li>
+</ul>
+<p><strong>Communications Channel</strong>:  The Communications channel is the medium through which the transmitted signal travels.</p>
+<ul class="simple">
+<li><p>It can be a <strong>physical medium</strong> (e.g., wires) or <strong>wireless space</strong> (e.g., for electromagnetic waves).</p></li>
+<li><p>The channel often introduces <strong>impairments</strong> such as noise, fading, and interference, which can degrade the signal quality.</p></li>
+</ul>
+<p><strong>Receiver</strong>:  The receiver captures the signal and converts it back into a form understandable or useful for the end-user.</p>
+<ul class="simple">
+<li><p>It involves <strong>amplification</strong> of the received signal, <strong>demodulation</strong> to extract the original message, and <strong>error correction</strong> to handle noise or impairments.</p></li>
+<li><p>The receiver is designed in alignment with the transmitter to ensure accurate signal recovery.</p></li>
+</ul>
+</section>
+<section id="modes-of-communications">
+<h3>Modes of Communications<a class="headerlink" href="#modes-of-communications" title="Link to this heading">#</a></h3>
+<p>Communications systems can be broadly categorized into two fundamental modes: <strong>Broadcasting</strong> and <strong>Point-to-Point Communication</strong>.</p>
+<p>These modes define the structure and flow of information within a network, depending on the requirements of the application.</p>
+<section id="broadcasting">
+<h4>Broadcasting<a class="headerlink" href="#broadcasting" title="Link to this heading">#</a></h4>
+<p>Broadcasting is a Communications mode in which a single, powerful transmitter is used to send information-bearing signals to multiple receivers simultaneously.</p>
+<p>This approach is particularly effective for applications where the same message needs to reach a large audience, such as radio or television broadcasts.</p>
+<p>Key characteristics of broadcasting include:</p>
+<ul class="simple">
+<li><p><strong>Unidirectional Communication</strong>: The information flows in one direction only, from the transmitter to the receivers. The receivers do not send any signals back to the transmitter.</p></li>
+<li><p><strong>Cost Efficiency for Receivers</strong>: Since the transmitter handles the primary signal generation and amplification, the receivers are relatively inexpensive and simple to construct.</p></li>
+</ul>
+<p>Broadcasting is typically employed in scenarios where scalability and wide coverage are essential.</p>
+</section>
+<section id="point-to-point-communication">
+<h4>Point-to-Point Communication<a class="headerlink" href="#point-to-point-communication" title="Link to this heading">#</a></h4>
+<p>Point-to-point Communications involves the exchange of information over a dedicated link between a single transmitter and a single receiver.</p>
+<p>Unlike broadcasting, this mode allows for two-way communication, enabling both entities to send and receive signals.</p>
+<p>Key features of point-to-point Communications include:</p>
+<ul class="simple">
+<li><p><strong>Bidirectional Flow of Information</strong>: The Communications is not limited to one direction; signals can flow back and forth between the transmitter and receiver.</p></li>
+<li><p><strong>Use of Transceivers</strong>: To enable bidirectional communication, each end of the link is equipped with a transceiver, a device that can function both as a transmitter and a receiver.</p></li>
+</ul>
+<p>This mode is widely used in applications requiring secure and individualized communication, such as telephone calls or data transfers between computers.</p>
+</section>
+</section>
+<section id="types-of-communications-channels">
+<h3>Types of Communications Channels<a class="headerlink" href="#types-of-communications-channels" title="Link to this heading">#</a></h3>
+<p>A <strong>Communications channel</strong> is the medium that connects a transmitter and a receiver, enabling the transfer of information.</p>
+<p>Depending on the application and environment, different types of channels are employed, each with unique characteristics and advantages. These include:</p>
+<section id="wireline-channels">
+<h4>Wireline Channels<a class="headerlink" href="#wireline-channels" title="Link to this heading">#</a></h4>
+<p>Wireline channels are physical connections that use electrical signals to transmit information. Common examples include twisted-pair cables, coaxial cables, and telephone lines.</p>
+<p>Key features:</p>
+<ul class="simple">
+<li><p>Reliable transmission for short to medium distances.</p></li>
+<li><p>High resistance to external interference when shielded properly.</p></li>
+</ul>
+</section>
+<section id="fiber-optic-channels">
+<h4>Fiber-Optic Channels<a class="headerlink" href="#fiber-optic-channels" title="Link to this heading">#</a></h4>
+<p>Fiber-optic channels use light to carry information through optical fibers, providing an extremely high-bandwidth medium.</p>
+<p>These channels offer far greater capacity compared to traditional coaxial cables, making them ideal for high-speed internet, long-distance data transmission, and modern teleCommunications systems.</p>
+<p>Key features:</p>
+<ul class="simple">
+<li><p>Immense bandwidth capacity.</p></li>
+<li><p>Low signal attenuation and high resistance to electromagnetic interference.</p></li>
+</ul>
+</section>
+<section id="wireless-electromagnetic-channels">
+<h4>Wireless Electromagnetic Channels<a class="headerlink" href="#wireless-electromagnetic-channels" title="Link to this heading">#</a></h4>
+<p>Wireless channels transmit information using electromagnetic waves through the air or space. The energy is radiated into the propagation medium by an antenna.</p>
+<p>Wireless channels are foundational to systems such as mobile communications, satellite links, and Wi-Fi networks.</p>
+<p>Key features:</p>
+<ul class="simple">
+<li><p>No need for physical infrastructure, enabling mobility.</p></li>
+<li><p>Highly adaptable to varying environments and distances.</p></li>
+</ul>
+</section>
+<section id="underwater-acoustic-channels">
+<h4>Underwater Acoustic Channels<a class="headerlink" href="#underwater-acoustic-channels" title="Link to this heading">#</a></h4>
+<p>Underwater <em>acoustic</em> channels facilitate Communications through <em>sound waves</em> in water, as electromagnetic waves do not propagate well in underwater environments.</p>
+<p>These channels are vital for applications such as ocean exploration, submarine communication, and underwater sensor networks.</p>
+<p>Key features:</p>
+<ul class="simple">
+<li><p>Operates effectively in water despite its unique challenges, such as slow propagation speed and multipath effects.</p></li>
+<li><p>Increasingly used in scientific and industrial oceanic applications.</p></li>
+</ul>
+</section>
+<section id="storage-channels">
+<h4>Storage Channels<a class="headerlink" href="#storage-channels" title="Link to this heading">#</a></h4>
+<p>Storage channels are not traditional Communications channels but play a critical role in storing and retrieving information for later use. Examples include magnetic tapes, hard drives, and flash memory.</p>
+<p>Key features:</p>
+<ul class="simple">
+<li><p>High reliability and durability for long-term data preservation.</p></li>
+<li><p>Integral to modern computing and data storage ecosystems.</p></li>
+</ul>
+<p>Each of these Communications channels serves specific purposes and is optimized for its respective applications, contributing to the diverse and interconnected world of modern Communications systems.</p>
+</section>
+</section>
+<section id="key-components-of-a-digital-communications-system">
+<h3>Key Components of a Digital Communications System<a class="headerlink" href="#key-components-of-a-digital-communications-system" title="Link to this heading">#</a></h3>
+<p>A digital Communications system is composed of several functional elements that work together to facilitate the reliable transmission and reception of information.</p>
+<p>The following are the key components typically represented in the block diagram of a digital Communications system:</p>
+<p><img alt="Elements of a Communications system" src="_images/com_p1_fig_com_system_blocks.png" /></p>
+<section id="information-sequence">
+<h4>Information Sequence<a class="headerlink" href="#information-sequence" title="Link to this heading">#</a></h4>
+<p>The Communications process begins with an information sequence, which represents the raw message or data originating from the source. This sequence can take two primary forms:</p>
+<ul class="simple">
+<li><p><strong>Analog Signal</strong>: A continuous signal that varies smoothly over time, such as audio or video signals.</p></li>
+<li><p><strong>Digital Signal</strong>: A discrete-time signal that consists of a finite set of values, often represented as a sequence of binary digits.</p></li>
+</ul>
+<p>In a <strong>digital Communications system</strong>, the source generates messages that are first converted into binary form (combinations of 0s and 1s). This conversion ensures compatibility with digital processing and transmission methods, which are more robust to noise and interference compared to analog systems.</p>
+</section>
+<section id="source-encoder">
+<h4>Source Encoder<a class="headerlink" href="#source-encoder" title="Link to this heading">#</a></h4>
+<p>After obtaining the information sequence, the next step is to encode it efficiently. The primary objectives of <strong>source encoder</strong> are:</p>
+<ul class="simple">
+<li><p><strong>Efficient Representation</strong>: To reduce redundancy in the information sequence, enabling the data to be represented using fewer binary digits without losing its essential content.</p></li>
+<li><p><strong>Optimal Utilization of Resources (or Data Compression)</strong>: By minimizing the number of bits required to represent the message, source encoding conserves bandwidth and storage space, making the system more efficient.</p></li>
+</ul>
+</section>
+<section id="channel-encoder">
+<h4>Channel Encoder<a class="headerlink" href="#channel-encoder" title="Link to this heading">#</a></h4>
+<p>The channel encoder plays a critical role in ensuring the robustness of the Communications system. It introduces <strong>controlled redundancy</strong> to the binary information sequence, which helps mitigate the adverse effects of noise and interference.</p>
+<p>This redundancy enables the system to detect and correct errors that may arise during the transmission of signals through the Communications channel, thereby enhancing reliability.</p>
+</section>
+<section id="modulator">
+<h4>Modulator<a class="headerlink" href="#modulator" title="Link to this heading">#</a></h4>
+<p>The modulator is responsible for transforming the binary sequence from the channel encoder into signal <strong>waveforms</strong> suitable for transmission.</p>
+<p>These waveforms are designed to be compatible with the physical characteristics of the Communications channel, ensuring efficient utilization of the channel’s bandwidth.</p>
+<p>The modulator also prepares the signal for propagation by converting it into an appropriate format, such as amplitude, frequency, or phase variations.</p>
+</section>
+<section id="communications-channel">
+<h4>Communications Channel<a class="headerlink" href="#communications-channel" title="Link to this heading">#</a></h4>
+<p>The Communications channel represents the <strong>physical medium</strong> through which the signal travels from the transmitter to the receiver. This medium can vary widely depending on the application and environment and may include wireline cables, fiber optics, electromagnetic waves, or acoustic waves.</p>
+<p>The channel may introduce challenges such as noise, interference, and attenuation, which must be addressed by the Communications system’s design to ensure accurate and reliable signal delivery.</p>
+</section>
+<section id="demodulator">
+<h4>Demodulator<a class="headerlink" href="#demodulator" title="Link to this heading">#</a></h4>
+<p>The demodulator is the first component to process the received signal at the receiver’s end. Its role is to handle the <strong>channel-corrupted transmitted waveform</strong> and convert it into a sequence of numbers.</p>
+<p>These numbers serve as estimates of the transmitted data symbols (indices of demodulated symbol), effectively reversing the modulation process applied at the transmitter.</p>
+</section>
+<section id="channel-decoder">
+<h4>Channel Decoder<a class="headerlink" href="#channel-decoder" title="Link to this heading">#</a></h4>
+<p>The channel decoder uses the redundancy introduced by the channel encoder to <strong>reconstruct the original information sequence</strong>.</p>
+<p>By leveraging knowledge of the encoding scheme, the channel decoder can detect and correct errors that occurred during transmission, ensuring that the receiver obtains an accurate representation of the transmitted data.</p>
+</section>
+<section id="source-decoder">
+<h4>Source Decoder<a class="headerlink" href="#source-decoder" title="Link to this heading">#</a></h4>
+<p>The source decoder is the final step in the digital Communications system. It processes the sequence provided by the channel decoder, applying its knowledge of the source encoding method to <strong>reconstruct the original signal</strong>.</p>
+<p>This stage ensures that the data presented to the destination closely matches the original information generated by the source, thus completing the Communications process.</p>
+</section>
+</section>
+<section id="mathematical-models-for-communications-channels">
+<h3>Mathematical Models for Communications Channels<a class="headerlink" href="#mathematical-models-for-communications-channels" title="Link to this heading">#</a></h3>
+<section id="the-additive-noise-channel">
+<h4>The Additive Noise Channel<a class="headerlink" href="#the-additive-noise-channel" title="Link to this heading">#</a></h4>
+<p>One of the simplest and most widely used mathematical models for a Communications channel is the <strong>additive noise channel</strong>, which captures the effects of noise on a transmitted signal. This model is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+r(t) = \alpha s(t) + n(t)
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( r(t) \)</span>: Received signal at time <span class="math notranslate nohighlight">\( t \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( s(t) \)</span>: Transmitted signal at time <span class="math notranslate nohighlight">\( t \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( n(t) \)</span>: Noise term representing random processes that corrupt the signal.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \alpha \)</span>: Attenuation factor accounting for the decrease in signal power due to channel effects.</p></li>
+</ul>
+</section>
+<section id="key-features-of-the-model">
+<h4>Key Features of the Model<a class="headerlink" href="#key-features-of-the-model" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Additive Noise</strong>:<br />
+The transmitted signal <span class="math notranslate nohighlight">\( s(t) \)</span> is subjected to <strong>additive noise</strong>, represented by <span class="math notranslate nohighlight">\( n(t) \)</span>. This noise is a random process that disrupts the original signal, leading to potential errors in reception.</p></li>
+<li><p><strong>Gaussian Noise</strong>:<br />
+The noise process <span class="math notranslate nohighlight">\( n(t) \)</span> is often modeled as <strong>Gaussian</strong> because real-world noise sources, such as thermal noise in electronic circuits, can be accurately described by Gaussian statistics. Gaussian noise is characterized by:</p>
+<ul>
+<li><p>A mean (typically zero, assuming no bias in the noise).</p></li>
+<li><p>A variance that defines the power or intensity of the noise.</p></li>
+</ul>
+</li>
+<li><p><strong>Additive Gaussian Noise Channel (AWGN)</strong>:<br />
+When <span class="math notranslate nohighlight">\( n(t) \)</span> is Gaussian, the channel model is referred to as the <strong>additive Gaussian noise channel</strong>. This model is a cornerstone of Communications theory due to its simplicity and applicability to a wide range of scenarios.</p></li>
+<li><p><strong>Attenuation</strong>:<br />
+As the signal <span class="math notranslate nohighlight">\( s(t) \)</span> travels through the channel, its power often <strong>decreases</strong> due to attenuation. This phenomenon is captured by the <strong>attenuation factor <span class="math notranslate nohighlight">\( \alpha \)</span></strong>, which scales the transmitted signal before it reaches the receiver.</p></li>
+</ul>
+<p><strong>Significance of the Model</strong><br />
+The additive noise channel provides a fundamental framework for analyzing and designing Communications systems. By understanding the impact of noise and attenuation on the transmitted signal, engineers can develop techniques to enhance signal reliability, such as source coding algorithms, error-correction coding (codes), optimal modulation schemes.</p>
+</section>
+</section>
+<section id="simulation-of-additive-noise-channel">
+<h3>Simulation of Additive Noise Channel<a class="headerlink" href="#simulation-of-additive-noise-channel" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># Time vector</span>
+<span class="n">frequency</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># Frequency of sine wave (Hz)</span>
+<span class="n">signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequency</span> <span class="o">*</span> <span class="n">time</span><span class="p">)</span>  <span class="c1"># Sine wave s(t)</span>
+
+<span class="c1"># Function to add noise</span>
+<span class="k">def</span> <span class="nf">add_noise</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">noise_power</span><span class="p">):</span>
+    <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">noise_power</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">signal</span> <span class="o">+</span> <span class="n">noise</span><span class="p">,</span> <span class="n">noise</span>
+
+<span class="c1"># Function to apply attenuation</span>
+<span class="k">def</span> <span class="nf">apply_attenuation</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">attenuation_factor</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">attenuation_factor</span> <span class="o">*</span> <span class="n">signal</span>
+
+<span class="c1"># Initial setup</span>
+<span class="n">noise_power_values</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">]</span>  <span class="c1"># Different noise power levels</span>
+<span class="n">attenuation_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.2</span><span class="p">]</span>  <span class="c1"># Different attenuation levels</span>
+
+<span class="c1"># Original signal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original Signal&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Original Signal&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Add noise with increasing power</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">noise_power</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">noise_power_values</span><span class="p">):</span>
+    <span class="n">noisy_signal</span><span class="p">,</span> <span class="n">noise</span> <span class="o">=</span> <span class="n">add_noise</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">noise_power</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original Signal&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">noisy_signal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Noisy Signal (Noise Power = </span><span class="si">{</span><span class="n">noise_power</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Signal with Noise (Noise Power = </span><span class="si">{</span><span class="n">noise_power</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Add attenuation and noise</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">attenuation</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">attenuation_values</span><span class="p">):</span>
+    <span class="n">attenuated_signal</span> <span class="o">=</span> <span class="n">apply_attenuation</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">attenuation</span><span class="p">)</span>
+    <span class="n">attenuated_noisy_signal</span><span class="p">,</span> <span class="n">noise</span> <span class="o">=</span> <span class="n">add_noise</span><span class="p">(</span><span class="n">attenuated_signal</span><span class="p">,</span> <span class="n">noise_power_values</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>  <span class="c1"># Add noise to attenuated signal</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">signal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Original Signal&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">attenuated_noisy_signal</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Attenuated + Noisy Signal (Attenuation = </span><span class="si">{</span><span class="n">attenuation</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Signal with Attenuation and Noise (Attenuation = </span><span class="si">{</span><span class="n">attenuation</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/39e992f8df821d4c15713d435cbf4976b77251d57784eaf76e504fa93105e5f6.png" src="_images/39e992f8df821d4c15713d435cbf4976b77251d57784eaf76e504fa93105e5f6.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="references">
+<h2>References:<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<p>The contents of the sections in this chapter are based on the following materials.</p>
+<ul class="simple">
+<li><p><em>J. Proakis and M. Salehi</em>, <strong>Digital Communications</strong>, 5th ed. New York, NY: McGraw-Hill Professional, 2007. ISBN: 0072957166, <strong>Chapter 1</strong></p></li>
+<li><p><em>S. Haykin</em>, <strong>Digital Communications Systems</strong>, 1st ed. Nashville, TN: John Wiley &amp; Sons, 2013. ISBN: 0471647357, <strong>Chapter 1</strong></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sig_c3_s5_KL_expansion.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Karhunen-Loève (KL) Expansion</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="com_c2_s0_Modulation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Modulation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-a-communications-system">Overview of A Communications System</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fundamental-components">Fundamental Components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#transmitter-communications-channel-and-receiver">Transmitter, Communications Channel, and Receiver</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modes-of-communications">Modes of Communications</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#broadcasting">Broadcasting</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#point-to-point-communication">Point-to-Point Communication</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#types-of-communications-channels">Types of Communications Channels</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wireline-channels">Wireline Channels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fiber-optic-channels">Fiber-Optic Channels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#wireless-electromagnetic-channels">Wireless Electromagnetic Channels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#underwater-acoustic-channels">Underwater Acoustic Channels</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#storage-channels">Storage Channels</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-components-of-a-digital-communications-system">Key Components of a Digital Communications System</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#information-sequence">Information Sequence</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#source-encoder">Source Encoder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#channel-encoder">Channel Encoder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#modulator">Modulator</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#communications-channel">Communications Channel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#demodulator">Demodulator</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#channel-decoder">Channel Decoder</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#source-decoder">Source Decoder</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-models-for-communications-channels">Mathematical Models for Communications Channels</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-additive-noise-channel">The Additive Noise Channel</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features-of-the-model">Key Features of the Model</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-of-additive-noise-channel">Simulation of Additive Noise Channel</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References:</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

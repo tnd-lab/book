@@ -1,0 +1,1718 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Real Gaussian Random Vector &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c1_s10_s11';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Complex Random Vector" href="c1_s12.html" />
+    <link rel="prev" title="Real Scalar Gaussian Random Variable" href="c1_s9.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <script>document.write(`<img src="_static/web_logo.png" class="logo__image only-dark" alt="Telecom Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Signal Detection and Estimation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c1_s0.html">Chapter 1: Review of Probability Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c1_s1.html">Bayes’ Theorem</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s5_s6a.html">Functions of A Single Random Variable</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s6b.html">Generating Random Variables From A Uniform Distribution</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s7.html">First Moment of a Function of Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s8.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s9.html">Real Scalar Gaussian Random Variable</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Real Gaussian Random Vector</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s12.html">Complex Random Vector</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s13.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c1_s14.html">Standard Complex Gaussian Vector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a.html">Stochastic Process</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Real Gaussian Random Vector</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Real Gaussian Random Vector</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-and-properties">Definition and Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-pdf">Components of the PDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-vector-and-covariance-matrix">Mean Vector and Covariance Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-mean-vectors-and-covariance-matrices">Empirical mean vectors and covariance matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-pdf">Empirical PDF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comapre-with-marginal-scalar-rv">Comapre with (marginal) scalar RV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-matrix-discussion">Covariance Matrix Discussion</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-gaussian-vector">Standard Gaussian Vector</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-of-standard-gaussian-vector">PDF of Standard Gaussian Vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependence-of-the-pdf-of-standard-gaussian-vector-on-magnitudes">Dependence of the PDF of Standard Gaussian Vector on Magnitudes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation-of-orthonormal-transformations-and-gaussian-vectors">Explanation of Orthonormal Transformations and Gaussian Vectors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthonormal-transform">Orthonormal Transform</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthonormal-matrix-and-rotation-matrix">Orthonormal Matrix and Rotation Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-vector-transformation">Gaussian Vector Transformation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformation">Linear Transformation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-of-vec-mathbf-y">Mean of <span class="math notranslate nohighlight">\( \vec{\mathbf{y}} \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-of-vec-mathbf-y">Covariance of <span class="math notranslate nohighlight">\( \vec{\mathbf{y}} \)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="real-gaussian-random-vector">
+<h1>Real Gaussian Random Vector<a class="headerlink" href="#real-gaussian-random-vector" title="Link to this heading">#</a></h1>
+<section id="definition-and-properties">
+<h2>Definition and Properties<a class="headerlink" href="#definition-and-properties" title="Link to this heading">#</a></h2>
+<p>A real Gaussian random vector is a generalization of the scalar Gaussian random variable to multiple dimensions. Consider a random vector <span class="math notranslate nohighlight">\(\vec{\mathbf{x}} \in \mathbb{R}^n\)</span> with the following properties:</p>
+<ul class="simple">
+<li><p><strong>Mean vector</strong> <span class="math notranslate nohighlight">\(\vec{\mu} \in \mathbb{R}^n\)</span></p></li>
+<li><p><strong>Covariance matrix</strong> <span class="math notranslate nohighlight">\(\vec{C} \in \mathbb{R}^{n \times n}\)</span></p></li>
+</ul>
+<p>The probability density function (PDF) of a real Gaussian random vector <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[ f_{\vec{\mathbf{x}}}(\vec{x}) = \frac{1}{(2\pi)^{n/2} \sqrt{\det \vec{C}}} e^{-\frac{1}{2} (\vec{x} - \vec{\mu})^T \vec{C}^{-1} (\vec{x} - \vec{\mu})} \]</div>
+<section id="components-of-the-pdf">
+<h3>Components of the PDF<a class="headerlink" href="#components-of-the-pdf" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Normalization Factor</strong>:
+$<span class="math notranslate nohighlight">\(
+\frac{1}{(2\pi)^{n/2} \sqrt{\det \vec{C}}}
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((2\pi)^{n/2}\)</span> normalizes the multi-dimensional space.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\sqrt{\det \vec{C}}\)</span> accounts for the volume scaling introduced by the covariance matrix <span class="math notranslate nohighlight">\(\vec{C}\)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>Exponential Term</strong>:
+$<span class="math notranslate nohighlight">\(
+e^{-\frac{1}{2} (\vec{x} - \vec{\mu})^T \vec{C}^{-1} (\vec{x} - \vec{\mu})}
+\)</span>$</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((\vec{x} - \vec{\mu})\)</span> is the deviation of the vector from its mean.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\vec{C}^{-1}\)</span> is the inverse of the covariance matrix, which normalizes the deviation.</p></li>
+<li><p>The quadratic form <span class="math notranslate nohighlight">\((\vec{x} - \vec{\mu})^T \vec{C}^{-1} (\vec{x} - \vec{\mu})\)</span> represents the Mahalanobis distance, a measure of distance accounting for correlations among the variables.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="mean-vector-and-covariance-matrix">
+<h3>Mean Vector and Covariance Matrix<a class="headerlink" href="#mean-vector-and-covariance-matrix" title="Link to this heading">#</a></h3>
+<p>The mean vector <span class="math notranslate nohighlight">\(\vec{\mu}\)</span> and covariance matrix <span class="math notranslate nohighlight">\(\vec{C}\)</span> are defined as follows:</p>
+<ul class="simple">
+<li><p><strong>Mean Vector</strong>:
+$<span class="math notranslate nohighlight">\(
+\vec{\mu} = E\{\vec{\mathbf{x}}\}
+\)</span><span class="math notranslate nohighlight">\(
+This is the expected value of the random vector \)</span>\vec{\mathbf{x}}$.</p></li>
+<li><p><strong>Covariance Matrix</strong>:
+$<span class="math notranslate nohighlight">\(
+\vec{C} = E\{(\vec{\mathbf{x}} - \vec{\mu})(\vec{\mathbf{x}} - \vec{\mu})^T\}
+\)</span><span class="math notranslate nohighlight">\(
+This measures the expected value of the outer product of the deviations of \)</span>\vec{\mathbf{x}}$ from its mean. The covariance matrix describes the spread and correlation structure of the vector components.</p></li>
+</ul>
+<p><strong>Notation</strong></p>
+<p>The notation <span class="math notranslate nohighlight">\(\vec{\mathbf{x}} \sim \mathcal{N}(\vec{\mu}, \vec{C})\)</span> indicates that <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span> is a Gaussian random vector with mean vector <span class="math notranslate nohighlight">\(\vec{\mu}\)</span> and covariance matrix <span class="math notranslate nohighlight">\(\vec{C}\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># Define the mean vector and covariance matrix</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  <span class="c1"># Example mean vector</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>  <span class="c1"># Example covariance matrix</span>
+
+<span class="c1"># Number of samples to generate</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Simulate the Gaussian random vector</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">)</span>
+
+<span class="c1"># Verify the mean and covariance of the generated samples</span>
+<span class="n">sample_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sample_cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample Mean:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sample_mean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample Covariance:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sample_cov</span><span class="p">)</span>
+
+<span class="c1"># Plot the generated samples</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">samples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Generated Samples&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Simulated Gaussian Random Vector&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;X2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample Mean:
+ [1.06616848 1.99164812]
+Sample Covariance:
+ [[0.98235249 0.51935403]
+ [0.51935403 2.15750136]]
+</pre></div>
+</div>
+<img alt="_images/02795d1a40d201dd3eeaf88488f91efc5659c8a8e47b445fdfddb996e656329d.png" src="_images/02795d1a40d201dd3eeaf88488f91efc5659c8a8e47b445fdfddb996e656329d.png" />
+</div>
+</div>
+</section>
+<section id="empirical-mean-vectors-and-covariance-matrices">
+<h3>Empirical mean vectors and covariance matrices<a class="headerlink" href="#empirical-mean-vectors-and-covariance-matrices" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define the mean vector and covariance matrix</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  <span class="c1"># Example mean vector</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>  <span class="c1"># Example covariance matrix</span>
+
+<span class="c1"># Number of samples to generate</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Simulate the Gaussian random vector</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">)</span>
+
+<span class="c1"># Compute the empirical mean and covariance of the generated samples</span>
+<span class="n">empirical_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">empirical_cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Compute the empirical covariance matrix using the formula</span>
+<span class="c1"># \vec{C}=E\{(\vec{\mathbf{x}}-\vec{\mu})(\vec{\mathbf{x}}-\vec{\mu})^T\}</span>
+<span class="n">deviations</span> <span class="o">=</span> <span class="n">samples</span> <span class="o">-</span> <span class="n">empirical_mean</span>
+<span class="n">empirical_cov_manual</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">deviations</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">deviations</span><span class="p">)</span> <span class="o">/</span> <span class="n">num_samples</span>
+
+<span class="c1"># Print the given and empirical mean vectors</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Given Mean Vector:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">mu</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empirical Mean Vector:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">empirical_mean</span><span class="p">)</span>
+
+<span class="c1"># Print the given and empirical covariance matrices</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Given Covariance Matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empirical Covariance Matrix (using np.cov):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">empirical_cov</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empirical Covariance Matrix (manual computation):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">empirical_cov_manual</span><span class="p">)</span>
+
+<span class="c1"># Compute the difference between given and empirical mean and covariance</span>
+<span class="n">mean_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">empirical_mean</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span>
+<span class="n">cov_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">empirical_cov_manual</span> <span class="o">-</span> <span class="n">C</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Difference between given and empirical mean vector (Euclidean norm):&quot;</span><span class="p">,</span> <span class="n">mean_diff</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Difference between given and empirical covariance matrix (Frobenius norm):&quot;</span><span class="p">,</span> <span class="n">cov_diff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Given Mean Vector:
+ [1 2]
+Empirical Mean Vector:
+ [0.98675056 1.97851476]
+Given Covariance Matrix:
+ [[1.  0.5]
+ [0.5 2. ]]
+Empirical Covariance Matrix (using np.cov):
+ [[0.96093061 0.51284042]
+ [0.51284042 2.01708294]]
+Empirical Covariance Matrix (manual computation):
+ [[0.95996968 0.51232758]
+ [0.51232758 2.01506586]]
+Difference between given and empirical mean vector (Euclidean norm): 0.025242090392552843
+Difference between given and empirical covariance matrix (Frobenius norm): 0.046188153479715235
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="empirical-pdf">
+<h3>Empirical PDF<a class="headerlink" href="#empirical-pdf" title="Link to this heading">#</a></h3>
+<p>Illustration of the PDF of a multivariate normal (MVN) distribution</p>
+<p>We can see that the empirical distribution of the generated samples closely matches the theoretical PDF of the multivariate normal distribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">multivariate_normal</span>
+
+<span class="c1"># Define the mean vector and covariance matrix</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  <span class="c1"># Example mean vector</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>  <span class="c1"># Example covariance matrix</span>
+
+<span class="c1"># Number of samples to generate</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Simulate the Gaussian random vector</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">)</span>
+
+<span class="c1"># Create a grid of points to evaluate the theoretical PDF</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="mi">5</span><span class="p">:</span><span class="mf">.01</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">:</span><span class="mi">6</span><span class="p">:</span><span class="mf">.01</span><span class="p">]</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="c1"># Compute the theoretical PDF using the given formula</span>
+<span class="k">def</span> <span class="nf">theoretical_pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">C</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">mu</span><span class="o">.</span><span class="n">size</span>
+    <span class="n">det_C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+    <span class="n">inv_C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">C</span><span class="p">)</span>
+    <span class="n">norm_const</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">**</span><span class="n">n</span> <span class="o">*</span> <span class="n">det_C</span><span class="p">))</span>
+    <span class="n">diff</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">mu</span>
+    <span class="n">exponent</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">diff</span> <span class="o">@</span> <span class="n">inv_C</span> <span class="o">*</span> <span class="n">diff</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">norm_const</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">exponent</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the theoretical PDF on the grid using the given formula</span>
+<span class="n">theoretical_pdf_values_manual</span> <span class="o">=</span> <span class="n">theoretical_pdf</span><span class="p">(</span><span class="n">pos</span><span class="p">,</span> <span class="n">mu</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+
+<span class="c1"># Compute the theoretical PDF using scipy&#39;s multivariate_normal</span>
+<span class="n">rv</span> <span class="o">=</span> <span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">C</span><span class="p">)</span>
+<span class="n">theoretical_pdf_values_scipy</span> <span class="o">=</span> <span class="n">rv</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="c1"># Plot the empirical PDF using a 2D histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">samples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical PDF (2D Histogram)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;X2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="c1"># Plot the theoretical PDF as a contour plot (manual computation)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theoretical_pdf_values_manual</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">samples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Theoretical PDF (Manual Computation)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;X2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="c1"># Plot the theoretical PDF as a contour plot (scipy computation)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theoretical_pdf_values_scipy</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">samples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Theoretical PDF (scipy Computation)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;X2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Compute the difference between the manually computed and scipy computed PDFs</span>
+<span class="n">pdf_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">theoretical_pdf_values_manual</span> <span class="o">-</span> <span class="n">theoretical_pdf_values_scipy</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Difference between manual and scipy computed PDF values (Frobenius norm):&quot;</span><span class="p">,</span> <span class="n">pdf_diff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/be21ba7c41865243a2d7d9cf25dba88013874a4c1fff21f4cf853c10bee33e33.png" src="_images/be21ba7c41865243a2d7d9cf25dba88013874a4c1fff21f4cf853c10bee33e33.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Difference between manual and scipy computed PDF values (Frobenius norm): 5.615694445841721e-15
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="comapre-with-marginal-scalar-rv">
+<h2>Comapre with (marginal) scalar RV<a class="headerlink" href="#comapre-with-marginal-scalar-rv" title="Link to this heading">#</a></h2>
+<p>In the given code, <span class="math notranslate nohighlight">\(X_1\)</span> and <span class="math notranslate nohighlight">\(X_2\)</span> are Gaussian random variables with the following properties:</p>
+<p><strong>Mean</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X_1\)</span> has a mean of 1.</p></li>
+<li><p><span class="math notranslate nohighlight">\(X_2\)</span> has a mean of 2.</p></li>
+</ul>
+<p><strong>Covariance Matrix</strong></p>
+<p>The covariance matrix <span class="math notranslate nohighlight">\(\vec{C}\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \vec{C} = \begin{bmatrix} 1 &amp; 0.5 \\ 0.5 &amp; 2 \end{bmatrix} \end{split}\]</div>
+<p><strong>Variance</strong></p>
+<p>The variance of each random variable <span class="math notranslate nohighlight">\(X_i\)</span> is given by the diagonal elements of the covariance matrix <span class="math notranslate nohighlight">\(\vec{C}\)</span>:</p>
+<ul class="simple">
+<li><p>The variance of <span class="math notranslate nohighlight">\(X_1\)</span> (the first diagonal element) is 1.</p></li>
+<li><p>The variance of <span class="math notranslate nohighlight">\(X_2\)</span> (the second diagonal element) is 2.</p></li>
+</ul>
+<p><strong>Correlation</strong></p>
+<p>The off-diagonal elements of the covariance matrix represent the covariance between <span class="math notranslate nohighlight">\(X_1\)</span> and <span class="math notranslate nohighlight">\(X_2\)</span>. In this case, the covariance between <span class="math notranslate nohighlight">\(X_1\)</span> and <span class="math notranslate nohighlight">\(X_2\)</span> is 0.5, indicating that they are positively correlated.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">multivariate_normal</span>
+
+<span class="c1"># Define the mean vector and covariance matrix</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  <span class="c1"># Example mean vector</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>  <span class="c1"># Example covariance matrix</span>
+
+<span class="c1"># Number of samples to generate</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Simulate the Gaussian random vector</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">)</span>
+
+<span class="c1"># Extract X1 from the samples of the MVN</span>
+<span class="n">X1_from_MVN</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Generate X1 from a scalar normal distribution N(mu[0], C[0,0])</span>
+<span class="n">X1_scalar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">num_samples</span><span class="p">)</span>
+
+<span class="c1"># Create a range of values for X1 to compute the PDFs</span>
+<span class="n">x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Compute the theoretical PDF of X1 from the MVN samples</span>
+<span class="n">pdf_X1_from_MVN</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">X1_from_MVN</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bin_centers</span> <span class="o">=</span> <span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Compute the theoretical PDF of X1 from the scalar normal distribution</span>
+<span class="n">pdf_X1_scalar</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">mu</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]))</span>
+
+<span class="c1"># Plot the PDFs</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X1_from_MVN</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$X_1$ from MVN samples&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">pdf_X1_scalar</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$X_1$ from $N(\mu[0], C[0,0])$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span> <span class="n">pdf_X1_from_MVN</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical PDF $X_1$ from MVN&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$X_1$ Comparison&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$X_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/45f8b8537282d43d7c494f6d7e97681f75371e9f8bbef2b3ad1057d25874f9fb.png" src="_images/45f8b8537282d43d7c494f6d7e97681f75371e9f8bbef2b3ad1057d25874f9fb.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">multivariate_normal</span>
+
+<span class="c1"># Define the mean vector and covariance matrix</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  <span class="c1"># Example mean vector</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>  <span class="c1"># Example covariance matrix</span>
+
+<span class="c1"># Number of samples to generate</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Simulate the Gaussian random vector</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">)</span>
+
+<span class="c1"># Extract X2 from the samples of the MVN</span>
+<span class="n">X2_from_MVN</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Generate X2 from a scalar normal distribution N(mu[1], C[1,1])</span>
+<span class="n">X2_scalar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]),</span> <span class="n">num_samples</span><span class="p">)</span>
+
+<span class="c1"># Create a range of values for X2 to compute the PDFs</span>
+<span class="n">x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Compute the theoretical PDF of X2 from the MVN samples</span>
+<span class="n">pdf_X2_from_MVN</span><span class="p">,</span> <span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">histogram</span><span class="p">(</span><span class="n">X2_from_MVN</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">bin_centers</span> <span class="o">=</span> <span class="p">(</span><span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bins</span><span class="p">[</span><span class="mi">1</span><span class="p">:])</span> <span class="o">/</span> <span class="mi">2</span>
+
+<span class="c1"># Compute the theoretical PDF of X2 from the scalar normal distribution</span>
+<span class="n">pdf_X2_scalar</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">mu</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">C</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span>
+
+<span class="c1"># Plot the PDFs</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">X2_from_MVN</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$X_2$ from MVN samples&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">pdf_X2_scalar</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$X_2$ from $N(\mu[1], C[1,1])$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">,</span> <span class="n">pdf_X2_from_MVN</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical PDF $X_2$ from MVN&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$X_2$ Comparison&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$X_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1a9394307fc687846d3963ed1caa554c1ccffbe6a058b16805314f4ae0dfe9b8.png" src="_images/1a9394307fc687846d3963ed1caa554c1ccffbe6a058b16805314f4ae0dfe9b8.png" />
+</div>
+</div>
+</section>
+<section id="covariance-matrix-discussion">
+<h2>Covariance Matrix Discussion<a class="headerlink" href="#covariance-matrix-discussion" title="Link to this heading">#</a></h2>
+<p>An elaboration on the covariance between <span class="math notranslate nohighlight">\( X_1 \)</span> and <span class="math notranslate nohighlight">\( X_2 \)</span> can be better understood through the scatter plot, which visually represents the relationship between these two variables.</p>
+<p><strong>Covariance Definition</strong></p>
+<p>Covariance measures the degree to which two variables change together. If <span class="math notranslate nohighlight">\( X_1 \)</span> and <span class="math notranslate nohighlight">\( X_2 \)</span> tend to increase or decrease together, their covariance is positive. Conversely, if one variable tends to increase when the other decreases, their covariance is negative.</p>
+<p><strong>Interpreting the Scatter Plot</strong></p>
+<p>In the scatter plot, each point represents a sample pair <span class="math notranslate nohighlight">\((X_1, X_2)\)</span>. Key points to consider include:</p>
+<ul class="simple">
+<li><p><strong>Positive Covariance</strong>: An upward-sloping pattern in the points indicates a positive covariance, where both variables tend to increase together.</p></li>
+<li><p><strong>Negative Covariance</strong>: A downward-sloping pattern suggests a negative covariance, where one variable decreases as the other increases.</p></li>
+<li><p><strong>Zero Covariance</strong>: A random scattering of points without a discernible pattern suggests that the covariance is close to zero, indicating no linear relationship between the variables.</p></li>
+</ul>
+<p><strong>Visual Clues in the Scatter Plot</strong></p>
+<ul class="simple">
+<li><p>A slight upward trend in the scatter plot suggests a positive covariance.</p></li>
+<li><p>The lack of perfect alignment of points indicates that the relationship, while present, is not perfectly linear.</p></li>
+</ul>
+<p><strong>Example Calculation</strong></p>
+<p>For instance, if the calculated empirical covariance is approximately 0.5, this aligns with the theoretical covariance. This quantitative value supports the observation of a positive relationship in the scatter plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span><span class="p">,</span> <span class="n">multivariate_normal</span>
+
+<span class="c1"># Define the mean vector and covariance matrix</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  <span class="c1"># Example mean vector</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>  <span class="c1"># Example covariance matrix</span>
+
+<span class="c1"># Number of samples to generate</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Simulate the Gaussian random vector</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">)</span>
+
+<span class="c1"># Extract X1 and X2 from the samples of the MVN</span>
+<span class="n">X1_from_MVN</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">X2_from_MVN</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Compute the empirical covariance matrix from the samples</span>
+<span class="n">empirical_cov_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">X1_from_MVN</span><span class="p">,</span> <span class="n">X2_from_MVN</span><span class="p">)</span>
+
+<span class="c1"># Extract the empirical covariance between X1 and X2</span>
+<span class="n">empirical_cov_X1_X2</span> <span class="o">=</span> <span class="n">empirical_cov_matrix</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Print the theoretical and empirical covariance</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Theoretical Covariance between X1 and X2:&quot;</span><span class="p">,</span> <span class="n">C</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Empirical Covariance between X1 and X2:&quot;</span><span class="p">,</span> <span class="n">empirical_cov_X1_X2</span><span class="p">)</span>
+
+<span class="c1"># Plot the scatter plot of X1 and X2 to visualize the covariance</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">X1_from_MVN</span><span class="p">,</span> <span class="n">X2_from_MVN</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Scatter Plot of $X_1$ vs $X_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$X_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$X_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Theoretical Covariance between X1 and X2: 0.5
+Empirical Covariance between X1 and X2: 0.5250873970015342
+</pre></div>
+</div>
+<img alt="_images/ec7396bd7a5241d52b6785656a7532c95388855955d338d51740f9ae8b203808.png" src="_images/ec7396bd7a5241d52b6785656a7532c95388855955d338d51740f9ae8b203808.png" />
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="standard-gaussian-vector">
+<h1>Standard Gaussian Vector<a class="headerlink" href="#standard-gaussian-vector" title="Link to this heading">#</a></h1>
+<p>A standard Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}} \in \mathbb{R}^n\)</span> consists of <span class="math notranslate nohighlight">\(n\)</span> independent and identically distributed (iid) standard Gaussian elements, meaning each element has a mean of 0 and a variance of 1:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{\mathbf{w}} \sim \mathcal{N}(0, \vec{I})
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\vec{I}\)</span> is the identity matrix.</p>
+<p>The PDF of <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+f_{\vec{\mathbf{w}}}(\vec{w}) = \frac{1}{(2\pi)^{n/2}} e^{-\frac{||\vec{w}||^2}{2}}
+\]</div>
+<ul class="simple">
+<li><p><strong>Normalization Factor</strong>:
+$<span class="math notranslate nohighlight">\(
+\frac{1}{(2\pi)^{n/2}}
+\)</span>$
+This normalizes the n-dimensional space for a standard Gaussian distribution.</p></li>
+<li><p><strong>Exponential Term</strong>:
+$<span class="math notranslate nohighlight">\(
+e^{-\frac{||\vec{w}||^2}{2}}
+\)</span><span class="math notranslate nohighlight">\(
+Here, \)</span>||\vec{w}||^2 = \vec{w}^T \vec{w}<span class="math notranslate nohighlight">\( is the squared Euclidean norm (or magnitude) of the vector \)</span>\vec{\mathbf{w}}$.</p></li>
+</ul>
+<p>For a standard Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}} \in \mathbb{R}^n\)</span>, the mean vector and covariance matrix are defined as follows:</p>
+<p><strong>Mean Vector</strong></p>
+<p>The mean vector of a standard Gaussian vector is a zero vector of length <span class="math notranslate nohighlight">\(n\)</span>:
+$<span class="math notranslate nohighlight">\( \vec{\mu} = \mathbf{0} = [0, 0, \ldots, 0]^T \)</span>$</p>
+<p><strong>Covariance Matrix</strong></p>
+<p>The covariance matrix of a standard Gaussian vector is the identity matrix of size <span class="math notranslate nohighlight">\(n \times n\)</span>:
+$<span class="math notranslate nohighlight">\( \vec{C} = \vec{I} = \begin{bmatrix}
+1 &amp; 0 &amp; \cdots &amp; 0 \\
+0 &amp; 1 &amp; \cdots &amp; 0 \\
+\vdots &amp; \vdots &amp; \ddots &amp; \vdots \\
+0 &amp; 0 &amp; \cdots &amp; 1
+\end{bmatrix} \)</span>$</p>
+<p>This means that each element of the vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> is independently distributed with a mean of 0 and a variance of 1, and there are no correlations between the elements.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define the dimension of the vector and number of samples</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Dimension of the Gaussian vector</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Simulate the standard Gaussian vector</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="c1"># Verify the mean and covariance of the generated samples</span>
+<span class="n">sample_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sample_cov</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample Mean:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sample_mean</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample Covariance:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sample_cov</span><span class="p">)</span>
+
+<span class="c1"># Plot the scatter plot of the samples</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">samples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Scatter Plot of Standard Gaussian Vector&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$w_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$w_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sample Mean:
+ [-0.046103    0.01583715]
+Sample Covariance:
+ [[ 1.04252367 -0.05783978]
+ [-0.05783978  1.00604966]]
+</pre></div>
+</div>
+<img alt="_images/fb9d28a9e8614851e57469311f4ebd65e2b23e4cda6fea3d898d669cc481ce72.png" src="_images/fb9d28a9e8614851e57469311f4ebd65e2b23e4cda6fea3d898d669cc481ce72.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+<span class="c1"># Define the dimension of the vector and number of samples</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Dimension of the Gaussian vector</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Simulate the standard Gaussian vector</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="c1"># Extract w1 and w2 from the samples of the standard Gaussian vector</span>
+<span class="n">w1_from_vector</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">w2_from_vector</span> <span class="o">=</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Simulate w1 and w2 as independent standard Gaussian random variables</span>
+<span class="n">w1_scalar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="n">num_samples</span><span class="p">)</span>
+<span class="n">w2_scalar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">(</span><span class="n">num_samples</span><span class="p">)</span>
+
+<span class="c1"># Create a range of values to compute the theoretical PDFs</span>
+<span class="n">x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Compute the theoretical PDFs</span>
+<span class="n">pdf_w1</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">pdf_w2</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Plot the empirical histograms and theoretical PDFs</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plot for w1</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">w1_from_vector</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical $w_1$ from vector&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">w1_scalar</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical $w_1$ scalar&#39;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">pdf_w1</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical $w_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$w_1$ Comparison&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$w_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Plot for w2</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">w2_from_vector</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical $w_2$ from vector&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">w2_scalar</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical $w_2$ scalar&#39;</span><span class="p">,</span> <span class="n">histtype</span><span class="o">=</span><span class="s1">&#39;step&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">pdf_w2</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical $w_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$w_2$ Comparison&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$w_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bcead1f1c3fbc5a8bf4b8e7d7b977cf7cefa1525df0469bab6c1fdebb39e7649.png" src="_images/bcead1f1c3fbc5a8bf4b8e7d7b977cf7cefa1525df0469bab6c1fdebb39e7649.png" />
+</div>
+</div>
+<section id="pdf-of-standard-gaussian-vector">
+<h2>PDF of Standard Gaussian Vector<a class="headerlink" href="#pdf-of-standard-gaussian-vector" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">multivariate_normal</span>
+
+<span class="c1"># Define the dimension of the vector and number of samples</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Dimension of the Gaussian vector</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Simulate the standard Gaussian vector</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="c1"># Create a grid of points to evaluate the theoretical PDF</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mf">.1</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mf">.1</span><span class="p">]</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="c1"># Compute the theoretical PDF using the given formula</span>
+<span class="k">def</span> <span class="nf">theoretical_pdf</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
+    <span class="n">norm_const</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">exp_term</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">norm_const</span> <span class="o">*</span> <span class="n">exp_term</span>
+
+<span class="c1"># Evaluate the theoretical PDF on the grid</span>
+<span class="n">theoretical_pdf_values</span> <span class="o">=</span> <span class="n">theoretical_pdf</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="c1"># Plot the empirical PDF using a 2D histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist2d</span><span class="p">(</span><span class="n">samples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Blues&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical PDF (2D Histogram)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$w_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$w_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="c1"># Plot the theoretical PDF as a contour plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theoretical_pdf_values</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">samples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Theoretical PDF (Contour Plot)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$w_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$w_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a974346d9e20131ef0e03e2eedd89a63191f481de35e016177c1504d405f18df.png" src="_images/a974346d9e20131ef0e03e2eedd89a63191f481de35e016177c1504d405f18df.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">multivariate_normal</span>
+
+<span class="c1"># Define the dimension of the vector and number of samples</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Dimension of the Gaussian vector</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Simulate the standard Gaussian vector</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="c1"># Create a grid of points to evaluate the theoretical PDF</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mf">.1</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mf">.1</span><span class="p">]</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="c1"># Compute the theoretical PDF using the given formula</span>
+<span class="k">def</span> <span class="nf">theoretical_pdf</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
+    <span class="n">norm_const</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span><span class="o">**</span><span class="p">(</span><span class="n">n</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">exp_term</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">norm_const</span> <span class="o">*</span> <span class="n">exp_term</span>
+
+<span class="c1"># Evaluate the theoretical PDF on the grid using the given formula</span>
+<span class="n">theoretical_pdf_values_manual</span> <span class="o">=</span> <span class="n">theoretical_pdf</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="c1"># Compute the theoretical PDF using scipy&#39;s multivariate_normal</span>
+<span class="n">rv</span> <span class="o">=</span> <span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">cov</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="n">theoretical_pdf_values_scipy</span> <span class="o">=</span> <span class="n">rv</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="c1"># Plot the empirical PDF using a 2D histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+
+<span class="c1"># Plot the theoretical PDF as a contour plot (manual computation)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theoretical_pdf_values_manual</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">samples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Theoretical PDF (Manual Computation)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$w_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$w_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="c1"># Plot the theoretical PDF as a contour plot (scipy computation)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theoretical_pdf_values_scipy</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greens&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">samples</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">samples</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Theoretical PDF (scipy Computation)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$w_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$w_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Compute the difference between the manually computed and scipy computed PDFs</span>
+<span class="n">pdf_diff</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">theoretical_pdf_values_manual</span> <span class="o">-</span> <span class="n">theoretical_pdf_values_scipy</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Difference between manual and scipy computed PDF values (Frobenius norm):&quot;</span><span class="p">,</span> <span class="n">pdf_diff</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1d5fe9b8e08ea9e92acd8bb60c3474276bc1febc60c9c1c776cd858ac829906e.png" src="_images/1d5fe9b8e08ea9e92acd8bb60c3474276bc1febc60c9c1c776cd858ac829906e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Difference between manual and scipy computed PDF values (Frobenius norm): 4.899558620626137e-16
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dependence-of-the-pdf-of-standard-gaussian-vector-on-magnitudes">
+<h2>Dependence of the PDF of Standard Gaussian Vector on Magnitudes<a class="headerlink" href="#dependence-of-the-pdf-of-standard-gaussian-vector-on-magnitudes" title="Link to this heading">#</a></h2>
+<p>For a standard Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}} \in \mathbb{R}^n\)</span>, the PDF depends solely on the magnitude (or norm) of <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span>. This property arises because each component of <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> is independently and identically distributed (iid) with a standard normal distribution.</p>
+<p><strong>PDF of the Standard Gaussian Vector</strong></p>
+<p>The PDF of a standard Gaussian vector is given by:</p>
+<div class="math notranslate nohighlight">
+\[ f_{\vec{\mathbf{w}}}(\vec{w}) = \frac{1}{(2\pi)^{n/2}} e^{-\frac{||\vec{w}||^2}{2}} \]</div>
+<p>where <span class="math notranslate nohighlight">\( ||\vec{w}||^2 = \vec{w}^T \vec{w} \)</span> is the squared Euclidean norm of the vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span>.</p>
+<p><strong>Dependence on Magnitude</strong></p>
+<p>The term <span class="math notranslate nohighlight">\( ||\vec{w}||^2 = \sum_{i=1}^{n} w_i^2 \)</span> is the sum of the squares of the individual components of the vector. Because the exponent in the PDF expression is <span class="math notranslate nohighlight">\(-\frac{||\vec{w}||^2}{2}\)</span>, it is evident that the PDF is a function of the magnitude of <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> alone and not its direction. This isotropic property implies that all directions in <span class="math notranslate nohighlight">\(\mathbb{R}^n\)</span> are equally probable, and the probability density depends only on how far <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> is from the origin.</p>
+<p><strong>Expected Output</strong></p>
+<ul class="simple">
+<li><p>The histogram shows the empirical distribution of magnitudes of the samples from the standard Gaussian vector.</p></li>
+<li><p>The red line represents the theoretical PDF of the magnitudes.</p></li>
+<li><p>The empirical distribution should closely match the theoretical distribution, confirming that the PDF of the standard Gaussian vector depends solely on the magnitude of <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span>.</p></li>
+</ul>
+<p>This demonstration illustrates that the PDF of a standard Gaussian vector is a function of the magnitude of the vector, confirming its isotropic property.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">chi</span>
+
+<span class="c1"># Define the dimension of the vector and number of samples</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Dimension of the Gaussian vector</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10000</span>
+
+<span class="c1"># Simulate the standard Gaussian vector</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="c1"># Compute the magnitudes of the samples</span>
+<span class="n">magnitudes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Create a range of values for the magnitudes</span>
+<span class="n">magnitude_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Compute the theoretical distribution of magnitudes</span>
+<span class="c1"># For n=2, the distribution of magnitudes is a Chi distribution with 2 degrees of freedom</span>
+<span class="n">theoretical_pdf_magnitudes</span> <span class="o">=</span> <span class="n">chi</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">magnitude_values</span><span class="p">,</span> <span class="n">df</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+
+<span class="c1"># Plot the empirical histogram of the magnitudes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical Magnitude Histogram&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">magnitude_values</span><span class="p">,</span> <span class="n">theoretical_pdf_magnitudes</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical Magnitude PDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical vs Theoretical Magnitude PDF of Standard Gaussian Vector&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8aeb143c628c372d1f4af5f277d6d5c33149d1b42e32a8a703b92993f26b0fd5.png" src="_images/8aeb143c628c372d1f4af5f277d6d5c33149d1b42e32a8a703b92993f26b0fd5.png" />
+</div>
+</div>
+</section>
+<section id="explanation-of-orthonormal-transformations-and-gaussian-vectors">
+<h2>Explanation of Orthonormal Transformations and Gaussian Vectors<a class="headerlink" href="#explanation-of-orthonormal-transformations-and-gaussian-vectors" title="Link to this heading">#</a></h2>
+<section id="orthonormal-transform">
+<h3>Orthonormal Transform<a class="headerlink" href="#orthonormal-transform" title="Link to this heading">#</a></h3>
+<p>An orthonormal transform <span class="math notranslate nohighlight">\(\vec{O}\)</span> is a square matrix whose columns (and rows) are orthonormal vectors. This means:
+$<span class="math notranslate nohighlight">\( \vec{O}^T \vec{O} = \vec{I} \)</span><span class="math notranslate nohighlight">\(
+where \)</span>\vec{O}^T<span class="math notranslate nohighlight">\( is the transpose of \)</span>\vec{O}<span class="math notranslate nohighlight">\( and \)</span>\vec{I}$ is the identity matrix.</p>
+<p><strong>Invariance Under Orthonormal Transformations</strong></p>
+<p>For a standard Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}} \sim \mathcal{N}(0, \vec{I})\)</span>, applying an orthonormal transform <span class="math notranslate nohighlight">\(\vec{O}\)</span> to <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> yields:
+$<span class="math notranslate nohighlight">\( \vec{O} \vec{\mathbf{w}} \)</span>$</p>
+<p>Since <span class="math notranslate nohighlight">\(\vec{O}\)</span> is orthonormal, the transformed vector <span class="math notranslate nohighlight">\(\vec{O} \vec{\mathbf{w}}\)</span> remains a standard Gaussian vector. This is because the covariance matrix of <span class="math notranslate nohighlight">\(\vec{O} \vec{\mathbf{w}}\)</span> is still the identity matrix <span class="math notranslate nohighlight">\(\vec{I}\)</span>. Let’s see why this is true.</p>
+<p><strong>Proof of Invariance</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Mean of <span class="math notranslate nohighlight">\(\vec{O} \vec{\mathbf{w}}\)</span></strong>:
+$<span class="math notranslate nohighlight">\( E[\vec{O} \vec{\mathbf{w}}] = \vec{O} E[\vec{\mathbf{w}}] = \vec{O} \vec{0} = \vec{0} \)</span>$</p></li>
+<li><p><strong>Covariance of <span class="math notranslate nohighlight">\(\vec{O} \vec{\mathbf{w}}\)</span></strong>:
+$<span class="math notranslate nohighlight">\( \text{Cov}(\vec{O} \vec{\mathbf{w}}) = E[(\vec{O} \vec{\mathbf{w}})(\vec{O} \vec{\mathbf{w}})^T] - E[\vec{O} \vec{\mathbf{w}}] E[\vec{O} \vec{\mathbf{w}}]^T \)</span><span class="math notranslate nohighlight">\(
+Since \)</span> E[\vec{O} \vec{\mathbf{w}}] = \vec{0} <span class="math notranslate nohighlight">\(,
+\)</span><span class="math notranslate nohighlight">\( \text{Cov}(\vec{O} \vec{\mathbf{w}}) = E[(\vec{O} \vec{\mathbf{w}})(\vec{O} \vec{\mathbf{w}})^T] = \vec{O} E[\vec{\mathbf{w}} \vec{\mathbf{w}}^T] \vec{O}^T \)</span><span class="math notranslate nohighlight">\(
+Because \)</span>\vec{\mathbf{w}}<span class="math notranslate nohighlight">\( is standard normal, \)</span>E[\vec{\mathbf{w}} \vec{\mathbf{w}}^T] = \vec{I}<span class="math notranslate nohighlight">\(,
+\)</span><span class="math notranslate nohighlight">\( \text{Cov}(\vec{O} \vec{\mathbf{w}}) = \vec{O} \vec{I} \vec{O}^T = \vec{O} \vec{O}^T = \vec{I} \)</span>$</p></li>
+</ol>
+<p>Therefore, <span class="math notranslate nohighlight">\(\vec{O} \vec{\mathbf{w}} \sim \mathcal{N}(0, \vec{I})\)</span>. This proves that <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> is invariant under orthonormal transformations, meaning <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> maintains its properties regardless of rotations of the coordinate system.</p>
+<p><strong>Independence of Projections</strong></p>
+<p>The projections of a standard Gaussian vector onto orthonormal directions are independent. This is because:</p>
+<ol class="arabic simple">
+<li><p><strong>Orthonormal Projections</strong>: When we project <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> onto an orthonormal basis, each projection is a linear combination of independent standard normal variables.</p></li>
+<li><p><strong>Independence</strong>: Since the basis vectors are orthonormal, the projections retain the property of independence.</p></li>
+</ol>
+<p><strong>Generalization to Zero Mean and Variance <span class="math notranslate nohighlight">\(\sigma^2\)</span></strong></p>
+<p>For a vector of iid Gaussian elements with zero mean and variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>:
+$<span class="math notranslate nohighlight">\( \vec{\mathbf{w}} \sim \mathcal{N}(0, \sigma^2 \vec{I}) \)</span>$</p>
+<p>The results can be generalized as follows:</p>
+<ol class="arabic simple">
+<li><p><strong>Mean</strong>: The mean vector remains <span class="math notranslate nohighlight">\(\vec{0}\)</span> after the transformation.</p></li>
+<li><p><strong>Covariance</strong>: The covariance matrix of the transformed vector is:
+$<span class="math notranslate nohighlight">\( \text{Cov}(\vec{O} \vec{\mathbf{w}}) = \vec{O} \text{Cov}(\vec{\mathbf{w}}) \vec{O}^T = \vec{O} (\sigma^2 \vec{I}) \vec{O}^T = \sigma^2 \vec{O} \vec{I} \vec{O}^T = \sigma^2 \vec{I} \)</span>$</p></li>
+</ol>
+<p>Thus, <span class="math notranslate nohighlight">\(\vec{O} \vec{\mathbf{w}} \sim \mathcal{N}(0, \sigma^2 \vec{I})\)</span>, confirming the invariance under orthonormal transformations and the independence of projections.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">multivariate_normal</span>
+
+<span class="c1"># Define the dimension of the vector and number of samples</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Dimension of the Gaussian vector</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Simulate the standard Gaussian vector</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="c1"># Define the rotation angle theta</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span>  <span class="c1"># 45 degrees rotation</span>
+
+<span class="c1"># Define the rotation matrix O</span>
+<span class="n">O</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)],</span>
+              <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span>  <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)]])</span>
+
+<span class="c1"># Compute the transpose of O</span>
+<span class="n">O_T</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># Verify if O^T * O equals the identity matrix</span>
+<span class="n">identity_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">O_T</span><span class="p">,</span> <span class="n">O</span><span class="p">)</span>
+
+<span class="c1"># Print the rotation matrix and the result of O^T * O</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rotation Matrix O:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">O</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">O^T * O:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">identity_check</span><span class="p">)</span>
+
+<span class="c1"># Transform the standard Gaussian vector</span>
+<span class="n">w_transformed</span> <span class="o">=</span> <span class="n">w</span> <span class="o">@</span> <span class="n">O</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># Verify the mean and covariance of the transformed samples</span>
+<span class="n">sample_mean_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">w_transformed</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sample_cov_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">w_transformed</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample Mean (Transformed):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sample_mean_transformed</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample Covariance (Transformed):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sample_cov_transformed</span><span class="p">)</span>
+
+<span class="c1"># Create a grid of points to evaluate the theoretical PDFs</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mf">.1</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mf">.1</span><span class="p">]</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="c1"># Compute the theoretical PDF using scipy&#39;s multivariate_normal</span>
+<span class="n">rv</span> <span class="o">=</span> <span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="n">cov</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="n">n</span><span class="p">))</span>
+<span class="n">theoretical_pdf_original</span> <span class="o">=</span> <span class="n">rv</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+<span class="n">theoretical_pdf_transformed</span> <span class="o">=</span> <span class="n">rv</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="c1"># Plot the scatter plot and PDF of the original and transformed samples</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Original Standard Gaussian Vector</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">w</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">w</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Original Standard Gaussian Vector&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$w_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$w_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theoretical_pdf_original</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">w</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">w</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Theoretical PDF (Original)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$w_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$w_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="c1"># Transformed Standard Gaussian Vector</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">w_transformed</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">w_transformed</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Transformed Standard Gaussian Vector&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$w_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$w_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">theoretical_pdf_transformed</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">w_transformed</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">w_transformed</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Theoretical PDF (Transformed)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$w_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$w_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rotation Matrix O:
+ [[ 0.70710678 -0.70710678]
+ [ 0.70710678  0.70710678]]
+
+O^T * O:
+ [[1. 0.]
+ [0. 1.]]
+Sample Mean (Transformed):
+ [-0.01171463  0.02838321]
+Sample Covariance (Transformed):
+ [[1.00424179 0.00302462]
+ [0.00302462 0.94162271]]
+</pre></div>
+</div>
+<img alt="_images/27acbdad56a269fb67cba3384fc485a1950c125090ff8d39bee40aef0ebc383b.png" src="_images/27acbdad56a269fb67cba3384fc485a1950c125090ff8d39bee40aef0ebc383b.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="orthonormal-matrix-and-rotation-matrix">
+<h2>Orthonormal Matrix and Rotation Matrix<a class="headerlink" href="#orthonormal-matrix-and-rotation-matrix" title="Link to this heading">#</a></h2>
+<p><strong>Orthonormal Matrix</strong></p>
+<p>An orthonormal matrix is a square matrix whose columns (and rows) are orthonormal vectors. This means that each column (or row) of the matrix has unit length and is orthogonal to the other columns (or rows). Mathematically, for a matrix <span class="math notranslate nohighlight">\(\vec{O}\)</span> to be orthonormal, it must satisfy:</p>
+<div class="math notranslate nohighlight">
+\[ \vec{O}^T \vec{O} = \vec{I} \]</div>
+<p>where <span class="math notranslate nohighlight">\(\vec{O}^T\)</span> is the transpose of <span class="math notranslate nohighlight">\(\vec{O}\)</span> and <span class="math notranslate nohighlight">\(\vec{I}\)</span> is the identity matrix.</p>
+<p><strong>Rotation Matrix</strong></p>
+<p>A rotation matrix is a specific type of orthonormal matrix that rotates vectors in a plane. For a 2D rotation matrix <span class="math notranslate nohighlight">\(\vec{O}\)</span> that rotates vectors by an angle <span class="math notranslate nohighlight">\(\theta\)</span>, the matrix is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \vec{O} = \begin{bmatrix}
+\cos(\theta) &amp; -\sin(\theta) \\
+\sin(\theta) &amp; \cos(\theta)
+\end{bmatrix} \end{split}\]</div>
+<p>This matrix rotates vectors counterclockwise by the angle <span class="math notranslate nohighlight">\(\theta\)</span> in the 2D plane.</p>
+<p><strong>Verifying the Orthonormal Property</strong></p>
+<p>Let’s verify that the given rotation matrix is orthonormal:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \vec{O} = \begin{bmatrix}
+\cos(\theta) &amp; -\sin(\theta) \\
+\sin(\theta) &amp; \cos(\theta)
+\end{bmatrix} \end{split}\]</div>
+<p>To check if <span class="math notranslate nohighlight">\(\vec{O}\)</span> is orthonormal, we need to verify that <span class="math notranslate nohighlight">\(\vec{O}^T \vec{O} = \vec{I}\)</span> as demostration in the following simulation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">multivariate_normal</span>
+
+<span class="c1"># Define the dimension of the vector and number of samples</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Dimension of the Gaussian vector</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Simulate the standard Gaussian vector</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">standard_normal</span><span class="p">((</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="c1"># Define the rotation angle theta</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># 45 degrees rotation</span>
+
+<span class="c1"># Define the rotation matrix O</span>
+<span class="n">O</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)],</span>
+              <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span>  <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)]])</span>
+
+<span class="c1"># Compute the transpose of O</span>
+<span class="n">O_T</span> <span class="o">=</span> <span class="n">O</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># Verify if O^T * O equals the identity matrix</span>
+<span class="n">identity_check</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">O_T</span><span class="p">,</span> <span class="n">O</span><span class="p">)</span>
+
+<span class="c1"># Print the rotation matrix and the result of O^T * O</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Rotation Matrix O:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">O</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">O^T * O:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">identity_check</span><span class="p">)</span>
+
+<span class="c1"># Transform the standard Gaussian vector</span>
+<span class="n">w_transformed</span> <span class="o">=</span> <span class="n">w</span> <span class="o">@</span> <span class="n">O</span><span class="o">.</span><span class="n">T</span>
+
+<span class="c1"># Verify the mean and covariance of the transformed samples</span>
+<span class="n">sample_mean_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">w_transformed</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sample_cov_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">w_transformed</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample Mean (Transformed):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sample_mean_transformed</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample Covariance (Transformed):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sample_cov_transformed</span><span class="p">)</span>
+
+<span class="c1"># Create a grid of points to evaluate the theoretical PDFs</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mf">.1</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">:</span><span class="mi">4</span><span class="p">:</span><span class="mf">.1</span><span class="p">]</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+
+<span class="c1"># Select one original and transformed vector for angle measurement</span>
+<span class="n">original_vector</span> <span class="o">=</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">transformed_vector</span> <span class="o">=</span> <span class="n">w_transformed</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Calculate the angle between the original and transformed vector</span>
+<span class="n">dot_product</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">original_vector</span><span class="p">,</span> <span class="n">transformed_vector</span><span class="p">)</span>
+<span class="n">norm_original</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">original_vector</span><span class="p">)</span>
+<span class="n">norm_transformed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">norm</span><span class="p">(</span><span class="n">transformed_vector</span><span class="p">)</span>
+<span class="n">cos_theta</span> <span class="o">=</span> <span class="n">dot_product</span> <span class="o">/</span> <span class="p">(</span><span class="n">norm_original</span> <span class="o">*</span> <span class="n">norm_transformed</span><span class="p">)</span>
+<span class="n">angle</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arccos</span><span class="p">(</span><span class="n">cos_theta</span><span class="p">)</span>
+
+<span class="c1"># Convert angle from radians to degrees</span>
+<span class="n">angle_degrees</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="n">angle</span><span class="p">)</span>
+
+<span class="c1"># Plot to compare original vector with transformed vector to show rotation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">w</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">w</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original Vector&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">w_transformed</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">w_transformed</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Transformed Vector&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">original_vector</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">original_vector</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original Vector (example)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">transformed_vector</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">transformed_vector</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Transformed Vector (example)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Comparison of Original and Transformed Vectors (Rotation by </span><span class="si">{</span><span class="n">theta</span><span class="si">}</span><span class="s1"> radians)</span><span class="se">\n</span><span class="s1">Angle between example vectors: </span><span class="si">{</span><span class="n">angle_degrees</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> degrees&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$w_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$w_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Rotation Matrix O:
+ [[ 6.123234e-17 -1.000000e+00]
+ [ 1.000000e+00  6.123234e-17]]
+
+O^T * O:
+ [[1. 0.]
+ [0. 1.]]
+Sample Mean (Transformed):
+ [-0.03329858 -0.01786723]
+Sample Covariance (Transformed):
+ [[ 1.0029358  -0.03575037]
+ [-0.03575037  1.01970185]]
+</pre></div>
+</div>
+<img alt="_images/7393f0b35ffec0b4d493aab450e06e2c8ced89bbe662f7155648360ce28f4772.png" src="_images/7393f0b35ffec0b4d493aab450e06e2c8ced89bbe662f7155648360ce28f4772.png" />
+</div>
+</div>
+</section>
+<section id="gaussian-vector-transformation">
+<h2>Gaussian Vector Transformation<a class="headerlink" href="#gaussian-vector-transformation" title="Link to this heading">#</a></h2>
+<p>If <span class="math notranslate nohighlight">\( \vec{\mathbf{x}} \sim \mathcal{N}(\vec{\mu}_x, \vec{C}_x) \)</span>, it means that <span class="math notranslate nohighlight">\( \vec{\mathbf{x}} \)</span> is a multivariate normal (Gaussian) random vector with mean vector <span class="math notranslate nohighlight">\( \vec{\mu}_x \)</span> and covariance matrix <span class="math notranslate nohighlight">\( \vec{C}_x \)</span>.</p>
+<section id="linear-transformation">
+<h3>Linear Transformation<a class="headerlink" href="#linear-transformation" title="Link to this heading">#</a></h3>
+<p>A linear transformation of <span class="math notranslate nohighlight">\( \vec{\mathbf{x}} \)</span> is defined by:
+$<span class="math notranslate nohighlight">\(
+\vec{\mathbf{y}} = \vec{A} \vec{\mathbf{x}} + \vec{b}
+\)</span>$
+where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \vec{A} \)</span> is a matrix that defines the linear transformation.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \vec{b} \)</span> is a vector that defines the translation.</p></li>
+</ul>
+<p>The resulting vector <span class="math notranslate nohighlight">\( \vec{\mathbf{y}} \)</span> is also a Gaussian vector. The new mean vector and covariance matrix can be derived as follows:</p>
+</section>
+<section id="mean-of-vec-mathbf-y">
+<h3>Mean of <span class="math notranslate nohighlight">\( \vec{\mathbf{y}} \)</span><a class="headerlink" href="#mean-of-vec-mathbf-y" title="Link to this heading">#</a></h3>
+<p>Given the transformation of <span class="math notranslate nohighlight">\( \vec{\mathbf{x}} \)</span> as
+$<span class="math notranslate nohighlight">\(
+\vec{\mathbf{y}} = \vec{A} \vec{\mathbf{x}} + \vec{b}
+\)</span>$</p>
+<p>the expected value of <span class="math notranslate nohighlight">\( \vec{\mathbf{y}} \)</span> is obtained as
+$<span class="math notranslate nohighlight">\(
+E[\vec{\mathbf{y}}] = E[\vec{A} \vec{\mathbf{x}} + \vec{b}]
+\)</span><span class="math notranslate nohighlight">\(
+Since expectation is linear:
+\)</span><span class="math notranslate nohighlight">\(
+E[\vec{\mathbf{y}}] = \vec{A} E[\vec{\mathbf{x}}] + E[\vec{b}]
+\)</span><span class="math notranslate nohighlight">\(
+Because \)</span> \vec{b} <span class="math notranslate nohighlight">\( is a constant vector:
+\)</span><span class="math notranslate nohighlight">\(
+E[\vec{\mathbf{y}}] = \vec{A} \vec{\mu}_x + \vec{b}
+\)</span>$</p>
+</section>
+<section id="covariance-of-vec-mathbf-y">
+<h3>Covariance of <span class="math notranslate nohighlight">\( \vec{\mathbf{y}} \)</span><a class="headerlink" href="#covariance-of-vec-mathbf-y" title="Link to this heading">#</a></h3>
+<p>The covariance of <span class="math notranslate nohighlight">\( \vec{\mathbf{y}} \)</span> is defined as
+$<span class="math notranslate nohighlight">\(
+\text{Cov}(\vec{\mathbf{y}}) = E[(\vec{\mathbf{y}} - E[\vec{\mathbf{y}}])(\vec{\mathbf{y}} - E[\vec{\mathbf{y}}])^T]
+\)</span>$</p>
+<p>which can be further expressed as
+$<span class="math notranslate nohighlight">\(
+\vec{\mathbf{y}} - E[\vec{\mathbf{y}}] = \vec{A} \vec{\mathbf{x}} + \vec{b} - (\vec{A} \vec{\mu}_x + \vec{b})
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+\vec{\mathbf{y}} - E[\vec{\mathbf{y}}] = \vec{A} (\vec{\mathbf{x}} - \vec{\mu}_x)
+\)</span>$</p>
+<p>Substituting the above expression, we have
+$<span class="math notranslate nohighlight">\(
+\text{Cov}(\vec{\mathbf{y}}) = E[\vec{A} (\vec{\mathbf{x}} - \vec{\mu}_x) (\vec{\mathbf{x}} - \vec{\mu}_x)^T \vec{A}^T]
+\)</span><span class="math notranslate nohighlight">\(
+Since \)</span> \vec{A} <span class="math notranslate nohighlight">\( is constant:
+\)</span><span class="math notranslate nohighlight">\(
+\text{Cov}(\vec{\mathbf{y}}) = \vec{A} E[(\vec{\mathbf{x}} - \vec{\mu}_x) (\vec{\mathbf{x}} - \vec{\mu}_x)^T] \vec{A}^T
+\)</span><span class="math notranslate nohighlight">\(
+Thus, the covariance is expressed as
+\)</span><span class="math notranslate nohighlight">\(
+\text{Cov}(\vec{\mathbf{y}}) = \vec{A} \vec{C}_x \vec{A}^T
+\)</span>$</p>
+<p>The new Gaussian vector <span class="math notranslate nohighlight">\( \vec{\mathbf{y}} \)</span> resulting from the linear transformation <span class="math notranslate nohighlight">\( \vec{\mathbf{y}} = \vec{A} \vec{\mathbf{x}} + \vec{b} \)</span> has the following properties:</p>
+<ul class="simple">
+<li><p><strong>Mean</strong>: <span class="math notranslate nohighlight">\( \vec{A} \vec{\mu}_x + \vec{b} \)</span></p></li>
+<li><p><strong>Covariance</strong>: <span class="math notranslate nohighlight">\( \vec{A} \vec{C}_x \vec{A}^T \)</span></p></li>
+</ul>
+<p>The statistical description of <span class="math notranslate nohighlight">\( \vec{\mathbf{y}} \)</span> can be denoted as:
+$<span class="math notranslate nohighlight">\(
+\vec{\mathbf{y}} \sim \mathcal{N}(\vec{A} \vec{\mu}_x + \vec{b}, \vec{A} \vec{C}_x \vec{A}^T)
+\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">multivariate_normal</span>
+
+<span class="c1"># Define parameters for the original Gaussian vector</span>
+<span class="n">mu_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>  <span class="c1"># Mean vector of x</span>
+<span class="n">C_x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span>  <span class="c1"># Covariance matrix of x</span>
+
+<span class="c1"># Number of samples to generate</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Simulate the original Gaussian vector x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mu_x</span><span class="p">,</span> <span class="n">C_x</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">)</span>
+
+<span class="c1"># Define the linear transformation parameters</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Apply the linear transformation</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+
+<span class="c1"># Calculate the mean and covariance of the transformed vector y</span>
+<span class="n">mu_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">mu_x</span><span class="p">)</span> <span class="o">+</span> <span class="n">b</span>
+<span class="n">C_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">C_x</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">))</span>
+
+<span class="c1"># Verify the mean and covariance of the transformed samples</span>
+<span class="n">sample_mean_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sample_cov_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cov</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">rowvar</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Theoretical Mean (Transformed):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">mu_y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample Mean (Transformed):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sample_mean_y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Theoretical Covariance (Transformed):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">C_y</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Sample Covariance (Transformed):</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">sample_cov_y</span><span class="p">)</span>
+
+<span class="c1"># Create a grid of points to evaluate the theoretical PDFs</span>
+<span class="n">x_grid</span><span class="p">,</span> <span class="n">y_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mgrid</span><span class="p">[</span><span class="o">-</span><span class="mi">6</span><span class="p">:</span><span class="mi">10</span><span class="p">:</span><span class="mf">.1</span><span class="p">,</span> <span class="o">-</span><span class="mi">6</span><span class="p">:</span><span class="mi">8</span><span class="p">:</span><span class="mf">.1</span><span class="p">]</span>
+<span class="n">pos</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dstack</span><span class="p">((</span><span class="n">x_grid</span><span class="p">,</span> <span class="n">y_grid</span><span class="p">))</span>
+
+<span class="c1"># Compute the theoretical PDF of the original and transformed vectors</span>
+<span class="n">rv_x</span> <span class="o">=</span> <span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mu_x</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">C_x</span><span class="p">)</span>
+<span class="n">theoretical_pdf_x</span> <span class="o">=</span> <span class="n">rv_x</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="n">rv_y</span> <span class="o">=</span> <span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">mu_y</span><span class="p">,</span> <span class="n">cov</span><span class="o">=</span><span class="n">C_y</span><span class="p">)</span>
+<span class="n">theoretical_pdf_y</span> <span class="o">=</span> <span class="n">rv_y</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="c1"># Plot the scatter plot and PDF of the original and transformed samples</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># Original Gaussian Vector</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Original Gaussian Vector&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$x_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x_grid</span><span class="p">,</span> <span class="n">y_grid</span><span class="p">,</span> <span class="n">theoretical_pdf_x</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Theoretical PDF of Original Vector&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$x_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="c1"># Transformed Gaussian Vector</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Transformed Gaussian Vector&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$y_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">x_grid</span><span class="p">,</span> <span class="n">y_grid</span><span class="p">,</span> <span class="n">theoretical_pdf_y</span><span class="p">,</span> <span class="n">levels</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Reds&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Theoretical PDF of Transformed Vector&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$y_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Theoretical Mean (Transformed):
+ [4.  1.5]
+Sample Mean (Transformed):
+ [3.88784966 1.44880874]
+
+Theoretical Covariance (Transformed):
+ [[5.5   3.125]
+ [3.125 2.75 ]]
+Sample Covariance (Transformed):
+ [[4.97050697 2.67707204]
+ [2.67707204 2.52813598]]
+</pre></div>
+</div>
+<img alt="_images/b6323a006e144c685157b9d16ab746fd4efcc24303ed8c2280584dfc52f1ccf4.png" src="_images/b6323a006e144c685157b9d16ab746fd4efcc24303ed8c2280584dfc52f1ccf4.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c1_s9.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Real Scalar Gaussian Random Variable</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c1_s12.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Complex Random Vector</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Real Gaussian Random Vector</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-and-properties">Definition and Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#components-of-the-pdf">Components of the PDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-vector-and-covariance-matrix">Mean Vector and Covariance Matrix</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-mean-vectors-and-covariance-matrices">Empirical mean vectors and covariance matrices</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-pdf">Empirical PDF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comapre-with-marginal-scalar-rv">Comapre with (marginal) scalar RV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-matrix-discussion">Covariance Matrix Discussion</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-gaussian-vector">Standard Gaussian Vector</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pdf-of-standard-gaussian-vector">PDF of Standard Gaussian Vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependence-of-the-pdf-of-standard-gaussian-vector-on-magnitudes">Dependence of the PDF of Standard Gaussian Vector on Magnitudes</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explanation-of-orthonormal-transformations-and-gaussian-vectors">Explanation of Orthonormal Transformations and Gaussian Vectors</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthonormal-transform">Orthonormal Transform</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#orthonormal-matrix-and-rotation-matrix">Orthonormal Matrix and Rotation Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-vector-transformation">Gaussian Vector Transformation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformation">Linear Transformation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-of-vec-mathbf-y">Mean of <span class="math notranslate nohighlight">\( \vec{\mathbf{y}} \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-of-vec-mathbf-y">Covariance of <span class="math notranslate nohighlight">\( \vec{\mathbf{y}} \)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1397 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Equivalent Baseband Signal Model &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c4_s3_baseband_signal_model';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">COMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_extra_rician.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Equivalent Baseband Signal Model</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transform-s-f-of-a-band-limited-signal-s-t">Fourier Transform <span class="math notranslate nohighlight">\( S(f) \)</span> of a Band-Limited Signal <span class="math notranslate nohighlight">\( s(t) \)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-band-limiting-a-signal-with-symmetric-filtering">Example: Band-Limiting a Signal with Symmetric Filtering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-equivalent-fourier-transform-s-b-f-of-s-t">Baseband Equivalent Fourier Transform <span class="math notranslate nohighlight">\( S_b(f) \)</span> of <span class="math notranslate nohighlight">\( s(t) \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-function">Autocorrelation Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectral-density">Power Spectral Density</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-s-f-and-s-b-f">Relationship Between <span class="math notranslate nohighlight">\( S(f) \)</span> and <span class="math notranslate nohighlight">\( S_b(f) \)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-to-passband-modulation">Baseband to Passband Modulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulation-and-demodulation">Modulation and Demodulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulating-baseband-signal-to-passband">Modulating Baseband Signal to Passband</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demodulation-of-passband-signal-to-baseband-signal">Demodulation of Passband Signal to Baseband Signal</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussions"><strong>Discussions</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-baseband-signal-to-bandpass-signal">Simulation: Baseband Signal to Bandpass Signal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-bandpass-singal-to-baseband-signal">Simulation: Bandpass Singal to Baseband Signal</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="equivalent-baseband-signal-model">
+<h1>Equivalent Baseband Signal Model<a class="headerlink" href="#equivalent-baseband-signal-model" title="Link to this heading">#</a></h1>
+<p>Communication occurs in the frequency band <span class="math notranslate nohighlight">\([f_c-\frac{W}{2},f_c+\frac{W}{2}]\)</span>, but signal processing is performed in the baseband <span class="math notranslate nohighlight">\([-\frac{W}{2},\frac{W}{2}]\)</span>.</p>
+<ul class="simple">
+<li><p>At the transmitter, the final function is to <strong>up-convert</strong> the signal to the passband for transmission via the antenna,</p></li>
+<li><p>At the receiver, the first function is to <strong>down-convert</strong> the received signal from the antenna to the baseband.</p></li>
+<li><p>Signal processing is usually performed on a discrete version of the signal.</p></li>
+<li><p>Therefore, it is necessary to have a discrete baseband representation of the transmitted passband signals and the transmission channel.</p></li>
+</ul>
+<section id="fourier-transform-s-f-of-a-band-limited-signal-s-t">
+<h2>Fourier Transform <span class="math notranslate nohighlight">\( S(f) \)</span> of a Band-Limited Signal <span class="math notranslate nohighlight">\( s(t) \)</span><a class="headerlink" href="#fourier-transform-s-f-of-a-band-limited-signal-s-t" title="Link to this heading">#</a></h2>
+<p>The signal <span class="math notranslate nohighlight">\(s(t)\)</span> with Fourier Transform (FT) <span class="math notranslate nohighlight">\(S(f)\)</span> is band-limited to <span class="math notranslate nohighlight">\([f_c-\frac{W}{2},f_c+\frac{W}{2}]\)</span></p>
+<p>Given that the signal <span class="math notranslate nohighlight">\( s(t) \)</span> is band-limited to the frequency range <span class="math notranslate nohighlight">\([f_c - \frac{W}{2},\, f_c + \frac{W}{2}]\)</span>, its Fourier Transform <span class="math notranslate nohighlight">\( S(f) \)</span> can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boxed{
+S(f) = 
+\begin{cases} 
+    S(f) &amp; \text{for } f_c - \frac{W}{2} \leq f \leq f_c + \frac{W}{2} \\
+    0 &amp; \text{otherwise}
+\end{cases}
+}
+\end{split}\]</div>
+<p><strong>Alternative Representation Using the Rectangular Function:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+S(f) = S(f) \cdot \text{rect}\left( \frac{f - f_c}{W} \right)
+\]</div>
+<p>where the rectangular function <span class="math notranslate nohighlight">\(\text{rect}\left( \frac{f - f_c}{W} \right)\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\text{rect}\left( \frac{f - f_c}{W} \right) = 
+\begin{cases} 
+    1 &amp; \text{if } |f - f_c| \leq \frac{W}{2} \\
+    0 &amp; \text{otherwise}
+\end{cases}
+\end{split}\]</div>
+<ul class="simple">
+<li><p><strong>Non-Zero Region:</strong> <span class="math notranslate nohighlight">\( S(f) \)</span> is non-zero only within <span class="math notranslate nohighlight">\([f_c - \frac{W}{2},\, f_c + \frac{W}{2}]\)</span>.</p></li>
+<li><p><strong>Zero Outside:</strong> <span class="math notranslate nohighlight">\( S(f) = 0 \)</span> outside this frequency band.</p></li>
+</ul>
+<p>This representation ensures that all signal processing can be efficiently performed in the baseband <span class="math notranslate nohighlight">\([- \frac{W}{2},\, \frac{W}{2}]\)</span> after down-conversion.</p>
+<section id="example-band-limiting-a-signal-with-symmetric-filtering">
+<h3>Example: Band-Limiting a Signal with Symmetric Filtering<a class="headerlink" href="#example-band-limiting-a-signal-with-symmetric-filtering" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Original Signal (Time Domain)</strong>:</p>
+<ul class="simple">
+<li><p>Displays the composite signal containing all five sine wave components.</p></li>
+<li><p>The signal exhibits complex behavior due to the combination of multiple frequencies.</p></li>
+</ul>
+</li>
+<li><p><strong>Original Signal (Frequency Domain)</strong>:</p>
+<ul class="simple">
+<li><p>Shows distinct peaks at <code class="docutils literal notranslate"><span class="pre">-100</span> <span class="pre">Hz</span></code>, <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">Hz</span></code>, <code class="docutils literal notranslate"><span class="pre">190</span> <span class="pre">Hz</span></code>, <code class="docutils literal notranslate"><span class="pre">300</span> <span class="pre">Hz</span></code>, and <code class="docutils literal notranslate"><span class="pre">350</span> <span class="pre">Hz</span></code>.</p></li>
+<li><p>These peaks correspond to the frequency components of the original signal.</p></li>
+</ul>
+</li>
+<li><p><strong>Band-Limited Signal (Time Domain)</strong>:</p>
+<ul class="simple">
+<li><p>After applying the symmetric band-limiting filter, the time-domain signal appears smoother.</p></li>
+<li><p>This is because the high-frequency components (<code class="docutils literal notranslate"><span class="pre">300</span> <span class="pre">Hz</span></code> and <code class="docutils literal notranslate"><span class="pre">350</span> <span class="pre">Hz</span></code>) have been removed.</p></li>
+</ul>
+</li>
+<li><p><strong>Band-Limited Signal (Frequency Domain)</strong>:</p>
+<ul class="simple">
+<li><p>Only retains the <code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">Hz</span></code> and <code class="docutils literal notranslate"><span class="pre">190</span> <span class="pre">Hz</span></code> components within the <code class="docutils literal notranslate"><span class="pre">[0</span> <span class="pre">Hz,</span> <span class="pre">200</span> <span class="pre">Hz]</span></code> band.</p></li>
+<li><p>The unwanted frequencies (<code class="docutils literal notranslate"><span class="pre">-100</span> <span class="pre">Hz</span></code>, <code class="docutils literal notranslate"><span class="pre">300</span> <span class="pre">Hz</span></code>, <code class="docutils literal notranslate"><span class="pre">350</span> <span class="pre">Hz</span></code>) are effectively attenuated to zero.</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.fft</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">fftshift</span><span class="p">,</span> <span class="n">ifftshift</span><span class="p">,</span> <span class="n">fftfreq</span><span class="p">,</span> <span class="n">ifft</span>
+
+<span class="c1"># Sampling parameters</span>
+<span class="n">Fs</span> <span class="o">=</span> <span class="mi">2000</span>  <span class="c1"># Sampling frequency in Hz</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">Fs</span>  <span class="c1"># Sampling interval in seconds</span>
+<span class="n">L</span> <span class="o">=</span> <span class="mi">2000</span>    <span class="c1"># Number of samples (1 second of data)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">L</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span>  <span class="c1"># Time vector</span>
+
+<span class="c1"># Signal parameters</span>
+<span class="n">f_c</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># Carrier frequency in Hz</span>
+<span class="n">W</span> <span class="o">=</span> <span class="mi">200</span>    <span class="c1"># Bandwidth in Hz</span>
+
+<span class="c1"># Define frequency components</span>
+<span class="c1"># Frequencies within the band</span>
+<span class="n">f1</span> <span class="o">=</span> <span class="n">f_c</span> <span class="o">-</span> <span class="n">W</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">10</span>  <span class="c1"># 10 Hz above lower band edge =&gt; 0 +10 = 10 Hz</span>
+<span class="n">f2</span> <span class="o">=</span> <span class="n">f_c</span> <span class="o">+</span> <span class="n">W</span><span class="o">/</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">10</span>  <span class="c1"># 10 Hz below upper band edge =&gt; 200 -10 = 190 Hz</span>
+
+<span class="c1"># Frequencies outside the band</span>
+<span class="n">f3</span> <span class="o">=</span> <span class="n">f_c</span> <span class="o">-</span> <span class="n">W</span>        <span class="c1"># -100 Hz (below lower band edge)</span>
+<span class="n">f4</span> <span class="o">=</span> <span class="n">f_c</span> <span class="o">+</span> <span class="n">W</span>        <span class="c1"># 300 Hz (above upper band edge)</span>
+<span class="n">f5</span> <span class="o">=</span> <span class="n">f_c</span> <span class="o">+</span> <span class="n">W</span> <span class="o">+</span> <span class="mi">50</span>   <span class="c1"># 350 Hz (well above upper band edge)</span>
+
+<span class="c1"># Create the composite signal</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f1</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span>
+     <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f2</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span>
+     <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f3</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span>
+     <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f4</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span>
+     <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f5</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span>
+
+<span class="c1"># Compute FFT</span>
+<span class="n">S</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="n">S_shifted</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">S</span><span class="p">)</span>  <span class="c1"># Shift zero frequency component to center</span>
+
+<span class="c1"># Frequency vector</span>
+<span class="n">freqs</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
+
+<span class="c1"># Define the rectangular function</span>
+<span class="k">def</span> <span class="nf">rect</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Calculate window width in normalized frequency</span>
+<span class="c1"># Since W is in Hz, normalized frequency (cycles/sample) is W / Fs</span>
+<span class="n">normalized_W</span> <span class="o">=</span> <span class="n">W</span> <span class="o">/</span> <span class="n">Fs</span>  <span class="c1"># e.g., 200 / 2000 = 0.1</span>
+
+<span class="c1"># Define the window centered at f_c and -f_c for symmetry</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">rect</span><span class="p">((</span><span class="n">freqs</span> <span class="o">-</span> <span class="n">f_c</span><span class="p">)</span> <span class="o">/</span> <span class="n">W</span><span class="p">)</span> <span class="o">+</span> <span class="n">rect</span><span class="p">((</span><span class="n">freqs</span> <span class="o">+</span> <span class="n">f_c</span><span class="p">)</span> <span class="o">/</span> <span class="n">W</span><span class="p">)</span>
+
+<span class="c1"># Apply the window to the Fourier Transform</span>
+<span class="n">S_band_limited</span> <span class="o">=</span> <span class="n">S_shifted</span> <span class="o">*</span> <span class="n">window</span>
+
+<span class="c1"># Shift back the filtered spectrum for IFFT</span>
+<span class="n">S_band_limited_unshifted</span> <span class="o">=</span> <span class="n">ifftshift</span><span class="p">(</span><span class="n">S_band_limited</span><span class="p">)</span>
+
+<span class="c1"># Inverse FFT to get the time-domain band-limited signal</span>
+<span class="n">s_band_limited</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">ifft</span><span class="p">(</span><span class="n">S_band_limited_unshifted</span><span class="p">))</span>
+
+<span class="c1"># Plot settings</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="c1"># 1. Original Signal (Time Domain)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Original Signal (Time Domain)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 2. Original Signal (Frequency Domain)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">S_shifted</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Original Signal (Frequency Domain)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 3. Band-Limited Signal (Time Domain)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s_band_limited</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Band-Limited Signal (Time Domain)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 4. Band-Limited Signal (Frequency Domain)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fftshift</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">s_band_limited</span><span class="p">))))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Band-Limited Signal (Frequency Domain)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 5. Time Domain Comparison</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">s_band_limited</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Band-Limited&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Time Domain Comparison&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time [s]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># 6. Frequency Domain Comparison</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">S_shifted</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Original&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">freqs</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">S_band_limited</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Band-Limited&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Frequency Domain Comparison&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency [Hz]&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/423cd13805e80718d6df3e7c79bbb75a67dcc592c714f520a4a927537db446d5.png" src="_images/423cd13805e80718d6df3e7c79bbb75a67dcc592c714f520a4a927537db446d5.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="baseband-equivalent-fourier-transform-s-b-f-of-s-t">
+<h2>Baseband Equivalent Fourier Transform <span class="math notranslate nohighlight">\( S_b(f) \)</span> of <span class="math notranslate nohighlight">\( s(t) \)</span><a class="headerlink" href="#baseband-equivalent-fourier-transform-s-b-f-of-s-t" title="Link to this heading">#</a></h2>
+<p>In communication systems, converting a passband signal <span class="math notranslate nohighlight">\( s(t) \)</span> to its baseband equivalent <span class="math notranslate nohighlight">\( s_b(t) \)</span> simplifies processing by shifting the frequency spectrum around zero.</p>
+<p>Recall that</p>
+<ul class="simple">
+<li><p>Passband Signal <span class="math notranslate nohighlight">\( s(t) \)</span>:</p>
+<ul>
+<li><p>Frequency Range: <span class="math notranslate nohighlight">\( [f_c - \frac{W}{2},\ f_c + \frac{W}{2}] \)</span></p></li>
+<li><p>Fourier Transform: <span class="math notranslate nohighlight">\( S(f) \)</span></p></li>
+</ul>
+</li>
+<li><p>Baseband Equivalent Signal <span class="math notranslate nohighlight">\( s_b(t) \)</span>:</p>
+<ul>
+<li><p>Frequency Range: <span class="math notranslate nohighlight">\( \left[-\frac{W}{2},\ \frac{W}{2}\right] \)</span></p></li>
+<li><p>Fourier Transform: <span class="math notranslate nohighlight">\( S_b(f) \)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>To convert the passband signal <span class="math notranslate nohighlight">\( s(t) \)</span> to its baseband equivalent <span class="math notranslate nohighlight">\( s_b(t) \)</span>, we perform <strong>frequency shifting</strong> (down-conversion) and <strong>scaling</strong>.</p>
+<p>Mathematically, this process is represented as:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+s_b(t) = \sqrt{2}\, s(t) \cdot e^{-j2\pi f_c t}
+}
+\]</div>
+<ul class="simple">
+<li><p><strong>Frequency Shifting:</strong> Multiplying by <span class="math notranslate nohighlight">\( e^{-j2\pi f_c t} \)</span> shifts the spectrum of <span class="math notranslate nohighlight">\( s(t) \)</span> down by the carrier frequency <span class="math notranslate nohighlight">\( f_c \)</span>.</p></li>
+<li><p><strong>Scaling Factor <span class="math notranslate nohighlight">\( \sqrt{2} \)</span>:</strong> Ensures that the power of <span class="math notranslate nohighlight">\( s_b(t) \)</span> matches that of <span class="math notranslate nohighlight">\( s(t) \)</span> after shifting.</p></li>
+</ul>
+<p>The Fourier Transform (FT) of the baseband equivalent signal <span class="math notranslate nohighlight">\( s_b(t) \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\boxed{
+S_b(f) = 
+\begin{cases} 
+\sqrt{2}\, S(f + f_c) &amp; f + f_c &gt; 0 \\ 
+0 &amp; f + f_c \leq 0 
+\end{cases}
+}
+\end{split}\]</div>
+</section>
+<section id="autocorrelation-function">
+<h2>Autocorrelation Function<a class="headerlink" href="#autocorrelation-function" title="Link to this heading">#</a></h2>
+<p>The <strong>autocorrelation function (ACF)</strong> of a signal <span class="math notranslate nohighlight">\( s(t) \)</span>, denoted as <span class="math notranslate nohighlight">\( R_s(\tau) \)</span>, is a measure of how similar the signal <span class="math notranslate nohighlight">\( s(t) \)</span> is to a time-shifted version of itself.</p>
+<p>It provides insight into the signal’s temporal structure and is used to assess signal periodicity, coherence, and power characteristics over time.</p>
+<p>Mathematically, the autocorrelation function <span class="math notranslate nohighlight">\( R_s(\tau) \)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+R_s(\tau) = \mathbb{E}\{s(t) s^*(t + \tau)\}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \mathbb{E} \)</span> denotes the expected value (for random signals).</p></li>
+<li><p><span class="math notranslate nohighlight">\( s(t) \)</span> is the signal.</p></li>
+<li><p><span class="math notranslate nohighlight">\( s^*(t + \tau) \)</span> is the complex conjugate of the signal at time <span class="math notranslate nohighlight">\( t + \tau \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \tau \)</span> is the time lag or time shift.</p></li>
+</ul>
+<p>For <strong>deterministic signals</strong>, the autocorrelation function is simply:</p>
+<div class="math notranslate nohighlight">
+\[
+R_s(\tau) = \int_{-\infty}^{\infty} s(t) s^*(t + \tau) dt
+\]</div>
+</section>
+<section id="power-spectral-density">
+<h2>Power Spectral Density<a class="headerlink" href="#power-spectral-density" title="Link to this heading">#</a></h2>
+<p>The <strong>power spectral density (PSD)</strong> of a signal <span class="math notranslate nohighlight">\( s(t) \)</span>, denoted as <span class="math notranslate nohighlight">\( S_s(f) \)</span>, describes how the power of the signal is distributed over different frequencies.</p>
+<p>It is a key concept in signal processing, particularly in understanding the frequency content of signals in communication systems.</p>
+<p>For a signal <span class="math notranslate nohighlight">\( s(t) \)</span>, the PSD <span class="math notranslate nohighlight">\( S_s(f) \)</span> is defined as the Fourier transform of the autocorrelation function of <span class="math notranslate nohighlight">\( s(t) \)</span>, <span class="math notranslate nohighlight">\( R_s(\tau) \)</span>, as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+S_s(f) = \int_{-\infty}^{\infty} R_s(\tau) e^{-j2\pi f \tau} d\tau
+\]</div>
+<p>Alternatively, for wide-sense stationary signals, if <span class="math notranslate nohighlight">\( s(t) \)</span> has a Fourier Transform <span class="math notranslate nohighlight">\( S(f) \)</span>, the PSD can also be expressed in terms of the magnitude of the Fourier Transform:</p>
+<div class="math notranslate nohighlight">
+\[
+S_s(f) = |S(f)|^2
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( S(f) \)</span> is the Fourier Transform of <span class="math notranslate nohighlight">\( s(t) \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( |S(f)|^2 \)</span> represents the power per unit frequency at a given frequency <span class="math notranslate nohighlight">\( f \)</span>.</p></li>
+</ul>
+<p>The PSD gives a frequency-domain representation of how the power of <span class="math notranslate nohighlight">\( s(t) \)</span> is distributed across different frequencies.</p>
+</section>
+<section id="relationship-between-s-f-and-s-b-f">
+<h2>Relationship Between <span class="math notranslate nohighlight">\( S(f) \)</span> and <span class="math notranslate nohighlight">\( S_b(f) \)</span><a class="headerlink" href="#relationship-between-s-f-and-s-b-f" title="Link to this heading">#</a></h2>
+<section id="baseband-to-passband-modulation">
+<h3>Baseband to Passband Modulation<a class="headerlink" href="#baseband-to-passband-modulation" title="Link to this heading">#</a></h3>
+<p><strong>Baseband Signal:</strong></p>
+<p>Start with the baseband signal <span class="math notranslate nohighlight">\( s_b(t) \)</span>, whose FT is <span class="math notranslate nohighlight">\( S_b(f) \)</span>.</p>
+<p><strong>Up-Conversion (Modulation):</strong></p>
+<p>To transmit <span class="math notranslate nohighlight">\( s_b(t) \)</span> over a carrier frequency <span class="math notranslate nohighlight">\( f_c \)</span>, perform modulation by multiplying <span class="math notranslate nohighlight">\( s_b(t) \)</span> with a complex exponential <span class="math notranslate nohighlight">\( e^{j2\pi f_c t} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+s(t) = \frac{1}{\sqrt{2}} \left[ s_b(t) e^{j2\pi f_c t} + s_b^*(t) e^{-j2\pi f_c t} \right]
+\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( s_b(t) e^{j2\pi f_c t} \)</span>: Shifts <span class="math notranslate nohighlight">\( s_b(t) \)</span> to the positive frequency band centered at <span class="math notranslate nohighlight">\( f_c \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( s_b^*(t) e^{-j2\pi f_c t} \)</span>: Shifts the complex conjugate of <span class="math notranslate nohighlight">\( s_b(t) \)</span> to the negative frequency band centered at <span class="math notranslate nohighlight">\(-f_c\)</span>.</p></li>
+<li><p>The <span class="math notranslate nohighlight">\( \frac{1}{\sqrt{2}} \)</span> factor ensures that the combined signal maintains appropriate power levels.</p></li>
+</ul>
+<p><strong>Fourier Transform:</strong></p>
+<p>Taking the FT of <span class="math notranslate nohighlight">\( s(t) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+S(f) = \frac{1}{\sqrt{2}} \left[ S_b(f - f_c) + S_b^*(-f - f_c) \right]
+\]</div>
+<ul class="simple">
+<li><p><strong>FT of <span class="math notranslate nohighlight">\( s_b(t) e^{j2\pi f_c t} \)</span>:</strong> Shifts <span class="math notranslate nohighlight">\( S_b(f) \)</span> to <span class="math notranslate nohighlight">\( S_b(f - f_c) \)</span>.</p></li>
+<li><p><strong>FT of <span class="math notranslate nohighlight">\( s_b^*(t) e^{-j2\pi f_c t} \)</span>:</strong> Shifts <span class="math notranslate nohighlight">\( S_b^*(-f) \)</span> to <span class="math notranslate nohighlight">\( S_b^*(-f - f_c) \)</span>.</p></li>
+<li><p>Combining both shifted spectra gives the complete passband spectrum.</p></li>
+</ul>
+<p>Thus, we have</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+S(f) = \frac{1}{\sqrt{2}} \left[ S_b(f - f_c) + S_b^*(-f - f_c) \right]
+}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(S_b^*(\cdot)\)</span> denotes the <strong>complex conjugate</strong> of <span class="math notranslate nohighlight">\(S_b(\cdot)\)</span>.</p>
+<p><strong>Discussion: Ensuring Real-Valued Signal <span class="math notranslate nohighlight">\( s(t) \)</span></strong></p>
+<p>For <span class="math notranslate nohighlight">\( s(t) \)</span> to be real-valued (as physical signals are), its Fourier Transform must satisfy the Hermitian symmetry property:</p>
+<div class="math notranslate nohighlight">
+\[
+S(-f) = S^*(f)
+\]</div>
+<p>The provided relationship inherently satisfies this property:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+S(-f) &amp;= \frac{1}{\sqrt{2}} \left[ S_b(-f - f_c) + S_b^*(f - f_c) \right] \\
+&amp;= \left[ \frac{1}{\sqrt{2}} \left( S_b(f - f_c) + S_b^*(-f - f_c) \right) \right]^* \\
+&amp;= S^*(f)
+\end{align*}
+\end{split}\]</div>
+</section>
+</section>
+<section id="modulation-and-demodulation">
+<h2>Modulation and Demodulation<a class="headerlink" href="#modulation-and-demodulation" title="Link to this heading">#</a></h2>
+<p>We describe the process of <strong>modulating</strong> a complex baseband signal to a real passband signal, <span class="math notranslate nohighlight">\(s_b(t) \to s(t)\)</span>, and subsequently <strong>demodulating</strong> it back to retrieve the baseband components <span class="math notranslate nohighlight">\(s(t) \to s_b(t)\)</span>.</p>
+<p>This is fundamental in communication systems where signals are transmitted over carriers and later processed at the receiver.</p>
+<section id="modulating-baseband-signal-to-passband">
+<h3>Modulating Baseband Signal to Passband<a class="headerlink" href="#modulating-baseband-signal-to-passband" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The baseband signal’s real and imaginary parts independently modulate the cosine and sine carriers.</p></li>
+<li><p>The combination results in a real passband signal <span class="math notranslate nohighlight">\( s(t) \)</span> carrying both I and Q information.</p></li>
+</ul>
+<p>a. Starting with the Baseband Signal</p>
+<ul class="simple">
+<li><p>Baseband Signal <span class="math notranslate nohighlight">\( s_b(t) \)</span>:</p>
+<ul>
+<li><p>Characteristic: Complex-valued signal containing both <strong>In-phase (I)</strong> and <strong>Quadrature (Q)</strong> components.</p></li>
+<li><p>Mathematical Expression: <span class="math notranslate nohighlight">\( s_b(t) = \Re\{s_b(t)\} + j\Im\{s_b(t)\} \)</span></p></li>
+</ul>
+</li>
+<li><p><strong>Carrier Signal:</strong></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( f_c \)</span> (carrier frequency)</p></li>
+<li><p>Mathematical Expression of the Complex Exponential: <span class="math notranslate nohighlight">\( e^{j2\pi f_c t} = \cos(2\pi f_c t) + j\sin(2\pi f_c t) \)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>b. Mathematical Expression of Modulation</p>
+<p>The passband signal <span class="math notranslate nohighlight">\( s(t) \)</span> is obtained by <strong>modulating</strong> the baseband signal <span class="math notranslate nohighlight">\( s_b(t) \)</span> with the carrier:</p>
+<div class="math notranslate nohighlight">
+\[
+s(t) = \sqrt{2}\Re\{s_b(t)e^{j2\pi f_ct}\}
+\]</div>
+<p>where</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( s_b(t)e^{j2\pi f_ct} \)</span>:</p>
+<ul class="simple">
+<li><p>Operation: Multiplies the complex baseband signal with the carrier, effectively shifting its frequency to the carrier frequency <span class="math notranslate nohighlight">\( f_c \)</span>.</p></li>
+<li><p>Result: Produces a complex signal centered around <span class="math notranslate nohighlight">\( f_c \)</span>.</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\( \Re\{ \cdot \} \)</span>:</p>
+<ul class="simple">
+<li><p>Operation: Takes the <strong>real part</strong> of the complex product.</p></li>
+<li><p>Purpose: Ensures that the resulting passband signal <span class="math notranslate nohighlight">\( s(t) \)</span> is <strong>real-valued</strong>, as physical signals cannot have imaginary components.</p></li>
+</ul>
+</li>
+<li><p>Scaling Factor <span class="math notranslate nohighlight">\( \sqrt{2} \)</span>:</p>
+<ul>
+<li><p>Purpose: Maintains the signal’s power after modulation.</p>
+<p>When dealing with complex signals, energy is split between the real and imaginary parts, so scaling compensates for this distribution.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>c. Expanding the Real Part</p>
+<p>Expanding <span class="math notranslate nohighlight">\( \Re\{s_b(t)e^{j2\pi f_ct}\} \)</span> using Euler’s formula:</p>
+<div class="math notranslate nohighlight">
+\[
+s(t) = \sqrt{2}\Re\{s_b(t)\}\cos(2\pi f_ct) - \sqrt{2}\Im\{s_b(t)\}\sin(2\pi f_ct)
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \Re\{s_b(t)\} \cos(2\pi f_ct) \)</span>:</p>
+<ul>
+<li><p><strong>In-phase Component (I):</strong> The real part of the baseband signal modulates the cosine component of the carrier.</p></li>
+</ul>
+</li>
+<li><p><span class="math notranslate nohighlight">\( \Im\{s_b(t)\} \sin(2\pi f_ct) \)</span>:</p>
+<ul>
+<li><p><strong>Quadrature Component (Q):</strong> The imaginary part of the baseband signal modulates the sine component of the carrier.</p></li>
+<li><p>Negative Sign: Ensures proper phase alignment during modulation.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="demodulation-of-passband-signal-to-baseband-signal">
+<h3>Demodulation of Passband Signal to Baseband Signal<a class="headerlink" href="#demodulation-of-passband-signal-to-baseband-signal" title="Link to this heading">#</a></h3>
+<p><strong>i. Extracting the In-phase Component <span class="math notranslate nohighlight">\( \Re\{s_b(t)\} \)</span></strong></p>
+<div class="math notranslate nohighlight">
+\[
+\Re\{s_b(t)\} = \sqrt{2} \left[ s(t) \cos(2\pi f_ct) \right] \ast h_{LP}(t)
+\]</div>
+<ul class="simple">
+<li><p><strong>Step-by-Step:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Mixing:</strong> Multiply the passband signal <span class="math notranslate nohighlight">\( s(t) \)</span> by <span class="math notranslate nohighlight">\( \cos(2\pi f_ct) \)</span>.</p></li>
+<li><p><strong>Convolution:</strong> Apply the low-pass filter <span class="math notranslate nohighlight">\( h_{LP}(t) \)</span> to eliminate frequencies outside the baseband, retaining only <span class="math notranslate nohighlight">\( \Re\{s_b(t)\} \)</span>.</p></li>
+<li><p><strong>Scaling:</strong> The <span class="math notranslate nohighlight">\( \sqrt{2} \)</span> factor restores the original amplitude after modulation.</p></li>
+</ol>
+</li>
+</ul>
+<p><strong>ii. Extracting the Quadrature Component <span class="math notranslate nohighlight">\( \Im\{s_b(t)\} \)</span></strong></p>
+<div class="math notranslate nohighlight">
+\[
+\Im\{s_b(t)\} = -\sqrt{2} \left[ s(t) \sin(2\pi f_ct) \right] \ast h_{LP}(t)
+\]</div>
+<ul class="simple">
+<li><p><strong>Step-by-Step:</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Mixing:</strong> Multiply the passband signal <span class="math notranslate nohighlight">\( s(t) \)</span> by <span class="math notranslate nohighlight">\( \sin(2\pi f_ct) \)</span>.</p></li>
+<li><p><strong>Convolution:</strong> Apply the low-pass filter <span class="math notranslate nohighlight">\( h_{LP}(t) \)</span> to isolate <span class="math notranslate nohighlight">\( \Im\{s_b(t)\} \)</span>.</p></li>
+<li><p><strong>Scaling and Sign:</strong> The <span class="math notranslate nohighlight">\( -\sqrt{2} \)</span> factor accounts for the phase shift introduced during modulation, ensuring accurate reconstruction of the quadrature component.</p></li>
+</ol>
+</li>
+</ul>
+<p><strong>c. Role of the Low-Pass Filter <span class="math notranslate nohighlight">\( h_{LP}(t) \)</span></strong></p>
+<ul class="simple">
+<li><p><strong>Function:</strong></p>
+<ul>
+<li><p><strong>Frequency Selection:</strong> Allows only frequencies within <span class="math notranslate nohighlight">\( \left[-\frac{W}{2}, \frac{W}{2}\right] \)</span> to pass, effectively extracting the baseband components.</p></li>
+</ul>
+</li>
+<li><p><strong>Ideal Filter Characteristics:</strong></p>
+<ul>
+<li><p><strong>Sharp Cutoff:</strong> Perfectly attenuates frequencies outside the passband.</p></li>
+<li><p><strong>No Distortion:</strong> Preserves the amplitude and phase of frequencies within the passband.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Summary of Demodulation Process</strong></p>
+<p>To retrieve the baseband components <span class="math notranslate nohighlight">\( \Re\{s_b(t)\} \)</span> and <span class="math notranslate nohighlight">\( \Im\{s_b(t)\} \)</span> from the passband signal <span class="math notranslate nohighlight">\( s(t) \)</span>, the following equations are used:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+\Re\{s_b(t)\} = \sqrt{2} \left[ s(t) \cos(2\pi f_ct) \right] \ast h_{LP}(t)
+}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\Im\{s_b(t)\} = -\sqrt{2} \left[ s(t) \sin(2\pi f_ct) \right] \ast h_{LP}(t)
+}
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( h_{LP}(t) \)</span>:</strong> Ideal low-pass filter with bandwidth <span class="math notranslate nohighlight">\( \left[-\frac{W}{2}, \frac{W}{2}\right] \)</span></p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \ast \)</span>:</strong> Convolution operation</p></li>
+</ul>
+</section>
+</section>
+<section id="discussions">
+<h2><strong>Discussions</strong><a class="headerlink" href="#discussions" title="Link to this heading">#</a></h2>
+<p><strong>Why do we use baseband signal instead of passband signal?</strong></p>
+<p>One of the primary reasons for using baseband signal processing is related to the sampling rate requirements of signal processing devices.</p>
+<p><strong>Sampling Rate Considerations</strong></p>
+<p><strong>a. Nyquist Theorem</strong></p>
+<ul>
+<li><p><strong>Fundamental Principle:</strong> According to the Nyquist-Shannon sampling theorem, to accurately reconstruct a continuous signal from its samples, the sampling rate (<span class="math notranslate nohighlight">\( f_s \)</span>) must be at least twice the highest frequency component (<span class="math notranslate nohighlight">\( f_{max} \)</span>) of the signal:</p>
+<div class="math notranslate nohighlight">
+\[
+  f_s \geq 2 f_{max}
+  \]</div>
+</li>
+</ul>
+<p><strong>b. Passband vs. Baseband Sampling</strong></p>
+<ul class="simple">
+<li><p><strong>Passband Signals:</strong></p>
+<ul>
+<li><p><strong>High <span class="math notranslate nohighlight">\( f_{max} \)</span>:</strong> Passband signals are centered around a carrier frequency (<span class="math notranslate nohighlight">\( f_c \)</span>) and typically have high-frequency components (<span class="math notranslate nohighlight">\( f_c \pm \frac{W}{2} \)</span>, where <span class="math notranslate nohighlight">\( W \)</span> is the bandwidth).</p></li>
+<li><p><strong>High Sampling Rates Needed:</strong> To satisfy the Nyquist criterion, sampling passband signals directly would require very high sampling rates, especially if <span class="math notranslate nohighlight">\( f_c \)</span> is large. This leads to increased computational complexity and higher demands on analog-to-digital converters (ADCs).</p></li>
+</ul>
+</li>
+<li><p><strong>Baseband Signals:</strong></p>
+<ul>
+<li><p><strong>Lower <span class="math notranslate nohighlight">\( f_{max} \)</span>:</strong> Baseband signals are centered around zero frequency, containing frequency components only within <span class="math notranslate nohighlight">\(\left[-\frac{W}{2}, \frac{W}{2}\right]\)</span>.</p></li>
+<li><p><strong>Reduced Sampling Rates:</strong> Since <span class="math notranslate nohighlight">\( f_{max} \)</span> is significantly lower for baseband signals, the required sampling rate is also lower. This makes digital processing more efficient and less resource-intensive.</p></li>
+</ul>
+</li>
+<li><p><strong>Efficiency:</strong> Baseband processing allows for lower sampling rates, reducing the burden on ADCs and digital processing hardware.</p></li>
+<li><p><strong>Cost-Effectiveness:</strong> Lower sampling rates lead to cheaper and more power-efficient hardware implementations.</p></li>
+<li><p><strong>Versatility:</strong> Facilitates the use of advanced digital signal processing techniques and supports scalable system designs.</p></li>
+</ul>
+<p><strong>Complex Conjugate</strong></p>
+<p><strong>a. Definition</strong>
+For any complex number <span class="math notranslate nohighlight">\( z = a + jb \)</span> (where <span class="math notranslate nohighlight">\( a \)</span> and <span class="math notranslate nohighlight">\( b \)</span> are real numbers, and <span class="math notranslate nohighlight">\( j \)</span> is the imaginary unit), the <strong>complex conjugate</strong> of <span class="math notranslate nohighlight">\( z \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+z^* = a - jb
+\]</div>
+<p><strong>b. Properties</strong></p>
+<ul>
+<li><p><strong>Magnitude:</strong> The magnitude of <span class="math notranslate nohighlight">\( z \)</span> and <span class="math notranslate nohighlight">\( z^* \)</span> are identical.</p>
+<div class="math notranslate nohighlight">
+\[
+  |z| = |z^*|
+  \]</div>
+</li>
+<li><p><strong>Addition:</strong> The complex conjugate of a sum is the sum of the complex conjugates.</p>
+<div class="math notranslate nohighlight">
+\[
+  (z_1 + z_2)^* = z_1^* + z_2^*
+  \]</div>
+</li>
+<li><p><strong>Multiplication:</strong> The complex conjugate of a product is the product of the complex conjugates.</p>
+<div class="math notranslate nohighlight">
+\[
+  (z_1 z_2)^* = z_1^* z_2^*
+  \]</div>
+</li>
+<li><p><strong>Hermitian Symmetry:</strong> For the Fourier Transform of real-valued signals, the Hermitian symmetry property holds:</p>
+<div class="math notranslate nohighlight">
+\[
+  S(-f) = S^*(f)
+  \]</div>
+<p>This implies that the negative frequency components are the complex conjugates of the positive frequency components.</p>
+</li>
+</ul>
+<p><strong>Role of the Complex Conjugate in Modulation and Demodulation</strong></p>
+<p><strong>a. Ensuring Real-Valued Time-Domain Signal</strong></p>
+<p>When constructing a passband signal <span class="math notranslate nohighlight">\( s(t) \)</span> from its baseband equivalent <span class="math notranslate nohighlight">\( s_b(t) \)</span>, it’s crucial to ensure that <span class="math notranslate nohighlight">\( s(t) \)</span> remains <strong>real-valued</strong>.</p>
+<p><strong>b. Preserving Signal Integrity During Modulation</strong></p>
+<p>The inclusion of the complex conjugate term is essential for <strong>maintaining the integrity</strong> of the original real-valued signal during the modulation (up-conversion) process.</p>
+<p>It ensures that all frequency components are appropriately mirrored, preventing any loss of information and maintaining the signal’s real nature.</p>
+</section>
+<section id="simulation-baseband-signal-to-bandpass-signal">
+<h2>Simulation: Baseband Signal to Bandpass Signal<a class="headerlink" href="#simulation-baseband-signal-to-bandpass-signal" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.fft</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">fftshift</span>
+
+<span class="c1"># Define parameters</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>                  <span class="c1"># Amplitude</span>
+<span class="n">omega_0</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="mi">5</span> <span class="c1"># Baseband angular frequency (5 Hz -&gt; 2*pi*5 rad/s)</span>
+<span class="n">f_0</span> <span class="o">=</span> <span class="mf">1e2</span>              <span class="c1"># Carrier frequency (100 Hz)</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span>      <span class="c1"># Phase in radians</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">)</span> <span class="c1"># Time vector from 0 to 1 second with 1 ms sampling interval</span>
+
+<span class="c1"># Generate the low-pass signal</span>
+<span class="n">x_real_lp</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omega_0</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="n">theta</span><span class="p">)</span>
+
+<span class="c1"># Carrier frequency to angular frequency for band-pass signal</span>
+<span class="n">omega_c</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f_0</span>
+<span class="n">x_real_bp</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omega_c</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="n">theta</span><span class="p">)</span>
+
+<span class="c1"># Plot the low-pass and band-pass signals in the time domain</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_real_lp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Low-Pass Signal x_real_lp&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_real_bp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Band-Pass Signal x_real_bp&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Extend the time vector for better frequency resolution</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">)</span> <span class="c1"># Time vector from 0 to 2 seconds</span>
+
+<span class="c1"># Recalculate the signals with the extended time vector</span>
+<span class="n">x_real_lp</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omega_0</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="n">theta</span><span class="p">)</span>
+<span class="n">x_real_bp</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">omega_c</span> <span class="o">*</span> <span class="n">t</span> <span class="o">+</span> <span class="n">theta</span><span class="p">)</span>
+
+<span class="c1"># Number of points in FFT</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># Frequency vector for FFT plots</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="mf">0.001</span><span class="p">)</span>  <span class="c1"># Frequency vector in Hz</span>
+
+<span class="c1"># FFT of the low-pass signal</span>
+<span class="n">X_real_lp_fft</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">x_real_lp</span><span class="p">)</span>
+<span class="n">X_real_lp_fft_shifted</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">X_real_lp_fft</span><span class="p">)</span>  <span class="c1"># Shift zero frequency to center</span>
+
+<span class="c1"># FFT of the band-pass signal</span>
+<span class="n">X_real_bp_fft</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">x_real_bp</span><span class="p">)</span>
+<span class="n">X_real_bp_fft_shifted</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">X_real_bp_fft</span><span class="p">)</span>  <span class="c1"># Shift zero frequency to center</span>
+
+<span class="c1"># Plot the time domain signals and their FFTs</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_real_lp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Low-Pass Signal x_real_lp&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_real_bp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Band-Pass Signal x_real_bp&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Plot the frequency domain of low-pass and band-pass signals</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X_real_lp_fft_shifted</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Frequency Domain of x_real_lp&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;|X(f)|&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">15</span><span class="p">,</span> <span class="mi">15</span><span class="p">])</span>  <span class="c1"># Limiting frequency axis for better visualization</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X_real_bp_fft_shifted</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Frequency Domain of x_real_bp&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;|X(f)|&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">150</span><span class="p">,</span> <span class="mi">150</span><span class="p">])</span>  <span class="c1"># Adjust based on carrier frequency</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2d156087f064c79ac934c8942d3c0d7d6bf79b0030162f774baaa8db28b89cc0.png" src="_images/2d156087f064c79ac934c8942d3c0d7d6bf79b0030162f774baaa8db28b89cc0.png" />
+<img alt="_images/622204adcb5c449940b0d97cb6f1c6f537141117cceefce0455abee28020ad58.png" src="_images/622204adcb5c449940b0d97cb6f1c6f537141117cceefce0455abee28020ad58.png" />
+</div>
+</div>
+</section>
+<section id="simulation-bandpass-singal-to-baseband-signal">
+<h2>Simulation: Bandpass Singal to Baseband Signal<a class="headerlink" href="#simulation-bandpass-singal-to-baseband-signal" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">hilbert</span><span class="p">,</span> <span class="n">butter</span><span class="p">,</span> <span class="n">filtfilt</span>
+
+<span class="c1"># Part 1: Bandpass Signal with Envelope</span>
+<span class="c1"># Define the time vector</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">)</span>  <span class="c1"># Time vector from 0 to 1 second with sampling interval</span>
+
+<span class="c1"># Define the carrier and envelope frequencies</span>
+<span class="n">f0</span> <span class="o">=</span> <span class="mi">13</span>  <span class="c1"># Carrier frequency in Hz</span>
+<span class="n">omega_0</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Envelope frequency in Hz</span>
+
+<span class="c1"># Create the envelope signal (using a cosine for a smooth positive envelope)</span>
+<span class="n">envelope</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">omega_0</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># Create the carrier signal</span>
+<span class="n">carrier</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># Generate the bandpass signal by multiplying the carrier with the envelope</span>
+<span class="n">bandpass_signal_demo</span> <span class="o">=</span> <span class="n">envelope</span> <span class="o">*</span> <span class="n">carrier</span>
+
+<span class="c1"># Plot the bandpass signal and envelope</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">bandpass_signal_demo</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bandpass Signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">envelope</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Real Envelope&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bandpass Signal with Envelope&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Part 2: Bandpass to Lowpass Demodulation</span>
+
+<span class="c1"># Define parameters</span>
+<span class="n">f0</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># Carrier frequency in Hz</span>
+<span class="n">omega_0</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Message frequency in Hz</span>
+<span class="n">Fs</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Sampling frequency in Hz</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">Fs</span><span class="p">)</span>  <span class="c1"># Time vector</span>
+
+<span class="c1"># Generate a bandpass signal</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Amplitude of the message</span>
+<span class="n">x_t_real_lp</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">omega_0</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>  <span class="c1"># Real lowpass signal</span>
+
+<span class="n">x_t_bp</span> <span class="o">=</span> <span class="n">x_t_real_lp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>  <span class="c1"># Bandpass signal (modulating onto the carrier)</span>
+
+<span class="c1"># Plot the bandpass signal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_t_bp</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bandpass Signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Generate the analytic signal (complex signal with Hilbert transform)</span>
+<span class="n">x_hat</span> <span class="o">=</span> <span class="n">hilbert</span><span class="p">(</span><span class="n">x_t_bp</span><span class="p">)</span>
+
+<span class="c1"># Mix down the analytic signal to baseband</span>
+<span class="n">xi_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">x_t_bp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">x_hat</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span>
+<span class="n">xq_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">x_hat</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">x_t_bp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span>
+
+<span class="c1"># Low-pass filter to remove the high-frequency components (around 2*f0)</span>
+<span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">omega_0</span><span class="o">/</span><span class="p">(</span><span class="n">Fs</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>  <span class="c1"># Butterworth filter design</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">xi_t</span><span class="p">)</span>  <span class="c1"># Filtered In-phase component</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">xq_t</span><span class="p">)</span>  <span class="c1"># Filtered Quadrature component</span>
+
+<span class="c1"># Form the complex lowpass signal</span>
+<span class="n">complex_lowpass_equivalent</span> <span class="o">=</span> <span class="n">I</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">Q</span>
+
+<span class="c1"># Plot I and Q components</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;In-phase (I) Component&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Quadrature (Q) Component&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Calculate r_t and theta_t from the complex lowpass signal</span>
+<span class="n">r_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">complex_lowpass_equivalent</span><span class="p">)</span>  <span class="c1"># Magnitude</span>
+<span class="n">theta_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">complex_lowpass_equivalent</span><span class="p">)</span>  <span class="c1"># Phase</span>
+
+<span class="c1"># Calculate r_t_ana and theta_t_ana using the filtered I and Q components</span>
+<span class="n">r_t_ana</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">I</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Q</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Analytical magnitude calculation</span>
+<span class="n">theta_t_ana</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>  <span class="c1"># Analytical phase calculation</span>
+
+<span class="c1"># Plot magnitude and phase of the complex lowpass signal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">r_t</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;r_t from complex signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">r_t_ana</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;r_t_ana analytical calculation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Comparison of Magnitudes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="n">theta_t</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;theta_t from complex signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="n">theta_t_ana</span><span class="p">),</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;theta_t_ana analytical calculation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Comparison of Phases&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Phase (rad)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1cd7467e642a86c039eb44cbf22cd3c5d2286f2a5a0c425992abf07be193dd0d.png" src="_images/1cd7467e642a86c039eb44cbf22cd3c5d2286f2a5a0c425992abf07be193dd0d.png" />
+<img alt="_images/8f6446810faa3fccafe183bdc0d8db09217f1a004fba1b2c941bdc85a479ebc0.png" src="_images/8f6446810faa3fccafe183bdc0d8db09217f1a004fba1b2c941bdc85a479ebc0.png" />
+<img alt="_images/b1f4a882adcc7669264442a44c8931661f6af3d46d920d49566186253b922a83.png" src="_images/b1f4a882adcc7669264442a44c8931661f6af3d46d920d49566186253b922a83.png" />
+<img alt="_images/86356dce4b81a35684cb6ab5929a078c2e9d5a27a79cc03e55ac013f4536feae.png" src="_images/86356dce4b81a35684cb6ab5929a078c2e9d5a27a79cc03e55ac013f4536feae.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transform-s-f-of-a-band-limited-signal-s-t">Fourier Transform <span class="math notranslate nohighlight">\( S(f) \)</span> of a Band-Limited Signal <span class="math notranslate nohighlight">\( s(t) \)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-band-limiting-a-signal-with-symmetric-filtering">Example: Band-Limiting a Signal with Symmetric Filtering</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-equivalent-fourier-transform-s-b-f-of-s-t">Baseband Equivalent Fourier Transform <span class="math notranslate nohighlight">\( S_b(f) \)</span> of <span class="math notranslate nohighlight">\( s(t) \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-function">Autocorrelation Function</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectral-density">Power Spectral Density</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-s-f-and-s-b-f">Relationship Between <span class="math notranslate nohighlight">\( S(f) \)</span> and <span class="math notranslate nohighlight">\( S_b(f) \)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-to-passband-modulation">Baseband to Passband Modulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulation-and-demodulation">Modulation and Demodulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulating-baseband-signal-to-passband">Modulating Baseband Signal to Passband</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demodulation-of-passband-signal-to-baseband-signal">Demodulation of Passband Signal to Baseband Signal</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussions"><strong>Discussions</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-baseband-signal-to-bandpass-signal">Simulation: Baseband Signal to Bandpass Signal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-bandpass-singal-to-baseband-signal">Simulation: Bandpass Singal to Baseband Signal</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

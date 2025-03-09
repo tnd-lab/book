@@ -1,0 +1,1603 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Signaling Schemes with Memory &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'com_c2_s9_Signaling_with_Memory';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Continuous-Phase Frequency-Shift Keying (CPFSK)" href="com_c2_s10_CPFSK.html" />
+    <link rel="prev" title="Signal Waveforms from Binary Codes" href="com_c2_s8_Waveform_Binary_Codes.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Signaling Schemes with Memory</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-signals-and-data-sequences">Baseband Signals and Data Sequences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nrz-signal">NRZ Signal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nrzi-signal">NRZI Signal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-encoding">Differential Encoding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xor">XOR</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#miller-coding">Miller Coding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-in-nrzi-signaling">Memory in NRZI Signaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chain-representation">Markov Chain Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-probability-distribution">Steady-State Probability Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalized-transition-probability-matrix">Generalized Transition Probability Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#state-transition-diagram">State Transition Diagram</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nrzi-transition-given-s-0"><strong>NRZI Transition Given <span class="math notranslate nohighlight">\( S_0 \)</span></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nrzi-transition-given-s-1"><strong>NRZI Transition Given <span class="math notranslate nohighlight">\( S_1 \)</span></strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trellis-diagram">Trellis Diagram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-of-waveforms-representation">Sequence of Waveforms Representation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waveform-components">Waveform Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-pam-waveform">Recall PAM Waveform</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#role-of-g-t-in-s-m-lp-t">Role of <span class="math notranslate nohighlight">\( g(t) \)</span> in <span class="math notranslate nohighlight">\( s_{m,lp}(t) \)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#role-of-d-t-the-sequence-of-notes-melody">Role of <span class="math notranslate nohighlight">\( d(t) \)</span>: The Sequence of Notes (Melody)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-case">Example Use Case:</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="signaling-schemes-with-memory">
+<h1>Signaling Schemes with Memory<a class="headerlink" href="#signaling-schemes-with-memory" title="Link to this heading">#</a></h1>
+<p>Signaling schemes with memory can be explained in terms of Markov chains and finite-state machines. The state transition and the outputs of the Markov chain are governed by:</p>
+<div class="math notranslate nohighlight">
+\[
+m_{\ell} = f_m(S_{\ell-1}, I_{\ell})
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+S_{\ell} = f_s(S_{\ell-1}, I_{\ell})
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(I_{\ell}\)</span> denotes the information sequence</p></li>
+<li><p><span class="math notranslate nohighlight">\(m_{\ell}\)</span> is the index of the transmitted signal <span class="math notranslate nohighlight">\(s_{m_{\ell}}(t)\)</span>.</p></li>
+</ul>
+<section id="baseband-signals-and-data-sequences">
+<h2>Baseband Signals and Data Sequences<a class="headerlink" href="#baseband-signals-and-data-sequences" title="Link to this heading">#</a></h2>
+<p>We focus on two key signals:</p>
+<ul class="simple">
+<li><p>NRZ (Non-Return-to-Zero) Signal</p></li>
+<li><p>NRZI (Non-Return-to-Zero Inverted) Signal</p></li>
+</ul>
+</section>
+<section id="nrz-signal">
+<h2>NRZ Signal<a class="headerlink" href="#nrz-signal" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The simplest form of baseband signaling.</p></li>
+<li><p>A binary <strong>1</strong> is represented by a rectangular pulse with polarity <span class="math notranslate nohighlight">\( +A \)</span>.</p></li>
+<li><p>A binary <strong>0</strong> is represented by a rectangular pulse with polarity <span class="math notranslate nohighlight">\( -A \)</span>.</p></li>
+<li><p>The NRZ modulator is <strong>memoryless</strong>, which means the output depends only on the current bit and not on past bits.</p></li>
+<li><p>This encoding is equivalent to:</p>
+<ul>
+<li><p>Binary Pulse Amplitude Modulation (PAM)</p></li>
+<li><p>Binary Phase Shift Keying (BPSK) in carrier-modulated systems.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="nrzi-signal">
+<h2>NRZI Signal<a class="headerlink" href="#nrzi-signal" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The NRZI signal differs from the NRZ signal in how transitions occur.</p></li>
+<li><p>A <strong>transition (change in amplitude)</strong> happens only when the information bit is <strong>1</strong>.</p></li>
+<li><p>If the bit is <strong>0</strong>, the signal amplitude remains unchanged.</p></li>
+<li><p>This encoding is known as <strong>differential encoding</strong>.</p></li>
+</ul>
+<section id="differential-encoding">
+<h3>Differential Encoding<a class="headerlink" href="#differential-encoding" title="Link to this heading">#</a></h3>
+<p>The relationship for NRZI encoding is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+b_k = a_k \oplus b_{k-1}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \{a_k\} \)</span>: Input binary information sequence.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \{b_k\} \)</span>: Output sequence of the differential encoder.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \oplus \)</span>: Addition modulo 2 (XOR operation).</p></li>
+</ul>
+</section>
+<section id="xor">
+<h3>XOR<a class="headerlink" href="#xor" title="Link to this heading">#</a></h3>
+<p>The <strong>XOR (exclusive OR) truth table</strong> follows these rules:</p>
+<ul class="simple">
+<li><p>The output is <strong>true (1)</strong> if <strong>only one</strong> of the inputs is true.</p></li>
+<li><p>The output is <strong>false (0)</strong> if <strong>both inputs are the same</strong> (either both 0 or both 1).</p></li>
+</ul>
+<p>The Truth Table for XOR:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>A</p></th>
+<th class="head"><p>B</p></th>
+<th class="head"><p>A <span class="math notranslate nohighlight">\(\oplus\)</span> B (XOR)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>We can see that:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( b_k = 1 \)</span> if the input bit <span class="math notranslate nohighlight">\( a_k \)</span> differs from the previous encoded bit <span class="math notranslate nohighlight">\( b_{k-1} \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( b_k = 0 \)</span> if they are the same.</p></li>
+</ul>
+<p><strong>Signal Representation</strong></p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\( b_k = 1 \)</span>: A rectangular pulse with amplitude <span class="math notranslate nohighlight">\( +A \)</span> is transmitted.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( b_k = 0 \)</span>: A rectangular pulse with amplitude <span class="math notranslate nohighlight">\( -A \)</span> is transmitted.</p></li>
+</ul>
+<p>Thus, <strong>NRZI signaling</strong> can be seen as applying a <strong>differential encoder</strong> followed by an <strong>NRZ signaling scheme</strong>.</p>
+<p>In summary:</p>
+<ul class="simple">
+<li><p>NRZ is <strong>memoryless</strong>, depending only on the current bit.</p></li>
+<li><p>NRZI introduces <strong>memory</strong> through <strong>differential encoding</strong>, which makes signal transitions convey information rather than amplitude levels.</p></li>
+</ul>
+</section>
+</section>
+<section id="miller-coding">
+<h2>Miller Coding<a class="headerlink" href="#miller-coding" title="Link to this heading">#</a></h2>
+<p>In the following simulation, the original binary data is represented using <strong>Miller coding</strong>, i.e.:</p>
+<ul class="simple">
+<li><p><strong>Bit 1</strong>: A transition occurs in the middle of the bit interval.</p></li>
+<li><p><strong>Bit 0</strong>: No transition if the previous bit was 0; otherwise, a transition at the beginning.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Generate a sample binary data sequence</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate NRZI signal using transition-based method with output bits</span>
+<span class="k">def</span> <span class="nf">generate_nrzi</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">nrzi_signal</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">output_bits</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">current_level</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>  <span class="c1"># Start with -1 amplitude for first bit (assumption)</span>
+    <span class="n">b_prev</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">bit</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">current_level</span> <span class="o">=</span> <span class="o">-</span><span class="n">current_level</span>  <span class="c1"># Toggle the level when bit is 1</span>
+        <span class="n">nrzi_signal</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">current_level</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">b_current</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">current_level</span> <span class="o">==</span> <span class="n">amplitude</span> <span class="k">else</span> <span class="mi">0</span>
+        <span class="n">output_bits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b_current</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nrzi_signal</span><span class="p">),</span> <span class="n">output_bits</span>
+
+<span class="c1"># Generate Miller-coded signal with output bits</span>
+<span class="k">def</span> <span class="nf">generate_miller_code</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">miller_signal</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">output_bits</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">current_level</span> <span class="o">=</span> <span class="n">amplitude</span>
+    <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">bit</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="c1"># For bit 1: transition occurs in the middle of the bit interval</span>
+            <span class="n">half_bit</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_level</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span> <span class="o">+</span> <span class="p">[</span><span class="o">-</span><span class="n">current_level</span><span class="p">]</span> <span class="o">*</span> <span class="mi">50</span>
+            <span class="n">current_level</span> <span class="o">=</span> <span class="o">-</span><span class="n">current_level</span>
+            <span class="n">output_bits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="c1"># For bit 0: no transition if previous bit was 0, transition at the start if previous bit was 1</span>
+            <span class="n">half_bit</span> <span class="o">=</span> <span class="p">[</span><span class="n">current_level</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span>
+            <span class="n">output_bits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">miller_signal</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">half_bit</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">miller_signal</span><span class="p">),</span> <span class="n">output_bits</span>
+
+<span class="c1"># Generate NRZ signal with output bits</span>
+<span class="k">def</span> <span class="nf">generate_nrz</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">nrz_signal</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">data</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>  <span class="c1"># Convert 1-&gt;+1, 0-&gt;-1, each bit lasts 100 samples</span>
+    <span class="n">output_bits</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>  <span class="c1"># NRZ output bits match input bits directly</span>
+    <span class="k">return</span> <span class="n">nrz_signal</span><span class="p">,</span> <span class="n">output_bits</span>
+
+<span class="c1"># NRZI signal generation using XOR as defined by b_k = a_k ⊕ b_{k-1}</span>
+<span class="k">def</span> <span class="nf">generate_nrzi_xor</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">amplitude</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">nrzi_signal</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">b_prev</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Initialize with 0 as the initial condition for b_{k-1}</span>
+    <span class="n">output_bits</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">bit</span> <span class="ow">in</span> <span class="n">data</span><span class="p">:</span>
+        <span class="n">b_current</span> <span class="o">=</span> <span class="n">bit</span> <span class="o">^</span> <span class="n">b_prev</span>  <span class="c1"># XOR operation: b_k = a_k ⊕ b_{k-1}</span>
+        <span class="n">current_level</span> <span class="o">=</span> <span class="n">amplitude</span> <span class="k">if</span> <span class="n">b_current</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="o">-</span><span class="n">amplitude</span>
+        <span class="n">nrzi_signal</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="n">current_level</span><span class="p">]</span> <span class="o">*</span> <span class="mi">100</span><span class="p">)</span>
+        <span class="n">b_prev</span> <span class="o">=</span> <span class="n">b_current</span>
+        <span class="n">output_bits</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b_current</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">nrzi_signal</span><span class="p">),</span> <span class="n">output_bits</span>
+
+<span class="c1"># Generate signals with output bits</span>
+<span class="n">miller_signal</span><span class="p">,</span> <span class="n">miller_output_bits</span> <span class="o">=</span> <span class="n">generate_miller_code</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">nrz_signal</span><span class="p">,</span> <span class="n">nrz_output_bits</span> <span class="o">=</span> <span class="n">generate_nrz</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">nrzi_signal</span><span class="p">,</span> <span class="n">nrzi_output_bits</span> <span class="o">=</span> <span class="n">generate_nrzi</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">nrzi_signal_xor</span><span class="p">,</span> <span class="n">nrzi_xor_output_bits</span> <span class="o">=</span> <span class="n">generate_nrzi_xor</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Display the output bit sequences for all methods</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Original Data:&quot;</span><span class="p">,</span> <span class="n">data</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Miller Output Bits:&quot;</span><span class="p">,</span> <span class="n">miller_output_bits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NRZ Output Bits:&quot;</span><span class="p">,</span> <span class="n">nrz_output_bits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NRZI Output Bits (Transition-Based Method):&quot;</span><span class="p">,</span> <span class="n">nrzi_output_bits</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;NRZI Output Bits (XOR Method):&quot;</span><span class="p">,</span> <span class="n">nrzi_xor_output_bits</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Original Data: [1, 0, 1, 1, 0, 0, 1, 0]
+Miller Output Bits: [1, 0, 1, 1, 0, 0, 1, 0]
+NRZ Output Bits: [1, 0, 1, 1, 0, 0, 1, 0]
+NRZI Output Bits (Transition-Based Method): [1, 1, 0, 1, 1, 1, 0, 0]
+NRZI Output Bits (XOR Method): [1, 1, 0, 1, 1, 1, 0, 0]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Time axis for visualization</span>
+<span class="n">time</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">miller_signal</span><span class="p">))</span>
+
+<span class="c1"># Plot binary data using Miller code</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">miller_signal</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;purple&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Binary Data Sequence (Miller Code) with Annotations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Annotate each bit on the binary data plot</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">bit</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot NRZ signal with annotations</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">nrz_signal</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;NRZ Signal with Annotations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nrz_output_bits</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">bit</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot NRZI signal (transition-based method) with annotations</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">nrzi_signal</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;NRZI Signal (Transition-Based Method) with Annotations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nrzi_output_bits</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">bit</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot NRZI signal (XOR-based method) with annotations</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">time</span><span class="p">,</span> <span class="n">nrzi_signal_xor</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;NRZI Signal (XOR-Based Method: b_k = a_k ⊕ b_{k-1}) with Annotations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nrzi_xor_output_bits</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">1.2</span><span class="p">,</span> <span class="nb">str</span><span class="p">(</span><span class="n">bit</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/57fbda3b306aff493f04ce5a120ca23aa9b9117e523e72c24f6827bf50781f0d.png" src="_images/57fbda3b306aff493f04ce5a120ca23aa9b9117e523e72c24f6827bf50781f0d.png" />
+<img alt="_images/de5c7ceb9388161f67770348ddcceb64da92f397b65fe87e68593b58aa9e1b57.png" src="_images/de5c7ceb9388161f67770348ddcceb64da92f397b65fe87e68593b58aa9e1b57.png" />
+<img alt="_images/7023adfb76f197a81f0a9382f0cabba239d9f01981a1e15054f145d06306d347.png" src="_images/7023adfb76f197a81f0a9382f0cabba239d9f01981a1e15054f145d06306d347.png" />
+<img alt="_images/732a14416db6352317be8697af665001f90e66df3c26cee8d13b45c226fc72a6.png" src="_images/732a14416db6352317be8697af665001f90e66df3c26cee8d13b45c226fc72a6.png" />
+</div>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Step</p></th>
+<th class="head"><p>Input <span class="math notranslate nohighlight">\( a_k \)</span></p></th>
+<th class="head"><p>Previous NRZI bit <span class="math notranslate nohighlight">\( b_{k-1} \)</span></p></th>
+<th class="head"><p>XOR Operation <span class="math notranslate nohighlight">\( b_k = a_k \oplus b_{k-1} \)</span></p></th>
+<th class="head"><p>NRZI Output <span class="math notranslate nohighlight">\( b_k \)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>0 (assumption)</p></td>
+<td><p><span class="math notranslate nohighlight">\(1 \oplus 0\)</span></p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(0 \oplus 1\)</span></p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(1 \oplus 1\)</span></p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>1</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(1 \oplus 0\)</span></p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(0 \oplus 1\)</span></p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td><p>0</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(0 \oplus 1\)</span></p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(1 \oplus 1\)</span></p></td>
+<td><p>0</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>0</p></td>
+<td><p>0</p></td>
+<td><p><span class="math notranslate nohighlight">\(0 \oplus 0\)</span></p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="memory-in-nrzi-signaling">
+<h2>Memory in NRZI Signaling<a class="headerlink" href="#memory-in-nrzi-signaling" title="Link to this heading">#</a></h2>
+<p>The presence of the <strong>differential encoder</strong> introduces <strong>memory</strong> into the NRZI signaling process. Unlike the <strong>memoryless NRZ</strong>, the state of the signal in NRZI depends on both the current bit and the previous state, forming a <strong>Markov chain</strong>.</p>
+<section id="markov-chain-representation">
+<h3>Markov Chain Representation<a class="headerlink" href="#markov-chain-representation" title="Link to this heading">#</a></h3>
+<p>Since the information sequence is binary, the Markov chain has <strong>two states</strong>, typically representing the states corresponding to binary <strong>0</strong> and <strong>1</strong>.</p>
+<p>The transition probabilities between these states are governed by the binary source generating <strong>0s</strong> and <strong>1s</strong>.</p>
+<ul class="simple">
+<li><p>When the source is <strong>equiprobable</strong> (equal likelihood of generating <strong>0</strong> or <strong>1</strong>):</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P = 
+\begin{pmatrix}
+\frac{1}{2} &amp; \frac{1}{2} \\
+\frac{1}{2} &amp; \frac{1}{2}
+\end{pmatrix}
+\end{split}\]</div>
+<p>This matrix describes the probability of transitioning from one state to another.</p>
+<ul class="simple">
+<li><p>Each row sums to <strong>1</strong>, indicating valid probability distributions.</p></li>
+</ul>
+</section>
+<section id="steady-state-probability-distribution">
+<h3>Steady-State Probability Distribution<a class="headerlink" href="#steady-state-probability-distribution" title="Link to this heading">#</a></h3>
+<p>The <strong>steady-state probability distribution</strong> <span class="math notranslate nohighlight">\( \mathbf{p} \)</span> represents the long-term probabilities of being in each state.</p>
+<p>For the <strong>equiprobable case</strong>, the steady-state distribution is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{p} = 
+\begin{pmatrix}
+\frac{1}{2} &amp; \frac{1}{2}
+\end{pmatrix}
+\]</div>
+<p>When the binary source is equiprobable, the steady-state probabilities are symmetric.
+This means that, in the long run, the system is equally likely to be in either of the two states.</p>
+</section>
+<section id="generalized-transition-probability-matrix">
+<h3>Generalized Transition Probability Matrix<a class="headerlink" href="#generalized-transition-probability-matrix" title="Link to this heading">#</a></h3>
+<p>If the binary source is not equiprobable, i.e., the probability of generating <strong>1s</strong> is</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{P[a_k = 1] = 1 - P[a_k = 0] = p} 
+\]</div>
+<p>The transition probability matrix becomes:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P = 
+\begin{pmatrix}
+1 - p &amp; p \\
+p &amp; 1 - p
+\end{pmatrix}
+\end{split}\]</div>
+<p>The probability parameter <span class="math notranslate nohighlight">\( p \)</span> allows modeling of <strong>biased sources</strong>.</p>
+<p>The steady-state probabilities are essential for calculating the <strong>power spectral density (PSD)</strong> of modulation schemes with memory, such as NRZI, and for constructing a <strong>trellis diagram</strong> that visualizes time-evolving state transitions.</p>
+<p><img alt="" src="_images/fig_com_c2_s9_1.png" /></p>
+</section>
+</section>
+<section id="state-transition-diagram">
+<h2>State Transition Diagram<a class="headerlink" href="#state-transition-diagram" title="Link to this heading">#</a></h2>
+<p>This diagram shows the <strong>two states</strong> <span class="math notranslate nohighlight">\( S_0 \)</span> and <span class="math notranslate nohighlight">\( S_1 \)</span>, corresponding to the possible output states of the <strong>differential encoder</strong> in NRZI signaling.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( S_0 = 0 \)</span>: The current encoded bit <span class="math notranslate nohighlight">\( b_k = 0 \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( S_1 = 1 \)</span>: The current encoded bit <span class="math notranslate nohighlight">\( b_k = 1 \)</span>.</p></li>
+</ul>
+<p><strong>Transition Labels:</strong></p>
+<p>Each arrow between states is labeled with two components:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Input bit / Output signal}
+\]</div>
+<ul class="simple">
+<li><p><strong>Input bit (0 or 1)</strong>: The binary information bit <span class="math notranslate nohighlight">\( a_k \)</span> that controls the transition.</p></li>
+<li><p><strong>Output signal (s(t) or -s(t))</strong>: The modulated output waveform transmitted after the encoding operation.</p></li>
+</ul>
+<p><strong>Interpreting the Labels</strong></p>
+<ul class="simple">
+<li><p><strong>0/-s(t)</strong>: Input bit <strong>0</strong> results in the output signal <strong>-s(t)</strong>.</p></li>
+<li><p><strong>1/s(t)</strong>: Input bit <strong>1</strong> results in the output signal <strong>s(t)</strong>.</p></li>
+</ul>
+<p>The signal polarity <span class="math notranslate nohighlight">\( s(t) \)</span> or <span class="math notranslate nohighlight">\( -s(t) \)</span> indicates the <strong>differential nature</strong> of NRZI:</p>
+<ul class="simple">
+<li><p>If the bit is <strong>1</strong>, the output <strong>transitions</strong> to the opposite state.</p></li>
+<li><p>If the bit is <strong>0</strong>, the output remains in the <strong>same state</strong>.</p></li>
+</ul>
+<section id="nrzi-transition-given-s-0">
+<h3><strong>NRZI Transition Given <span class="math notranslate nohighlight">\( S_0 \)</span></strong><a class="headerlink" href="#nrzi-transition-given-s-0" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( S_0 \)</span> means the current state corresponds to output <span class="math notranslate nohighlight">\( -s(t) \)</span></strong>.</p></li>
+<li><p>The transition depends on the <strong>input bit</strong> <span class="math notranslate nohighlight">\( a_k \)</span>:</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Input <span class="math notranslate nohighlight">\( a_k \)</span></strong></p></th>
+<th class="head"><p><strong>Transition</strong></p></th>
+<th class="head"><p><strong>Output</strong></p></th>
+<th class="head"><p><strong>Probability</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>0</strong></p></td>
+<td><p>No change (remains in <span class="math notranslate nohighlight">\( S_0 \)</span>)</p></td>
+<td><p><span class="math notranslate nohighlight">\( -s(t) \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( 1 - p \)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>1</strong></p></td>
+<td><p>Flips to <span class="math notranslate nohighlight">\( S_1 \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( s(t) \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( p \)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Notation Interpretation: <span class="math notranslate nohighlight">\( 1 / -s(t), \quad (1 - p) \)</span></strong></p>
+<ul class="simple">
+<li><p>The input bit <strong>is 0</strong>.</p></li>
+<li><p>The output remains at <strong><span class="math notranslate nohighlight">\( -s(t) \)</span></strong> (no transition).</p></li>
+<li><p>This happens with <strong>probability <span class="math notranslate nohighlight">\( 1 - p \)</span></strong>.</p></li>
+</ul>
+</section>
+<section id="nrzi-transition-given-s-1">
+<h3><strong>NRZI Transition Given <span class="math notranslate nohighlight">\( S_1 \)</span></strong><a class="headerlink" href="#nrzi-transition-given-s-1" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( S_1 \)</span> means the current state corresponds to output <span class="math notranslate nohighlight">\( s(t) \)</span></strong>.</p></li>
+<li><p>The transition depends on the <strong>input bit</strong> <span class="math notranslate nohighlight">\( a_k \)</span>:</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Input <span class="math notranslate nohighlight">\( a_k \)</span></strong></p></th>
+<th class="head"><p><strong>Transition</strong></p></th>
+<th class="head"><p><strong>Output</strong></p></th>
+<th class="head"><p><strong>Probability</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>0</strong></p></td>
+<td><p>No change (remains in <span class="math notranslate nohighlight">\( S_1 \)</span>)</p></td>
+<td><p><span class="math notranslate nohighlight">\( s(t) \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( 1 - p \)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>1</strong></p></td>
+<td><p>Flips to <span class="math notranslate nohighlight">\( S_0 \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( -s(t) \)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\( p \)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Notation Interpretation <span class="math notranslate nohighlight">\( 0 / s(t), \quad (1 - p) \)</span></strong></p>
+<ul class="simple">
+<li><p>The input bit <strong>is 0</strong>.</p></li>
+<li><p>The output <strong>remains <span class="math notranslate nohighlight">\( s(t) \)</span></strong> (no transition).</p></li>
+<li><p>This happens with <strong>probability <span class="math notranslate nohighlight">\( 1 - p \)</span></strong>.</p></li>
+</ul>
+</section>
+</section>
+<section id="trellis-diagram">
+<h2>Trellis Diagram<a class="headerlink" href="#trellis-diagram" title="Link to this heading">#</a></h2>
+<p>The trellis diagram extends the state transition logic over time, showing how the states evolve with each successive input bit.</p>
+<ul class="simple">
+<li><p>The <strong>horizontal axis</strong> represents time, advancing <strong>one bit period</strong> at each step.</p></li>
+<li><p>The <strong>vertical axis</strong> represents the <strong>state of the encoder</strong> (<span class="math notranslate nohighlight">\( S_0 \)</span> or <span class="math notranslate nohighlight">\( S_1 \)</span>).</p></li>
+<li><p>The <strong>lines between nodes</strong> represent possible transitions and are labeled similarly to the state diagram.</p></li>
+</ul>
+<p><strong>Trellis Paths</strong></p>
+<p>The labels <strong>0/-s(t)</strong> and <strong>1/s(t)</strong> follow the pattern:</p>
+<ul class="simple">
+<li><p>Moving <strong>horizontally</strong> (staying in the same state) corresponds to a <strong>0</strong> bit.</p></li>
+<li><p>Moving <strong>diagonally</strong> (switching between <span class="math notranslate nohighlight">\( S_0 \)</span> and <span class="math notranslate nohighlight">\( S_1 \)</span>) corresponds to a <strong>1</strong> bit.</p></li>
+</ul>
+<p>Moreover, each edge is now labeled with:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Input bit / Output signal / Output bit (b)}
+\]</div>
+<ul class="simple">
+<li><p><strong>Input bit</strong>: The incoming binary data bit (<span class="math notranslate nohighlight">\( a_k \)</span>) that triggers the state transition.</p></li>
+<li><p><strong>Output signal</strong>: <span class="math notranslate nohighlight">\( s(t) \)</span> or <span class="math notranslate nohighlight">\( -s(t) \)</span>, representing the modulated waveform produced.</p></li>
+<li><p><strong>Output bit (b)</strong>: The encoded bit <span class="math notranslate nohighlight">\( b_k \)</span>, generated using the formula <span class="math notranslate nohighlight">\(
+b_k = a_k \oplus b_{k-1}
+\)</span></p></li>
+<li><p><strong>Edges</strong>:</p>
+<ul>
+<li><p><strong>0/-s(t)/b=0</strong> → Input bit <strong>0</strong>, output signal <strong>-s(t)</strong>, output bit <strong>0</strong>.</p></li>
+<li><p><strong>1/s(t)/b=1</strong> → Input bit <strong>1</strong>, output signal <strong>s(t)</strong>, output bit <strong>1</strong>.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="k">def</span> <span class="nf">plot_corrected_nrzi_trellis_with_output</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">nrzi_signal</span><span class="p">):</span>
+    <span class="c1"># Create a directed graph for the trellis diagram with output bits</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+    <span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;S0&#39;</span><span class="p">,</span> <span class="s1">&#39;S1&#39;</span><span class="p">]</span>
+    <span class="n">time_steps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># Add nodes and positions</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">time_steps</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">states</span><span class="p">):</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+            <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="c1"># Add edges with bits and output labels</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">time_steps</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">state_from</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">states</span><span class="p">):</span>
+            <span class="n">node_from</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">state_from</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">state_to</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">states</span><span class="p">):</span>
+                <span class="n">node_to</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">state_to</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">input_bit</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">state_from</span> <span class="o">!=</span> <span class="n">state_to</span> <span class="k">else</span> <span class="mi">0</span>
+
+                <span class="c1"># Determine initial previous bit based on the starting node</span>
+                <span class="n">prev_bit</span> <span class="o">=</span> <span class="mi">0</span> <span class="k">if</span> <span class="n">state_from</span> <span class="o">==</span> <span class="s2">&quot;S0&quot;</span> <span class="k">else</span> <span class="mi">1</span>
+
+                <span class="c1"># Determine output bit based on NRZI rule</span>
+                <span class="n">b_current</span> <span class="o">=</span> <span class="n">input_bit</span> <span class="o">^</span> <span class="n">prev_bit</span>
+
+                <span class="n">output_signal</span> <span class="o">=</span> <span class="s2">&quot;s(t)&quot;</span> <span class="k">if</span> <span class="n">b_current</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;-s(t)&quot;</span>
+                <span class="n">label</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">input_bit</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">output_signal</span><span class="si">}</span><span class="s2">/b=</span><span class="si">{</span><span class="n">b_current</span><span class="si">}</span><span class="s2">&quot;</span>
+                <span class="n">G</span><span class="o">.</span><span class="n">add_edge</span><span class="p">(</span><span class="n">node_from</span><span class="p">,</span> <span class="n">node_to</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span> <span class="n">label_pos</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+
+    <span class="c1"># Draw the graph</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Draw edge labels with bits</span>
+    <span class="n">edge_labels</span> <span class="o">=</span> <span class="p">{(</span><span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">):</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">u</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)}</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edge_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edge_labels</span><span class="o">=</span><span class="n">edge_labels</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">font_color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Trellis Diagram for NRZI Signaling with Output Bits&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Generate and plot the corrected NRZI trellis diagram with output bits</span>
+<span class="n">plot_corrected_nrzi_trellis_with_output</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">nrzi_signal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6d65372ff85f85efc1e2b5e5d2df2fe73dbe489d7fbac4290a70dac16acfa2e8.png" src="_images/6d65372ff85f85efc1e2b5e5d2df2fe73dbe489d7fbac4290a70dac16acfa2e8.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_trellis_with_highlighted_path_only</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="c1"># Create a directed graph for the trellis diagram</span>
+    <span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">DiGraph</span><span class="p">()</span>
+    <span class="n">states</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;S0&#39;</span><span class="p">,</span> <span class="s1">&#39;S1&#39;</span><span class="p">]</span>
+    <span class="n">time_steps</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># Add nodes and positions</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">time_steps</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">state</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">states</span><span class="p">):</span>
+            <span class="n">node</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">state</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">t</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="n">G</span><span class="o">.</span><span class="n">add_node</span><span class="p">(</span><span class="n">node</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">state</span><span class="p">)</span>
+            <span class="n">pos</span><span class="p">[</span><span class="n">node</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="o">-</span><span class="n">i</span><span class="p">)</span>
+
+    <span class="c1"># Determine the actual path based on the NRZI rule</span>
+    <span class="n">b_prev</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">path_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;S0_0&quot;</span><span class="p">]</span>
+    <span class="n">current_state</span> <span class="o">=</span> <span class="s2">&quot;S0&quot;</span>
+    <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="n">b_current</span> <span class="o">=</span> <span class="n">bit</span> <span class="o">^</span> <span class="n">b_prev</span>  <span class="c1"># Calculate NRZI output bit</span>
+        <span class="n">b_prev</span> <span class="o">=</span> <span class="n">b_current</span>
+        <span class="n">next_state</span> <span class="o">=</span> <span class="s2">&quot;S1&quot;</span> <span class="k">if</span> <span class="n">b_current</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;S0&quot;</span>
+        <span class="n">path_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">next_state</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Draw the graph with nodes</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">node_size</span><span class="o">=</span><span class="mi">2000</span><span class="p">,</span> <span class="n">node_color</span><span class="o">=</span><span class="s2">&quot;lightblue&quot;</span><span class="p">,</span> <span class="n">font_size</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">font_weight</span><span class="o">=</span><span class="s2">&quot;bold&quot;</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+    <span class="c1"># Highlight the actual path in green</span>
+    <span class="n">path_edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">path_nodes</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">path_nodes</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">path_nodes</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)]</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">edgelist</span><span class="o">=</span><span class="n">path_edges</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">edge_color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Trellis Diagram with Highlighted Actual Path&quot;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+
+<span class="c1"># Plot the trellis diagram with the highlighted actual path only</span>
+<span class="n">plot_trellis_with_highlighted_path_only</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/2f599d84f24cb24a81334b62bca2c6dc3e31924ad6e5576f8d73ec791ac85164.png" src="_images/2f599d84f24cb24a81334b62bca2c6dc3e31924ad6e5576f8d73ec791ac85164.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_nrzi_path_and_output_sequence</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="c1"># Initialize variables</span>
+    <span class="n">path_nodes</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;S0_0&quot;</span><span class="p">]</span>  <span class="c1"># Start from initial state S0_0</span>
+    <span class="n">current_state</span> <span class="o">=</span> <span class="s2">&quot;S0&quot;</span>
+    <span class="n">b_prev</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">output_sequence</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="c1"># Generate the path and output bits based on the input data</span>
+    <span class="k">for</span> <span class="n">t</span><span class="p">,</span> <span class="n">input_bit</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+        <span class="c1"># Calculate output bit using NRZI rule</span>
+        <span class="n">b_current</span> <span class="o">=</span> <span class="n">input_bit</span> <span class="o">^</span> <span class="n">b_prev</span>
+        <span class="n">b_prev</span> <span class="o">=</span> <span class="n">b_current</span>
+
+        <span class="c1"># Determine the next state</span>
+        <span class="n">next_state</span> <span class="o">=</span> <span class="s2">&quot;S1&quot;</span> <span class="k">if</span> <span class="n">b_current</span> <span class="o">==</span> <span class="mi">1</span> <span class="k">else</span> <span class="s2">&quot;S0&quot;</span>
+        <span class="n">next_node</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">next_state</span><span class="si">}</span><span class="s2">_</span><span class="si">{</span><span class="n">t</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">path_nodes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">next_node</span><span class="p">)</span>
+
+        <span class="c1"># Add the output bit to the sequence</span>
+        <span class="n">output_sequence</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">b_current</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">path_nodes</span><span class="p">,</span> <span class="n">output_sequence</span>
+
+<span class="c1"># Get the path and output sequence</span>
+<span class="n">path_nodes</span><span class="p">,</span> <span class="n">output_sequence</span> <span class="o">=</span> <span class="n">get_nrzi_path_and_output_sequence</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+<span class="c1"># Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Data:&quot;</span><span class="p">,</span> <span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Path Nodes:&quot;</span><span class="p">,</span> <span class="n">path_nodes</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Output Sequence:&quot;</span><span class="p">,</span> <span class="n">output_sequence</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Data: [1 0 1 1 0 0 1 0]
+Path Nodes: [&#39;S0_0&#39;, &#39;S1_1&#39;, &#39;S1_2&#39;, &#39;S0_3&#39;, &#39;S1_4&#39;, &#39;S1_5&#39;, &#39;S1_6&#39;, &#39;S0_7&#39;, &#39;S0_8&#39;]
+Output Sequence: [1, 1, 0, 1, 1, 1, 0, 0]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sequence-of-waveforms-representation">
+<h2>Sequence of Waveforms Representation<a class="headerlink" href="#sequence-of-waveforms-representation" title="Link to this heading">#</a></h2>
+<p>Let <span class="math notranslate nohighlight">\( d(t) \)</span> be a <strong>time-domain representation of a symbol stream</strong>.</p>
+<p>Let function <span class="math notranslate nohighlight">\(g(t)\)</span> be a certain <strong>basic modulation pulse</strong>.</p>
+<p>We define a waveform:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+d(t) = \sum_{n} I_n g(t - nT)
+}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p>Each term <span class="math notranslate nohighlight">\(I_n\)</span> corresponds to a specific amplitude from a constellation (e.g., <span class="math notranslate nohighlight">\(\pm1, \pm3, \ldots\)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\(g(t)\)</span> is the <strong>baseband pulse shape</strong> used to carry each symbol over time.</p></li>
+</ul>
+<p>The signal <span class="math notranslate nohighlight">\(d(t)\)</span> is a <strong>discrete-time representation of a sequence of signals</strong> composed of multiple <strong>successive symbols</strong>.</p>
+<section id="waveform-components">
+<h3>Waveform Components<a class="headerlink" href="#waveform-components" title="Link to this heading">#</a></h3>
+<section id="recall-pam-waveform">
+<h4>Recall PAM Waveform<a class="headerlink" href="#recall-pam-waveform" title="Link to this heading">#</a></h4>
+<p>In the lowpass equivalent form, the PAM signals can be written as:</p>
+<div class="math notranslate nohighlight">
+\[
+s_{m,lp}(t)
+\;=\;
+A_m\,g(t),
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(g(t)\)</span> is a real‐valued waveform that <strong>lives near DC</strong> (i.e., it is a baseband signal).</p></li>
+<li><p><span class="math notranslate nohighlight">\(A_m\)</span> are the <strong>same</strong> amplitude levels.</p></li>
+</ul>
+<p>Recall the presence of the function <span class="math notranslate nohighlight">\( g(t) \)</span> in:</p>
+<ul>
+<li><p>The <strong>lowpass equivalent PAM signal</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   s_{m,lp}(t) = A_m g(t)
+   \]</div>
+</li>
+<li><p>The <strong>PAM sequence</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   d(t) = \sum_{n} I_n g(t - nT)
+   \]</div>
+</li>
+</ul>
+</section>
+<section id="role-of-g-t-in-s-m-lp-t">
+<h4>Role of <span class="math notranslate nohighlight">\( g(t) \)</span> in <span class="math notranslate nohighlight">\( s_{m,lp}(t) \)</span><a class="headerlink" href="#role-of-g-t-in-s-m-lp-t" title="Link to this heading">#</a></h4>
+<p>It can be considered that:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( s_{m,lp}(t) \)</span> = <strong>one PAM symbol</strong> = amplitude <span class="math notranslate nohighlight">\(A_m\)</span> × pulse <span class="math notranslate nohighlight">\(g(t)\)</span>.</p></li>
+<li><p><strong>This is a snapshot of a single symbol</strong>, not the entire transmitted signal.</p></li>
+</ul>
+<p>Thus, the <span class="math notranslate nohighlight">\(g(t)\)</span> represents the <strong>pulse shape of an individual PAM symbol</strong>.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( s_{m,lp}(t) \)</span> corresponds to <strong>one PAM symbol</strong> with amplitude <span class="math notranslate nohighlight">\(A_m\)</span>.</p></li>
+<li><p>Here, <span class="math notranslate nohighlight">\(g(t)\)</span> describes the <strong>shape of a single transmitted pulse</strong>—often used for analyzing or simulating one isolated symbol in baseband form.</p></li>
+</ul>
+<p><strong>Intuitive Example: The Shape of a Single Note</strong></p>
+<p>We can think of <span class="math notranslate nohighlight">\( g(t) \)</span> as the <strong>sound shape of one musical note</strong>.</p>
+<ul class="simple">
+<li><p>When we play a single piano key, the sound has a specific shape—it starts, sustains, and then fades away.</p></li>
+<li><p>In PAM, <span class="math notranslate nohighlight">\( g(t) \)</span> defines the <strong>pulse shape</strong> of a single symbol, like the waveform of one musical note.</p></li>
+</ul>
+<p>So, when we see:</p>
+<div class="math notranslate nohighlight">
+\[
+s_{m,lp}(t) = A_m g(t)
+\]</div>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\(g(t)\)</span></strong>: the “sound envelope” of the note—like how the sound is shaped over time (e.g., rectangular pulse or smoother waveform).</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(A_m\)</span></strong>: the “volume” or “intensity” of that note—just like different amplitude levels in PAM.</p></li>
+</ul>
+<p><strong>Example:</strong></p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\( A_m = +3 \)</span> corresponds to a <strong>loud note</strong>, <span class="math notranslate nohighlight">\( g(t) \)</span> shapes how that loud note sounds over time.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( A_m = -1 \)</span> corresponds to a <strong>softer note</strong>, it uses the <strong>same <span class="math notranslate nohighlight">\(g(t)\)</span></strong> shape but with less amplitude.</p></li>
+</ul>
+<p>So, <span class="math notranslate nohighlight">\( s_{m,lp}(t) \)</span> describes <strong>just one note</strong> in the melody.</p>
+</section>
+<section id="role-of-d-t-the-sequence-of-notes-melody">
+<h4>Role of <span class="math notranslate nohighlight">\( d(t) \)</span>: The Sequence of Notes (Melody)<a class="headerlink" href="#role-of-d-t-the-sequence-of-notes-melody" title="Link to this heading">#</a></h4>
+<p>Now, when we string together multiple notes, we create a <strong>melody</strong>.</p>
+<p>The full PAM signal is like playing a series of musical notes, one after another:</p>
+<div class="math notranslate nohighlight">
+\[
+d(t) = \sum_{n} I_n g(t - nT)
+\]</div>
+<p>This equation describes how each <strong>note <span class="math notranslate nohighlight">\(g(t)\)</span></strong> is:</p>
+<ul class="simple">
+<li><p><strong>Shifted</strong> in time to occur at different time intervals (like playing notes one after the other).</p></li>
+<li><p><strong>Scaled</strong> by <span class="math notranslate nohighlight">\(I_n\)</span> to represent different amplitude levels (like changing volume or pitch to represent different symbols).</p></li>
+</ul>
+<p>So, <strong><span class="math notranslate nohighlight">\( d(t) \)</span></strong> is like a melody—a sequence of musical notes.</p>
+<ul class="simple">
+<li><p>Each note has the same shape <span class="math notranslate nohighlight">\( g(t) \)</span> but may have different amplitudes <span class="math notranslate nohighlight">\( I_n \)</span> (like different volumes).</p></li>
+<li><p>Each <span class="math notranslate nohighlight">\( g(t - nT) \)</span> is like playing the note <span class="math notranslate nohighlight">\(g(t)\)</span> <strong>after waiting <span class="math notranslate nohighlight">\(n\)</span> beats</strong>.</p></li>
+</ul>
+<p>Loosely speaking, we can say that:</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( g(t) \)</span></strong> is like the “sound shape” of a single note.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( s_{m,lp}(t) \)</span></strong> is like <strong>one single note</strong> with a certain amplitude.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( d(t) \)</span></strong> is like a <strong>full melody</strong>, created by playing these <span class="math notranslate nohighlight">\( g(t) \)</span> “notes” in sequence.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="example-use-case">
+<h2>Example Use Case:<a class="headerlink" href="#example-use-case" title="Link to this heading">#</a></h2>
+<p>In a <strong>PAM system</strong>, if we use a rectangular pulse <span class="math notranslate nohighlight">\( g(t) \)</span>, then:</p>
+<div class="math notranslate nohighlight">
+\[
+g(t) = \text{rect}(t/T)
+\]</div>
+<p>This results in a signal where each symbol is held constant for a duration <span class="math notranslate nohighlight">\( T \)</span>, leading to a simple <strong>non-return-to-zero (NRZ)</strong> waveform.</p>
+<p>If we use a <strong>raised cosine pulse</strong>, <span class="math notranslate nohighlight">\( g(t) \)</span> provides better spectral properties, reducing inter-symbol interference (ISI).</p>
+<p><strong>Map Binary Data to 4-PAM Symbols (<span class="math notranslate nohighlight">\( I_n \)</span>)</strong></p>
+<p>Using 4-PAM (Pulse Amplitude Modulation), we typically map <strong>2-bit pairs</strong> to amplitude levels.</p>
+<ul class="simple">
+<li><p>A common mapping (Gray coding) is:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+00 \to -3, \quad 01 \to -1, \quad 11 \to 1, \quad 10 \to 3
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Step 1: Define the binary source sequence</span>
+<span class="n">binary_sequence</span> <span class="o">=</span> <span class="s2">&quot;00101101001100101100011110&quot;</span>
+
+<span class="c1"># Step 2: Convert binary sequence into 2-bit groups for 4-PAM</span>
+<span class="c1"># Ensure even length by padding if necessary</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">binary_sequence</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">binary_sequence</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span> <span class="o">+</span> <span class="n">binary_sequence</span>  <span class="c1"># Pad with leading zero if needed</span>
+
+<span class="n">bit_pairs</span> <span class="o">=</span> <span class="p">[</span><span class="n">binary_sequence</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">binary_sequence</span><span class="p">),</span> <span class="mi">2</span><span class="p">)]</span>
+
+<span class="c1"># Step 3: Map 2-bit pairs to 4-PAM levels</span>
+<span class="n">pam_mapping</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;00&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span>
+    <span class="s2">&quot;01&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;11&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+    <span class="s2">&quot;10&quot;</span><span class="p">:</span> <span class="mi">3</span>
+<span class="p">}</span>
+<span class="n">I_n</span> <span class="o">=</span> <span class="p">[</span><span class="n">pam_mapping</span><span class="p">[</span><span class="n">bp</span><span class="p">]</span> <span class="k">for</span> <span class="n">bp</span> <span class="ow">in</span> <span class="n">bit_pairs</span><span class="p">]</span>  <span class="c1"># Mapped sequence</span>
+
+<span class="c1"># Step 4: Define signal parameters</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Symbol duration</span>
+<span class="n">n_symbols</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">I_n</span><span class="p">)</span>
+<span class="n">t_total</span> <span class="o">=</span> <span class="n">n_symbols</span> <span class="o">*</span> <span class="n">T</span>  <span class="c1"># Total signal duration</span>
+
+<span class="c1"># Define a fine time grid for smooth plotting</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_total</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Step 5: Define the rectangular pulse function g(t)</span>
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Rectangular pulse function: g(t) = 1 for 0 &lt;= t &lt; T, else 0. &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">((</span><span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">t</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">t</span> <span class="o">&lt;</span> <span class="n">T</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Step 6: Construct the waveform d(t) using the given equation</span>
+<span class="n">d_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">I</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">I_n</span><span class="p">):</span>
+    <span class="n">d_t</span> <span class="o">+=</span> <span class="n">I</span> <span class="o">*</span> <span class="n">g</span><span class="p">(</span><span class="n">t</span> <span class="o">-</span> <span class="n">i</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>  <span class="c1"># Shifted rectangular pulses scaled by I_n</span>
+
+<span class="c1"># Step 7: Plot the waveform with binary annotations</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">d_t</span><span class="p">,</span> <span class="n">drawstyle</span><span class="o">=</span><span class="s2">&quot;steps-post&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;4-PAM Modulated Signal&quot;</span><span class="p">)</span>
+
+<span class="c1"># Annotate binary bit pairs at each symbol time</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">bits</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">bit_pairs</span><span class="p">,</span> <span class="n">I_n</span><span class="p">)):</span>
+    <span class="n">t_pos</span> <span class="o">=</span> <span class="n">i</span> <span class="o">*</span> <span class="n">T</span> <span class="o">+</span> <span class="n">T</span> <span class="o">/</span> <span class="mi">2</span>  <span class="c1"># Midpoint of the symbol duration</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">t_pos</span><span class="p">,</span> <span class="n">I</span> <span class="o">+</span> <span class="mf">0.3</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">bits</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+<span class="c1"># Labels and formatting</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (t)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;4-PAM Modulated Signal with Rectangular Pulse&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">t_total</span> <span class="o">+</span> <span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">I_n</span><span class="p">)))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Display the binary sequence and the corresponding PAM levels</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s2">&quot;Binary Pairs&quot;</span><span class="p">:</span> <span class="n">bit_pairs</span><span class="p">,</span> <span class="s2">&quot;PAM Symbols (I_n)&quot;</span><span class="p">:</span> <span class="n">I_n</span><span class="p">})</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8d0bce84c06dc7ac35bd9f2b0b83a6041a3e337381bdc7414de34477096b911b.png" src="_images/8d0bce84c06dc7ac35bd9f2b0b83a6041a3e337381bdc7414de34477096b911b.png" />
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Binary Pairs</th>
+      <th>PAM Symbols (I_n)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>00</td>
+      <td>-3</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>10</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>01</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>00</td>
+      <td>-3</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>11</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>00</td>
+      <td>-3</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>10</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>11</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>00</td>
+      <td>-3</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>01</td>
+      <td>-1</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>11</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>10</td>
+      <td>3</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="com_c2_s8_Waveform_Binary_Codes.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Signal Waveforms from Binary Codes</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="com_c2_s10_CPFSK.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Continuous-Phase Frequency-Shift Keying (CPFSK)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-signals-and-data-sequences">Baseband Signals and Data Sequences</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nrz-signal">NRZ Signal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nrzi-signal">NRZI Signal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#differential-encoding">Differential Encoding</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#xor">XOR</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#miller-coding">Miller Coding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#memory-in-nrzi-signaling">Memory in NRZI Signaling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markov-chain-representation">Markov Chain Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#steady-state-probability-distribution">Steady-State Probability Distribution</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalized-transition-probability-matrix">Generalized Transition Probability Matrix</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#state-transition-diagram">State Transition Diagram</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nrzi-transition-given-s-0"><strong>NRZI Transition Given <span class="math notranslate nohighlight">\( S_0 \)</span></strong></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nrzi-transition-given-s-1"><strong>NRZI Transition Given <span class="math notranslate nohighlight">\( S_1 \)</span></strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#trellis-diagram">Trellis Diagram</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequence-of-waveforms-representation">Sequence of Waveforms Representation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waveform-components">Waveform Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#recall-pam-waveform">Recall PAM Waveform</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#role-of-g-t-in-s-m-lp-t">Role of <span class="math notranslate nohighlight">\( g(t) \)</span> in <span class="math notranslate nohighlight">\( s_{m,lp}(t) \)</span></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#role-of-d-t-the-sequence-of-notes-melody">Role of <span class="math notranslate nohighlight">\( d(t) \)</span>: The Sequence of Notes (Melody)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-use-case">Example Use Case:</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

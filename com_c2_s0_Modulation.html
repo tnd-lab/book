@@ -1,0 +1,865 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Modulation &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'com_c2_s0_Modulation';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Memoryless Modulation Schemes" href="com_c2_s1_Memoryless_Modulation.html" />
+    <link rel="prev" title="Introduction to Communications Theory" href="com_c1_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Modulation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Modulation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-modulation">Introduction to Modulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulation-in-communication-systems">Modulation in Communication Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memoryless-modulation-schemes">Memoryless Modulation Schemes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-messages-to-symbols-to-waveforms">Mapping Messages to Symbols to Waveforms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-waveforms">Energy of Waveforms</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#average-signal-energy">Average Signal Energy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#equiprobable-messages">Equiprobable Messages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#average-energy-per-bit">Average Energy per Bit</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-and-mathcal-e-b-n-0">SNR and <span class="math notranslate nohighlight">\( \mathcal{E}_b/N_0 \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-and-sinr">SNR and SINR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-expressions-and-performance-metrics">SNR Expressions and Performance Metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-in-terms-of-energy-per-bit-and-energy-per-symbol">SNR in Terms of Energy per Bit and Energy per Symbol</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-per-bit-and-symbol-error-probability">SNR per Bit and Symbol Error Probability</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="modulation">
+<h1>Modulation<a class="headerlink" href="#modulation" title="Link to this heading">#</a></h1>
+<section id="introduction-to-modulation">
+<h2>Introduction to Modulation<a class="headerlink" href="#introduction-to-modulation" title="Link to this heading">#</a></h2>
+<section id="modulation-in-communication-systems">
+<h3>Modulation in Communication Systems<a class="headerlink" href="#modulation-in-communication-systems" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>Digital data are typically represented as a <strong>stream of binary digits</strong> (0s and 1s).</p></li>
+<li><p>These data can originate from:</p>
+<ul>
+<li><p>A <strong>digital source</strong> (e.g., ASCII-encoded text from a computer terminal).</p></li>
+<li><p>The <strong>analog-to-digital conversion</strong> of an analog source (e.g., digital audio or video).</p></li>
+</ul>
+</li>
+<li><p>The primary objective is to <strong>reliably transmit</strong> this data to the destination using the available communication channel.</p></li>
+</ul>
+<p><strong>Why Modulation is Needed?</strong></p>
+<p>To transmit the binary stream over a communication channel, we must <strong>generate a signal</strong> that:</p>
+<ul class="simple">
+<li><p><strong>Encodes the binary data</strong>, allowing retrieval of the original stream.</p></li>
+<li><p><strong>Matches the channel characteristics</strong>, ensuring its <strong>bandwidth</strong> aligns with the channel’s limitations.</p></li>
+<li><p><strong>Withstands impairments</strong> introduced by the channel, such as noise or interference.</p></li>
+</ul>
+<p>This process of converting a digital sequence into a signal for transmission is known as <strong>digital modulation</strong> or <strong>digital signaling</strong>.</p>
+<p>Modulation typically involves mapping a real-valued digital sequence (e.g., codewords) to a complex-valued signal using a specific modulation constellation. This lowpass-modulated signal is then shifted to a higher carrier frequency, to obtain a bandpass signal, for transmission. In this chapter, we focus on the mapping process in modulation.</p>
+</section>
+<section id="memoryless-modulation-schemes">
+<h3>Memoryless Modulation Schemes<a class="headerlink" href="#memoryless-modulation-schemes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>In modulation, the transmitted signals are typically <strong>bandpass signals</strong>, ensuring they fit within the bandwidth allocated by the communication channel.</p></li>
+<li><p>The mapping between the digital sequence (assumed to be binary) and the transmitted signal sequence can be either <strong>memoryless</strong> or <strong>with memory</strong>, leading to <strong>memoryless modulation schemes</strong> and <strong>modulation schemes with memory</strong>.</p></li>
+<li><p>In a <strong>memoryless modulation scheme</strong>, the binary sequence is divided into <strong>sub-sequences, bit-blocks, or messages</strong>, each of length <span class="math notranslate nohighlight">\( k \)</span>. Each <strong><span class="math notranslate nohighlight">\( k \)</span>-bit block</strong> is then mapped to one of the possible signals <span class="math notranslate nohighlight">\( s_m (t) \)</span>, where <span class="math notranslate nohighlight">\( 1 \leq m \leq 2^k \)</span>, without dependence on previously transmitted signals.</p></li>
+<li><p>This scheme corresponds to a <strong>mapping</strong> from <span class="math notranslate nohighlight">\( M = 2^k \)</span> <strong>messages</strong> to <span class="math notranslate nohighlight">\( M \)</span> possible <strong>signals</strong>.</p></li>
+</ul>
+</section>
+<section id="mapping-messages-to-symbols-to-waveforms">
+<h3>Mapping Messages to Symbols to Waveforms<a class="headerlink" href="#mapping-messages-to-symbols-to-waveforms" title="Link to this heading">#</a></h3>
+<p>The standard process in digital communication systems where binary data is mapped to symbols and then to analog waveforms for transmission is as follows.</p>
+<p>We map a <strong>message</strong>, which is a sequence of <span class="math notranslate nohighlight">\(k\)</span> binary bits, to a <strong>symbol</strong> represented by a point on a specific constellation diagram. Each symbol corresponds to a unique combination of bits and is depicted as a complex-valued point, indicating its amplitude and phase. This complex-valued symbol is then converted into an analog signal <strong>waveform</strong>, <span class="math notranslate nohighlight">\(s_m(t), 1\leq m \leq M, M = 2^k\)</span>, which is transmitted over the communication channel.</p>
+<p><strong>Mapping Binary Bits to Symbols:</strong></p>
+<ul class="simple">
+<li><p><strong>Message Definition:</strong> A <em>message</em> consists of a sequence of <span class="math notranslate nohighlight">\( k \)</span> binary bits (0s and 1s).</p></li>
+<li><p><strong>Symbol Representation:</strong> These <span class="math notranslate nohighlight">\( k \)</span> bits are grouped together and mapped to a <em>symbol</em>. Each symbol represents a unique combination of the <span class="math notranslate nohighlight">\( k \)</span> bits.</p></li>
+<li><p><strong>Constellation Diagram:</strong> The symbol is visually represented as a point on a <em>constellation diagram</em>. This diagram plots symbols in a two-dimensional plane, typically using the in-phase (I) and quadrature (Q) components, allowing for the visualization of amplitude and phase variations.</p></li>
+</ul>
+<p><strong>Symbol to Analog Signal Waveform:</strong></p>
+<ul class="simple">
+<li><p><strong>Complex-Valued Symbol:</strong> The symbol, being a point on the constellation diagram, is inherently <em>complex-valued</em>, encompassing both amplitude and phase information.</p></li>
+<li><p><strong>Analog Mapping:</strong> This complex symbol is then converted into a time-domain <em>analog signal waveform</em>. This waveform is what gets transmitted over the physical communication channel (e.g., radio waves, optical fibers).</p></li>
+</ul>
+<p><strong>Definition: Signaling Interval</strong><br />
+Each signal <span class="math notranslate nohighlight">\( s_m(t) \in \mathbb{S} \)</span> is transmitted every <span class="math notranslate nohighlight">\( T_s \)</span> seconds, where <span class="math notranslate nohighlight">\( T_s \)</span> [s] is known as the <strong>signaling interval</strong>.</p>
+<p>This implies that in one second, <span class="math notranslate nohighlight">\( R_s \)</span> symbols are transmitted, where:</p>
+<div class="math notranslate nohighlight">
+\[
+R_s = \frac{1}{T_s}
+\]</div>
+<p><strong>Definition: Signaling Rate</strong><br />
+The parameter <span class="math notranslate nohighlight">\( R_s \)</span> is referred to as the <strong>signaling rate</strong> or <strong>symbol rate</strong>.</p>
+<p><strong>DISCUSSION</strong></p>
+<p>The term <strong>symbol</strong> used in this context aligns with its use in <strong>Symbol Error Rate (SER)</strong>, a key performance metric in digital communication systems.</p>
+<p>In digital modulation, a <strong>symbol</strong> represents a distinct <strong>waveform</strong> (or signal) that is transmitted within a given <strong>signaling interval</strong> <span class="math notranslate nohighlight">\( T_s \)</span>. Each symbol corresponds to a group of <strong>bits</strong> (e.g., in <strong>QPSK</strong>, one symbol represents <strong>2 bits</strong>; in <strong>16-QAM</strong>, one symbol represents <strong>4 bits</strong>).</p>
+<p>The <strong>Symbol Error Rate (SER)</strong> measures the probability that a transmitted <strong>symbol</strong> is received incorrectly due to <strong>channel noise, interference, or distortion</strong>. It is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{SER} = \frac{\text{Number of symbol errors}}{\text{Total number of transmitted symbols}}
+\]</div>
+<p>Since each symbol may represent multiple bits, <strong>SER is related to Bit Error Rate (BER)</strong>, but <strong>BER accounts for individual bit errors</strong>, whereas SER considers errors at the symbol level. The relationship between SER and BER depends on the modulation scheme.</p>
+<p>Thus, in our content, the <strong>symbol</strong> refers to the modulated signal unit, which is directly relevant when analyzing SER as a performance metric.</p>
+<p><strong>Definition: Bit Interval</strong><br />
+Since each transmitted signal carries <span class="math notranslate nohighlight">\( k \)</span> bits of information, the <strong>bit interval</strong> <span class="math notranslate nohighlight">\( T_b \)</span> [s], the time duration in which <strong>one bit</strong> is transmitted, is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+T_b = \frac{T_s}{k} = \frac{T}{\log_2 M}
+\]</div>
+<p><strong>Definition: Bit Rate</strong><br />
+The <strong>bit rate</strong> <span class="math notranslate nohighlight">\( R \)</span> [bits/s], which represents the number of bits transmitted per second, is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+R = k R_s = R_s \log_2 M
+\]</div>
+</section>
+<section id="energy-of-waveforms">
+<h3>Energy of Waveforms<a class="headerlink" href="#energy-of-waveforms" title="Link to this heading">#</a></h3>
+<section id="average-signal-energy">
+<h4>Average Signal Energy<a class="headerlink" href="#average-signal-energy" title="Link to this heading">#</a></h4>
+<p>If the <strong>energy content</strong> of a transmitted signal <span class="math notranslate nohighlight">\( s_m(t) \)</span> is denoted by <span class="math notranslate nohighlight">\( \mathcal{E}_m \)</span>, then the <strong>average signal energy</strong> across all possible signals is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_{\text{avg}} = \sum_{m=1}^{M} p_m \mathcal{E}_m
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( p_m \)</span> represents the probability of transmitting the <strong><span class="math notranslate nohighlight">\( m \)</span>-th signal</strong> (<strong>message probability</strong>).</p>
+</section>
+<section id="equiprobable-messages">
+<h4>Equiprobable Messages<a class="headerlink" href="#equiprobable-messages" title="Link to this heading">#</a></h4>
+<p>In the case of <strong>equiprobable messages</strong> (i.e., each message has an equal probability of being transmitted), the probability of each message is:</p>
+<div class="math notranslate nohighlight">
+\[
+p_m = \frac{1}{M}
+\]</div>
+<p>Thus, the <strong>average signal energy</strong> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_{\text{avg}} = \frac{1}{M} \sum_{m=1}^{M} \mathcal{E}_m
+\]</div>
+</section>
+<section id="average-energy-per-bit">
+<h4>Average Energy per Bit<a class="headerlink" href="#average-energy-per-bit" title="Link to this heading">#</a></h4>
+<p>If all signals have the same energy, then <span class="math notranslate nohighlight">\( \mathcal{E}_m = \mathcal{E} \)</span>, and consequently,</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_{\text{avg}} = \mathcal{E}
+\]</div>
+<p>The <strong>average energy per bit</strong>—which represents the energy required for transmitting one bit of information—when signals are equiprobable is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_{\text{bavg}} = \frac{\mathcal{E}_{\text{avg}}}{k} = \frac{\mathcal{E}_{\text{avg}}}{\log_2 M}
+\]</div>
+<p>If all signals have equal energy <span class="math notranslate nohighlight">\( \mathcal{E}_{sig} \)</span>, then the energy per bit simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_b = \frac{\mathcal{E}_{sig}}{k} = \frac{\mathcal{E}_{sig}}{\log_2 M}
+\]</div>
+<p>If a communication system transmits an <strong>average energy per bit</strong> of <span class="math notranslate nohighlight">\( \mathcal{E}_{\text{bavg}} \)</span> and each bit takes <span class="math notranslate nohighlight">\( T_b \)</span> seconds to be transmitted, then the <strong>average power</strong> sent by the transmitter is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{\text{avg}} = \frac{\mathcal{E}_{\text{bavg}}}{T_b} = R \mathcal{E}_{\text{bavg}}
+\]</div>
+<p>For the case where all signals have <strong>equal energy</strong>, this simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+P = R \mathcal{E}_b
+\]</div>
+</section>
+</section>
+<section id="snr-and-mathcal-e-b-n-0">
+<h3>SNR and <span class="math notranslate nohighlight">\( \mathcal{E}_b/N_0 \)</span><a class="headerlink" href="#snr-and-mathcal-e-b-n-0" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>In an <strong>AWGN (Additive White Gaussian Noise) channel</strong>, the modulated signal is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+  x_{bp}(t) = \Re\{x_{lp}(t)e^{j2\pi f_c t}\}
+  \]</div>
+<p>Before reception, this signal is corrupted by <strong>additive noise</strong> <span class="math notranslate nohighlight">\( n_{bp}(t) \)</span>, which is a <strong>white Gaussian random process</strong> with zero mean and a <strong>power spectral density</strong> of <span class="math notranslate nohighlight">\( N_0/2 \)</span>.<br />
+The <strong>received signal</strong> is thus:</p>
+<div class="math notranslate nohighlight">
+\[
+  r_{bp}(t) = x_{bp}(t) + n_{bp}(t)
+  \]</div>
+</li>
+<li><p>The <strong>signal-to-noise power ratio (SNR)</strong> at the receiver is defined as the ratio of the <strong>received signal power</strong> <span class="math notranslate nohighlight">\( P_r \)</span> to the <strong>noise power</strong> within the bandwidth of the transmitted signal <span class="math notranslate nohighlight">\( x_{bp}(t) \)</span>.</p></li>
+<li><p>The <strong>received power</strong> <span class="math notranslate nohighlight">\( P_r \)</span> depends on the <strong>transmitted power</strong> and various channel characteristics, including <strong>path loss, shadowing, and multipath fading</strong>.</p></li>
+<li><p>The <strong>noise power</strong> is influenced by the <strong>bandwidth of the transmitted signal</strong> and the spectral properties of <span class="math notranslate nohighlight">\( n_{bp}(t) \)</span>.</p></li>
+</ul>
+</section>
+<section id="snr-and-sinr">
+<h3>SNR and SINR<a class="headerlink" href="#snr-and-sinr" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>If the bandwidth of the <strong>complex envelope</strong> <span class="math notranslate nohighlight">\( x_{lp}(t) \)</span> is <span class="math notranslate nohighlight">\( B \)</span>, then the <strong>bandwidth of the transmitted signal</strong> <span class="math notranslate nohighlight">\( x_{bp}(t) \)</span> is <strong><span class="math notranslate nohighlight">\( 2B \)</span></strong>.</p></li>
+<li><p>Since the noise <span class="math notranslate nohighlight">\( n_{bp}(t) \)</span> has a <strong>uniform power spectral density</strong> of <span class="math notranslate nohighlight">\( N_0/2 \)</span>, the <strong>total noise power</strong> within the bandwidth <span class="math notranslate nohighlight">\( 2B \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+  N_{bp, tot} = \frac{N_0}{2} \times 2B = N_0B
+  \]</div>
+</li>
+</ul>
+<p><strong>Definition: Received SNR</strong><br />
+The <strong>received signal-to-noise ratio (SNR)</strong> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{SNR} = \frac{P_r}{N_0B}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( P_r \)</span> is the <strong>received signal power</strong>, and <span class="math notranslate nohighlight">\( N_0B \)</span> represents the <strong>total noise power</strong> within the signal bandwidth.</p>
+<ul class="simple">
+<li><p>In communication systems with <strong>interference</strong>, we often use the <strong>signal-to-interference-plus-noise ratio (SINR)</strong> instead of SNR for <strong>error probability calculations</strong>.</p></li>
+</ul>
+<p><strong>Definition: Received SINR</strong><br />
+If the <strong>interference statistics</strong> approximate those of <strong>Gaussian noise</strong>, then using SINR as an alternative to SNR is a reasonable approximation. Let <span class="math notranslate nohighlight">\( P_I \)</span> be the <strong>average interference power</strong>; then the <strong>received SINR</strong> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{SINR} = \frac{P_r}{N_0B + P_I}
+\]</div>
+</section>
+<section id="snr-expressions-and-performance-metrics">
+<h3>SNR Expressions and Performance Metrics<a class="headerlink" href="#snr-expressions-and-performance-metrics" title="Link to this heading">#</a></h3>
+<section id="snr-in-terms-of-energy-per-bit-and-energy-per-symbol">
+<h4>SNR in Terms of Energy per Bit and Energy per Symbol<a class="headerlink" href="#snr-in-terms-of-energy-per-bit-and-energy-per-symbol" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>The <strong>signal-to-noise ratio (SNR)</strong> is often expressed using the <strong>signal energy per bit</strong> <span class="math notranslate nohighlight">\( \mathcal{E}_b \)</span> or <strong>per symbol</strong> <span class="math notranslate nohighlight">\( \mathcal{E}_s \)</span>:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\text{SNR} = \frac{P_r}{N_0B} = \frac{\mathcal{E}_s}{N_0B T_s} = \frac{\mathcal{E}_b}{N_0B T_b}
+\]</div>
+<p>where:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( T_s \)</span> is the <strong>symbol duration</strong> (or <strong>signaling interval</strong>)</p></li>
+<li><p><span class="math notranslate nohighlight">\( T_b \)</span> is the <strong>bit duration</strong>  (or <strong>bit interval</strong>)</p></li>
+<li><p>For <strong>binary modulation</strong>, <span class="math notranslate nohighlight">\( T_s = T_b \)</span> and <span class="math notranslate nohighlight">\( \mathcal{E}_s = \mathcal{E}_b \)</span>.</p></li>
+<li><p>For data pulses where <span class="math notranslate nohighlight">\( T_s = 1/B \)</span> (e.g., raised cosine pulses with <strong>roll-off factor</strong> <span class="math notranslate nohighlight">\( \beta = 1 \)</span>), we obtain:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \text{SNR} = \frac{\mathcal{E}_s}{N_0} \)</span> for <strong>multilevel signaling</strong></p></li>
+<li><p><span class="math notranslate nohighlight">\( \text{SNR} = \frac{\mathcal{E}_b}{N_0} \)</span> for <strong>binary signaling</strong></p></li>
+</ul>
+</li>
+<li><p>For general pulse shapes, <span class="math notranslate nohighlight">\( T_s = k/B \)</span> for some constant <span class="math notranslate nohighlight">\( k \)</span>, leading to:</p>
+<div class="math notranslate nohighlight">
+\[
+  k \cdot \text{SNR} = \frac{\mathcal{E}_s}{N_0}
+  \]</div>
+</li>
+</ul>
+</section>
+</section>
+<section id="snr-per-bit-and-symbol-error-probability">
+<h3>SNR per Bit and Symbol Error Probability<a class="headerlink" href="#snr-per-bit-and-symbol-error-probability" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>The quantities:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \gamma_s = \frac{\mathcal{E}_s}{N_0} \)</span> (<strong>SNR per symbol</strong>)</p></li>
+<li><p><span class="math notranslate nohighlight">\( \gamma_b = \frac{\mathcal{E}_b}{N_0} \)</span> (<strong>SNR per bit</strong>)</p></li>
+</ul>
+<p>are frequently used in system performance analysis.</p>
+</li>
+<li><p>For <strong>performance evaluation</strong>, we are primarily interested in the <strong>bit error probability</strong> <span class="math notranslate nohighlight">\( P_b \)</span> as a function of <span class="math notranslate nohighlight">\( \gamma_b \)</span>.</p></li>
+<li><p>However, in <strong><span class="math notranslate nohighlight">\( M \)</span>-ary modulation schemes</strong> (e.g., <strong>M-PAM, M-PSK</strong>), the <strong>bit error probability</strong> depends on both:</p>
+<ol class="arabic simple">
+<li><p>The <strong>symbol error probability</strong> <span class="math notranslate nohighlight">\( P_s \)</span></p></li>
+<li><p>The <strong>symbol-to-bit mapping strategy</strong></p></li>
+</ol>
+</li>
+<li><p>Hence, we typically compute the <strong>symbol error probability</strong> <span class="math notranslate nohighlight">\( P_s \)</span> as a function of <span class="math notranslate nohighlight">\( \gamma_s \)</span>, using <strong>signal space concepts</strong> to analyze performance.</p></li>
+</ul>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="com_c1_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Introduction to Communications Theory</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="com_c2_s1_Memoryless_Modulation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Memoryless Modulation Schemes</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction-to-modulation">Introduction to Modulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#modulation-in-communication-systems">Modulation in Communication Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#memoryless-modulation-schemes">Memoryless Modulation Schemes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mapping-messages-to-symbols-to-waveforms">Mapping Messages to Symbols to Waveforms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-waveforms">Energy of Waveforms</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#average-signal-energy">Average Signal Energy</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#equiprobable-messages">Equiprobable Messages</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#average-energy-per-bit">Average Energy per Bit</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-and-mathcal-e-b-n-0">SNR and <span class="math notranslate nohighlight">\( \mathcal{E}_b/N_0 \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-and-sinr">SNR and SINR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-expressions-and-performance-metrics">SNR Expressions and Performance Metrics</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-in-terms-of-energy-per-bit-and-energy-per-symbol">SNR in Terms of Energy per Bit and Energy per Symbol</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#snr-per-bit-and-symbol-error-probability">SNR per Bit and Symbol Error Probability</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

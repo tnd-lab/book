@@ -1,0 +1,1192 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Multidimensional Signaling &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'com_c2_s5_Multidimensional_Signaling';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Orthogonal Signaling" href="com_c2_s6_Orthogonal_Signalling.html" />
+    <link rel="prev" title="Quadrature Amplitude Modulation" href="com_c2_s4_QAM.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Multidimensional Signaling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-division">Time Division</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quadrature-modulation-technique">Quadrature Modulation Technique</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-division">Frequency Division</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid-time-and-frequency-utilization">Hybrid Time and Frequency Utilization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-dimensional-signal-vector">Multi-dimensional Signal Vector</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analogy-with-3-dimensional-euclidean-space">Analogy with 3-Dimensional Euclidean Space</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-an-n-dimensional-signal-vector">Examples of an N-Dimensional Signal Vector</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-frequency-division-multiplexing-ofdm">Orthogonal Frequency Division Multiplexing (OFDM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-input-multiple-output-mimo-systems">Multiple-Input Multiple-Output (MIMO) Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-division-multiplexing-tdm">Time-Division Multiplexing (TDM)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-euclidean-space-and-cartesian-coordinates">Discussion: Euclidean Space and Cartesian Coordinates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensional-euclidean-space-mathbb-r-3">3-Dimensional Euclidean Space (<span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-coordinate-system">Cartesian Coordinate System</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example-of-an-n-dimensional-signal-vector">Numerical Example of an <span class="math notranslate nohighlight">\(N\)</span>-Dimensional Signal Vector</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-division-transmission">Time Division Transmission</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-division-transmission">Frequency Division Transmission</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quadrature-modulation-using-phase-and-amplitude">Quadrature Modulation (Using Phase and Amplitude)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid-time-and-frequency-division">Hybrid Time and Frequency Division</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#details-on-hybrid-time-frequency-division-method">Details on Hybrid Time-Frequency Division Method</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="multidimensional-signaling">
+<h1>Multidimensional Signaling<a class="headerlink" href="#multidimensional-signaling" title="Link to this heading">#</a></h1>
+<p>Multidimensional signaling is a powerful technique used in digital communication systems to enhance the efficient transmission of information. By representing signals as vectors in higher-dimensional spaces, it becomes possible to pack more data into each transmission interval, improving bandwidth utilization and overall system performance.</p>
+<p>Specifically, in digital communication, a signal is often represented as a vector whose components correspond to different dimensions. These dimensions can be defined in various domains, such as time and frequency. By increasing the number of dimensions, the signal can carry more information, which results in more efficient use of the communication channel.</p>
+<section id="time-division">
+<h2>Time Division<a class="headerlink" href="#time-division" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Time Interval Subdivision</strong>:
+Consider a total time interval <span class="math notranslate nohighlight">\( T_1 \)</span> that is subdivided into <span class="math notranslate nohighlight">\( N \)</span> smaller subintervals, each of duration <span class="math notranslate nohighlight">\( T = \frac{T_1}{N} \)</span>.</p></li>
+<li><p><strong>Component Transmission</strong>:
+In each subinterval, one component of an <span class="math notranslate nohighlight">\( N \)</span>-dimensional signal vector is transmitted. A common modulation technique used in this context is binary Pulse Amplitude Modulation (PAM), which represents data as one of two amplitude levels.</p></li>
+</ul>
+<p>By subdividing time in this manner, each segment carries a distinct component of the overall signal vector, effectively mapping the transmission into an <span class="math notranslate nohighlight">\( N \)</span>-dimensional space.</p>
+</section>
+<section id="quadrature-modulation-technique">
+<h2>Quadrature Modulation Technique<a class="headerlink" href="#quadrature-modulation-technique" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Even-Dimensional Signal Vectors</strong>:
+If <span class="math notranslate nohighlight">\( N \)</span> is even, the signal can be divided such that two components are transmitted simultaneously within each time slot.</p></li>
+<li><p><strong>Quadrature Carriers</strong>:
+This simultaneous transmission is achieved by modulating two sinusoidal carriers that are 90 degrees out of phase with each other (often referred to as in-phase and quadrature-phase carriers). This method, known as Quadrature Amplitude Modulation (QAM), enables the communication system to send twice as many components in the same time slot compared to using a single carrier.</p></li>
+</ul>
+</section>
+<section id="frequency-division">
+<h2>Frequency Division<a class="headerlink" href="#frequency-division" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Frequency Band Division</strong>:
+A frequency band with total width <span class="math notranslate nohighlight">\( N \Delta f \)</span> can be divided into <span class="math notranslate nohighlight">\( N \)</span> discrete frequency slots, each of width <span class="math notranslate nohighlight">\( \Delta f \)</span>.</p></li>
+<li><p><strong>Frequency Domain Transmission</strong>:
+Each frequency slot is used to transmit one component of the <span class="math notranslate nohighlight">\( N \)</span>-dimensional signal vector by modulating the amplitude of a carrier at the designated frequency.</p></li>
+<li><p><strong>No Cross-Talk</strong>:
+The proper spacing of <span class="math notranslate nohighlight">\( \Delta f \)</span> between frequency slots ensures that the carriers do not interfere with one another, eliminating cross-talk.</p></li>
+</ul>
+</section>
+<section id="hybrid-time-and-frequency-utilization">
+<h2>Hybrid Time and Frequency Utilization<a class="headerlink" href="#hybrid-time-and-frequency-utilization" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Quadrature Carriers in Frequency Slots</strong>:
+When quadrature carriers are employed in the frequency domain, an <span class="math notranslate nohighlight">\( N \)</span>-dimensional signal vector can be transmitted over <span class="math notranslate nohighlight">\( \frac{N}{2} \)</span> frequency slots. This technique effectively doubles the bandwidth utilization, as each slot carries two dimensions of the signal.</p></li>
+<li><p><strong>Joint Time-Frequency Signaling</strong>:
+By combining time and frequency domain techniques, a higher-dimensional signal vector can be transmitted efficiently. This joint use allows for even more flexible and effective management of the available communication resources.</p></li>
+</ul>
+</section>
+<section id="multi-dimensional-signal-vector">
+<h2>Multi-dimensional Signal Vector<a class="headerlink" href="#multi-dimensional-signal-vector" title="Link to this heading">#</a></h2>
+<p>An <strong>N-dimensional signal vector</strong> is a vector that consists of <span class="math notranslate nohighlight">\(N\)</span> components, each representing a distinct piece of information or signal parameter. This concept is analogous to how we describe a point in a three-dimensional (3D) Euclidean space using Cartesian coordinate system as a tuple <span class="math notranslate nohighlight">\((x, y, z)\)</span>. Each coordinate in the tuple is a real (or sometimes complex) number, and together they uniquely specify a point in 3D space.</p>
+<p>Specifically, an N-dimensional signal vector is essentially a tuple of <span class="math notranslate nohighlight">\(N\)</span> components. we can think of it as:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{s} = (s_1, s_2, \ldots, s_N)
+\]</div>
+<p>where each <span class="math notranslate nohighlight">\(s_i\)</span> is an individual signal element.</p>
+<p>Each component <span class="math notranslate nohighlight">\(s_i\)</span> represents a specific dimension in the signal space. In many communication systems, these components could correspond to different time slots, different frequency carriers, or signals from different antennas. The overall signal can be visualized as a point in an <span class="math notranslate nohighlight">\(N\)</span>-dimensional space.</p>
+<p>When these components are combined (with basic functions/pulses), they form an N-dimensional <strong>waveform</strong>, carrying the overall information intended for transmission.</p>
+<p>The advantage of representing the signal in this higher-dimensional space is that it allows for more complex and efficient modulation schemes, which can increase the amount of information transmitted over a given channel.</p>
+<section id="analogy-with-3-dimensional-euclidean-space">
+<h3>Analogy with 3-Dimensional Euclidean Space<a class="headerlink" href="#analogy-with-3-dimensional-euclidean-space" title="Link to this heading">#</a></h3>
+<p>Consider a simple 3-dimensional vector in Euclidean space using Cartesian coordinates:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{v} = (x, y, z)
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> are the three real values that define the vector. In the context of signal processing, a <strong>3-dimensional signal vector</strong> could similarly be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{s} = (s_1, s_2, s_3)
+\]</div>
+<ul class="simple">
+<li><p><strong>Each Component <span class="math notranslate nohighlight">\(s_i\)</span></strong>:<br />
+Just as <span class="math notranslate nohighlight">\(x\)</span>, <span class="math notranslate nohighlight">\(y\)</span>, and <span class="math notranslate nohighlight">\(z\)</span> describe the position in 3D space, <span class="math notranslate nohighlight">\(s_1\)</span>, <span class="math notranslate nohighlight">\(s_2\)</span>, and <span class="math notranslate nohighlight">\(s_3\)</span> describe the signal in a <strong>3-dimensional signal space</strong>, e.g., a signal space form by a set of basic functions <span class="math notranslate nohighlight">\(\{\phi_1(t), \phi_2(t), \phi_3(t)\}\)</span>. Each component might be derived from a different aspect of the signal (for example, different time slots or different carrier frequencies).</p></li>
+<li><p><strong>Waveform Construction</strong>:<br />
+In a communication system, these three components might be transmitted simultaneously or sequentially, and together they reconstruct the intended waveform at the receiver. The receiver then interprets the received 3-dimensional vector to extract the original transmitted information.</p></li>
+</ul>
+</section>
+</section>
+<section id="examples-of-an-n-dimensional-signal-vector">
+<h2>Examples of an N-Dimensional Signal Vector<a class="headerlink" href="#examples-of-an-n-dimensional-signal-vector" title="Link to this heading">#</a></h2>
+<section id="orthogonal-frequency-division-multiplexing-ofdm">
+<h3>Orthogonal Frequency Division Multiplexing (OFDM)<a class="headerlink" href="#orthogonal-frequency-division-multiplexing-ofdm" title="Link to this heading">#</a></h3>
+<p>OFDM is a widely used modulation technique where a high-rate data stream is split into several lower-rate streams that are transmitted simultaneously over different frequency carriers.</p>
+<p>Suppose an OFDM system uses <span class="math notranslate nohighlight">\(N\)</span> subcarriers. At a given symbol time, each subcarrier transmits a QAM (Quadrature Amplitude Modulation) symbol. These symbols can be represented as components of an N-dimensional signal vector:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{s} = (s_1, s_2, \ldots, s_N)
+\]</div>
+<p>Here, each <span class="math notranslate nohighlight">\(s_i\)</span> is a complex number representing the amplitude and phase of the QAM symbol on the <span class="math notranslate nohighlight">\(i\)</span>-th subcarrier.</p>
+<p><strong>Transmission and Reception</strong>:<br />
+At the transmitter, the inverse Fast Fourier Transform (IFFT) converts the vector <span class="math notranslate nohighlight">\(\vec{s}\)</span> into a time-domain OFDM signal. At the receiver, the Fast Fourier Transform (FFT) converts the received time-domain signal back into the frequency domain, reconstructing the N-dimensional vector <span class="math notranslate nohighlight">\(\vec{s}\)</span>. The receiver then decodes each component <span class="math notranslate nohighlight">\(s_i\)</span> to recover the transmitted data.</p>
+</section>
+<section id="multiple-input-multiple-output-mimo-systems">
+<h3>Multiple-Input Multiple-Output (MIMO) Systems<a class="headerlink" href="#multiple-input-multiple-output-mimo-systems" title="Link to this heading">#</a></h3>
+<p>In MIMO systems, multiple antennas are used for transmission. For a system with <span class="math notranslate nohighlight">\(N\)</span> transmit antennas, the signals transmitted at a given moment can be represented as an N-dimensional vector:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{s} = (s_1, s_2, \ldots, s_N)
+\]</div>
+<p>Each <span class="math notranslate nohighlight">\(s_i\)</span> is the signal sent by the <span class="math notranslate nohighlight">\(i\)</span>-th antenna. This vector formulation is crucial for processing and decoding the spatially multiplexed data.</p>
+</section>
+<section id="time-division-multiplexing-tdm">
+<h3>Time-Division Multiplexing (TDM)<a class="headerlink" href="#time-division-multiplexing-tdm" title="Link to this heading">#</a></h3>
+<p>In a TDM system, a signal might be divided into <span class="math notranslate nohighlight">\(N\)</span> time slots. The sequence of symbols transmitted over these time slots forms an N-dimensional vector. For instance, if a system uses 4 time slots per transmission cycle, the transmitted signal can be seen as a 4-dimensional vector <span class="math notranslate nohighlight">\((s_1, s_2, s_3, s_4)\)</span>.</p>
+</section>
+</section>
+<section id="discussion-euclidean-space-and-cartesian-coordinates">
+<h2>Discussion: Euclidean Space and Cartesian Coordinates<a class="headerlink" href="#discussion-euclidean-space-and-cartesian-coordinates" title="Link to this heading">#</a></h2>
+<p>It is important to distinguish between an abstract space and the coordinate system used to describe it.</p>
+<section id="dimensional-euclidean-space-mathbb-r-3">
+<h3>3-Dimensional Euclidean Space (<span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>)<a class="headerlink" href="#dimensional-euclidean-space-mathbb-r-3" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Abstract Concept:</strong><br />
+Three-dimensional Euclidean space, denoted by <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>, is an abstract mathematical entity. It consists of all possible points where each point has three coordinates. However, this space is defined by its properties, such as:</p>
+<ul>
+<li><p><strong>Distance:</strong> The Euclidean distance between any two points.</p></li>
+<li><p><strong>Angles:</strong> The concept of perpendicularity and the measurement of angles.</p></li>
+<li><p><strong>Linearity:</strong> The idea that points, lines, and planes exist and interact according to Euclidean geometry.</p></li>
+</ul>
+</li>
+<li><p><strong>Coordinate Invariance:</strong><br />
+The fundamental properties of <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> do not depend on any specific coordinate system. Whether we describe a point in <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> using one set of numbers or another, the underlying geometry remains the same.</p></li>
+</ul>
+</section>
+<section id="cartesian-coordinate-system">
+<h3>Cartesian Coordinate System<a class="headerlink" href="#cartesian-coordinate-system" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Specific Representation:</strong><br />
+The Cartesian coordinate system is one common way to represent points in <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>. In this system, each point is expressed as an ordered triple <span class="math notranslate nohighlight">\((x, y, z)\)</span>, where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x\)</span> is the coordinate along the horizontal axis.</p></li>
+<li><p><span class="math notranslate nohighlight">\(y\)</span> is the coordinate along the vertical axis.</p></li>
+<li><p><span class="math notranslate nohighlight">\(z\)</span> is the coordinate along the axis coming out of (or going into) the page/screen.</p></li>
+</ul>
+</li>
+<li><p><strong>Mutually Perpendicular Axes:</strong><br />
+The Cartesian system is characterized by its three mutually perpendicular (orthogonal) axes. This orthogonality simplifies calculations, such as computing distances:</p>
+<div class="math notranslate nohighlight">
+\[
+  d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2 + (z_2 - z_1)^2}
+  \]</div>
+</li>
+</ul>
+<p>Thus, we can see that:</p>
+<ul class="simple">
+<li><p><strong>Euclidean Space (<span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>)</strong> is the underlying set of points with its geometric properties (like distance and angle), independent of how we label or represent those points.</p></li>
+<li><p><strong>Cartesian Coordinates</strong> are a method for labeling points in this space using a system of perpendicular axes. They provide a convenient way to perform computations and visualize the space, but they are just one of many possible coordinate systems.</p></li>
+<li><p><strong>Other Coordinate Systems:</strong><br />
+Besides Cartesian coordinates, <span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span> can be described using other systems such as:</p>
+<ul>
+<li><p><strong>Cylindrical Coordinates:</strong> <span class="math notranslate nohighlight">\((r, \theta, z)\)</span>, where <span class="math notranslate nohighlight">\(r\)</span> is the radial distance, <span class="math notranslate nohighlight">\(\theta\)</span> is the angle, and <span class="math notranslate nohighlight">\(z\)</span> is the height.</p></li>
+<li><p><strong>Spherical Coordinates:</strong> <span class="math notranslate nohighlight">\((\rho, \theta, \phi)\)</span>, where <span class="math notranslate nohighlight">\(\rho\)</span> is the distance from the origin, <span class="math notranslate nohighlight">\(\theta\)</span> is the azimuthal angle, and <span class="math notranslate nohighlight">\(\phi\)</span> is the polar angle.</p></li>
+</ul>
+</li>
+</ul>
+<p>Each coordinate system offers different advantages depending on the problem at hand, but they all describe the same Euclidean space.</p>
+</section>
+</section>
+<section id="numerical-example-of-an-n-dimensional-signal-vector">
+<h2>Numerical Example of an <span class="math notranslate nohighlight">\(N\)</span>-Dimensional Signal Vector<a class="headerlink" href="#numerical-example-of-an-n-dimensional-signal-vector" title="Link to this heading">#</a></h2>
+<p>Suppose we have a <strong>4-dimensional signal vector</strong> <span class="math notranslate nohighlight">\( \vec{s} = [s_1, s_2, s_3, s_4] \)</span>, where <span class="math notranslate nohighlight">\(s_1, s_2, s_3, s_4\)</span> are the amplitudes of the signal in each dimension.</p>
+<p>Here are different ways to transmit this 4-dimensional signal vector:</p>
+<section id="time-division-transmission">
+<h3>Time Division Transmission<a class="headerlink" href="#time-division-transmission" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Method</strong>: Divide the total time interval <span class="math notranslate nohighlight">\(T_1\)</span> into 4 equal time slots, each of duration <span class="math notranslate nohighlight">\(T = T_1 / 4\)</span>.</p></li>
+<li><p><strong>Process</strong>: Transmit each component <span class="math notranslate nohighlight">\(s_i\)</span> of the signal vector sequentially in its respective time slot.</p>
+<ul>
+<li><p><strong>Time Slot 1</strong>: Transmit <span class="math notranslate nohighlight">\(s_1\)</span></p></li>
+<li><p><strong>Time Slot 2</strong>: Transmit <span class="math notranslate nohighlight">\(s_2\)</span></p></li>
+<li><p><strong>Time Slot 3</strong>: Transmit <span class="math notranslate nohighlight">\(s_3\)</span></p></li>
+<li><p><strong>Time Slot 4</strong>: Transmit <span class="math notranslate nohighlight">\(s_4\)</span></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="frequency-division-transmission">
+<h3>Frequency Division Transmission<a class="headerlink" href="#frequency-division-transmission" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Method</strong>: Divide the frequency band into 4 slots, each of width <span class="math notranslate nohighlight">\(\Delta f\)</span>, ensuring enough spacing to prevent cross-talk.</p></li>
+<li><p><strong>Process</strong>: Transmit each component <span class="math notranslate nohighlight">\(s_i\)</span> on a separate frequency carrier:</p>
+<ul>
+<li><p><strong>Carrier 1 (Frequency <span class="math notranslate nohighlight">\(f_1\)</span>)</strong>: Modulate amplitude <span class="math notranslate nohighlight">\(s_1\)</span></p></li>
+<li><p><strong>Carrier 2 (Frequency <span class="math notranslate nohighlight">\(f_2\)</span>)</strong>: Modulate amplitude <span class="math notranslate nohighlight">\(s_2\)</span></p></li>
+<li><p><strong>Carrier 3 (Frequency <span class="math notranslate nohighlight">\(f_3\)</span>)</strong>: Modulate amplitude <span class="math notranslate nohighlight">\(s_3\)</span></p></li>
+<li><p><strong>Carrier 4 (Frequency <span class="math notranslate nohighlight">\(f_4\)</span>)</strong>: Modulate amplitude <span class="math notranslate nohighlight">\(s_4\)</span></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="quadrature-modulation-using-phase-and-amplitude">
+<h3>Quadrature Modulation (Using Phase and Amplitude)<a class="headerlink" href="#quadrature-modulation-using-phase-and-amplitude" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Method</strong>: Use quadrature carriers (sinusoidal carriers in phase quadrature) to transmit 2 components of the signal simultaneously in one time slot.</p></li>
+<li><p><strong>Process</strong>:</p>
+<ul>
+<li><p>Time Slot 1:</p>
+<ul>
+<li><p>Carrier 1: Transmit <span class="math notranslate nohighlight">\(s_1\)</span> (amplitude modulated on cosine)</p></li>
+<li><p>Carrier 1: Transmit <span class="math notranslate nohighlight">\(s_2\)</span> (amplitude modulated on sine)</p></li>
+</ul>
+</li>
+<li><p>Time Slot 2:</p>
+<ul>
+<li><p>Carrier 2: Transmit <span class="math notranslate nohighlight">\(s_3\)</span> (amplitude modulated on cosine)</p></li>
+<li><p>Carrier 2: Transmit <span class="math notranslate nohighlight">\(s_4\)</span> (amplitude modulated on sine)</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="hybrid-time-and-frequency-division">
+<h3>Hybrid Time and Frequency Division<a class="headerlink" href="#hybrid-time-and-frequency-division" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Method</strong>: Use both time and frequency resources to transmit the signal efficiently.</p></li>
+<li><p><strong>Process</strong>: Divide the 4-dimensional signal into 2 pairs:</p>
+<ul class="simple">
+<li><p><strong>Pair 1</strong>: <span class="math notranslate nohighlight">\([s_1, s_2]\)</span></p></li>
+<li><p><strong>Pair 2</strong>: <span class="math notranslate nohighlight">\([s_3, s_4]\)</span></p></li>
+</ul>
+<p>Each pair is transmitted in a separate time slot (<span class="math notranslate nohighlight">\(T_1/2\)</span>) over 2 frequency carriers:</p>
+<ul class="simple">
+<li><p><strong>Time Slot 1</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(f_1\)</span>: Transmit <span class="math notranslate nohighlight">\(s_1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f_2\)</span>: Transmit <span class="math notranslate nohighlight">\(s_2\)</span></p></li>
+</ul>
+</li>
+<li><p><strong>Time Slot 2</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(f_1\)</span>: Transmit <span class="math notranslate nohighlight">\(s_3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f_2\)</span>: Transmit <span class="math notranslate nohighlight">\(s_4\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="details-on-hybrid-time-frequency-division-method">
+<h3>Details on Hybrid Time-Frequency Division Method<a class="headerlink" href="#details-on-hybrid-time-frequency-division-method" title="Link to this heading">#</a></h3>
+<p>In the <strong>hybrid time-frequency division method</strong>, both time and frequency domains are utilized to efficiently transmit the signal components. Here’s how it works with the example:</p>
+<p><strong>Simulation Setup</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Binary Data</strong>:</p>
+<ul class="simple">
+<li><p>Binary data: <span class="math notranslate nohighlight">\([1, 0, 1, 1, 0, 1, 0, 0]\)</span>.</p></li>
+<li><p>Each pair of bits is mapped to one component of the signal vector (<span class="math notranslate nohighlight">\(s_1, s_2, s_3, s_4\)</span>) using <strong>Binary PAM</strong>:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(00 \rightarrow -3\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(01 \rightarrow -1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(10 \rightarrow +1\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(11 \rightarrow +3\)</span></p></li>
+</ul>
+</li>
+<li><p>Signal vector: <span class="math notranslate nohighlight">\( \vec{s} = [s_1, s_2, s_3, s_4] = [3, -3, 1, -1] \)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>Waveforms for Components</strong>:</p>
+<ul class="simple">
+<li><p>Each component <span class="math notranslate nohighlight">\(s_i\)</span> corresponds to a rectangular pulse of duration <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Hybrid Transmission Steps</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Divide the Signal into Pairs</strong>:</p>
+<ul class="simple">
+<li><p>Split the 4-dimensional signal vector into two pairs:</p>
+<ul>
+<li><p>Pair 1: <span class="math notranslate nohighlight">\([s_1, s_2]\)</span></p></li>
+<li><p>Pair 2: <span class="math notranslate nohighlight">\([s_3, s_4]\)</span></p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Use Time Slots</strong>:</p>
+<ul class="simple">
+<li><p>Use two time slots (<span class="math notranslate nohighlight">\(T_1\)</span> and <span class="math notranslate nohighlight">\(T_2\)</span>), each of duration <span class="math notranslate nohighlight">\(T\)</span>, for the two pairs.</p></li>
+</ul>
+</li>
+<li><p><strong>Use Frequency Slots</strong>:</p>
+<ul class="simple">
+<li><p>Within each time slot, use two frequency slots (<span class="math notranslate nohighlight">\(f_1\)</span> and <span class="math notranslate nohighlight">\(f_2\)</span>) to transmit the pair of components.</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Waveform Example</strong></p>
+<p><strong>Time Slot 1</strong>:</p>
+<ul>
+<li><p><strong>Frequency Slot <span class="math notranslate nohighlight">\(f_1\)</span></strong>:</p>
+<ul>
+<li><p>Transmit <span class="math notranslate nohighlight">\(s_1 = 3\)</span> using a cosine carrier:</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{1, f_1}(t) = 3\cos(2\pi f_1 t), \quad 0 \leq t &lt; T
+    \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Frequency Slot <span class="math notranslate nohighlight">\(f_2\)</span></strong>:</p>
+<ul>
+<li><p>Transmit <span class="math notranslate nohighlight">\(s_2 = -3\)</span> using a cosine carrier:</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{1, f_2}(t) = -3\cos(2\pi f_2 t), \quad 0 \leq t &lt; T
+    \]</div>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Time Slot 2</strong>:</p>
+<ul>
+<li><p><strong>Frequency Slot <span class="math notranslate nohighlight">\(f_1\)</span></strong>:</p>
+<ul>
+<li><p>Transmit <span class="math notranslate nohighlight">\(s_3 = 1\)</span> using a cosine carrier:</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{2, f_1}(t) = 1\cos(2\pi f_1 t), \quad T \leq t &lt; 2T
+    \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Frequency Slot <span class="math notranslate nohighlight">\(f_2\)</span></strong>:</p>
+<ul>
+<li><p>Transmit <span class="math notranslate nohighlight">\(s_4 = -1\)</span> using a cosine carrier:</p>
+<div class="math notranslate nohighlight">
+\[
+    x_{2, f_2}(t) = -1\cos(2\pi f_2 t), \quad T \leq t &lt; 2T
+    \]</div>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>Combined Waveform</strong></p>
+<p>The total transmitted signal is the sum of the components across the time and frequency slots:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+x(t) =
+\begin{cases}
+3\cos(2\pi f_1 t) - 3\cos(2\pi f_2 t), &amp; 0 \leq t &lt; T, \\
+1\cos(2\pi f_1 t) - 1\cos(2\pi f_2 t), &amp; T \leq t &lt; 2T
+\end{cases}
+\end{split}\]</div>
+<p><strong>Resource Allocation</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Time Slot</strong></p></th>
+<th class="head"><p><strong>Frequency Slot <span class="math notranslate nohighlight">\(f_1\)</span></strong></p></th>
+<th class="head"><p><strong>Frequency Slot <span class="math notranslate nohighlight">\(f_2\)</span></strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Slot 1</strong></p></td>
+<td><p>Transmit <span class="math notranslate nohighlight">\(s_1 = 3\)</span></p></td>
+<td><p>Transmit <span class="math notranslate nohighlight">\(s_2 = -3\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Slot 2</strong></p></td>
+<td><p>Transmit <span class="math notranslate nohighlight">\(s_3 = 1\)</span></p></td>
+<td><p>Transmit <span class="math notranslate nohighlight">\(s_4 = -1\)</span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>Comparison with Other Methods</strong></p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Method</strong></p></th>
+<th class="head"><p><strong>Time Slots</strong></p></th>
+<th class="head"><p><strong>Frequency Slots</strong></p></th>
+<th class="head"><p><strong>Spectral Efficiency</strong></p></th>
+<th class="head"><p><strong>Complexity</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Time Division</strong></p></td>
+<td><p>4</p></td>
+<td><p>1</p></td>
+<td><p>Low</p></td>
+<td><p>Low (simple implementation)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Frequency Division</strong></p></td>
+<td><p>1</p></td>
+<td><p>4</p></td>
+<td><p>Low</p></td>
+<td><p>Moderate</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Quadrature Modulation</strong></p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>High</p></td>
+<td><p>High (phase synchronization)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Hybrid (Time-Frequency)</strong></p></td>
+<td><p>2</p></td>
+<td><p>2</p></td>
+<td><p>Moderate</p></td>
+<td><p>Moderate</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Simulation parameters</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Time slot duration</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Sampling frequency</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">T</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">fs</span><span class="p">)</span>  <span class="c1"># Total time for the simulation (4 time slots)</span>
+
+<span class="c1"># Signal vector components</span>
+<span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># s1, s2, s3, s4</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>  <span class="c1"># Frequency slots in Hz for frequency division</span>
+<span class="n">f1</span><span class="p">,</span> <span class="n">f2</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span>  <span class="c1"># Two carriers for hybrid and quadrature modulation</span>
+
+<span class="c1"># Time slots for time division</span>
+<span class="n">time_division</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">si</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">i</span> <span class="o">*</span> <span class="n">fs</span><span class="p">)</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">fs</span><span class="p">)</span>
+    <span class="n">time_division</span><span class="p">[</span><span class="n">start</span><span class="p">:</span><span class="n">end</span><span class="p">]</span> <span class="o">=</span> <span class="n">si</span>
+
+<span class="c1"># Frequency division signals</span>
+<span class="n">frequency_division</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequencies</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequencies</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequencies</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span>
+    <span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequencies</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Quadrature modulation signals</span>
+<span class="n">quadrature_modulation</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f1</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f1</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span> <span class="o">*</span>
+    <span class="p">(</span><span class="n">t</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">*</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">+</span>
+    <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f2</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f2</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span> <span class="o">*</span>
+    <span class="p">(</span><span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="o">*</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Hybrid time-frequency division signals</span>
+<span class="n">hybrid_time_frequency</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f1</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f2</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span> <span class="o">*</span>
+    <span class="p">(</span><span class="n">t</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="o">*</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span> <span class="o">+</span>
+    <span class="p">(</span><span class="n">s</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f1</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">s</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f2</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span> <span class="o">*</span>
+    <span class="p">(</span><span class="n">t</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="o">*</span><span class="n">T</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># Plotting the waveforms</span>
+
+<span class="c1"># Time Division</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">time_division</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Time Division&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+
+<span class="c1"># Frequency Division</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">frequency_division</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Frequency Division&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+
+<span class="c1"># Quadrature Modulation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">quadrature_modulation</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Quadrature Modulation&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+
+<span class="c1"># Hybrid Time-Frequency Division</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">hybrid_time_frequency</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hybrid Time-Frequency Division&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Time (s)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Amplitude&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/841c53791df72f74f89d097907bee8c355a6b32c112c42a7e4edbe70d28afbce.png" src="_images/841c53791df72f74f89d097907bee8c355a6b32c112c42a7e4edbe70d28afbce.png" />
+<img alt="_images/096ff0006874b54d5baa0493b84e8adfaf914c6e17662a122b8493f274eaad82.png" src="_images/096ff0006874b54d5baa0493b84e8adfaf914c6e17662a122b8493f274eaad82.png" />
+<img alt="_images/a81e9a37bd155926698bc7cbf3189fd4790a82fc7705fcc9f202291741e1e646.png" src="_images/a81e9a37bd155926698bc7cbf3189fd4790a82fc7705fcc9f202291741e1e646.png" />
+<img alt="_images/0213a391460ac22b32d9a4d9fdaf067ac9304111bcc62062994c1d45a1f881fd.png" src="_images/0213a391460ac22b32d9a4d9fdaf067ac9304111bcc62062994c1d45a1f881fd.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute frequency domain representations</span>
+<span class="kn">from</span> <span class="nn">scipy.fft</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">fftfreq</span>
+
+<span class="k">def</span> <span class="nf">compute_fft</span><span class="p">(</span><span class="n">signal</span><span class="p">,</span> <span class="n">fs</span><span class="p">):</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    <span class="n">yf</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">signal</span><span class="p">)</span>
+    <span class="n">xf</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)[:</span><span class="n">N</span><span class="o">//</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">xf</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">yf</span><span class="p">[:</span><span class="n">N</span><span class="o">//</span><span class="mi">2</span><span class="p">])</span>
+
+<span class="c1"># Frequency domain calculations</span>
+<span class="n">xf_time</span><span class="p">,</span> <span class="n">yf_time</span> <span class="o">=</span> <span class="n">compute_fft</span><span class="p">(</span><span class="n">time_division</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+<span class="n">xf_freq</span><span class="p">,</span> <span class="n">yf_freq</span> <span class="o">=</span> <span class="n">compute_fft</span><span class="p">(</span><span class="n">frequency_division</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+<span class="n">xf_quad</span><span class="p">,</span> <span class="n">yf_quad</span> <span class="o">=</span> <span class="n">compute_fft</span><span class="p">(</span><span class="n">quadrature_modulation</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+<span class="n">xf_hybrid</span><span class="p">,</span> <span class="n">yf_hybrid</span> <span class="o">=</span> <span class="n">compute_fft</span><span class="p">(</span><span class="n">hybrid_time_frequency</span><span class="p">,</span> <span class="n">fs</span><span class="p">)</span>
+
+<span class="c1"># Plot frequency domain</span>
+
+<span class="c1"># Time Division</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf_time</span><span class="p">[:</span><span class="mi">300</span><span class="p">],</span> <span class="n">yf_time</span><span class="p">[:</span><span class="mi">300</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Time Division (Frequency Domain)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency (Hz)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">)</span>
+
+<span class="c1"># Frequency Division</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf_freq</span><span class="p">[:</span><span class="mi">300</span><span class="p">],</span> <span class="n">yf_freq</span><span class="p">[:</span><span class="mi">300</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Frequency Division (Frequency Domain)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency (Hz)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">)</span>
+
+<span class="c1"># Quadrature Modulation</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf_quad</span><span class="p">[:</span><span class="mi">300</span><span class="p">],</span> <span class="n">yf_quad</span><span class="p">[:</span><span class="mi">300</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Quadrature Modulation (Frequency Domain)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency (Hz)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">)</span>
+
+<span class="c1"># Hybrid Time-Frequency Division</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xf_hybrid</span><span class="p">[:</span><span class="mi">300</span><span class="p">],</span> <span class="n">yf_hybrid</span><span class="p">[:</span><span class="mi">300</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Hybrid Time-Frequency Division (Frequency Domain)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Frequency (Hz)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Magnitude&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3cb6f1e87432ff6725311a0cf80b84f2f0aff668d0a23bc522f006c326e65c25.png" src="_images/3cb6f1e87432ff6725311a0cf80b84f2f0aff668d0a23bc522f006c326e65c25.png" />
+<img alt="_images/144900c3bcfd4936959f5e815ad4152a338744140c9a0bebc30910c82a5d350c.png" src="_images/144900c3bcfd4936959f5e815ad4152a338744140c9a0bebc30910c82a5d350c.png" />
+<img alt="_images/e7ba9b37d4fb381d766ba94c109c34165a82bc3d03928f1249514156aacab80a.png" src="_images/e7ba9b37d4fb381d766ba94c109c34165a82bc3d03928f1249514156aacab80a.png" />
+<img alt="_images/613669af8a1c378c9144fc99779c4893b8c1051069c50987ee3e461f0855d48f.png" src="_images/613669af8a1c378c9144fc99779c4893b8c1051069c50987ee3e461f0855d48f.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="com_c2_s4_QAM.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Quadrature Amplitude Modulation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="com_c2_s6_Orthogonal_Signalling.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Orthogonal Signaling</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#time-division">Time Division</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quadrature-modulation-technique">Quadrature Modulation Technique</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-division">Frequency Division</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid-time-and-frequency-utilization">Hybrid Time and Frequency Utilization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multi-dimensional-signal-vector">Multi-dimensional Signal Vector</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analogy-with-3-dimensional-euclidean-space">Analogy with 3-Dimensional Euclidean Space</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-an-n-dimensional-signal-vector">Examples of an N-Dimensional Signal Vector</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthogonal-frequency-division-multiplexing-ofdm">Orthogonal Frequency Division Multiplexing (OFDM)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#multiple-input-multiple-output-mimo-systems">Multiple-Input Multiple-Output (MIMO) Systems</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-division-multiplexing-tdm">Time-Division Multiplexing (TDM)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-euclidean-space-and-cartesian-coordinates">Discussion: Euclidean Space and Cartesian Coordinates</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensional-euclidean-space-mathbb-r-3">3-Dimensional Euclidean Space (<span class="math notranslate nohighlight">\(\mathbb{R}^3\)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cartesian-coordinate-system">Cartesian Coordinate System</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-example-of-an-n-dimensional-signal-vector">Numerical Example of an <span class="math notranslate nohighlight">\(N\)</span>-Dimensional Signal Vector</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#time-division-transmission">Time Division Transmission</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#frequency-division-transmission">Frequency Division Transmission</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#quadrature-modulation-using-phase-and-amplitude">Quadrature Modulation (Using Phase and Amplitude)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#hybrid-time-and-frequency-division">Hybrid Time and Frequency Division</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#details-on-hybrid-time-frequency-division-method">Details on Hybrid Time-Frequency Division Method</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

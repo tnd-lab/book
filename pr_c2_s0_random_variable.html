@@ -1,0 +1,1396 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Random Variable &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pr_c2_s0_random_variable';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Real Scalar Gaussian Random Variable" href="pr_c2_s1_real_Gaussian_RV_scalar.html" />
+    <link rel="prev" title="Bayes’ Theorem" href="pr_c1_s3_Bayes_theorem.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Random Variable</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Random Variable</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilistic-description">Probabilistic Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-functions">Distribution Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-function-cdf">Cumulative Distribution Function (CDF)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-cdf">Properties of CDF</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#property-1-boundedness-of-the-distribution">Property 1: Boundedness of the Distribution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#property-2-monotonicity-of-the-distribution">Property 2: Monotonicity of the Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-on-the-equality">Notes on the Equality</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-probability-density-function">Properties of the Probability Density Function</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-and-the-probability-density-function-pdf">Probability and the Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-the-cdf-and-pdf">Relationship Between the CDF and PDF</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-properties-of-cdf">Key Properties of CDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-function-pmf">Probability Mass Function (PMF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-characteristics-of-pmf">Key Characteristics of PMF</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli-random-variable">Bernoulli Random Variable</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics">Characteristics</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-random-variable">Gaussian Random Variable</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters-of-the-pdf">Key Parameters of the PDF</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cdf-of-a-gaussian-rv">CDF of A Gaussian RV</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-forms-for-gaussian-cdf-evaluation">Standard Forms for Gaussian CDF Evaluation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#discussions-on-q-function">Discussions on <span class="math notranslate nohighlight">\( Q \)</span>-Function</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-standard-forms">Advantages of Standard Forms</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="random-variable">
+<h1>Random Variable<a class="headerlink" href="#random-variable" title="Link to this heading">#</a></h1>
+<section id="definition">
+<h2>Definition<a class="headerlink" href="#definition" title="Link to this heading">#</a></h2>
+<p>A <strong>random variable (RV)</strong> is a <strong>real-valued function</strong> defined on the outcomes of a sample space, <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>.</p>
+<p>Given an <strong>experiment</strong>, <span class="math notranslate nohighlight">\( \mathcal{E} \)</span>, with <strong>sample space</strong>, <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>, the RV <span class="math notranslate nohighlight">\( X \)</span> <strong>maps</strong> each possible outcome, <span class="math notranslate nohighlight">\( \xi \in \mathbb{S} \)</span>, to a <strong>real number</strong>, <span class="math notranslate nohighlight">\( X(\xi) \)</span>, according to a specified <strong>rule</strong>.</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\( X(\xi) \)</span> takes on a <strong>finite</strong> or <strong>countably infinite</strong> number of values, the RV is referred to as a <strong>discrete random variable</strong>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( X(\xi) \)</span> takes on an <strong>uncountably infinite</strong> set of values (e.g., real numbers over an interval), the RV is called a <strong>continuous random variable</strong>.</p></li>
+</ul>
+<section id="probabilistic-description">
+<h3>Probabilistic Description<a class="headerlink" href="#probabilistic-description" title="Link to this heading">#</a></h3>
+<p>Since <span class="math notranslate nohighlight">\( X = f(\xi) \)</span> is an RV whose value depends on the outcome of an experiment, it is not possible to describe the RV by specifying its numerical value directly.</p>
+<p>Instead, the RV is described by providing a <strong>probabilistic description</strong>. This is done by stating the <strong>probabilities</strong> associated with the RV, such as:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \Pr(X = 3) \)</span>: Probability that <span class="math notranslate nohighlight">\( X \)</span> equals 3.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Pr(X &gt; 8) \)</span>: Probability that <span class="math notranslate nohighlight">\( X \)</span> exceeds 8.</p></li>
+</ul>
+<p><strong>Notation</strong></p>
+<ul class="simple">
+<li><p>Uppercase and Lowercase Letters:</p>
+<ul>
+<li><p><strong>Uppercase Letters</strong> (e.g., <span class="math notranslate nohighlight">\( X, Y \)</span>): Denote <strong>random variables</strong>.</p></li>
+<li><p><strong>Lowercase Letters</strong> (e.g., <span class="math notranslate nohighlight">\( x, y \)</span>): Represent <strong>specific values</strong> taken by the random variables.</p></li>
+<li><p>Examples:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( \Pr(X = x) \)</span>: Probability that the random variable <span class="math notranslate nohighlight">\( X \)</span> equals the value <span class="math notranslate nohighlight">\( x \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Pr(Y &gt; y) \)</span>: Probability that the random variable <span class="math notranslate nohighlight">\( Y \)</span> is greater than the value <span class="math notranslate nohighlight">\( y \)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Boldface Notation:</p>
+<ul>
+<li><p><strong>Non-capitalized, boldface letters</strong> (e.g., <span class="math notranslate nohighlight">\( \mathbf{x} \)</span>) are sometimes used to denote <strong>random variables</strong>. A corresponding <strong>non-boldface letter</strong> (e.g., <span class="math notranslate nohighlight">\( x \)</span>) represents a <strong>realization</strong> or specific instance of that random variable.</p></li>
+<li><p><strong>Capitalized, boldface letters</strong> (e.g., <span class="math notranslate nohighlight">\( \mathbf{H} \)</span>) are often used to denote <strong>random matrices</strong>, where the <strong>non-boldface letter</strong> (e.g., <span class="math notranslate nohighlight">\( H \)</span>) represents a <strong>realization</strong> or instance matrix of that random matrix.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="distribution-functions">
+<h3>Distribution Functions<a class="headerlink" href="#distribution-functions" title="Link to this heading">#</a></h3>
+<section id="cumulative-distribution-function-cdf">
+<h4>Cumulative Distribution Function (CDF)<a class="headerlink" href="#cumulative-distribution-function-cdf" title="Link to this heading">#</a></h4>
+<p>To conduct probability analysis mathematically, we require a <strong>probabilistic description</strong> of random variables (RVs) that applies to both <strong>discrete</strong> and <strong>continuous</strong> RVs.</p>
+<p>Consider the <strong>random variable (RV)</strong> <span class="math notranslate nohighlight">\( X \)</span> and the probability of the <strong>event</strong> <span class="math notranslate nohighlight">\( X \leq x \)</span>. This probability is denoted as <span class="math notranslate nohighlight">\( \Pr(X \leq x) \)</span>. It is clear that this probability depends on the <strong>arbitrary variable</strong> <span class="math notranslate nohighlight">\( x \)</span>.</p>
+<p><strong>Definition</strong><br />
+The <strong>cumulative distribution function (CDF)</strong>, or simply the <strong>distribution function</strong>, of the RV <span class="math notranslate nohighlight">\( X \)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+F_X(x) = \Pr(X \leq x)
+\]</div>
+<p><strong>Key Properties</strong></p>
+<ul class="simple">
+<li><p><strong>Function of <span class="math notranslate nohighlight">\( x \)</span></strong>:</p>
+<ul>
+<li><p>The CDF, <span class="math notranslate nohighlight">\( F_X(x) \)</span>, is a function of the arbitrary variable <span class="math notranslate nohighlight">\( x \)</span>, <strong>not</strong> of the RV <span class="math notranslate nohighlight">\( X \)</span>.</p></li>
+<li><p>For any value of <span class="math notranslate nohighlight">\( x \)</span>, the CDF <span class="math notranslate nohighlight">\( F_X(x) \)</span> provides the probability that the RV <span class="math notranslate nohighlight">\( X \)</span> takes a value less than or equal to <span class="math notranslate nohighlight">\( x \)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>General Applicability</strong>:</p>
+<ul>
+<li><p>The CDF applies to <strong>both discrete and continuous RVs</strong>, serving as a unifying concept for describing the probabilities of events.</p></li>
+</ul>
+</li>
+</ul>
+<p>The CDF is a cornerstone in probability theory and serves as the foundation for further analysis of RVs, including their <strong>density functions</strong>, <strong>moments</strong>, and <strong>expectations</strong>.</p>
+</section>
+</section>
+<section id="properties-of-cdf">
+<h3>Properties of CDF<a class="headerlink" href="#properties-of-cdf" title="Link to this heading">#</a></h3>
+<p>The <strong>cumulative distribution function (CDF)</strong>, <span class="math notranslate nohighlight">\( F_X(x) \)</span>, describes the probability <span class="math notranslate nohighlight">\( \Pr(X \leq x) \)</span> for both <strong>continuous</strong> and <strong>discrete random variables (RVs)</strong>. It has two fundamental properties:</p>
+<section id="property-1-boundedness-of-the-distribution">
+<h4>Property 1: Boundedness of the Distribution<a class="headerlink" href="#property-1-boundedness-of-the-distribution" title="Link to this heading">#</a></h4>
+<p>The CDF <span class="math notranslate nohighlight">\( F_X(x) \)</span> is a <strong>bounded function</strong> of the arbitrary variable <span class="math notranslate nohighlight">\( x \)</span>, meaning its values always lie between 0 and 1.</p>
+<p><strong>Behavior at Extremes</strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( F_X(x) \to 0 \)</span> as <span class="math notranslate nohighlight">\( x \to -\infty \)</span>: The probability of <span class="math notranslate nohighlight">\( X \leq x \)</span> approaches zero as <span class="math notranslate nohighlight">\( x \)</span> becomes very small.</p></li>
+<li><p><span class="math notranslate nohighlight">\( F_X(x) \to 1 \)</span> as <span class="math notranslate nohighlight">\( x \to \infty \)</span>: The probability of <span class="math notranslate nohighlight">\( X \leq x \)</span> approaches one as <span class="math notranslate nohighlight">\( x \)</span> becomes very large.</p></li>
+</ul>
+<p>This property reflects the <strong>total probability</strong> of the sample space, ensuring that all probabilities are well-defined within the interval <span class="math notranslate nohighlight">\([0, 1]\)</span>.</p>
+</section>
+<section id="property-2-monotonicity-of-the-distribution">
+<h4>Property 2: Monotonicity of the Distribution<a class="headerlink" href="#property-2-monotonicity-of-the-distribution" title="Link to this heading">#</a></h4>
+<p>The CDF <span class="math notranslate nohighlight">\( F_X(x) \)</span> is a <strong>monotone non-decreasing function</strong> of <span class="math notranslate nohighlight">\( x \)</span>.</p>
+<p>Mathematically, it can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[
+F_X(x_1) \leq F_X(x_2) \quad \text{for } x_1 &lt; x_2
+\]</div>
+<p>This property guarantees that as <span class="math notranslate nohighlight">\( x \)</span> increases, the probability <span class="math notranslate nohighlight">\( \Pr(X \leq x) \)</span> cannot decrease. Intuitively, larger values of <span class="math notranslate nohighlight">\( x \)</span> include more outcomes in the event <span class="math notranslate nohighlight">\( X \leq x \)</span>, leading to a higher or equal probability.</p>
+<p>These two properties are direct consequences of the <strong>definition of the CDF</strong> and ensure its consistency and applicability across various random variable types.</p>
+<section id="notes-on-the-equality">
+<h5>Notes on the Equality<a class="headerlink" href="#notes-on-the-equality" title="Link to this heading">#</a></h5>
+<p>An example of a situation where <span class="math notranslate nohighlight">\( x_1 &lt; x_2 \)</span> but <span class="math notranslate nohighlight">\( F_X(x_1) = F_X(x_2) \)</span> occurs when the cumulative distribution function <span class="math notranslate nohighlight">\( F_X(x) \)</span> has a <strong>flat region</strong> due to a probability mass concentrated at a single point (discrete random variable).</p>
+<p>Consider a random variable <span class="math notranslate nohighlight">\( X \)</span> with the following probability mass function:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X = 2) = 0.5, \quad \Pr(X = 4) = 0.5
+\]</div>
+<p>The corresponding cumulative distribution function <span class="math notranslate nohighlight">\( F_X(x) \)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+F_X(x) = 
+\begin{cases} 
+0 &amp; \text{if } x &lt; 2, \\
+0.5 &amp; \text{if } 2 \leq x &lt; 4, \\
+1 &amp; \text{if } x \geq 4.
+\end{cases}
+\end{split}\]</div>
+<p>Here, if we take <span class="math notranslate nohighlight">\( x_1 = 2.5 \)</span> and <span class="math notranslate nohighlight">\( x_2 = 3.5 \)</span>, we observe:</p>
+<div class="math notranslate nohighlight">
+\[
+F_X(x_1) = F_X(2.5) = 0.5
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+F_X(x_2) = F_X(3.5) = 0.5
+\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\( x_1 &lt; x_2 \)</span> but <span class="math notranslate nohighlight">\( F_X(x_1) = F_X(x_2) \)</span>. This happens because the probability mass is concentrated at discrete points <span class="math notranslate nohighlight">\( X = 2 \)</span> and <span class="math notranslate nohighlight">\( X = 4 \)</span>, leading to flat regions in the CDF.</p>
+<p>The <strong>non-decreasing monotonicity</strong> of the cumulative distribution function (CDF) <span class="math notranslate nohighlight">\( F_X(x) \)</span> is specifically chosen to accommodate such flat regions where <span class="math notranslate nohighlight">\( F_X(x_1) = F_X(x_2) \)</span> even though <span class="math notranslate nohighlight">\( x_1 &lt; x_2 \)</span>.</p>
+<p><strong>Note: Non-Decreasing, Not Strictly Increasing</strong></p>
+<ul class="simple">
+<li><p><strong>Non-decreasing monotonicity</strong> allows <span class="math notranslate nohighlight">\( F_X(x) \)</span> to stay constant (flat) over intervals where the random variable <span class="math notranslate nohighlight">\( X \)</span> has no probability mass or density.</p></li>
+<li><p><strong>Strictly increasing monotonicity</strong> would require <span class="math notranslate nohighlight">\( F_X(x_1) &lt; F_X(x_2) \)</span> for all <span class="math notranslate nohighlight">\( x_1 &lt; x_2 \)</span>, which would conflict with flat regions in the CDF.</p></li>
+</ul>
+<p>Flat regions in the CDF typically arise in cases such as:</p>
+<ol class="arabic simple">
+<li><p><strong>Discrete random variables</strong>: Where the probability mass is concentrated at specific points, leading to jumps in the CDF and flat segments between these points.</p></li>
+<li><p><strong>Intervals with zero probability</strong>: For continuous random variables, <span class="math notranslate nohighlight">\( F_X(x) \)</span> remains constant over intervals where the probability density function <span class="math notranslate nohighlight">\( f_X(x) = 0 \)</span>.</p></li>
+</ol>
+<p>For the earlier example of a discrete random variable with:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X = 2) = 0.5, \quad \Pr(X = 4) = 0.5,
+\]</div>
+<p>The CDF <span class="math notranslate nohighlight">\( F_X(x) \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+F_X(x) = 
+\begin{cases} 
+0 &amp; \text{if } x &lt; 2, \\
+0.5 &amp; \text{if } 2 \leq x &lt; 4, \\
+1 &amp; \text{if } x \geq 4.
+\end{cases}
+\end{split}\]</div>
+<p>Here:</p>
+<ul class="simple">
+<li><p>Between <span class="math notranslate nohighlight">\( x \in [2, 4) \)</span>, the CDF remains flat (<span class="math notranslate nohighlight">\( F_X(x) = 0.5 \)</span>).</p></li>
+<li><p>Despite the flat region, <span class="math notranslate nohighlight">\( F_X(x) \)</span> is still non-decreasing, adhering to the definition of monotonicity.</p></li>
+</ul>
+<p>Hence, non-decreasing monotonicity captures both the jumps (due to probability masses) and flat regions (due to absence of probability) in the CDF.</p>
+</section>
+</section>
+</section>
+<section id="probability-density-function-pdf">
+<h3>Probability Density Function (PDF)<a class="headerlink" href="#probability-density-function-pdf" title="Link to this heading">#</a></h3>
+<section id="id1">
+<h4>Definition<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>A <strong>random variable (RV)</strong> <span class="math notranslate nohighlight">\( X \)</span> is classified as <strong>continuous</strong> if its <strong>cumulative distribution function (CDF)</strong>, <span class="math notranslate nohighlight">\( F_X(x) \)</span>, is differentiable with respect to the arbitrary variable <span class="math notranslate nohighlight">\( x \)</span>, for all <span class="math notranslate nohighlight">\( x \)</span>.</p>
+<p>The derivative of the CDF, denoted as <span class="math notranslate nohighlight">\( f_X(x) \)</span>, is called the <strong>probability density function (PDF)</strong> of the RV <span class="math notranslate nohighlight">\( X \)</span>. Mathematically, it is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+f_X(x) = \frac{d}{dx}F_X(x) \quad \text{for all } x
+\]</div>
+<p>The PDF provides a way to describe the probability distribution of a continuous random variable in terms of its density.</p>
+</section>
+<section id="properties-of-the-probability-density-function">
+<h4>Properties of the Probability Density Function<a class="headerlink" href="#properties-of-the-probability-density-function" title="Link to this heading">#</a></h4>
+<ol class="arabic">
+<li><p><strong>Nonnegativity</strong>:</p>
+<ul>
+<li><p>The PDF <span class="math notranslate nohighlight">\( f_X(x) \)</span> is always <strong>nonnegative</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+     f_X(x) \geq 0 \quad \text{for all } x
+     \]</div>
+</li>
+<li><p>This property ensures that the density function does not yield negative probabilities, aligning with the principles of probability theory.</p></li>
+</ul>
+</li>
+<li><p><strong>Normalization</strong>:</p>
+<ul>
+<li><p>The total area under the curve of the PDF is equal to <strong>unity</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+     \int_{-\infty}^{\infty} f_X(x) \, dx = 1
+     \]</div>
+</li>
+<li><p>This property ensures that the PDF accounts for the entire probability of the random variable across its domain, satisfying the requirement that the total probability of all outcomes is 1.</p></li>
+</ul>
+</li>
+</ol>
+<p>These properties form the basis for analyzing continuous random variables using their probability density functions, providing insights into the distribution of probabilities across different values of <span class="math notranslate nohighlight">\( X \)</span>.</p>
+</section>
+</section>
+<section id="probability-and-the-probability-density-function-pdf">
+<h3>Probability and the Probability Density Function (PDF)<a class="headerlink" href="#probability-and-the-probability-density-function-pdf" title="Link to this heading">#</a></h3>
+<p>The term <strong>density function</strong> arises from the relationship between the PDF and the probability of events. Specifically, the <strong>probability</strong> of the event <span class="math notranslate nohighlight">\( x_1 &lt; X \leq x_2 \)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr[x_1 &lt; X \leq x_2] = \Pr[X \leq x_2] - \Pr[X \leq x_1]
+\]</div>
+<p>Using the cumulative distribution function (CDF), <span class="math notranslate nohighlight">\( F_X(x) \)</span>, this can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr[x_1 &lt; X \leq x_2] = F_X(x_2) - F_X(x_1)
+\]</div>
+<p>Since the PDF is the derivative of the CDF, the probability of the interval can also be written as:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr[x_1 &lt; X \leq x_2] = \int_{x_1}^{x_2} f_X(x) \, dx
+\]</div>
+<p>This interpretation shows that the <strong>probability of an interval</strong> is equivalent to the <strong>area under the PDF</strong> within that interval.</p>
+<section id="relationship-between-the-cdf-and-pdf">
+<h4>Relationship Between the CDF and PDF<a class="headerlink" href="#relationship-between-the-cdf-and-pdf" title="Link to this heading">#</a></h4>
+<p>For a continuous random variable <span class="math notranslate nohighlight">\( X \)</span>, the CDF <span class="math notranslate nohighlight">\( F_X(x) \)</span> is defined in terms of the PDF <span class="math notranslate nohighlight">\( f_X(x) \)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+F_X(x) = \int_{-\infty}^{x} f_X(\xi) \, d\xi
+}
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\( \xi \)</span> is an <strong>arbitrary variable</strong> of integration.</p>
+</section>
+</section>
+<section id="key-properties-of-cdf">
+<h3>Key Properties of CDF<a class="headerlink" href="#key-properties-of-cdf" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Total Probability</strong>:</p>
+<ul class="simple">
+<li><p>Setting <span class="math notranslate nohighlight">\( x_1 = -\infty \)</span> and <span class="math notranslate nohighlight">\( x_2 = \infty \)</span>, the total probability over the entire sample space is:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+   \int_{-\infty}^{\infty} f_X(x) \, dx = 1
+   \]</div>
+<p>This corresponds to the probability of a <strong>sure event</strong> and ensures that the PDF is normalized.</p>
+</li>
+<li><p><strong>Limits of the CDF</strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( F_X(-\infty) = 0 \)</span>: The CDF approaches 0 at <span class="math notranslate nohighlight">\( -\infty \)</span>, corresponding to the probability of an <strong>impossible event</strong>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( F_X(\infty) = 1 \)</span>: The CDF approaches 1 at <span class="math notranslate nohighlight">\( \infty \)</span>, corresponding to the probability of a <strong>sure event</strong>.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="probability-mass-function-pmf">
+<h3>Probability Mass Function (PMF)<a class="headerlink" href="#probability-mass-function-pmf" title="Link to this heading">#</a></h3>
+<p>The <strong>cumulative distribution function (CDF)</strong>, <span class="math notranslate nohighlight">\( F_X(x) \)</span>, defined earlier, also applies to <strong>discrete random variables (RVs)</strong>. However, unlike continuous RVs, the CDF of a discrete RV is <strong>not differentiable</strong> with respect to its arbitrary variable <span class="math notranslate nohighlight">\( x \)</span>.</p>
+<section id="id2">
+<h4>Definition<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<p>The <strong>probability mass function (PMF)</strong>, <span class="math notranslate nohighlight">\( p_X(x) \)</span>, is a function that assigns a probability to each possible value of a discrete RV <span class="math notranslate nohighlight">\( X \)</span>. Formally, it is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+p_X(x) = \Pr(X = x)
+\]</div>
+<p>The PMF <span class="math notranslate nohighlight">\( p_X(x) \)</span> represents the <strong>probability</strong> of the event <span class="math notranslate nohighlight">\( X = x \)</span>, which consists of all possible outcomes of the experiment that result in the RV <span class="math notranslate nohighlight">\( X \)</span> taking on the value <span class="math notranslate nohighlight">\( x \)</span>.</p>
+</section>
+<section id="key-characteristics-of-pmf">
+<h4>Key Characteristics of PMF<a class="headerlink" href="#key-characteristics-of-pmf" title="Link to this heading">#</a></h4>
+<ol class="arabic">
+<li><p><strong>Discrete Nature</strong>:</p>
+<ul>
+<li><p>The PMF applies to discrete RVs, where <span class="math notranslate nohighlight">\( X \)</span> can take on a countable set of possible values.</p></li>
+<li><p>Each value of <span class="math notranslate nohighlight">\( x \)</span> has an associated probability, <span class="math notranslate nohighlight">\( p_X(x) \)</span>, and the sum of these probabilities equals 1:</p>
+<div class="math notranslate nohighlight">
+\[
+     \sum_x p_X(x) = 1
+     \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Event Representation</strong>:</p>
+<ul class="simple">
+<li><p>Each <span class="math notranslate nohighlight">\( p_X(x) \)</span> corresponds to the probability of a specific outcome or event in the experiment that maps to the value <span class="math notranslate nohighlight">\( x \)</span>.</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Notes on Notation</strong></p>
+<ul class="simple">
+<li><p>Uppercase variables (<span class="math notranslate nohighlight">\( X, Y \)</span>) denote <strong>random variables</strong>.</p></li>
+<li><p>Lowercase variables (<span class="math notranslate nohighlight">\( x, y \)</span>) represent <strong>specific values</strong> that the random variables can take.</p></li>
+</ul>
+<p>For example:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( p_X(x) \)</span>: The PMF of the random variable <span class="math notranslate nohighlight">\( X \)</span>, evaluated at the value <span class="math notranslate nohighlight">\( x \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( p_Y(y) \)</span>: The PMF of the random variable <span class="math notranslate nohighlight">\( Y \)</span>, evaluated at the value <span class="math notranslate nohighlight">\( y \)</span>.</p></li>
+</ul>
+<p>It is noted again that the PMF is a fundamental tool in probability theory for describing <strong>discrete random variables</strong>, providing a direct mapping of probabilities to specific values. It complements the CDF by focusing explicitly on the discrete nature of the probability distribution.</p>
+</section>
+</section>
+<section id="bernoulli-random-variable">
+<h3>Bernoulli Random Variable<a class="headerlink" href="#bernoulli-random-variable" title="Link to this heading">#</a></h3>
+<p>A <strong>Bernoulli random variable (RV)</strong> represents the simplest possible type of random variable, used for experiments with exactly <strong>two possible outcomes</strong>. These experiments are called <strong>Bernoulli trials</strong>, and the resulting random variable is referred to as a <strong>Bernoulli RV</strong>.</p>
+<section id="characteristics">
+<h4>Characteristics<a class="headerlink" href="#characteristics" title="Link to this heading">#</a></h4>
+<ol class="arabic">
+<li><p><strong>Outcomes</strong>:</p>
+<ul class="simple">
+<li><p>The two outcomes of a Bernoulli trial are typically assigned the values <span class="math notranslate nohighlight">\( \{0, 1\} \)</span>, where:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( 1 \)</span>: Represents success or the occurrence of a specific event.</p></li>
+<li><p><span class="math notranslate nohighlight">\( 0 \)</span>: Represents failure or the non-occurrence of the event.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Probability Mass Function (PMF)</strong>:
+If <span class="math notranslate nohighlight">\( X \)</span> is a Bernoulli RV, the PMF is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+   p_X(0) = 1 - p, \quad p_X(1) = p
+   \]</div>
+<p>where <span class="math notranslate nohighlight">\( p \)</span> (<span class="math notranslate nohighlight">\( 0 \leq p \leq 1 \)</span>) is the <strong>probability of success</strong>.</p>
+</li>
+<li><p><strong>Probabilistic Representation</strong>:</p>
+<ul class="simple">
+<li><p>The RV <span class="math notranslate nohighlight">\( X \)</span> takes the value:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( 1 \)</span> with probability <span class="math notranslate nohighlight">\( p \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( 0 \)</span> with probability <span class="math notranslate nohighlight">\( 1 - p \)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>Bernoulli random variables form the foundation for modeling binary outcomes in probabilistic experiments. Common applications include:</p>
+<ul class="simple">
+<li><p>Coin tosses (e.g., heads or tails).</p></li>
+<li><p>Binary decisions (e.g., yes or no).</p></li>
+<li><p>Success-failure experiments in statistics.</p></li>
+</ul>
+<p><strong>Programming Resources</strong></p>
+<ul class="simple">
+<li><p><strong>MATLAB</strong>: The Bernoulli distribution can be implemented using the function <a class="reference external" href="https://www.mathworks.com/help/stats/bernoulli-distribution.html"><code class="docutils literal notranslate"><span class="pre">binopdf</span></code></a>.</p></li>
+<li><p><strong>Python (SciPy)</strong>: The Bernoulli distribution is available via <a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.bernoulli.html"><code class="docutils literal notranslate"><span class="pre">scipy.stats.bernoulli</span></code></a>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">bernoulli</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">p</span> <span class="o">=</span> <span class="mf">0.7</span>  <span class="c1"># Probability of success</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># Number of trials</span>
+
+<span class="c1"># Simulate Bernoulli random variable using custom method</span>
+<span class="n">random_numbers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>  <span class="c1"># Generate uniform random numbers</span>
+<span class="n">bernoulli_rv</span> <span class="o">=</span> <span class="p">(</span><span class="n">random_numbers</span> <span class="o">&lt;=</span> <span class="n">p</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>  <span class="c1"># Bernoulli trials</span>
+
+<span class="c1"># Simulate Bernoulli random variable using scipy.stats.bernoulli</span>
+<span class="n">bernoulli_builtin_rv</span> <span class="o">=</span> <span class="n">bernoulli</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># Empirical CDF calculation</span>
+<span class="n">sorted_rv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">bernoulli_rv</span><span class="p">)</span>
+<span class="n">cdf_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span>
+
+<span class="c1"># Visualization</span>
+
+<span class="c1"># Bernoulli events plot (separate plots for empirical and built-in RVs)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">bernoulli_rv</span><span class="p">[:</span><span class="mi">30</span><span class="p">],</span> <span class="n">linefmt</span><span class="o">=</span><span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">markerfmt</span><span class="o">=</span><span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Custom RV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bernoulli Events (Custom RV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Index of Events&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Events (0 or 1)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">bernoulli_builtin_rv</span><span class="p">[:</span><span class="mi">30</span><span class="p">],</span> <span class="n">linefmt</span><span class="o">=</span><span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">markerfmt</span><span class="o">=</span><span class="s1">&#39;bo&#39;</span><span class="p">,</span> <span class="n">basefmt</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Built-in RV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bernoulli Events (Built-in RV)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Index of Events&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Events (0 or 1)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Histogram (PMF visualization)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">values</span><span class="p">,</span> <span class="n">counts</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">bernoulli_rv</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="n">counts</span> <span class="o">/</span> <span class="n">N</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">probabilities</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Custom RV&#39;</span><span class="p">)</span>
+<span class="n">values_builtin</span><span class="p">,</span> <span class="n">counts_builtin</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">bernoulli_builtin_rv</span><span class="p">,</span> <span class="n">return_counts</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">probabilities_builtin</span> <span class="o">=</span> <span class="n">counts_builtin</span> <span class="o">/</span> <span class="n">N</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">values_builtin</span><span class="p">,</span> <span class="n">probabilities_builtin</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Built-in RV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram (PMF) of Bernoulli Random Variable&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value (0 or 1)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+
+<span class="c1"># Empirical CDF plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">sorted_rv</span><span class="p">,</span> <span class="n">cdf_y</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Custom RV&#39;</span><span class="p">)</span>
+<span class="n">sorted_builtin_rv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">bernoulli_builtin_rv</span><span class="p">)</span>
+<span class="n">cdf_builtin_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">sorted_builtin_rv</span><span class="p">,</span> <span class="n">cdf_builtin_y</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Built-in RV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical CDF of Bernoulli Random Variable&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value (0 or 1)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;CDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/5e1d25c4e57da2b8642c7b35cf6e423e5811cb15ac330750da86407dc9f44130.png" src="_images/5e1d25c4e57da2b8642c7b35cf6e423e5811cb15ac330750da86407dc9f44130.png" />
+<img alt="_images/f8045b27a6dc8728bd508ab0ceb4ad66eb326711ff7b1788eddf57dcc28b58a7.png" src="_images/f8045b27a6dc8728bd508ab0ceb4ad66eb326711ff7b1788eddf57dcc28b58a7.png" />
+<img alt="_images/e5f81b1cc3479941e5d5b3a31e0a8179fec1687ca598921f0f61315a49069170.png" src="_images/e5f81b1cc3479941e5d5b3a31e0a8179fec1687ca598921f0f61315a49069170.png" />
+<img alt="_images/420ee6f90ba68e6d8d59e34265ba56a047ed5277a2adacd59e02649c75a7b295.png" src="_images/420ee6f90ba68e6d8d59e34265ba56a047ed5277a2adacd59e02649c75a7b295.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="gaussian-random-variable">
+<h3>Gaussian Random Variable<a class="headerlink" href="#gaussian-random-variable" title="Link to this heading">#</a></h3>
+<p><strong>Importance of Gaussian Random Variables</strong></p>
+<ul class="simple">
+<li><p><strong>Prevalence in Applications</strong>: The Gaussian random variable (RV) is the most widely used and significant RV in probability and statistics due to its universal applicability in modeling real-world phenomena.</p></li>
+<li><p><strong>Modeling Physical Phenomena</strong>: Many natural and engineered processes can be accurately modeled using Gaussian RVs. For example, thermal noise in electronic circuits and errors in measurements are often represented by Gaussian distributions.</p></li>
+</ul>
+<section id="id3">
+<h4>Definition<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<p>A <strong>Gaussian random variable</strong> is characterized by its <strong>probability density function (PDF)</strong>, which has the general form:</p>
+<div class="math notranslate nohighlight">
+\[
+f_X(x) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp \left( -\frac{(x - m)^2}{2\sigma^2} \right).
+\]</div>
+<p>This function describes the distribution of the variable <span class="math notranslate nohighlight">\( X \)</span> in terms of its central tendency and spread.</p>
+</section>
+<section id="key-parameters-of-the-pdf">
+<h4>Key Parameters of the PDF<a class="headerlink" href="#key-parameters-of-the-pdf" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Mean (<span class="math notranslate nohighlight">\( m \)</span>)</strong>:</p>
+<ul>
+<li><p>Represents the <strong>central location</strong> or average value of the Gaussian RV.</p></li>
+<li><p>The distribution is symmetric around this point.</p></li>
+</ul>
+</li>
+<li><p><strong>Standard Deviation (<span class="math notranslate nohighlight">\( \sigma \)</span>)</strong>:</p>
+<ul>
+<li><p>Measures the <strong>spread</strong> or <strong>dispersion</strong> of the distribution.</p></li>
+<li><p>A larger <span class="math notranslate nohighlight">\( \sigma \)</span> results in a wider, flatter distribution, while a smaller <span class="math notranslate nohighlight">\( \sigma \)</span> results in a narrower, sharper peak.</p></li>
+</ul>
+</li>
+<li><p><strong>Variance (<span class="math notranslate nohighlight">\( \sigma^2 \)</span>)</strong>:</p>
+<ul>
+<li><p>Defined as the square of the standard deviation, it quantifies the <strong>variability</strong> of the RV.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Notation</strong><br />
+The Gaussian random variable <span class="math notranslate nohighlight">\( X \)</span> is denoted as:</p>
+<div class="math notranslate nohighlight">
+\[
+X \sim \mathcal{N}(m, \sigma^2),
+\]</div>
+<p>which reads: <span class="math notranslate nohighlight">\( X \)</span> is normally distributed with <strong>mean <span class="math notranslate nohighlight">\( m \)</span></strong> and <strong>variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span></strong>.</p>
+<p>The Gaussian RV is foundational in probability and statistics because:</p>
+<ul class="simple">
+<li><p>It arises naturally in many systems due to the <strong>central limit theorem</strong>, where the sum of a large number of independent random variables tends to follow a normal distribution.</p></li>
+<li><p>Its mathematical simplicity and well-defined properties make it a core tool in analysis and modeling.</p></li>
+</ul>
+</section>
+<section id="cdf-of-a-gaussian-rv">
+<h4>CDF of A Gaussian RV<a class="headerlink" href="#cdf-of-a-gaussian-rv" title="Link to this heading">#</a></h4>
+<p>The <strong>Cumulative Distribution Function (CDF)</strong> of a Gaussian random variable (RV) is a critical tool for determining probabilities associated with the RV. Specifically, the CDF is required to calculate the probability that the Gaussian RV <span class="math notranslate nohighlight">\( X \)</span> lies <strong>above</strong>, <strong>below</strong>, or within a specific interval.</p>
+<p>The CDF of a Gaussian RV is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+F_X(x) = \int_{-\infty}^{x} \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left(-\frac{(y - m)^2}{2\sigma^2}\right) \, dy,
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( m \)</span>: Mean of the Gaussian RV.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \sigma^2 \)</span>: Variance of the Gaussian RV.</p></li>
+</ul>
+<p><strong>Technical Challenges</strong></p>
+<ul class="simple">
+<li><p><strong>No Closed-Form Solution</strong>: It is <strong>impossible to express this integral in a closed form</strong> using elementary functions.</p></li>
+<li><p>Despite this limitation, the Gaussian CDF remains widely used due to its importance in probability and statistics.</p></li>
+</ul>
+<p><strong>Approaches to Compute the CDF</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Tabulated Values</strong>:</p>
+<ul class="simple">
+<li><p>The CDF of a Gaussian RV has been extensively tabulated.</p></li>
+<li><p>These tables provide precomputed values for standard Gaussian RVs (e.g., <span class="math notranslate nohighlight">\( m = 0, \sigma = 1 \)</span>).</p></li>
+<li><p>Reference materials, such as [B3, Appendix E], contain such tables for practical use.</p></li>
+</ul>
+</li>
+<li><p><strong>Numerical Approximation</strong>:</p>
+<ul class="simple">
+<li><p>Modern computational tools can approximate the Gaussian CDF to a desired level of accuracy.</p></li>
+<li><p>These routines are efficient and eliminate the need for manual table lookup.</p></li>
+</ul>
+</li>
+</ol>
+<p>Despite the lack of a closed-form expression, the Gaussian CDF is indispensable in statistical modeling, hypothesis testing, and signal processing. Numerical methods and tables ensure its usability across various applications, making the Gaussian RV a cornerstone of probability theory.</p>
+</section>
+<section id="standard-forms-for-gaussian-cdf-evaluation">
+<h4>Standard Forms for Gaussian CDF Evaluation<a class="headerlink" href="#standard-forms-for-gaussian-cdf-evaluation" title="Link to this heading">#</a></h4>
+<p>When calculating the <strong>Cumulative Distribution Function (CDF)</strong> of a Gaussian random variable (RV), it must first be expressed in one of several commonly used <strong>standard forms</strong>.</p>
+<p>These forms simplify computations and are widely used in mathematics and engineering.</p>
+<p><strong>Error Function (<span class="math notranslate nohighlight">\( \text{erf}(x) \)</span>)</strong>:</p>
+<ul>
+<li><p>Defined as twice the integral of a normalized Gaussian function from 0 to <span class="math notranslate nohighlight">\( x \)</span>.</p></li>
+<li><p>Expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+    \text{erf}(x) = \frac{2}{\sqrt{\pi}} \int_{0}^{x} \exp(-t^2) \, dt, \quad x \geq 0, \, \text{erf}(x) \in [0,1].
+    \]</div>
+</li>
+<li><p>The substitution <span class="math notranslate nohighlight">\( t = \frac{x}{\sqrt{2}\sigma} \)</span> relates it to Gaussian probabilities.</p></li>
+</ul>
+<ol class="arabic" start="2">
+<li><p><strong>Complementary Error Function (<span class="math notranslate nohighlight">\( \text{erfc}(x) \)</span>)</strong>:</p>
+<ul>
+<li><p>Defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+     \text{erfc}(x) = 1 - \text{erf}(x) = \frac{2}{\sqrt{\pi}} \int_{x}^{\infty} \exp(-t^2) \, dt.
+     \]</div>
+</li>
+<li><p>Complements the error function to account for probabilities beyond <span class="math notranslate nohighlight">\( x \)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong><span class="math notranslate nohighlight">\(\Phi\)</span>-function</strong>:</p>
+<ul>
+<li><p>Represents the CDF of a <strong>standard normal RV</strong> (mean <span class="math notranslate nohighlight">\( 0 \)</span>, variance <span class="math notranslate nohighlight">\( 1 \)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+     \Phi(x) = \frac{1}{\sqrt{2\pi}} \int_{-\infty}^{x} \exp\left(-\frac{t^2}{2}\right) \, dt.
+     \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong><span class="math notranslate nohighlight">\( Q \)</span>-function</strong>:</p>
+<ul>
+<li><p>Describes the <strong>tail probability</strong> beyond a threshold <span class="math notranslate nohighlight">\( x \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+     Q(x) = \frac{1}{\sqrt{2\pi}} \int_{x}^{\infty} \exp\left(-\frac{t^2}{2}\right) \, dt.
+     \]</div>
+</li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erf</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">0</span>  <span class="c1"># Mean</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Standard deviation</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e4</span><span class="p">)</span>  <span class="c1"># Number of samples</span>
+
+<span class="c1"># Generate Gaussian random variables</span>
+<span class="n">gaussianRV_sim</span> <span class="o">=</span> <span class="n">mu</span> <span class="o">+</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># Plotting Histogram for Gaussian RV</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">gaussianRV_sim</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Gaussian Random Variable (PDF)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Find indices where RV &gt; 3</span>
+<span class="n">indices_above_3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">gaussianRV_sim</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Indices where Gaussian RV &gt; 3: </span><span class="si">{</span><span class="n">indices_above_3</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Gaussian random variables using scipy&#39;s built-in normal distribution</span>
+<span class="n">gaussianRV_builtin</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># Plotting built-in Gaussian RV histogram</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">gaussianRV_builtin</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical Gaussian PDF (Built-in)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Empirical CDF for Gaussian RV</span>
+<span class="n">sorted_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">gaussianRV_sim</span><span class="p">)</span>
+<span class="n">ecdf_sim</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">N</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">sorted_sim</span><span class="p">,</span> <span class="n">ecdf_sim</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical CDF of Gaussian Random Variable&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;CDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Theoretical PDF of Gaussian distribution</span>
+<span class="n">x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">gaussianRV_sim</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">gaussianRV_sim</span><span class="p">),</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">theoreticalPDF</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">((</span><span class="n">x_values</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">gaussianRV_sim</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical PDF (sampling)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">gaussianRV_builtin</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical PDF (Built-in)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">theoreticalPDF</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical PDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Comparison of Empirical and Theoretical Gaussian PDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Theoretical CDF using the error function</span>
+<span class="n">theoreticalCDF_erf</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">erf</span><span class="p">((</span><span class="n">x_values</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))))</span>
+
+<span class="c1"># Theoretical CDF using Phi-function</span>
+<span class="k">def</span> <span class="nf">phi_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="n">theoreticalCDF_phi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">phi_function</span><span class="p">(</span><span class="n">x_values</span><span class="p">))</span> <span class="o">*</span> <span class="p">(</span><span class="n">x_values</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x_values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># Theoretical CDF using Q-function</span>
+<span class="k">def</span> <span class="nf">q_function</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">erf</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)))</span>
+
+<span class="n">theoreticalCDF_q</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">q_function</span><span class="p">((</span><span class="n">x_values</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma</span><span class="p">)</span>
+
+<span class="c1"># Plotting the CDFs</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">sorted_sim</span><span class="p">,</span> <span class="n">ecdf_sim</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="s1">&#39;post&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical CDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">theoreticalCDF_erf</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical CDF (using erf())&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">theoreticalCDF_phi</span><span class="p">,</span> <span class="s1">&#39;g--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical CDF (using Phi-function)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">theoreticalCDF_q</span><span class="p">,</span> <span class="s1">&#39;b-.&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical CDF (using Q-function)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical vs. Theoretical CDF of Gaussian RV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;CDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/eb308cd2fed99016fd57bee7fddd3aa4e583ad736e0b89a18a7c12ae7299eb87.png" src="_images/eb308cd2fed99016fd57bee7fddd3aa4e583ad736e0b89a18a7c12ae7299eb87.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Indices where Gaussian RV &gt; 3: [ 244  828 1439 2282 5824 6021 7492 7641 7896 8976 8998 9452 9789]
+</pre></div>
+</div>
+<img alt="_images/49bb1c9980a63891980d470168578d88afe16606a0a4e44502cc4860ddb14b3d.png" src="_images/49bb1c9980a63891980d470168578d88afe16606a0a4e44502cc4860ddb14b3d.png" />
+<img alt="_images/49ac9c84925e31ee0eff9ed1e6bb63bd53d2b13b181409121b63c29f87afef63.png" src="_images/49ac9c84925e31ee0eff9ed1e6bb63bd53d2b13b181409121b63c29f87afef63.png" />
+<img alt="_images/bf442462f5d7196e353f953bebe1c698195c8e6843d756e1c5393ef1e94abc8e.png" src="_images/bf442462f5d7196e353f953bebe1c698195c8e6843d756e1c5393ef1e94abc8e.png" />
+<img alt="_images/db7c66a147880e350b674fd0bb1315e69d7f581ec9d80f26ef8279d47183ec95.png" src="_images/db7c66a147880e350b674fd0bb1315e69d7f581ec9d80f26ef8279d47183ec95.png" />
+</div>
+</div>
+</section>
+<section id="discussions-on-q-function">
+<h4>Discussions on <span class="math notranslate nohighlight">\( Q \)</span>-Function<a class="headerlink" href="#discussions-on-q-function" title="Link to this heading">#</a></h4>
+<ol class="arabic">
+<li><p><strong>Natural for Tail Probabilities</strong>:</p>
+<ul class="simple">
+<li><p>The <span class="math notranslate nohighlight">\( Q \)</span>-function directly represents probabilities of the form <span class="math notranslate nohighlight">\( \Pr(X &gt; x) \)</span>, making it particularly useful for engineering applications.</p></li>
+</ul>
+</li>
+<li><p><strong>Relation Between <span class="math notranslate nohighlight">\( \Phi(x) \)</span> and <span class="math notranslate nohighlight">\( Q(x) \)</span></strong>:</p>
+<ul>
+<li><p>The <span class="math notranslate nohighlight">\( Q \)</span>-function is complementary to the <span class="math notranslate nohighlight">\(\Phi\)</span>-function:</p>
+<div class="math notranslate nohighlight">
+\[
+     Q(x) = 1 - \Phi(x).
+     \]</div>
+</li>
+</ul>
+</li>
+<li><p><strong>Expression of Gaussian CDF</strong>:</p>
+<ul>
+<li><p>For a Gaussian RV <span class="math notranslate nohighlight">\( X \sim \mathcal{N}(m, \sigma^2) \)</span>, the CDF can be expressed in terms of <span class="math notranslate nohighlight">\( Q \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+     F_X(x) = \Pr(X \leq x) = 1 - Q\left( \frac{x - m}{\sigma} \right).
+     \]</div>
+</li>
+</ul>
+</li>
+</ol>
+<section id="advantages-of-standard-forms">
+<h5>Advantages of Standard Forms<a class="headerlink" href="#advantages-of-standard-forms" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>Simplicity</strong>: Transforming a general Gaussian CDF to normalized forms like <span class="math notranslate nohighlight">\( \Phi(x) \)</span> or <span class="math notranslate nohighlight">\( Q(x) \)</span> simplifies numerical computations.</p></li>
+<li><p><strong>Common Usage</strong>: The <span class="math notranslate nohighlight">\( Q \)</span>-function is widely used in engineering and is supported by computational libraries and precomputed tables.</p></li>
+<li><p><strong>Practical Transformation</strong>: For a general Gaussian RV, the transformation <span class="math notranslate nohighlight">\( t = \frac{x - m}{\sigma} \)</span> allows easy evaluation of the CDF using normalized forms.</p></li>
+</ul>
+<p>These standard forms ensure efficient and accurate evaluation of Gaussian probabilities in both theoretical and practical contexts.</p>
+</section>
+<section id="applications">
+<h5>Applications<a class="headerlink" href="#applications" title="Link to this heading">#</a></h5>
+<ul class="simple">
+<li><p><strong>Mathematics vs. Engineering</strong>:</p>
+<ul>
+<li><p>While the error function (<span class="math notranslate nohighlight">\( \text{erf} \)</span>) and complementary error function (<span class="math notranslate nohighlight">\( \text{erfc} \)</span>) are favored in mathematics, the <span class="math notranslate nohighlight">\( Q \)</span>-function is preferred in engineering due to its direct relevance to tail probabilities.</p></li>
+</ul>
+</li>
+<li><p><strong>Efficient Computation</strong>:</p>
+<ul>
+<li><p>Precomputed tables or numerical programs can efficiently evaluate the <span class="math notranslate nohighlight">\( Q \)</span>-function for practical applications.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pr_c1_s3_Bayes_theorem.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Bayes’ Theorem</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pr_c2_s1_real_Gaussian_RV_scalar.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Real Scalar Gaussian Random Variable</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition">Definition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilistic-description">Probabilistic Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-functions">Distribution Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cumulative-distribution-function-cdf">Cumulative Distribution Function (CDF)</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-cdf">Properties of CDF</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#property-1-boundedness-of-the-distribution">Property 1: Boundedness of the Distribution</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#property-2-monotonicity-of-the-distribution">Property 2: Monotonicity of the Distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#notes-on-the-equality">Notes on the Equality</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-probability-density-function">Properties of the Probability Density Function</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-and-the-probability-density-function-pdf">Probability and the Probability Density Function (PDF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-between-the-cdf-and-pdf">Relationship Between the CDF and PDF</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-properties-of-cdf">Key Properties of CDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-mass-function-pmf">Probability Mass Function (PMF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-characteristics-of-pmf">Key Characteristics of PMF</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bernoulli-random-variable">Bernoulli Random Variable</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristics">Characteristics</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gaussian-random-variable">Gaussian Random Variable</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Definition</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-parameters-of-the-pdf">Key Parameters of the PDF</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cdf-of-a-gaussian-rv">CDF of A Gaussian RV</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-forms-for-gaussian-cdf-evaluation">Standard Forms for Gaussian CDF Evaluation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#discussions-on-q-function">Discussions on <span class="math notranslate nohighlight">\( Q \)</span>-Function</a><ul class="nav section-nav flex-column">
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-standard-forms">Advantages of Standard Forms</a></li>
+<li class="toc-h5 nav-item toc-entry"><a class="reference internal nav-link" href="#applications">Applications</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1107 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Neyman-Pearson Criterion &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c2_s11_Neyman_Pearson';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial: Differentiable Communication Systems Using Sionna" href="c2_x2_LLR_Sionna.html" />
+    <link rel="prev" title="MiniMax Criterion" href="c2_s9_minimax.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Neyman-Pearson Criterion</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximize-p-d-subjected-to-p-f-constraint">Maximize <span class="math notranslate nohighlight">\(P_d\)</span> subjected to <span class="math notranslate nohighlight">\(P_f\)</span> constraint</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-tau-np">Finding <span class="math notranslate nohighlight">\(\tau_{NP}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule">Decision Rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-and-decision-using-np-criterion">Example: Antipodal Signal Detection and Decision using NP Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-p-f-and-p-d-as-a-function-of-the-decision-threshold">Plot <span class="math notranslate nohighlight">\(P_f\)</span> and <span class="math notranslate nohighlight">\(P_d\)</span> as a function of the decision threshold</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-d-as-a-function-of-p-f"><span class="math notranslate nohighlight">\(P_d\)</span> as a function of <span class="math notranslate nohighlight">\(P_f\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-of-distributions">Overlap of Distributions</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="neyman-pearson-criterion">
+<h1>Neyman-Pearson Criterion<a class="headerlink" href="#neyman-pearson-criterion" title="Link to this heading">#</a></h1>
+<p><strong>MOTIVATION</strong>. The Neyman-Pearson criterion requires neither costs nor <em>a priori</em> probabilities for its formulation.</p>
+<p>If <strong>neither</strong> costs nor <em>a priori</em> probabilities are known, the system designer’s first choice should be the Neyman-Pearson criterion.</p>
+<p>Only if it is impossible or impractical to specify a maximum false alarm rate should the ML criterion be used.</p>
+<p>The following table summarizes the detection criterion of interest with their associated requirements.</p>
+<p>Note that the ML criterion is not listed in the table, since it is more commonly used in estimation theory than in detection theory.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Criterion</strong></p></th>
+<th class="head"><p><strong>A Priori Probabilities</strong></p></th>
+<th class="head"><p><strong>Costs</strong></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>Bayes</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>MAP</strong></p></td>
+<td><p>Yes</p></td>
+<td><p>No</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Minimax</strong></p></td>
+<td><p>No</p></td>
+<td><p>Yes</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Neyman-Pearson</strong></p></td>
+<td><p>No</p></td>
+<td><p>No</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>APPLICATION.</strong> Traditionally, the Neyman-Pearson (NP) criterion is used in applications where costs and <em>a priori</em> probabilities are difficult or impossible to assign, e.g., in radar-type applications.</p>
+<section id="maximize-p-d-subjected-to-p-f-constraint">
+<h2>Maximize <span class="math notranslate nohighlight">\(P_d\)</span> subjected to <span class="math notranslate nohighlight">\(P_f\)</span> constraint<a class="headerlink" href="#maximize-p-d-subjected-to-p-f-constraint" title="Link to this heading">#</a></h2>
+<p>Typically, the false-alarm probability <span class="math notranslate nohighlight">\( P_f \)</span> is constrained to be below some specified level <span class="math notranslate nohighlight">\( \alpha_f \)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+P_f = \Pr(D_1|H_0) \leq \alpha_f
+\]</div>
+<p>With this constraint, the probability of detection <span class="math notranslate nohighlight">\( P_d \)</span> is then maximized.</p>
+<p><strong>OBJECTIVE.</strong>
+The main objective is to find a threshold <span class="math notranslate nohighlight">\(\tau_{NP}\)</span> that maximizes <span class="math notranslate nohighlight">\(P_d\)</span> (the probability of detection) while satisfying the constraint <span class="math notranslate nohighlight">\(P_f \leq \alpha\)</span>, where <span class="math notranslate nohighlight">\(\alpha\)</span> is a predefined false alarm probability.</p>
+<p>If the detected variable <span class="math notranslate nohighlight">\( \mathbf{y} \)</span> has a continuous conditional probability density function under both hypotheses, the derivation of the threshold <span class="math notranslate nohighlight">\(\tau_{NP}\)</span> is as follows.</p>
+<p>Define <span class="math notranslate nohighlight">\( P_f \)</span> to be some value <span class="math notranslate nohighlight">\( \alpha' \)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+P_f := \alpha' \quad\text{where}\quad \alpha' \leq \alpha_f 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( := \)</span> stands for “is defined to be equal to”</p>
+<p>Using a Lagrange multiplier <span class="math notranslate nohighlight">\( \mu \)</span>, define a function <span class="math notranslate nohighlight">\( F \)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+F &amp;= P_d - \mu[P_f - \alpha'] \\
+&amp;= \Pr(D_1|H_1) - \mu[\Pr(D_1|H_0) - \alpha']
+\end{align*} 
+\end{split}\]</div>
+<p>Note that <span class="math notranslate nohighlight">\( P_f - \alpha' \)</span> is not zero, it is a function minus a specific value assigned to that function.</p>
+<p>Maximizing <span class="math notranslate nohighlight">\( P_d \)</span> also maximizes <span class="math notranslate nohighlight">\( F \)</span>.</p>
+<p>It follows that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+F &amp;= \int_{R_1} p(y|H_1) dy - \mu \int_{R_1} p(y|H_0) dy + \mu \alpha' \\
+&amp;= \int_{R_1} [p(y|H_1) - \mu p(y|H_0)] dy + \mu \alpha' 
+\end{align*}
+\end{split}\]</div>
+<p><strong>Discussion.</strong> Note that <span class="math notranslate nohighlight">\( F \)</span> is not a Lagrangian function <span class="math notranslate nohighlight">\( \mathcal{L}(\mu) \)</span>, because the problem is a maximization problem and has not yet been transformed into the standard form for minimization.</p>
+<p>In the Lagrangian method, problems are typically framed as minimization tasks, and the objective function needs to be appropriately modified for that purpose.</p>
+<p>For reviewing the concept of Largrange multiplier, see <a class="reference external" href="https://stanford.edu/class/ee364a/lectures/duality.pdf">Boyd et al., Convex Optimization</a></p>
+<section id="finding-tau-np">
+<h3>Finding <span class="math notranslate nohighlight">\(\tau_{NP}\)</span><a class="headerlink" href="#finding-tau-np" title="Link to this heading">#</a></h3>
+<p>Maximizing <span class="math notranslate nohighlight">\( F \)</span> for <span class="math notranslate nohighlight">\( \mu &gt; 0 \)</span>, we want to pick <span class="math notranslate nohighlight">\( R_1 \)</span> such that the integrand is always positive.</p>
+<p>That is, if</p>
+<div class="math notranslate nohighlight">
+\[
+p(y|H_1) - \mu p(y|H_0) \geq 0 
+\]</div>
+<p>then decide <span class="math notranslate nohighlight">\( D_1 \)</span>.</p>
+<p>It follows that</p>
+<div class="math notranslate nohighlight">
+\[
+L(y) = \frac{p(y|H_1)}{p(y|H_0)} \geq \mu \triangleq \tau_{NP}^{temp}
+\]</div>
+<p>Again, we have a <strong>likelihood-ratio test (LRT)</strong>.</p>
+<p>By definition,</p>
+<div class="math notranslate nohighlight">
+\[
+P_f = \Pr(D_1|H_0) = \int_{R_1(\mu)} p(y|H_0) dy = \alpha' 
+\]</div>
+<p>where we have explicitly shown the <em>dependence</em> of the region <span class="math notranslate nohighlight">\( R_1 \)</span> on <span class="math notranslate nohighlight">\( \mu \)</span>.</p>
+<p>Since</p>
+<div class="math notranslate nohighlight">
+\[
+P_d = \Pr(D_1|H_1) = \int_{R_1(\mu)} p(y|H_1) dy 
+\]</div>
+<p>i.e., both integrals of the previous two equations are over the same range <span class="math notranslate nohighlight">\( R_1(\mu) \)</span>.</p>
+<p>It follows that changing <span class="math notranslate nohighlight">\( \mu \)</span> to <em>increase</em> <span class="math notranslate nohighlight">\( P_d \)</span> also tends to <em>increase</em> <span class="math notranslate nohighlight">\( P_f \)</span>.</p>
+<p>Thus, we change <span class="math notranslate nohighlight">\( \mu \)</span>, i.e., vary the temporary threshold, <span class="math notranslate nohighlight">\(\tau_{NP}^{temp}\)</span>, until we get the largest value of <span class="math notranslate nohighlight">\( \alpha' \leq \alpha \)</span>.</p>
+<p>This will then correspond to the largest value of <span class="math notranslate nohighlight">\( P_d \)</span>, and the threshold will be <span class="math notranslate nohighlight">\( \tau_{NP} \)</span>.</p>
+<div class="math notranslate nohighlight">
+\[
+\tau_{NP} = \mu^* \triangleq \arg\max_{\mu} P_d \quad\text{subject to}\quad P_f \leq \alpha_f
+\]</div>
+</section>
+</section>
+<section id="decision-rule">
+<h2>Decision Rule<a class="headerlink" href="#decision-rule" title="Link to this heading">#</a></h2>
+<p>The decision rule for the NP criterion is somewhat more complicated. It can be stated as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\delta_{NP}(y) = 
+\begin{cases}
+1, &amp; L(y) &gt; \tau_{NP} \\
+\eta, &amp; L(y) = \tau_{NP} \\
+0, &amp; L(y) &lt; \tau_{NP}
+\end{cases} 
+\end{split}\]</div>
+<p>This decision rule is another example of a <em>randomization-rule test</em>.</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\( L(y) \)</span> exceeds the threshold <span class="math notranslate nohighlight">\( \tau_{NP} \)</span>, decide <span class="math notranslate nohighlight">\( D_1 \)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( L(y) &lt; \tau_{NP} \)</span>, decide <span class="math notranslate nohighlight">\( D_0 \)</span>.</p></li>
+<li><p>If, however, <span class="math notranslate nohighlight">\( L(y) = \tau_{NP} \)</span>, then we make a probabilistic decision, where the probability of deciding <span class="math notranslate nohighlight">\( D_1 \)</span> is <span class="math notranslate nohighlight">\( \eta \)</span>.</p></li>
+</ul>
+<p>The threshold <span class="math notranslate nohighlight">\( \tau_{NP} \)</span> (optimal threshold) and value <span class="math notranslate nohighlight">\( \eta \)</span> are chosen so that <span class="math notranslate nohighlight">\( P_f = \alpha_f \)</span>.</p>
+</section>
+<section id="example-antipodal-signal-detection-and-decision-using-np-criterion">
+<h2>Example: Antipodal Signal Detection and Decision using NP Criterion<a class="headerlink" href="#example-antipodal-signal-detection-and-decision-using-np-criterion" title="Link to this heading">#</a></h2>
+<p>This example [B2, Ex 4.11] is a continuation of our previous examples.</p>
+<p>In order to use the Neyman-Pearson criterion, we must specify a maximum false-alarm probability <span class="math notranslate nohighlight">\( \alpha_f \)</span>.</p>
+<p>As an example, let us set <span class="math notranslate nohighlight">\( \alpha_f = 0.1 \)</span>.</p>
+<p>Since these examples all use a log-likelihood ratio, we must find a threshold <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+P_f = \int_{\tau'_{NP}}^\infty p(y|H_0) dy = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \left(-\frac{(y+b)^2}{2\sigma^2}\right) dy \leq 0.1
+\]</div>
+<p>Concurrently, we want to maximize the probability of detection <span class="math notranslate nohighlight">\( P_d \)</span> which is</p>
+<div class="math notranslate nohighlight">
+\[
+P_d = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \left(-\frac{(y-b)^2}{2\sigma^2}\right) dy
+\]</div>
+<p>It is evident that both <span class="math notranslate nohighlight">\( P_f \)</span> and <span class="math notranslate nohighlight">\( P_d \)</span> decrease as the threshold <span class="math notranslate nohighlight">\( \tau_{NP} \)</span> increases.</p>
+<p>To maximize <span class="math notranslate nohighlight">\( P_d \)</span>, we select the threshold <span class="math notranslate nohighlight">\( \tau_{NP} \)</span> such that <span class="math notranslate nohighlight">\( P_f = \alpha_f \)</span>.</p>
+<p>The threshold <span class="math notranslate nohighlight">\( \tau_{NP} \)</span> can be determined directly as the root of the equation <span class="math notranslate nohighlight">\( P_f = \alpha_f \)</span>, without the need to derive it through the Lagrangian formulation.</p>
+<p>Using the aforementioned values of <span class="math notranslate nohighlight">\( b = 1 \)</span> and <span class="math notranslate nohighlight">\( \sigma^2 = 0.25 \)</span>, we want to find <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> such that</p>
+<div class="math notranslate nohighlight">
+\[
+\sqrt{\frac{2}{\pi}} \int_{\tau'_{NP}}^\infty \exp \left(-2(y+1)^2\right) dy = 0.1 
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\iff \frac{1}{2} \text{erfc} \left(\sqrt{2}(\tau'_{NP} + 1)\right) = 0.1 
+\]</div>
+<p>After some computation step, e.g., using error functions, we obtain <span class="math notranslate nohighlight">\( \tau'_{NP} \approx -0.36007 \)</span></p>
+<p>The NP decision rule is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\delta_{NP}(y) = 
+\begin{cases}
+1, &amp; y \geq -0.36007 \\
+0, &amp; y &lt; -0.36007
+\end{cases}
+\end{split}\]</div>
+<p><strong>General form.</strong></p>
+<p>In the Gaussian tail probability, using the complementary error function, for gerneral <span class="math notranslate nohighlight">\(b\)</span> and <span class="math notranslate nohighlight">\(\sigma\)</span>, set <span class="math notranslate nohighlight">\(P_f = \alpha_f\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{2} \text{erfc} \left( \frac{\tau'_{NP} + b}{\sqrt{2\sigma^2}} \right) = \alpha_f.
+\]</div>
+<p>Next, apply the inverse complementary error function <span class="math notranslate nohighlight">\( \text{erfc}^{-1} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\tau'_{NP} + b}{\sqrt{2\sigma^2}} = \text{erfc}^{-1}(2\alpha_f).
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \text{erfc}^{-1} \)</span> is the inverse complementary error function.</p>
+<p>Thus, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\tau'_{NP} = -b + \sqrt{2\sigma^2} \, \text{erfc}^{-1}(2\alpha_f).
+\]</div>
+</section>
+<section id="numerical-results">
+<h2>Numerical Results<a class="headerlink" href="#numerical-results" title="Link to this heading">#</a></h2>
+<p>We assume the setting as in previous examples, i.e., <span class="math notranslate nohighlight">\( b = 1 \)</span> and <span class="math notranslate nohighlight">\( \sigma^2 = 0.25 \)</span>.</p>
+<ul>
+<li><p>For <span class="math notranslate nohighlight">\( P_f \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  P_f(\tau'_{NP}) = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \left(-\frac{(y+b)^2}{2\sigma^2}\right) dy
+  \]</div>
+</li>
+<li><p>For <span class="math notranslate nohighlight">\( P_d \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  P_d(\tau'_{NP}) = \frac{1}{\sqrt{2\pi\sigma^2}} \int_{\tau'_{NP}}^\infty \exp \left(-\frac{(y-b)^2}{2\sigma^2}\right) dy
+  \]</div>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erfcinv</span>
+
+<span class="c1"># Given values</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">alpha_f</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1"># Range of tau&#39;_NP values</span>
+<span class="n">tau_NP_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erfc</span>
+
+<span class="c1"># Mathematical expressions for P_f and P_d</span>
+<span class="k">def</span> <span class="nf">P_f_math</span><span class="p">(</span><span class="n">tau_NP</span><span class="p">):</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quad</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tau_NP</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">P_d_math</span><span class="p">(</span><span class="n">tau_NP</span><span class="p">):</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quad</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tau_NP</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Calculate P_f and P_d using the mathematical expressions</span>
+<span class="n">P_f_values_math</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">P_f_math</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span> <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="n">tau_NP_range</span><span class="p">])</span>
+<span class="n">P_d_values_math</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">P_d_math</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span> <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="n">tau_NP_range</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">tau_NP_theoretical</span><span class="p">(</span><span class="n">alpha_f</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="c1"># Calculate the NP threshold based on the provided alpha_f, b, and sigma</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">erfcinv</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">alpha_f</span><span class="p">)</span>
+
+<span class="n">tau_NP_theoretical_math</span> <span class="o">=</span> <span class="n">tau_NP_theoretical</span><span class="p">(</span><span class="n">alpha_f</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="n">tau_NP_theoretical_math</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Numerical tau&#39;_NP = </span><span class="si">{</span><span class="n">tau_NP_theoretical_math</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Numerical tau&#39;_NP = -0.3592242172276997
+</pre></div>
+</div>
+</div>
+</div>
+<section id="plot-p-f-and-p-d-as-a-function-of-the-decision-threshold">
+<h3>Plot <span class="math notranslate nohighlight">\(P_f\)</span> and <span class="math notranslate nohighlight">\(P_d\)</span> as a function of the decision threshold<a class="headerlink" href="#plot-p-f-and-p-d-as-a-function-of-the-decision-threshold" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate corresponding P_f and P_d for the found tau&#39;_NP</span>
+<span class="n">P_f_at_solution</span> <span class="o">=</span> <span class="n">P_f_math</span><span class="p">(</span><span class="n">tau_NP_theoretical_math</span><span class="p">)</span>
+<span class="n">P_d_at_solution</span> <span class="o">=</span> <span class="n">P_d_math</span><span class="p">(</span><span class="n">tau_NP_theoretical_math</span><span class="p">)</span>
+
+<span class="c1"># Annotating the plot with the found P_f and P_d values</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tau_NP_range</span><span class="p">,</span> <span class="n">P_f_values_math</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;P_f (False Alarm Probability)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tau_NP_range</span><span class="p">,</span> <span class="n">P_d_values_math</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;P_d (Detection Probability)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">alpha_f</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;alpha_f = 0.1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">tau_NP_theoretical_math</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;tau</span><span class="se">\&#39;</span><span class="s1">_NP ≈ </span><span class="si">{</span><span class="n">tau_NP_theoretical_math</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tau_NP_theoretical_math</span><span class="p">,</span> <span class="n">P_f_at_solution</span><span class="p">,</span> <span class="s1">&#39;ro&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;P_f ≈ </span><span class="si">{</span><span class="n">P_f_at_solution</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tau_NP_theoretical_math</span><span class="p">,</span> <span class="n">P_d_at_solution</span><span class="p">,</span> <span class="s1">&#39;go&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;P_d ≈ </span><span class="si">{</span><span class="n">P_d_at_solution</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;P_f ≈ </span><span class="si">{</span><span class="n">P_f_at_solution</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">tau_NP_theoretical_math</span><span class="p">,</span> <span class="n">P_f_at_solution</span><span class="p">),</span> 
+             <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;P_d ≈ </span><span class="si">{</span><span class="n">P_d_at_solution</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">(</span><span class="n">tau_NP_theoretical_math</span><span class="p">,</span> <span class="n">P_d_at_solution</span><span class="p">),</span> 
+             <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="o">-</span><span class="mi">15</span><span class="p">),</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;tau&#39;_NP (Threshold)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probability&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;P_f and P_d as a function of tau&#39;_NP with solution marked and annotated&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/8494f2b46185e70d8fed8552de3ca564edc415c975a1503f1b055c4737f5d421.png" src="_images/8494f2b46185e70d8fed8552de3ca564edc415c975a1503f1b055c4737f5d421.png" />
+</div>
+</div>
+</section>
+<section id="p-d-as-a-function-of-p-f">
+<h3><span class="math notranslate nohighlight">\(P_d\)</span> as a function of <span class="math notranslate nohighlight">\(P_f\)</span><a class="headerlink" href="#p-d-as-a-function-of-p-f" title="Link to this heading">#</a></h3>
+<p>As <span class="math notranslate nohighlight">\( P_f \)</span> increases, the required threshold <span class="math notranslate nohighlight">\( \tau'_{NP} \)</span> to maintain that false alarm rate decreases. A lower threshold means that the system is more likely to decide <span class="math notranslate nohighlight">\( H_1 \)</span> (i.e., detect a signal), even when the actual value of <span class="math notranslate nohighlight">\( y \)</span> is not very high.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erfc</span>
+
+<span class="c1"># Given values</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c1"># Mathematical expressions for P_f and P_d</span>
+<span class="k">def</span> <span class="nf">P_f_math</span><span class="p">(</span><span class="n">tau_NP</span><span class="p">):</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quad</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tau_NP</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">P_d_math</span><span class="p">(</span><span class="n">tau_NP</span><span class="p">):</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quad</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tau_NP</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Range of P_f values from 0.1 to 0.9</span>
+<span class="n">P_f_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="c1"># Calculate decision threshold tau&#39;_NP for each P_f in the range</span>
+<span class="n">tau_NP_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">tau_NP_theoretical</span><span class="p">(</span><span class="n">P_f</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span> <span class="k">for</span> <span class="n">P_f</span> <span class="ow">in</span> <span class="n">P_f_range</span><span class="p">]</span>
+
+<span class="c1"># Calculate P_d for each tau&#39;_NP in the range</span>
+<span class="n">P_d_values</span> <span class="o">=</span> <span class="p">[</span><span class="n">P_d_math</span><span class="p">(</span><span class="n">tau_NP</span><span class="p">)</span> <span class="k">for</span> <span class="n">tau_NP</span> <span class="ow">in</span> <span class="n">tau_NP_values</span><span class="p">]</span>
+
+<span class="c1"># Plot P_d as a function of P_f</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">P_f_range</span><span class="p">,</span> <span class="n">tau_NP_values</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;P_f (False Alarm Probability)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Decision Threshold (tau&#39;_NP)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Decision Threshold vs. P_f&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Plot decision threshold tau&#39;_NP as a function of P_f</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">P_f_range</span><span class="p">,</span> <span class="n">P_d_values</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;P_f (False Alarm Probability)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;P_d (Detection Probability)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;P_d vs. P_f using Neyman-Pearson Criterion&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fd98668b8f82e0d07ec09200bb4c05d1f4e076fb3323684686c4ca6dd8e041dc.png" src="_images/fd98668b8f82e0d07ec09200bb4c05d1f4e076fb3323684686c4ca6dd8e041dc.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erfcinv</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Given parameters</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Signal amplitude</span>
+<span class="n">sigma_squared</span> <span class="o">=</span> <span class="mf">0.25</span>  <span class="c1"># Noise variance</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_squared</span><span class="p">)</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000000</span>  <span class="c1"># Number of samples for simulation</span>
+<span class="n">alpha_f</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Desired false alarm probability</span>
+
+<span class="c1"># Mathematical expressions for P_f and P_d</span>
+<span class="k">def</span> <span class="nf">P_f_math</span><span class="p">(</span><span class="n">tau_NP</span><span class="p">):</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quad</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tau_NP</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">def</span> <span class="nf">P_d_math</span><span class="p">(</span><span class="n">tau_NP</span><span class="p">):</span>
+    <span class="n">func</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">y</span> <span class="o">-</span> <span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">quad</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">tau_NP</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">inf</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="c1"># Calculate tau&#39;_NP threshold for Neyman-Pearson criterion</span>
+<span class="k">def</span> <span class="nf">tau_NP_theoretical</span><span class="p">(</span><span class="n">alpha_f</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">erfcinv</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">alpha_f</span><span class="p">)</span>
+
+<span class="c1"># Calculate tau&#39;_NP</span>
+<span class="n">tau_NP</span> <span class="o">=</span> <span class="n">tau_NP_theoretical</span><span class="p">(</span><span class="n">alpha_f</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neyman-Pearson threshold tau&#39;_NP = </span><span class="si">{</span><span class="n">tau_NP</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Simulate received signals and decisions based on Neyman-Pearson threshold</span>
+<span class="n">s0</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">b</span>
+
+<span class="c1"># Generate noise</span>
+<span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_squared</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">)</span>
+
+<span class="c1"># Simulate received y under each hypothesis</span>
+<span class="n">y_given_s0</span> <span class="o">=</span> <span class="n">s0</span> <span class="o">+</span> <span class="n">noise</span>  <span class="c1"># When H0 is true</span>
+<span class="n">y_given_s1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">noise</span>  <span class="c1"># When H1 is true</span>
+
+<span class="c1"># Decisions based on the Neyman-Pearson threshold</span>
+<span class="n">decisions_s0_NP</span> <span class="o">=</span> <span class="n">y_given_s0</span> <span class="o">&gt;=</span> <span class="n">tau_NP</span>  <span class="c1"># Decide H1 if y &gt;= tau&#39;_NP (for H0)</span>
+<span class="n">decisions_s1_NP</span> <span class="o">=</span> <span class="n">y_given_s1</span> <span class="o">&gt;=</span> <span class="n">tau_NP</span>  <span class="c1"># Decide H1 if y &gt;= tau&#39;_NP (for H1)</span>
+
+<span class="c1"># Estimating transmitted signals (s_hat) based on decisions for Neyman-Pearson criterion</span>
+<span class="n">s0_hat_NP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">decisions_s0_NP</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Decided s1 if decision is True, else s0 (under H0)</span>
+<span class="n">s1_hat_NP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">decisions_s1_NP</span><span class="p">,</span> <span class="n">s1</span><span class="p">,</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Decided s1 if decision is True, else s0 (under H1)</span>
+
+<span class="c1"># Calculating empirical probabilities for Neyman-Pearson criterion</span>
+<span class="n">P00_NP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_NP</span> <span class="o">==</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Probability of deciding H0 when H0 is true</span>
+<span class="n">P01_NP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_NP</span> <span class="o">==</span> <span class="n">s0</span><span class="p">)</span>  <span class="c1"># Probability of deciding H0 when H1 is true</span>
+<span class="n">P10_NP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s0_hat_NP</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>  <span class="c1"># Probability of deciding H1 when H0 is true (false alarm)</span>
+<span class="n">P11_NP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">s1_hat_NP</span> <span class="o">==</span> <span class="n">s1</span><span class="p">)</span>  <span class="c1"># Probability of deciding H1 when H1 is true (detection)</span>
+
+<span class="c1"># Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neyman-Pearson Criterion, P00 (Decide H0 | H0 true): </span><span class="si">{</span><span class="n">P00_NP</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neyman-Pearson Criterion, P01 (Decide H0 | H1 true): </span><span class="si">{</span><span class="n">P01_NP</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neyman-Pearson Criterion, P10 (Decide H1 | H0 true): </span><span class="si">{</span><span class="n">P10_NP</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Neyman-Pearson Criterion, P11 (Decide H1 | H1 true): </span><span class="si">{</span><span class="n">P11_NP</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plot the results for P_f and P_d as a function of tau_NP</span>
+<span class="n">tau_NP_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">P_f_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">P_f_math</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span> <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="n">tau_NP_range</span><span class="p">])</span>
+<span class="n">P_d_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">P_d_math</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span> <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="n">tau_NP_range</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Neyman-Pearson threshold tau&#39;_NP = -0.3592242172276997
+Neyman-Pearson Criterion, P00 (Decide H0 | H0 true): 0.9007
+Neyman-Pearson Criterion, P01 (Decide H0 | H1 true): 0.0032
+Neyman-Pearson Criterion, P10 (Decide H1 | H0 true): 0.0993
+Neyman-Pearson Criterion, P11 (Decide H1 | H1 true): 0.9968
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="overlap-of-distributions">
+<h3>Overlap of Distributions<a class="headerlink" href="#overlap-of-distributions" title="Link to this heading">#</a></h3>
+<p>In antipodal signaling:</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( H_0 \)</span></strong> represents the hypothesis where the signal <span class="math notranslate nohighlight">\( s_0 = -1 \)</span> is transmitted.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( H_1 \)</span></strong> represents the hypothesis where the signal <span class="math notranslate nohighlight">\( s_1 = +1 \)</span> is transmitted.</p></li>
+</ul>
+<p>The received signal <span class="math notranslate nohighlight">\( y \)</span> is affected by noise, and we model the distributions of <span class="math notranslate nohighlight">\( y \)</span> under each hypothesis as:</p>
+<ul class="simple">
+<li><p>Under <span class="math notranslate nohighlight">\( H_0 \)</span> (when <span class="math notranslate nohighlight">\( b = -1 \)</span>), <span class="math notranslate nohighlight">\( y \)</span> follows a normal distribution centered at <span class="math notranslate nohighlight">\( -1 \)</span>.</p></li>
+<li><p>Under <span class="math notranslate nohighlight">\( H_1 \)</span> (when <span class="math notranslate nohighlight">\( b = +1 \)</span>), <span class="math notranslate nohighlight">\( y \)</span> follows a normal distribution centered at <span class="math notranslate nohighlight">\( +1 \)</span>.</p></li>
+</ul>
+<p>The distributions of <span class="math notranslate nohighlight">\( y \)</span> under <span class="math notranslate nohighlight">\( H_0 \)</span> (centered at <span class="math notranslate nohighlight">\( -1 \)</span>) and <span class="math notranslate nohighlight">\( H_1 \)</span> (centered at <span class="math notranslate nohighlight">\( +1 \)</span>) overlap. When the predefined <span class="math notranslate nohighlight">\( P_f \)</span> constraint is increased, the decision threshold is lowered. This means that more of the <span class="math notranslate nohighlight">\( H_1 \)</span> distribution (where <span class="math notranslate nohighlight">\( y \)</span> is centered around <span class="math notranslate nohighlight">\( +1 \)</span>) will exceed the lower threshold, leading to a higher <span class="math notranslate nohighlight">\( P_d \)</span>. Consequently, the system becomes more sensitive, allowing for better detection of the <span class="math notranslate nohighlight">\( H_1 \)</span> signal at the cost of an increased false alarm rate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">scipy.stats</span> <span class="k">as</span> <span class="nn">stats</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.integrate</span> <span class="kn">import</span> <span class="n">quad</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">erfc</span>
+
+<span class="c1"># Given values</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c1"># Define the range for y</span>
+<span class="n">y_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Define the PDFs for H0 (b=-1) and H1 (b=+1)</span>
+<span class="n">pdf_H0</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">y_range</span><span class="p">,</span> <span class="n">loc</span><span class="o">=-</span><span class="n">b</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+<span class="n">pdf_H1</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">y_range</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="n">b</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">)</span>
+
+<span class="c1"># P_f values to plot</span>
+<span class="n">P_f_values</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.3</span><span class="p">,</span> <span class="mf">0.7</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span>
+
+<span class="c1"># Create subplots</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">P_f</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">P_f_values</span><span class="p">):</span>
+    <span class="n">tau_NP</span> <span class="o">=</span> <span class="n">tau_NP_theoretical</span><span class="p">(</span><span class="n">P_f</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+    
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">axs</span><span class="p">[</span><span class="n">i</span> <span class="o">//</span> <span class="mi">2</span><span class="p">,</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>
+    
+    <span class="c1"># Plot the PDFs</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_range</span><span class="p">,</span> <span class="n">pdf_H0</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$p(y|H_0)$ (b=-1)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y_range</span><span class="p">,</span> <span class="n">pdf_H1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$p(y|H_1)$ (b=+1)&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Plot the threshold</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">tau_NP</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Threshold $</span><span class="se">\\</span><span class="s1">tau</span><span class="se">\&#39;</span><span class="s1">_</span><span class="se">{{</span><span class="s1">NP</span><span class="se">}}</span><span class="s1">$ = </span><span class="si">{</span><span class="n">tau_NP</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Shade the regions for P_f and P_d</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">y_range</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pdf_H0</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">y_range</span> <span class="o">&gt;=</span> <span class="n">tau_NP</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_f$ Region&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">y_range</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pdf_H1</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">y_range</span> <span class="o">&gt;=</span> <span class="n">tau_NP</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;$P_d$ Region&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Labels and legend</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;y (Received Signal)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;P_f = </span><span class="si">{</span><span class="n">P_f</span><span class="si">}</span><span class="s1">, $</span><span class="se">\\</span><span class="s1">tau</span><span class="se">\&#39;</span><span class="s1">_</span><span class="se">{{</span><span class="s1">NP</span><span class="se">}}</span><span class="s1">$ = </span><span class="si">{</span><span class="n">tau_NP</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/6ddb5d14482107eab6646ac7754407db2c6a4b20105df4e090d2e8293f279dc2.png" src="_images/6ddb5d14482107eab6646ac7754407db2c6a4b20105df4e090d2e8293f279dc2.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c2_s9_minimax.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">MiniMax Criterion</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c2_x2_LLR_Sionna.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tutorial: Differentiable Communication Systems Using Sionna</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximize-p-d-subjected-to-p-f-constraint">Maximize <span class="math notranslate nohighlight">\(P_d\)</span> subjected to <span class="math notranslate nohighlight">\(P_f\)</span> constraint</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-tau-np">Finding <span class="math notranslate nohighlight">\(\tau_{NP}\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule">Decision Rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-antipodal-signal-detection-and-decision-using-np-criterion">Example: Antipodal Signal Detection and Decision using NP Criterion</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-p-f-and-p-d-as-a-function-of-the-decision-threshold">Plot <span class="math notranslate nohighlight">\(P_f\)</span> and <span class="math notranslate nohighlight">\(P_d\)</span> as a function of the decision threshold</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-d-as-a-function-of-p-f"><span class="math notranslate nohighlight">\(P_d\)</span> as a function of <span class="math notranslate nohighlight">\(P_f\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overlap-of-distributions">Overlap of Distributions</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

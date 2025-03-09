@@ -1,0 +1,1407 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Example: Antipodal Signal Detection using Multiple Samples &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c5_s5_b_example_a';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example: Detection with Real Additive Gaussian Noise" href="c5_s5_c_example_b.html" />
+    <link rel="prev" title="Criteria for Multiple Sample Detection of Binary Hypotheses" href="c5_s5_a_Vector_Detection_Criteria.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Example: Antipodal Signal Detection using Multiple Samples</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-conditional-pdfs-extending-to-k-independent-samples">Step 1: Conditional PDFs Extending to <span class="math notranslate nohighlight">\( k \)</span> Independent Samples</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-computing-the-likelihood-ratio">Step 2: Computing the Likelihood Ratio</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-likelihood-ratio">Log-Likelihood Ratio</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-make-decision">Step 3: Make Decision</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#neyman-pearson-np-criterion">Neyman-Pearson (NP) Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-neyman-pearson-threshold-eta-text-np">Derivation of the Neyman-Pearson Threshold (<span class="math notranslate nohighlight">\( \eta_{\text{NP}} \)</span>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-probability-of-detection-p-d">Derivation of the Probability of Detection (<span class="math notranslate nohighlight">\( P_d \)</span>)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#real-world-application-example">Real-World Application Example</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-deciding-h-1-signal-present">Example 1: Deciding <span class="math notranslate nohighlight">\( H_1 \)</span> (Signal Present)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-deciding-h-0-no-signal">Example 2: Deciding <span class="math notranslate nohighlight">\( H_0 \)</span> (No Signal)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-edge-case-near-the-threshold">Example 3: Edge Case Near the Threshold</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="example-antipodal-signal-detection-using-multiple-samples">
+<h1>Example: Antipodal Signal Detection using Multiple Samples<a class="headerlink" href="#example-antipodal-signal-detection-using-multiple-samples" title="Link to this heading">#</a></h1>
+<p>As consider in Chapter 2, we are dealing with a signal detection problem where we need to decide between two hypotheses based on observed data corrupted by noise.</p>
+<p>Specifically, we’re considering <strong>antipodal signals</strong>, meaning the signals under the two hypotheses are negatives of each other. Here’s a summary of the given information:</p>
+<p><strong>Signals:</strong></p>
+<ul class="simple">
+<li><p>Under hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span>: <span class="math notranslate nohighlight">\( s_0 = -b \)</span></p></li>
+<li><p>Under hypothesis <span class="math notranslate nohighlight">\( H_1 \)</span>: <span class="math notranslate nohighlight">\( s_1 = b \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( b &gt; 0 \)</span> ensures that <span class="math notranslate nohighlight">\( s_0 \)</span> and <span class="math notranslate nohighlight">\( s_1 \)</span> are indeed antipodal.</p></li>
+</ul>
+<p><strong>Prior Probabilities:</strong></p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \pi_0 = 0.8 \)</span> (probability of <span class="math notranslate nohighlight">\( H_0 \)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\( \pi_1 = 0.2 \)</span> (probability of <span class="math notranslate nohighlight">\( H_1 \)</span>)</p></li>
+</ul>
+<p><strong>Noise Model:</strong></p>
+<ul>
+<li><p>The noise <span class="math notranslate nohighlight">\( \mathbf{n} \)</span> is Gaussian with zero mean and variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>.</p></li>
+<li><p>Probability Density Function (pdf) of noise:</p>
+<div class="math notranslate nohighlight">
+\[
+  p_{\mathbf{n}}(n) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{n^2}{2\sigma^2} \right)
+  \]</div>
+</li>
+</ul>
+<p><strong>Extension to Multiple Samples:</strong></p>
+<ul class="simple">
+<li><p>Instead of a single observation, we have <span class="math notranslate nohighlight">\( k \)</span> independent samples.</p></li>
+</ul>
+</section>
+<section id="step-1-conditional-pdfs-extending-to-k-independent-samples">
+<h1>Step 1: Conditional PDFs Extending to <span class="math notranslate nohighlight">\( k \)</span> Independent Samples<a class="headerlink" href="#step-1-conditional-pdfs-extending-to-k-independent-samples" title="Link to this heading">#</a></h1>
+<p>Since <span class="math notranslate nohighlight">\( n_i \)</span> is Gaussian with zero mean and variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>, each <span class="math notranslate nohighlight">\( y_i \)</span> conditioned on the hypothesis is also Gaussian:</p>
+<p><strong>Conditional PDFs:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+p(y_i | H_0) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(y_i - (-b))^2}{2\sigma^2} \right) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(y_i + b)^2}{2\sigma^2} \right)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+p(y_i | H_1) = \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(y_i - b)^2}{2\sigma^2} \right)
+\]</div>
+<p><strong>Extending to <span class="math notranslate nohighlight">\( k \)</span> Independent Samples</strong></p>
+<p>Assuming that each of the <span class="math notranslate nohighlight">\( k \)</span> samples is <strong>independent</strong>, the joint probability density function (pdf) for all samples under each hypothesis is the product of individual PDFs.</p>
+<p><strong>Under <span class="math notranslate nohighlight">\( H_0 \)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y} | H_0) = \prod_{i=1}^k p(y_i | H_0) = \prod_{i=1}^k \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(y_i + b)^2}{2\sigma^2} \right)
+\]</div>
+<p>Simplifying the product:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align}
+p(\vec{y} | H_0) &amp;= \left( \frac{1}{\sqrt{2\pi\sigma^2}} \right)^k \exp\left( -\frac{\sum_{i=1}^k (y_i + b)^2}{2\sigma^2} \right) \\
+&amp;= \frac{1}{(2\pi\sigma^2)^{k/2}} \exp\left( -\frac{\sum_{i=1}^k (y_i + b)^2}{2\sigma^2} \right)
+\end{align}
+\end{split}\]</div>
+<p><strong>Under <span class="math notranslate nohighlight">\( H_1 \)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y} | H_1) = \prod_{i=1}^k p(y_i | H_1) = \prod_{i=1}^k \frac{1}{\sqrt{2\pi\sigma^2}} \exp\left( -\frac{(y_i - b)^2}{2\sigma^2} \right)
+\]</div>
+<p>Simplifying similarly:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y} | H_1) = \frac{1}{(2\pi\sigma^2)^{k/2}} \exp\left( -\frac{\sum_{i=1}^k (y_i - b)^2}{2\sigma^2} \right)
+\]</div>
+</section>
+<section id="step-2-computing-the-likelihood-ratio">
+<h1>Step 2: Computing the Likelihood Ratio<a class="headerlink" href="#step-2-computing-the-likelihood-ratio" title="Link to this heading">#</a></h1>
+<p>The <strong>likelihood ratio</strong> <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span> is the ratio of the likelihoods under <span class="math notranslate nohighlight">\( H_1 \)</span> and <span class="math notranslate nohighlight">\( H_0 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+L(\vec{y}) = \frac{p(\vec{y} | H_1)}{p(\vec{y} | H_0)}
+}
+\]</div>
+<p>Substituting the expressions derived:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \frac{\frac{1}{(2\pi\sigma^2)^{k/2}} \exp\left( -\frac{\sum_{i=1}^k (y_i - b)^2}{2\sigma^2} \right)}{\frac{1}{(2\pi\sigma^2)^{k/2}} \exp\left( -\frac{\sum_{i=1}^k (y_i + b)^2}{2\sigma^2} \right)}
+\]</div>
+<p>Simplifying:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \exp\left( \frac{\sum_{i=1}^k (y_i + b)^2 - \sum_{i=1}^k (y_i - b)^2}{2\sigma^2} \right)
+\]</div>
+<p><strong>Simplifying the Exponent</strong></p>
+<p>Let’s simplify the exponent:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^k (y_i + b)^2 - \sum_{i=1}^k (y_i - b)^2
+\]</div>
+<p>Expanding each squared term:</p>
+<div class="math notranslate nohighlight">
+\[
+(y_i + b)^2 = y_i^2 + 2by_i + b^2
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+(y_i - b)^2 = y_i^2 - 2by_i + b^2
+\]</div>
+<p>Subtracting the two:</p>
+<div class="math notranslate nohighlight">
+\[
+(y_i + b)^2 - (y_i - b)^2 = (y_i^2 + 2by_i + b^2) - (y_i^2 - 2by_i + b^2) = 4by_i
+\]</div>
+<p>Therefore, for all <span class="math notranslate nohighlight">\( k \)</span> samples:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^k (y_i + b)^2 - \sum_{i=1}^k (y_i - b)^2 = \sum_{i=1}^k 4by_i = 4b \sum_{i=1}^k y_i
+\]</div>
+<p>Substituting back into the expression for <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+L(\vec{y}) = \exp\left( \frac{4b \sum_{i=1}^k y_i}{2\sigma^2} \right) = \exp\left( \frac{2b}{\sigma^2} \sum_{i=1}^k y_i \right)
+}
+\]</div>
+<section id="log-likelihood-ratio">
+<h2>Log-Likelihood Ratio<a class="headerlink" href="#log-likelihood-ratio" title="Link to this heading">#</a></h2>
+<p>Taking the natural logarithm of the likelihood ratio simplifies analysis, especially for threshold-based decision rules.</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\ell(\vec{y}) = \ln L(\vec{y}) = \frac{2b}{\sigma^2} \sum_{i=1}^k y_i
+}
+\]</div>
+</section>
+</section>
+<section id="step-3-make-decision">
+<h1>Step 3: Make Decision<a class="headerlink" href="#step-3-make-decision" title="Link to this heading">#</a></h1>
+<p>To make a decision between <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>, we compare the likelihood ratio (or log-likelihood ratio) to a threshold.</p>
+<p><strong>Threshold Setting:</strong></p>
+<p>Determine a threshold <span class="math notranslate nohighlight">\( \eta \)</span> using Bayes, MAP, MiniMax, Neyman-Pearson</p>
+<p>One common approach is the <strong>Neyman-Pearson criterion</strong>, which maximizes the probability of detection for a given probability of false alarm <span class="math notranslate nohighlight">\( P_f \)</span>.</p>
+<p>For example: <span class="math notranslate nohighlight">\( P_f = P(L(\vec{y}) &gt; \eta | H_0) = 0.1 \)</span>.</p>
+<p>Alternatively, using the log-likelihood ratio:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) &gt; \ln \eta
+\]</div>
+<p><strong>Decision Rule:</strong></p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\( L(\vec{y}) &gt; \eta \)</span> (or <span class="math notranslate nohighlight">\( \ell(\vec{y}) &gt; \ln \eta \)</span>), decide <span class="math notranslate nohighlight">\( H_1 \)</span>.</p></li>
+<li><p>Otherwise, decide <span class="math notranslate nohighlight">\( H_0 \)</span>.</p></li>
+</ul>
+</section>
+<section id="neyman-pearson-np-criterion">
+<h1>Neyman-Pearson (NP) Criterion<a class="headerlink" href="#neyman-pearson-np-criterion" title="Link to this heading">#</a></h1>
+<p>Since there is no information about the cost of different types of errors (i.e., no specified cost for false alarms or missed detections), the <strong>Neyman-Pearson (NP) criterion</strong> is the appropriate choice.</p>
+<p>The theoretical derivation of the <strong>Neyman-Pearson threshold (<span class="math notranslate nohighlight">\( \eta_{\text{NP}} \)</span>)</strong> and the <strong>probability of detection (<span class="math notranslate nohighlight">\( P_d \)</span>)</strong> using the specified parameters:</p>
+<ul class="simple">
+<li><p>Signal Amplitude (<span class="math notranslate nohighlight">\( b \)</span>): 0.5</p></li>
+<li><p>Noise Standard Deviation (<span class="math notranslate nohighlight">\( \sigma \)</span>): 2.0</p></li>
+<li><p>Number of Samples (<span class="math notranslate nohighlight">\( k \)</span>): 2</p></li>
+<li><p>Desired Probability of False Alarm (<span class="math notranslate nohighlight">\( P_f \)</span>): 0.1</p></li>
+</ul>
+<section id="derivation-of-the-neyman-pearson-threshold-eta-text-np">
+<h2>Derivation of the Neyman-Pearson Threshold (<span class="math notranslate nohighlight">\( \eta_{\text{NP}} \)</span>)<a class="headerlink" href="#derivation-of-the-neyman-pearson-threshold-eta-text-np" title="Link to this heading">#</a></h2>
+<p><strong>Expressing the Log-Likelihood Ratio</strong></p>
+<p>Under both hypotheses, the log-likelihood ratio can be derived as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) = \ln\left( \frac{p(\vec{y} | H_1)}{p(\vec{y} | H_0)} \right) = \frac{2b}{\sigma^2} \sum_{i=1}^k y_i
+\]</div>
+<p>Thus, the decision rule becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{2b}{\sigma^2} \sum_{i=1}^k y_i \underset{H_0}{\overset{H_1}{\gtrless}} \ln(\eta_{\text{NP}})
+\]</div>
+<p>Solving for the sum of observations:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^k y_i \underset{H_0}{\overset{H_1}{\gtrless}} \frac{\sigma^2}{2b} \ln(\eta_{\text{NP}})
+\]</div>
+<p>Let’s denote the threshold on the sum as <span class="math notranslate nohighlight">\( S_{\text{threshold}} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+S_{\text{threshold}} = \frac{\sigma^2}{2b} \ln(\eta_{\text{NP}})
+}
+\]</div>
+<p><strong>Determining <span class="math notranslate nohighlight">\( \eta_{\text{NP}} \)</span> for <span class="math notranslate nohighlight">\( P_f = 0.1 \)</span></strong></p>
+<p>To achieve a desired <strong>Probability of False Alarm (<span class="math notranslate nohighlight">\( P_f \)</span>)</strong> of 0.1, we set:</p>
+<div class="math notranslate nohighlight">
+\[
+P\left( \sum_{i=1}^k y_i &gt; S_{\text{threshold}} \bigg| H_0 \right) = 0.1
+\]</div>
+<p>Under <span class="math notranslate nohighlight">\( H_0 \)</span>, each <span class="math notranslate nohighlight">\( y_i \)</span> is normally distributed as <span class="math notranslate nohighlight">\( \mathcal{N}(-b, \sigma^2) \)</span>.</p>
+<p>Therefore, the sum <span class="math notranslate nohighlight">\( S = \sum_{i=1}^k y_i \)</span> is also normally distributed:</p>
+<div class="math notranslate nohighlight">
+\[
+S \sim \mathcal{N}(-k b, k \sigma^2)
+\]</div>
+<p><strong>Finding <span class="math notranslate nohighlight">\( S_{\text{threshold}} \)</span></strong></p>
+<p>To find the threshold corresponding to <span class="math notranslate nohighlight">\( P_f = 0.1 \)</span>:</p>
+<p><strong>Standardize <span class="math notranslate nohighlight">\( S \)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+Z = \frac{S - (-k b)}{\sigma \sqrt{k}} \sim \mathcal{N}(0, 1)
+\]</div>
+<p><strong>Determine the z-score for the upper 10% tail:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+z_{0.1} = \Phi^{-1}(1 - P_f) = \Phi^{-1}(0.9) \approx 1.2816
+\]</div>
+<p>Where <span class="math notranslate nohighlight">\( \Phi^{-1} \)</span> is the inverse CDF of the standard normal distribution.</p>
+<p><strong>Compute <span class="math notranslate nohighlight">\( S_{\text{threshold}} \)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+S_{\text{threshold}} = \mu_{S|H_0} + z_{0.1} \sigma_{S|H_0} = -k b + z_{0.1} \sigma \sqrt{k}
+\]</div>
+<p>Substituting the given parameters:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{\text{threshold}} = -2 \times 0.5 + 1.2816 \times 2 \times \sqrt{2} \approx -1.0 + 3.6255 = 2.6255
+\]</div>
+<p><strong>Solving for <span class="math notranslate nohighlight">\( \eta_{\text{NP}} \)</span></strong></p>
+<p>From the relationship between <span class="math notranslate nohighlight">\( S_{\text{threshold}} \)</span> and <span class="math notranslate nohighlight">\( \eta_{\text{NP}} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{\text{threshold}} = \frac{\sigma^2}{2b} \ln(\eta_{\text{NP}})
+\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\( \ln(\eta_{\text{NP}}) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\ln(\eta_{\text{NP}}) = \frac{2b}{\sigma^2} \times S_{\text{threshold}} = \frac{2 \times 0.5}{4} \times 2.6255 = \frac{1.0}{4} \times 2.6255 = 0.6564
+\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{ \eta_{\text{NP}} = \exp(0.6564) \approx 1.928 }
+\]</div>
+</section>
+<section id="derivation-of-the-probability-of-detection-p-d">
+<h2>Derivation of the Probability of Detection (<span class="math notranslate nohighlight">\( P_d \)</span>)<a class="headerlink" href="#derivation-of-the-probability-of-detection-p-d" title="Link to this heading">#</a></h2>
+<p>The <strong>Probability of Detection (<span class="math notranslate nohighlight">\( P_d \)</span>)</strong> is the likelihood that the test correctly decides <span class="math notranslate nohighlight">\( H_1 \)</span> when <span class="math notranslate nohighlight">\( H_1 \)</span> is true.</p>
+<div class="math notranslate nohighlight">
+\[
+P_d = P\left( \sum_{i=1}^k y_i &gt; S_{\text{threshold}} \bigg| H_1 \right)
+\]</div>
+<p><strong>Distribution Under <span class="math notranslate nohighlight">\( H_1 \)</span></strong></p>
+<p>Under <span class="math notranslate nohighlight">\( H_1 \)</span>, each <span class="math notranslate nohighlight">\( y_i \)</span> is distributed as <span class="math notranslate nohighlight">\( \mathcal{N}(b, \sigma^2) \)</span>. Therefore, the sum <span class="math notranslate nohighlight">\( S = \sum_{i=1}^k y_i \)</span> is normally distributed as:</p>
+<div class="math notranslate nohighlight">
+\[
+S \sim \mathcal{N}(k b, k \sigma^2)
+\]</div>
+<p><strong>Calculating <span class="math notranslate nohighlight">\( P_d \)</span></strong></p>
+<p>To compute <span class="math notranslate nohighlight">\( P_d \)</span>, we standardize <span class="math notranslate nohighlight">\( S \)</span> under <span class="math notranslate nohighlight">\( H_1 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+Z = \frac{S - \mu_{S|H_1}}{\sigma_{S|H_1}} = \frac{S - k b}{\sigma \sqrt{k}} \sim \mathcal{N}(0, 1)
+\]</div>
+<p>Thus:</p>
+<div class="math notranslate nohighlight">
+\[
+P_d = P\left( S &gt; S_{\text{threshold}} \bigg| H_1 \right) = P\left( Z &gt; \frac{S_{\text{threshold}} - k b}{\sigma \sqrt{k}} \right) = 1 - \Phi\left( \frac{S_{\text{threshold}} - k b}{\sigma \sqrt{k}} \right)
+\]</div>
+<p><strong>Substituting <span class="math notranslate nohighlight">\( S_{\text{threshold}} \)</span></strong></p>
+<p>Given:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{\text{threshold}} = 2.6255
+\]</div>
+<p>And:</p>
+<div class="math notranslate nohighlight">
+\[
+k = 2, \quad b = 0.5, \quad \sigma = 2.0
+\]</div>
+<p>Calculate the standardized value:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{S_{\text{threshold}} - k b}{\sigma \sqrt{k}} = \frac{2.6255 - 2 \times 0.5}{2 \times \sqrt{2}} = \frac{2.6255 - 1.0}{2.8284} \approx \frac{1.6255}{2.8284} \approx 0.5745
+\]</div>
+<p>Thus:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+P_d = 1 - \Phi(0.5745) \approx 1 - 0.7163 = 0.2837
+}
+\]</div>
+</section>
+</section>
+<section id="numerical-results">
+<h1>Numerical Results<a class="headerlink" href="#numerical-results" title="Link to this heading">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 1. Define Parameters</span>
+<span class="c1"># ===============================</span>
+
+<span class="c1"># Signal parameters</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.5</span>          <span class="c1"># Reduced Signal amplitude</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">2.0</span>      <span class="c1"># Increased Noise standard deviation</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>            <span class="c1"># Number of samples</span>
+
+<span class="c1"># Prior probabilities</span>
+<span class="n">pi_0</span> <span class="o">=</span> <span class="mf">0.8</span>       <span class="c1"># Probability of H0</span>
+<span class="n">pi_1</span> <span class="o">=</span> <span class="mf">0.2</span>       <span class="c1"># Probability of H1</span>
+
+<span class="c1"># Desired probability of false alarm</span>
+<span class="n">P_f_desired</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1"># Number of simulations</span>
+<span class="n">N_simulations</span> <span class="o">=</span> <span class="mi">100000</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 2. Theoretical Threshold (eta_NP)</span>
+<span class="c1"># ===============================</span>
+
+<span class="c1"># Critical z-value for P_f = 0.1</span>
+<span class="n">z_Pf</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">P_f_desired</span><span class="p">)</span>  <span class="c1"># Approximately 1.2816 for P_f=0.1</span>
+
+<span class="c1"># Compute the threshold sum S_threshold</span>
+<span class="n">mu_H0</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="n">b</span>
+<span class="n">sigma_H0</span> <span class="o">=</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="n">S_threshold</span> <span class="o">=</span> <span class="n">mu_H0</span> <span class="o">+</span> <span class="n">z_Pf</span> <span class="o">*</span> <span class="n">sigma_H0</span>  <span class="c1"># Threshold under H0</span>
+
+<span class="c1"># Compute ln(eta_NP ) using the decision rule</span>
+<span class="c1"># ln(eta_NP ) = (2b / sigma^2) * S_threshold</span>
+<span class="n">ln_eta_NP_theoretical</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">S_threshold</span>
+
+<span class="c1"># Theoretical threshold</span>
+<span class="n">eta_NP_theoretical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ln_eta_NP_theoretical</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Theoretical ln(eta_NP): </span><span class="si">{</span><span class="n">ln_eta_NP_theoretical</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Theoretical eta_NP: </span><span class="si">{</span><span class="n">eta_NP_theoretical</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 3. Simulate Observations Under H0 and H1</span>
+<span class="c1"># ===============================</span>
+
+<span class="c1"># Generate noise for H0 and H1</span>
+<span class="n">noise_H0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N_simulations</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+<span class="n">noise_H1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">N_simulations</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+
+<span class="c1"># Generate observations under H0 and H1</span>
+<span class="n">Y_H0</span> <span class="o">=</span> <span class="o">-</span><span class="n">b</span> <span class="o">+</span> <span class="n">noise_H0</span>
+<span class="n">Y_H1</span> <span class="o">=</span> <span class="n">b</span> <span class="o">+</span> <span class="n">noise_H1</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 4. Compute Log-Likelihood Ratios</span>
+<span class="c1"># ===============================</span>
+
+<span class="c1"># Compute the sum of observations for each simulation</span>
+<span class="n">S_H0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Y_H0</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">S_H1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Y_H1</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Compute log-likelihood ratios</span>
+<span class="n">ell_H0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">S_H0</span>
+<span class="n">ell_H1</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">S_H1</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 5. Determine Empirical Threshold (eta_NP)</span>
+<span class="c1"># ===============================</span>
+
+<span class="c1"># Find the empirical threshold based on H0 simulations</span>
+<span class="n">ell_threshold_empirical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">ell_H0</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>  <span class="c1"># 90th percentile for P_f=0.1</span>
+
+<span class="c1"># Empirical eta_NP</span>
+<span class="n">eta_NP_empirical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">ell_threshold_empirical</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Empirical log-likelihood ratio threshold: </span><span class="si">{</span><span class="n">ell_threshold_empirical</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Empirical eta_NP: </span><span class="si">{</span><span class="n">eta_NP_empirical</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 6. Compute Empirical Probability of Detection (P_d)</span>
+<span class="c1"># ===============================</span>
+
+<span class="c1"># Compute P_d</span>
+<span class="n">P_d_empirical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">ell_H1</span> <span class="o">&gt;</span> <span class="n">ell_threshold_empirical</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Empirical Probability of Detection P_d: </span><span class="si">{</span><span class="n">P_d_empirical</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 7. Compute Theoretical Probability of Detection (P_d)</span>
+<span class="c1"># ===============================</span>
+
+<span class="c1"># Theoretical P_d calculation</span>
+<span class="c1"># Under H1, S ~ N(k b, k sigma^2 )</span>
+<span class="n">mu_H1</span> <span class="o">=</span> <span class="n">k</span> <span class="o">*</span> <span class="n">b</span>
+<span class="n">sigma_H1</span> <span class="o">=</span> <span class="n">sigma</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+
+<span class="c1"># Compute P_d = P(S &gt; S_threshold | H1 )</span>
+<span class="n">z</span> <span class="o">=</span> <span class="p">(</span><span class="n">S_threshold</span> <span class="o">-</span> <span class="n">mu_H1</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma_H1</span>
+<span class="n">P_d_theoretical</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">norm</span><span class="o">.</span><span class="n">cdf</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Theoretical Probability of Detection P_d: </span><span class="si">{</span><span class="n">P_d_theoretical</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Theoretical ln(eta_NP): 0.6562
+Theoretical eta_NP: 1.9274
+Empirical log-likelihood ratio threshold: 0.6600
+Empirical eta_NP: 1.9347
+Empirical Probability of Detection P_d: 0.2802
+Theoretical Probability of Detection P_d: 0.2828
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="real-world-application-example">
+<h1>Real-World Application Example<a class="headerlink" href="#real-world-application-example" title="Link to this heading">#</a></h1>
+<p><strong>Scenario: Signal Detection in Wireless Communication</strong></p>
+<p>Context:</p>
+<ul class="simple">
+<li><p>Purpose: Determine whether a specific signal is present in the received wireless data.</p></li>
+<li><p>Application: Deciding whether a user is transmitting data (<span class="math notranslate nohighlight">\( H_1 \)</span>) or not (<span class="math notranslate nohighlight">\( H_0 \)</span>).</p></li>
+</ul>
+<p>Given Parameters:</p>
+<ul class="simple">
+<li><p>Signal Amplitude (<span class="math notranslate nohighlight">\( b \)</span>): 0.5 (represents signal strength)</p></li>
+<li><p>Noise Standard Deviation (<span class="math notranslate nohighlight">\( \sigma \)</span>): 2.0 (represents environmental noise)</p></li>
+<li><p>Number of Samples (<span class="math notranslate nohighlight">\( k \)</span>): 2 (e.g., two consecutive data packets)</p></li>
+<li><p>Desired False Alarm Rate (<span class="math notranslate nohighlight">\( P_f \)</span>): 0.1 (10% chance of falsely detecting a signal)</p></li>
+</ul>
+<p>Decision Process:</p>
+<ol class="arabic simple">
+<li><p>Receive Data Samples:</p>
+<ul class="simple">
+<li><p>Suppose two data packets are received with signal measurements <span class="math notranslate nohighlight">\( y_1 \)</span> and <span class="math notranslate nohighlight">\( y_2 \)</span>.</p></li>
+</ul>
+</li>
+<li><p>Compute the Log-Likelihood Ratio:</p>
+<ul class="simple">
+<li><p>Using the formula:
+$<span class="math notranslate nohighlight">\(
+\ell(\vec{y}) = 0.25 \times (y_1 + y_2)
+\)</span>$</p></li>
+</ul>
+</li>
+<li><p>Apply the Threshold:</p>
+<ul class="simple">
+<li><p>Compare <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> with <span class="math notranslate nohighlight">\( \ln(\eta_{\text{NP}}) \approx 0.6564 \)</span>.</p></li>
+</ul>
+</li>
+<li><p>Make a Decision:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\( \ell(\vec{y}) &gt; 0.6564 \)</span>: Decide <span class="math notranslate nohighlight">\( H_1 \)</span> (User is transmitting data).</p></li>
+<li><p>Else: Decide <span class="math notranslate nohighlight">\( H_0 \)</span> (No data transmission).</p></li>
+</ul>
+</li>
+</ol>
+<section id="example-1-deciding-h-1-signal-present">
+<h2>Example 1: Deciding <span class="math notranslate nohighlight">\( H_1 \)</span> (Signal Present)<a class="headerlink" href="#example-1-deciding-h-1-signal-present" title="Link to this heading">#</a></h2>
+<p>Given:</p>
+<ul class="simple">
+<li><p>Observed Samples:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( y_1 = 2.0 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( y_2 = 3.0 \)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Steps:</p>
+<ol class="arabic">
+<li><p>Compute the Sum of Observations:</p>
+<div class="math notranslate nohighlight">
+\[
+   S = y_1 + y_2 = 2.0 + 3.0 = 5.0
+   \]</div>
+</li>
+<li><p>Calculate the Log-Likelihood Ratio (<span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+   \ell(\vec{y}) = 0.25 \times 5.0 = 1.25
+   \]</div>
+</li>
+<li><p>Compare with the Threshold <span class="math notranslate nohighlight">\( \ln(\eta_{\text{NP}}) \)</span>:</p>
+<ul>
+<li><p>Given <span class="math notranslate nohighlight">\( \eta_{\text{NP}} \approx 1.928 \)</span>, calculate <span class="math notranslate nohighlight">\( \ln(\eta_{\text{NP}}) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+     \ln(1.928) \approx 0.6564
+     \]</div>
+</li>
+<li><p>Check if <span class="math notranslate nohighlight">\( \ell(\vec{y}) &gt; 0.6564 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+     1.25 &gt; 0.6564 \quad \text{(True)}
+     \]</div>
+</li>
+</ul>
+</li>
+<li><p>Decision:</p>
+<ul class="simple">
+<li><p>Since <span class="math notranslate nohighlight">\( \ell(\vec{y}) &gt; \ln(\eta_{\text{NP}}) \)</span>, decide <span class="math notranslate nohighlight">\( H_1 \)</span> (signal is present).</p></li>
+</ul>
+</li>
+</ol>
+<p>Interpretation:</p>
+<ul class="simple">
+<li><p>The sum of the observations is sufficiently large to exceed the threshold, indicating the presence of the signal.</p></li>
+</ul>
+</section>
+<section id="example-2-deciding-h-0-no-signal">
+<h2>Example 2: Deciding <span class="math notranslate nohighlight">\( H_0 \)</span> (No Signal)<a class="headerlink" href="#example-2-deciding-h-0-no-signal" title="Link to this heading">#</a></h2>
+<p>Given:</p>
+<ul class="simple">
+<li><p>Observed Samples:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( y_1 = -1.0 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( y_2 = 0.0 \)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Steps:</p>
+<ol class="arabic">
+<li><p>Compute the Sum of Observations:</p>
+<div class="math notranslate nohighlight">
+\[
+   S = y_1 + y_2 = -1.0 + 0.0 = -1.0
+   \]</div>
+</li>
+<li><p>Calculate the Log-Likelihood Ratio (<span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+   \ell(\vec{y}) = 0.25 \times (-1.0) = -0.25
+   \]</div>
+</li>
+<li><p>Compare with the Threshold <span class="math notranslate nohighlight">\( \ln(\eta_{\text{NP}}) \)</span>:</p>
+<ul>
+<li><p>Given <span class="math notranslate nohighlight">\( \ln(\eta_{\text{NP}}) \approx 0.6564 \)</span>, check if <span class="math notranslate nohighlight">\( \ell(\vec{y}) &gt; 0.6564 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+     -0.25 &gt; 0.6564 \quad \text{(False)}
+     \]</div>
+</li>
+</ul>
+</li>
+<li><p>Decision:</p>
+<ul class="simple">
+<li><p>Since <span class="math notranslate nohighlight">\( \ell(\vec{y}) \leq \ln(\eta_{\text{NP}}) \)</span>, decide <span class="math notranslate nohighlight">\( H_0 \)</span> (no signal is present).</p></li>
+</ul>
+</li>
+</ol>
+<p>Interpretation:</p>
+<ul class="simple">
+<li><p>The sum of the observations does not exceed the threshold, suggesting that there is no significant signal present.</p></li>
+</ul>
+</section>
+<section id="example-3-edge-case-near-the-threshold">
+<h2>Example 3: Edge Case Near the Threshold<a class="headerlink" href="#example-3-edge-case-near-the-threshold" title="Link to this heading">#</a></h2>
+<p>Given:</p>
+<ul class="simple">
+<li><p>Observed Samples:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\( y_1 = 1.0 \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( y_2 = 1.0 \)</span></p></li>
+</ul>
+</li>
+</ul>
+<p>Steps:</p>
+<ol class="arabic">
+<li><p>Compute the Sum of Observations:</p>
+<div class="math notranslate nohighlight">
+\[
+   S = y_1 + y_2 = 1.0 + 1.0 = 2.0
+   \]</div>
+</li>
+<li><p>Calculate the Log-Likelihood Ratio (<span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+   \ell(\vec{y}) = 0.25 \times 2.0 = 0.5
+   \]</div>
+</li>
+<li><p>Compare with the Threshold <span class="math notranslate nohighlight">\( \ln(\eta_{\text{NP}}) \)</span>:</p>
+<ul>
+<li><p>Given <span class="math notranslate nohighlight">\( \ln(\eta_{\text{NP}}) \approx 0.6564 \)</span>, check if <span class="math notranslate nohighlight">\( \ell(\vec{y}) &gt; 0.6564 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+     0.5 &gt; 0.6564 \quad \text{(False)}
+     \]</div>
+</li>
+</ul>
+</li>
+<li><p>Decision:</p>
+<ul class="simple">
+<li><p>Since <span class="math notranslate nohighlight">\( \ell(\vec{y}) \leq \ln(\eta_{\text{NP}}) \)</span>, decide <span class="math notranslate nohighlight">\( H_0 \)</span> (no signal is present).</p></li>
+</ul>
+</li>
+</ol>
+<p>Interpretation:</p>
+<ul class="simple">
+<li><p>The sum of the observations is slightly below the threshold, resulting in a decision in favor of <span class="math notranslate nohighlight">\( H_0 \)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 1. Define Parameters</span>
+<span class="c1"># ===============================</span>
+
+<span class="c1"># Signal parameters</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.5</span>          <span class="c1"># Signal amplitude</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">2.0</span>      <span class="c1"># Noise standard deviation</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>            <span class="c1"># Number of samples</span>
+
+<span class="c1"># Desired probability of false alarm</span>
+<span class="n">P_f_desired</span> <span class="o">=</span> <span class="mf">0.1</span>
+
+<span class="c1"># Neyman-Pearson Threshold (from previous derivation)</span>
+<span class="n">eta_NP</span> <span class="o">=</span> <span class="mf">1.928</span>
+<span class="n">ln_eta_NP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">eta_NP</span><span class="p">)</span>  <span class="c1"># Approximately 0.6564</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 2. Example Observations</span>
+<span class="c1"># ===============================</span>
+
+<span class="c1"># Define observed samples</span>
+<span class="c1"># Example 1: Decide H1</span>
+<span class="n">y1_H1</span> <span class="o">=</span> <span class="mf">2.0</span>
+<span class="n">y2_H1</span> <span class="o">=</span> <span class="mf">3.0</span>
+
+<span class="c1"># Example 2: Decide H0</span>
+<span class="n">y1_H0</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.0</span>
+<span class="n">y2_H0</span> <span class="o">=</span> <span class="mf">0.0</span>
+
+<span class="c1"># Example 3: Edge Case</span>
+<span class="n">y1_edge</span> <span class="o">=</span> <span class="mf">1.0</span>
+<span class="n">y2_edge</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 3. Compute Log-Likelihood Ratios</span>
+<span class="c1"># ===============================</span>
+
+<span class="k">def</span> <span class="nf">compute_log_likelihood_ratio</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
+    <span class="n">S</span> <span class="o">=</span> <span class="n">y1</span> <span class="o">+</span> <span class="n">y2</span>
+    <span class="n">ell</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span> <span class="o">/</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">S</span>
+    <span class="k">return</span> <span class="n">ell</span>
+
+<span class="c1"># Compute for Example 1</span>
+<span class="n">ell_H1</span> <span class="o">=</span> <span class="n">compute_log_likelihood_ratio</span><span class="p">(</span><span class="n">y1_H1</span><span class="p">,</span> <span class="n">y2_H1</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Example 1: Observations = (</span><span class="si">{</span><span class="n">y1_H1</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y2_H1</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Log-Likelihood Ratio (ell) = </span><span class="si">{</span><span class="n">ell_H1</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Decision: </span><span class="si">{</span><span class="s1">&#39;H1&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">ell_H1</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ln_eta_NP</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;H0&#39;</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute for Example 2</span>
+<span class="n">ell_H0</span> <span class="o">=</span> <span class="n">compute_log_likelihood_ratio</span><span class="p">(</span><span class="n">y1_H0</span><span class="p">,</span> <span class="n">y2_H0</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Example 2: Observations = (</span><span class="si">{</span><span class="n">y1_H0</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y2_H0</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Log-Likelihood Ratio (ell) = </span><span class="si">{</span><span class="n">ell_H0</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Decision: </span><span class="si">{</span><span class="s1">&#39;H1&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">ell_H0</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ln_eta_NP</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;H0&#39;</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Compute for Example 3</span>
+<span class="n">ell_edge</span> <span class="o">=</span> <span class="n">compute_log_likelihood_ratio</span><span class="p">(</span><span class="n">y1_edge</span><span class="p">,</span> <span class="n">y2_edge</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Example 3: Observations = (</span><span class="si">{</span><span class="n">y1_edge</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">y2_edge</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Log-Likelihood Ratio (ell) = </span><span class="si">{</span><span class="n">ell_edge</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Decision: </span><span class="si">{</span><span class="s1">&#39;H1&#39;</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">ell_edge</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">ln_eta_NP</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">&#39;H0&#39;</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Example 1: Observations = (2.0, 3.0)
+Log-Likelihood Ratio (ell) = 1.2500
+Decision: H1
+
+Example 2: Observations = (-1.0, 0.0)
+Log-Likelihood Ratio (ell) = -0.2500
+Decision: H0
+
+Example 3: Observations = (1.0, 1.0)
+Log-Likelihood Ratio (ell) = 0.5000
+Decision: H0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 1. Define Parameters</span>
+<span class="c1"># ===============================</span>
+
+<span class="c1"># Signal parameters</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.5</span>          <span class="c1"># Signal amplitude</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mf">2.0</span>      <span class="c1"># Noise standard deviation</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>            <span class="c1"># Number of samples</span>
+
+<span class="c1"># Neyman-Pearson Threshold</span>
+<span class="n">eta_NP</span> <span class="o">=</span> <span class="mf">1.928</span>
+<span class="n">ln_eta_NP</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">eta_NP</span><span class="p">)</span>  <span class="c1"># Approximately 0.6564</span>
+
+<span class="c1"># Decision boundary calculation:</span>
+<span class="c1"># ln(eta_NP) = (2b / sigma^2) * (y1 + y2)</span>
+<span class="c1"># =&gt; y2 = (ln(eta_NP) * sigma^2) / (2b) - y1</span>
+<span class="n">y2_intercept</span> <span class="o">=</span> <span class="p">(</span><span class="n">ln_eta_NP</span> <span class="o">*</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">b</span><span class="p">)</span>
+<span class="c1"># So, y2 = y2_intercept - y1</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 2. Define Decision Boundary</span>
+<span class="c1"># ===============================</span>
+
+<span class="k">def</span> <span class="nf">decision_boundary</span><span class="p">(</span><span class="n">y1</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">y2_intercept</span> <span class="o">-</span> <span class="n">y1</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 3. Define Observations</span>
+<span class="c1"># ===============================</span>
+
+<span class="n">observations</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Example 1: H1&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;y1&#39;</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">:</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s1">&#39;decision&#39;</span><span class="p">:</span> <span class="s1">&#39;H1&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;Example 2: H0&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;y1&#39;</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">:</span> <span class="mf">0.0</span><span class="p">,</span> <span class="s1">&#39;decision&#39;</span><span class="p">:</span> <span class="s1">&#39;H0&#39;</span><span class="p">},</span>
+    <span class="s1">&#39;Example 3: H0&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;y1&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;y2&#39;</span><span class="p">:</span> <span class="mf">1.0</span><span class="p">,</span> <span class="s1">&#39;decision&#39;</span><span class="p">:</span> <span class="s1">&#39;H0&#39;</span><span class="p">}</span>
+<span class="p">}</span>
+
+<span class="c1"># ===============================</span>
+<span class="c1"># 4. Create Plot</span>
+<span class="c1"># ===============================</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Define range for y1</span>
+<span class="n">y1_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">400</span><span class="p">)</span>
+<span class="n">y2_values</span> <span class="o">=</span> <span class="n">decision_boundary</span><span class="p">(</span><span class="n">y1_values</span><span class="p">)</span>
+
+<span class="c1"># Plot decision boundary</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y1_values</span><span class="p">,</span> <span class="n">y2_values</span><span class="p">,</span> <span class="s1">&#39;g--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Decision Boundary&#39;</span><span class="p">)</span>
+
+<span class="c1"># Fill regions</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">y1_values</span><span class="p">,</span> <span class="n">y2_values</span><span class="p">,</span> <span class="n">y2_values</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Decide $H_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">y1_values</span><span class="p">,</span> <span class="n">y2_values</span><span class="p">,</span> <span class="n">y2_values</span> <span class="o">-</span> <span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Decide $H_0$&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plot observations</span>
+<span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">obs</span> <span class="ow">in</span> <span class="n">observations</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">y1</span> <span class="o">=</span> <span class="n">obs</span><span class="p">[</span><span class="s1">&#39;y1&#39;</span><span class="p">]</span>
+    <span class="n">y2</span> <span class="o">=</span> <span class="n">obs</span><span class="p">[</span><span class="s1">&#39;y2&#39;</span><span class="p">]</span>
+    <span class="n">decision</span> <span class="o">=</span> <span class="n">obs</span><span class="p">[</span><span class="s1">&#39;decision&#39;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">decision</span> <span class="o">==</span> <span class="s1">&#39;H1&#39;</span><span class="p">:</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;red&#39;</span>
+        <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">color</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span>
+        <span class="n">marker</span> <span class="o">=</span> <span class="s1">&#39;s&#39;</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y1</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="n">marker</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+
+<span class="c1"># Prevent duplicate labels in legend</span>
+<span class="n">handles</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+<span class="n">by_label</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">handles</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">by_label</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">by_label</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="c1"># Labels and Title</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Decision Regions and Example Observations&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;y_1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y_2&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">by_label</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">by_label</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower left&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1000x800 with 0 Axes&gt;
+</pre></div>
+</div>
+<img alt="_images/0cc4acd98341ffb5d59d870d29bd986997a6b9ce77611ae7a895ff533618a02a.png" src="_images/0cc4acd98341ffb5d59d870d29bd986997a6b9ce77611ae7a895ff533618a02a.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c5_s5_a_Vector_Detection_Criteria.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Criteria for Multiple Sample Detection of Binary Hypotheses</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c5_s5_c_example_b.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Example: Detection with Real Additive Gaussian Noise</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-conditional-pdfs-extending-to-k-independent-samples">Step 1: Conditional PDFs Extending to <span class="math notranslate nohighlight">\( k \)</span> Independent Samples</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-computing-the-likelihood-ratio">Step 2: Computing the Likelihood Ratio</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-likelihood-ratio">Log-Likelihood Ratio</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-make-decision">Step 3: Make Decision</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#neyman-pearson-np-criterion">Neyman-Pearson (NP) Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-neyman-pearson-threshold-eta-text-np">Derivation of the Neyman-Pearson Threshold (<span class="math notranslate nohighlight">\( \eta_{\text{NP}} \)</span>)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-probability-of-detection-p-d">Derivation of the Probability of Detection (<span class="math notranslate nohighlight">\( P_d \)</span>)</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#real-world-application-example">Real-World Application Example</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-1-deciding-h-1-signal-present">Example 1: Deciding <span class="math notranslate nohighlight">\( H_1 \)</span> (Signal Present)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-2-deciding-h-0-no-signal">Example 2: Deciding <span class="math notranslate nohighlight">\( H_0 \)</span> (No Signal)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-3-edge-case-near-the-threshold">Example 3: Edge Case Near the Threshold</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

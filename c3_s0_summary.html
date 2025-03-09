@@ -1,0 +1,787 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Chapter 3: Fundamentals of Estimation Theory &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c3_s0_summary';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">COMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_extra_rician.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chapter 3: Fundamentals of Estimation Theory</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions-and-properties">Definitions and Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-formulation">Problem Formulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulation-of-the-single-parameter-estimation-problem">Formulation of the Single Parameter Estimation Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiased-estimator">Unbiased Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimator-with-sufficient-statistic">Estimator with Sufficient Statistic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-variance-estimaties">Minimum Variance Estimaties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistent-estimator">Consistent Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-estimator">Bayes Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mse-estimator">MSE Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-estimator">MAP Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-estimator">ML Estimator</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chapter-3-fundamentals-of-estimation-theory">
+<h1>Chapter 3: Fundamentals of Estimation Theory<a class="headerlink" href="#chapter-3-fundamentals-of-estimation-theory" title="Link to this heading">#</a></h1>
+<section id="definitions-and-properties">
+<h2>Definitions and Properties<a class="headerlink" href="#definitions-and-properties" title="Link to this heading">#</a></h2>
+<section id="problem-formulation">
+<h3>Problem Formulation<a class="headerlink" href="#problem-formulation" title="Link to this heading">#</a></h3>
+<p>Estimation problem: estimate a parameter vector <span class="math notranslate nohighlight">\(\vec{\boldsymbol{\alpha}}\)</span> from an observation vector <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span>.</p>
+<p>Definitions:</p>
+<ul class="simple">
+<li><p><strong>Parameters</strong>: vector of random or deterministic values that need to be estimated.</p></li>
+<li><p><strong>Measurements or observations</strong>: vector of random data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> that depends on the parameters <span class="math notranslate nohighlight">\(\vec{\boldsymbol{\alpha}}\)</span> (<span class="math notranslate nohighlight">\(p(\vec{y}|\vec{\alpha})\)</span> or <span class="math notranslate nohighlight">\(p(\vec{y};\vec{\alpha})\)</span>).</p></li>
+<li><p><strong>Estimator</strong>: signal processing algorithm <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}(\vec{\mathbf{y}})\)</span> used to calculate an estimate of <span class="math notranslate nohighlight">\(\vec{\boldsymbol{\alpha}}\)</span> from the observation vector <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span>.</p></li>
+<li><p><strong>Estimate</strong>: the estimate <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}\)</span> of <span class="math notranslate nohighlight">\(\vec{\boldsymbol{\alpha}}\)</span> is the result of the estimator <span class="math notranslate nohighlight">\(\vec{\hat{\boldsymbol{\alpha}}}(\vec{\mathbf{y}})\)</span> for a realization of <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="formulation-of-the-single-parameter-estimation-problem">
+<h2>Formulation of the Single Parameter Estimation Problem<a class="headerlink" href="#formulation-of-the-single-parameter-estimation-problem" title="Link to this heading">#</a></h2>
+<p>In this chapter, we consider the estimation of a single parameter (multi-parameter estimation will be considered later).</p>
+<p>Definitions:</p>
+<ul class="simple">
+<li><p><strong>Parameter to estimate</strong>: <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span></p></li>
+<li><p><strong>Observation vector</strong>: <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span></p></li>
+<li><p><strong>Estimator</strong>: <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span></p></li>
+<li><p><strong>Estimate</strong>: <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}\)</span></p></li>
+</ul>
+</section>
+<section id="unbiased-estimator">
+<h2>Unbiased Estimator<a class="headerlink" href="#unbiased-estimator" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>An estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> for a <em>deterministic</em> parameter <span class="math notranslate nohighlight">\(\alpha\)</span> is unbiased if:
+$<span class="math notranslate nohighlight">\(
+E[\hat{\boldsymbol{\alpha}}]=\alpha, \forall \alpha
+\)</span>$</p></li>
+<li><p>An estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})\)</span> for a <em>random</em> parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> is conditionally unbiased if:
+$<span class="math notranslate nohighlight">\(
+E[\hat{\boldsymbol{\alpha}}|\boldsymbol{\alpha}=\alpha]=\alpha, \forall \alpha
+\)</span><span class="math notranslate nohighlight">\(
+and unbiased if:
+\)</span><span class="math notranslate nohighlight">\(
+E[\hat{\boldsymbol{\alpha}}]=E[\boldsymbol{\alpha}]
+\)</span>$</p></li>
+</ul>
+</section>
+<section id="estimator-with-sufficient-statistic">
+<h2>Estimator with Sufficient Statistic<a class="headerlink" href="#estimator-with-sufficient-statistic" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Definition</strong>: The estimator <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> is a <strong>sufficient statistic</strong> for <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> if it contains all the information about <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> (i.e., no other information can be extracted from <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span>).</p></li>
+<li><p>The estimator <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> is a sufficient statistic for <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> if
+$<span class="math notranslate nohighlight">\(
+P(\vec{\mathbf{y}}|T(\vec{\mathbf{y}}),\boldsymbol{\alpha})=P(\vec{\mathbf{y}}|T(\vec{\mathbf{y}}))
+\)</span>$</p></li>
+<li><p>One method to demonstrate that <span class="math notranslate nohighlight">\(T(\vec{\mathbf{y}})\)</span> is a sufficient statistic for <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> is to verify if the following <strong>factorization</strong> is valid:
+$<span class="math notranslate nohighlight">\(
+P(\vec{\mathbf{y}}|\boldsymbol{\alpha})=g(T(\vec{\mathbf{y}}),\boldsymbol{\alpha})h(\vec{\mathbf{y}})
+\)</span>$</p></li>
+</ul>
+</section>
+<section id="minimum-variance-estimaties">
+<h2>Minimum Variance Estimaties<a class="headerlink" href="#minimum-variance-estimaties" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Chebyshev’s inequality tells us that for an unbiased estimator
+$<span class="math notranslate nohighlight">\(
+P(|\hat{\boldsymbol{\alpha}} - \alpha| &gt; \epsilon) &lt; \frac{V(\hat{\boldsymbol{\alpha}})}{\epsilon^2}
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>V {\hat{\boldsymbol{\alpha}}} = E{(\hat{\boldsymbol{\alpha}} - \alpha)^2}$.</p></li>
+<li><p>We desire an estimator with minimal variance.</p></li>
+<li><p>The Cramér-Rao inequality provides the following <em>lower bound</em> for the variance of an estimator of <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>:
+$<span class="math notranslate nohighlight">\(
+V(\hat{\boldsymbol{\alpha}}) \geq \frac{1}{-E\left\{\frac{\partial^2}{\partial\boldsymbol{\alpha}^2}\ln P(\vec{\mathbf{y}}|{\boldsymbol{\alpha}}) \right\}}
+\)</span>$</p></li>
+<li><p>An estimate <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}\)</span> achieving this bound is called the <em>most efficient</em> estimate.</p></li>
+</ul>
+</section>
+<section id="consistent-estimator">
+<h2>Consistent Estimator<a class="headerlink" href="#consistent-estimator" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}\)</span> is <em>consistent</em> if it converges to <span class="math notranslate nohighlight">\(\alpha\)</span> with probability 1:
+$<span class="math notranslate nohighlight">\(
+\underset{m \rightarrow \infty}{\lim}
+p\{|\hat{\boldsymbol{\alpha}}(\vec{y}_m)-\alpha|\leq \epsilon\}=1,
+\quad \forall \epsilon&gt;0
+\)</span><span class="math notranslate nohighlight">\(
+or equivalently:
+\)</span><span class="math notranslate nohighlight">\(
+\underset{m \rightarrow \infty}{\lim}
+p\{|\hat{\boldsymbol{\alpha}}(\vec{y}_m)-\alpha|\geq \epsilon\}=0,
+\quad \forall \epsilon&gt;0
+\)</span>$</p></li>
+<li><p>Chebyshev’s inequality tells us that if
+$<span class="math notranslate nohighlight">\(
+\underset{m \rightarrow \infty}{\lim} V\{\hat{\boldsymbol{\alpha}}(\vec{y}_m)\}=0
+\)</span><span class="math notranslate nohighlight">\(
+then \)</span>\hat{\boldsymbol{\alpha}}$ is consistent.</p></li>
+</ul>
+</section>
+<section id="bayes-estimator">
+<h2>Bayes Estimator<a class="headerlink" href="#bayes-estimator" title="Link to this heading">#</a></h2>
+<ul>
+<li><p>Similar to the detection problem, we define the <strong>average cost</strong> or <strong>risk</strong>:
+$<span class="math notranslate nohighlight">\(
+\mathcal{R}=E\{C(\boldsymbol{\alpha},\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}))\}=\int_{-\infty}^{\infty}\int_{-\infty}^{\infty}C(\alpha,\hat{\alpha}(\vec{y}))p(\alpha,\vec{y})d\alpha d\vec{y}
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>C(\boldsymbol{\alpha},\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}))<span class="math notranslate nohighlight">\( is a **cost function** introduced by the estimation error \)</span>\mathbf{\alpha}_e=\alpha-\hat{\alpha}(\vec{y})$.</p></li>
+<li><p>The Bayes estimator is the estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}_{\text{B}}(\vec{\mathbf{y}})\)</span> that <em>minimizes</em> <span class="math notranslate nohighlight">\(\mathcal{R}\)</span>.</p></li>
+<li><p>It can be shown that the Bayes estimator minimizes the conditional cost and is therefore given by:
+$$
+\hat{\boldsymbol{\alpha}}_{\text{B}}(\vec{\mathbf{y}})=\arg\underset{\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})}{\min}E{C(\boldsymbol{\alpha},\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}))} \</p>
+<p>=\arg\underset{\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})}{\min}E{C(\boldsymbol{\alpha},\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}))|\vec{y}} \</p>
+<p>=\arg\underset{\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})}{\min}\int_{-\infty}^{\infty}C(\alpha,\hat{\alpha}(\vec{y}))p(\alpha|\vec{y})d\alpha
+$$</p>
+</li>
+</ul>
+<p>Typical examples of cost functions:</p>
+<ol class="arabic simple">
+<li><p><strong>Quadratic Error</strong>:
+$<span class="math notranslate nohighlight">\(
+C_{\text{S}} (\alpha,\hat{\alpha}(\vec{y}))=\alpha_e^2=(\alpha-\hat{\alpha}(\vec{y}))^2
+\)</span>$</p></li>
+<li><p><strong>Uniform Error</strong> (or “hit or miss”):
+$<span class="math notranslate nohighlight">\(
+C_{\text{U}} (\alpha,\hat{\alpha}(\vec{y}))=\begin{cases}
+0, &amp; |\alpha_e|&lt;\Delta/2 \\ 
+1, &amp; |\alpha_e|&gt;\Delta/2 
+\end{cases}
+\)</span>$</p></li>
+<li><p><strong>Absolute Error</strong>:
+$<span class="math notranslate nohighlight">\(
+C_{\text{A}} (\alpha,\hat{\alpha}(\vec{y}))=|\alpha_e|
+\)</span>$</p></li>
+</ol>
+</section>
+<section id="mse-estimator">
+<h2>MSE Estimator<a class="headerlink" href="#mse-estimator" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The Mean Squared Error (MSE) estimator is the Bayes estimator with the <em>quadratic</em> error cost function and is given by:
+$<span class="math notranslate nohighlight">\(
+\hat{\boldsymbol{\alpha}}_{\text{MSE}}(\vec{\mathbf{y}})=\arg\underset{\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})}{\min}\int_{-\infty}^{\infty}(\alpha-\hat{\alpha}(\vec{y}))^2p(\alpha|\vec{y})d\alpha
+\)</span>$</p></li>
+<li><p>By differentiation, we obtain:
+$<span class="math notranslate nohighlight">\(
+\hat{\boldsymbol{\alpha}}_{\text{MSE}}(\vec{\mathbf{y}})=\int_{-\infty}^{\infty}\alpha p(\alpha|\vec{y})d\alpha=E\{\boldsymbol{\alpha}|\vec{y}\}
+\)</span>$</p></li>
+<li><p>Note: In the case where <em>no</em> observation is available, we obtain <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}_{\text{MSE}}=E\{\boldsymbol{\alpha}\}\)</span>.</p></li>
+</ul>
+</section>
+<section id="map-estimator">
+<h2>MAP Estimator<a class="headerlink" href="#map-estimator" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The Maximum A Posteriori (MAP) estimator is obtained by maximizing the posterior probability (the a posteriori probability) of the parameter to be estimated:</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[
+\begin{align}
+a
+\end{align}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+  \hat{\boldsymbol{\alpha}}_{\text{MAP}}(\vec{\mathbf{y}})=\arg\underset{\boldsymbol{\alpha}(\vec{\mathbf{y}})}{\max}\{p(\alpha|\vec{y})\} \\
+ 
+  =\arg\underset{\boldsymbol{\alpha}(\vec{\mathbf{y}})}{\max}\{p(\vec{y}|\alpha)p(\alpha)\}
+  \end{split}\]</div>
+<ul class="simple">
+<li><p>It can be shown that the MAP estimator is actually a Bayes estimator with the <em>uniform</em> error cost function.</p></li>
+<li><p>In practice, if <span class="math notranslate nohighlight">\(p(\alpha|\vec{y})\)</span> is differentiable, then <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}_{\text{MAP}}(\vec{\mathbf{y}})\)</span> is the solution of
+$<span class="math notranslate nohighlight">\(
+\frac{\partial}{\partial\alpha}p(\alpha|\vec{y})= 0 \text{ or }
+\frac{\partial}{\partial\alpha}p(\vec{y}|\alpha)p(\alpha)=0
+\)</span><span class="math notranslate nohighlight">\(
+or
+\)</span><span class="math notranslate nohighlight">\(
+\frac{\partial}{\partial\alpha}\ln p(\alpha|\vec{y})=0  \text{ or } \frac{\partial}{\partial\alpha}\ln p(\vec{y}|\alpha)+\frac{\partial}{\partial\alpha}\ln p(\alpha)=0
+\)</span>$</p></li>
+</ul>
+</section>
+<section id="ml-estimator">
+<h2>ML Estimator<a class="headerlink" href="#ml-estimator" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The Maximum Likelihood (ML) estimator is obtained by maximizing the likelihood function:
+$<span class="math notranslate nohighlight">\(
+\hat{\boldsymbol{\alpha}}_{\text{ML}}(\vec{\mathbf{y}})=\arg\underset{\boldsymbol{\alpha}(\vec{\mathbf{y}})}{\max}\{p(\vec{y}|\alpha)\}
+\)</span>$</p></li>
+<li><p>In practice, if <span class="math notranslate nohighlight">\(p(\vec{y}|\alpha)\)</span> is differentiable, then <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}_{\text{ML}}(\vec{\mathbf{y}})\)</span> is the solution of
+$<span class="math notranslate nohighlight">\(
+\frac{\partial}{\partial\alpha}p(\vec{y}|\alpha)=0
+\)</span><span class="math notranslate nohighlight">\(
+or
+\)</span><span class="math notranslate nohighlight">\(
+\frac{\partial}{\partial\alpha}\ln p(\vec{y}|\alpha)=0
+\)</span>$</p></li>
+<li><p>Note: The ML estimator corresponds to the MAP estimator when <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> is very <em>dispersed</em> (i.e., uniform distribution).</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definitions-and-properties">Definitions and Properties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-formulation">Problem Formulation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulation-of-the-single-parameter-estimation-problem">Formulation of the Single Parameter Estimation Problem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unbiased-estimator">Unbiased Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#estimator-with-sufficient-statistic">Estimator with Sufficient Statistic</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-variance-estimaties">Minimum Variance Estimaties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#consistent-estimator">Consistent Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-estimator">Bayes Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mse-estimator">MSE Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-estimator">MAP Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-estimator">ML Estimator</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1890 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Unknown Phase &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c6_s3_unknown_phase';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unknown Amplitude" href="c6_s4_unknown_amplitude.html" />
+    <link rel="prev" title="Composite Hypothesis Testing" href="c6_s1_composite_hypothesis_testing.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Unknown Phase</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-modelling">Signal Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-representation-with-random-phase">Signal Representation with Random Phase</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probabilities">Conditional Probabilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution-for-beta-i">Uniform Distribution for <span class="math notranslate nohighlight">\( \beta_i \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressing-in-terms-of-bessel-function">Expressing in Terms of Bessel function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-modified-bessel-function-i-0-x">The Modified Bessel Function <span class="math notranslate nohighlight">\( I_0(x) \)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-likelihood-ratio-llr">Log-Likelihood Ratio (LLR)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-variable-u-i">Decision Variable <span class="math notranslate nohighlight">\( U_i \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule-based-on-llr">Decision Rule Based on LLR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplification-under-equal-energy">Simplification Under Equal Energy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#noncoherent-receiver-structure">Noncoherent Receiver Structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinearity">Nonlinearity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-rate-performance">Error-Rate Performance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rician-u-0">Rician <span class="math notranslate nohighlight">\(U_0\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rician-distribution-of-u-0">Rician Distribution of <span class="math notranslate nohighlight">\( U_0 \)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-mathcal-n-0">Distribution of  <span class="math notranslate nohighlight">\( \mathcal{N}_0 \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rician-distribution">Rician Distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rician-pdf-for-u-0">Rician PDF for <span class="math notranslate nohighlight">\( U_0 \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-u-1">Definition of <span class="math notranslate nohighlight">\( U_1 \)</span>:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-mathcal-n-1">Distribution of <span class="math notranslate nohighlight">\( \mathcal{N}_1 \)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rician-distribution-for-u-1">Rician Distribution for <span class="math notranslate nohighlight">\( U_1 \)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-the-pdf-of-u-1">Deriving the PDF of <span class="math notranslate nohighlight">\( U_1 \)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#average-error-rate">Average Error Rate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-approach">Analytical Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-method">Approximation Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-orthogonal-signaling-rho-0">Special Case: Orthogonal Signaling <span class="math notranslate nohighlight">\(\rho = 0\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdfs">PDFs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-vs-theoretical-p-e">Empirical vs. Theoretical <span class="math notranslate nohighlight">\(P_E\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-e-as-a-function-of-snr"><span class="math notranslate nohighlight">\(P_E\)</span> as A Function of SNR</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-example">Matlab Example</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="unknown-phase">
+<h1>Unknown Phase<a class="headerlink" href="#unknown-phase" title="Link to this heading">#</a></h1>
+<section id="signal-modelling">
+<h2>Signal Modelling<a class="headerlink" href="#signal-modelling" title="Link to this heading">#</a></h2>
+<p>In radio communications and radar systems, estimating the <strong>phase</strong> of received signals is crucial for tasks like coherent detection, where the exact phase relationship between the transmitted and received signals is used to decode information.</p>
+<p>However, accurately estimating the phase can be challenging due to:</p>
+<ul class="simple">
+<li><p><strong>Randomness in Phase:</strong> The phase of the received signal may vary unpredictably.</p></li>
+<li><p><strong>Noise:</strong> Additive noise can obscure the phase information, making accurate estimation computationally intensive.</p></li>
+<li><p><strong>Hardware Limitations:</strong> High-precision phase estimation requires sophisticated and expensive hardware.</p></li>
+</ul>
+<p><strong>Alternative Detection Schemes</strong></p>
+<p>Given the challenges in phase estimation, engineers and researchers seek detection methods that circumvent the need to know the exact phase of the received signal.</p>
+<p>These methods ensure reliable communication or detection without the added complexity and cost of phase estimation.</p>
+<p>Examples include:</p>
+<ul class="simple">
+<li><p><strong>Non-Coherent Detection:</strong> Relies on signal envelope or energy rather than phase.</p></li>
+<li><p><strong>Differential Encoding:</strong> Encodes information in phase differences between successive symbols rather than absolute phase.</p></li>
+</ul>
+<section id="signal-representation-with-random-phase">
+<h3>Signal Representation with Random Phase<a class="headerlink" href="#signal-representation-with-random-phase" title="Link to this heading">#</a></h3>
+<p>Since we are focusing on a random phase, the received signal</p>
+<div class="math notranslate nohighlight">
+\[
+y(t) = \alpha a_i(t - t_0) e^{j \left[ 2 \pi (f_i + f_d)(t - t_0) + \phi_i(t - t_0) + \beta \right]} + z(t),
+\]</div>
+<p>can be re-expressed as</p>
+<div class="math notranslate nohighlight">
+\[
+y(t) = \alpha a_i(t - t_0)e^{j[2\pi(f_i+f_d)(t-t_0)+\phi_i(t-t_0)+\beta_i]} + z(t)
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( \alpha \)</span>:</strong> Amplitude scaling factor.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( a_i(t - t_0) \)</span>:</strong> Time-varying amplitude modulation function for hypothesis <span class="math notranslate nohighlight">\( H_i \)</span> with a delay <span class="math notranslate nohighlight">\( t_0 \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( 2\pi(f_i + f_d)(t - t_0) \)</span>:</strong> Carrier frequency <span class="math notranslate nohighlight">\( f_i \)</span> plus Doppler shift <span class="math notranslate nohighlight">\( f_d \)</span>, accounting for the delay <span class="math notranslate nohighlight">\( t_0 \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \phi_i(t - t_0) \)</span>:</strong> Phase modulation component, potentially time-varying.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \beta \)</span>:</strong> Unknown phase offset.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( z(t) \)</span>:</strong> Additive noise, typically modeled as complex Gaussian noise.</p></li>
+</ul>
+<p>The re-expression introduces <span class="math notranslate nohighlight">\( \beta_i \)</span> to denote the unknown phase for hypothesis <span class="math notranslate nohighlight">\( H_i \)</span>.</p>
+<p>This makes it clear that the phase offset is specific to each hypothesis.</p>
+<p><strong>Simplifying Signal Modelling</strong></p>
+<p>We simplify the signal model to reduce complexity without affecting the generality of the analysis.</p>
+<p>We let:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( f_d = 0 \)</span>: to remove the Doppler shift from the equation, focusing solely on the carrier frequency <span class="math notranslate nohighlight">\( f_i \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( t_0 = 0 \)</span>: to remove the initial delay, simplifying the time variable to start at zero.</p></li>
+</ul>
+<p><strong>Discrete Sampling of the Received Signal</strong></p>
+<p>Next, the continuous-time signal <span class="math notranslate nohighlight">\( y(t) \)</span> is sampled at discrete time instances <span class="math notranslate nohighlight">\( t_j \)</span> to obtain <span class="math notranslate nohighlight">\( k \)</span> complex samples <span class="math notranslate nohighlight">\( y_j \)</span>.</p>
+<p>The <span class="math notranslate nohighlight">\( j \)</span>-th sample under hypothesis <span class="math notranslate nohighlight">\( H_i \)</span> can be written as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+y_j &amp;= \alpha a_i(t_j)e^{j[2\pi f_i t_j + \phi_i(t_j) + \beta_i]} + z_j \\
+&amp;= \alpha u_{ij} e^{j \beta_i} + z_j
+\end{align*}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\( i = 0, 1, \quad j = 1, \ldots, k \)</span>, and</p>
+<div class="math notranslate nohighlight">
+\[
+u_{ij} = a_i(t_j)e^{j(2\pi f_i t_j + \phi_i(t_j))}
+\]</div>
+<ul class="simple">
+<li><p><strong>Time Instances:</strong> <span class="math notranslate nohighlight">\( t_j \)</span> for <span class="math notranslate nohighlight">\( j = 1, \ldots, k \)</span> represent the discrete times at which the signal is sampled within the duration <span class="math notranslate nohighlight">\( T \)</span>.</p></li>
+<li><p><strong>Signal Sample:</strong> Each sample <span class="math notranslate nohighlight">\( y_j \)</span> under hypothesis <span class="math notranslate nohighlight">\( H_i \)</span> is expressed as a combination of the signal component and noise.</p></li>
+</ul>
+<p><strong>Vector Notation for Samples</strong></p>
+<p>To handle <span class="math notranslate nohighlight">\( k \)</span> samples collectively, it’s convenient to use vector notation.</p>
+<p>We can write the column vector <span class="math notranslate nohighlight">\( \vec{y} \)</span> as</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{y} = \alpha \vec{u}_i e^{j \beta_i} + \vec{z}
+\]</div>
+<p>Note that</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( \vec{y} \)</span>:</strong> A <span class="math notranslate nohighlight">\( k \times 1 \)</span> column vector containing all received samples <span class="math notranslate nohighlight">\( y_j \)</span> for <span class="math notranslate nohighlight">\( j = 1, \ldots, k \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \vec{u}_i \)</span>:</strong> A <span class="math notranslate nohighlight">\( k \times 1 \)</span> column vector where each element <span class="math notranslate nohighlight">\( u_{ij} \)</span> corresponds to the known signal component under hypothesis <span class="math notranslate nohighlight">\( H_i \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \vec{z} \)</span>:</strong> A <span class="math notranslate nohighlight">\( k \times 1 \)</span> column vector representing the noise across all samples.</p></li>
+</ul>
+</section>
+</section>
+<section id="conditional-probabilities">
+<h2>Conditional Probabilities<a class="headerlink" href="#conditional-probabilities" title="Link to this heading">#</a></h2>
+<p>We aim to derive the conditional probability density functions (pdfs) of the received signal vector <span class="math notranslate nohighlight">\( \vec{y} \)</span> under two different hypotheses <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>.</p>
+<p>Our goal is to derive the conditional pdfs <span class="math notranslate nohighlight">\( p_i(\vec{y} | \beta_i) \)</span> for <span class="math notranslate nohighlight">\( i = 0, 1 \)</span>.</p>
+<p><strong>Assumptions</strong></p>
+<p>If the noise is zero mean and white, with a correlation matrix of <span class="math notranslate nohighlight">\( \sigma_z^2 I \)</span>, where <span class="math notranslate nohighlight">\( I \)</span> is a <span class="math notranslate nohighlight">\( k \times k \)</span> identity matrix.</p>
+<ul class="simple">
+<li><p>Zero Mean: <span class="math notranslate nohighlight">\( \mathbb{E}[\vec{z}] = \vec{0} \)</span>.</p></li>
+<li><p>White Noise: The noise is uncorrelated across different samples.</p></li>
+<li><p>Correlation Matrix (Covariance Matrix): <span class="math notranslate nohighlight">\( \mathbb{E}[\vec{z} \vec{z}^H] = \sigma_z^2 I \)</span>, where <span class="math notranslate nohighlight">\( I \)</span> is the <span class="math notranslate nohighlight">\( k \times k \)</span> identity matrix.</p></li>
+</ul>
+<p>Note that <span class="math notranslate nohighlight">\( \sigma_z^2 = 2 \sigma^2 \)</span>, which accounts for the variance in both the real and imaginary parts of the noise.</p>
+<p>Under each hypothesis <span class="math notranslate nohighlight">\( H_i \)</span>, the received signal vector <span class="math notranslate nohighlight">\( \vec{y} \)</span> is composed of a deterministic signal component <span class="math notranslate nohighlight">\( \alpha \vec{u}_i e^{j \beta_i} \)</span> plus the stochastic noise <span class="math notranslate nohighlight">\( \vec{z} \)</span>.</p>
+<p>Since <span class="math notranslate nohighlight">\( \vec{z} \)</span> is complex Gaussian with zero mean and covariance <span class="math notranslate nohighlight">\( \sigma_z^2 I \)</span>, <span class="math notranslate nohighlight">\( \vec{y} \)</span> conditioned on <span class="math notranslate nohighlight">\( \beta_i \)</span> under hypothesis <span class="math notranslate nohighlight">\( H_i \)</span> is also complex Gaussian with mean <span class="math notranslate nohighlight">\( \alpha \vec{u}_i e^{j \beta_i} \)</span> and covariance <span class="math notranslate nohighlight">\( \sigma_z^2 I \)</span>.</p>
+<p>Thus, the conditional pdf <span class="math notranslate nohighlight">\( p_i(\vec{y} | \beta_i) \)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+p_i(\vec{y} | \beta_i) = \frac{1}{(2\pi \sigma_z^2)^k} \exp\left( -\frac{1}{2 \sigma_z^2} \|\vec{y} - \alpha \vec{u}_i e^{j \beta_i}\|^2 \right)
+\]</div>
+<p><strong>Note</strong>:</p>
+<ul class="simple">
+<li><p>The factor <span class="math notranslate nohighlight">\( (2\pi \sigma_z^2)^k \)</span> in the denominator, which is commonly used when considering both real and imaginary parts separately.</p></li>
+<li><p>The factor <span class="math notranslate nohighlight">\( \frac{1}{2} \)</span> is included to account for the fact that <span class="math notranslate nohighlight">\( \sigma_z^2 \)</span> represents the variance per complex dimension (both real and imaginary parts).</p></li>
+</ul>
+<p>The squared norm <span class="math notranslate nohighlight">\( \|\vec{y} - \alpha \vec{u}_i e^{j \beta_i}\|^2 \)</span> can be expanded as:</p>
+<div class="math notranslate nohighlight">
+\[
+\|\vec{y} - \alpha \vec{u}_i e^{j \beta_i}\|^2 = (\vec{y} - \alpha \vec{u}_i e^{j \beta_i})^H (\vec{y} - \alpha \vec{u}_i e^{j \beta_i})
+\]</div>
+<p>Alternatively, the conditional density functions can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[
+p_0(\vec{y}|\beta_0) = \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} [\vec{y} - \alpha \vec{u}_0 e^{j\beta_0}]^T [\vec{y}^* - \alpha \vec{u}_0^* e^{-j\beta_0}] \right)
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+p_1(\vec{y}|\beta_1) = \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} [\vec{y} - \alpha \vec{u}_1 e^{j\beta_1}]^T [\vec{y}^* - \alpha \vec{u}_1^* e^{-j\beta_1}] \right)
+\]</div>
+<p><strong>Simplifying</strong></p>
+<p>Breaking the norm down:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+(\vec{y} - \alpha \vec{u}_i e^{j \beta_i})^H (\vec{y} - \alpha \vec{u}_i e^{j \beta_i}) 
+&amp;= \vec{y}^H \vec{y} - \alpha e^{-j \beta_i} \vec{y}^H \vec{u}_i \\
+&amp;\quad- \alpha e^{j \beta_i} \vec{u}_i^H \vec{y} + \alpha^2 \vec{u}_i^H \vec{u}_i \\
+&amp;= \sum_{j=1}^k |y_j|^2 - \alpha e^{-j \beta_i} \sum_{j=1}^k y_j^* u_{ij} \\
+&amp;\quad- \alpha e^{j \beta_i} \sum_{j=1}^k u_{ij}^* y_j + \alpha^2 \sum_{j=1}^k |u_{ij}|^2
+\end{align*}
+\end{split}\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \vec{y}^H \vec{y} = \sum_{j=1}^k |y_j|^2 \)</span>: Sum of squared magnitudes of the received samples.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \vec{y}^H \vec{u}_i = \sum_{j=1}^k y_j^* u_{ij} \)</span>: Inner product between <span class="math notranslate nohighlight">\( \vec{y} \)</span> and <span class="math notranslate nohighlight">\( \vec{u}_i \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \vec{u}_i^H \vec{u}_i = \sum_{j=1}^k |u_{ij}|^2 \)</span>: Sum of squared magnitudes of the known signal components.</p></li>
+</ul>
+<p>Substituting the expanded norm back into the conditional pdf:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+p_i(\vec{y} | \beta_i) = \frac{1}{(2\pi \sigma_z^2)^k} \exp\bigg( -\frac{1}{2 \sigma_z^2} \bigg[ &amp;\sum_{j=1}^k |y_j|^2 \\
+&amp;- \alpha e^{-j \beta_i} \sum_{j=1}^k y_j^* u_{ij} \\
+&amp;- \alpha e^{j \beta_i} \sum_{j=1}^k u_{ij}^* y_j \\
+&amp;+ \alpha^2 \sum_{j=1}^k |u_{ij}|^2 \bigg] \bigg)
+\end{align*}
+\end{split}\]</div>
+<p><strong>Simplifying the Exponential Term</strong></p>
+<p>We can rearrange the terms inside the exponential to separate the components that depend on <span class="math notranslate nohighlight">\( \beta_i \)</span> from those that don’t:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+&amp; -\frac{1}{2 \sigma_z^2} \left[ \sum_{j=1}^k |y_j|^2 + \alpha^2 \sum_{j=1}^k |u_{ij}|^2 \right] \\
+&amp; + \frac{\alpha}{2 \sigma_z^2} \left[ e^{-j \beta_i} \sum_{j=1}^k y_j^* u_{ij} + e^{j \beta_i} \sum_{j=1}^k u_{ij}^* y_j \right]
+\end{align*}
+\end{split}\]</div>
+<p>Notice that the first bracketed term is real and independent of <span class="math notranslate nohighlight">\( \beta_i \)</span>, while the second bracketed term involves <span class="math notranslate nohighlight">\( \beta_i \)</span>.</p>
+<p><strong>Expressing in Terms of Magnitude and Phase</strong></p>
+<p>We denote:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{j=1}^k y_j u_{ij}^* = R_i e^{-j \xi_i}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( R_i = \left| \sum_{j=1}^k y_j u_{ij}^* \right| \)</span>: Magnitude of the inner product.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \xi_i = \angle\left( \sum_{j=1}^k y_j u_{ij}^* \right) \)</span>: Phase angle of the inner product.</p></li>
+</ul>
+<p>Then, its complex conjugate is:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{j=1}^k y_j^* u_{ij} = R_i e^{j \xi_i}
+\]</div>
+<p>Substituting these into the exponential term:</p>
+<p>Certainly. Here is the simplification in one equation:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\frac{\alpha}{2 \sigma_z^2} \left[ e^{-j \beta_i} R_i e^{-j \xi_i} + e^{j \beta_i} R_i e^{j \xi_i} \right] &amp;= \frac{\alpha R_i}{2 \sigma_z^2} \left[ e^{-j (\beta_i - \xi_i)} + e^{j (\beta_i - \xi_i)} \right] \\
+&amp;= \frac{\alpha R_i}{2 \sigma_z^2} \cdot 2 \cos(\beta_i - \xi_i) \\
+&amp;= \frac{\alpha R_i}{\sigma_z^2} \cos(\beta_i - \xi_i)
+\end{align*}
+\end{split}\]</div>
+<p>Combining all the simplified terms, the conditional pdf becomes:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boxed{
+\begin{align*}
+p_i(\vec{y} | \beta_i) = \frac{1}{(2\pi \sigma_z^2)^k} &amp;\exp\left( -\frac{1}{2 \sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
+\times &amp;\exp\left( \frac{\alpha}{\sigma_z^2} R_i \cos(\beta_i - \xi_i) \right) \\
+\times &amp;\exp\left( -\frac{\alpha^2}{2 \sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right)
+\end{align*}
+}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\( R_i = \left| \sum_{j=1}^k y_j u_{ij}^* \right| \)</span> is the magnitude.</p>
+<p>Specifically:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+p_0(\vec{y}|\beta_0) = \frac{1}{(2\pi\sigma_z^2)^k} &amp;\exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
+\times &amp;\exp \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{0j}^* \right| \cos(\beta_0 - \xi_0) \right) \\
+\times &amp;\exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{0j}|^2 \right) \\
+\\
+p_1(\vec{y}|\beta_1) = \frac{1}{(2\pi\sigma_z^2)^k} &amp;\exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
+\times &amp;\exp \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{1j}^* \right| \cos(\beta_1 - \xi_1) \right) \\
+\times &amp;\exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{1j}|^2 \right)
+\end{align*}
+\end{split}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( u_{ij} \)</span> is the <span class="math notranslate nohighlight">\( j \)</span>-th component of the known signal vector <span class="math notranslate nohighlight">\( \vec{u}_i \)</span> under hypothesis <span class="math notranslate nohighlight">\( H_i \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \xi_i = \arg\left( \sum_{j=1}^k y_j u_{ij}^* \right) \)</span>.</p></li>
+</ul>
+</section>
+<section id="uniform-distribution-for-beta-i">
+<h2>Uniform Distribution for <span class="math notranslate nohighlight">\( \beta_i \)</span><a class="headerlink" href="#uniform-distribution-for-beta-i" title="Link to this heading">#</a></h2>
+<p>When designing detection schemes, any prior information about the unknown parameters can significantly influence the approach. In the absence of specific information about the phase <span class="math notranslate nohighlight">\( \beta_i \)</span>, we must rely on <strong>reasonable and justifiable assumptions</strong> to proceed.</p>
+<p>One fundamental principle in statistics and information theory is the <strong>Maximum Entropy Principle</strong>, which states that, subject to known constraints, the probability distribution which best represents the current state of knowledge is the one with the largest entropy.</p>
+<p>Without any additional information about <span class="math notranslate nohighlight">\( \beta_i \)</span>, the <strong>uniform distribution</strong> maximizes entropy, implying maximum uncertainty.</p>
+<p>The phase <span class="math notranslate nohighlight">\( \beta_i \)</span> inherently has a <strong>circular</strong> nature, meaning that <span class="math notranslate nohighlight">\( \beta_i \)</span> and <span class="math notranslate nohighlight">\( \beta_i + 2\pi \)</span> represent the same physical state.</p>
+<p>Assuming a uniform distribution simplifies mathematical derivations and computations in detection schemes.</p>
+<p>Given the reasons above, we define the probability density function (pdf) of the unknown phase <span class="math notranslate nohighlight">\( \beta_i \)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+p(\beta_i) = \frac{1}{2\pi}, \quad 0 \le \beta_i &lt; 2\pi
+}
+\]</div>
+<p>Note that:</p>
+<ul>
+<li><p><strong><span class="math notranslate nohighlight">\( \frac{1}{2\pi} \)</span></strong>: Constant value ensuring that the total probability over the interval <span class="math notranslate nohighlight">\( (0, 2\pi) \)</span> is 1.</p>
+<div class="math notranslate nohighlight">
+\[
+  \int_{0}^{2\pi} p(\beta_i) \, d\beta_i = \int_{0}^{2\pi} \frac{1}{2\pi} \, d\beta_i = 1
+  \]</div>
+</li>
+<li><p><strong><span class="math notranslate nohighlight">\( 0 \le \beta_i &lt; 2\pi \)</span></strong>: Specifies the domain of <span class="math notranslate nohighlight">\( \beta_i \)</span>, acknowledging the periodicity of the phase.</p></li>
+</ul>
+</section>
+<section id="expressing-in-terms-of-bessel-function">
+<h2>Expressing in Terms of Bessel function<a class="headerlink" href="#expressing-in-terms-of-bessel-function" title="Link to this heading">#</a></h2>
+<p><strong>Express the Unconditional PDF as an Integral Over <span class="math notranslate nohighlight">\( \beta_i \)</span></strong></p>
+<p>Starting with the definition of the unconditional pdf:</p>
+<div class="math notranslate nohighlight">
+\[
+p_i(\vec{y}) = \int_{0}^{2\pi} p_i(\vec{y} | \beta_i) p(\beta_i) \, d\beta_i
+\]</div>
+<p>Given that <span class="math notranslate nohighlight">\( p(\beta_i) = \frac{1}{2\pi} \)</span>, we substitute:</p>
+<div class="math notranslate nohighlight">
+\[
+p_i(\vec{y}) = \frac{1}{2\pi} \int_{0}^{2\pi} p_i(\vec{y} | \beta_i) \, d\beta_i
+\]</div>
+<p>Insert the expression for <span class="math notranslate nohighlight">\( p_i(\vec{y} | \beta_i) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+p_i(\vec{y}) = \frac{1}{2\pi} \int_{0}^{2\pi} \frac{1}{(2\pi\sigma_z^2)^k} &amp;\exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
+\times &amp;\exp \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \cos(\beta_i - \xi_i) \right) \\
+\times &amp;\exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right) d\beta_i
+\end{align*}
+\end{split}\]</div>
+<p>Observe that several terms inside the integral do not depend on <span class="math notranslate nohighlight">\( \beta_i \)</span>, which can be factored out:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+p_i(\vec{y}) &amp;= \frac{1}{2\pi} \cdot \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right) \\
+&amp;\quad \times \int_{0}^{2\pi} \exp \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \cos(\beta_i - \xi_i) \right) d\beta_i
+\end{align*}
+\end{split}\]</div>
+<p><strong>Recognize the Integral as a Modified Bessel Function</strong></p>
+<p>The integral in the expression is of the form:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{0}^{2\pi} \exp \left( x \cos(\theta) \right) d\theta = 2\pi I_0(x)
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( x = \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \theta = \beta_i - \xi_i \)</span></p></li>
+</ul>
+<p>Thus, substituting <span class="math notranslate nohighlight">\( x \)</span> and recognizing the integral:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{0}^{2\pi} \exp \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \cos(\beta_i - \xi_i) \right) d\beta_i = 2\pi I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \right)
+\]</div>
+<p>Plug the result of the integral back into the expression for <span class="math notranslate nohighlight">\( p_i(\vec{y}) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+p_i(\vec{y}) &amp;= \frac{1}{2\pi} \cdot \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right) \\
+&amp;\quad \times 2\pi I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \right)
+\end{align*}
+\end{split}\]</div>
+<p><strong>Simplify the Expression</strong></p>
+<p>Cancel out the <span class="math notranslate nohighlight">\( 2\pi \)</span> terms:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{2\pi} \times 2\pi = 1
+\]</div>
+<p>Thus:</p>
+<div class="math notranslate nohighlight">
+\[
+p_i(\vec{y}) = \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right) I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \right)
+\]</div>
+<p>Hence, the <strong>unconditional pdf</strong> <span class="math notranslate nohighlight">\( p_i(\vec{y}) \)</span> under hypothesis <span class="math notranslate nohighlight">\( H_i \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boxed{
+\begin{align*}
+p_i(\vec{y}) &amp;= \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
+&amp;\quad \times I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \right) \\
+&amp;\quad \times \exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 \right), \quad i = 0, 1
+\end{align*}
+}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\( I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \right) \)</span> is the modified Bessel function of the first kind of order zero.</p>
+<section id="the-modified-bessel-function-i-0-x">
+<h3>The Modified Bessel Function <span class="math notranslate nohighlight">\( I_0(x) \)</span><a class="headerlink" href="#the-modified-bessel-function-i-0-x" title="Link to this heading">#</a></h3>
+<p>The modified Bessel function of the first kind of order zero, <span class="math notranslate nohighlight">\( I_0(x) \)</span>, is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+I_0(x) = \frac{1}{2\pi} \int_{0}^{2\pi} e^{x \cos(\theta)} \, d\theta
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \theta \)</span> is a dummy variable representing the angle.</p>
+<p><strong>Properties Relevant to Detection</strong></p>
+<ul class="simple">
+<li><p><strong>Positive Definiteness</strong>: <span class="math notranslate nohighlight">\( I_0(x) \)</span> is always positive for real <span class="math notranslate nohighlight">\( x \)</span>, which ensures the unconditional pdf remains valid.</p></li>
+<li><p><strong>Monotonicity</strong>: <span class="math notranslate nohighlight">\( I_0(x) \)</span> is monotonically increasing for <span class="math notranslate nohighlight">\( x \geq 0 \)</span>, meaning higher inner product magnitudes lead to higher likelihoods.</p></li>
+<li><p><strong>Asymptotic Behavior</strong>:</p>
+<ul>
+<li><p>For small <span class="math notranslate nohighlight">\( x \)</span>, <span class="math notranslate nohighlight">\( I_0(x) \approx 1 + \frac{x^2}{4} \)</span>.</p></li>
+<li><p>For large <span class="math notranslate nohighlight">\( x \)</span>, <span class="math notranslate nohighlight">\( I_0(x) \approx \frac{e^x}{\sqrt{2\pi x}} \)</span>.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="log-likelihood-ratio-llr">
+<h2>Log-Likelihood Ratio (LLR)<a class="headerlink" href="#log-likelihood-ratio-llr" title="Link to this heading">#</a></h2>
+<p>Note that we use the <strong>unconditional PDF</strong> <span class="math notranslate nohighlight">\(p_i(\vec{y})\)</span>, instead of the conditional PDF (likelihood) <span class="math notranslate nohighlight">\(p_i(\vec{y} | \beta_i)\)</span>, because we already assume that <span class="math notranslate nohighlight">\(\beta_i\)</span> is uniform.</p>
+<p>The <strong>Likelihood Ratio (LR)</strong> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \frac{p_1(\vec{y})}{p_0(\vec{y})}
+\]</div>
+<p>The <strong>Log-Likelihood Ratio (LLR)</strong> is thus:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) = \ln L(\vec{y}) = \ln \left( \frac{p_1(\vec{y})}{p_0(\vec{y})} \right) = \ln p_1(\vec{y}) - \ln p_0(\vec{y})
+\]</div>
+<p>Using the expressions for <span class="math notranslate nohighlight">\( p_1(\vec{y}) \)</span> and <span class="math notranslate nohighlight">\( p_0(\vec{y}) \)</span>, we substitute them into the LLR:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\ell(\vec{y}) &amp;= \ln \left[ \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \times I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{1j}^* \right| \right) \times \exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{1j}|^2 \right) \right] \\
+&amp;\quad - \ln \left[ \frac{1}{(2\pi\sigma_z^2)^k} \exp \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \times I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{0j}^* \right| \right) \times \exp \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{0j}|^2 \right) \right]
+\end{align*}
+\end{split}\]</div>
+<p><strong>Simplifying the Logarithms</strong></p>
+<p>The logarithm of a product is the sum of logarithms, and constants cancel out. Applying this property:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\ell(\vec{y}) &amp;= \ln \left( \frac{1}{(2\pi\sigma_z^2)^k} \right) + \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
+&amp;\quad+ \ln I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{1j}^* \right| \right) + \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{1j}|^2 \right) \\
+&amp;\quad - \Bigg[ \ln \left( \frac{1}{(2\pi\sigma_z^2)^k} \right) + \left( -\frac{1}{2\sigma_z^2} \sum_{j=1}^k |y_j|^2 \right) \\
+&amp;\quad+ \ln I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{0j}^* \right| \right) + \left( -\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{0j}|^2 \right) \Bigg] \\
+&amp;= \ln I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{1j}^* \right| \right) - \ln I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{0j}^* \right| \right) \\
+&amp;\quad - \frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{1j}|^2 + \frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{0j}|^2
+\end{align*}
+\end{split}\]</div>
+<p>Thus, we have</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boxed{
+\begin{align*}
+\ell(\vec{y})
+&amp;= \ln I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{1j}^* \right| \right) - \ln I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{0j}^* \right| \right) \\
+&amp;\qquad- \frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{1j}|^2  + \frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{0j}|^2
+\end{align*}
+}
+\end{split}\]</div>
+<section id="decision-variable-u-i">
+<h3>Decision Variable <span class="math notranslate nohighlight">\( U_i \)</span><a class="headerlink" href="#decision-variable-u-i" title="Link to this heading">#</a></h3>
+<p>We define the decision variable as</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\begin{align*}
+U_i = \ln I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \right) - \frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2, \quad i = 0, 1
+\end{align*}
+}
+\]</div>
+<p>Thus, the LLR becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) = U_1 - U_0
+\]</div>
+</section>
+<section id="decision-rule-based-on-llr">
+<h3>Decision Rule Based on LLR<a class="headerlink" href="#decision-rule-based-on-llr" title="Link to this heading">#</a></h3>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) = \ln \left( \frac{p_1(\vec{y})}{p_0(\vec{y})} \right) \gtrless \eta_L
+\]</div>
+</section>
+<section id="simplification-under-equal-energy">
+<h3>Simplification Under Equal Energy<a class="headerlink" href="#simplification-under-equal-energy" title="Link to this heading">#</a></h3>
+<p>When both hypotheses <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span> involve signals of <strong>equal energy</strong>, certain terms in the LLR become constant and thus irrelevant for the decision-making process.</p>
+<p><strong>Equal Energy Assumption</strong></p>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{j=1}^k |u_{1j}|^2 = \sum_{j=1}^k |u_{0j}|^2
+\]</div>
+<p>The energy terms <span class="math notranslate nohighlight">\( \frac{\alpha^2}{2\sigma_z^2} \sum |u_{ij}|^2 \)</span> for <span class="math notranslate nohighlight">\( i = 0, 1 \)</span> cancel out or remain constant relative to each other, thus not affecting the relative likelihoods.</p>
+<p>Under the equal energy assumption, the decision variables <span class="math notranslate nohighlight">\( U_i \)</span> simplify to:</p>
+<div class="math notranslate nohighlight">
+\[
+U_i = \ln I_0 \left( \frac{\alpha}{\sigma_z^2} \left| \sum_{j=1}^k y_j u_{ij}^* \right| \right), \quad i = 0, 1
+\]</div>
+<p>Additionally, the scalar factor <span class="math notranslate nohighlight">\( \frac{\alpha^2}{\sigma_z^2} \)</span> does not affect the <strong>decision boundary</strong> since it is a constant multiplier for both hypotheses. Therefore, it can be safely ignored when comparing <span class="math notranslate nohighlight">\( U_1 \)</span> and <span class="math notranslate nohighlight">\( U_0 \)</span>.</p>
+<p>Under equal energy and ignoring scalar constants, the decision variables simplify further to:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+U_i = \left| \sum_{j=1}^k y_j u_{ij}^* \right|, \quad i = 0, 1
+}
+\]</div>
+<p>So, one can observe that:</p>
+<ul class="simple">
+<li><p>The LLR depends primarily on the <strong>magnitude</strong> of the inner product between the received signal <span class="math notranslate nohighlight">\( \vec{y} \)</span> and each known signal <span class="math notranslate nohighlight">\( \vec{u}_i \)</span>.</p></li>
+<li><p>The phase information, encapsulated within the Bessel function <span class="math notranslate nohighlight">\( I_0 \)</span>, is accounted for by the uniform distribution assumption and the nature of <span class="math notranslate nohighlight">\( I_0 \)</span>.</p></li>
+</ul>
+</section>
+</section>
+<section id="noncoherent-receiver-structure">
+<h2>Noncoherent Receiver Structure<a class="headerlink" href="#noncoherent-receiver-structure" title="Link to this heading">#</a></h2>
+<p>We can now draw a general functional block diagram of the optimal receiver structure as shown in Figure 6.3.</p>
+<p>Because of the lack of phase knowledge, this receiver is referred to as <strong>noncoherent</strong>.</p>
+<p><img alt="" src="fig_6_3.png" /></p>
+<ul class="simple">
+<li><p>The receiver first correlates the received signal <span class="math notranslate nohighlight">\( \vec{y} \)</span> with each of the locally generated signals <span class="math notranslate nohighlight">\( \vec{u}_0^* \)</span> and <span class="math notranslate nohighlight">\( \vec{u}_1^* \)</span>.</p></li>
+<li><p>The magnitude of each correlation is determined and scaled by the term <span class="math notranslate nohighlight">\( \alpha / \sigma_z^2 \)</span>.</p></li>
+<li><p>The resultant scaled magnitude is then processed by a nonlinear transformation, corresponding to <span class="math notranslate nohighlight">\( \ln I_0(\cdot) \)</span>.</p></li>
+<li><p>Finally a bias term is subtracted from each branch.</p></li>
+</ul>
+<p>The bias term is</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\alpha^2}{2\sigma_z^2} \sum_{j=1}^k |u_{ij}|^2 = \frac{\alpha^2 \mathcal{E}_i}{\sigma_z^2}
+\]</div>
+<p>If both signals have equal energy, then the two bias terms are equal and can be eliminated from the receiver.</p>
+<p>Furthermore, the nonlinear transformation is monotonic, so in the case of equal-energy signals, this nonlinear device need not be implemented.</p>
+<p>These simplifications result in the <strong>noncoherent receiver structure</strong> of Figure 6.4.</p>
+<p><img alt="Fig 6.4" src="_images/fig_6_4.png" /></p>
+<section id="nonlinearity">
+<h3>Nonlinearity<a class="headerlink" href="#nonlinearity" title="Link to this heading">#</a></h3>
+<p>In the general case, represented by Figure 6.3, we must include the nonlinearity.</p>
+<p>A number of points can be made about it:</p>
+<ol class="arabic simple">
+<li><p>If an optimal noncoherent receiver is built using digital circuitry, then the <span class="math notranslate nohighlight">\( \ln I_0(\cdot) \)</span> function can be approximated by a table look-up.</p></li>
+<li><p>If an optimal noncoherent receiver is built using analog circuitry, whose functional block diagram is shown in Figure 6.6, the <span class="math notranslate nohighlight">\( \ln I_0(\cdot) \)</span> function can be approximated using a circuit containing resistors and diodes.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( x \)</span> is large, it can be shown that <span class="math notranslate nohighlight">\( \ln I_0(x) \approx x \)</span>; thus, a “high-SNR” receiver can be built using a linear approximation.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( x \)</span> is small, <span class="math notranslate nohighlight">\( \ln I_0(x) \approx x^2 / 4 \)</span>, thereby allowing a “low-SNR” receiver to be built using a square-law device.</p></li>
+</ol>
+<p><img alt="Fig 6.6" src="_images/fig_6_6.png" /></p>
+<p>Evaluating the performance of noncoherent receivers is, in general, exceedingly difficult.</p>
+<p>Indeed, if the <span class="math notranslate nohighlight">\( \ln I_0(\cdot) \)</span> function is included in the receiver, then no known analytical techniques have been developed to determine the performance.</p>
+<p>If, however, the two hypotheses represent signals of equal energy, the simplified receiver of Figure 6.4 is appropriate and an evaluation of its error-rate performance is possible.</p>
+</section>
+</section>
+<section id="error-rate-performance">
+<h2>Error-Rate Performance<a class="headerlink" href="#error-rate-performance" title="Link to this heading">#</a></h2>
+<p>Assuming that <span class="math notranslate nohighlight">\( \vec{u}_0 \)</span> is sent.</p>
+<p>The <strong>probability of error</strong> <span class="math notranslate nohighlight">\( P_E \)</span> is the probability that the decision rule incorrectly selects <span class="math notranslate nohighlight">\( H_1 \)</span> when <span class="math notranslate nohighlight">\( H_0 \)</span> is true:</p>
+<div class="math notranslate nohighlight">
+\[
+P_E = \Pr[U_1 &gt; U_0 | H_0]
+\]</div>
+<p>For equally likely transmission of <span class="math notranslate nohighlight">\( \vec{u}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{u}_1 \)</span>, <span class="math notranslate nohighlight">\(P_E\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+P_E = \Pr[U_1 &gt; U_0]
+\]</div>
+<section id="rician-u-0">
+<h3>Rician <span class="math notranslate nohighlight">\(U_0\)</span><a class="headerlink" href="#rician-u-0" title="Link to this heading">#</a></h3>
+<p>The received signal, with <span class="math notranslate nohighlight">\( \vec{u}_0 \)</span> sent, is</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{y} = \alpha \vec{u}_0 e^{j \beta_0} + \vec{z}
+\]</div>
+<p>Examining the lower branch of the receiver shown in Figure 6.4 reveals that</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+U_0 &amp;= \left| \sum_{j=1}^k \left( \alpha u_{0j} e^{j \beta_0} + z_j \right) u_{0j}^* \right| \\
+&amp;= |2 \alpha \mathcal{E} + \mathcal{N}_0|
+\end{align*}
+\end{split}\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{N}_0 = \sum_{j=1}^k e^{-j \beta_0} z_j u_{0j}^*
+\]</div>
+<p>Note that <span class="math notranslate nohighlight">\( \mathcal{N}_0 \)</span> is a complex Gaussian random variable with <span class="math notranslate nohighlight">\( E\{\mathcal{N}_0\} = 0 \)</span> and <span class="math notranslate nohighlight">\( \text{Var} \{\mathcal{N}_0\} = 2\sigma_z^2 \mathcal{E} \)</span>, since</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+E\{z_j z_\ell^*\} = \begin{cases} \sigma_z^2, &amp; j = \ell \\ 0, &amp; \text{otherwise} \end{cases}
+\end{split}\]</div>
+<p>Therefore, <span class="math notranslate nohighlight">\( U_0 \)</span> is Rician with pdf</p>
+<div class="math notranslate nohighlight">
+\[
+p(U_0) = \frac{U_0}{\sigma_v^2} \exp \left( -\frac{U_0^2 + (2\alpha \mathcal{E})^2}{2\sigma_v^2} \right) I_0 \left( \frac{2\alpha \mathcal{E} U_0}{\sigma_v^2} \right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \sigma_v^2 = \sigma_z^2 \mathcal{E} \)</span>.</p>
+</section>
+</section>
+<section id="rician-distribution-of-u-0">
+<h2>Rician Distribution of <span class="math notranslate nohighlight">\( U_0 \)</span><a class="headerlink" href="#rician-distribution-of-u-0" title="Link to this heading">#</a></h2>
+<p>A particular signal <span class="math notranslate nohighlight">\( \vec{u}_0 \)</span> is transmitted.</p>
+<p>The received signal vector <span class="math notranslate nohighlight">\( \vec{y} \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{y} = \alpha \vec{u}_0 e^{j \beta_0} + \vec{z}
+\]</div>
+<p>The decision variable <span class="math notranslate nohighlight">\( U_0 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+U_0 = \left| \sum_{j=1}^k y_j u_{0j}^* \right|
+\]</div>
+<p>Given <span class="math notranslate nohighlight">\( \vec{y} = \alpha \vec{u}_0 e^{j \beta_0} + \vec{z} \)</span>, we substitute into the expression for <span class="math notranslate nohighlight">\( U_0 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+U_0 &amp;= \left| \sum_{j=1}^k y_j u_{0j}^* \right| \\
+&amp;= \left| \sum_{j=1}^k \left( \alpha u_{0j} e^{j \beta_0} + z_j \right) u_{0j}^* \right| \\
+&amp;= \left| \alpha \sum_{j=1}^k u_{0j} e^{j \beta_0} u_{0j}^* + \sum_{j=1}^k z_j u_{0j}^* \right|
+\end{align*}
+\end{split}\]</div>
+<p><strong>Simplifying the Expression</strong></p>
+<p>Notice that <span class="math notranslate nohighlight">\( u_{0j} e^{j \beta_0} u_{0j}^* \)</span> simplifies as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+u_{0j} e^{j \beta_0} u_{0j}^* = e^{j \beta_0} |u_{0j}|^2
+\]</div>
+<p>Thus, the expression for <span class="math notranslate nohighlight">\( U_0 \)</span> becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+U_0 = \left| \alpha e^{j \beta_0} \sum_{j=1}^k |u_{0j}|^2 + \sum_{j=1}^k z_j u_{0j}^* \right|
+\]</div>
+<p><strong>Energy <span class="math notranslate nohighlight">\( \mathcal{E} \)</span></strong></p>
+<p>Define the energy <span class="math notranslate nohighlight">\( \mathcal{E} \)</span> of the signal vector <span class="math notranslate nohighlight">\( \vec{u}_0 \)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E} = \sum_{j=1}^k |u_{0j}|^2
+\]</div>
+<p>Therefore, the expression simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+U_0 = \left| 2 \alpha \mathcal{E} + \mathcal{N}_0 \right|
+}
+\]</div>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\mathcal{N}_0 = \sum_{j=1}^k e^{-j \beta_0} z_j u_{0j}^*
+}
+\]</div>
+<section id="distribution-of-mathcal-n-0">
+<h3>Distribution of  <span class="math notranslate nohighlight">\( \mathcal{N}_0 \)</span><a class="headerlink" href="#distribution-of-mathcal-n-0" title="Link to this heading">#</a></h3>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{N}_0 = \sum_{j=1}^k e^{-j \beta_0} z_j u_{0j}^*
+\]</div>
+<p><strong>Mean of <span class="math notranslate nohighlight">\( \mathcal{N}_0 \)</span></strong></p>
+<p>Since <span class="math notranslate nohighlight">\( \vec{z} \)</span> is zero-mean noise, and <span class="math notranslate nohighlight">\( e^{-j \beta_0} \)</span> is a deterministic phase rotation (given <span class="math notranslate nohighlight">\( \beta_0 \)</span>), we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}\left[ \mathcal{N}_0 \right] = \sum_{j=1}^k e^{-j \beta_0} \mathbb{E}\left[ z_j \right] u_{0j}^* = 0
+\]</div>
+<p><strong>Variance of <span class="math notranslate nohighlight">\( \mathcal{N}_0 \)</span></strong></p>
+<p>To compute <span class="math notranslate nohighlight">\( \text{Var}\left\{ \mathcal{N}_0 \right\} \)</span>, we consider the covariance between different noise components.</p>
+<p>Given that <span class="math notranslate nohighlight">\( \vec{z} \)</span> is white noise, noise components are uncorrelated for <span class="math notranslate nohighlight">\( j \neq \ell \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbb{E}\left[ z_j z_\ell^* \right] = \begin{cases} \sigma_z^2, &amp; j = \ell \\ 0, &amp; j \neq \ell \end{cases}
+\end{split}\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}\left\{ \mathcal{N}_0 \right\} = \mathbb{E}\left[ |\mathcal{N}_0|^2 \right] = \mathbb{E}\left[ \mathcal{N}_0 \mathcal{N}_0^* \right] = \sum_{j=1}^k \sum_{\ell=1}^k e^{-j \beta_0} z_j u_{0j}^* e^{j \beta_0} z_\ell^* u_{0\ell} \mathbb{E}\left[ z_j z_\ell^* \right]
+\]</div>
+<p>Given the uncorrelated noise:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}\left\{ \mathcal{N}_0 \right\} = \sum_{j=1}^k |u_{0j}|^2 \sigma_z^2 = \sigma_z^2 \mathcal{E}
+\]</div>
+<p>(Recall <span class="math notranslate nohighlight">\( \mathcal{E} = \sum_{j=1}^k |u_{0j}|^2 \)</span>)</p>
+<p><strong>Note</strong>: The factor of 2 appears in the user’s expression because in complex Gaussian noise, variance is often split between real and imaginary parts.</p>
+<p>Here, since <span class="math notranslate nohighlight">\( \mathcal{N}_0 \)</span> is complex, the total variance includes both components:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}\left\{ \mathcal{N}_0 \right\} = 2 \sigma_z^2 \mathcal{E}
+\]</div>
+<p>This accounts for the variance in both the real and imaginary parts of <span class="math notranslate nohighlight">\( \mathcal{N}_0 \)</span>.</p>
+<p><strong>Distribution of <span class="math notranslate nohighlight">\( \mathcal{N}_0 \)</span></strong>:</p>
+<p>Given that <span class="math notranslate nohighlight">\( \mathcal{N}_0 \)</span> is a linear combination of Gaussian random variables, it itself is a complex Gaussian random variable with:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{
+\mathcal{N}_0 \sim \mathcal{CN}\left(0, 2 \sigma_z^2 \mathcal{E}\right)
+}
+\]</div>
+</section>
+<section id="rician-distribution">
+<h3>Rician Distribution<a class="headerlink" href="#rician-distribution" title="Link to this heading">#</a></h3>
+<p>A <strong>Rician distribution</strong> describes the magnitude of a complex Gaussian random variable with a non-zero mean.</p>
+<p>It is characterized by two parameters:</p>
+<ul class="simple">
+<li><p><strong>K-factor (<span class="math notranslate nohighlight">\( K \)</span>)</strong>: Ratio of the power in the direct (deterministic) component to the power in the scattered (random) component.</p></li>
+<li><p><strong>Scale Parameter (<span class="math notranslate nohighlight">\( \sigma^2 \)</span>)</strong>: Variance of the underlying Gaussian noise.</p></li>
+</ul>
+<p><strong>PDF of Rician Distribution</strong></p>
+<p>The probability density function of a Rician distributed random variable <span class="math notranslate nohighlight">\( r \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+p(r; K, \sigma^2) = \frac{r}{\sigma^2} \exp\left( -\frac{r^2 + s^2}{2\sigma^2} \right) I_0\left( \frac{r s}{\sigma^2} \right)
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( s \)</span>: Amplitude of the deterministic component.</p></li>
+<li><p><span class="math notranslate nohighlight">\( I_0(\cdot) \)</span>: Modified Bessel function of the first kind of order zero.</p></li>
+</ul>
+</section>
+</section>
+<section id="rician-pdf-for-u-0">
+<h2>Rician PDF for <span class="math notranslate nohighlight">\( U_0 \)</span><a class="headerlink" href="#rician-pdf-for-u-0" title="Link to this heading">#</a></h2>
+<p>In our context, <span class="math notranslate nohighlight">\( U_0 \)</span> is the magnitude of a complex random variable that combines a deterministic component <span class="math notranslate nohighlight">\( 2 \alpha \mathcal{E} \)</span> and a Gaussian noise component <span class="math notranslate nohighlight">\( \mathcal{N}_0 \)</span>.</p>
+<p>Thus, <span class="math notranslate nohighlight">\( U_0 \)</span> follows a Rician distribution.</p>
+<p>Specifically</p>
+<div class="math notranslate nohighlight">
+\[
+U_0 = \left| 2 \alpha \mathcal{E} + \mathcal{N}_0 \right|
+\]</div>
+<p>Here:</p>
+<ul class="simple">
+<li><p>Deterministic Component (<span class="math notranslate nohighlight">\( s \)</span>): <span class="math notranslate nohighlight">\( 2 \alpha \mathcal{E} \)</span></p></li>
+<li><p>Random Component (<span class="math notranslate nohighlight">\( \mathcal{N}_0 \)</span>): Complex Gaussian noise with variance <span class="math notranslate nohighlight">\( 2 \sigma_z^2 \mathcal{E} \)</span></p></li>
+</ul>
+<p><strong>Mapping to Rician Parameters</strong></p>
+<p>Comparing with the standard Rician distribution:</p>
+<div class="math notranslate nohighlight">
+\[
+r = |s + n|
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( s \)</span>: Deterministic signal</p></li>
+<li><p><span class="math notranslate nohighlight">\( n \)</span>: Complex Gaussian noise with variance <span class="math notranslate nohighlight">\( 2 \sigma_z^2 \mathcal{E} \)</span></p></li>
+</ul>
+<p>Thus:</p>
+<ul class="simple">
+<li><p>Deterministic Amplitude (<span class="math notranslate nohighlight">\( s \)</span>): <span class="math notranslate nohighlight">\( 2 \alpha \mathcal{E} \)</span></p></li>
+<li><p>Scale Parameter (<span class="math notranslate nohighlight">\( \sigma_v^2 \)</span>): <span class="math notranslate nohighlight">\( \sigma_v^2 = \sigma_z^2 \mathcal{E} \)</span></p></li>
+</ul>
+<p>(Note: The variance in the Rician pdf is often expressed per dimension; hence, <span class="math notranslate nohighlight">\( \sigma_v^2 = \sigma_z^2 \mathcal{E} \)</span> aligns with standard notation.)</p>
+<p>Substituting the parameters into the Rician pdf formula:</p>
+<div class="math notranslate nohighlight">
+\[
+p(U_0) = \frac{U_0}{\sigma_v^2} \exp\left( -\frac{U_0^2 + s^2}{2 \sigma_v^2} \right) I_0\left( \frac{U_0 s}{\sigma_v^2} \right)
+\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\( s = 2 \alpha \mathcal{E} \)</span> and <span class="math notranslate nohighlight">\( \sigma_v^2 = \sigma_z^2 \mathcal{E} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+p(U_0) = \frac{U_0}{\sigma_z^2 \mathcal{E}} \exp\left( -\frac{U_0^2 + (2 \alpha \mathcal{E})^2}{2 \sigma_z^2 \mathcal{E}} \right) I_0\left( \frac{2 \alpha \mathcal{E} U_0}{\sigma_z^2 \mathcal{E}} \right)
+\]</div>
+<p>Simplifying:</p>
+<div class="math notranslate nohighlight">
+\[
+p(U_0) = \frac{U_0}{\sigma_z^2 \mathcal{E}} \exp\left( -\frac{U_0^2 + 4 \alpha^2 \mathcal{E}^2}{2 \sigma_z^2 \mathcal{E}} \right) I_0\left( \frac{2 \alpha U_0}{\sigma_z^2} \right)
+\]</div>
+<p>We have the final PDF is</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+p(U_0) = \frac{U_0}{\sigma_v^2} \exp\left( -\frac{U_0^2 + (2 \alpha \mathcal{E})^2}{2 \sigma_v^2} \right) I_0\left( \frac{2 \alpha \mathcal{E} U_0}{\sigma_v^2} \right)
+}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \sigma_v^2 = \sigma_z^2 \mathcal{E} \)</span>.</p>
+</section>
+<section id="definition-of-u-1">
+<h2>Definition of <span class="math notranslate nohighlight">\( U_1 \)</span>:<a class="headerlink" href="#definition-of-u-1" title="Link to this heading">#</a></h2>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+U_1 = \left| \sum_{j=1}^k y_j u_{1j}^* \right|
+\]</div>
+<p>Given <span class="math notranslate nohighlight">\( \vec{y} = \alpha \vec{u}_0 e^{j \beta_0} + \vec{z} \)</span>, substitute into the expression for <span class="math notranslate nohighlight">\( U_1 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+U_1 &amp;= \left| \sum_{j=1}^k y_j u_{1j}^* \right| \\
+&amp;= \left| \sum_{j=1}^k \left( \alpha u_{0j} e^{j \beta_0} + z_j \right) u_{1j}^* \right| \\
+&amp;= \left| \alpha \sum_{j=1}^k u_{0j} e^{j \beta_0} u_{1j}^* + \sum_{j=1}^k z_j u_{1j}^* \right|
+\end{align*}
+\end{split}\]</div>
+<p>Recall that, we define the energy <span class="math notranslate nohighlight">\( \mathcal{E} \)</span> of the signal vector <span class="math notranslate nohighlight">\( \vec{u}_0 \)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E} = \sum_{j=1}^k |u_{0j}|^2
+\]</div>
+<p><strong>Cross-Correlation Coefficient <span class="math notranslate nohighlight">\( \rho \)</span></strong></p>
+<p>Define the cross-correlation coefficient <span class="math notranslate nohighlight">\( \rho \)</span> between <span class="math notranslate nohighlight">\( \vec{u}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{u}_1 \)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+\rho = \frac{1}{2\mathcal{E}} \sum_{j=1}^k u_{0j} u_{1j}^*
+\]</div>
+<p>This definition normalizes the cross-correlation by the energy <span class="math notranslate nohighlight">\( \mathcal{E} \)</span> of <span class="math notranslate nohighlight">\( \vec{u}_0 \)</span>, and the factor <span class="math notranslate nohighlight">\( \frac{1}{2} \)</span> is introduced for scaling purposes.</p>
+<p>Next, we express <span class="math notranslate nohighlight">\( U_1 \)</span> in terms of <span class="math notranslate nohighlight">\( \rho \)</span> and <span class="math notranslate nohighlight">\( \mathcal{N}_1 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+U_1 &amp;= \left| \alpha \sum_{j=1}^k u_{0j} e^{j \beta_0} u_{1j}^* + \sum_{j=1}^k z_j u_{1j}^* \right| \\
+&amp;= \left| \alpha \cdot 2\mathcal{E} \rho e^{j \beta_0} + \sum_{j=1}^k z_j u_{1j}^* \right|
+\end{align*}
+\end{split}\]</div>
+<p>Here, the step from <span class="math notranslate nohighlight">\( \alpha \sum u_{0j} e^{j \beta_0} u_{1j}^* \)</span> to <span class="math notranslate nohighlight">\( \alpha \cdot 2\mathcal{E} \rho e^{j \beta_0} \)</span> utilizes the definition of <span class="math notranslate nohighlight">\( \rho \)</span>.</p>
+<p>Thus, the expression for <span class="math notranslate nohighlight">\( U_1 \)</span> simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+U_1 = \left| 2\alpha \mathcal{E} \rho e^{j \beta_0} + \mathcal{N}_1 \right|
+\]</div>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{N}_1 = \sum_{j=1}^k z_j u_{1j}^* = \sum_{j=1}^k e^{-j \beta_0} z_j u_{1j}^*
+\]</div>
+<p>Finally, we have:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{
+U_1 = \left| 2\alpha \mathcal{E} \rho + \mathcal{N}_1 \right|
+}
+\]</div>
+<p>with:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{N}_1 = \sum_{j=1}^k e^{-j \beta_0} z_j u_{1j}^*
+\]</div>
+</section>
+<section id="distribution-of-mathcal-n-1">
+<h2>Distribution of <span class="math notranslate nohighlight">\( \mathcal{N}_1 \)</span><a class="headerlink" href="#distribution-of-mathcal-n-1" title="Link to this heading">#</a></h2>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{N}_1 = \sum_{j=1}^k e^{-j \beta_0} z_j u_{1j}^*
+\]</div>
+<p><strong>Mean of <span class="math notranslate nohighlight">\( \mathcal{N}_1 \)</span></strong>:</p>
+<p>Since <span class="math notranslate nohighlight">\( \vec{z} \)</span> is zero-mean noise, and <span class="math notranslate nohighlight">\( e^{-j \beta_0} \)</span> is a deterministic phase rotation, the mean of <span class="math notranslate nohighlight">\( \mathcal{N}_1 \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}\{\mathcal{N}_1\} = \sum_{j=1}^k e^{-j \beta_0} \mathbb{E}\{z_j\} u_{1j}^* = 0
+\]</div>
+<p><strong>Variance of <span class="math notranslate nohighlight">\( \mathcal{N}_1 \)</span></strong></p>
+<p>To compute the variance, we consider the covariance of <span class="math notranslate nohighlight">\( \mathcal{N}_1 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}\{\mathcal{N}_1\} = \mathbb{E}\{|\mathcal{N}_1|^2\} = \sum_{j=1}^k \sum_{\ell=1}^k e^{-j \beta_0} z_j u_{1j}^* e^{\ell \beta_0} z_\ell^* u_{1\ell}
+\]</div>
+<p>Given that the noise <span class="math notranslate nohighlight">\( z_j \)</span> and <span class="math notranslate nohighlight">\( z_\ell \)</span> are uncorrelated for <span class="math notranslate nohighlight">\( j \neq \ell \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\mathbb{E}\{z_j z_\ell^*\} = \begin{cases} \sigma_z^2, &amp; j = \ell \\ 0, &amp; j \neq \ell \end{cases}
+\end{split}\]</div>
+<p>Therefore:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}\{\mathcal{N}_1\} = \sum_{j=1}^k |u_{1j}|^2 \sigma_z^2 = \sigma_z^2 \sum_{j=1}^k |u_{1j}|^2 = \sigma_z^2 \mathcal{E}_1
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \mathcal{E}_1 = \sum_{j=1}^k |u_{1j}|^2 \)</span>.</p>
+<p>Not that we consider the variance per dimension for complex Gaussian variables. For a complex Gaussian variable <span class="math notranslate nohighlight">\( z = z_{\text{real}} + j z_{\text{imag}} \)</span>, each of <span class="math notranslate nohighlight">\( z_{\text{real}} \)</span> and <span class="math notranslate nohighlight">\( z_{\text{imag}} \)</span> has variance <span class="math notranslate nohighlight">\( \frac{\sigma_z^2}{2} \)</span> to ensure that <span class="math notranslate nohighlight">\( \text{Var}\{z\} = \sigma_z^2 \)</span>.</p>
+<p>Therefore, the final expression, accounting for both real and imaginary parts, is:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}\{\mathcal{N}_1\} = 2\sigma_z^2 \mathcal{E}
+\]</div>
+<p><strong>Distribution of <span class="math notranslate nohighlight">\( \mathcal{N}_1 \)</span></strong>:</p>
+<p>Since <span class="math notranslate nohighlight">\( \mathcal{N}_1 \)</span> is a linear combination of complex Gaussian variables, it itself is a complex Gaussian random variable:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{
+\mathcal{N}_1 \sim \mathcal{CN}\left(0, 2\sigma_z^2 \mathcal{E}\right)
+}
+\]</div>
+<section id="rician-distribution-for-u-1">
+<h3>Rician Distribution for <span class="math notranslate nohighlight">\( U_1 \)</span><a class="headerlink" href="#rician-distribution-for-u-1" title="Link to this heading">#</a></h3>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+U_1 = \left| 2\alpha \mathcal{E} \rho + \mathcal{N}_1 \right|
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><strong>Deterministic Component</strong>: <span class="math notranslate nohighlight">\( 2\alpha \mathcal{E} \rho \)</span></p></li>
+<li><p><strong>Random Component</strong>: <span class="math notranslate nohighlight">\( \mathcal{N}_1 \sim \mathcal{CN}\left(0, 2\sigma_z^2 \mathcal{E}\right) \)</span></p></li>
+</ul>
+<p>Comparing to the standard Rician formulation:</p>
+<ul class="simple">
+<li><p><strong>Deterministic Component (<span class="math notranslate nohighlight">\( s \)</span>)</strong>: <span class="math notranslate nohighlight">\( 2\alpha \mathcal{E} \rho \)</span></p></li>
+</ul>
+<p>Since <span class="math notranslate nohighlight">\( \rho \)</span> is a complex scalar, <span class="math notranslate nohighlight">\( |s| = 2\alpha \mathcal{E} |\rho| \)</span>.</p>
+<ul class="simple">
+<li><p><strong>Scale Parameter (<span class="math notranslate nohighlight">\( \sigma_v^2 \)</span>)</strong>: <span class="math notranslate nohighlight">\( \sigma_v^2 = \sigma_z^2 \mathcal{E} \)</span></p></li>
+</ul>
+<p>Thus, <span class="math notranslate nohighlight">\( U_1 \)</span> follows a Rician distribution with:</p>
+<ul class="simple">
+<li><p><strong>Noncentrality Parameter</strong>: <span class="math notranslate nohighlight">\( s = 2\alpha \mathcal{E} |\rho| \)</span></p></li>
+<li><p><strong>Scale Parameter</strong>: <span class="math notranslate nohighlight">\( \sigma_v^2 = \sigma_z^2 \mathcal{E} \)</span></p></li>
+</ul>
+<section id="deriving-the-pdf-of-u-1">
+<h4>Deriving the PDF of <span class="math notranslate nohighlight">\( U_1 \)</span><a class="headerlink" href="#deriving-the-pdf-of-u-1" title="Link to this heading">#</a></h4>
+<p>Given:</p>
+<ul class="simple">
+<li><p><strong>Noncentrality Parameter (<span class="math notranslate nohighlight">\( s \)</span>)</strong>: <span class="math notranslate nohighlight">\( s = 2\alpha \mathcal{E} |\rho| \)</span></p></li>
+<li><p><strong>Scale Parameter (<span class="math notranslate nohighlight">\( \sigma_v^2 \)</span>)</strong>: <span class="math notranslate nohighlight">\( \sigma_v^2 = \sigma_z^2 \mathcal{E} \)</span></p></li>
+</ul>
+<p>Substituting these into the Rician PDF formula:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+p(U_1) &amp;= \frac{U_1}{\sigma_v^2} \exp\left( -\frac{U_1^2 + s^2}{2\sigma_v^2} \right) I_0\left( \frac{U_1 s}{\sigma_v^2} \right) \\
+&amp;= \frac{U_1}{\sigma_z^2 \mathcal{E}} \exp\left( -\frac{U_1^2 + (2\alpha \mathcal{E} |\rho|)^2}{2\sigma_z^2 \mathcal{E}} \right) I_0\left( \frac{U_1 \cdot 2\alpha \mathcal{E} |\rho|}{\sigma_z^2 \mathcal{E}} \right) \\
+&amp;= \frac{U_1}{\sigma_z^2 \mathcal{E}} \exp\left( -\frac{U_1^2 + 4\alpha^2 \mathcal{E}^2 |\rho|^2}{2\sigma_z^2 \mathcal{E}} \right) I_0\left( \frac{2\alpha |\rho| U_1}{\sigma_z^2} \right)
+\end{align*}
+\end{split}\]</div>
+<p>Thus, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+p(U_1) = \frac{U_1}{\sigma_v^2} \exp\left( -\frac{U_1^2 + (2\alpha |\rho| \mathcal{E})^2}{2\sigma_v^2} \right) I_0\left( \frac{2\alpha |\rho| \mathcal{E} U_1}{\sigma_v^2} \right)
+}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \sigma_v^2 = \sigma_z^2 \mathcal{E} \)</span>.</p>
+</section>
+</section>
+</section>
+<section id="average-error-rate">
+<h2>Average Error Rate<a class="headerlink" href="#average-error-rate" title="Link to this heading">#</a></h2>
+<section id="analytical-approach">
+<h3>Analytical Approach<a class="headerlink" href="#analytical-approach" title="Link to this heading">#</a></h3>
+<p>While the exact joint pdf <span class="math notranslate nohighlight">\( p(U_0, U_1) \)</span> is complex due to the dependence, an analytical expression for <span class="math notranslate nohighlight">\( P_E \)</span> can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+P_E = \Pr[U_1 &gt; U_0 | H_0] = \int_{u_0=0}^\infty \int_{u_1=u_0}^\infty p(U_0 = u_0, U_1 = u_1 | H_0) \, du_1 \, du_0
+\]</div>
+<p>This double integral accounts for all instances where <span class="math notranslate nohighlight">\( U_1 \)</span> exceeds <span class="math notranslate nohighlight">\( U_0 \)</span>.</p>
+<p>In some cases, analytical derivation of the joint pdf may be complex.</p>
+<p>However, knowledge of the individual pdfs <span class="math notranslate nohighlight">\( p(U_0) \)</span> and <span class="math notranslate nohighlight">\( p(U_1) \)</span>, along with their dependence structure, allows for approximate or simulation-based methods to estimate <span class="math notranslate nohighlight">\( P_E \)</span>.</p>
+</section>
+<section id="approximation-method">
+<h3>Approximation Method<a class="headerlink" href="#approximation-method" title="Link to this heading">#</a></h3>
+<p>The average error rate is then obtained as follows.</p>
+<p>This error rate corresponds to the general case of correlated Rice variates where one Rician variable exceeds another.</p>
+<p>By a linear transformation, the problem can be converted to the case where one Rician variable exceeds another and the two variables are independent.</p>
+<p>The average error rate is expressed as</p>
+<div class="math notranslate nohighlight">
+\[\boxed{
+P_E = Q(x, w) - \frac{1}{2} \exp \left( -\frac{x^2 + w^2}{2} \right) I_0(xw)
+}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( Q(x, w) \)</span> is Marcum’s <span class="math notranslate nohighlight">\(Q\)</span> function, with</p>
+<div class="math notranslate nohighlight">
+\[
+x = \sqrt{\frac{\alpha^2 \mathcal{E}}{\sigma_z^2} \left( 1 - \sqrt{1 - |\rho|^2} \right)}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+w = \sqrt{\frac{\alpha^2 \mathcal{E}}{\sigma_z^2} \left( 1 + \sqrt{1 - |\rho|^2} \right)}
+\]</div>
+<p>It can easily be shown that the error rate, given that <span class="math notranslate nohighlight">\( \vec{u}_1 \)</span> is sent, is the same as <span class="math notranslate nohighlight">\(P_E\)</span> above.</p>
+<p>Thus, this expression also corresponds to the average error rate.</p>
+</section>
+<section id="special-case-orthogonal-signaling-rho-0">
+<h3>Special Case: Orthogonal Signaling <span class="math notranslate nohighlight">\(\rho = 0\)</span><a class="headerlink" href="#special-case-orthogonal-signaling-rho-0" title="Link to this heading">#</a></h3>
+<p>In general, it is advantageous to choose signals for which <span class="math notranslate nohighlight">\( \rho = 0 \)</span>, if it is possible to do so. In this case, <span class="math notranslate nohighlight">\( x = 0 \)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+w = \sqrt{\frac{2\alpha^2 \mathcal{E}}{\sigma_z^2}}
+\]</div>
+<p>and the average error rate is</p>
+<div class="math notranslate nohighlight">
+\[
+P_E = Q \left( 0, \sqrt{\frac{2\alpha^2 \mathcal{E}}{\sigma_z^2}} \right) - \frac{1}{2} \exp \left( -\frac{\alpha^2 \mathcal{E}}{\sigma_z^2} \right)
+\]</div>
+<p>From the definition of Marcum’s <span class="math notranslate nohighlight">\(Q\)</span> function, we have</p>
+<div class="math notranslate nohighlight">
+\[
+P_E = \frac{1}{2} \exp \left( -\frac{\alpha^2 \mathcal{E}}{\sigma_z^2} \right)
+\]</div>
+<p>A common signaling scheme requiring the use of noncoherent receivers is <em>frequency-shift keying</em> (FSK).</p>
+<p>In this case, each of the two complex baseband equivalent signals is modeled as</p>
+<div class="math notranslate nohighlight">
+\[
+u_i(t) = \exp[j(2\pi f_i t + \beta)], \quad i = 0, 1, \quad 0 \le t \le T
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \beta \)</span> is a random variable uniformly distributed on the interval <span class="math notranslate nohighlight">\( (0, 2\pi) \)</span>.</p>
+<p>It is easy to show that the correlation between them has a magnitude</p>
+<div class="math notranslate nohighlight">
+\[
+|\rho| = \left| \frac{\sin \pi T \Delta f}{\pi T \Delta f} \right|
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \Delta f = |f_1 - f_0| \)</span> is the frequency separation between the signals.</p>
+<p>Clearly, if <span class="math notranslate nohighlight">\( \Delta f \)</span> is a multiple of <span class="math notranslate nohighlight">\( 1/T \)</span>, then <span class="math notranslate nohighlight">\( |\rho| = 0 \)</span> and we have orthogonal signaling.</p>
+<p>Although Figure 6.4 shows a functional block diagram of an equal-energy noncoherent receiver, it is instructive to compare this structure to the bandpass noncoherent receiver for FSK.</p>
+<p>The structure shown in Figure 6.7 can be obtained by rewriting:</p>
+<div class="math notranslate nohighlight">
+\[ 
+u_i^*(t) = e^{-j 2\pi f_i t} = \cos 2\pi f_i t - j \sin 2\pi f_i t 
+\]</div>
+<p>for <span class="math notranslate nohighlight">\( i = 0, 1\)</span></p>
+<p><img alt="Fig 6.7" src="_images/fig_6_7.png" /></p>
+</section>
+</section>
+<section id="simulation">
+<h2>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">i0</span>
+<span class="kn">from</span> <span class="nn">marcumq</span> <span class="kn">import</span> <span class="n">marcumq</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Set random seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+
+<span class="c1"># Simulation Parameters</span>
+
+<span class="c1"># System Parameters</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span>          <span class="c1"># Scaling factor</span>
+<span class="n">E</span> <span class="o">=</span> <span class="mi">1</span>             <span class="c1"># Energy</span>
+<span class="n">sigma_z_squared</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Noise variance</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mf">0.1</span>            <span class="c1"># Correlation coefficient (0 &lt;= |rho| &lt;= 1)</span>
+
+<span class="c1"># Simulation Parameters</span>
+<span class="n">num_simulations</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e6</span><span class="p">)</span>  <span class="c1"># Number of Monte Carlo simulations</span>
+
+<span class="c1"># Derived Parameters</span>
+<span class="n">sigma_v_squared</span> <span class="o">=</span> <span class="n">sigma_z_squared</span> <span class="o">*</span> <span class="n">E</span>
+<span class="n">sigma_v</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_v_squared</span><span class="p">)</span>
+
+<span class="c1"># Ensure rho is within valid range</span>
+<span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Correlation coefficient rho must satisfy |rho| &lt;= 1.&quot;</span><span class="p">)</span>
+
+<span class="c1"># === Monte Carlo Simulation ===</span>
+
+<span class="c1"># Generate complex Gaussian noise N0 and N1</span>
+<span class="c1"># Each component (real and imaginary) has variance sigma_z_squared * E</span>
+<span class="n">N0_real</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_z_squared</span> <span class="o">*</span> <span class="n">E</span><span class="p">),</span> <span class="n">num_simulations</span><span class="p">)</span>
+<span class="n">N0_imag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_z_squared</span> <span class="o">*</span> <span class="n">E</span><span class="p">),</span> <span class="n">num_simulations</span><span class="p">)</span>
+<span class="n">N0</span> <span class="o">=</span> <span class="n">N0_real</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">N0_imag</span>
+
+<span class="n">N1_real</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_z_squared</span> <span class="o">*</span> <span class="n">E</span><span class="p">),</span> <span class="n">num_simulations</span><span class="p">)</span>
+<span class="n">N1_imag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_z_squared</span> <span class="o">*</span> <span class="n">E</span><span class="p">),</span> <span class="n">num_simulations</span><span class="p">)</span>
+<span class="n">N1</span> <span class="o">=</span> <span class="n">N1_real</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">N1_imag</span>
+
+<span class="c1"># Compute U0 and U1</span>
+<span class="n">U0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">E</span> <span class="o">+</span> <span class="n">N0</span><span class="p">)</span>
+<span class="n">U1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">E</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">+</span> <span class="n">N1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="pdfs">
+<h3>PDFs<a class="headerlink" href="#pdfs" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define range for x-axis based on simulated data</span>
+<span class="n">x_min</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">x_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">U0</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">U1</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="o">*</span> <span class="mf">1.1</span>  <span class="c1"># Extend range slightly for better visualization</span>
+<span class="n">x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">x_min</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Plot empirical PDFs using histograms</span>
+<span class="c1"># max_value = max(U0.max(), U1.max())</span>
+<span class="n">bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">U0</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;U0 Simulated&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">U1</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="n">bins</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;U1 Simulated&#39;</span><span class="p">)</span>
+
+
+
+<span class="c1"># To compute theoretical PDFs over x_values using manual implementation</span>
+
+<span class="k">def</span> <span class="nf">rician_pdf</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">sigma_v2</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="n">sigma_v2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">s</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">sigma_v2</span><span class="p">))</span> <span class="o">*</span> <span class="n">i0</span><span class="p">((</span><span class="n">r</span> <span class="o">*</span> <span class="n">s</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma_v2</span><span class="p">)</span>
+
+<span class="c1"># Compute s parameters for U0 and U1</span>
+<span class="n">s_U0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">E</span><span class="p">)</span>  <span class="c1"># Signal amplitude for U0</span>
+<span class="n">s_U1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">E</span> <span class="o">*</span> <span class="n">rho</span><span class="p">)</span>  <span class="c1"># Signal amplitude for U1</span>
+
+<span class="n">sigma_v2</span> <span class="o">=</span> <span class="n">sigma_v_squared</span>  <span class="c1"># Variance of the noise</span>
+
+<span class="c1"># Compute theoretical PDFs over x_values</span>
+<span class="n">theoretical_p_U0</span> <span class="o">=</span> <span class="n">rician_pdf</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">s_U0</span><span class="p">,</span> <span class="n">sigma_v2</span><span class="p">)</span>
+<span class="n">theoretical_p_U1</span> <span class="o">=</span> <span class="n">rician_pdf</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">s_U1</span><span class="p">,</span> <span class="n">sigma_v2</span><span class="p">)</span>
+
+<span class="c1"># Plot theoretical PDFs</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">theoretical_p_U0</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;U0 Theoretical&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">theoretical_p_U1</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;U1 Theoretical&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability Density Function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;PDF of U0 and U1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e948f05c6bcbebf7ec3799f0d3602bf4d2bca3c66ae09b66e2306a393287f6c9.png" src="_images/e948f05c6bcbebf7ec3799f0d3602bf4d2bca3c66ae09b66e2306a393287f6c9.png" />
+</div>
+</div>
+</section>
+<section id="empirical-vs-theoretical-p-e">
+<h3>Empirical vs. Theoretical <span class="math notranslate nohighlight">\(P_E\)</span><a class="headerlink" href="#empirical-vs-theoretical-p-e" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Estimate empirical P_E</span>
+<span class="n">P_E_empirical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">U1</span> <span class="o">&gt;</span> <span class="n">U0</span><span class="p">)</span>
+
+<span class="c1"># Compute Theoretical P_E using the closed-form expression </span>
+
+<span class="c1"># Define x and w as per the closed-form expression</span>
+<span class="n">sqrt_term</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">E</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma_z_squared</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sqrt_term</span><span class="p">))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">E</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma_z_squared</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">sqrt_term</span><span class="p">))</span>
+
+<span class="c1"># Compute the Marcum Q function Q_1(x, w)</span>
+<span class="c1"># Note: scipy.special.marcumq(m, a, b) computes Q_m(a, b)</span>
+<span class="n">Q_1_xw</span> <span class="o">=</span> <span class="n">marcumq</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+
+<span class="c1"># Compute the modified Bessel function I0(xw)</span>
+<span class="n">I0_xw</span> <span class="o">=</span> <span class="n">i0</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">w</span><span class="p">)</span>
+
+<span class="c1"># Compute the exponential term</span>
+<span class="n">exp_term</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Compute theoretical P_E</span>
+<span class="n">P_E_theoretical</span> <span class="o">=</span> <span class="n">Q_1_xw</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">exp_term</span> <span class="o">*</span> <span class="n">I0_xw</span>
+
+<span class="c1"># Display results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Theoretical P_E: </span><span class="si">{</span><span class="n">P_E_theoretical</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Empirical P_E:   </span><span class="si">{</span><span class="n">P_E_empirical</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Theoretical P_E: 0.185324
+Empirical P_E:   0.187643
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="p-e-as-a-function-of-snr">
+<h3><span class="math notranslate nohighlight">\(P_E\)</span> as A Function of SNR<a class="headerlink" href="#p-e-as-a-function-of-snr" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set random seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">13</span><span class="p">)</span>
+
+<span class="c1"># System Parameters </span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">1.0</span>        <span class="c1"># Scaling factor</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mf">0.1</span>            <span class="c1"># Correlation coefficient (0 &lt;= |rho| &lt;= 1)</span>
+
+<span class="c1"># Noise variance</span>
+<span class="n">sigma_z_squared</span> <span class="o">=</span> <span class="mf">1.0</span>  <span class="c1"># Noise variance (fixed)</span>
+
+<span class="c1"># Simulation Parameters</span>
+<span class="n">num_simulations</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mf">1e7</span><span class="p">)</span>  <span class="c1"># Number of Monte Carlo simulations per SNR point</span>
+
+<span class="c1"># SNR Parameters </span>
+<span class="n">SNR_dB_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># SNR in dB</span>
+
+<span class="c1"># Initialize arrays to store theoretical and empirical P_E</span>
+<span class="n">P_E_theoretical_array</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">P_E_empirical_array</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Loop over each SNR value</span>
+<span class="k">for</span> <span class="n">SNR_dB</span> <span class="ow">in</span> <span class="n">SNR_dB_range</span><span class="p">:</span>
+    <span class="c1"># Convert SNR from dB to linear scale</span>
+    <span class="n">SNR_linear</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="p">(</span><span class="n">SNR_dB</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+    
+    <span class="c1"># Compute energy E based on SNR: SNR = E / sigma_z_squared =&gt; E = SNR * sigma_z_squared</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">SNR_linear</span> <span class="o">*</span> <span class="n">sigma_z_squared</span>
+    
+    <span class="c1"># Theoretical P_E Calculation </span>
+    
+    <span class="c1"># Compute sqrt_term = sqrt(1 - |rho|^2)</span>
+    <span class="n">sqrt_term</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">rho</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Compute x and w as per the closed-form expression</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">E</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma_z_squared</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">sqrt_term</span><span class="p">))</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">((</span><span class="n">alpha</span><span class="o">**</span><span class="mi">2</span> <span class="o">*</span> <span class="n">E</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma_z_squared</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">sqrt_term</span><span class="p">))</span>
+    
+    <span class="c1"># Compute the Marcum Q function </span>
+    <span class="n">Q_1_xw</span> <span class="o">=</span> <span class="n">marcumq</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
+    
+    <span class="c1"># Compute the modified Bessel function I0(xw)</span>
+    <span class="n">I0_xw</span> <span class="o">=</span> <span class="n">i0</span><span class="p">(</span><span class="n">x</span> <span class="o">*</span> <span class="n">w</span><span class="p">)</span>
+    
+    <span class="c1"># Compute the exponential term</span>
+    <span class="n">exp_term</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">w</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Compute theoretical P_E</span>
+    <span class="n">P_E_theoretical</span> <span class="o">=</span> <span class="n">Q_1_xw</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">exp_term</span> <span class="o">*</span> <span class="n">I0_xw</span>
+    <span class="n">P_E_theoretical_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P_E_theoretical</span><span class="p">)</span>
+    
+    <span class="c1"># Monte Carlo Simulation </span>
+    
+    <span class="c1"># Generate complex Gaussian noise N0 and N1</span>
+    <span class="c1"># Each component (real and imaginary) has variance sigma_z_squared * E</span>
+    <span class="n">N0_real</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_z_squared</span> <span class="o">*</span> <span class="n">E</span><span class="p">),</span> <span class="n">num_simulations</span><span class="p">)</span>
+    <span class="n">N0_imag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_z_squared</span> <span class="o">*</span> <span class="n">E</span><span class="p">),</span> <span class="n">num_simulations</span><span class="p">)</span>
+    <span class="n">N0</span> <span class="o">=</span> <span class="n">N0_real</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">N0_imag</span>
+    
+    <span class="n">N1_real</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_z_squared</span> <span class="o">*</span> <span class="n">E</span><span class="p">),</span> <span class="n">num_simulations</span><span class="p">)</span>
+    <span class="n">N1_imag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_z_squared</span> <span class="o">*</span> <span class="n">E</span><span class="p">),</span> <span class="n">num_simulations</span><span class="p">)</span>
+    <span class="n">N1</span> <span class="o">=</span> <span class="n">N1_real</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">N1_imag</span>
+    
+    <span class="c1"># Compute U0 and U1</span>
+    <span class="n">U0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">E</span> <span class="o">+</span> <span class="n">N0</span><span class="p">)</span>
+    <span class="n">U1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">alpha</span> <span class="o">*</span> <span class="n">E</span> <span class="o">*</span> <span class="n">rho</span> <span class="o">+</span> <span class="n">N1</span><span class="p">)</span>
+    
+    <span class="c1"># Estimate empirical P_E</span>
+    <span class="n">P_E_empirical</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">U1</span> <span class="o">&gt;</span> <span class="n">U0</span><span class="p">)</span>
+    <span class="n">P_E_empirical_array</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">P_E_empirical</span><span class="p">)</span>
+    
+    <span class="c1"># === Optional: Print Progress ===</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;SNR: </span><span class="si">{</span><span class="n">SNR_dB</span><span class="si">}</span><span class="s2"> dB | Theoretical P_E: </span><span class="si">{</span><span class="n">P_E_theoretical</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2"> | Empirical P_E: </span><span class="si">{</span><span class="n">P_E_empirical</span><span class="si">:</span><span class="s2">.6f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>SNR: 0 dB | Theoretical P_E: 0.185324 | Empirical P_E: 0.187374
+SNR: 1 dB | Theoretical P_E: 0.143442 | Empirical P_E: 0.146042
+SNR: 2 dB | Theoretical P_E: 0.103948 | Empirical P_E: 0.106767
+SNR: 3 dB | Theoretical P_E: 0.069352 | Empirical P_E: 0.071942
+SNR: 4 dB | Theoretical P_E: 0.041716 | Empirical P_E: 0.044155
+SNR: 5 dB | Theoretical P_E: 0.022038 | Empirical P_E: 0.023970
+SNR: 6 dB | Theoretical P_E: 0.009897 | Empirical P_E: 0.011247
+SNR: 7 dB | Theoretical P_E: 0.003628 | Empirical P_E: 0.004343
+SNR: 8 dB | Theoretical P_E: 0.001033 | Empirical P_E: 0.001357
+SNR: 9 dB | Theoretical P_E: 0.000214 | Empirical P_E: 0.000328
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensure all entries are valid numbers by filtering out None or invalid entries</span>
+<span class="n">P_E_theoretical_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">val</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">P_E_theoretical_array</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))])</span>
+<span class="n">P_E_empirical_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">val</span> <span class="k">for</span> <span class="n">val</span> <span class="ow">in</span> <span class="n">P_E_empirical_array</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">val</span><span class="p">,</span> <span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">))])</span>
+
+<span class="c1"># Plot the theoretical and empirical P_E vs SNR</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">SNR_dB_range</span><span class="p">,</span> <span class="n">P_E_theoretical_array</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical $P_E$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">semilogy</span><span class="p">(</span><span class="n">SNR_dB_range</span><span class="p">,</span> <span class="n">P_E_empirical_array</span><span class="p">,</span> <span class="s1">&#39;r*:&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical $P_E$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Error Rate $P_E$ vs SNR&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;SNR (dB)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Average Error Rate $P_E$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d4498e12c85ea8b40009d7abba65619050537e1929497a030d67eb4ad3359996.png" src="_images/d4498e12c85ea8b40009d7abba65619050537e1929497a030d67eb4ad3359996.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="matlab-example">
+<h2>Matlab Example<a class="headerlink" href="#matlab-example" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.mathworks.com/help/phased/ug/detection-of-known-signals-with-coherent-and-non-coherent-receivers.html">Detection of Known Signals with Coherent and Non-Coherent Receivers</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c6_s1_composite_hypothesis_testing.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Composite Hypothesis Testing</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c6_s4_unknown_amplitude.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unknown Amplitude</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-modelling">Signal Modelling</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-representation-with-random-phase">Signal Representation with Random Phase</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probabilities">Conditional Probabilities</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uniform-distribution-for-beta-i">Uniform Distribution for <span class="math notranslate nohighlight">\( \beta_i \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressing-in-terms-of-bessel-function">Expressing in Terms of Bessel function</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#the-modified-bessel-function-i-0-x">The Modified Bessel Function <span class="math notranslate nohighlight">\( I_0(x) \)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#log-likelihood-ratio-llr">Log-Likelihood Ratio (LLR)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-variable-u-i">Decision Variable <span class="math notranslate nohighlight">\( U_i \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule-based-on-llr">Decision Rule Based on LLR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplification-under-equal-energy">Simplification Under Equal Energy</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#noncoherent-receiver-structure">Noncoherent Receiver Structure</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#nonlinearity">Nonlinearity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-rate-performance">Error-Rate Performance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rician-u-0">Rician <span class="math notranslate nohighlight">\(U_0\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rician-distribution-of-u-0">Rician Distribution of <span class="math notranslate nohighlight">\( U_0 \)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-mathcal-n-0">Distribution of  <span class="math notranslate nohighlight">\( \mathcal{N}_0 \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rician-distribution">Rician Distribution</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rician-pdf-for-u-0">Rician PDF for <span class="math notranslate nohighlight">\( U_0 \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-u-1">Definition of <span class="math notranslate nohighlight">\( U_1 \)</span>:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-mathcal-n-1">Distribution of <span class="math notranslate nohighlight">\( \mathcal{N}_1 \)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rician-distribution-for-u-1">Rician Distribution for <span class="math notranslate nohighlight">\( U_1 \)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-the-pdf-of-u-1">Deriving the PDF of <span class="math notranslate nohighlight">\( U_1 \)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#average-error-rate">Average Error Rate</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#analytical-approach">Analytical Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#approximation-method">Approximation Method</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-case-orthogonal-signaling-rho-0">Special Case: Orthogonal Signaling <span class="math notranslate nohighlight">\(\rho = 0\)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pdfs">PDFs</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#empirical-vs-theoretical-p-e">Empirical vs. Theoretical <span class="math notranslate nohighlight">\(P_E\)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#p-e-as-a-function-of-snr"><span class="math notranslate nohighlight">\(P_E\)</span> as A Function of SNR</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-example">Matlab Example</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1037 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Complex Signal &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sig_c2_s1_complex_lowpass';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Signal Characteristics" href="sig_c2_s2_signal_characteristics.html" />
+    <link rel="prev" title="Signal Representations" href="sig_c2_s0_signal_representations.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Complex Signal</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-lowpass-equivalent">Complex Lowpass Equivalent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrum-of-the-lowpass-equivalent">Spectrum of the Lowpass Equivalent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressing-bandpass-signals-in-terms-of-their-lowpass-equivalent">Expressing Bandpass Signals in Terms of Their Lowpass Equivalent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-bandpass-signals-with-two-lowpass-signals">Representing Bandpass Signals with Two Lowpass Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-phase-and-quadrature-i-q-components">In-phase and Quadrature (I/Q) Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstruction-of-x-t-and-hat-x-t">Reconstruction of <span class="math notranslate nohighlight">\(x(t)\)</span> and <span class="math notranslate nohighlight">\(\hat{x}(t)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-coordinates-representation">Polar Coordinates Representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bandpass-signals-in-polar-coordinates">Bandpass Signals in Polar Coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependence-on-central-frequency">Dependence on Central Frequency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulation-process">Modulation Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demodulation-process">Demodulation Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-example-bandpass-to-lowpass-demodulation">Python Example: Bandpass to Lowpass Demodulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bandpass-signal-generation">Bandpass Signal Generation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analytic-signal-in-phase-and-quadrature-components">Analytic Signal, In-phase, and Quadrature Components</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#magnitude-and-phase">Magnitude and Phase</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-example-modulation-and-demodulation-using-complex-envelope">Matlab Example: Modulation and Demodulation Using Complex Envelope</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="complex-signal">
+<h1>Complex Signal<a class="headerlink" href="#complex-signal" title="Link to this heading">#</a></h1>
+<section id="complex-lowpass-equivalent">
+<h2>Complex Lowpass Equivalent<a class="headerlink" href="#complex-lowpass-equivalent" title="Link to this heading">#</a></h2>
+<p><strong>Definition: Lowpass Equivalent (or Complex Envelope)</strong><br />
+The <strong>lowpass equivalent</strong> or <strong>complex envelope</strong> of a signal <span class="math notranslate nohighlight">\(x(t)\)</span>, denoted by <span class="math notranslate nohighlight">\(x_l(t)\)</span>, is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+x_l(t) = \mathcal{F}^{-1}[X_l(f)] = 2x_+(t)e^{-j2\pi f_0 t}
+\]</div>
+<p>Expanding this expression in terms of <span class="math notranslate nohighlight">\(x(t)\)</span> and its Hilbert transform <span class="math notranslate nohighlight">\(\hat{x}(t)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+x_l(t) = (x(t) + j\hat{x}(t))e^{-j2\pi f_0 t}
+\]</div>
+<p>Rewriting in terms of real and imaginary parts:</p>
+<div class="math notranslate nohighlight">
+\[
+x_l(t) = \big(x(t)\cos(2\pi f_0 t) + \hat{x}(t)\sin(2\pi f_0 t)\big) 
++ j\big(\hat{x}(t)\cos(2\pi f_0 t) - x(t)\sin(2\pi f_0 t)\big)
+\]</div>
+</section>
+<section id="spectrum-of-the-lowpass-equivalent">
+<h2>Spectrum of the Lowpass Equivalent<a class="headerlink" href="#spectrum-of-the-lowpass-equivalent" title="Link to this heading">#</a></h2>
+<p>The spectrum of <span class="math notranslate nohighlight">\(x_l(t)\)</span>, denoted by <span class="math notranslate nohighlight">\(X_l(f)\)</span>, is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+X_l(f) = 2X_+(f + f_0) = 2X(f + f_0)u_{-1}(f + f_0)
+\]</div>
+<p><strong>Key Properties</strong></p>
+<ol class="arabic simple">
+<li><p>The spectrum of <span class="math notranslate nohighlight">\(x_l(t)\)</span> is centered around <strong>zero frequency</strong>, making <span class="math notranslate nohighlight">\(x_l(t)\)</span> a <strong>complex lowpass signal</strong>.</p></li>
+<li><p>The transformation shifts the spectrum of <span class="math notranslate nohighlight">\(x(t)\)</span> from its original center frequency <span class="math notranslate nohighlight">\(f_0\)</span> to baseband, enabling analysis and processing as a lowpass signal.</p></li>
+</ol>
+</section>
+<section id="expressing-bandpass-signals-in-terms-of-their-lowpass-equivalent">
+<h2>Expressing Bandpass Signals in Terms of Their Lowpass Equivalent<a class="headerlink" href="#expressing-bandpass-signals-in-terms-of-their-lowpass-equivalent" title="Link to this heading">#</a></h2>
+<p><strong>Theorem</strong><br />
+A bandpass signal <span class="math notranslate nohighlight">\(x(t)\)</span> can be expressed in terms of its lowpass equivalent <span class="math notranslate nohighlight">\(x_l(t)\)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+x(t) = \Re \big[x_l(t)e^{j2\pi f_0 t}\big]
+\]</div>
+<p><strong>Spectrum Relation</strong>:<br />
+The spectrum of <span class="math notranslate nohighlight">\(x(t)\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+X(f) = \frac{1}{2} \big[X_l(f - f_0) + X^*_l(-f - f_0)\big]
+\]</div>
+</section>
+<section id="representing-bandpass-signals-with-two-lowpass-signals">
+<h2>Representing Bandpass Signals with Two Lowpass Signals<a class="headerlink" href="#representing-bandpass-signals-with-two-lowpass-signals" title="Link to this heading">#</a></h2>
+<p>A bandpass signal <span class="math notranslate nohighlight">\(x(t)\)</span> can be represented in two ways:</p>
+<ol class="arabic simple">
+<li><p>Using its <strong>in-phase</strong> and <strong>quadrature</strong> components.</p></li>
+<li><p>Using its <strong>envelope</strong> and <strong>phase</strong>.</p></li>
+</ol>
+</section>
+<section id="in-phase-and-quadrature-i-q-components">
+<h2>In-phase and Quadrature (I/Q) Components<a class="headerlink" href="#in-phase-and-quadrature-i-q-components" title="Link to this heading">#</a></h2>
+<p><strong>Definition</strong><br />
+The <strong>real</strong> and <strong>imaginary</strong> parts of the lowpass equivalent <span class="math notranslate nohighlight">\(x_l(t)\)</span> are called the <strong>in-phase component</strong> and the <strong>quadrature component</strong>, respectively. These are denoted as <span class="math notranslate nohighlight">\(x_i(t)\)</span> and <span class="math notranslate nohighlight">\(x_q(t)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+x_l(t) = x_i(t) + jx_q(t)
+\]</div>
+<p><strong>Expressions for <span class="math notranslate nohighlight">\(x_i(t)\)</span> and <span class="math notranslate nohighlight">\(x_q(t)\)</span>:</strong></p>
+<div class="math notranslate nohighlight">
+\[
+x_i(t) = x(t)\cos(2\pi f_0 t) + \hat{x}(t)\sin(2\pi f_0 t)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+x_q(t) = \hat{x}(t)\cos(2\pi f_0 t) - x(t)\sin(2\pi f_0 t)
+\]</div>
+</section>
+<section id="reconstruction-of-x-t-and-hat-x-t">
+<h2>Reconstruction of <span class="math notranslate nohighlight">\(x(t)\)</span> and <span class="math notranslate nohighlight">\(\hat{x}(t)\)</span><a class="headerlink" href="#reconstruction-of-x-t-and-hat-x-t" title="Link to this heading">#</a></h2>
+<p>The original bandpass signal <span class="math notranslate nohighlight">\(x(t)\)</span> and its Hilbert transform <span class="math notranslate nohighlight">\(\hat{x}(t)\)</span> can be reconstructed from the <strong>in-phase</strong> (<span class="math notranslate nohighlight">\(x_i(t)\)</span>) and <strong>quadrature</strong> (<span class="math notranslate nohighlight">\(x_q(t)\)</span>) components of the lowpass equivalent signal <span class="math notranslate nohighlight">\(x_l(t)\)</span>.</p>
+<p>Specifically, using <span class="math notranslate nohighlight">\(x_i(t)\)</span> and <span class="math notranslate nohighlight">\(x_q(t)\)</span>, the original signal <span class="math notranslate nohighlight">\(x(t)\)</span> and its Hilbert transform <span class="math notranslate nohighlight">\(\hat{x}(t)\)</span> can be reconstructed as:</p>
+<div class="math notranslate nohighlight">
+\[
+x(t) = x_i(t)\cos(2\pi f_0 t) - x_q(t)\sin(2\pi f_0 t)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\hat{x}(t) = x_q(t)\cos(2\pi f_0 t) + x_i(t)\sin(2\pi f_0 t)
+\]</div>
+<p><strong>Key Insight</strong></p>
+<p>Any bandpass signal <span class="math notranslate nohighlight">\(x(t)\)</span> can be fully represented using <strong>two lowpass signals</strong>:</p>
+<ol class="arabic simple">
+<li><p>The <strong>in-phase component</strong> <span class="math notranslate nohighlight">\(x_i(t)\)</span>.</p></li>
+<li><p>The <strong>quadrature component</strong> <span class="math notranslate nohighlight">\(x_q(t)\)</span>.</p></li>
+</ol>
+<p>These representations are essential for applications in communication systems, such as modulation and demodulation processes.</p>
+</section>
+<section id="polar-coordinates-representation">
+<h2>Polar Coordinates Representation<a class="headerlink" href="#polar-coordinates-representation" title="Link to this heading">#</a></h2>
+<p><strong>Envelope and Phase</strong><br />
+We can express a bandpass signal <span class="math notranslate nohighlight">\(x(t)\)</span> in terms of its <strong>magnitude</strong> (envelope) and <strong>phase</strong> in polar coordinates.</p>
+<p><strong>Definition</strong><br />
+The <strong>envelope</strong> <span class="math notranslate nohighlight">\(r_x(t)\)</span> and <strong>phase</strong> <span class="math notranslate nohighlight">\(\theta_x(t)\)</span> of <span class="math notranslate nohighlight">\(x(t)\)</span> are defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+r_x(t) = \sqrt{x_i^2(t) + x_q^2(t)}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\theta_x(t) = \arctan\left(\frac{x_q(t)}{x_i(t)}\right)
+\]</div>
+<p>The lowpass equivalent signal <span class="math notranslate nohighlight">\(x_l(t)\)</span> can then be written as:</p>
+<div class="math notranslate nohighlight">
+\[
+x_l(t) = r_x(t)e^{j\theta_x(t)}
+\]</div>
+</section>
+<section id="bandpass-signals-in-polar-coordinates">
+<h2>Bandpass Signals in Polar Coordinates<a class="headerlink" href="#bandpass-signals-in-polar-coordinates" title="Link to this heading">#</a></h2>
+<p><strong>Definition</strong><br />
+A bandpass signal <span class="math notranslate nohighlight">\(x(t)\)</span> can be expressed in terms of its envelope and phase as:</p>
+<div class="math notranslate nohighlight">
+\[
+x(t) = \Re\big\{r_x(t)e^{j(2\pi f_0 t + \theta_x(t))}\big\} = r_x(t)\cos(2\pi f_0 t + \theta_x(t))
+\]</div>
+</section>
+<section id="dependence-on-central-frequency">
+<h2>Dependence on Central Frequency<a class="headerlink" href="#dependence-on-central-frequency" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>The lowpass equivalent <span class="math notranslate nohighlight">\(x_l(t)\)</span>—and consequently <span class="math notranslate nohighlight">\(x_i(t)\)</span>, <span class="math notranslate nohighlight">\(x_q(t)\)</span>, <span class="math notranslate nohighlight">\(r_x(t)\)</span>, and <span class="math notranslate nohighlight">\(\theta_x(t)\)</span>—depends on the choice of the <strong>central frequency</strong> <span class="math notranslate nohighlight">\(f_0\)</span>.</p></li>
+<li><p>Different values of <span class="math notranslate nohighlight">\(f_0\)</span> (as long as <span class="math notranslate nohighlight">\(X_+(f)\)</span> is nonzero only within <span class="math notranslate nohighlight">\([f_0 - W/2, f_0 + W/2]\)</span>, where <span class="math notranslate nohighlight">\(W/2 &lt; f_0\)</span>) yield different lowpass signals <span class="math notranslate nohighlight">\(x_l(t)\)</span>.</p></li>
+<li><p>Typically, <span class="math notranslate nohighlight">\(f_0\)</span> is chosen based on the application or communication channel, so it is often implicitly understood.</p></li>
+</ol>
+</section>
+<section id="modulation-process">
+<h2>Modulation Process<a class="headerlink" href="#modulation-process" title="Link to this heading">#</a></h2>
+<p>The modulation process converts a lowpass signal into a bandpass signal. The system that performs this operation is called a <strong>modulator</strong>.</p>
+<p><strong>Modulator Diagram</strong><br />
+<img alt="Modulator Diagram" src="_images/fig_sig_c2_s1_modulator_a.png" /></p>
+<p><strong>Complex Modulator</strong><br />
+<img alt="Complex Modulator" src="_images/fig_sig_c2_s1_modulator_b.png" /></p>
+<p><strong>Real Modulator</strong><br />
+<img alt="Real Modulator" src="_images/fig_sig_c2_s1_modulator_c.png" /></p>
+</section>
+<section id="demodulation-process">
+<h2>Demodulation Process<a class="headerlink" href="#demodulation-process" title="Link to this heading">#</a></h2>
+<p>The demodulation process extracts the lowpass signal (<span class="math notranslate nohighlight">\(x_l(t)\)</span>, or <span class="math notranslate nohighlight">\(x_i(t)\)</span> and <span class="math notranslate nohighlight">\(x_q(t)\)</span>) from the bandpass signal <span class="math notranslate nohighlight">\(x(t)\)</span>.</p>
+<p><strong>Demodulator Diagram</strong><br />
+<img alt="Demodulator Diagram" src="_images/fig_sig_c2_s1_demodulator_a.png" /></p>
+<p><strong>Complex Demodulator</strong><br />
+<img alt="Complex Demodulator" src="_images/fig_sig_c2_s1_demodulator_b.png" /></p>
+<p><strong>Real Demodulator</strong><br />
+<img alt="Real Demodulator" src="_images/fig_sig_c2_s1_demodulator_c.png" /></p>
+<p>The block labeled <span class="math notranslate nohighlight">\(\mathcal{H}\)</span> represents a <strong>Hilbert transform</strong>, which is an LTI system with:</p>
+<ul class="simple">
+<li><p>Impulse response: <span class="math notranslate nohighlight">\(h(t) = \frac{1}{\pi t}\)</span></p></li>
+<li><p>Transfer function: <span class="math notranslate nohighlight">\(H(f) = -j\text{sgn}(f)\)</span></p></li>
+</ul>
+<section id="python-example-bandpass-to-lowpass-demodulation">
+<h3>Python Example: Bandpass to Lowpass Demodulation<a class="headerlink" href="#python-example-bandpass-to-lowpass-demodulation" title="Link to this heading">#</a></h3>
+<p><strong>Bandpass Signal</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+x_{\text{bp}}(t) = A \cos(2\pi f_m t) \cdot \cos(2\pi f_0 t)
+\]</div>
+<p><strong>Decomposition into I/Q</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+x_i(t), x_q(t) \rightarrow I(t), Q(t)
+\]</div>
+<p>Using the analytic signal and lowpass filtering.</p>
+<p><strong>Magnitude and Phase</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+r(t), \theta(t) \quad \text{from complex signal}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+r_{\text{ana}}(t), \theta_{\text{ana}}(t) \quad \text{from I/Q components}
+\]</div>
+<section id="bandpass-signal-generation">
+<h4>Bandpass Signal Generation<a class="headerlink" href="#bandpass-signal-generation" title="Link to this heading">#</a></h4>
+<p>Generate a bandpass signal by modulating a lowpass message signal onto a carrier.</p>
+<p><strong>Time Vector</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+t = \{0, \frac{1}{f_s}, \frac{2}{f_s}, \ldots, T\}
+\]</div>
+<p>Represents time samples for signal generation.</p>
+<p><strong>Lowpass Signal</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+x_{\text{lp}}(t) = A \cdot \cos(2\pi f_m t)
+\]</div>
+<p>A cosine wave at message frequency <span class="math notranslate nohighlight">\( f_m \)</span> with amplitude <span class="math notranslate nohighlight">\( A \)</span>.</p>
+<p><strong>Bandpass Signal</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+x_{\text{bp}}(t) = x_{\text{lp}}(t) \cdot \cos(2\pi f_0 t)
+\]</div>
+<p>The lowpass signal is modulated onto a carrier frequency <span class="math notranslate nohighlight">\( f_0 \)</span> to generate a bandpass signal.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define parameters</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># Signal duration (seconds)</span>
+<span class="n">f0</span> <span class="o">=</span> <span class="mi">100</span>             <span class="c1"># Carrier frequency (Hz)</span>
+<span class="n">fm</span> <span class="o">=</span> <span class="mi">2</span>               <span class="c1"># Message signal frequency (Hz)</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">1000</span>            <span class="c1"># Sampling frequency (samples per second)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="mi">1</span><span class="o">/</span><span class="n">fs</span><span class="p">)</span>  <span class="c1"># Time vector (from 0 to T with step size 1/fs)</span>
+
+<span class="c1"># Generate a lowpass signal (message signal)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="mi">1</span>                <span class="c1"># Amplitude of the message signal</span>
+<span class="n">x_t_real_lp</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">fm</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>  <span class="c1"># Real-valued lowpass message signal</span>
+
+<span class="c1"># Modulate the message signal onto a carrier to create a bandpass signal</span>
+<span class="n">x_t_bp</span> <span class="o">=</span> <span class="n">x_t_real_lp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span>  <span class="c1"># Bandpass signal</span>
+
+<span class="c1"># Plot the bandpass signal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_t_bp</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Bandpass Signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Bandpass Signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># Add a grid for better visualization</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b54a5c8606a4aadc27fdb6924d8c7aff74a1268d2690337d7f10cba7d7a17d84.png" src="_images/b54a5c8606a4aadc27fdb6924d8c7aff74a1268d2690337d7f10cba7d7a17d84.png" />
+</div>
+</div>
+</section>
+<section id="analytic-signal-in-phase-and-quadrature-components">
+<h4>Analytic Signal, In-phase, and Quadrature Components<a class="headerlink" href="#analytic-signal-in-phase-and-quadrature-components" title="Link to this heading">#</a></h4>
+<p>Decompose a bandpass signal into its analytic signal, in-phase, and quadrature components.</p>
+<p><strong>Hilbert Transform (Analytic Signal)</strong>:</p>
+<p>The analytic signal <span class="math notranslate nohighlight">\( \hat{x}(t) \)</span> is:
+$<span class="math notranslate nohighlight">\(
+\hat{x}(t) = x_{\text{bp}}(t) + j \cdot H\{x_{\text{bp}}(t)\}
+\)</span>$</p>
+<p>where <span class="math notranslate nohighlight">\( H\{\cdot\} \)</span> is the Hilbert transform.</p>
+<p><strong>In-phase Component</strong>:</p>
+<p>Mixing down to baseband involves multiplication by a cosine:</p>
+<div class="math notranslate nohighlight">
+\[
+x_i(t) = \Re\left[x_{\text{bp}}(t) \cdot \cos(2\pi f_0 t) + \hat{x}(t) \cdot \sin(2\pi f_0 t)\right]
+\]</div>
+<p><strong>Quadrature Component</strong>:</p>
+<p>The quadrature component is extracted by:</p>
+<div class="math notranslate nohighlight">
+\[
+x_q(t) = \Re\left[\hat{x}(t) \cdot \cos(2\pi f_0 t) - x_{\text{bp}}(t) \cdot \sin(2\pi f_0 t)\right]
+\]</div>
+<p><strong>Lowpass Filtering</strong>:</p>
+<p>Use a Butterworth lowpass filter to remove high-frequency components:</p>
+<div class="math notranslate nohighlight">
+\[
+I(t) = \text{LPF}(x_i(t)), \quad Q(t) = \text{LPF}(x_q(t))
+\]</div>
+<p>where LPF is the lowpass filtering operation.</p>
+<p><strong>Complex Lowpass Equivalent</strong>:</p>
+<p>Combine the in-phase and quadrature components:</p>
+<div class="math notranslate nohighlight">
+\[
+x_{\text{lowpass}}(t) = I(t) + j \cdot Q(t)
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">hilbert</span><span class="p">,</span> <span class="n">butter</span><span class="p">,</span> <span class="n">filtfilt</span>
+
+<span class="c1"># Generate the analytic signal (complex signal using Hilbert transform)</span>
+<span class="n">x_hat</span> <span class="o">=</span> <span class="n">hilbert</span><span class="p">(</span><span class="n">x_t_bp</span><span class="p">)</span>  <span class="c1"># Analytic signal of the bandpass signal</span>
+
+<span class="c1"># Mix down the analytic signal to baseband</span>
+<span class="n">xi_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">x_t_bp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="n">x_hat</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span>  <span class="c1"># In-phase component</span>
+<span class="n">xq_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">x_hat</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">*</span> <span class="n">t</span><span class="p">)</span> <span class="o">-</span> <span class="n">x_t_bp</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f0</span> <span class="o">*</span> <span class="n">t</span><span class="p">))</span>  <span class="c1"># Quadrature component</span>
+
+<span class="c1"># Design a low-pass Butterworth filter to remove high-frequency components</span>
+<span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">=</span> <span class="n">butter</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">fm</span> <span class="o">/</span> <span class="p">(</span><span class="n">fs</span> <span class="o">/</span> <span class="mi">2</span><span class="p">))</span>  <span class="c1"># Butterworth filter of order 2 with cutoff at 2*fm</span>
+<span class="n">I</span> <span class="o">=</span> <span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">xi_t</span><span class="p">)</span>  <span class="c1"># Filtered In-phase (I) component</span>
+<span class="n">Q</span> <span class="o">=</span> <span class="n">filtfilt</span><span class="p">(</span><span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">xq_t</span><span class="p">)</span>  <span class="c1"># Filtered Quadrature (Q) component</span>
+
+<span class="c1"># Form the complex lowpass equivalent signal</span>
+<span class="n">complex_lowpass_equivalent</span> <span class="o">=</span> <span class="n">I</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">Q</span>  <span class="c1"># Complex lowpass representation of the signal</span>
+
+<span class="c1"># Plot the In-phase (I) and Quadrature (Q) components</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plot the In-phase (I) component</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;In-phase (I) Component&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Plot the Quadrature (Q) component</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Quadrature (Q) Component&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/455be70658080560adc00e3eb163bd548428128680f6e15e1ae1fb80844de9fd.png" src="_images/455be70658080560adc00e3eb163bd548428128680f6e15e1ae1fb80844de9fd.png" />
+</div>
+</div>
+</section>
+<section id="magnitude-and-phase">
+<h4>Magnitude and Phase<a class="headerlink" href="#magnitude-and-phase" title="Link to this heading">#</a></h4>
+<p>Compute and compare the magnitude and phase of a signal from the complex representation and analytical calculations.</p>
+<p><strong>Magnitude from Complex Signal</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+r(t) = |x_{\text{lowpass}}(t)|
+\]</div>
+<p><strong>Phase from Complex Signal</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\theta(t) = \angle x_{\text{lowpass}}(t)
+\]</div>
+<p><strong>Analytical Magnitude</strong>:</p>
+<p>Using <span class="math notranslate nohighlight">\( I(t) \)</span> (in-phase) and <span class="math notranslate nohighlight">\( Q(t) \)</span> (quadrature):</p>
+<div class="math notranslate nohighlight">
+\[
+r_{\text{ana}}(t) = \sqrt{I(t)^2 + Q(t)^2}
+\]</div>
+<p><strong>Analytical Phase</strong>:</p>
+<p>Phase is computed using the arctangent of <span class="math notranslate nohighlight">\( Q(t) \)</span> and <span class="math notranslate nohighlight">\( I(t) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\theta_{\text{ana}}(t) = \arctan2(Q(t), I(t))
+\]</div>
+<p><strong>Comparison</strong>:</p>
+<p>Compare <span class="math notranslate nohighlight">\( r(t) \)</span> with <span class="math notranslate nohighlight">\( r_{\text{ana}}(t) \)</span>, and <span class="math notranslate nohighlight">\( \theta(t) \)</span> with <span class="math notranslate nohighlight">\( \theta_{\text{ana}}(t) \)</span> by plotting.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Compute magnitude and phase from the complex lowpass signal</span>
+<span class="n">r_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">complex_lowpass_equivalent</span><span class="p">)</span>  <span class="c1"># Magnitude of the complex signal</span>
+<span class="n">theta_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">complex_lowpass_equivalent</span><span class="p">)</span>  <span class="c1"># Phase of the complex signal</span>
+
+<span class="c1"># Compute magnitude and phase analytically using filtered I and Q components</span>
+<span class="n">r_t_ana</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">I</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Q</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Analytical magnitude calculation</span>
+<span class="n">theta_t_ana</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arctan2</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">I</span><span class="p">)</span>  <span class="c1"># Analytical phase calculation using arctangent function</span>
+
+<span class="c1"># Plot comparison of magnitudes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Magnitude comparison</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">r_t</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;r_t from complex signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">r_t_ana</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;r_t_ana analytical calculation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Comparison of Magnitudes&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Phase comparison</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="n">theta_t</span><span class="p">),</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;theta_t from complex signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">unwrap</span><span class="p">(</span><span class="n">theta_t_ana</span><span class="p">),</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;theta_t_ana analytical calculation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Comparison of Phases&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (s)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Phase (rad)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Adjust layout and show the plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/44a20b382f62ef7f9bacf189cff03e135a2f95f68a634b3b6a9db3695b9257d9.png" src="_images/44a20b382f62ef7f9bacf189cff03e135a2f95f68a634b3b6a9db3695b9257d9.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="matlab-example-modulation-and-demodulation-using-complex-envelope">
+<h2>Matlab Example: Modulation and Demodulation Using Complex Envelope<a class="headerlink" href="#matlab-example-modulation-and-demodulation-using-complex-envelope" title="Link to this heading">#</a></h2>
+<p>This example demonstrates the step-by-step of a fundamental communication process:</p>
+<ul class="simple">
+<li><p><strong>Modulation</strong>: Information is encoded into a <em>higher carrier frequency</em> to prepare it for transmission.</p></li>
+<li><p><strong>Transmission</strong>: The modulated signals are sent through a physical channel, which may introduce noise.</p></li>
+<li><p><strong>Reception</strong>: The noisy waveforms are received at the destination.</p></li>
+<li><p><strong>Demodulation</strong>: The received signals are processed to extract and reconstruct the original information.</p></li>
+</ul>
+<p><a class="reference external" href="https://www.mathworks.com/help/signal/ug/visualize-complex-signals.html">Modulation and Demodulation Using Complex Envelope</a></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="sig_c2_s0_signal_representations.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Signal Representations</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sig_c2_s2_signal_characteristics.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Signal Characteristics</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-lowpass-equivalent">Complex Lowpass Equivalent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spectrum-of-the-lowpass-equivalent">Spectrum of the Lowpass Equivalent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expressing-bandpass-signals-in-terms-of-their-lowpass-equivalent">Expressing Bandpass Signals in Terms of Their Lowpass Equivalent</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#representing-bandpass-signals-with-two-lowpass-signals">Representing Bandpass Signals with Two Lowpass Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#in-phase-and-quadrature-i-q-components">In-phase and Quadrature (I/Q) Components</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reconstruction-of-x-t-and-hat-x-t">Reconstruction of <span class="math notranslate nohighlight">\(x(t)\)</span> and <span class="math notranslate nohighlight">\(\hat{x}(t)\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polar-coordinates-representation">Polar Coordinates Representation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bandpass-signals-in-polar-coordinates">Bandpass Signals in Polar Coordinates</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependence-on-central-frequency">Dependence on Central Frequency</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modulation-process">Modulation Process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#demodulation-process">Demodulation Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-example-bandpass-to-lowpass-demodulation">Python Example: Bandpass to Lowpass Demodulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bandpass-signal-generation">Bandpass Signal Generation</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#analytic-signal-in-phase-and-quadrature-components">Analytic Signal, In-phase, and Quadrature Components</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#magnitude-and-phase">Magnitude and Phase</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#matlab-example-modulation-and-demodulation-using-complex-envelope">Matlab Example: Modulation and Demodulation Using Complex Envelope</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1162 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Tail Probability &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pr_c4_s0_tail_probability';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Central Limit Theorem" href="pr_c5_s0_limit_theorem.html" />
+    <link rel="prev" title="Rician Random Variable" href="pr_c3_s4_Rician_RV.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Tail Probability</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tail-probability-of-standard-normal-rv">Tail Probability of Standard Normal RV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#significance-level">Significance Level</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#significance-level-alpha">Significance Level <span class="math notranslate nohighlight">\( \alpha \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-tailed-test">One-Tailed Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-tailed-test">Two-Tailed Test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#critical-value">Critical Value</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#critical-value-for-standard-normal-rv">Critical Value for Standard Normal RV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-a-specific-alpha">Example of A Specific <span class="math notranslate nohighlight">\( \alpha \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-in-hypothesis-testing">Interpretation in Hypothesis Testing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-tail-probabilities">Evaluating Tail Probabilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-in-calculating-tail-probabilities">Challenges in Calculating Tail Probabilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inequalities-for-bounding-tail-probabilities">Inequalities for Bounding Tail Probabilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-markov-s-inequality">Theorem: Markov’s Inequality</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-continued-example-of-standard-normal-rv">Example: Continued Example of Standard Normal RV</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-markov-s-inequality-for-exponential-rv">Example: Markov’s Inequality for Exponential RV</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-chebyshevs-inequality">Theorem: Chebyshev’s Inequality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chernoff-bound-and">Chernoff Bound and</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-chernoff-bound">Theorem: Chernoff Bound</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precise-tail-probability-expression">Precise Tail Probability Expression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-exact-tail-probability-from-mgf">Theorem: Exact Tail Probability from MGF</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="tail-probability">
+<h1>Tail Probability<a class="headerlink" href="#tail-probability" title="Link to this heading">#</a></h1>
+<p>The <strong>tail probability</strong> of a random variable (RV) describes the likelihood that a RV takes on values far away from its mean, specifically in the “tails” of its distribution.</p>
+<p>The <strong>Q-function</strong> is commonly used to express the tail probability of a Gaussian RV and is closely related to the cumulative distribution function (CDF).</p>
+<p><strong>Definition</strong><br />
+The tail probability refers to the probability that <span class="math notranslate nohighlight">\( X \)</span> takes a value greater than (or less than) a certain threshold. Mathematically:</p>
+<ul class="simple">
+<li><p><strong>Upper tail probability:</strong> <span class="math notranslate nohighlight">\( \Pr(X &gt; a) \)</span></p></li>
+<li><p><strong>Lower tail probability:</strong> <span class="math notranslate nohighlight">\( \Pr(X &lt; b) \)</span></p></li>
+</ul>
+<section id="tail-probability-of-standard-normal-rv">
+<h2>Tail Probability of Standard Normal RV<a class="headerlink" href="#tail-probability-of-standard-normal-rv" title="Link to this heading">#</a></h2>
+<p>For the <strong>standard normal distribution</strong> (<span class="math notranslate nohighlight">\( \mu = 0, \sigma^2 = 1 \)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; a) = \int_a^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} dx
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &lt; b) = \int_{-\infty}^b \frac{1}{\sqrt{2\pi}} e^{-\frac{x^2}{2}} dx
+\]</div>
+<p>Recall that:</p>
+<div class="math notranslate nohighlight">
+\[
+Q(x) = \Pr(X &gt; x) = \int_x^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} dt
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( x \)</span> is the threshold.</p>
+<p><strong>Properties</strong></p>
+<ul>
+<li><p>Symmetry relationship:</p>
+<div class="math notranslate nohighlight">
+\[
+   Q(-x) = 1 - Q(x)
+   \]</div>
+</li>
+<li><p><span class="math notranslate nohighlight">\( Q(x) \)</span> can be approximated as:</p>
+<div class="math notranslate nohighlight">
+\[
+   Q(x) \approx \frac{1}{\sqrt{2\pi}x} e^{-\frac{x^2}{2}}, \quad x \gg 1
+   \]</div>
+<p>For large <span class="math notranslate nohighlight">\( x \)</span>, the tail probability of the standard normal distribution can be approximated using an asymptotic expansion.</p>
+</li>
+</ul>
+<p><strong>Examples</strong></p>
+<ul>
+<li><p>Find <span class="math notranslate nohighlight">\( \Pr(X &gt; 1) \)</span> for a standard normal RV:</p>
+<div class="math notranslate nohighlight">
+\[
+   \Pr(X &gt; 1) = Q(1) = \int_1^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{t^2}{2}} dt
+   \]</div>
+</li>
+<li><p>Approximate <span class="math notranslate nohighlight">\( Q(3) \)</span>:
+Using the approximation:</p>
+<div class="math notranslate nohighlight">
+\[
+   Q(3) \approx \frac{1}{\sqrt{2\pi} \cdot 3} e^{-\frac{3^2}{2}} = \frac{1}{\sqrt{2\pi} \cdot 3} e^{-4.5}
+   \]</div>
+</li>
+</ul>
+</section>
+<section id="significance-level">
+<h2>Significance Level<a class="headerlink" href="#significance-level" title="Link to this heading">#</a></h2>
+<p>The <strong>tail probability</strong> of a RV is closely tied to the <strong>significance level <span class="math notranslate nohighlight">\( \alpha \)</span></strong> in hypothesis testing and statistical inference.</p>
+<section id="significance-level-alpha">
+<h3>Significance Level <span class="math notranslate nohighlight">\( \alpha \)</span><a class="headerlink" href="#significance-level-alpha" title="Link to this heading">#</a></h3>
+<p>In hypothesis testing:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \alpha \)</span> is the probability of rejecting the null hypothesis (<span class="math notranslate nohighlight">\( H_0 \)</span>) when it is true (Type I error).</p></li>
+<li><p>Typically, <span class="math notranslate nohighlight">\( \alpha \)</span> is chosen as a small value (e.g., <span class="math notranslate nohighlight">\( 0.05, 0.01 \)</span>), representing the maximum acceptable level of error.</p></li>
+</ul>
+<p>The significance level determines the critical region or threshold beyond which the null hypothesis is rejected.</p>
+<p><strong>Tail Probability and <span class="math notranslate nohighlight">\( \alpha \)</span></strong><br />
+In a hypothesis test:</p>
+<ul class="simple">
+<li><p>For a <strong>one-tailed test</strong>, <span class="math notranslate nohighlight">\( \alpha \)</span> corresponds directly to the tail probability.</p></li>
+<li><p>For a <strong>two-tailed test</strong>, <span class="math notranslate nohighlight">\( \alpha \)</span> is split equally between the two tails of the distribution.</p></li>
+</ul>
+</section>
+<section id="one-tailed-test">
+<h3>One-Tailed Test<a class="headerlink" href="#one-tailed-test" title="Link to this heading">#</a></h3>
+<p>In a one-tailed test, we are interested in the probability of a value exceeding a certain critical value (<span class="math notranslate nohighlight">\( z_\alpha \)</span>) or falling below a threshold:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; z_\alpha) = \alpha \quad \text{or} \quad \Pr(X &lt; -z_\alpha) = \alpha
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\( z_\alpha \)</span> is the critical value such that the tail probability beyond <span class="math notranslate nohighlight">\( z_\alpha \)</span> is exactly <span class="math notranslate nohighlight">\( \alpha \)</span>.</p>
+</section>
+<section id="two-tailed-test">
+<h3>Two-Tailed Test<a class="headerlink" href="#two-tailed-test" title="Link to this heading">#</a></h3>
+<p>In a two-tailed test, the significance level <span class="math notranslate nohighlight">\( \alpha \)</span> is divided equally between the two tails:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; z_{\alpha/2}) = \frac{\alpha}{2} \quad \text{and} \quad \Pr(X &lt; -z_{\alpha/2}) = \frac{\alpha}{2}
+\]</div>
+<p>The total tail probability is the sum of the probabilities in both tails:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; z_{\alpha/2} \, \text{or} \, X &lt; -z_{\alpha/2}) = \alpha
+\]</div>
+</section>
+</section>
+<section id="critical-value">
+<h2>Critical Value<a class="headerlink" href="#critical-value" title="Link to this heading">#</a></h2>
+<p>Recall that, in a <strong>one-tailed test</strong>, the critical value <span class="math notranslate nohighlight">\( z_\alpha \)</span> is the value that satisfies:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; z_\alpha) = \alpha.
+\]</div>
+<p>In a <strong>two-tailed test</strong>, the critical value <span class="math notranslate nohighlight">\( z_{\alpha/2} \)</span> is the value that satisfies:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; z_{\alpha/2}) = \frac{\alpha}{2} \quad \text{and} \quad \Pr(X &lt; -z_{\alpha/2}) = \frac{\alpha}{2}.
+\]</div>
+<p>Thus, the total probability in the tails for a two-tailed test is:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; z_{\alpha/2} \, \text{or} \, X &lt; -z_{\alpha/2}) = \alpha.
+\]</div>
+<section id="critical-value-for-standard-normal-rv">
+<h3>Critical Value for Standard Normal RV<a class="headerlink" href="#critical-value-for-standard-normal-rv" title="Link to this heading">#</a></h3>
+<p>Considering the case of the standard normal RV, the critical value <span class="math notranslate nohighlight">\( z_\alpha \)</span> (or <span class="math notranslate nohighlight">\( z_{\alpha/2} \)</span>) is related to the Q-function for a standard normal distribution:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; z_\alpha) = Q(z_\alpha) = \alpha
+\]</div>
+<p>To find <span class="math notranslate nohighlight">\( z_\alpha \)</span>, we use the inverse of the Q-function or the complementary cumulative distribution function (CCDF):</p>
+<div class="math notranslate nohighlight">
+\[
+z_\alpha = Q^{-1}(\alpha)
+\]</div>
+<p>For a two-tailed test:
+$<span class="math notranslate nohighlight">\(
+z_{\alpha/2} = Q^{-1}(\alpha/2)
+\)</span>$</p>
+</section>
+<section id="example-of-a-specific-alpha">
+<h3>Example of A Specific <span class="math notranslate nohighlight">\( \alpha \)</span><a class="headerlink" href="#example-of-a-specific-alpha" title="Link to this heading">#</a></h3>
+<p>Suppose <span class="math notranslate nohighlight">\( \alpha = 0.05 \)</span>:</p>
+<ul>
+<li><p>For a one-tailed test:</p>
+<div class="math notranslate nohighlight">
+\[
+  \Pr(X &gt; z_\alpha) = \alpha = 0.05
+  \]</div>
+<p>Using a standard normal table or calculator, <span class="math notranslate nohighlight">\( z_\alpha = 1.645 \)</span>.</p>
+</li>
+<li><p>For a two-tailed test:</p>
+<div class="math notranslate nohighlight">
+\[
+  \Pr(X &gt; z_{\alpha/2}) = \Pr(X &lt; -z_{\alpha/2}) = \frac{\alpha}{2} = 0.025
+  \]</div>
+<p>From the standard normal table, <span class="math notranslate nohighlight">\( z_{\alpha/2} = 1.96 \)</span>.</p>
+</li>
+</ul>
+</section>
+<section id="interpretation-in-hypothesis-testing">
+<h3>Interpretation in Hypothesis Testing<a class="headerlink" href="#interpretation-in-hypothesis-testing" title="Link to this heading">#</a></h3>
+<p>In hypothesis testing, the <strong>tail probability</strong> quantifies the extremity of the observed test statistic under the null hypothesis. If the observed test statistic falls in the tail region defined by <span class="math notranslate nohighlight">\( \alpha \)</span>, the null hypothesis is rejected.</p>
+<p>For example:</p>
+<ul>
+<li><p>If the test statistic <span class="math notranslate nohighlight">\( T \)</span> is compared to <span class="math notranslate nohighlight">\( z_\alpha \)</span> in a one-tailed test:</p>
+<div class="math notranslate nohighlight">
+\[
+  \text{Reject } H_0 \text{ if } T &gt; z_\alpha
+  \]</div>
+</li>
+<li><p>In a two-tailed test:
+$<span class="math notranslate nohighlight">\(
+\text{Reject } H_0 \text{ if } |T| &gt; z_{\alpha/2}
+\)</span>$</p></li>
+</ul>
+<p>Thus, the tail probability provides the basis for determining statistical significance.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">norm</span>
+
+<span class="c1"># Given significance level alpha</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+
+<span class="c1"># Calculate z_alpha for one-tailed test</span>
+<span class="c1"># z_alpha = Q^{-1}(alpha)</span>
+<span class="n">z_alpha_one_tail</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">)</span>
+
+<span class="c1"># Calculate z_alpha for two-tailed test</span>
+<span class="n">z_alpha_two_tail</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Define the range for plotting and the standard normal PDF</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>  <span class="c1"># Range of z values</span>
+<span class="n">pdf</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>  <span class="c1"># Standard normal PDF</span>
+
+<span class="c1"># Plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Standard normal distribution curve</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Standard Normal Distribution&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;blue&quot;</span><span class="p">)</span>
+
+<span class="c1"># Highlight one-tailed region (z_alpha = 1.645)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">z_alpha_one_tail</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;One-tailed region (z=</span><span class="si">{</span><span class="n">z_alpha_one_tail</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Highlight two-tailed regions (z_alpha = 1.96)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="n">z_alpha_two_tail</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Right tail (z=</span><span class="si">{</span><span class="n">z_alpha_two_tail</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">pdf</span><span class="p">,</span> <span class="n">where</span><span class="o">=</span><span class="p">(</span><span class="n">x</span> <span class="o">&lt;=</span> <span class="o">-</span><span class="n">z_alpha_two_tail</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Left tail (z=-</span><span class="si">{</span><span class="n">z_alpha_two_tail</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add vertical lines for critical z-values</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">z_alpha_one_tail</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;orange&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;z=</span><span class="si">{</span><span class="n">z_alpha_one_tail</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> (one-tailed)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">z_alpha_two_tail</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;z=</span><span class="si">{</span><span class="n">z_alpha_two_tail</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2"> (two-tailed)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="o">-</span><span class="n">z_alpha_two_tail</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+
+<span class="c1"># Labels, legend, and grid</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Tail Probability for Numerically Derived z_alpha Values&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;z&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Probability Density&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="c1"># Show plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0c03e6deefadbe3a89098325374b9fc3705a66b50c5b81780571fa99d3ef6972.png" src="_images/0c03e6deefadbe3a89098325374b9fc3705a66b50c5b81780571fa99d3ef6972.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="evaluating-tail-probabilities">
+<h2>Evaluating Tail Probabilities<a class="headerlink" href="#evaluating-tail-probabilities" title="Link to this heading">#</a></h2>
+<p>As mentioned earlier, it is essential to determine the probability that a random variable (RV) exceeds a specified threshold, expressed as <span class="math notranslate nohighlight">\( \Pr(X &gt; x_0) \)</span>. Alternatively, one might be interested in the probability of the RV deviating significantly from its mean, <span class="math notranslate nohighlight">\( \Pr(|X - \mu_X| &gt; x_0) \)</span>. These probabilities are collectively referred to as <strong>tail probabilities</strong>, as they measure the likelihood of outcomes occurring in the tails of the distribution.</p>
+<section id="challenges-in-calculating-tail-probabilities">
+<h3>Challenges in Calculating Tail Probabilities<a class="headerlink" href="#challenges-in-calculating-tail-probabilities" title="Link to this heading">#</a></h3>
+<p>While tail probabilities can often be derived directly from the cumulative distribution function (CDF) of the RV, practical challenges may arise:</p>
+<ul class="simple">
+<li><p>The CDF may not be available in a closed form or may be computationally intensive to evaluate.</p></li>
+<li><p>In such cases, numerical integration of the probability density function (PDF) can be employed. However:</p>
+<ul>
+<li><p>Numerical integration over a semi-infinite region can be computationally demanding or unstable.</p></li>
+<li><p>The PDF itself might not be explicitly known; the RV could instead be described in an alternative form.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="inequalities-for-bounding-tail-probabilities">
+<h3>Inequalities for Bounding Tail Probabilities<a class="headerlink" href="#inequalities-for-bounding-tail-probabilities" title="Link to this heading">#</a></h3>
+<p>When exact calculation is infeasible, inequalities provide valuable tools for bounding tail probabilities. Two widely used results are:</p>
+</section>
+<section id="theorem-markov-s-inequality">
+<h3>Theorem: Markov’s Inequality<a class="headerlink" href="#theorem-markov-s-inequality" title="Link to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\( X \)</span> is a nonnegative random variable (i.e., <span class="math notranslate nohighlight">\( X \geq 0 \)</span>), the probability that <span class="math notranslate nohighlight">\( X \)</span> exceeds a threshold <span class="math notranslate nohighlight">\( x_0 &gt; 0 \)</span> is bounded by:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X \geq x_0) \leq \frac{\mathbb{E}[X]}{x_0}.
+\]</div>
+<ul class="simple">
+<li><p><strong>Application:</strong> Markov’s inequality is useful when only the expected value <span class="math notranslate nohighlight">\( \mathbb{E}[X] \)</span> of the RV is known.</p></li>
+</ul>
+<section id="example-continued-example-of-standard-normal-rv">
+<h4>Example: Continued Example of Standard Normal RV<a class="headerlink" href="#example-continued-example-of-standard-normal-rv" title="Link to this heading">#</a></h4>
+<p>We compute <span class="math notranslate nohighlight">\( \frac{\mathbb{E}[X]}{z_\alpha} \)</span> as follows:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \mathbb{E}[X] \)</span>: The expected value of <span class="math notranslate nohighlight">\( X \)</span>. For a standard normal random variable <span class="math notranslate nohighlight">\( X \)</span>, <span class="math notranslate nohighlight">\( \mathbb{E}[X] = 0 \)</span>, since the mean of a standard normal distribution is 0.</p></li>
+<li><p><span class="math notranslate nohighlight">\( z_\alpha = 1.645 \)</span>: The critical value corresponding to <span class="math notranslate nohighlight">\( \alpha = 0.05 \)</span> for a one-tailed test in the standard normal distribution.</p></li>
+</ul>
+<p>Now compute:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\mathbb{E}[X]}{z_\alpha} = \frac{0}{1.645} = 0.
+\]</div>
+<p>If we plug this into Markov’s inequality, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X \geq x_0) \leq \frac{\mathbb{E}[X]}{x_0} = \frac{0}{x_0} = 0,
+\]</div>
+<p>which is clearly nonsensical since <span class="math notranslate nohighlight">\( \Pr(X &gt; 1.645) = 0.05 &gt; 0 \)</span>.</p>
+<p>This happens because the inequality assumes <span class="math notranslate nohighlight">\( \mathbb{E}[X] &gt; 0 \)</span>, which does not hold for a symmetric distribution centered at zero.</p>
+<p><strong>Why Markov Inequality Doesn’t Apply in This Example</strong></p>
+<p>Markov’s inequality applies only to <em>non-negative</em> random variables. A standard normal random variable <span class="math notranslate nohighlight">\( X \)</span> is not non-negative, as it can take negative values. Therefore, the inequality is <strong>not valid</strong> for <span class="math notranslate nohighlight">\( X \sim \mathcal{N}(0, 1) \)</span>.</p>
+</section>
+<section id="example-markov-s-inequality-for-exponential-rv">
+<h4>Example: Markov’s Inequality for Exponential RV<a class="headerlink" href="#example-markov-s-inequality-for-exponential-rv" title="Link to this heading">#</a></h4>
+<p>An <strong>exponential random variable (RV)</strong> is non-negative, which is defined over the range <span class="math notranslate nohighlight">\( [0, \infty) \)</span>. Its probability density function (PDF) is given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+f_X(x) = 
+\begin{cases} 
+\lambda e^{-\lambda x}, &amp; x \geq 0, \\
+0, &amp; x &lt; 0,
+\end{cases}
+\end{split}\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \lambda &gt; 0 \)</span> is the <em>rate parameter</em>.</p></li>
+</ul>
+<p>The cumulative distribution function (CDF) of the exponential RV is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+F_X(x) = 
+\begin{cases} 
+1 - e^{-\lambda x}, &amp; x \geq 0, \\
+0, &amp; x &lt; 0.
+\end{cases}
+\end{split}\]</div>
+<p>The CDF <span class="math notranslate nohighlight">\( F_X(x) \)</span> gives the probability that the random variable <span class="math notranslate nohighlight">\( X \)</span> is less than or equal to <span class="math notranslate nohighlight">\( x \)</span>, that is:</p>
+<div class="math notranslate nohighlight">
+\[
+F_X(x) = \Pr(X \leq x).
+\]</div>
+<p>We can interpret that the PDF is zero for <span class="math notranslate nohighlight">\( x &lt; 0 \)</span>, the exponential random variable cannot take negative values.</p>
+<p>Thus, the exponential RV satisfies the non-negativity condition required for applying inequalities such as Markov’s inequality.</p>
+<p><strong>Compute the critical value for an exponential RV</strong></p>
+<p>Given that significance level is <span class="math notranslate nohighlight">\( \alpha = 0.05 \)</span>.</p>
+<p>Consider the probability <span class="math notranslate nohighlight">\(\Pr(X \leq z), \forall z \geq 0\)</span>, the CDF of an exponential random variable <span class="math notranslate nohighlight">\( X \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+F_X(z) = 1 - e^{-\lambda z}, \quad z \geq 0.
+\]</div>
+<p>For a one-tailed test, the critical value <span class="math notranslate nohighlight">\( z_\alpha \)</span> satisfies:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; z_\alpha) = \alpha.
+\]</div>
+<p>The probability <span class="math notranslate nohighlight">\( \Pr(X &gt; z_\alpha) \)</span> can be written as:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X &gt; z_\alpha) = 1 - F_X(z_\alpha) = e^{-\lambda z_\alpha}.
+\]</div>
+<p>Set this equal to <span class="math notranslate nohighlight">\( \alpha \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+e^{-\lambda z_\alpha} = \alpha.
+\]</div>
+<p>Taking the natural logarithm on both sides:</p>
+<div class="math notranslate nohighlight">
+\[
+-\lambda z_\alpha = \ln(\alpha).
+\]</div>
+<p>Rearrange to solve for <span class="math notranslate nohighlight">\( z_\alpha \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+z_\alpha = -\frac{\ln(\alpha)}{\lambda}.
+\]</div>
+<p>Given <span class="math notranslate nohighlight">\( \alpha = 0.05 \)</span> and assuming the rate parameter <span class="math notranslate nohighlight">\( \lambda &gt; 0 \)</span>, the critical value is:</p>
+<div class="math notranslate nohighlight">
+\[
+z_\alpha = -\frac{\ln(0.05)}{\lambda}.
+\]</div>
+<p>If <span class="math notranslate nohighlight">\( \lambda = 1 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+z_\alpha = -\ln(0.05) \approx -\ln(0.05) = 2.9957.
+\]</div>
+<p><strong>Calculate <span class="math notranslate nohighlight">\( \frac{\mathbb{E}[X]}{z_\alpha} \)</span></strong></p>
+<p>Recall that the critical value <span class="math notranslate nohighlight">\( z_\alpha \)</span> for a one-tailed test at significance level <span class="math notranslate nohighlight">\( \alpha \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+z_\alpha = -\frac{\ln(\alpha)}{\lambda}.
+\]</div>
+<p>Substitute <span class="math notranslate nohighlight">\( \mathbb{E}[X] = \frac{1}{\lambda} \)</span> and <span class="math notranslate nohighlight">\( z_\alpha = -\frac{\ln(\alpha)}{\lambda} \)</span> into the ratio:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\mathbb{E}[X]}{z_\alpha} = \frac{\frac{1}{\lambda}}{-\frac{\ln(\alpha)}{\lambda}} = -\frac{1}{\ln(\alpha)}.
+\]</div>
+<p>For <span class="math notranslate nohighlight">\( \alpha = 0.05 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\ln(0.05) \approx -2.9957.
+\]</div>
+<p>Thus:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\mathbb{E}[X]}{z_\alpha} = -\frac{1}{-2.9957} \approx 0.334.
+\]</div>
+<p><strong>Comment on Markov’s Inequality for Exponential RV</strong></p>
+<p>Using the exact tail probability for <span class="math notranslate nohighlight">\( \alpha = 0.05 \)</span> and <span class="math notranslate nohighlight">\( \lambda = 1 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+z_\alpha = 2.9957, \quad \Pr(X \geq z_\alpha) = e^{-z_\alpha} = e^{-2.9957} \approx 0.05.
+\]</div>
+<p>It is obvious because because we pre-defined the tail probability is 0.05 via <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p>From Markov’s inequality:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\mathbb{E}[X]}{z_\alpha} = 0.334.
+\]</div>
+<p>Clearly:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X \geq z_\alpha) = 0.05 \leq 0.334.
+\]</div>
+<p>Markov’s inequality holds for exponential random variables and provides a valid upper bound for tail probabilities. However:</p>
+<ul class="simple">
+<li><p>The bound is often loose, as seen here (<span class="math notranslate nohighlight">\( 0.334 \)</span> is much larger than the true tail probability <span class="math notranslate nohighlight">\( 0.05 \)</span>).</p></li>
+<li><p>The inequality is more useful for providing rough estimates or when only the mean of the distribution is known.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.05</span>
+<span class="n">lambda_param</span> <span class="o">=</span> <span class="mi">1</span>
+
+<span class="c1"># Number of simulations</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10</span><span class="o">**</span><span class="mi">6</span>
+
+<span class="c1"># Generate exponential random samples</span>
+<span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">exponential</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">lambda_param</span><span class="p">,</span> <span class="n">num_samples</span><span class="p">)</span>
+
+<span class="c1"># Numerically compute z_alpha (critical value)</span>
+<span class="n">z_alpha_simulated</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">percentile</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="mi">100</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">alpha</span><span class="p">))</span>
+
+<span class="c1"># Compute E[X]</span>
+<span class="n">expected_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+
+<span class="c1"># Compute the ratio E[X] / z_alpha</span>
+<span class="n">ratio</span> <span class="o">=</span> <span class="n">expected_value</span> <span class="o">/</span> <span class="n">z_alpha_simulated</span>
+
+<span class="c1"># True tail probability at z_alpha</span>
+<span class="n">tail_probability</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span> <span class="o">&gt;=</span> <span class="n">z_alpha_simulated</span><span class="p">)</span>
+
+<span class="c1"># Markov bound at z_alpha</span>
+<span class="n">markov_bound</span> <span class="o">=</span> <span class="n">expected_value</span> <span class="o">/</span> <span class="n">z_alpha_simulated</span>
+
+<span class="c1"># Results</span>
+<span class="n">z_alpha_simulated</span><span class="p">,</span> <span class="n">ratio</span><span class="p">,</span> <span class="n">tail_probability</span><span class="p">,</span> <span class="n">markov_bound</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2.998283335906064, 0.33356361363307746, 0.05, 0.33356361363307746)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="theorem-chebyshevs-inequality">
+<h3>Theorem: Chebyshev’s Inequality<a class="headerlink" href="#theorem-chebyshevs-inequality" title="Link to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\( X \)</span> is a random variable with mean <span class="math notranslate nohighlight">\( \mu_X \)</span> and variance <span class="math notranslate nohighlight">\( \sigma_X^2 \)</span>, the probability that <span class="math notranslate nohighlight">\( X \)</span> deviates from its mean by more than <span class="math notranslate nohighlight">\( x_0 &gt; 0 \)</span> satisfies:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(|X - \mu_X| \geq x_0) \leq \frac{\sigma_X^2}{x_0^2}.
+\]</div>
+<ul class="simple">
+<li><p><strong>Application:</strong> Chebyshev’s inequality provides a bound on tail probabilities based on the mean and variance of the RV. It is particularly useful for distributions with unknown shapes.</p></li>
+</ul>
+<p>When direct computation is impractical, inequalities such as Markov’s and Chebyshev’s provide effective upper bounds, enabling insights into the behavior of the RV based on limited statistical information.</p>
+</section>
+</section>
+<section id="chernoff-bound-and">
+<h2>Chernoff Bound and<a class="headerlink" href="#chernoff-bound-and" title="Link to this heading">#</a></h2>
+<p><strong>Chernoff Bound</strong><br />
+The Chernoff bound provides a powerful tool for bounding the tail probabilities of a random variable (RV) <span class="math notranslate nohighlight">\( X \)</span> using its <strong>moment generating function (MGF)</strong>.</p>
+<section id="theorem-chernoff-bound">
+<h3>Theorem: Chernoff Bound<a class="headerlink" href="#theorem-chernoff-bound" title="Link to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\( X \)</span> is a random variable with moment generating function <span class="math notranslate nohighlight">\( M_X(s) = \mathbb{E}[e^{sX}] \)</span>, then:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X \geq x_0) \leq \min_{s \geq 0} e^{-sx_0} M_X(s).
+\]</div>
+<p><strong>Key Points:</strong></p>
+<ul class="simple">
+<li><p>This inequality gives an upper bound on the probability that <span class="math notranslate nohighlight">\( X \)</span> exceeds a threshold <span class="math notranslate nohighlight">\( x_0 \)</span>.</p></li>
+<li><p>The bound is derived using the properties of the MGF, without requiring the explicit probability density function (PDF) of <span class="math notranslate nohighlight">\( X \)</span>.</p></li>
+<li><p>The minimization over <span class="math notranslate nohighlight">\( s \geq 0 \)</span> ensures the tightest possible bound.</p></li>
+</ul>
+</section>
+</section>
+<section id="precise-tail-probability-expression">
+<h2>Precise Tail Probability Expression<a class="headerlink" href="#precise-tail-probability-expression" title="Link to this heading">#</a></h2>
+<p><strong>Precise Expression for Tail Probability from the MGF</strong>
+If an exact computation of the tail probability <span class="math notranslate nohighlight">\( \Pr(X \geq x_0) \)</span> is required, it can be obtained directly from the MGF using the following integral representation:</p>
+<section id="theorem-exact-tail-probability-from-mgf">
+<h3>Theorem: Exact Tail Probability from MGF<a class="headerlink" href="#theorem-exact-tail-probability-from-mgf" title="Link to this heading">#</a></h3>
+<p>For a random variable <span class="math notranslate nohighlight">\( X \)</span> with moment generating function <span class="math notranslate nohighlight">\( M_X(u) \)</span>, the exact tail probability <span class="math notranslate nohighlight">\( \Pr(X \geq x_0) \)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X \geq x_0) = \frac{1}{2\pi j} \int_{c-j\infty}^{c+j\infty} \frac{M_X(u)}{u} e^{-ux_0} \, du,
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( c \)</span> is chosen such that the contour of integration lies in the <strong>region of convergence</strong> of the MGF:</p>
+<ul>
+<li><p>To the right of the origin (<span class="math notranslate nohighlight">\( \Re(u) &gt; 0 \)</span>).</p></li>
+<li><p>To the left of all singularities of <span class="math notranslate nohighlight">\( M_X(u) \)</span> in the right half-plane.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Comparison and Applications</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Chernoff Bound</strong>:</p>
+<ul class="simple">
+<li><p>Provides a computationally simpler upper bound for tail probabilities.</p></li>
+<li><p>Useful when the MGF is known and minimization over <span class="math notranslate nohighlight">\( s \geq 0 \)</span> is computationally feasible.</p></li>
+<li><p>Less precise but faster to compute.</p></li>
+</ul>
+</li>
+<li><p><strong>Exact Tail Probability</strong>:</p>
+<ul class="simple">
+<li><p>Offers a precise value for <span class="math notranslate nohighlight">\( \Pr(X \geq x_0) \)</span>.</p></li>
+<li><p>Requires evaluation of a complex integral along a vertical contour in the complex plane, which may be computationally intensive.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pr_c3_s4_Rician_RV.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Rician Random Variable</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pr_c5_s0_limit_theorem.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Central Limit Theorem</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tail-probability-of-standard-normal-rv">Tail Probability of Standard Normal RV</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#significance-level">Significance Level</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#significance-level-alpha">Significance Level <span class="math notranslate nohighlight">\( \alpha \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-tailed-test">One-Tailed Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#two-tailed-test">Two-Tailed Test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#critical-value">Critical Value</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#critical-value-for-standard-normal-rv">Critical Value for Standard Normal RV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-of-a-specific-alpha">Example of A Specific <span class="math notranslate nohighlight">\( \alpha \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-in-hypothesis-testing">Interpretation in Hypothesis Testing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#evaluating-tail-probabilities">Evaluating Tail Probabilities</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-in-calculating-tail-probabilities">Challenges in Calculating Tail Probabilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inequalities-for-bounding-tail-probabilities">Inequalities for Bounding Tail Probabilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-markov-s-inequality">Theorem: Markov’s Inequality</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-continued-example-of-standard-normal-rv">Example: Continued Example of Standard Normal RV</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-markov-s-inequality-for-exponential-rv">Example: Markov’s Inequality for Exponential RV</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-chebyshevs-inequality">Theorem: Chebyshev’s Inequality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chernoff-bound-and">Chernoff Bound and</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-chernoff-bound">Theorem: Chernoff Bound</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#precise-tail-probability-expression">Precise Tail Probability Expression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-exact-tail-probability-from-mgf">Theorem: Exact Tail Probability from MGF</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

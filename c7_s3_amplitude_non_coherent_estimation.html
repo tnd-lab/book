@@ -1,0 +1,1358 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Amplitude Estimation in the Noncoherent Case with AWGN &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c7_s3_amplitude_non_coherent_estimation';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Phase Estimation in AWGN" href="c7_s4_phase_estimation.html" />
+    <link rel="prev" title="Amplitude Estimation in the Coherent Case with AWGN" href="c7_s2_amplitude_coherent_estimation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Amplitude Estimation in the Noncoherent Case with AWGN</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-a-posteriori-pdf">The A Posteriori PDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-estimation">MAP Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-rayleigh-fading-amplitude-non-coherent-estimation">Example: Rayleigh Fading Amplitude Non-coherent Estimation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-snr-assumption">High-SNR Assumption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#low-snr-assumption">Low-SNR Assumption</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmse">MMSE</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="amplitude-estimation-in-the-noncoherent-case-with-awgn">
+<h1>Amplitude Estimation in the Noncoherent Case with AWGN<a class="headerlink" href="#amplitude-estimation-in-the-noncoherent-case-with-awgn" title="Link to this heading">#</a></h1>
+<p>In this section, we consider a sinusoidal signal with an unknown carrier phase <span class="math notranslate nohighlight">\( \theta \)</span>, uniformly distributed over the interval <span class="math notranslate nohighlight">\( (0, 2\pi) \)</span>.</p>
+<p>The observed signal is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+y_i = a \sin(2\pi f_0 i T_s + \theta) + n_i, \quad 1 \leq i \leq k
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( f_0 \)</span> represents the carrier frequency,</p></li>
+<li><p><span class="math notranslate nohighlight">\( T_s \)</span> is the sampling interval.</p></li>
+</ul>
+<p>This setup corresponds to noncoherent Pulse Amplitude Modulation (PAM).</p>
+<p>The parameter to be estimated is the amplitude <span class="math notranslate nohighlight">\( a \)</span>, which may be treated either as a random variable or as an unknown deterministic scalar.</p>
+<p>It is important to note that, in this context, the amplitude <span class="math notranslate nohighlight">\( a \)</span> is assumed to be nonnegative.</p>
+<section id="the-a-posteriori-pdf">
+<h2>The A Posteriori PDF<a class="headerlink" href="#the-a-posteriori-pdf" title="Link to this heading">#</a></h2>
+<p>The goal is to determine the <em>a posteriori</em> probability density function (PDF) <span class="math notranslate nohighlight">\( p(a | \vec{y}) \)</span>, which represents the probability distribution of the amplitude <span class="math notranslate nohighlight">\( a \)</span> given the observed data <span class="math notranslate nohighlight">\( \vec{y} = [y_1, y_2, \ldots, y_k] \)</span>.</p>
+<p>The derivation begins by calculating the likelihood function <span class="math notranslate nohighlight">\( p(\vec{y} | a, \theta) \)</span>, which quantifies the probability of observing <span class="math notranslate nohighlight">\( \vec{y} \)</span> for a given amplitude <span class="math notranslate nohighlight">\( a \)</span> and phase <span class="math notranslate nohighlight">\( \theta \)</span>.</p>
+<p>Since the phase <span class="math notranslate nohighlight">\( \theta \)</span> is unknown and uniformly distributed, the <em>a posteriori</em> PDF is obtained by integrating (or averaging) the likelihood function over the possible values of <span class="math notranslate nohighlight">\( \theta \)</span>, weighted by its uniform distribution.</p>
+<p><strong>Likelihood Function <span class="math notranslate nohighlight">\( p(\vec{y} | a, \theta) \)</span></strong></p>
+<p>The additive noise <span class="math notranslate nohighlight">\( n_i \)</span> is modeled as zero-mean white Gaussian noise with variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>.</p>
+<p>The noise is independent and identically distributed (i.i.d.) across observations.</p>
+<p>The likelihood expression is derived as:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y} | a, \theta) = \frac{1}{(2\pi \sigma^2)^{k/2}} \exp\left(-\frac{1}{2\sigma^2} \sum_{i=1}^k [y_i - a \sin(\beta i + \theta)]^2\right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \beta = 2\pi f_0 T_s \)</span> is a constant.</p>
+<p>From the above likelihood function, the term inside the summation <span class="math notranslate nohighlight">\( [y_i - a \sin(\beta i + \theta)]^2 \)</span> can be expanded as:</p>
+<div class="math notranslate nohighlight">
+\[
+[y_i - a \sin(\beta i + \theta)]^2 = y_i^2 - 2a y_i \sin(\beta i + \theta) + a^2 \sin^2(\beta i + \theta)
+\]</div>
+<p>Substituting this expansion back into the exponential:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y} | a, \theta) = \frac{1}{(2\pi \sigma^2)^{k/2}} \exp\left(-\frac{1}{2\sigma^2} \sum_{i=1}^k \big[ y_i^2 - 2a y_i \sin(\beta i + \theta) + a^2 \sin^2(\beta i + \theta) \big]\right)
+\]</div>
+<p>The summation can now be split into three separate components:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+&amp;\sum_{i=1}^k \big[ y_i^2 - 2a y_i \sin(\beta i + \theta) + a^2 \sin^2(\beta i + \theta) \big] \\
+&amp;= \sum_{i=1}^k y_i^2 - 2a \sum_{i=1}^k y_i \sin(\beta i + \theta) + a^2 \sum_{i=1}^k \sin^2(\beta i + \theta)
+\end{align*}
+\end{split}\]</div>
+<p>Substituting this into the exponential:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+p(\vec{y} | a, \theta) = \frac{1}{(2\pi \sigma^2)^{k/2}} \exp\bigg(&amp;-\frac{1}{2\sigma^2} \bigg[ \sum_{i=1}^k y_i^2 \\
+&amp;- 2a \sum_{i=1}^k y_i \sin(\beta i + \theta) \\
+&amp;+ a^2 \sum_{i=1}^k \sin^2(\beta i + \theta) \bigg]\bigg)
+\end{align*}
+\end{split}\]</div>
+<p>We focus on isolating terms that depend on <span class="math notranslate nohighlight">\( a \)</span> and <span class="math notranslate nohighlight">\( \theta \)</span>.</p>
+<p>Notice that <span class="math notranslate nohighlight">\( \sum_{i=1}^k y_i^2 \)</span> does not depend on <span class="math notranslate nohighlight">\( a \)</span> or <span class="math notranslate nohighlight">\( \theta \)</span>, so it can be separated as a constant term:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+p(\vec{y} | a, \theta) = \kappa_1 \exp\left(\frac{a}{\sigma^2} \sum_{i=1}^k y_i \sin(\beta i + \theta) - \frac{a^2}{2\sigma^2} \sum_{i=1}^k \sin^2(\beta i + \theta)\right)
+}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \kappa_1 \)</span> is the normalization factor:</p>
+<div class="math notranslate nohighlight">
+\[
+\kappa_1 \triangleq \frac{1}{(2\pi \sigma^2)^{k/2}} \exp\left(-\frac{1}{2\sigma^2} \sum_{i=1}^k y_i^2\right)
+\]</div>
+<p>To derive this step, we will use the trigonometric identity <span class="math notranslate nohighlight">\( \sin^2 v = \frac{1}{2} - \frac{1}{2} \cos 2v \)</span> to expand the term involving <span class="math notranslate nohighlight">\( \sin^2(\beta i + \theta) \)</span> in the likelihood function.</p>
+<p><strong>Dealing with <span class="math notranslate nohighlight">\( \sin^2(\beta i + \theta) \)</span></strong></p>
+<p>Using the trigonometric identity:</p>
+<div class="math notranslate nohighlight">
+\[
+\sin^2(\beta i + \theta) = \frac{1}{2} - \frac{1}{2} \cos(2\beta i + 2\theta)
+\]</div>
+<p>we substitute this into the summation <span class="math notranslate nohighlight">\( \sum_{i=1}^k \sin^2(\beta i + \theta) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^k \sin^2(\beta i + \theta) = \sum_{i=1}^k \left(\frac{1}{2} - \frac{1}{2} \cos(2\beta i + 2\theta)\right)
+\]</div>
+<p>Separating the terms:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^k \sin^2(\beta i + \theta) = \frac{k}{2} - \frac{1}{2} \sum_{i=1}^k \cos(2\beta i + 2\theta)
+\]</div>
+<p>Thus, the second term in the exponential becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{a^2}{2\sigma^2} \sum_{i=1}^k \sin^2(\beta i + \theta) = -\frac{a^2}{2\sigma^2} \left(\frac{k}{2} - \frac{1}{2} \sum_{i=1}^k \cos(2\beta i + 2\theta)\right)
+\]</div>
+<p>Simplify further:</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{a^2}{2\sigma^2} \sum_{i=1}^k \sin^2(\beta i + \theta) = -\frac{a^2 k}{4\sigma^2} + \frac{a^2}{4\sigma^2} \sum_{i=1}^k \cos(2\beta i + 2\theta)
+\]</div>
+<p><strong>Dealing with <span class="math notranslate nohighlight">\( \sum_{i=1}^k y_i \sin(\beta i + \theta) \)</span></strong></p>
+<p>Using the trigonometric angle sum identity <span class="math notranslate nohighlight">\( \sin(\beta i + \theta) = \sin(\beta i) \cos\theta + \cos(\beta i) \sin\theta \)</span>, the term <span class="math notranslate nohighlight">\( \sum_{i=1}^k y_i \sin(\beta i + \theta) \)</span> can be rewritten as:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^k y_i \sin(\beta i + \theta) = \cos\theta \sum_{i=1}^k y_i \sin\beta i + \sin\theta \sum_{i=1}^k y_i \cos\beta i
+\]</div>
+<p>Define the following terms:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boxed{
+\begin{align*}
+y_I &amp;\triangleq \sum_{i=1}^k y_i \sin\beta i \\
+y_Q &amp;\triangleq \sum_{i=1}^k y_i \cos\beta i
+\end{align*}
+}
+\end{split}\]</div>
+<p>This allows us to rewrite:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^k y_i \sin(\beta i + \theta) = y_I \cos\theta + y_Q \sin\theta
+\]</div>
+<p>Substituting this back into the first term of the exponential:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{a}{\sigma^2} \sum_{i=1}^k y_i \sin(\beta i + \theta) = \frac{a}{\sigma^2} (y_I \cos\theta + y_Q \sin\theta)
+\]</div>
+<p>Substituting the results into the likelihood function:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y} | a, \theta) = \kappa_1 \exp\left(\frac{a}{\sigma^2} (y_I \cos\theta + y_Q \sin\theta) - \frac{a^2 k}{4\sigma^2} + \frac{a^2}{4\sigma^2} \sum_{i=1}^k \cos(2\beta i + 2\theta)\right)
+\]</div>
+<p><strong>Simplifying the Double Frequency Term</strong></p>
+<p>The expression for <span class="math notranslate nohighlight">\( p(\vec{y}|a, \theta) \)</span> before this step includes the term:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{a^2}{4\sigma^2} \sum_{i=1}^k \cos(2\beta i + 2\theta)
+\]</div>
+<p>This term represents the summation of a cosine function with a double frequency component <span class="math notranslate nohighlight">\( 2\beta i \)</span>.</p>
+<p>When <span class="math notranslate nohighlight">\( k \)</span> is large, and the phase terms <span class="math notranslate nohighlight">\( 2\beta i + 2\theta \)</span> are spread evenly across the interval, the sum of these cosine terms oscillates around zero, averaging out to approximately zero.</p>
+<p>Thus, we neglect this term:</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{i=1}^k \cos(2\beta i + 2\theta) \approx 0
+\]</div>
+<p>After removing this term, the likelihood function becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+p(\vec{y}|a, \theta) = \kappa_1 \exp\left(\frac{a}{\sigma^2} y_I \cos \theta + \frac{a}{\sigma^2} y_Q \sin \theta - \frac{a^2 k}{4\sigma^2}\right)
+}
+\]</div>
+<p><strong>Combining the First Two Terms in the Exponent</strong></p>
+<p>The first two terms in the exponent are:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{a}{\sigma^2} y_I \cos \theta + \frac{a}{\sigma^2} y_Q \sin \theta
+\]</div>
+<p>This expression can be rewritten using the trigonometric identity for the cosine of a difference:</p>
+<div class="math notranslate nohighlight">
+\[
+x_1 \cos \theta + x_2 \sin \theta = \sqrt{x_1^2 + x_2^2} \cos(\theta - \phi)
+\]</div>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[
+\phi = \tan^{-1} \frac{x_2}{x_1}
+\]</div>
+<p>Here, substitute <span class="math notranslate nohighlight">\( x_1 = y_I \)</span> and <span class="math notranslate nohighlight">\( x_2 = y_Q \)</span>, so:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{a}{\sigma^2} y_I \cos \theta + \frac{a}{\sigma^2} y_Q \sin \theta = \frac{a}{\sigma^2} \sqrt{y_I^2 + y_Q^2} \cos(\theta - \phi)
+\]</div>
+<p>with:</p>
+<div class="math notranslate nohighlight">
+\[
+\phi = \tan^{-1} \frac{y_Q}{y_I}
+\]</div>
+<p>Define:</p>
+<div class="math notranslate nohighlight">
+\[
+y_E = \sqrt{y_I^2 + y_Q^2}
+\]</div>
+<p>Thus, the expression becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{a}{\sigma^2} y_I \cos \theta + \frac{a}{\sigma^2} y_Q \sin \theta = \frac{a}{\sigma^2} y_E \cos(\theta - \phi)
+\]</div>
+<p>The likelihood function now becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}|a, \theta) = \kappa_1 \exp\left(\frac{a}{\sigma^2} y_E \cos(\theta - \phi) - \frac{a^2 k}{4\sigma^2}\right)
+\]</div>
+<p><span class="math notranslate nohighlight">\( p(\vec{y}|a) \)</span> can be computed by averaging over the phase distribution, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}|a) = \kappa_1 \exp \left( -\frac{a^2 k}{4\sigma^2} \right) \int_0^{2\pi} \frac{1}{2\pi} \exp \left( \frac{a}{\sigma^2} y_E \cos(\theta - \phi) \right) d\theta
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+= \kappa_1 \exp \left( -\frac{a^2 k}{4\sigma^2} \right) I_0 \left( \frac{a y_E}{\sigma^2} \right)
+\]</div>
+<p>where again we have used</p>
+<div class="math notranslate nohighlight">
+\[
+I_0(u) = \frac{1}{2\pi} \int_0^{2\pi} e^{u \cos(\theta - \phi)} d\theta
+\]</div>
+<p>A MAP estimate can be obtained by using Bayes’ theorem in conjunction the likelihood above, so that</p>
+<div class="math notranslate nohighlight">
+\[
+p(a|\vec{y}) = \kappa_2 p(a) \exp \left( -\frac{a^2 k}{4\sigma^2} \right) I_0 \left( \frac{a y_E}{\sigma^2} \right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \kappa_2 = \kappa_1 / p(\vec{y}) \)</span>.</p>
+<p><strong>Computing <span class="math notranslate nohighlight">\( p(\vec{y}|a) \)</span> by Averaging Over <span class="math notranslate nohighlight">\( \theta \)</span></strong></p>
+<p>The likelihood <span class="math notranslate nohighlight">\( p(\vec{y}|a) \)</span> is obtained by averaging <span class="math notranslate nohighlight">\( p(\vec{y}|a, \theta) \)</span> over the uniform distribution of the unknown phase <span class="math notranslate nohighlight">\( \theta \)</span>, which is uniformly distributed in <span class="math notranslate nohighlight">\( [0, 2\pi) \)</span>.</p>
+<p>This means we integrate <span class="math notranslate nohighlight">\( p(\vec{y}|a, \theta) \)</span> over <span class="math notranslate nohighlight">\( \theta \)</span>, weighted by the uniform probability density <span class="math notranslate nohighlight">\( \frac{1}{2\pi} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}|a) = \int_0^{2\pi} \frac{1}{2\pi} p(\vec{y}|a, \theta) d\theta
+\]</div>
+<p>Substituting the form of <span class="math notranslate nohighlight">\( p(\vec{y}|a, \theta) \)</span> from the previous step:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}|a, \theta) = \kappa_1 \exp\left(\frac{a}{\sigma^2} y_E \cos(\theta - \phi) - \frac{a^2 k}{4\sigma^2}\right)
+\]</div>
+<p>we write:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}|a) = \int_0^{2\pi} \frac{1}{2\pi} \kappa_1 \exp\left(\frac{a}{\sigma^2} y_E \cos(\theta - \phi) - \frac{a^2 k}{4\sigma^2}\right) d\theta
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\( \kappa_1 \)</span> and <span class="math notranslate nohighlight">\( \exp\left(-\frac{a^2 k}{4\sigma^2}\right) \)</span> do not depend on <span class="math notranslate nohighlight">\( \theta \)</span>, they can be factored out of the integral:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}|a) = \kappa_1 \exp\left(-\frac{a^2 k}{4\sigma^2}\right) \int_0^{2\pi} \frac{1}{2\pi} \exp\left(\frac{a}{\sigma^2} y_E \cos(\theta - \phi)\right) d\theta
+\]</div>
+<p>The integral inside is a standard form for the modified Bessel function of the first kind, <span class="math notranslate nohighlight">\( I_0(u) \)</span>, which is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+I_0(u) = \frac{1}{2\pi} \int_0^{2\pi} \exp(u \cos(\theta - \phi)) d\theta
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\( u = \frac{a y_E}{\sigma^2} \)</span>. Substituting this into the expression for <span class="math notranslate nohighlight">\( p(\vec{y}|a) \)</span>, we get:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{
+p(\vec{y}|a) = \kappa_1 \exp\left(-\frac{a^2 k}{4\sigma^2}\right) I_0\left(\frac{a y_E}{\sigma^2}\right)
+}
+\]</div>
+<p><strong>Using Bayes’ Theorem to Compute <span class="math notranslate nohighlight">\( p(a|\vec{y}) \)</span></strong></p>
+<p>The posterior <span class="math notranslate nohighlight">\( p(a|\vec{y}) \)</span> is obtained using Bayes’ theorem:</p>
+<div class="math notranslate nohighlight">
+\[
+p(a|\vec{y}) = \frac{p(\vec{y}|a)p(a)}{p(\vec{y})}
+\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\( p(\vec{y}|a) \)</span> into Bayes’ theorem:</p>
+<div class="math notranslate nohighlight">
+\[
+p(a|\vec{y}) = \frac{\kappa_1 \exp\left(-\frac{a^2 k}{4\sigma^2}\right) I_0\left(\frac{a y_E}{\sigma^2}\right) p(a)}{p(\vec{y})}
+\]</div>
+<p>Let:</p>
+<div class="math notranslate nohighlight">
+\[
+\kappa_2 = \frac{\kappa_1}{p(\vec{y})}
+\]</div>
+<p>Then:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+p(a|\vec{y}) = \kappa_2 p(a) \exp\left(-\frac{a^2 k}{4\sigma^2}\right) I_0\left(\frac{a y_E}{\sigma^2}\right)
+}
+\]</div>
+<p>Different from the coherent case, the pdf <span class="math notranslate nohighlight">\( p(a|\vec{y}) \)</span> is not a symmetric function of <span class="math notranslate nohighlight">\( a \)</span>, so that the MAP, ML, and MSE are, in general, different.</p>
+<p>The MAP estimate can be obtained by maximizing <span class="math notranslate nohighlight">\( \ln p(a|\vec{y}) \)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+0 = -\frac{a k}{2\sigma^2} + \frac{y_E}{\sigma^2} \frac{I_1 \left( \frac{a y_E}{\sigma^2} \right)}{I_0 \left( \frac{a y_E}{\sigma^2} \right)} + \frac{d}{da} \ln p(a)
+\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\( a \)</span> in the foregoing equation results in <span class="math notranslate nohighlight">\( \hat{a}_{MAP} \)</span>.</p>
+<p><strong>Key Differences from the Coherent Case</strong></p>
+<p>In the coherent case as in the previous section, the posterior probability density function (PDF) <span class="math notranslate nohighlight">\( p(a|\vec{y}) \)</span> is often symmetric with respect to <span class="math notranslate nohighlight">\( a \)</span>, simplifying the estimation processes.</p>
+<p>Symmetry implies that various estimates like the Maximum A Posteriori (MAP), Maximum Likelihood (ML), and Minimum Mean-Squared Error (MMSE) estimators may coincide.</p>
+<p>In the <strong>noncoherent case</strong>, however:</p>
+<ul class="simple">
+<li><p>The PDF <span class="math notranslate nohighlight">\( p(a|\vec{y}) \)</span> is not symmetric because of the phase averaging introduced by the integration over <span class="math notranslate nohighlight">\( \theta \)</span> and the nature of the modified Bessel functions.</p></li>
+<li><p>This asymmetry means that the locations of the MAP, ML, and MMSE estimates generally differ.</p></li>
+</ul>
+</section>
+<section id="map-estimation">
+<h2>MAP Estimation<a class="headerlink" href="#map-estimation" title="Link to this heading">#</a></h2>
+<p>The <strong>MAP estimate</strong>, <span class="math notranslate nohighlight">\( \hat{a}_{MAP} \)</span>, maximizes the posterior PDF <span class="math notranslate nohighlight">\( p(a|\vec{y}) \)</span>.</p>
+<p>To simplify this optimization, we maximize the logarithm of the posterior <span class="math notranslate nohighlight">\( \ln p(a|\vec{y}) \)</span> instead of <span class="math notranslate nohighlight">\( p(a|\vec{y}) \)</span> itself.</p>
+<p>From Bayes’ theorem:</p>
+<div class="math notranslate nohighlight">
+\[
+p(a|\vec{y}) = \kappa_2 p(a) \exp\left(-\frac{a^2 k}{4\sigma^2}\right) I_0\left(\frac{a y_E}{\sigma^2}\right)
+\]</div>
+<p>we take the logarithm:</p>
+<div class="math notranslate nohighlight">
+\[
+\ln p(a|\vec{y}) = \ln p(a) + \ln \kappa_2 - \frac{a^2 k}{4\sigma^2} + \ln I_0\left(\frac{a y_E}{\sigma^2}\right)
+\]</div>
+<p>Ignoring constants like <span class="math notranslate nohighlight">\( \ln \kappa_2 \)</span> (independent of <span class="math notranslate nohighlight">\( a \)</span>), the derivative with respect to <span class="math notranslate nohighlight">\( a \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{da} \ln p(a|\vec{y}) = \frac{d}{da} \ln p(a) - \frac{a k}{2\sigma^2} + \frac{d}{da} \ln I_0\left(\frac{a y_E}{\sigma^2}\right)
+\]</div>
+<p><strong>Derivative of <span class="math notranslate nohighlight">\( \ln I_0 \)</span></strong></p>
+<p>The term <span class="math notranslate nohighlight">\( \frac{d}{da} \ln I_0\left(\frac{a y_E}{\sigma^2}\right) \)</span> uses the known property of the modified Bessel function <span class="math notranslate nohighlight">\( I_0(u) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{du} \ln I_0(u) = \frac{I_1(u)}{I_0(u)}
+\]</div>
+<p>Thus, for <span class="math notranslate nohighlight">\( u = \frac{a y_E}{\sigma^2} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{da} \ln I_0\left(\frac{a y_E}{\sigma^2}\right) = \frac{y_E}{\sigma^2} \frac{I_1\left(\frac{a y_E}{\sigma^2}\right)}{I_0\left(\frac{a y_E}{\sigma^2}\right)}
+\]</div>
+<p><strong>MAP Condition</strong></p>
+<p>Substituting these components into the derivative of <span class="math notranslate nohighlight">\( \ln p(a|\vec{y}) \)</span>, we get:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{da} \ln p(a|\vec{y}) = -\frac{a k}{2\sigma^2} + \frac{y_E}{\sigma^2} \frac{I_1\left(\frac{a y_E}{\sigma^2}\right)}{I_0\left(\frac{a y_E}{\sigma^2}\right)} + \frac{d}{da} \ln p(a)
+\]</div>
+<p>Setting this derivative equal to zero yields the condition for the MAP estimate <span class="math notranslate nohighlight">\( \hat{a}_{MAP} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+0 = -\frac{a k}{2\sigma^2} + \frac{y_E}{\sigma^2} \frac{I_1\left(\frac{a y_E}{\sigma^2}\right)}{I_0\left(\frac{a y_E}{\sigma^2}\right)} + \frac{d}{da} \ln p(a)\bigg|_{a = \hat{a}_{MAP}}
+\]</div>
+<p><strong>Numerical Solution</strong></p>
+<p>Solving this equation for <span class="math notranslate nohighlight">\( \hat{a}_{MAP} \)</span> typically requires numerical methods, as the equation involves the modified Bessel functions <span class="math notranslate nohighlight">\( I_0 \)</span> and <span class="math notranslate nohighlight">\( I_1 \)</span>, which are not simple to invert analytically.</p>
+<p>The result, <span class="math notranslate nohighlight">\( \hat{a}_{MAP} \)</span>, will depend on the observed data <span class="math notranslate nohighlight">\( y_E \)</span>, the noise variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>, the prior <span class="math notranslate nohighlight">\( p(a) \)</span>, and the number of samples <span class="math notranslate nohighlight">\( k \)</span>.</p>
+</section>
+<section id="example-rayleigh-fading-amplitude-non-coherent-estimation">
+<h2>Example: Rayleigh Fading Amplitude Non-coherent Estimation<a class="headerlink" href="#example-rayleigh-fading-amplitude-non-coherent-estimation" title="Link to this heading">#</a></h2>
+<p>As an example [Ex 11.3], assume that <span class="math notranslate nohighlight">\( p(a) \)</span> is a Rayleigh random variable.</p>
+<p>This distribution is common in fading environments, as the amplitude of a received signal in Rayleigh fading results from the square root of the sum of squares of two independent Gaussian random variables (representing in-phase and quadrature components).</p>
+<p><strong>Rayleigh Prior for <span class="math notranslate nohighlight">\( p(a) \)</span></strong></p>
+<p>The amplitude <span class="math notranslate nohighlight">\( a \)</span> is assumed to follow a Rayleigh distribution:</p>
+<div class="math notranslate nohighlight">
+\[
+p(a) = \frac{a}{\sigma_a^2} \exp\left(-\frac{a^2}{2\sigma_a^2}\right), \quad a \geq 0
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \sigma_a^2 \)</span> is the variance parameter of the Rayleigh distribution.</p>
+<p>The logarithm of the prior <span class="math notranslate nohighlight">\( p(a) \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\ln p(a) = \ln\left(\frac{a}{\sigma_a^2}\right) - \frac{a^2}{2\sigma_a^2}
+\]</div>
+<p>Differentiating <span class="math notranslate nohighlight">\( \ln p(a) \)</span> with respect to <span class="math notranslate nohighlight">\( a \)</span>, we get:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{da} \ln p(a) = \frac{1}{a} - \frac{a}{\sigma_a^2}
+\]</div>
+<p><strong>MAP Estimation Equation</strong></p>
+<p>The general MAP estimation condition is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+0 = -\frac{a k}{2\sigma^2} + \frac{y_E}{\sigma^2} \frac{I_1\left(\frac{a y_E}{\sigma^2}\right)}{I_0\left(\frac{a y_E}{\sigma^2}\right)} + \frac{d}{da} \ln p(a)
+\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\( \frac{d}{da} \ln p(a) = \frac{1}{a} - \frac{a}{\sigma_a^2} \)</span>, this becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+0 = -\frac{a k}{2\sigma^2} + \frac{y_E}{\sigma^2} \frac{I_1\left(\frac{a y_E}{\sigma^2}\right)}{I_0\left(\frac{a y_E}{\sigma^2}\right)} + \frac{1}{a} - \frac{a}{\sigma_a^2}
+\]</div>
+<p><strong>Simplifying the Energy Term <span class="math notranslate nohighlight">\( \mathcal{E} \)</span></strong></p>
+<p>The term <span class="math notranslate nohighlight">\( \mathcal{E} = \sum_{i=1}^k \sin^2(\beta i + \theta) \)</span> represents the energy of the sinusoidal components.</p>
+<p>Using the trigonometric identity <span class="math notranslate nohighlight">\( \sin^2(x) = \frac{1}{2} - \frac{1}{2} \cos(2x) \)</span>, and assuming uniform phase distribution <span class="math notranslate nohighlight">\( \theta \)</span>, the cosine terms average out to zero when summed over <span class="math notranslate nohighlight">\( k \)</span> samples. Thus:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E} = \sum_{i=1}^k \sin^2(\beta i + \theta) = \frac{k}{2}
+\]</div>
+<p>This simplification allows us to replace <span class="math notranslate nohighlight">\( k \)</span> in the penalty term as <span class="math notranslate nohighlight">\( a \mathcal{E} / \sigma^2 \)</span>, leading to the final MAP equation:</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{a \mathcal{E}}{\sigma^2} + \frac{y_E}{\sigma^2} \frac{I_1\left(\frac{a y_E}{\sigma^2}\right)}{I_0\left(\frac{a y_E}{\sigma^2}\right)} + \frac{1}{a} - \frac{a}{\sigma_a^2} = 0
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \mathcal{E} = \frac{k}{2} \)</span>.</p>
+<p>To address this equation, we consider the two following cases.</p>
+<section id="high-snr-assumption">
+<h3>High-SNR Assumption<a class="headerlink" href="#high-snr-assumption" title="Link to this heading">#</a></h3>
+<p>The key assumption here is that the argument of the modified Bessel functions becomes large, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{a y_E}{\sigma^2} \gg 1
+\]</div>
+<p>This situation corresponds to high Signal-to-Noise Ratio (SNR), where the observed data <span class="math notranslate nohighlight">\( y_E \)</span> is much larger relative to the noise variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>.</p>
+<p><strong>Simplifying the Bessel Function Ratio</strong></p>
+<p>For large arguments <span class="math notranslate nohighlight">\( x \gg 1 \)</span>, the modified Bessel functions <span class="math notranslate nohighlight">\( I_0(x) \)</span> and <span class="math notranslate nohighlight">\( I_1(x) \)</span> behave asymptotically as:</p>
+<div class="math notranslate nohighlight">
+\[
+I_0(x) \approx \frac{e^x}{\sqrt{2\pi x}}, \quad I_1(x) \approx \frac{e^x}{\sqrt{2\pi x}}.
+\]</div>
+<p>Therefore, their ratio simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{I_1(x)}{I_0(x)} \approx 1, \quad x \gg 1
+\]</div>
+<p><strong>Simplifying the MAP Equation</strong></p>
+<p>The general MAP equation is:</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{a \mathcal{E}}{\sigma^2} + \frac{y_E}{\sigma^2} \frac{I_1\left(\frac{a y_E}{\sigma^2}\right)}{I_0\left(\frac{a y_E}{\sigma^2}\right)} + \frac{1}{a} - \frac{a}{\sigma_a^2} = 0
+\]</div>
+<p>Using <span class="math notranslate nohighlight">\( \frac{I_1}{I_0} \approx 1 \)</span> at high SNR, the equation reduces to:</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{a \mathcal{E}}{\sigma^2} + \frac{y_E}{\sigma^2} + \frac{1}{a} - \frac{a}{\sigma_a^2} = 0
+\]</div>
+<p><strong>Rearranging the MAP Equation</strong></p>
+<p>Rewriting the simplified equation for clarity:</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{a \mathcal{E}}{\sigma^2} + \frac{y_E}{\sigma^2} - \frac{a}{\sigma_a^2} + \frac{1}{a} = 0
+\]</div>
+<p>Combining the terms proportional to <span class="math notranslate nohighlight">\( a \)</span>, this becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\left(\frac{\mathcal{E}}{\sigma^2} + \frac{1}{\sigma_a^2}\right)a - \frac{y_E}{\sigma^2} - \frac{1}{a} = 0
+\]</div>
+<p>Multiply through by <span class="math notranslate nohighlight">\( a \)</span> to eliminate the denominator:</p>
+<div class="math notranslate nohighlight">
+\[
+\left(\frac{\mathcal{E}}{\sigma^2} + \frac{1}{\sigma_a^2}\right)a^2 - \frac{y_E}{\sigma^2}a - 1 = 0
+\]</div>
+<p>This is a quadratic equation in <span class="math notranslate nohighlight">\( a \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+A a^2 - B a - 1 = 0
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( A = \frac{\mathcal{E}}{\sigma^2} + \frac{1}{\sigma_a^2} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( B = \frac{y_E}{\sigma^2} \)</span>.</p></li>
+</ul>
+<p><strong>Solving the Quadratic Equation</strong></p>
+<p>The solution to the quadratic equation <span class="math notranslate nohighlight">\( A a^2 - B a - 1 = 0 \)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+a = \frac{-(-B) \pm \sqrt{(-B)^2 - 4A(-1)}}{2A}
+\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\( -(-B) = B \)</span> and simplifying:</p>
+<div class="math notranslate nohighlight">
+\[
+a = \frac{B \pm \sqrt{B^2 + 4A}}{2A}
+\]</div>
+<p>Choosing the positive root (since <span class="math notranslate nohighlight">\( a \geq 0 \)</span> by definition):</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{a}_{MAP} = \frac{B + \sqrt{B^2 + 4A}}{2A}
+\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span> back into the equation:</p>
+<div class="math notranslate nohighlight">
+\[
+A = \frac{\mathcal{E}}{\sigma^2} + \frac{1}{\sigma_a^2}, \quad B = \frac{y_E}{\sigma^2}
+\]</div>
+<p>we get that the high-SNR MAP estimate is:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\hat{a}_{MAP} = \frac{\frac{y_E}{\sigma^2} + \sqrt{\left(\frac{y_E}{\sigma^2}\right)^2 + 4 \left(\frac{\mathcal{E}}{\sigma^2} + \frac{1}{\sigma_a^2}\right)}}{2 \left(\frac{\mathcal{E}}{\sigma^2} + \frac{1}{\sigma_a^2}\right)}
+}
+\]</div>
+<p>At high SNR, we can see that the MAP estimate is influenced more by the observed data <span class="math notranslate nohighlight">\( y_E \)</span> and less by noise or prior assumptions.</p>
+</section>
+<section id="low-snr-assumption">
+<h3>Low-SNR Assumption<a class="headerlink" href="#low-snr-assumption" title="Link to this heading">#</a></h3>
+<p>In the low-SNR regime:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{a y_E}{\sigma^2} \ll 1
+\]</div>
+<p>which corresponds to situations where the observed data <span class="math notranslate nohighlight">\( y_E \)</span> is small relative to the noise variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>.</p>
+<p>This happens with high probability at small SNR values, where noise dominates the signal.</p>
+<p><strong>Simplifying the Bessel Function Ratio</strong></p>
+<p>For small arguments <span class="math notranslate nohighlight">\( x \ll 1 \)</span>, the modified Bessel functions <span class="math notranslate nohighlight">\( I_0(x) \)</span> and <span class="math notranslate nohighlight">\( I_1(x) \)</span> can be approximated by their Taylor series expansions:</p>
+<div class="math notranslate nohighlight">
+\[
+I_0(x) \approx 1 + \frac{x^2}{4}, \quad I_1(x) \approx \frac{x}{2}
+\]</div>
+<p>Thus, the ratio becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{I_1(x)}{I_0(x)} \approx \frac{\frac{x}{2}}{1 + \frac{x^2}{4}} \approx \frac{x}{2}, \quad x \ll 1
+\]</div>
+<p>where the denominator <span class="math notranslate nohighlight">\( 1 + \frac{x^2}{4} \)</span> is approximated as <span class="math notranslate nohighlight">\( 1 \)</span> for very small <span class="math notranslate nohighlight">\( x \)</span>.</p>
+<p>Substituting <span class="math notranslate nohighlight">\( x = \frac{a y_E}{\sigma^2} \)</span>, we get:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{I_1\left(\frac{a y_E}{\sigma^2}\right)}{I_0\left(\frac{a y_E}{\sigma^2}\right)} \approx \frac{a y_E}{2 \sigma^2}
+\]</div>
+<p><strong>Simplifying the MAP Equation</strong></p>
+<p>The general MAP equation is:</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{a \mathcal{E}}{\sigma^2} + \frac{y_E}{\sigma^2} \frac{I_1\left(\frac{a y_E}{\sigma^2}\right)}{I_0\left(\frac{a y_E}{\sigma^2}\right)} + \frac{1}{a} - \frac{a}{\sigma_a^2} = 0
+\]</div>
+<p>Substitute <span class="math notranslate nohighlight">\( \frac{I_1}{I_0} \approx \frac{a y_E}{2 \sigma^2} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{a \mathcal{E}}{\sigma^2} + \frac{a}{2} \left(\frac{y_E}{\sigma^2}\right)^2 + \frac{1}{a} - \frac{a}{\sigma_a^2} = 0
+\]</div>
+<p>Reorganizing terms gives:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{a} = \frac{a \mathcal{E}}{\sigma^2} - \frac{a}{2} \left(\frac{y_E}{\sigma^2}\right)^2 + \frac{a}{\sigma_a^2}
+\]</div>
+<p>Multiply through by <span class="math notranslate nohighlight">\( a \)</span> to eliminate the denominator:</p>
+<div class="math notranslate nohighlight">
+\[
+1 = a^2 \left[\frac{\mathcal{E}}{\sigma^2} + \frac{1}{\sigma_a^2} - \frac{1}{2} \left(\frac{y_E}{\sigma^2}\right)^2\right]
+\]</div>
+<p>Solving for <span class="math notranslate nohighlight">\( a^2 \)</span>, we get:</p>
+<div class="math notranslate nohighlight">
+\[
+a^2 = \frac{1}{\frac{\mathcal{E}}{\sigma^2} + \frac{1}{\sigma_a^2} - \frac{1}{2} \left(\frac{y_E}{\sigma^2}\right)^2}
+\]</div>
+<p>Thus, the low-SNR MAP estimate is:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\hat{a}_{MAP} = \frac{1}{\left[\frac{\mathcal{E}}{\sigma^2} + \frac{1}{\sigma_a^2} - \frac{1}{2} \left(\frac{y_E}{\sigma^2}\right)^2\right]^{1/2}}
+}
+\]</div>
+<p><strong>Constraint on <span class="math notranslate nohighlight">\( y_E \)</span></strong></p>
+<p>For the denominator to remain positive, the following condition must hold:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\mathcal{E}}{\sigma^2} + \frac{1}{\sigma_a^2} - \frac{1}{2} \left(\frac{y_E}{\sigma^2}\right)^2 &gt; 0
+\]</div>
+<p>Rearranging:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{2} \left(\frac{y_E}{\sigma^2}\right)^2 &lt; \frac{\mathcal{E}}{\sigma^2} + \frac{1}{\sigma_a^2}
+\]</div>
+<p>Simplify further:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{y_E}{\sigma^2} &lt; \sqrt{2\left(\frac{\mathcal{E}}{\sigma^2} + \frac{1}{\sigma_a^2}\right)}
+\]</div>
+<p>This condition ensures that the estimate is valid.</p>
+<p>We can see that at low SNR, the estimate is dominated by the prior information (<span class="math notranslate nohighlight">\( \frac{1}{\sigma_a^2} \)</span>) and the noise properties (<span class="math notranslate nohighlight">\( \frac{\mathcal{E}}{\sigma^2} \)</span>), with a smaller contribution from the data (<span class="math notranslate nohighlight">\( y_E \)</span>) due to the weak signal.</p>
+</section>
+</section>
+<section id="simulation">
+<h2>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="c1"># Number of samples</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># Known symbol amplitude</span>
+<span class="n">s</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># Desired SNR in decibels</span>
+<span class="n">SNR_dB</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="c1"># Rayleigh distribution parameter (σ_a^2)</span>
+<span class="n">sigma_a_squared</span> <span class="o">=</span> <span class="mf">1.0</span>
+
+<span class="c1"># Define SNR and Noise Variance</span>
+
+<span class="c1"># Convert SNR from dB to linear scale</span>
+<span class="n">SNR_linear</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="n">SNR_dB</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Signal energy (since s is real and known)</span>
+<span class="n">E</span> <span class="o">=</span> <span class="n">s</span> <span class="o">**</span> <span class="mi">2</span>  <span class="c1"># E = |s|^2 = 1.0</span>
+
+<span class="c1"># Noise variance calculation based on SNR</span>
+<span class="n">sigma_squared</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="n">SNR_linear</span>
+
+<span class="c1"># Generate True Amplitudes from Rayleigh Distribution</span>
+
+<span class="c1"># In NumPy, the scale parameter for Rayleigh is σ_a = sqrt(σ_a^2 / 2)</span>
+<span class="n">sigma_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_a_squared</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Sample true amplitudes from Rayleigh distribution</span>
+<span class="n">a_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rayleigh</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">sigma_a</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># Generate Noisy Observations</span>
+
+<span class="c1"># Generate noise samples from Gaussian distribution N(0, σ²)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_squared</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># Generate observations y = a * s + n</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">a_true</span> <span class="o">*</span> <span class="n">s</span> <span class="o">+</span> <span class="n">n</span>
+
+
+<span class="c1"># Compute MAP Estimates</span>
+
+<span class="c1"># Compute y_E = y^2 (Energy of the observation)</span>
+<span class="n">y_E</span> <span class="o">=</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1"># Compute denominator of the MAP estimator</span>
+<span class="n">denominator_high_SNR</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">E</span> <span class="o">/</span> <span class="n">sigma_squared</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sigma_a_squared</span><span class="p">)</span>
+
+<span class="c1"># Compute the argument inside the square root to ensure it&#39;s non-negative</span>
+<span class="n">sqrt_argument_high_SNR</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_E</span> <span class="o">/</span> <span class="n">sigma_squared</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">E</span> <span class="o">/</span> <span class="n">sigma_squared</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sigma_a_squared</span><span class="p">)</span>
+
+<span class="c1"># Compute the square root term</span>
+<span class="n">sqrt_term_high_SNR</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sqrt_argument_high_SNR</span><span class="p">)</span>
+
+<span class="c1"># Compute the numerator of the MAP estimator</span>
+<span class="n">numerator_high_SNR</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_E</span> <span class="o">/</span> <span class="n">sigma_squared</span><span class="p">)</span> <span class="o">+</span> <span class="n">sqrt_term_high_SNR</span>
+
+<span class="c1"># Compute the MAP estimate for each observation</span>
+<span class="n">a_map_high_SNR</span> <span class="o">=</span> <span class="n">numerator_high_SNR</span> <span class="o">/</span> <span class="n">denominator_high_SNR</span>
+
+
+<span class="c1"># Plotting True vs Estimated Amplitudes</span>
+
+<span class="c1"># Generate sample indices for the x-axis</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Create a figure for True vs Estimated Amplitudes</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">7</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">a_true</span><span class="p">,</span> <span class="s1">&#39;bo-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;True Amplitude $a$&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">indices</span><span class="p">,</span> <span class="n">a_map_high_SNR</span><span class="p">,</span> <span class="s1">&#39;ro-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Estimated Amplitude $\hat</span><span class="si">{a}</span><span class="s1">_</span><span class="si">{MAP}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Index&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;True vs. MAP Estimated Amplitude for 100 Samples (SNR = 30 dB)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/f8c0e938d17a577ccb06473d3c039496a0f09928ce7af79ad3730d84d0e974bd.png" src="_images/f8c0e938d17a577ccb06473d3c039496a0f09928ce7af79ad3730d84d0e974bd.png" />
+</div>
+</div>
+<section id="mmse">
+<h3>MMSE<a class="headerlink" href="#mmse" title="Link to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># SNR range in dB (0 dB to 40 dB in 1 dB steps)</span>
+<span class="n">SNR_dB_range</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">25</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># [0, 1, 2, ..., 40]</span>
+
+<span class="c1"># Initialize lists to store MMSE for each estimator and SNR</span>
+<span class="n">MMSE_high_SNR_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">MMSE_low_SNR_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Loop Over SNR Values</span>
+
+<span class="k">for</span> <span class="n">SNR_dB</span> <span class="ow">in</span> <span class="n">SNR_dB_range</span><span class="p">:</span>
+   
+    <span class="c1"># Define SNR and Noise Variance</span>
+    
+    <span class="c1"># Convert SNR from dB to linear scale</span>
+    <span class="n">SNR_linear</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">**</span> <span class="p">(</span><span class="n">SNR_dB</span> <span class="o">/</span> <span class="mi">10</span><span class="p">)</span>
+    
+    <span class="c1"># Signal energy (since s is real and known)</span>
+    <span class="n">E</span> <span class="o">=</span> <span class="n">s</span> <span class="o">**</span> <span class="mi">2</span>  <span class="c1"># E = |s|^2 = 1.0</span>
+    
+    <span class="c1"># Noise variance calculation based on SNR</span>
+    <span class="n">sigma_squared</span> <span class="o">=</span> <span class="n">E</span> <span class="o">/</span> <span class="n">SNR_linear</span>
+    
+    <span class="c1"># Generate True Amplitudes from Rayleigh Distribution</span>
+    
+    <span class="c1"># In NumPy, the scale parameter for Rayleigh is σ_a = sqrt(σ_a^2 / 2)</span>
+    <span class="n">sigma_a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_a_squared</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Sample true amplitudes from Rayleigh distribution</span>
+    <span class="n">a_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rayleigh</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">sigma_a</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    
+    <span class="c1"># Generate Noisy Observations</span>
+    
+    <span class="c1"># Generate noise samples from Gaussian distribution N(0, σ²)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_squared</span><span class="p">),</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    
+    <span class="c1"># Generate observations y = a * s + n</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">a_true</span> <span class="o">*</span> <span class="n">s</span> <span class="o">+</span> <span class="n">n</span>
+    
+    <span class="c1"># Compute High-SNR MAP Estimates</span>
+    
+    <span class="c1"># Compute y_E = y^2 (Energy of the observation)</span>
+    <span class="n">y_E</span> <span class="o">=</span> <span class="n">y</span> <span class="o">**</span> <span class="mi">2</span>
+    
+    <span class="c1"># Compute denominator of the high-SNR MAP estimator</span>
+    <span class="n">denominator_high</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">E</span> <span class="o">/</span> <span class="n">sigma_squared</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sigma_a_squared</span><span class="p">)</span>
+    
+    <span class="c1"># Compute the argument inside the square root to ensure it&#39;s non-negative</span>
+    <span class="n">sqrt_argument_high</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_E</span> <span class="o">/</span> <span class="n">sigma_squared</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">4</span> <span class="o">*</span> <span class="p">(</span><span class="n">E</span> <span class="o">/</span> <span class="n">sigma_squared</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sigma_a_squared</span><span class="p">)</span>
+    
+    <span class="c1"># Ensure non-negativity</span>
+    <span class="n">sqrt_argument_high</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">maximum</span><span class="p">(</span><span class="n">sqrt_argument_high</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    
+    <span class="c1"># Compute the square root term</span>
+    <span class="n">sqrt_term_high</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sqrt_argument_high</span><span class="p">)</span>
+    
+    <span class="c1"># Compute the numerator of the high-SNR MAP estimator</span>
+    <span class="n">numerator_high</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_E</span> <span class="o">/</span> <span class="n">sigma_squared</span><span class="p">)</span> <span class="o">+</span> <span class="n">sqrt_term_high</span>
+    
+    <span class="c1"># Compute the high-SNR MAP estimate for each observation</span>
+    <span class="n">a_map_high</span> <span class="o">=</span> <span class="n">numerator_high</span> <span class="o">/</span> <span class="n">denominator_high</span>
+    
+    <span class="c1"># Compute Low-SNR MAP Estimates</span>
+    
+    <span class="c1"># Compute the argument inside the square root for low-SNR MAP estimator</span>
+    <span class="n">sqrt_argument_low</span> <span class="o">=</span> <span class="p">(</span><span class="n">E</span> <span class="o">/</span> <span class="n">sigma_squared</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">sigma_a_squared</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">y_E</span> <span class="o">/</span> <span class="n">sigma_squared</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    
+    <span class="c1"># To prevent invalid (negative) values inside the square root, set invalid entries to NaN</span>
+    <span class="c1"># and exclude them from the estimation</span>
+    <span class="n">sqrt_argument_low_valid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">sqrt_argument_low</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">sqrt_argument_low</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">)</span>
+    
+    <span class="c1"># Compute the square root term</span>
+    <span class="n">sqrt_term_low</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sqrt_argument_low_valid</span><span class="p">)</span>
+    
+    <span class="c1"># Compute the low-SNR MAP estimate</span>
+    <span class="n">a_map_low</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="n">sqrt_term_low</span>
+    
+    <span class="c1"># Calculate Estimation Errors and MMSE</span>
+    
+    <span class="c1"># High-SNR Estimator Errors</span>
+    <span class="n">errors_high</span> <span class="o">=</span> <span class="n">a_map_high</span> <span class="o">-</span> <span class="n">a_true</span>
+    <span class="n">MMSE_high</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">errors_high</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">MMSE_high_SNR_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MMSE_high</span><span class="p">)</span>
+    
+    <span class="c1"># Low-SNR Estimator Errors</span>
+    <span class="c1"># Exclude NaN values resulting from invalid estimations</span>
+    <span class="n">valid_indices_low</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">a_map_low</span><span class="p">)</span>
+    <span class="n">errors_low</span> <span class="o">=</span> <span class="n">a_map_low</span><span class="p">[</span><span class="n">valid_indices_low</span><span class="p">]</span> <span class="o">-</span> <span class="n">a_true</span><span class="p">[</span><span class="n">valid_indices_low</span><span class="p">]</span>
+    <span class="n">MMSE_low</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">errors_low</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">valid_indices_low</span><span class="p">)</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">MMSE_low_SNR_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">MMSE_low</span><span class="p">)</span>
+
+<span class="c1"># Plotting MMSE vs. SNR</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">SNR_dB_range</span><span class="p">,</span> <span class="n">MMSE_high_SNR_list</span><span class="p">,</span> <span class="s1">&#39;b-o&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;High-SNR MAP Estimator&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">SNR_dB_range</span><span class="p">,</span> <span class="n">MMSE_low_SNR_list</span><span class="p">,</span> <span class="s1">&#39;r-s&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Low-SNR MAP Estimator&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;SNR (dB)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Squared Error (MMSE)&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;MMSE of MAP Estimators vs. SNR&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0b9ee7908f74ecc42c06ed4469f46d5ce70614c6292392bc5d422872c43455e7.png" src="_images/0b9ee7908f74ecc42c06ed4469f46d5ce70614c6292392bc5d422872c43455e7.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c7_s2_amplitude_coherent_estimation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Amplitude Estimation in the Coherent Case with AWGN</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c7_s4_phase_estimation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Phase Estimation in AWGN</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-a-posteriori-pdf">The A Posteriori PDF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-estimation">MAP Estimation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-rayleigh-fading-amplitude-non-coherent-estimation">Example: Rayleigh Fading Amplitude Non-coherent Estimation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#high-snr-assumption">High-SNR Assumption</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#low-snr-assumption">Low-SNR Assumption</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mmse">MMSE</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

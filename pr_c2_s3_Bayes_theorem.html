@@ -1,0 +1,1273 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bayes’ Theorem &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pr_c2_s3_Bayes_theorem';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Functions of A Single Random Variable" href="pr_c2_s4_s6a_func_one_RV.html" />
+    <link rel="prev" title="Functions of A Random Variable" href="pr_c3_s0_functions_of_RV.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Probability Theory</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Bayes’ Theorem</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s4_s6a_func_one_RV.html">Functions of A Single Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s6b_generation_RV_from_Uniform.html">Generating Random Variables From A Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s7_mean_of_func_RV.html">First Moment of a Function of Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s8_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s9_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s10_s11_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s12_complex_Gaussian_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s13_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s14_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s15_s21_a_stochastic_process.html">Stochastic Process</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Communications Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_p1_intro.html">Introduction to Communication Theory</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Detection and Estimation Theory</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c4_s0_intro.html">Signal Representation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c4_s3_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s7_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s8_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s10_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s13_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c4_s15_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_extra_rician.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bayes’ Theorem</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Bayes’ Theorem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-binary-signaling-problem-in-additive-noise">Case Study: Binary Signaling Problem in Additive Noise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-bayes-theorem-on-the-symmetric-binary-erasure-channel">Example: Bayes’ Theorem on the Symmetric Binary Erasure Channel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insights">Insights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-receiver">Bayes Receiver</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-bayes-theorem-in-additive-noise-with-s-1-or-1-antipodal-signal">Example: Bayes’ Theorem in Additive Noise with <span class="math notranslate nohighlight">\( s = -1 \)</span> or <span class="math notranslate nohighlight">\( +1 \)</span> (Antipodal Signal)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Simulation</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="bayes-theorem">
+<h1>Bayes’ Theorem<a class="headerlink" href="#bayes-theorem" title="Link to this heading">#</a></h1>
+<p>Bayes’ theorem is frequently applied in detection theory, especially in scenarios involving multiple hypotheses.</p>
+<p>It is essential for determining the most likely hypothesis based on observed data.</p>
+<p>This theorem is pivotal in designing optimal receivers and evaluating their performance.</p>
+<section id="case-study-binary-signaling-problem-in-additive-noise">
+<h2>Case Study: Binary Signaling Problem in Additive Noise<a class="headerlink" href="#case-study-binary-signaling-problem-in-additive-noise" title="Link to this heading">#</a></h2>
+<p>Consider the following setup:</p>
+<ul>
+<li><p>A signal source, <span class="math notranslate nohighlight">\( S \)</span>, can take on two possible values: <span class="math notranslate nohighlight">\( s_1 \)</span> and <span class="math notranslate nohighlight">\( s_0 \)</span>, where <span class="math notranslate nohighlight">\( s_1 \)</span> corresponds to transmitting a binary digit one, and <span class="math notranslate nohighlight">\( s_0 \)</span> corresponds to transmitting a binary digit zero.</p></li>
+<li><p>The system is subject to additive noise, denoted as <span class="math notranslate nohighlight">\( n \)</span>.</p></li>
+<li><p>The received signal, <span class="math notranslate nohighlight">\( y \)</span>, can thus be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+  y = s_i + n, \quad \text{where } i = 0, 1
+  \]</div>
+</li>
+</ul>
+<p>Given the received signal <span class="math notranslate nohighlight">\( y \)</span>, <strong>the a posteriori probabilities</strong>, <span class="math notranslate nohighlight">\( P(S = s_1 \mid y) \)</span> and <span class="math notranslate nohighlight">\( P(S = s_0 \mid y) \)</span>, represent the probabilities that the transmitted signal was <span class="math notranslate nohighlight">\( s_1 \)</span> or <span class="math notranslate nohighlight">\( s_0 \)</span> respectively. These probabilities are calculated as:</p>
+<div class="math notranslate nohighlight">
+\[
+P(S = s_1 \mid y) = \frac{P(y \mid s_1) P(s_1)}{P(y)}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+P(S = s_0 \mid y) = \frac{P(y \mid s_0) P(s_0)}{P(y)}
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\( P(y \mid s_i) \)</span> is <strong>the likelihood</strong> of observing the received signal <span class="math notranslate nohighlight">\( y \)</span> given the transmission of <span class="math notranslate nohighlight">\( s_i \)</span>, <span class="math notranslate nohighlight">\( P(s_i) \)</span> represents <strong>the a priori probability</strong> of transmitting <span class="math notranslate nohighlight">\( s_i \)</span>, and <span class="math notranslate nohighlight">\( P(y) \)</span> is <strong>the marginal probability</strong> of receiving <span class="math notranslate nohighlight">\( y \)</span>.</p>
+</section>
+<section id="example-bayes-theorem-on-the-symmetric-binary-erasure-channel">
+<h2>Example: Bayes’ Theorem on the Symmetric Binary Erasure Channel<a class="headerlink" href="#example-bayes-theorem-on-the-symmetric-binary-erasure-channel" title="Link to this heading">#</a></h2>
+<p>Consider the binary signaling problem with additive noise as previously described. Let’s assume the transmitted symbol <span class="math notranslate nohighlight">\( s \)</span> in a communication system can take the values 0 or 1 with equal probability. The a priori probabilities are:</p>
+<div class="math notranslate nohighlight">
+\[ P(s = 0) = P(s = 1) = \frac{1}{2} \]</div>
+<p>The channel can transform the transmitted symbol into a received symbol <span class="math notranslate nohighlight">\( y \)</span>, which can take the values 0, 1, or <span class="math notranslate nohighlight">\( x \)</span>. The transition probabilities are given by:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P(y = 0 \mid s = 0) &amp;= P(y = 1 \mid s = 1) = p, \\
+P(y = 0 \mid s = 1) &amp;= P(y = 1 \mid s = 0) = q, \\
+P(y = x \mid s = 0) &amp;= P(y = x \mid s = 1) = \ell.
+\end{align*}
+\end{split}\]</div>
+<p><img alt="Image" src="_images/fig_c1_s1_erasure.png" /></p>
+<p>For this example, we assume the transition probabilities are <span class="math notranslate nohighlight">\( p = 0.8 \)</span> and <span class="math notranslate nohighlight">\( q = 0.1 \)</span>.</p>
+<p>Our goal is to find the a posteriori probabilities <span class="math notranslate nohighlight">\( P(s = 0 \mid y = 0) \)</span>, <span class="math notranslate nohighlight">\( P(s = 1 \mid y = 0) \)</span>, <span class="math notranslate nohighlight">\( P(s = 0 \mid y = 1) \)</span>, <span class="math notranslate nohighlight">\( P(s = 1 \mid y = 1) \)</span>, <span class="math notranslate nohighlight">\( P(s = 0 \mid y = x) \)</span>, and <span class="math notranslate nohighlight">\( P(s = 1 \mid y = x) \)</span>.</p>
+<p>First, we calculate the marginal probabilities using the Total Probability Theorem:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P(y = 0) &amp;= P(y = 0 \mid s = 0)P(s = 0) + P(y = 0 \mid s = 1)P(s = 1) = \frac{p + q}{2}, \\
+P(y = 1) &amp;= P(y = 1 \mid s = 0)P(s = 0) + P(y = 1 \mid s = 1)P(s = 1) = \frac{p + q}{2}, \\
+P(y = x) &amp;= P(y = x \mid s = 0)P(s = 0) + P(y = x \mid s = 1)P(s = 1) = \ell.
+\end{align*}
+\end{split}\]</div>
+<p>Next, we calculate the a posteriori probabilities using Bayes’ Theorem:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P(s = 0 \mid y = 0) &amp;= \frac{P(y = 0 \mid s = 0)P(s = 0)}{P(y = 0)} = \frac{p\left(\frac{1}{2}\right)}{\frac{p+q}{2}} = \frac{p}{p+q}, \\
+P(s = 1 \mid y = 0) &amp;= \frac{P(y = 0 \mid s = 1)P(s = 1)}{P(y = 0)} = \frac{q\left(\frac{1}{2}\right)}{\frac{p+q}{2}} = \frac{q}{p+q}, \\
+P(s = 0 \mid y = 1) &amp;= \frac{P(y = 1 \mid s = 0)P(s = 0)}{P(y = 1)} = \frac{q\left(\frac{1}{2}\right)}{\frac{q+p}{2}} = \frac{q}{p+q}, \\
+P(s = 1 \mid y = 1) &amp;= \frac{P(y = 1 \mid s = 1)P(s = 1)}{P(y = 1)} = \frac{p\left(\frac{1}{2}\right)}{\frac{q+p}{2}} = \frac{p}{p+q}, \\
+P(s = 0 \mid y = x) &amp;= \frac{P(y = x \mid s = 0)P(s = 0)}{P(y = x)} = \frac{\ell\left(\frac{1}{2}\right)}{\ell} = \frac{1}{2}, \\
+P(s = 1 \mid y = x) &amp;= \frac{P(y = x \mid s = 1)P(s = 1)}{P(y = x)} = \frac{\ell\left(\frac{1}{2}\right)}{\ell} = \frac{1}{2}.
+\end{align*}
+\end{split}\]</div>
+<p>With the specific transition probabilities provided, the a posteriori probabilities are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P(s = 0 \mid y = 0) &amp;= P(s = 1 \mid y = 1) = \frac{p}{p + q} = \frac{0.8}{0.8 + 0.1} = \frac{8}{9}, \\
+P(s = 0 \mid y = 1) &amp;= P(s = 1 \mid y = 0) = \frac{q}{p + q} = \frac{0.1}{0.8 + 0.1} = \frac{1}{9}.
+\end{align*}
+\end{split}\]</div>
+</section>
+<section id="insights">
+<h2>Insights<a class="headerlink" href="#insights" title="Link to this heading">#</a></h2>
+<p>Based on the a posteriori probabilities, we can infer the transmitted signal by examining the received symbol <span class="math notranslate nohighlight">\( y \)</span>:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\( y = x \)</span>, there is an equal probability that either 0 or 1 was sent.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( y = 0 \)</span>, the probability that a 0 was sent is <span class="math notranslate nohighlight">\( \frac{8}{9} \)</span>, and the probability that a 1 was sent is <span class="math notranslate nohighlight">\( \frac{1}{9} \)</span>.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( y = 1 \)</span>, the probability that a 1 was sent is <span class="math notranslate nohighlight">\( \frac{8}{9} \)</span>, and the probability that a 0 was sent is <span class="math notranslate nohighlight">\( \frac{1}{9} \)</span>.</p></li>
+</ul>
+<p>This information can be used in a certain decision rule to make a decision on what signal was transmitted, based on the probabilistic knowledge of the received observation.</p>
+<p>In the context of the Binary Erasure Channel (BEC), when the receiver receives a message denoted as “x,” it indicates that the transmitted bit was “erased” during transmission, meaning the receiver is aware that a bit was sent but cannot determine whether it was a 0 or a 1.</p>
+<p>This <em>erasure event</em> is characterized by the symbol “x,” signifying the loss of the specific information content of the bit due to noise or other channel imperfections. Thus, the receiver knows a bit was transmitted but lacks the information to determine which bit was sent.</p>
+</section>
+<section id="simulation">
+<h2>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Define the transition probabilities</span>
+<span class="n">p_transition</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">q_transition</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">l_transition</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Assume l = 0.1</span>
+
+<span class="c1"># Transmitted symbols probabilities</span>
+<span class="n">P_s0</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">P_s1</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c1"># Compute the marginal probabilities using the total probability theorem</span>
+<span class="n">P_y0</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_transition</span> <span class="o">*</span> <span class="n">P_s0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">q_transition</span> <span class="o">*</span> <span class="n">P_s1</span><span class="p">)</span>
+<span class="n">P_y1</span> <span class="o">=</span> <span class="p">(</span><span class="n">q_transition</span> <span class="o">*</span> <span class="n">P_s0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">p_transition</span> <span class="o">*</span> <span class="n">P_s1</span><span class="p">)</span>
+<span class="n">P_yx</span> <span class="o">=</span> <span class="n">l_transition</span>
+
+<span class="c1"># Compute the a posteriori probabilities using Bayes&#39; theorem </span>
+<span class="n">P_s0_y0</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_transition</span> <span class="o">*</span> <span class="n">P_s0</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_y0</span>
+<span class="n">P_s1_y0</span> <span class="o">=</span> <span class="p">(</span><span class="n">q_transition</span> <span class="o">*</span> <span class="n">P_s1</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_y0</span>
+
+<span class="n">P_s0_y1</span> <span class="o">=</span> <span class="p">(</span><span class="n">q_transition</span> <span class="o">*</span> <span class="n">P_s0</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_y1</span>
+<span class="n">P_s1_y1</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_transition</span> <span class="o">*</span> <span class="n">P_s1</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_y1</span>
+
+<span class="n">P_s0_yx</span> <span class="o">=</span> <span class="p">(</span><span class="n">l_transition</span> <span class="o">*</span> <span class="n">P_s0</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_yx</span>
+<span class="n">P_s1_yx</span> <span class="o">=</span> <span class="p">(</span><span class="n">l_transition</span> <span class="o">*</span> <span class="n">P_s1</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_yx</span>
+
+<span class="c1"># Print theoretical results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Theoretical probabilities:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 0 | y = 0) =&quot;</span><span class="p">,</span> <span class="n">P_s0_y0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = 0) =&quot;</span><span class="p">,</span> <span class="n">P_s1_y0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 0 | y = 1) =&quot;</span><span class="p">,</span> <span class="n">P_s0_y1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = 1) =&quot;</span><span class="p">,</span> <span class="n">P_s1_y1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 0 | y = x) =&quot;</span><span class="p">,</span> <span class="n">P_s0_yx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = x) =&quot;</span><span class="p">,</span> <span class="n">P_s1_yx</span><span class="p">)</span>
+
+<span class="c1"># Simulate the channel</span>
+<span class="k">def</span> <span class="nf">simulate_channel</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">p_transition</span><span class="p">,</span> <span class="n">q_transition</span><span class="p">,</span> <span class="n">l_transition</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">p_transition</span><span class="p">,</span> <span class="n">q_transition</span><span class="p">,</span> <span class="n">l_transition</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">p_transition</span><span class="p">,</span> <span class="n">q_transition</span><span class="p">,</span> <span class="n">l_transition</span><span class="p">])</span>
+
+<span class="c1"># Number of simulations</span>
+<span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">transmitted_symbols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">num_simulations</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">P_s0</span><span class="p">,</span> <span class="n">P_s1</span><span class="p">])</span>
+<span class="n">received_symbols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">simulate_channel</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">p_transition</span><span class="p">,</span> <span class="n">q_transition</span><span class="p">,</span> <span class="n">l_transition</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">transmitted_symbols</span><span class="p">])</span>
+
+<span class="c1"># Calculate empirical probabilities</span>
+<span class="k">def</span> <span class="nf">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="n">s_value</span><span class="p">,</span> <span class="n">y_value</span><span class="p">):</span>
+    <span class="n">num_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">received_symbols</span> <span class="o">==</span> <span class="n">y_value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">num_y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>  <span class="c1"># Return nan if there are no instances of y_value to avoid division by zero</span>
+    <span class="n">num_s_and_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="n">s_value</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">received_symbols</span> <span class="o">==</span> <span class="n">y_value</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">num_s_and_y</span> <span class="o">/</span> <span class="n">num_y</span>
+
+<span class="c1"># Empirical calculations</span>
+<span class="n">received_0</span> <span class="o">=</span> <span class="n">received_symbols</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="n">received_1</span> <span class="o">=</span> <span class="n">received_symbols</span> <span class="o">==</span> <span class="mi">1</span>
+<span class="n">received_x</span> <span class="o">=</span> <span class="n">received_symbols</span> <span class="o">==</span> <span class="mi">13</span> <span class="c1"># Erasure symbol x = 13</span>
+
+<span class="n">empirical_P_s0_y0</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">empirical_P_s1_y0</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">empirical_P_s0_y1</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">empirical_P_s1_y1</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">empirical_P_s0_yx</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="n">empirical_P_s1_yx</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+
+<span class="c1"># Print empirical results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empirical probabilities after simulation:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 0 | y = 0) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s0_y0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = 0) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s1_y0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 0 | y = 1) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s0_y1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = 1) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s1_y1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 0 | y = x) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s0_yx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = x) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s1_yx</span><span class="p">)</span>
+
+<span class="c1"># Debugging information</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Debugging Information:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of received symbols y=0:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">received_0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of received symbols y=1:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">received_1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of received symbols y=x:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">received_x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of transmitted symbols s=0 when y=0:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">received_0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of transmitted symbols s=1 when y=0:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">received_0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of transmitted symbols s=0 when y=1:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">received_1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of transmitted symbols s=1 when y=1:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">received_1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of transmitted symbols s=0 when y=x:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">received_x</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of transmitted symbols s=1 when y=x:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">received_x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Theoretical probabilities:
+P(s = 0 | y = 0) = 0.888888888888889
+P(s = 1 | y = 0) = 0.11111111111111112
+P(s = 0 | y = 1) = 0.11111111111111112
+P(s = 1 | y = 1) = 0.888888888888889
+P(s = 0 | y = x) = 0.5
+P(s = 1 | y = x) = 0.5
+
+Empirical probabilities after simulation:
+P(s = 0 | y = 0) = 0.8898193036579991
+P(s = 1 | y = 0) = 0.11018069634200088
+P(s = 0 | y = 1) = 0.11371312767394731
+P(s = 1 | y = 1) = 0.8862868723260527
+P(s = 0 | y = x) = 0.49167482859941236
+P(s = 1 | y = x) = 0.5083251714005876
+
+Debugging Information:
+Count of received symbols y=0: 4538
+Count of received symbols y=1: 4441
+Count of received symbols y=x: 1021
+Count of transmitted symbols s=0 when y=0: 4038
+Count of transmitted symbols s=1 when y=0: 500
+Count of transmitted symbols s=0 when y=1: 505
+Count of transmitted symbols s=1 when y=1: 3936
+Count of transmitted symbols s=0 when y=x: 502
+Count of transmitted symbols s=1 when y=x: 519
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print some values of transmitted_symbols and corresponding received_symbols</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;30 samples of transmitted and received symbols:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">transmitted</span> <span class="o">=</span> <span class="n">transmitted_symbols</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">received</span> <span class="o">=</span> <span class="n">received_symbols</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="p">(</span><span class="n">transmitted</span> <span class="o">==</span> <span class="n">received</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">received</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">received</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;Erasure&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Transmitted: </span><span class="si">{</span><span class="n">transmitted</span><span class="si">}</span><span class="s2">, Received: </span><span class="si">{</span><span class="n">received</span><span class="si">}</span><span class="s2">, Success: </span><span class="si">{</span><span class="n">success</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30 samples of transmitted and received symbols:
+Transmitted: 0, Received: 0, Success: True
+Transmitted: 0, Received: 0, Success: True
+Transmitted: 1, Received: 13, Success: Erasure
+Transmitted: 1, Received: 1, Success: True
+Transmitted: 1, Received: 1, Success: True
+Transmitted: 1, Received: 13, Success: Erasure
+Transmitted: 1, Received: 1, Success: True
+Transmitted: 0, Received: 0, Success: True
+Transmitted: 0, Received: 0, Success: True
+Transmitted: 0, Received: 13, Success: Erasure
+Transmitted: 0, Received: 0, Success: True
+Transmitted: 1, Received: 1, Success: True
+Transmitted: 0, Received: 0, Success: True
+Transmitted: 0, Received: 1, Success: False
+Transmitted: 0, Received: 0, Success: True
+Transmitted: 0, Received: 13, Success: Erasure
+Transmitted: 0, Received: 0, Success: True
+Transmitted: 1, Received: 13, Success: Erasure
+Transmitted: 0, Received: 1, Success: False
+Transmitted: 0, Received: 0, Success: True
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><span class="math notranslate nohighlight">\( x \)</span> as a Random Variable</strong></p>
+<p>Note that, in this case, there is an issue where <code class="docutils literal notranslate"><span class="pre">P(s</span> <span class="pre">=</span> <span class="pre">0</span> <span class="pre">|</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">x)</span> <span class="pre">=</span> <span class="pre">nan</span></code> and <code class="docutils literal notranslate"><span class="pre">P(s</span> <span class="pre">=</span> <span class="pre">1</span> <span class="pre">|</span> <span class="pre">y</span> <span class="pre">=</span> <span class="pre">x)</span> <span class="pre">=</span> <span class="pre">nan</span></code> because <code class="docutils literal notranslate"><span class="pre">x</span></code> is random, we need to modify the empirical calculation to consider the event <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">x</span></code> as any value of <code class="docutils literal notranslate"><span class="pre">y</span></code> that is not <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Define the transition probabilities</span>
+<span class="n">p_transition</span> <span class="o">=</span> <span class="mf">0.8</span>
+<span class="n">q_transition</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">l_transition</span> <span class="o">=</span> <span class="mf">0.1</span>  <span class="c1"># Assume l = 0.1</span>
+
+<span class="c1"># Transmitted symbols probabilities</span>
+<span class="n">P_s0</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">P_s1</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c1"># Compute the marginal probabilities using the total probability theorem</span>
+<span class="n">P_y0</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_transition</span> <span class="o">*</span> <span class="n">P_s0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">q_transition</span> <span class="o">*</span> <span class="n">P_s1</span><span class="p">)</span>
+<span class="n">P_y1</span> <span class="o">=</span> <span class="p">(</span><span class="n">q_transition</span> <span class="o">*</span> <span class="n">P_s0</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">p_transition</span> <span class="o">*</span> <span class="n">P_s1</span><span class="p">)</span>
+<span class="n">P_yx</span> <span class="o">=</span> <span class="n">l_transition</span>
+
+<span class="c1"># Compute the a posteriori probabilities using Bayes&#39; theorem </span>
+<span class="n">P_s0_y0</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_transition</span> <span class="o">*</span> <span class="n">P_s0</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_y0</span>
+<span class="n">P_s1_y0</span> <span class="o">=</span> <span class="p">(</span><span class="n">q_transition</span> <span class="o">*</span> <span class="n">P_s1</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_y0</span>
+
+<span class="n">P_s0_y1</span> <span class="o">=</span> <span class="p">(</span><span class="n">q_transition</span> <span class="o">*</span> <span class="n">P_s0</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_y1</span>
+<span class="n">P_s1_y1</span> <span class="o">=</span> <span class="p">(</span><span class="n">p_transition</span> <span class="o">*</span> <span class="n">P_s1</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_y1</span>
+
+<span class="n">P_s0_yx</span> <span class="o">=</span> <span class="p">(</span><span class="n">l_transition</span> <span class="o">*</span> <span class="n">P_s0</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_yx</span>
+<span class="n">P_s1_yx</span> <span class="o">=</span> <span class="p">(</span><span class="n">l_transition</span> <span class="o">*</span> <span class="n">P_s1</span><span class="p">)</span> <span class="o">/</span> <span class="n">P_yx</span>
+
+<span class="c1"># Print theoretical results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Theoretical probabilities:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 0 | y = 0) =&quot;</span><span class="p">,</span> <span class="n">P_s0_y0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = 0) =&quot;</span><span class="p">,</span> <span class="n">P_s1_y0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 0 | y = 1) =&quot;</span><span class="p">,</span> <span class="n">P_s0_y1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = 1) =&quot;</span><span class="p">,</span> <span class="n">P_s1_y1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 0 | y = x) =&quot;</span><span class="p">,</span> <span class="n">P_s0_yx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = x) =&quot;</span><span class="p">,</span> <span class="n">P_s1_yx</span><span class="p">)</span>
+
+<span class="c1"># Simulate the channel</span>
+<span class="k">def</span> <span class="nf">simulate_channel</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">p_transition</span><span class="p">,</span> <span class="n">q_transition</span><span class="p">,</span> <span class="n">l_transition</span><span class="p">):</span>
+    <span class="n">noise_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Generate Gaussian noise with mean 0 and standard deviation 1</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">noise_value</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">p_transition</span><span class="p">,</span> <span class="n">q_transition</span><span class="p">,</span> <span class="n">l_transition</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">noise_value</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">p_transition</span><span class="p">,</span> <span class="n">q_transition</span><span class="p">,</span> <span class="n">l_transition</span><span class="p">])</span>
+
+<span class="c1"># Number of simulations</span>
+<span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">transmitted_symbols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">num_simulations</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">P_s0</span><span class="p">,</span> <span class="n">P_s1</span><span class="p">])</span>
+<span class="n">received_symbols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">simulate_channel</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">p_transition</span><span class="p">,</span> <span class="n">q_transition</span><span class="p">,</span> <span class="n">l_transition</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">transmitted_symbols</span><span class="p">])</span>
+
+<span class="c1"># Calculate empirical probabilities</span>
+<span class="k">def</span> <span class="nf">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="n">s_value</span><span class="p">,</span> <span class="n">y_value</span><span class="p">):</span>
+    <span class="n">num_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">received_symbols</span> <span class="o">==</span> <span class="n">y_value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">num_y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>  <span class="c1"># Return nan if there are no instances of y_value to avoid division by zero</span>
+    <span class="n">num_s_and_y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="n">s_value</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">received_symbols</span> <span class="o">==</span> <span class="n">y_value</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">num_s_and_y</span> <span class="o">/</span> <span class="n">num_y</span>
+
+<span class="c1"># Handle received noise for empirical calculations</span>
+<span class="k">def</span> <span class="nf">calculate_empirical_prob_noise</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="n">s_value</span><span class="p">):</span>
+    <span class="n">noise_mask</span> <span class="o">=</span> <span class="p">(</span><span class="n">received_symbols</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">received_symbols</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># Identify all y != 0 or 1</span>
+    <span class="n">num_noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">noise_mask</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">num_noise</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">num_s_and_noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="n">s_value</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">noise_mask</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">num_s_and_noise</span> <span class="o">/</span> <span class="n">num_noise</span>
+
+<span class="c1"># Empirical calculations</span>
+<span class="n">received_0</span> <span class="o">=</span> <span class="n">received_symbols</span> <span class="o">==</span> <span class="mi">0</span>
+<span class="n">received_1</span> <span class="o">=</span> <span class="n">received_symbols</span> <span class="o">==</span> <span class="mi">1</span>
+
+<span class="n">empirical_P_s0_y0</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">empirical_P_s1_y0</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">empirical_P_s0_y1</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">empirical_P_s1_y1</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="n">empirical_P_s0_yx</span> <span class="o">=</span> <span class="n">calculate_empirical_prob_noise</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">empirical_P_s1_yx</span> <span class="o">=</span> <span class="n">calculate_empirical_prob_noise</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Print empirical results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empirical probabilities after simulation:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 0 | y = 0) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s0_y0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = 0) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s1_y0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 0 | y = 1) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s0_y1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = 1) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s1_y1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 0 | y = x) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s0_yx</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = x) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s1_yx</span><span class="p">)</span>
+
+<span class="c1"># Debugging information</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Debugging Information:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of received symbols y=0:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">received_0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of received symbols y=1:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">received_1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of received symbols y=x (noise):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">received_symbols</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">received_symbols</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of transmitted symbols s=0 when y=0:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">received_0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of transmitted symbols s=1 when y=0:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">received_0</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of transmitted symbols s=0 when y=1:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">received_1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of transmitted symbols s=1 when y=1:&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">received_1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of transmitted symbols s=0 when y=x (noise):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">received_symbols</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">received_symbols</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Count of transmitted symbols s=1 when y=x (noise):&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">received_symbols</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">received_symbols</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Theoretical probabilities:
+P(s = 0 | y = 0) = 0.888888888888889
+P(s = 1 | y = 0) = 0.11111111111111112
+P(s = 0 | y = 1) = 0.11111111111111112
+P(s = 1 | y = 1) = 0.888888888888889
+P(s = 0 | y = x) = 0.5
+P(s = 1 | y = x) = 0.5
+
+Empirical probabilities after simulation:
+P(s = 0 | y = 0) = 0.8985539488320355
+P(s = 1 | y = 0) = 0.1014460511679644
+P(s = 0 | y = 1) = 0.1144578313253012
+P(s = 1 | y = 1) = 0.8855421686746988
+P(s = 0 | y = x) = 0.49560117302052786
+P(s = 1 | y = x) = 0.5043988269794721
+
+Debugging Information:
+Count of received symbols y=0: 4495
+Count of received symbols y=1: 4482
+Count of received symbols y=x (noise): 1023
+Count of transmitted symbols s=0 when y=0: 4039
+Count of transmitted symbols s=1 when y=0: 456
+Count of transmitted symbols s=0 when y=1: 513
+Count of transmitted symbols s=1 when y=1: 3969
+Count of transmitted symbols s=0 when y=x (noise): 507
+Count of transmitted symbols s=1 when y=x (noise): 516
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print some values of transmitted_symbols and corresponding received_symbols</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;30 samples of transmitted and received symbols:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="n">transmitted</span> <span class="o">=</span> <span class="n">transmitted_symbols</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">received</span> <span class="o">=</span> <span class="n">received_symbols</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="p">(</span><span class="n">transmitted</span> <span class="o">==</span> <span class="n">received</span><span class="p">)</span> <span class="k">if</span> <span class="p">(</span><span class="n">received</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">or</span> <span class="n">received</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span> <span class="k">else</span> <span class="s2">&quot;Erasure&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Transmitted: </span><span class="si">{</span><span class="n">transmitted</span><span class="si">}</span><span class="s2">, Received: </span><span class="si">{</span><span class="n">received</span><span class="si">}</span><span class="s2">, Success: </span><span class="si">{</span><span class="n">success</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30 samples of transmitted and received symbols:
+Transmitted: 0, Received: 0.0, Success: True
+Transmitted: 1, Received: 1.0, Success: True
+Transmitted: 0, Received: 0.0, Success: True
+Transmitted: 0, Received: 0.0, Success: True
+Transmitted: 0, Received: 0.0, Success: True
+Transmitted: 1, Received: 1.0, Success: True
+Transmitted: 0, Received: 0.0, Success: True
+Transmitted: 1, Received: -0.6761630375304907, Success: Erasure
+Transmitted: 0, Received: 0.0, Success: True
+Transmitted: 0, Received: 0.0, Success: True
+Transmitted: 0, Received: 0.0, Success: True
+Transmitted: 1, Received: 1.0, Success: True
+Transmitted: 1, Received: 1.0, Success: True
+Transmitted: 1, Received: 1.0, Success: True
+Transmitted: 0, Received: 0.33162854880206405, Success: Erasure
+Transmitted: 1, Received: 1.0, Success: True
+Transmitted: 1, Received: 1.0, Success: True
+Transmitted: 0, Received: 0.0, Success: True
+Transmitted: 0, Received: 0.0, Success: True
+Transmitted: 0, Received: 0.0, Success: True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="bayes-receiver">
+<h1>Bayes Receiver<a class="headerlink" href="#bayes-receiver" title="Link to this heading">#</a></h1>
+<p>As discussed above, we utilize the statistical knowledge of the transmitted signal given the received observation, represented by the a posteriori probabilities, to make a decision using a decision criterion or decision rule about which signal was actually transmitted. The Bayes receiver is one such decision criterion.</p>
+<p>Specifically, the optimal detector (Bayes receiver) concludes that <span class="math notranslate nohighlight">\( s_1 \)</span> was transmitted if:</p>
+<div class="math notranslate nohighlight">
+\[ P(S = s_1 \mid y) &gt; P(S = s_0 \mid y) \]</div>
+<p>or equivalently,</p>
+<div class="math notranslate nohighlight">
+\[ P(y \mid s_1) P(s_1) &gt; P(y \mid s_0) P(s_0) \]</div>
+<p>since <span class="math notranslate nohighlight">\( P(y) \)</span> is constant. For equal a priori probabilities, i.e., <span class="math notranslate nohighlight">\( P(s_0) = P(s_1) \)</span>, the decision rule simplifies to choosing <span class="math notranslate nohighlight">\( s_1 \)</span> if:</p>
+<div class="math notranslate nohighlight">
+\[ P(y \mid s_1) &gt; P(y \mid s_0) \]</div>
+<p>Any device that follows this decision rule is considered an optimal receiver. Thus, Bayes’ theorem is a fundamental concept in detection theory, guiding the design of optimal receivers.</p>
+<section id="example-bayes-theorem-in-additive-noise-with-s-1-or-1-antipodal-signal">
+<h2>Example: Bayes’ Theorem in Additive Noise with <span class="math notranslate nohighlight">\( s = -1 \)</span> or <span class="math notranslate nohighlight">\( +1 \)</span> (Antipodal Signal)<a class="headerlink" href="#example-bayes-theorem-in-additive-noise-with-s-1-or-1-antipodal-signal" title="Link to this heading">#</a></h2>
+<p>Consider a scenario where the transmitted signal <span class="math notranslate nohighlight">\( s \)</span> can be either <span class="math notranslate nohighlight">\( -1 \)</span> or <span class="math notranslate nohighlight">\( +1 \)</span> and is corrupted by additive noise <span class="math notranslate nohighlight">\( n \)</span>, resulting in the received signal <span class="math notranslate nohighlight">\( y \)</span>, expressed as:</p>
+<div class="math notranslate nohighlight">
+\[ y = s + n \]</div>
+<p>Assume a binary source model with equal a priori probabilities for the transmitted signals:</p>
+<div class="math notranslate nohighlight">
+\[ P(s = 1) = P(s = -1) = \frac{1}{2} \]</div>
+<p>Let the additive noise <span class="math notranslate nohighlight">\( n \)</span> take the values <span class="math notranslate nohighlight">\( +1 \)</span> and <span class="math notranslate nohighlight">\( -1 \)</span> with equal probability:</p>
+<div class="math notranslate nohighlight">
+\[ P(n = 1) = P(n = -1) = \frac{1}{2} \]</div>
+<p>The task is to determine the a posteriori probabilities. The received signal <span class="math notranslate nohighlight">\( y \)</span> can take the following values based on the combinations of <span class="math notranslate nohighlight">\( s \)</span> and <span class="math notranslate nohighlight">\( n \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+y = 2, &amp; \quad \text{if } s = 1 \text{ and } n = 1 \\
+y = 0, &amp; \quad \text{if } s = 1 \text{ and } n = -1 \\
+y = 0, &amp; \quad \text{if } s = -1 \text{ and } n = 1 \\
+y = -2, &amp; \quad \text{if } s = -1 \text{ and } n = -1
+\end{align*}
+\end{split}\]</div>
+<p>Using the noise probabilities, the transition probabilities are computed as follows:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P(y = 2 \mid s = 1) &amp;= P(n = 1) = \frac{1}{2} \\
+P(y = 2 \mid s = -1) &amp;= 0 \\
+P(y = 0 \mid s = 1) &amp;= P(n = -1) = \frac{1}{2} \\
+P(y = 0 \mid s = -1) &amp;= P(n = 1) = \frac{1}{2} \\
+P(y = -2 \mid s = 1) &amp;= 0 \\
+P(y = -2 \mid s = -1) &amp;= P(n = -1) = \frac{1}{2}
+\end{align*}
+\end{split}\]</div>
+<p>The marginal probabilities, computed using the Total Probability Theorem, are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P(y = 2) &amp;= P(y = 2 \mid s = 1)P(s = 1) + P(y = 2 \mid s = -1)P(s = -1) = \frac{1}{2}\left(\frac{1}{2}\right) + 0 = \frac{1}{4} \\
+P(y = 0) &amp;= P(y = 0 \mid s = 1)P(s = 1) + P(y = 0 \mid s = -1)P(s = -1) = \frac{1}{2}\left(\frac{1}{2}\right) + \frac{1}{2}\left(\frac{1}{2}\right) = \frac{1}{2} \\
+P(y = -2) &amp;= P(y = -2 \mid s = 1)P(s = 1) + P(y = -2 \mid s = -1)P(s = -1) = 0 + \frac{1}{2}\left(\frac{1}{2}\right) = \frac{1}{4}
+\end{align*}
+\end{split}\]</div>
+<p>The a posteriori probabilities, derived using Bayes’ theorem, are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+P(s = 1 \mid y = 2) &amp;= \frac{P(y = 2 \mid s = 1)P(s = 1)}{P(y = 2)} = \frac{\frac{1}{2}\left(\frac{1}{2}\right)}{\frac{1}{4}} = 1 \\
+P(s = 1 \mid y = 0) &amp;= \frac{P(y = 0 \mid s = 1)P(s = 1)}{P(y = 0)} = \frac{\frac{1}{2}\left(\frac{1}{2}\right)}{\frac{1}{2}} = \frac{1}{2} \\
+P(s = 1 \mid y = -2) &amp;= \frac{P(y = -2 \mid s = 1)P(s = 1)}{P(y = -2)} = \frac{0}{\frac{1}{4}} = 0 \\
+P(s = -1 \mid y = 2) &amp;= \frac{P(y = 2 \mid s = -1)P(s = -1)}{P(y = 2)} = \frac{0}{\frac{1}{4}} = 0 \\
+P(s = -1 \mid y = 0) &amp;= \frac{P(y = 0 \mid s = -1)P(s = -1)}{P(y = 0)} = \frac{\frac{1}{2}\left(\frac{1}{2}\right)}{\frac{1}{2}} = \frac{1}{2} \\
+P(s = -1 \mid y = -2) &amp;= \frac{P(y = -2 \mid s = -1)P(s = -1)}{P(y = -2)} = \frac{\frac{1}{2}\left(\frac{1}{2}\right)}{\frac{1}{4}} = 1
+\end{align*}
+\end{split}\]</div>
+</section>
+<section id="id1">
+<h2>Simulation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>The following code snippet implements the Bayes receiver described above, i.e., the detection of transmitted symbols using Bayes’ rule based on the received symbols.</p>
+<p><strong>Detection Using Bayes’ Rule:</strong></p>
+<p>The decision process for each received symbol <span class="math notranslate nohighlight">\( y \)</span> involves comparing the a posteriori probabilities of the transmitted symbols <span class="math notranslate nohighlight">\( s = 1 \)</span> and <span class="math notranslate nohighlight">\( s = -1 \)</span> given <span class="math notranslate nohighlight">\( y \)</span>. The symbols are detected based on the higher a posteriori probability:</p>
+<p>Let <span class="math notranslate nohighlight">\( \hat{s} \)</span> represent the detected symbol.</p>
+<ul>
+<li><p><strong>For <span class="math notranslate nohighlight">\( y = 2 \)</span></strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+  \text{If } P(s = 1 \mid y = 2) &gt; P(s = -1 \mid y = 2), \text{ then } \hat{s} = 1
+  \quad
+  \text{Else } \hat{s} = -1
+  \]</div>
+</li>
+<li><p><strong>For <span class="math notranslate nohighlight">\( y = 0 \)</span></strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+  \text{If } P(s = 1 \mid y = 0) &gt; P(s = -1 \mid y = 0), \text{ then } \hat{s} = 1
+  \quad
+  \text{Else } \hat{s} = -1
+  \]</div>
+</li>
+<li><p><strong>For <span class="math notranslate nohighlight">\( y = -2 \)</span></strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+  \text{If } P(s = 1 \mid y = -2) &gt; P(s = -1 \mid y = -2), \text{ then } \hat{s} = 1
+  \quad
+  \text{Else } \hat{s} = -1
+  \]</div>
+</li>
+</ul>
+<p><strong>Detection Accuracy:</strong></p>
+<p>The script prints out the counts of transmitted and detected symbols, providing a summary of the detection performance.</p>
+<p>The detection accuracy is calculated as the proportion of correctly detected symbols out of the total number of simulations:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Detection Accuracy} = \frac{\text{Number of correctly detected symbols}}{\text{Total number of symbols}}
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Define the probabilities</span>
+<span class="n">P_s_pos_1</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">P_s_neg_1</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="n">P_n1</span> <span class="o">=</span> <span class="mf">0.5</span>
+<span class="n">P_n_neg_1</span> <span class="o">=</span> <span class="mf">0.5</span>
+
+<span class="c1"># Theoretical calculations</span>
+<span class="n">P_y_pos_2_s_pos_1</span> <span class="o">=</span> <span class="n">P_n1</span>
+<span class="n">P_y_pos_2_s_neg_1</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">P_y0_s_pos_1</span> <span class="o">=</span> <span class="n">P_n_neg_1</span>
+<span class="n">P_y0_s_neg_1</span> <span class="o">=</span> <span class="n">P_n1</span>
+
+<span class="n">P_y_neg_2_s_pos_1</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">P_y_neg_2_s_neg_1</span> <span class="o">=</span> <span class="n">P_n_neg_1</span>
+
+<span class="c1"># Calculate total probabilities using the theorem of total probability</span>
+<span class="n">P_y_pos_2</span> <span class="o">=</span> <span class="n">P_y_pos_2_s_pos_1</span> <span class="o">*</span> <span class="n">P_s_pos_1</span> <span class="o">+</span> <span class="n">P_y_pos_2_s_neg_1</span> <span class="o">*</span> <span class="n">P_s_neg_1</span>
+<span class="n">P_y0</span> <span class="o">=</span> <span class="n">P_y0_s_pos_1</span> <span class="o">*</span> <span class="n">P_s_pos_1</span> <span class="o">+</span> <span class="n">P_y0_s_neg_1</span> <span class="o">*</span> <span class="n">P_s_neg_1</span>
+<span class="n">P_y_neg_2</span> <span class="o">=</span> <span class="n">P_y_neg_2_s_pos_1</span> <span class="o">*</span> <span class="n">P_s_pos_1</span> <span class="o">+</span> <span class="n">P_y_neg_2_s_neg_1</span> <span class="o">*</span> <span class="n">P_s_neg_1</span>
+
+<span class="c1"># Calculate a posteriori probabilities using Bayes&#39; theorem</span>
+<span class="n">P_s_pos_1_y_pos_2</span> <span class="o">=</span> <span class="n">P_y_pos_2_s_pos_1</span> <span class="o">*</span> <span class="n">P_s_pos_1</span> <span class="o">/</span> <span class="n">P_y_pos_2</span>
+<span class="n">P_s_pos_1_y0</span> <span class="o">=</span> <span class="n">P_y0_s_pos_1</span> <span class="o">*</span> <span class="n">P_s_pos_1</span> <span class="o">/</span> <span class="n">P_y0</span>
+<span class="n">P_s_pos_1_y_neg_2</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="n">P_s_neg_1_y_pos_2</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">P_s_neg_1_y0</span> <span class="o">=</span> <span class="n">P_y0_s_neg_1</span> <span class="o">*</span> <span class="n">P_s_neg_1</span> <span class="o">/</span> <span class="n">P_y0</span>
+<span class="n">P_s_neg_1_y_neg_2</span> <span class="o">=</span> <span class="n">P_y_neg_2_s_neg_1</span> <span class="o">*</span> <span class="n">P_s_neg_1</span> <span class="o">/</span> <span class="n">P_y_neg_2</span>
+
+<span class="c1"># Print theoretical results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Theoretical probabilities:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = 2) =&quot;</span><span class="p">,</span> <span class="n">P_s_pos_1_y_pos_2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = 0) =&quot;</span><span class="p">,</span> <span class="n">P_s_pos_1_y0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = -2) =&quot;</span><span class="p">,</span> <span class="n">P_s_pos_1_y_neg_2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = -1 | y = 2) =&quot;</span><span class="p">,</span> <span class="n">P_s_neg_1_y_pos_2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = -1 | y = 0) =&quot;</span><span class="p">,</span> <span class="n">P_s_neg_1_y0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = -1 | y = -2) =&quot;</span><span class="p">,</span> <span class="n">P_s_neg_1_y_neg_2</span><span class="p">)</span>
+
+<span class="c1"># Simulation</span>
+<span class="k">def</span> <span class="nf">generate_received_symbol</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+    <span class="n">noise</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">P_n1</span><span class="p">,</span> <span class="n">P_n_neg_1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">s</span> <span class="o">+</span> <span class="n">noise</span>
+
+<span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">transmitted_symbols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">num_simulations</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="n">P_s_pos_1</span><span class="p">,</span> <span class="n">P_s_neg_1</span><span class="p">])</span>
+<span class="n">received_symbols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">generate_received_symbol</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">transmitted_symbols</span><span class="p">])</span>
+
+<span class="c1"># Calculate empirical probabilities based on received symbols</span>
+<span class="k">def</span> <span class="nf">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="n">s_value</span><span class="p">,</span> <span class="n">y_value</span><span class="p">):</span>
+    <span class="n">num_received</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">received_symbols</span> <span class="o">==</span> <span class="n">y_value</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">num_received</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>  <span class="c1"># Return nan if there are no instances of y_value to avoid division by zero</span>
+    <span class="n">num_s_and_received</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">((</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="n">s_value</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">received_symbols</span> <span class="o">==</span> <span class="n">y_value</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">num_s_and_received</span> <span class="o">/</span> <span class="n">num_received</span>
+
+<span class="n">empirical_P_s_pos_1_y_pos_2</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">empirical_P_s_neg_1_y_pos_2</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">empirical_P_s_pos_1_y0</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">empirical_P_s_neg_1_y0</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">empirical_P_s_pos_1_y_neg_2</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">empirical_P_s_neg_1_y_neg_2</span> <span class="o">=</span> <span class="n">calculate_empirical_prob</span><span class="p">(</span><span class="n">transmitted_symbols</span><span class="p">,</span> <span class="n">received_symbols</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Print empirical results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Empirical probabilities after simulation:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = 2) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s_pos_1_y_pos_2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = 0) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s_pos_1_y0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = 1 | y = -2) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s_pos_1_y_neg_2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = -1 | y = 2) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s_neg_1_y_pos_2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = -1 | y = 0) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s_neg_1_y0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;P(s = -1 | y = -2) =&quot;</span><span class="p">,</span> <span class="n">empirical_P_s_neg_1_y_neg_2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Theoretical probabilities:
+P(s = 1 | y = 2) = 1.0
+P(s = 1 | y = 0) = 0.5
+P(s = 1 | y = -2) = 0
+P(s = -1 | y = 2) = 0
+P(s = -1 | y = 0) = 0.5
+P(s = -1 | y = -2) = 1.0
+
+Empirical probabilities after simulation:
+P(s = 1 | y = 2) = 1.0
+P(s = 1 | y = 0) = 0.508011503697617
+P(s = 1 | y = -2) = 0.0
+P(s = -1 | y = 2) = 0.0
+P(s = -1 | y = 0) = 0.4919884963023829
+P(s = -1 | y = -2) = 1.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Detection using Bayes&#39; rule</span>
+<span class="n">detected_symbols</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">received_symbols</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">received_symbols</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">detected_symbols</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">P_s_pos_1_y_pos_2</span> <span class="o">&gt;</span> <span class="n">P_s_neg_1_y_pos_2</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">detected_symbols</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">P_s_pos_1_y0</span> <span class="o">&gt;</span> <span class="n">P_s_neg_1_y0</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+    <span class="k">elif</span> <span class="n">y</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2</span><span class="p">:</span>
+        <span class="n">detected_symbols</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span> <span class="k">if</span> <span class="n">P_s_pos_1_y_neg_2</span> <span class="o">&gt;</span> <span class="n">P_s_neg_1_y_neg_2</span> <span class="k">else</span> <span class="o">-</span><span class="mi">1</span>
+
+<span class="n">transmitted_s_pos_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">transmitted_s_neg_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">transmitted_symbols</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">detected_s_pos_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">detected_symbols</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">detected_s_neg_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">detected_symbols</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Print detection results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Detection results:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of transmitted s = 1:&quot;</span><span class="p">,</span> <span class="n">transmitted_s_pos_1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of detected s = 1:&quot;</span><span class="p">,</span> <span class="n">detected_s_pos_1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of transmitted s = -1:&quot;</span><span class="p">,</span> <span class="n">transmitted_s_neg_1</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of detected s = -1:&quot;</span><span class="p">,</span> <span class="n">detected_s_neg_1</span><span class="p">)</span>
+
+<span class="c1"># Calculate detection accuracy</span>
+<span class="n">detection_accuracy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">detected_symbols</span> <span class="o">==</span> <span class="n">transmitted_symbols</span><span class="p">)</span> <span class="o">/</span> <span class="n">num_simulations</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Detection accuracy:&quot;</span><span class="p">,</span> <span class="n">detection_accuracy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Detection results:
+Number of transmitted s = 1: 5049
+Number of detected s = 1: 2576
+Number of transmitted s = -1: 4951
+Number of detected s = -1: 7424
+Detection accuracy: 0.7527
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print some samples of transmitted, received, and detected symbols with success results</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Some samples of (transmitted_symbols, received_symbols, detected_symbols) and success results:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">transmitted</span> <span class="o">=</span> <span class="n">transmitted_symbols</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">received</span> <span class="o">=</span> <span class="n">received_symbols</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">detected</span> <span class="o">=</span> <span class="n">detected_symbols</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">success</span> <span class="o">=</span> <span class="s2">&quot;Yes&quot;</span> <span class="k">if</span> <span class="n">transmitted</span> <span class="o">==</span> <span class="n">detected</span> <span class="k">else</span> <span class="s2">&quot;No&quot;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Transmitted: </span><span class="si">{</span><span class="n">transmitted</span><span class="si">}</span><span class="s2">, Received: </span><span class="si">{</span><span class="n">received</span><span class="si">}</span><span class="s2">, Detected: </span><span class="si">{</span><span class="n">detected</span><span class="si">}</span><span class="s2">, Success: </span><span class="si">{</span><span class="n">success</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Some samples of (transmitted_symbols, received_symbols, detected_symbols) and success results:
+Transmitted: 1, Received: 2, Detected: 1, Success: Yes
+Transmitted: -1, Received: -2, Detected: -1, Success: Yes
+Transmitted: 1, Received: 0, Detected: -1, Success: No
+Transmitted: -1, Received: -2, Detected: -1, Success: Yes
+Transmitted: 1, Received: 2, Detected: 1, Success: Yes
+Transmitted: 1, Received: 2, Detected: 1, Success: Yes
+Transmitted: -1, Received: 0, Detected: -1, Success: Yes
+Transmitted: 1, Received: 0, Detected: -1, Success: No
+Transmitted: 1, Received: 2, Detected: 1, Success: Yes
+Transmitted: -1, Received: -2, Detected: -1, Success: Yes
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pr_c3_s0_functions_of_RV.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Functions of A Random Variable</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pr_c2_s4_s6a_func_one_RV.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Functions of A Single Random Variable</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Bayes’ Theorem</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#case-study-binary-signaling-problem-in-additive-noise">Case Study: Binary Signaling Problem in Additive Noise</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-bayes-theorem-on-the-symmetric-binary-erasure-channel">Example: Bayes’ Theorem on the Symmetric Binary Erasure Channel</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#insights">Insights</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-receiver">Bayes Receiver</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-bayes-theorem-in-additive-noise-with-s-1-or-1-antipodal-signal">Example: Bayes’ Theorem in Additive Noise with <span class="math notranslate nohighlight">\( s = -1 \)</span> or <span class="math notranslate nohighlight">\( +1 \)</span> (Antipodal Signal)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Simulation</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

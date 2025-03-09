@@ -1,0 +1,1299 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Equivalent Baseband Noise Model &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c4_s8_baseband_noise_model';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">COMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_extra_rician.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Equivalent Baseband Noise Model</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-passband-noise-to-baseband-noise-process">From passband noise to baseband noise process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-noise-in-communication-systems">Overview of Noise in Communication Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passband-noise-n-t">Passband Noise <span class="math notranslate nohighlight">\( n(t) \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-noise-n-b-t">Baseband Noise <span class="math notranslate nohighlight">\( n_b(t) \)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#noisy-passband-channel-model">Noisy Passband Channel Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Equivalent Baseband Noise Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noise-transformation">Noise Transformation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-i-t-and-q-t-from-passband-noise-n-t"><strong>Deriving <span class="math notranslate nohighlight">\( I(t) \)</span> and <span class="math notranslate nohighlight">\( Q(t) \)</span> from Passband Noise <span class="math notranslate nohighlight">\( n(t) \)</span></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-steps"><strong>Mathematical Steps</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-function-acf">Autocorrelation Function (ACF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-noise-n-b-t-acf">Baseband Noise <span class="math notranslate nohighlight">\( n_b(t) \)</span> ACF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passband-noise-n-t-acf">Passband Noise <span class="math notranslate nohighlight">\( n(t) \)</span> ACF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectral-density-psd-of-noise">Power Spectral Density (PSD) of Noise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-noise-n-b-t-psd">Baseband Noise <span class="math notranslate nohighlight">\( n_b(t) \)</span> PSD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passband-noise-n-t-psd">Passband Noise <span class="math notranslate nohighlight">\( n(t) \)</span> PSD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-relationships">Other Relationships</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#white-noise-spectral-density-n-0-2">White Noise Spectral Density <span class="math notranslate nohighlight">\( N_0 / 2 \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-psd-of-lti-system">Example: PSD of LTI System</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-signal-white-noise">Input Signal (White Noise)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-response-of-the-system">Impulse Response of the System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-signal-convolution">Output Signal (Convolution)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectral-density-psd">Power Spectral Density (PSD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-power-spectral-density-of-the-output">Theoretical Power Spectral Density of the Output</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="equivalent-baseband-noise-model">
+<h1>Equivalent Baseband Noise Model<a class="headerlink" href="#equivalent-baseband-noise-model" title="Link to this heading">#</a></h1>
+<p><strong>Baseband Noise Model in Passband Communication Systems</strong></p>
+<p>In communication systems, accurately modeling noise is essential for designing robust and efficient transmission schemes.</p>
+<p>The <strong>Baseband Noise Model</strong> offers a framework to analyze how noise affects both passband and baseband signals.</p>
+<p>This model facilitates the translation of <em>noise characteristics</em> from the passband to the baseband, enabling simpler and more effective signal processing.</p>
+<p><strong>Discussion: Noise Originates at Passband</strong></p>
+<p>Note that noise is <strong>inherently a passband phenomenon</strong> as it affects the transmitted passband signal during its journey through the channel.</p>
+<p>Upon reception, this passband noise is converted to baseband noise through downconversion processes, allowing for more straightforward analysis and processing in the baseband domain.</p>
+<section id="from-passband-noise-to-baseband-noise-process">
+<h2>From passband noise to baseband noise process<a class="headerlink" href="#from-passband-noise-to-baseband-noise-process" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p><strong>Passband Noise <span class="math notranslate nohighlight">\( n(t) \)</span></strong>:
+At the receiver, the received signal typically includes <strong>passband noise</strong> <span class="math notranslate nohighlight">\( n(t) \)</span>.</p>
+<p>This noise exists in the passband centered around the carrier frequency <span class="math notranslate nohighlight">\( f_c \)</span> and is typically modeled as additive Gaussian noise.</p>
+</li>
+<li><p><strong>In-phase <span class="math notranslate nohighlight">\( I(t) \)</span> and Quadrature <span class="math notranslate nohighlight">\( Q(t) \)</span> Components</strong>:
+To convert the passband noise <span class="math notranslate nohighlight">\( n(t) \)</span> to its baseband equivalent, we separate it into two components:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( I(t) \)</span>: The in-phase component, obtained by multiplying <span class="math notranslate nohighlight">\( n(t) \)</span> by <span class="math notranslate nohighlight">\( \cos(2\pi f_c t) \)</span> and passing it through a low-pass filter (LPF).</p></li>
+<li><p><span class="math notranslate nohighlight">\( Q(t) \)</span>: The quadrature component, obtained by multiplying <span class="math notranslate nohighlight">\( n(t) \)</span> by <span class="math notranslate nohighlight">\( \sin(2\pi f_c t) \)</span> and passing it through a low-pass filter (LPF).</p></li>
+</ul>
+<p>Mathematically, we can express the passband noise <span class="math notranslate nohighlight">\( n(t) \)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+   n(t) = I(t)\cos(2\pi f_c t) - Q(t)\sin(2\pi f_c t)
+   \]</div>
+</li>
+<li><p><strong>Forming Baseband Noise <span class="math notranslate nohighlight">\( n_b(t) \)</span></strong>:
+Once we have <span class="math notranslate nohighlight">\( I(t) \)</span> and <span class="math notranslate nohighlight">\( Q(t) \)</span>, we can combine them into a <strong>complex baseband noise</strong> <span class="math notranslate nohighlight">\( n_b(t) \)</span>, which represents the noise in the baseband.</p>
+<p>This complex baseband noise is:</p>
+<div class="math notranslate nohighlight">
+\[
+   n_b(t) = I(t) + jQ(t)
+   \]</div>
+<p>This is the equivalent baseband representation of the passband noise.</p>
+<p>The real part <span class="math notranslate nohighlight">\( I(t) \)</span> represents the in-phase noise, and the imaginary part <span class="math notranslate nohighlight">\( Q(t) \)</span> represents the quadrature noise.</p>
+<p>This is sometimes called the “analytic signal” in baseband.</p>
+</li>
+<li><p><strong>Relationship Between <span class="math notranslate nohighlight">\( n(t) \)</span> and <span class="math notranslate nohighlight">\( n_b(t) \)</span></strong>:
+The original passband noise <span class="math notranslate nohighlight">\( n(t) \)</span> can be related to the baseband noise <span class="math notranslate nohighlight">\( n_b(t) \)</span> through the following expression:</p>
+<div class="math notranslate nohighlight">
+\[
+   n(t) = \Re\{n_b(t) e^{j2\pi f_c t}\}
+   \]</div>
+<p>This shows that the passband noise is the real part of the complex baseband noise <span class="math notranslate nohighlight">\( n_b(t) \)</span> modulated up to the carrier frequency <span class="math notranslate nohighlight">\( f_c \)</span>.</p>
+</li>
+</ol>
+<p>Summary of the Process:</p>
+<ul class="simple">
+<li><p>The passband noise <span class="math notranslate nohighlight">\( n(t) \)</span> exists first in the receiver at the passband.</p></li>
+<li><p>We separate <span class="math notranslate nohighlight">\( n(t) \)</span> into its in-phase <span class="math notranslate nohighlight">\( I(t) \)</span> and quadrature <span class="math notranslate nohighlight">\( Q(t) \)</span> components.</p></li>
+<li><p>Using <span class="math notranslate nohighlight">\( I(t) \)</span> and <span class="math notranslate nohighlight">\( Q(t) \)</span>, we form the complex baseband noise <span class="math notranslate nohighlight">\( n_b(t) = I(t) + jQ(t) \)</span>, which is the baseband equivalent of the passband noise.</p></li>
+</ul>
+</section>
+<section id="overview-of-noise-in-communication-systems">
+<h2>Overview of Noise in Communication Systems<a class="headerlink" href="#overview-of-noise-in-communication-systems" title="Link to this heading">#</a></h2>
+<section id="passband-noise-n-t">
+<h3>Passband Noise <span class="math notranslate nohighlight">\( n(t) \)</span><a class="headerlink" href="#passband-noise-n-t" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Definition: <span class="math notranslate nohighlight">\( n(t) \)</span> represents the <strong>noise</strong> present in the <strong>passband</strong> channel.</p>
+<p>Noise in communication systems typically arises from various sources like thermal agitation, interference, and other environmental factors.</p>
+</li>
+<li><p>Characteristics:</p>
+<ul class="simple">
+<li><p>Wide-Sense Stationary (WSS): The noise <span class="math notranslate nohighlight">\( n(t) \)</span> is modeled as a <strong>Wide-Sense Stationary</strong> (WSS) process, meaning its statistical properties, such as mean and autocorrelation, are invariant over time.</p></li>
+<li><p>Real-Valued: Since <span class="math notranslate nohighlight">\( n(t) \)</span> operates in the passband, it is a <strong>real-valued</strong> signal.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="baseband-noise-n-b-t">
+<h3>Baseband Noise <span class="math notranslate nohighlight">\( n_b(t) \)</span><a class="headerlink" href="#baseband-noise-n-b-t" title="Link to this heading">#</a></h3>
+<ul>
+<li><p>Definition: <span class="math notranslate nohighlight">\( n_b(t) \)</span> is the equivalent <strong>baseband noise</strong> obtained by demodulating the passband noise <span class="math notranslate nohighlight">\( n(t) \)</span>.</p></li>
+<li><p>Representation:</p>
+<div class="math notranslate nohighlight">
+\[
+  \boxed{
+  n_b(t) = I(t) + jQ(t)
+  }
+  \]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( I(t) \)</span>:</strong> <strong>In-phase</strong> component of the baseband noise.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( Q(t) \)</span>:</strong> <strong>Quadrature</strong> component of the baseband noise.</p></li>
+</ul>
+</li>
+<li><p>Characteristics:</p>
+<ul class="simple">
+<li><p>Complex-Valued: <span class="math notranslate nohighlight">\( n_b(t) \)</span> is a <strong>complex-valued</strong> signal, capturing both amplitude and phase variations of the noise.</p></li>
+<li><p><strong>WSS:</strong> Similar to <span class="math notranslate nohighlight">\( n(t) \)</span>, <span class="math notranslate nohighlight">\( n_b(t) \)</span> is modeled as a WSS process.</p></li>
+</ul>
+</li>
+</ul>
+<p>Note that the notation <span class="math notranslate nohighlight">\( z \)</span> and <span class="math notranslate nohighlight">\( n_b \)</span> are interchangeably used to represent baseband noise.</p>
+</section>
+</section>
+<section id="noisy-passband-channel-model">
+<h2>Noisy Passband Channel Model<a class="headerlink" href="#noisy-passband-channel-model" title="Link to this heading">#</a></h2>
+<p>The <strong>noisy passband channel model</strong> describes how the transmitted signal <span class="math notranslate nohighlight">\( x(t) \)</span> is affected by the channel impulse response <span class="math notranslate nohighlight">\( h(t) \)</span> and noise <span class="math notranslate nohighlight">\( n(t) \)</span>. The model is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+y(t) = h(t) * x(t) + n(t)
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( y(t) \)</span>:</strong> Received passband signal.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( h(t) \)</span>:</strong> Passband channel impulse response.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( x(t) \)</span>:</strong> Transmitted passband signal.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(*\)</span>:</strong> Convolution operation.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( n(t) \)</span>:</strong> Additive noise in the passband channel.</p></li>
+</ul>
+<p>Detail operations:</p>
+<ol class="arabic simple">
+<li><p>Convolution <span class="math notranslate nohighlight">\( h(t) * x(t) \)</span>: Represents the effect of the channel on the transmitted signal, including attenuation, delay, and distortion.</p></li>
+<li><p>Additive Noise <span class="math notranslate nohighlight">\( n(t) \)</span>: Represents the noise introduced by the channel during transmission.</p></li>
+</ol>
+</section>
+<section id="id1">
+<h2>Equivalent Baseband Noise Model<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>The passband noisy channel is transformed into its <strong>equivalent baseband model</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+y_b(t) = h_b(t) * x_b(t) + n_b(t)
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( y_b(t) \)</span>:</strong> Received baseband signal.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( h_b(t) \)</span>:</strong> Equivalent baseband channel response (complex-valued).</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( x_b(t) \)</span>:</strong> Transmitted baseband signal (complex-valued).</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( n_b(t) \)</span>:</strong> Baseband noise (complex-valued, WSS).</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(*\)</span>:</strong> Convolution operation.</p></li>
+</ul>
+<section id="noise-transformation">
+<h3>Noise Transformation<a class="headerlink" href="#noise-transformation" title="Link to this heading">#</a></h3>
+<p>Since <span class="math notranslate nohighlight">\( n(t) \)</span> operates in the passband, it must be real-valued.</p>
+<p>Therefore, we have</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+n(t) = \sqrt{2} \cdot \Re\{ n_b(t) e^{j2\pi f_c t} \}
+}
+\]</div>
+<p><strong>Detail Operations</strong></p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( n_b(t) e^{j2\pi f_c t} \)</span>:</strong> Modulates the baseband noise <span class="math notranslate nohighlight">\( n_b(t) \)</span> up to the carrier frequency <span class="math notranslate nohighlight">\( f_c \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \Re\{ \cdot \} \)</span>:</strong> Extracts the real part of the complex signal, ensuring <span class="math notranslate nohighlight">\( n(t) \)</span> remains real-valued.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( \sqrt{2} \)</span>:</strong> Scaling factor to maintain power consistency between passband and baseband representations.</p></li>
+</ul>
+</section>
+</section>
+<section id="deriving-i-t-and-q-t-from-passband-noise-n-t">
+<h2><strong>Deriving <span class="math notranslate nohighlight">\( I(t) \)</span> and <span class="math notranslate nohighlight">\( Q(t) \)</span> from Passband Noise <span class="math notranslate nohighlight">\( n(t) \)</span></strong><a class="headerlink" href="#deriving-i-t-and-q-t-from-passband-noise-n-t" title="Link to this heading">#</a></h2>
+<p>In a communication system where <strong>noise exists in the passband</strong>, the <strong>In-phase</strong> (<span class="math notranslate nohighlight">\( I(t) \)</span>) and <strong>Quadrature</strong> (<span class="math notranslate nohighlight">\( Q(t) \)</span>) components of the <strong>baseband noise</strong> <span class="math notranslate nohighlight">\( n_b(t) = I(t) + jQ(t) \)</span> are derived from the <strong>passband noise</strong> <span class="math notranslate nohighlight">\( n(t) \)</span>.</p>
+<p>To express <span class="math notranslate nohighlight">\( I(t) \)</span> and <span class="math notranslate nohighlight">\( Q(t) \)</span> in terms of the passband noise <span class="math notranslate nohighlight">\( n(t) \)</span>, we perform <strong>downconversion</strong> (also known as <strong>demodulation</strong>).</p>
+<p>This process involves mixing the passband noise with the carrier signal and then applying a <strong>low-pass filter</strong> to isolate the desired components.</p>
+<section id="mathematical-steps">
+<h3><strong>Mathematical Steps</strong><a class="headerlink" href="#mathematical-steps" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>Passband to Baseband Conversion:</strong></p>
+<p>The passband noise <span class="math notranslate nohighlight">\( n(t) \)</span> is related to the baseband noise <span class="math notranslate nohighlight">\( n_b(t) \)</span> through the following equation:</p>
+<div class="math notranslate nohighlight">
+\[
+   n(t) = \sqrt{2} \cdot \Re\{ n_b(t) e^{j2\pi f_c t} \}
+   \]</div>
+<p>Expanding <span class="math notranslate nohighlight">\( n_b(t) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+   n(t) = \sqrt{2} \cdot \Re\{ [I(t) + jQ(t)] e^{j2\pi f_c t} \}
+   \]</div>
+<div class="math notranslate nohighlight">
+\[
+   n(t) = \sqrt{2} \left[ I(t) \cos(2\pi f_c t) - Q(t) \sin(2\pi f_c t) \right]
+   \]</div>
+</li>
+<li><p><strong>Extracting <span class="math notranslate nohighlight">\( I(t) \)</span> and <span class="math notranslate nohighlight">\( Q(t) \)</span>:</strong></p>
+<p>To isolate <span class="math notranslate nohighlight">\( I(t) \)</span> and <span class="math notranslate nohighlight">\( Q(t) \)</span>, perform the following steps:</p>
+<ul>
+<li><p><strong>Multiplication with Carrier Signals:</strong></p>
+<p>Multiply <span class="math notranslate nohighlight">\( n(t) \)</span> by <span class="math notranslate nohighlight">\( \sqrt{2} \cos(2\pi f_c t) \)</span> and <span class="math notranslate nohighlight">\( \sqrt{2} \sin(2\pi f_c t) \)</span> to extract <span class="math notranslate nohighlight">\( I(t) \)</span> and <span class="math notranslate nohighlight">\( Q(t) \)</span>, respectively.</p>
+<div class="math notranslate nohighlight">
+\[
+     n(t) \cdot \sqrt{2} \cos(2\pi f_c t) = 2 \left[ I(t) \cos^2(2\pi f_c t) - Q(t) \sin(2\pi f_c t) \cos(2\pi f_c t) \right]
+     \]</div>
+<div class="math notranslate nohighlight">
+\[
+     n(t) \cdot \sqrt{2} \sin(2\pi f_c t) = 2 \left[ I(t) \sin(2\pi f_c t) \cos(2\pi f_c t) - Q(t) \sin^2(2\pi f_c t) \right]
+     \]</div>
+</li>
+<li><p><strong>Applying Low-Pass Filtering (LPF):</strong></p>
+<p>The high-frequency components (oscillating at <span class="math notranslate nohighlight">\( 2f_c \)</span>) are removed by the LPF, leaving only the baseband components.</p>
+<div class="math notranslate nohighlight">
+\[
+     \text{LPF} \left\{ n(t) \cdot \sqrt{2} \cos(2\pi f_c t) \right\} = I(t)
+     \]</div>
+<div class="math notranslate nohighlight">
+\[
+     \text{LPF} \left\{ -n(t) \cdot \sqrt{2} \sin(2\pi f_c t) \right\} = Q(t)
+     \]</div>
+<p>Note: The negative sign in the <span class="math notranslate nohighlight">\( Q(t) \)</span> extraction accounts for the phase shift introduced during multiplication.</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Final Expressions for <span class="math notranslate nohighlight">\( I(t) \)</span> and <span class="math notranslate nohighlight">\( Q(t) \)</span>:</strong></p>
+<p>Combining the above steps, the mathematical expressions for <span class="math notranslate nohighlight">\( I(t) \)</span> and <span class="math notranslate nohighlight">\( Q(t) \)</span> in terms of the passband noise <span class="math notranslate nohighlight">\( n(t) \)</span> are:</p>
+<div class="math notranslate nohighlight">
+\[
+   I(t) = \text{LPF} \left\{ \sqrt{2} \cdot n(t) \cdot \cos(2\pi f_c t) \right\}
+   \]</div>
+<div class="math notranslate nohighlight">
+\[
+   Q(t) = \text{LPF} \left\{ -\sqrt{2} \cdot n(t) \cdot \sin(2\pi f_c t) \right\}
+   \]</div>
+<p><strong>Alternatively</strong>, removing the negative sign by redefining the quadrature component:</p>
+<div class="math notranslate nohighlight">
+\[
+   Q(t) = \text{LPF} \left\{ \sqrt{2} \cdot n(t) \cdot \sin(2\pi f_c t) \right\}
+   \]</div>
+<p>(The negative sign can be absorbed into the definition of <span class="math notranslate nohighlight">\( Q(t) \)</span>, depending on the system’s phase conventions.)</p>
+</li>
+</ol>
+<p>Finally, we have</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+I(t) = \text{LPF} \left\{ \sqrt{2} \cdot n(t) \cdot \cos(2\pi f_c t) \right\}
+}
+\]</div>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+Q(t) = \text{LPF} \left\{ \sqrt{2} \cdot n(t) \cdot \sin(2\pi f_c t) \right\}
+}
+\]</div>
+</section>
+</section>
+<section id="autocorrelation-function-acf">
+<h2>Autocorrelation Function (ACF)<a class="headerlink" href="#autocorrelation-function-acf" title="Link to this heading">#</a></h2>
+<p>In communication systems, accurately characterizing noise is essential.</p>
+<p>Understanding the <strong>Autocorrelation Function (ACF)</strong> and <strong>Power Spectral Density (PSD)</strong> of both <strong>bandpass noise</strong> and its <strong>baseband equivalent</strong> provides critical insights into how noise impacts signal integrity and system performance.</p>
+<p>The <strong>Autocorrelation Function (ACF)</strong> measures the similarity between a signal and a delayed version of itself as a function of the delay.</p>
+<section id="baseband-noise-n-b-t-acf">
+<h3>Baseband Noise <span class="math notranslate nohighlight">\( n_b(t) \)</span> ACF<a class="headerlink" href="#baseband-noise-n-b-t-acf" title="Link to this heading">#</a></h3>
+<p>Given:</p>
+<div class="math notranslate nohighlight">
+\[
+n_b(t) = I(t) + jQ(t)
+\]</div>
+<p>Autocorrelation Function:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+R_{n_b}(\tau) &amp;= \mathbb{E}\{ n_b(t) n_b^*(t + \tau) \} \\
+&amp;= \mathbb{E}\{ [I(t) + jQ(t)][I(t + \tau) - jQ(t + \tau)] \} \\
+&amp;= \mathbb{E}\{ I(t)I(t + \tau) \} + \mathbb{E}\{ Q(t)Q(t + \tau) \} \\
+&amp;\quad+ j\left[ \mathbb{E}\{ Q(t)I(t + \tau) \} - \mathbb{E}\{ I(t)Q(t + \tau) \} \right]
+\end{align*}
+\end{split}\]</div>
+<p>Assumptions:</p>
+<ul class="simple">
+<li><p>Zero Mean: <span class="math notranslate nohighlight">\( \mathbb{E}\{ I(t) \} = \mathbb{E}\{ Q(t) \} = 0 \)</span></p></li>
+<li><p>Independence: <span class="math notranslate nohighlight">\( \mathbb{E}\{ I(t)Q(t + \tau) \} = 0 \)</span></p></li>
+<li><p>Identical Statistics: <span class="math notranslate nohighlight">\( \mathbb{E}\{ I(t)I(t + \tau) \} = \mathbb{E}\{ Q(t)Q(t + \tau) \} = R_I(\tau) \)</span></p></li>
+</ul>
+<p>Simplification:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+R_{n_b}(\tau) &amp;= R_I(\tau) + R_Q(\tau) + j[0 - 0] \\
+&amp; = R_I(\tau) + R_Q(\tau) \\
+&amp;= 2R_I(\tau) \quad \text{(since } R_I(\tau) = R_Q(\tau) \text{)}
+\end{align*}
+\end{split}\]</div>
+<p>Final ACF for baseband noise:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+R_{n_b}(\tau) = 2R_I(\tau)
+}
+\]</div>
+</section>
+<section id="passband-noise-n-t-acf">
+<h3>Passband Noise <span class="math notranslate nohighlight">\( n(t) \)</span> ACF<a class="headerlink" href="#passband-noise-n-t-acf" title="Link to this heading">#</a></h3>
+<p>Given:</p>
+<div class="math notranslate nohighlight">
+\[
+n(t) = \sqrt{2} \cdot [ I(t)\cos(2\pi f_c t) - Q(t)\sin(2\pi f_c t) ]
+\]</div>
+<p>Autocorrelation Function:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+R_n(\tau) &amp;= \mathbb{E}\{ n(t) n(t + \tau) \} \\
+&amp;= 2 \cdot \mathbb{E}\{ [ I(t)\cos(2\pi f_c t) - Q(t)\sin(2\pi f_c t) ] \\
+&amp;\qquad\times [ I(t + \tau)\cos(2\pi f_c (t + \tau)) - Q(t + \tau)\sin(2\pi f_c (t + \tau)) ] \}
+\end{align*}
+\end{split}\]</div>
+<p>Expanding the product:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+R_n(\tau) = 2 \cdot &amp;\big[ \mathbb{E}\{ I(t)I(t + \tau) \} \cos(2\pi f_c t) \cos(2\pi f_c (t + \tau)) \\
+&amp;\quad+ \mathbb{E}\{ Q(t)Q(t + \tau) \} \sin(2\pi f_c t) \sin(2\pi f_c (t + \tau))  \\
+&amp;\quad - \mathbb{E}\{ I(t)Q(t + \tau) \} \cos(2\pi f_c t) \sin(2\pi f_c (t + \tau)) \\
+&amp;\quad- \mathbb{E}\{ Q(t)I(t + \tau) \} \sin(2\pi f_c t) \cos(2\pi f_c (t + \tau)) \big]
+\end{align*}
+\end{split}\]</div>
+<p>Applying assumptions:</p>
+<ul class="simple">
+<li><p>Zero Mean: Cross terms involving <span class="math notranslate nohighlight">\( I(t)Q(t + \tau) \)</span> vanish.</p></li>
+<li><p>Identical Statistics: <span class="math notranslate nohighlight">\( \mathbb{E}\{ I(t)I(t + \tau) \} = \mathbb{E}\{ Q(t)Q(t + \tau) \} = R_I(\tau) \)</span></p></li>
+</ul>
+<p>Simplified expression:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+R_n(\tau) &amp;= 2R_I(\tau) \big[ \cos(2\pi f_c t) \cos(2\pi f_c (t + \tau)) \\
+&amp;\quad+ \sin(2\pi f_c t) \sin(2\pi f_c (t + \tau)) \big] \\
+&amp;= 2R_I(\tau) \cos(2\pi f_c \tau)
+\end{align*}
+\end{split}\]</div>
+<p>Final ACF for passband noise:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+R_n(\tau) = 2 R_I(\tau) \cos(2\pi f_c \tau)
+}
+\]</div>
+<p><strong>Express <span class="math notranslate nohighlight">\( R_n(\tau) \)</span> as the Real Part of <span class="math notranslate nohighlight">\( R_{n_b}(\tau) \)</span> Modulated by the Carrier</strong></p>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+R_n(\tau) = 2R_I(\tau) \cos(2\pi f_c \tau)
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+R_{n_b}(\tau) = 2R_I(\tau)
+\]</div>
+<p>So</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\Rightarrow R_n(\tau) &amp;= \cos(2\pi f_c \tau) R_{n_b}(\tau) \\
+&amp;= \Re\{ R_{n_b}(\tau) e^{j2\pi f_c \tau} \}
+\end{align*}
+\end{split}\]</div>
+<p>Finally</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+R_n(\tau) = \Re\{ R_{n_b}(\tau) e^{j2\pi f_c \tau} \}
+}
+\]</div>
+</section>
+</section>
+<section id="power-spectral-density-psd-of-noise">
+<h2>Power Spectral Density (PSD) of Noise<a class="headerlink" href="#power-spectral-density-psd-of-noise" title="Link to this heading">#</a></h2>
+<p>The <strong>Power Spectral Density (PSD)</strong> represents how the power of a signal or noise process is distributed across different frequency components.</p>
+<p>It is the Fourier Transform of the Autocorrelation Function.</p>
+<section id="baseband-noise-n-b-t-psd">
+<h3>Baseband Noise <span class="math notranslate nohighlight">\( n_b(t) \)</span> PSD<a class="headerlink" href="#baseband-noise-n-b-t-psd" title="Link to this heading">#</a></h3>
+<p>Given:</p>
+<div class="math notranslate nohighlight">
+\[
+R_{n_b}(\tau) = 2R_I(\tau)
+\]</div>
+<p>PSD definition:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{n_b}(f) = \mathcal{F}\{ R_{n_b}(\tau) \} = 2 \cdot \mathcal{F}\{ R_I(\tau) \} = 2S_I(f)
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( S_I(f) \)</span>:</strong> PSD of the in-phase noise component <span class="math notranslate nohighlight">\( I(t) \)</span>.</p></li>
+</ul>
+<p>Final PSD for daseband noise:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+S_{n_b}(f) = 2S_I(f)
+}
+\]</div>
+</section>
+<section id="passband-noise-n-t-psd">
+<h3>Passband Noise <span class="math notranslate nohighlight">\( n(t) \)</span> PSD<a class="headerlink" href="#passband-noise-n-t-psd" title="Link to this heading">#</a></h3>
+<p>Given:</p>
+<div class="math notranslate nohighlight">
+\[
+R_n(\tau) = 2 R_I(\tau) \cos(2\pi f_c \tau)
+\]</div>
+<p>PSD definition:</p>
+<div class="math notranslate nohighlight">
+\[
+S_n(f) = \mathcal{F}\{ R_n(\tau) \} = 2 \cdot \mathcal{F}\{ R_I(\tau) \cos(2\pi f_c \tau) \}
+\]</div>
+<p>Using Fourier Transform property:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{F}\{ R_I(\tau) \cos(2\pi f_c \tau) \} = \frac{1}{2} \left[ S_I(f - f_c) + S_I(f + f_c) \right]
+\]</div>
+<p>Substituting back:</p>
+<div class="math notranslate nohighlight">
+\[
+S_n(f) = 2 \cdot \frac{1}{2} \left[ S_I(f - f_c) + S_I(f + f_c) \right] = S_I(f - f_c) + S_I(f + f_c)
+\]</div>
+<p>Final PSD for passband noise:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+S_n(f) = S_I(f - f_c) + S_I(f + f_c)
+}
+\]</div>
+</section>
+<section id="other-relationships">
+<h3>Other Relationships<a class="headerlink" href="#other-relationships" title="Link to this heading">#</a></h3>
+<p>The relationship between the <strong>baseband noise PSD</strong> <span class="math notranslate nohighlight">\( S_{n_b}(f) \)</span> and the <strong>passband noise PSD</strong> <span class="math notranslate nohighlight">\( S_n(f) \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+S_{n_b}(f) = 2S_n(f + f_c) \quad \text{for all} \, f.
+}
+\]</div>
+<p>There’s no need to cut off the PSD at <span class="math notranslate nohighlight">\( f+f_c \leq 0 \)</span> since the passband noise contains symmetric components about the carrier frequency.</p>
+<p>The relationship should reflect the fact that the baseband noise spectrum is derived from the shifted passband spectrum, and it exists only in the positive frequency range.</p>
+<p>The relationship between the <strong>passband noise PSD</strong> <span class="math notranslate nohighlight">\( S_n(f) \)</span> and the <strong>baseband noise PSD</strong> <span class="math notranslate nohighlight">\( S_{n_b}(f) \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+S_n(f) = \frac{1}{2} \left( S_{n_b}(f - f_c) + S_{n_b}(-f - f_c) \right)
+}
+\]</div>
+<p>This expression captures the fact that the passband noise PSD is composed of the baseband noise PSD shifted by the carrier frequency <span class="math notranslate nohighlight">\( f_c \)</span> in both positive and negative frequency directions.</p>
+</section>
+</section>
+<section id="white-noise-spectral-density-n-0-2">
+<h2>White Noise Spectral Density <span class="math notranslate nohighlight">\( N_0 / 2 \)</span><a class="headerlink" href="#white-noise-spectral-density-n-0-2" title="Link to this heading">#</a></h2>
+<p>Given the <strong>passband noise PSD</strong> <span class="math notranslate nohighlight">\( S_n(f) \)</span> for white noise with spectral density <span class="math notranslate nohighlight">\( \frac{N_0}{2} \)</span> in the passband as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+S_n(f) = \begin{cases} 
+\frac{N_0}{2} &amp; \text{for } f \in \left[ f_c - \frac{W}{2}, f_c + \frac{W}{2} \right] \text{ or } f \in \left[ -f_c - \frac{W}{2}, -f_c + \frac{W}{2} \right] \\
+0 &amp; \text{otherwise}
+\end{cases}
+\end{split}\]</div>
+<p>We have the relationship between the <strong>passband PSD</strong> <span class="math notranslate nohighlight">\( S_n(f) \)</span> and the <strong>baseband PSD</strong> <span class="math notranslate nohighlight">\( S_{n_b}(f) \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+S_n(f) = \frac{1}{2} \left( S_{n_b}(f - f_c) + S_{n_b}(-f - f_c) \right)
+\]</div>
+<p>To find the baseband PSD <span class="math notranslate nohighlight">\( S_{n_b}(f) \)</span>, we need to shift the passband PSD down by <span class="math notranslate nohighlight">\( f_c \)</span> and combine the components:</p>
+<ol class="arabic">
+<li><p><strong>For <span class="math notranslate nohighlight">\( f \in \left[ -\frac{W}{2}, \frac{W}{2} \right] \)</span>:</strong></p>
+<ul>
+<li><p>The baseband PSD <span class="math notranslate nohighlight">\( S_{n_b}(f) \)</span> corresponds to the passband PSD <span class="math notranslate nohighlight">\( S_n(f + f_c) \)</span>, shifted back to baseband.</p></li>
+<li><p>From the passband PSD <span class="math notranslate nohighlight">\( S_n(f) = \frac{N_0}{2} \)</span>, the baseband noise PSD <span class="math notranslate nohighlight">\( S_{n_b}(f) \)</span> within the range <span class="math notranslate nohighlight">\( |f| \leq \frac{W}{2} \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+     S_{n_b}(f) = 2 \cdot \frac{N_0}{2} = N_0
+     \]</div>
+</li>
+<li><p>This factor of 2 comes from combining the contributions of both sidebands (upper and lower).</p></li>
+</ul>
+</li>
+<li><p><strong>For <span class="math notranslate nohighlight">\( |f| &gt; \frac{W}{2} \)</span>:</strong></p>
+<ul class="simple">
+<li><p>Outside the baseband range, the passband noise PSD <span class="math notranslate nohighlight">\( S_n(f) = 0 \)</span>, so the baseband PSD will also be 0 for <span class="math notranslate nohighlight">\( |f| &gt; \frac{W}{2} \)</span>.</p></li>
+</ul>
+</li>
+</ol>
+<p>Thus, the <strong>baseband noise PSD</strong> <span class="math notranslate nohighlight">\( S_{n_b}(f) \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boxed{
+S_{n_b}(f) = \begin{cases} 
+N_0 &amp; \text{for } |f| \leq \frac{W}{2} \\ 
+0 &amp; \text{for } |f| &gt; \frac{W}{2}
+\end{cases}
+}
+\end{split}\]</div>
+</section>
+<section id="example-psd-of-lti-system">
+<h2>Example: PSD of LTI System<a class="headerlink" href="#example-psd-of-lti-system" title="Link to this heading">#</a></h2>
+<p>This example demonstrates the analysis of a <strong>linear time-invariant (LTI) system</strong> excited by white noise, focusing on the input-output relationship in both the <strong>time domain</strong> and the <strong>frequency domain</strong> using the <strong>Power Spectral Density (PSD)</strong>.</p>
+<p>This example shows how a white noise input is transformed by a system and how its power spectral density is modified based on the system’s frequency response.</p>
+<section id="input-signal-white-noise">
+<h3>Input Signal (White Noise)<a class="headerlink" href="#input-signal-white-noise" title="Link to this heading">#</a></h3>
+<p>The input to the system is white noise, which is a stochastic process with a constant power spectral density over all frequencies.</p>
+<ul>
+<li><p>The white noise <span class="math notranslate nohighlight">\( x(n) \)</span> is generated with a zero mean and a variance <span class="math notranslate nohighlight">\( \sigma_x^2 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  x(n) \sim \mathcal{N}(0, \sigma_x^2)
+  \]</div>
+<p>where <span class="math notranslate nohighlight">\( \sigma_x^2 = 1 \)</span> in this case.</p>
+</li>
+</ul>
+</section>
+<section id="impulse-response-of-the-system">
+<h3>Impulse Response of the System<a class="headerlink" href="#impulse-response-of-the-system" title="Link to this heading">#</a></h3>
+<p>The system is described by a simple finite impulse response (FIR) filter with an impulse response <span class="math notranslate nohighlight">\( h(n) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+h(n) = [1, -2, 1]
+\]</div>
+<p>This is a second-order difference equation, which can represent a simple smoothing or filtering operation.</p>
+</section>
+<section id="output-signal-convolution">
+<h3>Output Signal (Convolution)<a class="headerlink" href="#output-signal-convolution" title="Link to this heading">#</a></h3>
+<p>The output of the system is the result of convolving the input signal <span class="math notranslate nohighlight">\( x(n) \)</span> with the system’s impulse response <span class="math notranslate nohighlight">\( h(n) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+y(n) = (x * h)(n)
+\]</div>
+<p>Mathematically, convolution is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+y(n) = \sum_{k} x(n - k) h(k)
+\]</div>
+<p>This operation represents how the input signal <span class="math notranslate nohighlight">\( x(n) \)</span> is transformed by the system defined by <span class="math notranslate nohighlight">\( h(n) \)</span>.</p>
+</section>
+<section id="power-spectral-density-psd">
+<h3>Power Spectral Density (PSD)<a class="headerlink" href="#power-spectral-density-psd" title="Link to this heading">#</a></h3>
+<p>The <strong>Power Spectral Density (PSD)</strong> describes how the power of a signal is distributed over different frequencies. It can be computed as the magnitude squared of the Fourier transform of the signal, normalized by the signal length and sampling frequency.</p>
+<p>The PSD of the input signal <span class="math notranslate nohighlight">\( x(n) \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{PSD}_x(f) = \frac{1}{N \cdot f_s} \left| \text{FFT}(x(n)) \right|^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( N \)</span> is the number of samples, and <span class="math notranslate nohighlight">\( f_s \)</span> is the sampling frequency.</p>
+<p>Similarly, the PSD of the output signal <span class="math notranslate nohighlight">\( y(n) \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{PSD}_y(f) = \frac{1}{N \cdot f_s} \left| \text{FFT}(y(n)) \right|^2
+\]</div>
+</section>
+<section id="theoretical-power-spectral-density-of-the-output">
+<h3>Theoretical Power Spectral Density of the Output<a class="headerlink" href="#theoretical-power-spectral-density-of-the-output" title="Link to this heading">#</a></h3>
+<p>Since the input is white noise (which has a flat PSD), the output’s PSD is related to the input PSD and the frequency response of the system.</p>
+<p>The frequency response of the system can be derived from the Fourier transform of the impulse response <span class="math notranslate nohighlight">\( h(n) \)</span>.</p>
+<p>The theoretical <strong>power spectral density</strong> <span class="math notranslate nohighlight">\( S_{yy}(f) \)</span> of the output signal <span class="math notranslate nohighlight">\( y(n) \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{yy}(f) = \sigma_x^2 \left| H(f) \right|^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( H(f) \)</span> is the Fourier transform of the system’s impulse response <span class="math notranslate nohighlight">\( h(n) \)</span>, and <span class="math notranslate nohighlight">\( \sigma_x^2 \)</span> is the variance of the white noise input.</p>
+<p>For the given impulse response <span class="math notranslate nohighlight">\( h(n) = [1, -2, 1] \)</span>, the Fourier transform <span class="math notranslate nohighlight">\( H(f) \)</span> can be computed as:</p>
+<div class="math notranslate nohighlight">
+\[
+H(f) = 1 - 2e^{-j2\pi f} + e^{-j4\pi f}
+\]</div>
+<p>Simplifying:</p>
+<div class="math notranslate nohighlight">
+\[
+H(f) = (1 - e^{-j2\pi f})^2 = 4 \sin^2(\pi f)
+\]</div>
+<p>Thus, the magnitude squared of the frequency response is:</p>
+<div class="math notranslate nohighlight">
+\[
+|H(f)|^2 = 16 \sin^4(\pi f)
+\]</div>
+<p>Therefore, the <strong>theoretical PSD</strong> of the output is:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{yy}(f) = 16 \sigma_x^2 \sin^4(\pi f_{\text{normalized}})
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( f_{\text{normalized}} = \frac{f}{f_s} \)</span> is the frequency normalized by the sampling frequency.</p>
+</section>
+</section>
+<section id="simulation">
+<h2>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Input</strong>: White noise <span class="math notranslate nohighlight">\( x(n) \)</span>.</p></li>
+<li><p><strong>System</strong>: FIR filter with impulse response <span class="math notranslate nohighlight">\( h(n) = [1, -2, 1] \)</span>.</p></li>
+<li><p><strong>Output</strong>: Convolution of <span class="math notranslate nohighlight">\( x(n) \)</span> with <span class="math notranslate nohighlight">\( h(n) \)</span>.</p></li>
+<li><p><strong>Frequency Domain Analysis</strong>: PSD of the output signal is compared with the theoretical PSD derived from the system’s frequency response.</p></li>
+<li><p><strong>Theoretical Output PSD</strong>: <span class="math notranslate nohighlight">\( S_{yy}(f) = 16 \sigma_x^2 \sin^4(\pi f_{\text{normalized}}) \)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.fft</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">fftshift</span>
+<span class="kn">from</span> <span class="nn">scipy.signal</span> <span class="kn">import</span> <span class="n">convolve</span>
+
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1024</span>  <span class="c1"># Number of points (choose a power of 2 for faster FFT computation)</span>
+<span class="n">sigma_x2</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Variance of the white noise</span>
+<span class="n">fs</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Sampling frequency in Hz</span>
+
+<span class="c1"># Generate white noise input</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma_x2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+
+<span class="c1"># Impulse response of the system h(n)</span>
+<span class="n">h</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Compute the output signal by convolving the input with the impulse response</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">convolve</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;same&#39;</span><span class="p">)</span>
+
+<span class="c1"># Compute the frequency vector</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">fs</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">fs</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">endpoint</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="c1"># Compute the Power Spectral Densities (PSDs)</span>
+<span class="n">PSD_x</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span> <span class="o">*</span> <span class="n">fs</span><span class="p">)</span>
+<span class="n">PSD_y</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">N</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span> <span class="o">*</span> <span class="n">fs</span><span class="p">)</span>
+
+<span class="c1"># Theoretical Power Spectral Density</span>
+<span class="n">f_normalized</span> <span class="o">=</span> <span class="n">f</span> <span class="o">/</span> <span class="n">fs</span>  <span class="c1"># Normalize frequency by the sampling frequency</span>
+<span class="n">S_yy_theoretical</span> <span class="o">=</span> <span class="mi">16</span> <span class="o">*</span> <span class="n">sigma_x2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f_normalized</span><span class="p">)</span><span class="o">**</span><span class="mi">4</span>
+
+<span class="c1"># Time domain plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">/</span> <span class="n">fs</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Input Signal (White Noise) in Time Domain&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (seconds)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="n">N</span><span class="p">)</span> <span class="o">/</span> <span class="n">fs</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Output Signal in Time Domain&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time (seconds)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Frequency domain plot in dB scale</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">PSD_y</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Simulated PSD&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">S_yy_theoretical</span> <span class="o">/</span> <span class="n">N</span><span class="p">),</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical PSD&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Power Spectral Density of the Output (dB scale)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power/Frequency (dB/Hz)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Frequency domain plot in linear scale</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">PSD_y</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Simulated PSD&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">S_yy_theoretical</span> <span class="o">/</span> <span class="n">N</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical PSD&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Power Spectral Density of the Output (Linear scale)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Power/Frequency&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/3fe43e5e188e811550ba25c5e0de62676f8d1b54686c05dcf49e5d67db9775ae.png" src="_images/3fe43e5e188e811550ba25c5e0de62676f8d1b54686c05dcf49e5d67db9775ae.png" />
+<img alt="_images/b0a9061cced07602f3c756730c096568084d883f05aee9929a9ae34414304aa5.png" src="_images/b0a9061cced07602f3c756730c096568084d883f05aee9929a9ae34414304aa5.png" />
+<img alt="_images/cb7143d0bab973fa6adc54bad25af9f5759e35c3478bf1288eb8a12011cc640d.png" src="_images/cb7143d0bab973fa6adc54bad25af9f5759e35c3478bf1288eb8a12011cc640d.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-passband-noise-to-baseband-noise-process">From passband noise to baseband noise process</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-noise-in-communication-systems">Overview of Noise in Communication Systems</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passband-noise-n-t">Passband Noise <span class="math notranslate nohighlight">\( n(t) \)</span></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-noise-n-b-t">Baseband Noise <span class="math notranslate nohighlight">\( n_b(t) \)</span></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#noisy-passband-channel-model">Noisy Passband Channel Model</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Equivalent Baseband Noise Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#noise-transformation">Noise Transformation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-i-t-and-q-t-from-passband-noise-n-t"><strong>Deriving <span class="math notranslate nohighlight">\( I(t) \)</span> and <span class="math notranslate nohighlight">\( Q(t) \)</span> from Passband Noise <span class="math notranslate nohighlight">\( n(t) \)</span></strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-steps"><strong>Mathematical Steps</strong></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-function-acf">Autocorrelation Function (ACF)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-noise-n-b-t-acf">Baseband Noise <span class="math notranslate nohighlight">\( n_b(t) \)</span> ACF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passband-noise-n-t-acf">Passband Noise <span class="math notranslate nohighlight">\( n(t) \)</span> ACF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectral-density-psd-of-noise">Power Spectral Density (PSD) of Noise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-noise-n-b-t-psd">Baseband Noise <span class="math notranslate nohighlight">\( n_b(t) \)</span> PSD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#passband-noise-n-t-psd">Passband Noise <span class="math notranslate nohighlight">\( n(t) \)</span> PSD</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#other-relationships">Other Relationships</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#white-noise-spectral-density-n-0-2">White Noise Spectral Density <span class="math notranslate nohighlight">\( N_0 / 2 \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-psd-of-lti-system">Example: PSD of LTI System</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#input-signal-white-noise">Input Signal (White Noise)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#impulse-response-of-the-system">Impulse Response of the System</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-signal-convolution">Output Signal (Convolution)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectral-density-psd">Power Spectral Density (PSD)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-power-spectral-density-of-the-output">Theoretical Power Spectral Density of the Output</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

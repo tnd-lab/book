@@ -1,0 +1,748 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c1_s13';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Standard Complex Gaussian Vector" href="c1_s14.html" />
+    <link rel="prev" title="Complex Random Vector" href="c1_s12.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <script>document.write(`<img src="_static/web_logo.png" class="logo__image only-dark" alt="Telecom Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Signal Detection and Estimation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c1_s0.html">Chapter 1: Review of Probability Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c1_s1.html">Bayes’ Theorem</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s5_s6a.html">Functions of A Single Random Variable</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s6b.html">Generating Random Variables From A Uniform Distribution</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s7.html">First Moment of a Function of Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s8.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s9.html">Real Scalar Gaussian Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c1_s10_s11.html">Real Gaussian Random Vector</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s12.html">Complex Random Vector</a></li>
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c1_s14.html">Standard Complex Gaussian Vector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a.html">Stochastic Process</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-mathbf-x-r-and-mathbf-x-i">Properties of <span class="math notranslate nohighlight">\(\mathbf{x}_R\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_I\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-circular-symmetry">Complex Circular Symmetry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-mean-and-variance">Zero Mean and Variance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-zmccsg-random-variable">Standard ZMCCSG Random Variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-rayleigh-distribution">Derivation of the Rayleigh Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-exponential-distribution">Derivation of the Exponential Distribution</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="zero-mean-complex-circularly-symmetric-gaussian-zmccsg-random-variable">
+<h1>Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable<a class="headerlink" href="#zero-mean-complex-circularly-symmetric-gaussian-zmccsg-random-variable" title="Link to this heading">#</a></h1>
+<p>A Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) random variable  (RV) is a fundamental concept in wireless communications and signal processing, particularly in the analysis and modeling of noise and signals in complex domains.</p>
+<p>Consider a complex RV <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> defined as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{x} = \mathbf{x}_R + j\mathbf{x}_I
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x}_R\)</span> is the real part of the RV <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x}_I\)</span> is the imaginary part of the RV <span class="math notranslate nohighlight">\(\mathbf{x}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(j\)</span> denotes the imaginary unit (i.e., <span class="math notranslate nohighlight">\(j = \sqrt{-1}\)</span>).</p></li>
+</ul>
+<section id="properties-of-mathbf-x-r-and-mathbf-x-i">
+<h2>Properties of <span class="math notranslate nohighlight">\(\mathbf{x}_R\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_I\)</span><a class="headerlink" href="#properties-of-mathbf-x-r-and-mathbf-x-i" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\mathbf{x}_R\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_I\)</span> are independent and identically distributed (iid).</p></li>
+<li><p>Both <span class="math notranslate nohighlight">\(\mathbf{x}_R\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_I\)</span> are normally distributed with mean zero and variance <span class="math notranslate nohighlight">\(\frac{\sigma^2}{2}\)</span>. Thus, <span class="math notranslate nohighlight">\(\mathbf{x}_R \sim \mathcal{N}(0, \frac{\sigma^2}{2})\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_I \sim \mathcal{N}(0, \frac{\sigma^2}{2})\)</span>.</p></li>
+</ul>
+<p>Because <span class="math notranslate nohighlight">\(\mathbf{x}_R\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_I\)</span> are iid normal random variables, their joint distribution defines <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> as a complex Gaussian RV.</p>
+</section>
+<section id="complex-circular-symmetry">
+<h2>Complex Circular Symmetry<a class="headerlink" href="#complex-circular-symmetry" title="Link to this heading">#</a></h2>
+<p>A complex RV <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is said to be circularly symmetric if its statistical properties are invariant to multiplication by a complex exponential of any phase <span class="math notranslate nohighlight">\(\theta\)</span>. Mathematically, this means that for any <span class="math notranslate nohighlight">\(\theta\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+e^{j\theta}\mathbf{x} \stackrel{d}{=} \mathbf{x}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\stackrel{d}{=}\)</span> denotes equality in distribution.</p>
+<p>This property implies that the magnitude and phase of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> are independent, with the phase uniformly distributed over <span class="math notranslate nohighlight">\([0, 2\pi)\)</span> and the magnitude having a Rayleigh distribution.</p>
+</section>
+<section id="zero-mean-and-variance">
+<h2>Zero Mean and Variance<a class="headerlink" href="#zero-mean-and-variance" title="Link to this heading">#</a></h2>
+<p>The term “zero mean” indicates that the expected value of <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is zero:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}[\mathbf{x}] = 0
+\]</div>
+<p>The variance <span class="math notranslate nohighlight">\(\sigma^2\)</span> of the complex RV <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is the total variance, which includes contributions from both the real and imaginary parts. Given the variances of <span class="math notranslate nohighlight">\(\mathbf{x}_R\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_I\)</span>, the total variance <span class="math notranslate nohighlight">\(\sigma^2\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Var}(\mathbf{x}) = \text{Var}(\mathbf{x}_R) + \text{Var}(\mathbf{x}_I) = \frac{\sigma^2}{2} + \frac{\sigma^2}{2} = \sigma^2
+\]</div>
+<p>Thus, we denote this ZMCCSG RV as <span class="math notranslate nohighlight">\(\mathbf{x} \sim \mathcal{CN}(0, \sigma^2)\)</span>.</p>
+</section>
+<section id="standard-zmccsg-random-variable">
+<h2>Standard ZMCCSG Random Variable<a class="headerlink" href="#standard-zmccsg-random-variable" title="Link to this heading">#</a></h2>
+<p>A standard ZMCCSG RV <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> is a special case where the variance <span class="math notranslate nohighlight">\(\sigma^2\)</span> is set to 1. Hence, the real and imaginary parts of <span class="math notranslate nohighlight">\(\mathbf{w}\)</span> are iid normal random variables with zero mean and variance <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{w}_R \sim \mathcal{N}(0, \frac{1}{2}), \quad \mathbf{w}_I \sim \mathcal{N}(0, \frac{1}{2})
+\]</div>
+<p>This leads to:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{w} = \mathbf{w}_R + j\mathbf{w}_I \sim \mathcal{CN}(0, 1)
+\]</div>
+<p><strong>Summary</strong></p>
+<p>A Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> is defined as a complex RV with its real and imaginary parts being independent, identically distributed normal random variables with zero mean and equal variance. The RV has zero mean and a specified total variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>. This concept is fundamental in modeling complex noise and signal processes in various fields of engineering and science.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Function to generate ZMCCSG random variable</span>
+<span class="k">def</span> <span class="nf">generate_zmccsg</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="c1"># Generate real and imaginary parts independently</span>
+    <span class="n">x_R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">)</span>
+    <span class="n">x_I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">)</span>
+    
+    <span class="c1"># Combine real and imaginary parts to form the complex random variable</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x_R</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">x_I</span>
+    
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Standard deviation of the ZMCCSG random variable</span>
+
+<span class="c1"># Generate ZMCCSG random variable</span>
+<span class="n">zmccsg_samples</span> <span class="o">=</span> <span class="n">generate_zmccsg</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+
+<span class="c1"># Plot the real and imaginary parts</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">zmccsg_samples</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Real part&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Real Part&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">zmccsg_samples</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Imaginary part&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Imaginary Part&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Plot the complex plane</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">real</span><span class="p">(</span><span class="n">zmccsg_samples</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">imag</span><span class="p">(</span><span class="n">zmccsg_samples</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Scatter Plot of ZMCCSG Samples&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Real Part&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Imaginary Part&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;equal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/7e018f4062c07f9565e17933baa416c6ea5791217bd42f742388a12cfb660f4b.png" src="_images/7e018f4062c07f9565e17933baa416c6ea5791217bd42f742388a12cfb660f4b.png" />
+<img alt="_images/7ec17a11e0e79acdcdff6fd3f24e36b52e7330f990c93b6756f8625edfcd8d5a.png" src="_images/7ec17a11e0e79acdcdff6fd3f24e36b52e7330f990c93b6756f8625edfcd8d5a.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Function to generate ZMCCSG random variable</span>
+<span class="k">def</span> <span class="nf">generate_zmccsg</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">sigma</span><span class="p">):</span>
+    <span class="c1"># Generate real and imaginary parts independently</span>
+    <span class="n">x_R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">)</span>
+    <span class="n">x_I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="n">n_samples</span><span class="p">)</span>
+    
+    <span class="c1"># Combine real and imaginary parts to form the complex random variable</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x_R</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">x_I</span>
+    
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Standard deviation of the ZMCCSG random variable</span>
+
+<span class="c1"># Generate ZMCCSG random variable</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">generate_zmccsg</span><span class="p">(</span><span class="n">n_samples</span><span class="p">,</span> <span class="n">sigma</span><span class="p">)</span>
+
+<span class="c1"># Compute phase and magnitude</span>
+<span class="n">phases</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+<span class="n">magnitudes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+<span class="n">magnitude_squared</span> <span class="o">=</span> <span class="n">magnitudes</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># Plot the phase distribution</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">phases</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical Phase&#39;</span><span class="p">)</span>
+<span class="c1"># Theoretical uniform distribution for phase</span>
+<span class="n">uniform_phase</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">phases</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">,</span> <span class="mi">1000</span><span class="p">),</span> <span class="n">uniform_phase</span><span class="p">[:</span><span class="mi">1000</span><span class="p">],</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical Uniform PDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Phase&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Phase (radians)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Plot the magnitude distribution</span>
+<span class="c1"># Rayleigh distribution parameter : sigma / np.sqrt(2)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">magnitudes</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical Magnitude&#39;</span><span class="p">)</span>
+<span class="n">r</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">sigma</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">theoretical_rayleigh</span> <span class="o">=</span> <span class="p">(</span><span class="n">r</span> <span class="o">/</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="n">sigma</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="p">,</span> <span class="n">theoretical_rayleigh</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical Rayleigh PDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Magnitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Plot the magnitude squared distribution</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">magnitude_squared</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical Magnitude Squared&#39;</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">theoretical_exponential</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span> <span class="o">/</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">theoretical_exponential</span><span class="p">,</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical Exponential PDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Histogram of Magnitude Squared&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Magnitude Squared&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/baa7a8ed2b644e18b3fb2ffc44911e3911eb43c5e2c77e2f318bacf49d6c46eb.png" src="_images/baa7a8ed2b644e18b3fb2ffc44911e3911eb43c5e2c77e2f318bacf49d6c46eb.png" />
+</div>
+</div>
+</section>
+<section id="derivation-of-the-rayleigh-distribution">
+<h2>Derivation of the Rayleigh Distribution<a class="headerlink" href="#derivation-of-the-rayleigh-distribution" title="Link to this heading">#</a></h2>
+<p>To demonstrate that the magnitude <span class="math notranslate nohighlight">\( |x_R + j x_I| \)</span> follows the Rayleigh distribution, we begin with the following components:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( x_R \sim N(0, \frac{\sigma^2}{2}) \)</span>: a normally distributed RV with mean 0 and variance <span class="math notranslate nohighlight">\( \frac{\sigma^2}{2} \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( x_I \sim N(0, \frac{\sigma^2}{2}) \)</span>: another normally distributed RV with mean 0 and variance <span class="math notranslate nohighlight">\( \frac{\sigma^2}{2} \)</span>.</p></li>
+</ul>
+<p>We form the complex RV <span class="math notranslate nohighlight">\( x = x_R + j x_I \)</span>, where <span class="math notranslate nohighlight">\( j \)</span> is the imaginary unit.</p>
+<p>The magnitude <span class="math notranslate nohighlight">\( r \)</span> of the complex number <span class="math notranslate nohighlight">\( x \)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+r = |x_R + j x_I| = \sqrt{x_R^2 + x_I^2}
+\]</div>
+<p>Since both <span class="math notranslate nohighlight">\( x_R \)</span> and <span class="math notranslate nohighlight">\( x_I \)</span> are independent and normally distributed with zero mean and variance <span class="math notranslate nohighlight">\( \frac{\sigma^2}{2} \)</span>, the sum of their squares, <span class="math notranslate nohighlight">\( r^2 = x_R^2 + x_I^2 \)</span>, follows a chi-squared distribution with 2 degrees of freedom. This distribution can also be viewed as a gamma distribution with shape parameter <span class="math notranslate nohighlight">\( k = 1 \)</span> and scale parameter <span class="math notranslate nohighlight">\( \theta = \frac{\sigma^2}{2} \)</span>.</p>
+<p>The probability density function (PDF) of <span class="math notranslate nohighlight">\( r^2 \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+f_{r^2}(r^2) = \frac{1}{\sigma^2} e^{-\frac{r^2}{\sigma^2}}
+\]</div>
+<p>To derive the PDF of <span class="math notranslate nohighlight">\( r \)</span>, we utilize the transformation relationship between <span class="math notranslate nohighlight">\( r \)</span> and <span class="math notranslate nohighlight">\( r^2 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+r = \sqrt{r^2}
+\]</div>
+<p>Let <span class="math notranslate nohighlight">\( g(r^2) = \sqrt{r^2} \)</span> and its inverse <span class="math notranslate nohighlight">\( g^{-1}(r) = r^2 \)</span>. The Jacobian determinant of this transformation is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\left| \frac{d}{dr} g^{-1}(r) \right| = \left| \frac{d}{dr} (r^2) \right| = 2r
+\]</div>
+<p>Thus, the PDF of <span class="math notranslate nohighlight">\( r \)</span>, denoted as <span class="math notranslate nohighlight">\( f_r(r) \)</span>, is obtained by transforming the PDF of <span class="math notranslate nohighlight">\( r^2 \)</span> using the Jacobian determinant:</p>
+<div class="math notranslate nohighlight">
+\[
+f_r(r) = f_{r^2}(r^2) \left| \frac{d}{dr} g^{-1}(r) \right|
+\]</div>
+<p>Substituting the expressions, we get:</p>
+<div class="math notranslate nohighlight">
+\[
+f_r(r) = \frac{1}{\sigma^2} e^{-\frac{r^2}{\sigma^2}}  2r
+\]</div>
+<p>This simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+f_r(r) = \frac{2r}{\sigma^2} e^{-\frac{r^2}{\sigma^2}}
+\]</div>
+<p>This is the Rayleigh distribution with the scale parameter <span class="math notranslate nohighlight">\( \sigma' = \frac{\sigma}{\sqrt{2}} \)</span>.</p>
+<p>Thus, the magnitude <span class="math notranslate nohighlight">\( |x_R + j x_I| \)</span> indeed follows the Rayleigh distribution. The PDF of the magnitude <span class="math notranslate nohighlight">\( r \)</span> can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+f(r; \sigma') = \frac{r}{(\sigma')^2} e^{-\frac{r^2}{2(\sigma')^2}}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \sigma' = \frac{\sigma}{\sqrt{2}} \)</span>.</p>
+<p>This result confirms that the magnitude of a complex number, whose real and imaginary components are independent and identically distributed normal random variables, follows the Rayleigh distribution.</p>
+</section>
+<section id="derivation-of-the-exponential-distribution">
+<h2>Derivation of the Exponential Distribution<a class="headerlink" href="#derivation-of-the-exponential-distribution" title="Link to this heading">#</a></h2>
+<p>To prove that the magnitude squared of a complex Gaussian RV follows an exponential distribution, we start with the following:</p>
+<p>For a complex RV <span class="math notranslate nohighlight">\( x = x_R + j x_I \)</span>, where <span class="math notranslate nohighlight">\( x_R \)</span> and <span class="math notranslate nohighlight">\( x_I \)</span> are independent and normally distributed with mean 0 and variance <span class="math notranslate nohighlight">\( \frac{\sigma^2}{2} \)</span>, the magnitude squared is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+|x|^2 = x_R^2 + x_I^2
+\]</div>
+<p>This can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+|x|^2 = \left( \frac{\sigma^2}{2} \right) Z
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( Z \sim \chi^2_2 \)</span>, a chi-squared distribution with 2 degrees of freedom. The chi-squared distribution with 2 degrees of freedom is equivalent to a gamma distribution with shape parameter <span class="math notranslate nohighlight">\( k = 1 \)</span> and scale parameter <span class="math notranslate nohighlight">\( \theta = 2 \)</span>, denoted as <span class="math notranslate nohighlight">\( \Gamma(k=1, \theta=2) \)</span>. This gamma distribution is also equivalent to an exponential distribution with rate parameter <span class="math notranslate nohighlight">\( \lambda = \frac{1}{2} \)</span>.</p>
+<p>Thus, <span class="math notranslate nohighlight">\( Z \)</span> can be represented as an exponential random variable:</p>
+<div class="math notranslate nohighlight">
+\[
+Z \sim \text{Exponential}(\lambda = \frac{1}{2})
+\]</div>
+<p>The PDF of <span class="math notranslate nohighlight">\( Z \)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+f_Z(z) = \frac{1}{2} \exp\left(-\frac{z}{2}\right), \quad \text{for } z \geq 0
+\]</div>
+<p>To find the PDF of <span class="math notranslate nohighlight">\( Y = |x|^2 = \frac{\sigma^2}{2} Z \)</span>, we use the transformation technique. The relationship between <span class="math notranslate nohighlight">\( Y \)</span> and <span class="math notranslate nohighlight">\( Z \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+Y = \frac{\sigma^2}{2} Z
+\]</div>
+<p>To find the PDF of <span class="math notranslate nohighlight">\( Y \)</span>, we use the formula for transforming the PDF under a change of variables:</p>
+<div class="math notranslate nohighlight">
+\[
+f_Y(y) = f_Z\left(\frac{2y}{\sigma^2}\right) \left| \frac{d}{dy}\left(\frac{2y}{\sigma^2}\right) \right|
+\]</div>
+<p>Substituting <span class="math notranslate nohighlight">\( f_Z(z) \)</span> and calculating the derivative, we obtain:</p>
+<div class="math notranslate nohighlight">
+\[
+f_Y(y) = \frac{1}{2} \exp\left(-\frac{\frac{2y}{\sigma^2}}{2}\right)  \frac{2}{\sigma^2} = \frac{1}{\sigma^2} \exp\left(-\frac{y}{\sigma^2}\right)
+\]</div>
+<p>Thus, the magnitude squared <span class="math notranslate nohighlight">\( |x|^2 \)</span> follows an exponential distribution with the PDF:</p>
+<div class="math notranslate nohighlight">
+\[
+f_Y(y) = \frac{1}{\sigma^2} \exp\left(-\frac{y}{\sigma^2}\right), \quad \text{for } y \geq 0
+\]</div>
+<p>This shows that the magnitude squared of a complex Gaussian random variable, where the real and imaginary parts are independent and identically distributed normal random variables, follows an exponential distribution with parameter <span class="math notranslate nohighlight">\( \frac{1}{\sigma^2} \)</span>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c1_s12.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Complex Random Vector</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c1_s14.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Standard Complex Gaussian Vector</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-mathbf-x-r-and-mathbf-x-i">Properties of <span class="math notranslate nohighlight">\(\mathbf{x}_R\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}_I\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complex-circular-symmetry">Complex Circular Symmetry</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#zero-mean-and-variance">Zero Mean and Variance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-zmccsg-random-variable">Standard ZMCCSG Random Variable</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-rayleigh-distribution">Derivation of the Rayleigh Distribution</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-exponential-distribution">Derivation of the Exponential Distribution</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

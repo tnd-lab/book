@@ -1,0 +1,971 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Minimum Variance Estimaties &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c3_s7_minimum_variance_estimates';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Consistent Estimates" href="c3_s8_consistent_estimator.html" />
+    <link rel="prev" title="Estimators Based on Sufficient Statistics" href="c3_s6_sufficient_statistic.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Minimum Variance Estimaties</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chebyshev-s-inequality">Chebyshev’s Inequality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cramer-rao-lower-bound">Cramér-Rao Lower Bound</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#most-efficient-estimate">Most Efficient Estimate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-most-efficient-estimator-of-the-true-mean">Example: The Most Efficient Estimator of the True Mean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-the-sample-mean-as-a-function-of-the-number-of-data-samples">Variance of the sample mean as a function of the number of data samples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-comparing-different-estimates">Example: Comparing Different Estimates</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="minimum-variance-estimaties">
+<h1>Minimum Variance Estimaties<a class="headerlink" href="#minimum-variance-estimaties" title="Link to this heading">#</a></h1>
+<p>The objective in estimation is to find an estimate <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}\)</span> that is close to the true parameter <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+<p>This closeness is desired even if the estimator is biased.</p>
+<p><strong>Variance as a Measure of The Closeness</strong></p>
+<p>For an unbiased estimator, variance (<span class="math notranslate nohighlight">\( V\{\hat{\boldsymbol{\alpha}}\} = E\{(\hat{\boldsymbol{\alpha}} - \alpha)^2\} \)</span>) measures the variability of the estimator around the true parameter.</p>
+<p>This variance is equivalent to the mean-squared error between the estimate and the true parameter value.</p>
+<p><strong>Choosing Between Estimators</strong>:</p>
+<p>When comparing two unbiased estimators, <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}_1\)</span> and <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}_2\)</span>, with variances <span class="math notranslate nohighlight">\(V\{\hat{\boldsymbol{\alpha}}_1\}\)</span> and <span class="math notranslate nohighlight">\(V\{\hat{\boldsymbol{\alpha}}_2\}\)</span>, it is logical to choose the estimator with the smaller variance, i.e., <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}_2\)</span> if <span class="math notranslate nohighlight">\(V\{\hat{\boldsymbol{\alpha}}_2\} \leq V\{\hat{\boldsymbol{\alpha}}_1\}\)</span>.</p>
+<p>While unbiasedness is a desirable property, it does not guarantee a realizable or optimal estimate.</p>
+<p>Sometimes biased estimators can achieve lower mean-squared error compared to unbiased ones.</p>
+<p>Indeed, there exist biased estimators with smaller mean-squared error compared to unbiased estimators, and these biased estimators can become asymptotically unbiased.</p>
+<p>Such biased estimators can be advantageous despite their bias.</p>
+<section id="chebyshev-s-inequality">
+<h2>Chebyshev’s Inequality<a class="headerlink" href="#chebyshev-s-inequality" title="Link to this heading">#</a></h2>
+<p>Chebyshev’s inequality is a fundamental result in probability theory that provides an upper bound on the probability that a random variable deviates from its mean by more than a certain amount.</p>
+<p>The theorem is stated as:</p>
+<p>Suppose that <span class="math notranslate nohighlight">\( \mathbf{x} \)</span> is a random variable with mean <span class="math notranslate nohighlight">\( \mu_{\mathbf{x}} \)</span> and variance <span class="math notranslate nohighlight">\( \sigma_{\mathbf{x}}^2 \)</span>. The probability that the random variable <span class="math notranslate nohighlight">\( {\mathbf{x}} \)</span> takes on a value that is removed from the mean by more than <span class="math notranslate nohighlight">\( x_0 \)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[ 
+\Pr(|\mathbf{x} - \mu_{\mathbf{x}}| \geq x_0) \leq \frac{\sigma_{\mathbf{x}}^2}{x_0^2}
+\]</div>
+<p>Apllying the Chebyshev’s inequality into estimation theorey, we have that, for an estimate <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}\)</span> (where the bold symbol indicates that it is a random variable) of a true parameter <span class="math notranslate nohighlight">\(\alpha\)</span> (the normal symbol indicating a specific value), Chebyshev’s inequality can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+\Pr\left(|\hat{\boldsymbol{\alpha}} - \alpha| &gt; \epsilon\right) &lt; \frac{V(\hat{\boldsymbol{\alpha}})}{\epsilon^2}
+}
+\]</div>
+<p>Here:</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(\Pr\left(|\hat{\boldsymbol{\alpha}} - \alpha| &gt; \epsilon\right)\)</span> is the probability that the estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}\)</span> deviates from the true value <span class="math notranslate nohighlight">\(\alpha\)</span> by more than a threshold <span class="math notranslate nohighlight">\(\epsilon\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(V(\hat{\boldsymbol{\alpha}})\)</span> represents the variance of the estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}\)</span>, defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+  V(\hat{\boldsymbol{\alpha}}) = E\left\{(\hat{\boldsymbol{\alpha}} - \alpha)^2\right\}
+  \]</div>
+<p>This is the expected value of the squared difference between the estimator and the true value, essentially measuring the spread or dispersion of the estimator around the true value.</p>
+</li>
+</ul>
+<p>The inequality shows that the probability of the estimator being far from the true value decreases as the variance of the estimator decreases.</p>
+<p>Therefore, to minimize the probability of large errors, we desire an estimator with a small variance.</p>
+</section>
+<section id="cramer-rao-lower-bound">
+<h2>Cramér-Rao Lower Bound<a class="headerlink" href="#cramer-rao-lower-bound" title="Link to this heading">#</a></h2>
+<p>In statistical estimation theory, the Cramér-Rao inequality provides a lower bound on the variance of any unbiased estimator of a parameter.</p>
+<p>It tells us how good an estimator can be in terms of its variance.</p>
+<p>Specifically, for an unbiased estimator <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}\)</span>, the variance <span class="math notranslate nohighlight">\(V(\hat{\boldsymbol{\alpha}})\)</span> must satisfy the following inequality:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+V(\hat{\boldsymbol{\alpha}}) \geq \frac{1}{-E\left\{\frac{\partial^2}{\partial\alpha^2}\ln p(\vec{y};\alpha) \right\}}
+}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(p(\vec{y};\alpha)\)</span> is the likelihood function, representing the probability of observing the data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> given the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{\partial^2}{\partial\alpha^2}\ln p(\vec{y};\alpha)\)</span> is the second derivative of the log-likelihood function with respect to the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>, which measures the curvature of the likelihood function.</p></li>
+<li><p>A higher curvature implies that small changes in <span class="math notranslate nohighlight">\(\alpha\)</span> lead to significant changes in the likelihood, meaning the parameter is estimated with high precision.</p></li>
+</ul>
+<p>The expected value of this curvature (in the denominator) quantifies the amount of information about <span class="math notranslate nohighlight">\(\alpha\)</span> that is contained in the data <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span>.</p>
+<p>The inverse of this quantity represents the smallest possible variance that any unbiased estimator can achieve—the Cramér-Rao lower bound.</p>
+<p><strong>Fisher Information <span class="math notranslate nohighlight">\(F(\alpha)\)</span></strong></p>
+<p>The lower bound of <span class="math notranslate nohighlight">\(V\{\hat{\boldsymbol{\alpha}}\}\)</span> can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[
+V\{\hat{\boldsymbol{\alpha}}\} \geq \frac{1}{-E\left\{\frac{\partial^2}{\partial \alpha^2} \ln p(y_1, \ldots, y_m; \alpha)\right\}}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( p(y_1, \ldots, y_m; \alpha) \)</span> is the probability density function of the observations.</p>
+<p>The denominator of the inequality is known as the Fisher information, denoted as <span class="math notranslate nohighlight">\( F(\alpha) \)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+F(\alpha) = -E\left\{\frac{\partial^2}{\partial \alpha^2} \ln p(y_1, \ldots, y_m; \alpha)\right\}
+\]</div>
+<p>Thus, we have</p>
+<div class="math notranslate nohighlight">
+\[
+V\{\hat{\boldsymbol{\alpha}}\} \geq F^{-1}(\alpha)
+\]</div>
+<p>A larger value of the Fisher information <span class="math notranslate nohighlight">\( F(\alpha) \)</span> implies that more information is known about the estimate, leading to a smaller variance.</p>
+</section>
+<section id="most-efficient-estimate">
+<h2>Most Efficient Estimate<a class="headerlink" href="#most-efficient-estimate" title="Link to this heading">#</a></h2>
+<p>An estimate <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}\)</span> that achieves the Cramér-Rao lower bound is considered the <em>most efficient</em> estimate because it has the minimum possible variance among all unbiased estimators.</p>
+<p>In practice, this means that the estimate is as close as possible to the true value <span class="math notranslate nohighlight">\(\alpha\)</span> given the available data, minimizing the spread of the estimator’s possible values around the true parameter.</p>
+<p>If an estimate achieves this bound, it is optimal in the sense of having the smallest variance, thus being the most reliable and precise estimator given the data.</p>
+</section>
+<section id="example-the-most-efficient-estimator-of-the-true-mean">
+<h2>Example: The Most Efficient Estimator of the True Mean<a class="headerlink" href="#example-the-most-efficient-estimator-of-the-true-mean" title="Link to this heading">#</a></h2>
+<p><strong>Problem</strong></p>
+<p>In this exmaple (based on [B2, Ex 10.3], we find the most efficient estimator of the true mean given the data that is the independent, normally distributed, random variables <span class="math notranslate nohighlight">\( \mathbf{y}_1, \dots, \mathbf{y}_m \)</span> with true mean <span class="math notranslate nohighlight">\( \mu \)</span> and variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>.</p>
+<p><strong>Solution</strong></p>
+<p>The sample mean <span class="math notranslate nohighlight">\( \bar{\mathbf{y}} \)</span> is an efficient estimate of the true mean <span class="math notranslate nohighlight">\( \mu \)</span>, as shown in the following argument.</p>
+<p><strong>Proof</strong></p>
+<p>The sample mean is unbiased (as shown in previous examples) and its variance is</p>
+<div class="math notranslate nohighlight">
+\[ 
+V\{\bar{\mathbf{y}}\} = \frac{\sigma^2}{m}
+\]</div>
+<p>The right-hand side of the Cramér-Rao inequality, i.e., <span class="math notranslate nohighlight">\( F^{-1}(\mu) \)</span>, is derived as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align*}
+\ln p(y_1, \dots, y_m; \mu) 
+&amp;= \ln \left[ \frac{1}{(2\pi\sigma^2)^{m/2}} \exp \left( -\frac{1}{2\sigma^2} \sum_{i=1}^{m} (y_i - \mu)^2 \right) \right] \\
+&amp;= -\frac{m}{2} \ln(2\pi\sigma^2) - \frac{1}{2\sigma^2} \sum_{i=1}^{m} (y_i - \mu)^2 \\
+&amp;= -\frac{m}{2} \ln(2\pi\sigma^2) - \frac{1}{2\sigma^2} \sum_{i=1}^{m} (y_i - \bar{y})^2 - \frac{m}{2\sigma^2}(\bar{y} - \mu)^2
+\end{align*}
+\end{split}\]</div>
+<p>Thus, we have</p>
+<div class="math notranslate nohighlight">
+\[
+F^{-1}(\mu) = \frac{1}{-E\left\{\frac{\partial^2}{\partial\mu^2} \ln p(y_1, \dots, y_m; \mu)\right\}} = \frac{-1}{E\left\{\frac{m}{2\sigma^2}(-2)\right\}} = \frac{\sigma^2}{m} 
+\]</div>
+<p>Thus, we have</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+V\{\hat{\boldsymbol{\alpha}}\} = F^{-1}(\alpha) = \frac{\sigma^2}{m}
+}
+\]</div>
+<p>Therefore, we have</p>
+<ul class="simple">
+<li><p>The inequality is satisfied with equality in this case.</p></li>
+<li><p>the sample mean <span class="math notranslate nohighlight">\( \bar{\mathbf{y}} \)</span> is a most efficient estimate for the true mean <span class="math notranslate nohighlight">\( \mu \)</span> of the distribution.</p></li>
+</ul>
+<p><strong>Discussion. Estimator vs Estimate</strong></p>
+<p>The term sample mean <span class="math notranslate nohighlight">\( \bar{\mathbf{y}} \)</span> can refer to both the estimator (the rule, the formula, or the method) and the estimate (the obtained value from the data). This dual usage is common in statistical discussions where the method and the result are closely related.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Parameters for the normal distribution</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># true mean</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># true standard deviation</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># sample size</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># number of samples to draw</span>
+
+<span class="c1"># Generate multiple samples and compute sample means</span>
+<span class="n">sample_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    <span class="n">sample_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+
+<span class="c1"># Empirical variance of the sample means</span>
+<span class="n">empirical_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Theoretical Cramér-Rao lower bound for the variance of the sample mean</span>
+<span class="n">theoretical_variance</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">m</span>
+
+<span class="c1"># Display the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Empirical Variance of Sample Means: </span><span class="si">{</span><span class="n">empirical_variance</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Theoretical Minimum Variance (Cramér-Rao Bound): </span><span class="si">{</span><span class="n">theoretical_variance</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plotting the distribution of the sample means</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;g&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Distribution of Sample Means&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Sample Mean&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Density&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Empirical Variance of Sample Means: 0.0797
+Theoretical Minimum Variance (Cramér-Rao Bound): 0.0800
+</pre></div>
+</div>
+<img alt="_images/91905f6b6b905420f96a47e69e78b89fe3ebccdf18384be8fbb906837d505ad7.png" src="_images/91905f6b6b905420f96a47e69e78b89fe3ebccdf18384be8fbb906837d505ad7.png" />
+</div>
+</div>
+</section>
+<section id="variance-of-the-sample-mean-as-a-function-of-the-number-of-data-samples">
+<h2>Variance of the sample mean as a function of the number of data samples<a class="headerlink" href="#variance-of-the-sample-mean-as-a-function-of-the-number-of-data-samples" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Parameters for the normal distribution</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># true mean</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># true standard deviation</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># number of samples to draw for each m</span>
+<span class="n">sample_sizes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>  <span class="c1"># different sample sizes</span>
+
+<span class="c1"># Initialize arrays to store variances</span>
+<span class="n">empirical_variances</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">theoretical_variances</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Calculate variances for different sample sizes</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">sample_sizes</span><span class="p">:</span>
+    <span class="n">sample_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">):</span>
+        <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+        <span class="n">sample_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+    
+    <span class="c1"># Empirical variance of the sample means</span>
+    <span class="n">empirical_variance</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">empirical_variances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">empirical_variance</span><span class="p">)</span>
+    
+    <span class="c1"># Theoretical minimum variance (Cramér-Rao bound)</span>
+    <span class="n">theoretical_variance</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">m</span>
+    <span class="n">theoretical_variances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">theoretical_variance</span><span class="p">)</span>
+
+<span class="c1"># Plotting the results</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">empirical_variances</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Empirical Variance of Sample Means&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">theoretical_variances</span><span class="p">,</span> <span class="s1">&#39;r--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;Theoretical Variance $\sigma^2 / m$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Sample Size (m)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Variance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Empirical Variance vs. Theoretical Minimum Variance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/bf1a4dca7b5aa0a87090fb073b006a3cc88c88f5cd34f915625c103e1316ca43.png" src="_images/bf1a4dca7b5aa0a87090fb073b006a3cc88c88f5cd34f915625c103e1316ca43.png" />
+</div>
+</div>
+</section>
+<section id="example-comparing-different-estimates">
+<h2>Example: Comparing Different Estimates<a class="headerlink" href="#example-comparing-different-estimates" title="Link to this heading">#</a></h2>
+<p>We consider: <strong>sample mean</strong>, <strong>median</strong>, <strong>trimmed mean</strong>, <strong>harmonic mean</strong>, or <strong>geometric mean</strong> as estimators of the true mean.</p>
+<p><strong>Median</strong></p>
+<p>The median is the value separating the higher half from the lower half of the sample. For a sample of size <span class="math notranslate nohighlight">\( m \)</span>:</p>
+<ul class="simple">
+<li><p>If <span class="math notranslate nohighlight">\( m \)</span> is odd, the median is the middle value when the sample is sorted.</p></li>
+<li><p>If <span class="math notranslate nohighlight">\( m \)</span> is even, the median is the average of the two middle values when the sample is sorted.</p></li>
+</ul>
+<p>Mathematically:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\text{Median} = 
+\begin{cases} 
+\mathbf{y}_{(\frac{m+1}{2})} &amp; \text{if } m \text{ is odd} \\
+\frac{1}{2} \left(\mathbf{y}_{(\frac{m}{2})} + \mathbf{y}_{(\frac{m}{2}+1)}\right) &amp; \text{if } m \text{ is even}
+\end{cases}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\( \mathbf{y}_{(i)} \)</span> denotes the <span class="math notranslate nohighlight">\( i \)</span>-th smallest value in the sorted sample.</p>
+<p><strong>Trimmed Mean</strong></p>
+<p>The trimmed mean is an average computed after removing a specified percentage of the smallest and largest values from the sample. For a <span class="math notranslate nohighlight">\( \lambda\%- \)</span> trimmed mean:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Trimmed Mean} = \frac{1}{m - 2k} \sum_{i=k+1}^{m-k} \mathbf{y}_{(i)}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \mathbf{y}_{(1)} \leq \mathbf{y}_{(2)} \leq \dots \leq \mathbf{y}_{(m)} \)</span> is the sorted sample.</p></li>
+<li><p><span class="math notranslate nohighlight">\( k = \left\lfloor \frac{\lambda \times m}{100} \right\rfloor \)</span> is the number of values trimmed from each end of the sample.</p></li>
+</ul>
+<p><strong>Harmonic Mean</strong></p>
+<p>The harmonic mean is the reciprocal of the arithmetic mean of the reciprocals of the sample values. It is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Harmonic Mean} = \frac{m}{\sum_{i=1}^{m} \frac{1}{\mathbf{y}_i}}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \mathbf{y}_i &gt; 0 \)</span> for all <span class="math notranslate nohighlight">\( i \)</span> (the harmonic mean is only defined for positive values).</p></li>
+<li><p><span class="math notranslate nohighlight">\( m \)</span> is the number of observations in the sample.</p></li>
+</ul>
+<p><strong>Geometric Mean</strong></p>
+<p>The geometric mean is the <span class="math notranslate nohighlight">\( m \)</span>-th root of the product of the sample values. It is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Geometric Mean} = \left(\prod_{i=1}^{m} \mathbf{y}_i\right)^{\frac{1}{m}}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \mathbf{y}_i &gt; 0 \)</span> for all <span class="math notranslate nohighlight">\( i \)</span> (the geometric mean is only defined for positive values).</p></li>
+<li><p><span class="math notranslate nohighlight">\( m \)</span> is the number of observations in the sample.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">hmean</span><span class="p">,</span> <span class="n">gmean</span>
+
+<span class="c1"># Parameters for the normal distribution</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mi">5</span>  <span class="c1"># true mean</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># true standard deviation</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">50</span>  <span class="c1"># sample size</span>
+<span class="n">n_samples</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># number of samples to draw</span>
+
+<span class="c1"># Initialize arrays to store the estimators</span>
+<span class="n">sample_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="n">medians</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="n">trimmed_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_samples</span><span class="p">)</span>
+<span class="n">harmonic_means</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">geometric_means</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># Generate samples and compute the estimators</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_samples</span><span class="p">):</span>
+    <span class="n">sample</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    
+    <span class="c1"># Compute the estimators that don&#39;t require positive-only values</span>
+    <span class="n">sample_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+    <span class="n">medians</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+    <span class="n">trimmed_means</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">sample</span><span class="p">)[</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.1</span><span class="o">*</span><span class="n">m</span><span class="p">):</span><span class="nb">int</span><span class="p">(</span><span class="mf">0.9</span><span class="o">*</span><span class="n">m</span><span class="p">)])</span>  <span class="c1"># 10% trimmed mean</span>
+    
+    <span class="c1"># Check for positive values before calculating the harmonic and geometric means</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">all</span><span class="p">(</span><span class="n">sample</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">harmonic_means</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">hmean</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
+        <span class="n">geometric_means</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">gmean</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
+
+<span class="c1"># Convert harmonic_means and geometric_means to numpy arrays</span>
+<span class="n">harmonic_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">harmonic_means</span><span class="p">)</span>
+<span class="n">geometric_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">geometric_means</span><span class="p">)</span>
+
+<span class="c1"># Compute the empirical variances of the estimators</span>
+<span class="n">variance_sample_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">variance_median</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">medians</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">variance_trimmed_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">trimmed_means</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">variance_harmonic_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">harmonic_means</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">harmonic_means</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">variance_geometric_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">geometric_means</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">geometric_means</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+<span class="c1"># Theoretical variance of the sample mean (Cramér-Rao lower bound)</span>
+<span class="n">theoretical_variance</span> <span class="o">=</span> <span class="n">sigma</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="n">m</span>
+
+<span class="c1"># Print the results</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Empirical Variance of Sample Mean: </span><span class="si">{</span><span class="n">variance_sample_mean</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Empirical Variance of Median: </span><span class="si">{</span><span class="n">variance_median</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Empirical Variance of Trimmed Mean: </span><span class="si">{</span><span class="n">variance_trimmed_mean</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Empirical Variance of Harmonic Mean: </span><span class="si">{</span><span class="n">variance_harmonic_mean</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Empirical Variance of Geometric Mean: </span><span class="si">{</span><span class="n">variance_geometric_mean</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Theoretical Minimum Variance (Cramér-Rao Bound): </span><span class="si">{</span><span class="n">theoretical_variance</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Visualizing the variances</span>
+<span class="n">estimators</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Sample Mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Median&#39;</span><span class="p">,</span> <span class="s1">&#39;Trimmed Mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Harmonic Mean&#39;</span><span class="p">,</span> <span class="s1">&#39;Geometric Mean&#39;</span><span class="p">]</span>
+<span class="n">variances</span> <span class="o">=</span> <span class="p">[</span><span class="n">variance_sample_mean</span><span class="p">,</span> <span class="n">variance_median</span><span class="p">,</span> <span class="n">variance_trimmed_mean</span><span class="p">,</span> <span class="n">variance_harmonic_mean</span><span class="p">,</span> <span class="n">variance_geometric_mean</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">bars</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">estimators</span><span class="p">,</span> <span class="n">variances</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;purple&#39;</span><span class="p">,</span> <span class="s1">&#39;cyan&#39;</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">theoretical_variance</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;Cramér-Rao Lower Bound: </span><span class="si">{</span><span class="n">theoretical_variance</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Add the variance value on top of each bar</span>
+<span class="k">for</span> <span class="n">bar</span><span class="p">,</span> <span class="n">variance</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bars</span><span class="p">,</span> <span class="n">variances</span><span class="p">):</span>
+    <span class="n">yval</span> <span class="o">=</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">bar</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">bar</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">yval</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">variance</span><span class="si">:</span><span class="s1">.4f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Variance&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Variance of Different Estimators of the Mean&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Empirical Variance of Sample Mean: 0.0800
+Empirical Variance of Median: 0.1267
+Empirical Variance of Trimmed Mean: 0.0856
+Empirical Variance of Harmonic Mean: 0.6262
+Empirical Variance of Geometric Mean: 0.1141
+Theoretical Minimum Variance (Cramér-Rao Bound): 0.0800
+</pre></div>
+</div>
+<img alt="_images/22b1e8ced7b54a9eeaa32a7eb610bd4c6571d57cf18527e3bb6bf715e8d6e1f9.png" src="_images/22b1e8ced7b54a9eeaa32a7eb610bd4c6571d57cf18527e3bb6bf715e8d6e1f9.png" />
+</div>
+</div>
+<p><strong>Discussion. Numerical Error in Simulation</strong></p>
+<ul class="simple">
+<li><p>The empirical variance of the sample mean sometimes being slightly lower than the theoretical Cramér-Rao bound, e.g., Empirical Variance of Sample Mean = <span class="math notranslate nohighlight">\(0.0795\)</span> while Theoretical Minimum Variance (Cramér-Rao Bound) = <span class="math notranslate nohighlight">\(0.0800\)</span>.</p></li>
+<li><p>This can occur due to the nature of statistical estimation and the <em>finite</em> number of samples used to compute the empirical variance.</p></li>
+<li><p>The small difference between the empirical variance and the Cramér-Rao bound is normal and expected in practical simulations.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c3_s6_sufficient_statistic.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Estimators Based on Sufficient Statistics</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c3_s8_consistent_estimator.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Consistent Estimates</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chebyshev-s-inequality">Chebyshev’s Inequality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cramer-rao-lower-bound">Cramér-Rao Lower Bound</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#most-efficient-estimate">Most Efficient Estimate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-the-most-efficient-estimator-of-the-true-mean">Example: The Most Efficient Estimator of the True Mean</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-the-sample-mean-as-a-function-of-the-number-of-data-samples">Variance of the sample mean as a function of the number of data samples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-comparing-different-estimates">Example: Comparing Different Estimates</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

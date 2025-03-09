@@ -1,0 +1,1159 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Functions of A Random Variable &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pr_c3_s0_functions_of_RV';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Generating Random Variables from a Uniform Distribution" href="pr_c3_s1_generation_RV_from_Uniform.html" />
+    <link rel="prev" title="Real Scalar Gaussian Random Variable" href="pr_c2_s1_real_Gaussian_RV_scalar.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Functions of A Random Variable</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Functions of A Random Variable</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation">Expectation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notations-for-expected-value">Notations for Expected Value:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-as-function-of-the-pdf">Interpretation as Function of the PDF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-for-discrete-random-variables">Expectation for Discrete Random Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-expectation-operator">Properties of the Expectation Operator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-1-linearity-of-expectation">Property 1: Linearity of Expectation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-to-multiple-random-variables">Extension to Multiple Random Variables</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-2-statistical-independence">Property 2: Statistical Independence</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generalization-to-multiple-random-variables">Generalization to Multiple Random Variables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-condition">Independence Condition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-values-of-functions-of-random-variables">Expected Values of Functions of Random Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-of-expectation">Linearity of Expectation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moments">Moments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zeroth-moment">Zeroth Moment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commonly-used-moments">Commonly Used Moments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-moments">Central Moments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-expected-values">Conditional Expected Values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-expectation-of-a-function-of-a-rv">Conditional Expectation of a Function of a RV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristic-functions">Characteristic Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">Use Cases</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-generating-functions">Probability Generating Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-the-mean-using-the-pgf">Deriving the Mean Using the PGF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-derivatives-and-factorial-moments">Higher-Order Derivatives and Factorial Moments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moment-generating-functions">Moment Generating Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derive-the-pdf-from-the-mgf">Derive the PDF from the MGF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moments-from-the-mgf">Moments from the MGF</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="functions-of-a-random-variable">
+<h1>Functions of A Random Variable<a class="headerlink" href="#functions-of-a-random-variable" title="Link to this heading">#</a></h1>
+<section id="expectation">
+<h2>Expectation<a class="headerlink" href="#expectation" title="Link to this heading">#</a></h2>
+<p><strong>Expectation Overview</strong><br />
+The probability density function (PDF), <span class="math notranslate nohighlight">\( f_X(x) \)</span>, provides a complete statistical description of a continuous random variable (RV), <span class="math notranslate nohighlight">\( X \)</span>. While this level of detail is comprehensive, it often exceeds practical requirements. For most real-world scenarios, simpler measures, such as statistical averages, provide sufficient information for characterizing the behavior of <span class="math notranslate nohighlight">\( X \)</span>. Among these, the focus is placed on the <strong>first-order average</strong>, known as the expected value or mean, due to its practical relevance. Higher-order averages, such as variance and covariance, are explored separately.</p>
+<p><strong>Definition of the Mean</strong><br />
+The expected value or mean of a continuous random variable <span class="math notranslate nohighlight">\( X \)</span> is a measure of its central tendency. It is mathematically defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\mu_X = \mathbb{E}[X] = \int_{-\infty}^{\infty} x f_X(x) dx
+}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \mu_X \)</span> represents the mean.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathbb{E}[X] \)</span> denotes the expectation or averaging operator.</p></li>
+<li><p><span class="math notranslate nohighlight">\( f_X(x) \)</span> is the PDF of <span class="math notranslate nohighlight">\( X \)</span>.</p></li>
+</ul>
+<p>The mean (or expected value) serves as a foundational concept in probability and statistics due to its wide application in summarizing data and modeling real-world phenomena.</p>
+<section id="notations-for-expected-value">
+<h3>Notations for Expected Value:<a class="headerlink" href="#notations-for-expected-value" title="Link to this heading">#</a></h3>
+<p>The terms <strong>average</strong>, <strong>mean</strong>, <strong>expectation</strong>, and <strong>first moment</strong> are synonymous and represent the same concept of <strong>expected value</strong>. These terms will be used interchangeably, as they all describe the measure of the central tendency of a random variable (RV).</p>
+<ol class="arabic simple">
+<li><p><strong>Common Notations</strong>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \mathbb{E}[X] \)</span>: The expectation operator applied to a random variable <span class="math notranslate nohighlight">\( X \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mu_X \)</span>: The mean or expected value of <span class="math notranslate nohighlight">\( X \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \overline{X} \)</span>: Another notation indicating the mean or expected value.</p></li>
+</ul>
+</li>
+<li><p><strong>Consistency Across Representations</strong>:<br />
+Each of these notations communicates the same concept but may be used in different contexts for clarity, convenience, or alignment with specific conventions.</p></li>
+</ol>
+</section>
+<section id="interpretation-as-function-of-the-pdf">
+<h3>Interpretation as Function of the PDF<a class="headerlink" href="#interpretation-as-function-of-the-pdf" title="Link to this heading">#</a></h3>
+<p>The <strong>expectation operator</strong> <span class="math notranslate nohighlight">\( \mathbb{E} \)</span>, when applied to a continuous random variable <span class="math notranslate nohighlight">\( X \)</span>, yields a <strong>unique scalar value</strong>. This value is computed using the probability density function <span class="math notranslate nohighlight">\( f_X(x) \)</span> of <span class="math notranslate nohighlight">\( X \)</span>, as shown by:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}[X] = \int_{-\infty}^\infty x f_X(x) dx
+\]</div>
+<p>This highlights that the expected value is inherently tied to the distribution of the random variable and summarizes its central location based on the probabilities of different outcomes.</p>
+</section>
+</section>
+<section id="expectation-for-discrete-random-variables">
+<h2>Expectation for Discrete Random Variables<a class="headerlink" href="#expectation-for-discrete-random-variables" title="Link to this heading">#</a></h2>
+<p>For a discrete random variable (RV), the probability density function (PDF) is expressed in terms of the <strong>probability mass function (PMF)</strong> using the delta function:</p>
+<div class="math notranslate nohighlight">
+\[
+f_X(x) = \sum_{k} p_X(x_k) \delta(x - x_k),
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( p_X(x_k) \)</span> represents the PMF, assigning probabilities to the discrete values <span class="math notranslate nohighlight">\( x_k \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \delta(x - x_k) \)</span> is the delta function that isolates contributions at the specific points <span class="math notranslate nohighlight">\( x_k \)</span>.</p></li>
+</ul>
+<p><strong>Definition of Expected Value for Discrete RVs</strong><br />
+The expected value, or mean, of a discrete RV <span class="math notranslate nohighlight">\( X \)</span>, is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\mathbb{E}[X] = \sum_{k} x_k p_X(x_k),
+}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( x_k \)</span>: Possible values of the RV <span class="math notranslate nohighlight">\( X \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( p_X(x_k) \)</span>: The probability mass associated with <span class="math notranslate nohighlight">\( x_k \)</span>.</p></li>
+</ul>
+<p>We can interpret this definition as the expected value of a discrete RV is a <strong>weighted average</strong> of its possible values, with the probabilities <span class="math notranslate nohighlight">\( p_X(x_k) \)</span> serving as the weights. Each <span class="math notranslate nohighlight">\( x_k \)</span> contributes to the expected value proportionally to how likely it is to occur.</p>
+<p><strong>Notes on the Existence of Expected Value</strong><br />
+The expected value of a random variable exists only if the summation <span class="math notranslate nohighlight">\( \sum_{k} x_k p_X(x_k) \)</span> converges, meaning the series does not diverge. This depends on the specific values of <span class="math notranslate nohighlight">\( x_k \)</span> and their associated probabilities <span class="math notranslate nohighlight">\( p_X(x_k) \)</span>.</p>
+</section>
+<section id="properties-of-the-expectation-operator">
+<h2>Properties of the Expectation Operator<a class="headerlink" href="#properties-of-the-expectation-operator" title="Link to this heading">#</a></h2>
+<section id="property-1-linearity-of-expectation">
+<h3>Property 1: Linearity of Expectation<a class="headerlink" href="#property-1-linearity-of-expectation" title="Link to this heading">#</a></h3>
+<p>The <strong>linearity property</strong> of the expectation operator states that the expected value of the sum of random variables (RVs) is equal to the sum of their individual expected values. Mathematically, this is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}[X + Y] = \mathbb{E}[X] + \mathbb{E}[Y]
+\]</div>
+<section id="extension-to-multiple-random-variables">
+<h4>Extension to Multiple Random Variables<a class="headerlink" href="#extension-to-multiple-random-variables" title="Link to this heading">#</a></h4>
+<p>This property can be generalized to the sum of multiple random variables using the principle of induction:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\mathbb{E}\left[\sum_{i=1}^{n} X_i\right] = \sum_{i=1}^{n} \mathbb{E}[X_i]
+}
+\]</div>
+<p>This interpret that the <strong>expectation operator distributes over addition</strong>, making it a highly convenient tool in statistical analysis. It can be interpret in simple terms:</p>
+<p><em>The expectation of a sum of RVs is equal to the sum of their individual expectations.</em></p>
+<p>This property is valid for both discrete and continuous random variables, regardless of whether the variables are dependent or independent. It facilitates a number of statistical and probabilistic analyses, such as finding the mean of a combined random process.</p>
+</section>
+</section>
+<section id="property-2-statistical-independence">
+<h3>Property 2: Statistical Independence<a class="headerlink" href="#property-2-statistical-independence" title="Link to this heading">#</a></h3>
+<p>The <strong>statistical independence</strong> of random variables (RVs) leads to a simplification of the expectation of their product. If <span class="math notranslate nohighlight">\( X \)</span> and <span class="math notranslate nohighlight">\( Y \)</span> are independent, the expectation of their product <span class="math notranslate nohighlight">\( Z = XY \)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}[XY] = \mathbb{E}[X] \mathbb{E}[Y].
+\]</div>
+<section id="generalization-to-multiple-random-variables">
+<h4>Generalization to Multiple Random Variables<a class="headerlink" href="#generalization-to-multiple-random-variables" title="Link to this heading">#</a></h4>
+<p>This property extends to the product of multiple independent random variables. By induction, for independent <span class="math notranslate nohighlight">\( X_1, X_2, \dots, X_n \)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\mathbb{E}\left[\prod_{i=1}^{n} X_i\right] = \prod_{i=1}^{n} \mathbb{E}[X_i].
+}
+\]</div>
+<p>We can interpret this property as the <strong>expectation of the product of independent RVs equals the product of their individual expectations</strong>.</p>
+<p>This result is foundational in probability theory and has wide applications, particularly in communication systems and machine learning, where independence assumptions often simplify computations.</p>
+</section>
+<section id="independence-condition">
+<h4>Independence Condition<a class="headerlink" href="#independence-condition" title="Link to this heading">#</a></h4>
+<p>The property holds <strong>only when the random variables are statistically independent</strong>, meaning the joint probability distribution of <span class="math notranslate nohighlight">\( X_1, X_2, \dots, X_n \)</span> can be factored into the product of their individual distributions:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(X_1, X_2, \dots, X_n) = \prod_{i=1}^{n} \Pr(X_i).
+\]</div>
+</section>
+</section>
+</section>
+<section id="expected-values-of-functions-of-random-variables">
+<h2>Expected Values of Functions of Random Variables<a class="headerlink" href="#expected-values-of-functions-of-random-variables" title="Link to this heading">#</a></h2>
+<p><strong>Definition</strong><br />
+For a random variable (RV) <span class="math notranslate nohighlight">\( X \)</span>, the expected value of a function <span class="math notranslate nohighlight">\( g(X) \)</span> is a generalization of the concept of expectation. It represents the average or mean value of the function <span class="math notranslate nohighlight">\( g(X) \)</span> weighted by the probability distribution of <span class="math notranslate nohighlight">\( X \)</span>.</p>
+<p><strong>For Continuous RVs</strong><br />
+If <span class="math notranslate nohighlight">\( X \)</span> is a continuous RV with probability density function (PDF) <span class="math notranslate nohighlight">\( f_X(x) \)</span>, the expected value of <span class="math notranslate nohighlight">\( g(X) \)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\mathbb{E}[g(X)] = \int_{-\infty}^{\infty} g(x) f_X(x) dx.
+}
+\]</div>
+<p><strong>For Discrete RVs</strong><br />
+If <span class="math notranslate nohighlight">\( X \)</span> is a discrete RV with probability mass function (PMF) <span class="math notranslate nohighlight">\( p_X(x_k) \)</span>, the expected value of <span class="math notranslate nohighlight">\( g(X) \)</span> becomes:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}[g(X)] = \sum_{k} g(x_k) p_X(x_k).
+\]</div>
+<p>We can see that the expectation <span class="math notranslate nohighlight">\( \mathbb{E}[g(X)] \)</span> calculates the <em>weighted average</em> of the function <span class="math notranslate nohighlight">\( g(X) \)</span>, where the <em>weights</em> correspond to the probabilities of <span class="math notranslate nohighlight">\( X \)</span>.</p>
+<p>This generalized expectation forms the basis for analyzing transformations of random variables and for deriving key statistical measures, such as variance, moments, and covariance, by appropriately choosing <span class="math notranslate nohighlight">\( g(X) \)</span>.</p>
+</section>
+<section id="linearity-of-expectation">
+<h2>Linearity of Expectation<a class="headerlink" href="#linearity-of-expectation" title="Link to this heading">#</a></h2>
+<p>The expectation operator is inherently <strong>linear</strong>, meaning it satisfies specific properties when applied to linear combinations of random variables or functions.</p>
+<p><strong>Theorem: Expectation of a Linear Function</strong><br />
+For any constants <span class="math notranslate nohighlight">\( a \)</span> and <span class="math notranslate nohighlight">\( b \)</span>, the expected value of a linear transformation <span class="math notranslate nohighlight">\( aX + b \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\mathbb{E}[aX + b] = a\mathbb{E}[X] + b.
+}
+\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p>The constant <span class="math notranslate nohighlight">\( a \)</span> scales the expectation of <span class="math notranslate nohighlight">\( X \)</span>.</p></li>
+<li><p>The constant <span class="math notranslate nohighlight">\( b \)</span> adds a fixed value to the result, reflecting the shift in the distribution.</p></li>
+</ul>
+<p><strong>Expectation of a Sum of Functions</strong><br />
+If a function <span class="math notranslate nohighlight">\( g(x) \)</span> can be expressed as a sum of <span class="math notranslate nohighlight">\( N \)</span> component functions, <span class="math notranslate nohighlight">\( g(x) = g_1(x) + g_2(x) + \dots + g_N(x) \)</span>, then:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}\left[\sum_{k=1}^{N} g_k(X)\right] = \sum_{k=1}^{N} \mathbb{E}[g_k(X)].
+\]</div>
+<p>This property extends the linearity of expectation to sums of arbitrary functions of the random variable <span class="math notranslate nohighlight">\( X \)</span>.</p>
+<p>We can see that expectation is a <strong>linear operation</strong>, meaning it can be interchanged with addition and scalar multiplication. This simplifies computations and forms the foundation for many probabilistic and statistical analyses.</p>
+</section>
+<section id="moments">
+<h2>Moments<a class="headerlink" href="#moments" title="Link to this heading">#</a></h2>
+<p><strong>Definition of Moments</strong><br />
+The <strong><span class="math notranslate nohighlight">\( n \)</span>-th moment</strong> of a random variable (RV) <span class="math notranslate nohighlight">\( X \)</span> provides a measure of the distribution’s shape by considering powers of <span class="math notranslate nohighlight">\( X \)</span>.</p>
+<p>Moments are mathematically defined as follows:</p>
+<ul>
+<li><p><strong>For Continuous Random Variables</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   \mathbb{E}[X^n] = \int_{-\infty}^{\infty} x^n f_X(x) dx,
+   \]</div>
+<p>where <span class="math notranslate nohighlight">\( f_X(x) \)</span> is the probability density function (PDF) of <span class="math notranslate nohighlight">\( X \)</span>.</p>
+</li>
+<li><p><strong>For Discrete Random Variables</strong></p>
+<div class="math notranslate nohighlight">
+\[
+   \mathbb{E}[X^n] = \sum_{k} x_k^n p_X(x_k),
+   \]</div>
+<p>where <span class="math notranslate nohighlight">\( p_X(x_k) \)</span> is the probability mass function (PMF).</p>
+</li>
+</ul>
+<section id="zeroth-moment">
+<h3>Zeroth Moment<a class="headerlink" href="#zeroth-moment" title="Link to this heading">#</a></h3>
+<p>The <strong>zeroth moment</strong> represents the <strong>total area under the PDF</strong>, which must equal 1 for any valid probability distribution:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}[X^0] = \int_{-\infty}^{\infty} f_X(x) dx = 1.
+\]</div>
+</section>
+<section id="commonly-used-moments">
+<h3>Commonly Used Moments<a class="headerlink" href="#commonly-used-moments" title="Link to this heading">#</a></h3>
+<ol class="arabic">
+<li><p><strong>First Moment (Mean)</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \mathbb{E}[X] = \mu_X.
+   \]</div>
+<ul class="simple">
+<li><p>Represents the <strong>central tendency</strong> of the distribution.</p></li>
+<li><p>For symmetric distributions, like noise centered around zero, the mean is zero, indicating no bias.</p></li>
+</ul>
+</li>
+<li><p><strong>Second Moment (Mean Squared Value)</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \mathbb{E}[X^2].
+   \]</div>
+<ul class="simple">
+<li><p>Measures the <strong>average squared value</strong> of <span class="math notranslate nohighlight">\( X \)</span>.</p></li>
+<li><p>For noise, this provides a measure of its <strong>strength</strong> or <strong>energy</strong>.</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Example: Noise Distribution</strong><br />
+If <span class="math notranslate nohighlight">\( X \)</span> represents a noise waveform:</p>
+<ul class="simple">
+<li><p>A <strong>zero mean</strong> (<span class="math notranslate nohighlight">\( \mathbb{E}[X] = 0 \)</span>) indicates that the noise is symmetric and unbiased.</p></li>
+<li><p>The <strong>second moment</strong> (<span class="math notranslate nohighlight">\( \mathbb{E}[X^2] \)</span>) quantifies the noise’s strength or power.</p></li>
+</ul>
+<p>It is noted that moments are critical in characterizing distributions:</p>
+<ul class="simple">
+<li><p>The <strong>first moment</strong> describes the location (mean).</p></li>
+<li><p>The <strong>second moment</strong> relates to variability or spread (variance is derived from it).</p></li>
+<li><p>Higher-order moments provide insights into <em>skewness</em> and <em>kurtosis</em>.</p></li>
+</ul>
+</section>
+</section>
+<section id="central-moments">
+<h2>Central Moments<a class="headerlink" href="#central-moments" title="Link to this heading">#</a></h2>
+<p>Central moments help characterize the variability or randomness of a random variable (RV) more effectively, especially in cases where the RV <span class="math notranslate nohighlight">\( Y \)</span> combines a deterministic part <span class="math notranslate nohighlight">\( a \)</span> and a random part <span class="math notranslate nohighlight">\( X \)</span>, such as:</p>
+<div class="math notranslate nohighlight">
+\[
+Y = a + X.
+\]</div>
+<p>If the random part <span class="math notranslate nohighlight">\( X \)</span> is small compared to the deterministic part <span class="math notranslate nohighlight">\( a \)</span>, the moments of <span class="math notranslate nohighlight">\( Y \)</span> are dominated by the fixed part (<span class="math notranslate nohighlight">\( a \)</span>). In such cases, central moments are used to focus on the random fluctuations by subtracting the mean.</p>
+<p><strong>Definition of Central Moments</strong><br />
+The <span class="math notranslate nohighlight">\( n \)</span>-th central moment of a random variable <span class="math notranslate nohighlight">\( X \)</span> is defined as:</p>
+<ul>
+<li><p><strong>For Continuous RVs</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \mathbb{E}[(X - \mu_X)^n] = \int_{-\infty}^{\infty} (x - \mu_X)^n f_X(x) dx,
+   \]</div>
+<p>where <span class="math notranslate nohighlight">\( \mu_X \)</span> is the mean (<span class="math notranslate nohighlight">\( \mathbb{E}[X] \)</span>) of <span class="math notranslate nohighlight">\( X \)</span>.</p>
+</li>
+<li><p><strong>For Discrete RVs</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+   \mathbb{E}[(X - \mu_X)^n] = \sum_{k} (x_k - \mu_X)^n p_X(x_k),
+   \]</div>
+<p>where <span class="math notranslate nohighlight">\( p_X(x_k) \)</span> is the probability mass function (PMF) of <span class="math notranslate nohighlight">\( X \)</span>.</p>
+</li>
+</ul>
+<p>This can be interpreted as:</p>
+<ul class="simple">
+<li><p><strong>Subtracting the Mean</strong>: By subtracting <span class="math notranslate nohighlight">\( \mu_X \)</span> (the mean), central moments remove the bias introduced by the location of the distribution. This ensures that the higher moments reflect variability around the mean.</p></li>
+<li><p><strong>Zeroth Central Moment</strong>: The zeroth central moment equals the total probability, which is always 1 for a valid probability distribution.</p></li>
+<li><p><strong>Higher-Order Central Moments</strong>:</p>
+<ul>
+<li><p>The <strong>second central moment</strong> (<span class="math notranslate nohighlight">\( \mathbb{E}[(X - \mu_X)^2] \)</span>) is the <strong>variance</strong>, a measure of the spread or dispersion of the distribution.</p></li>
+<li><p>Higher-order central moments provide insights into features like skewness (asymmetry) and kurtosis (peakedness).</p></li>
+</ul>
+</li>
+</ul>
+<p>Central moments are particularly useful when studying distributions where the mean does not adequately capture the randomness or variability. They are fundamental in noise analysis, signal processing, and statistical characterization of <em>random processes</em>.</p>
+</section>
+<section id="conditional-expected-values">
+<h2>Conditional Expected Values<a class="headerlink" href="#conditional-expected-values" title="Link to this heading">#</a></h2>
+<p><strong>Definition</strong><br />
+The <strong>conditional expected value</strong> of a random variable (RV) provides the average value of the RV under the condition that a specific event <span class="math notranslate nohighlight">\( A \)</span> has occurred. It adjusts the expectation by weighting the possible values of the RV based on the <strong>conditional probability distribution</strong>.</p>
+<ul>
+<li><p><strong>For Continuous Random Variables</strong>:
+If <span class="math notranslate nohighlight">\( X \)</span> is a continuous RV, the conditional expected value is:</p>
+<div class="math notranslate nohighlight">
+\[
+   \mathbb{E}[X|A] = \int_{-\infty}^{\infty} x f_{X|A}(x) dx,
+   \]</div>
+<p>where <span class="math notranslate nohighlight">\( f_{X|A}(x) \)</span> is the <strong>conditional probability density function (PDF)</strong> of <span class="math notranslate nohighlight">\( X \)</span>, given <span class="math notranslate nohighlight">\( A \)</span>.</p>
+</li>
+<li><p><strong>For Discrete Random Variables</strong>:
+If <span class="math notranslate nohighlight">\( X \)</span> is a discrete RV, the conditional expected value is:</p>
+<div class="math notranslate nohighlight">
+\[
+   \mathbb{E}[X|A] = \sum_{k} x_k p_{X|A}(x_k),
+   \]</div>
+<p>where <span class="math notranslate nohighlight">\( p_{X|A}(x_k) \)</span> is the <strong>conditional probability mass function (PMF)</strong> of <span class="math notranslate nohighlight">\( X \)</span>, given <span class="math notranslate nohighlight">\( A \)</span>.</p>
+</li>
+</ul>
+<section id="conditional-expectation-of-a-function-of-a-rv">
+<h3>Conditional Expectation of a Function of a RV<a class="headerlink" href="#conditional-expectation-of-a-function-of-a-rv" title="Link to this heading">#</a></h3>
+<p>The conditional expectation extends naturally to functions of a random variable. For a function <span class="math notranslate nohighlight">\( g(X) \)</span>:</p>
+<ul>
+<li><p><strong>Continuous RV</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+  \mathbb{E}[g(X)|A] = \int_{-\infty}^{\infty} g(x) f_{X|A}(x) dx.
+  \]</div>
+</li>
+<li><p><strong>Discrete RV</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+  \mathbb{E}[g(X)|A] = \sum_{k} g(x_k) p_{X|A}(x_k).
+  \]</div>
+</li>
+</ul>
+<p>It is noted that the conditional expectation is computed similarly to regular expectation but uses the <strong>conditional PDF or PMF</strong> instead of the marginal distributions. It effectively recalculates the average value based on the knowledge that event <span class="math notranslate nohighlight">\( A \)</span> has occurred.</p>
+<p>Main applications are:</p>
+<ul class="simple">
+<li><p><strong>Probabilistic Modeling</strong>: Useful for updating predictions when new information (event <span class="math notranslate nohighlight">\( A \)</span>) is available.</p></li>
+<li><p><strong>Bayesian Inference</strong>: Forms the basis of posterior expectations.</p></li>
+<li><p><strong>Signal Processing</strong>: Helps in filtering and prediction of signals with known prior events.</p></li>
+</ul>
+</section>
+</section>
+<section id="characteristic-functions">
+<h2>Characteristic Functions<a class="headerlink" href="#characteristic-functions" title="Link to this heading">#</a></h2>
+<p>The <strong>characteristic function</strong> of a random variable (RV) is a mathematical tool closely related to the <strong>Fourier transform</strong> of the probability density function (PDF). It provides a <strong>frequency-domain representation</strong> of the RV, offering an alternative perspective on its statistical properties.</p>
+<p><strong>Definition</strong><br />
+The characteristic function of a random variable <span class="math notranslate nohighlight">\( X \)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\Phi_X(\omega) = \mathbb{E}[e^{j\omega X}] = \int_{-\infty}^{\infty} e^{j\omega x} f_X(x) dx,
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \omega \)</span> is the frequency variable.</p></li>
+<li><p><span class="math notranslate nohighlight">\( f_X(x) \)</span> is the PDF of <span class="math notranslate nohighlight">\( X \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \mathbb{E}[\cdot] \)</span> represents the expectation operator.</p></li>
+</ul>
+<p>We can see that:</p>
+<ul>
+<li><p><strong>Connection to Fourier Transform</strong>:</p>
+<ul class="simple">
+<li><p>The characteristic function <span class="math notranslate nohighlight">\( \Phi_X(\omega) \)</span> resembles the Fourier transform of the PDF <span class="math notranslate nohighlight">\( f_X(x) \)</span>.</p></li>
+<li><p>In electrical engineering literature, the Fourier transform of <span class="math notranslate nohighlight">\( f_X(x) \)</span> is typically expressed as <span class="math notranslate nohighlight">\( \Phi_X(-\omega) \)</span>.</p></li>
+</ul>
+</li>
+<li><p><strong>Inverse Relationship</strong>:</p>
+<ul>
+<li><p>The PDF <span class="math notranslate nohighlight">\( f_X(x) \)</span> can be recovered from its characteristic function <span class="math notranslate nohighlight">\( \Phi_X(\omega) \)</span> using the <strong>inverse Fourier transform</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+     f_X(x) = \frac{1}{2\pi} \int_{-\infty}^{\infty} e^{-j\omega x} \Phi_X(\omega) d\omega.
+     \]</div>
+</li>
+</ul>
+</li>
+</ul>
+<section id="use-cases">
+<h3>Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Analysis of RVs</strong>:</p>
+<ul>
+<li><p>Characteristic functions are useful for analyzing the properties of random variables, such as moments and distributions.</p></li>
+</ul>
+</li>
+<li><p><strong>Simplifying Operations</strong>:</p>
+<ul>
+<li><p>Operations such as sums of independent random variables become straightforward in the frequency domain because the characteristic functions of the summed variables multiply.</p></li>
+</ul>
+</li>
+<li><p><strong>Frequency-Domain Perspective</strong>:</p>
+<ul>
+<li><p>While <span class="math notranslate nohighlight">\( \omega \)</span> does not represent a physical frequency, the frequency-domain representation provides insights into the distribution’s behavior, such as its spread and symmetry.</p></li>
+</ul>
+</li>
+</ul>
+<p>In short, characteristic functions offer a Fourier-based approach to analyzing random variables, providing a bridge between the time-domain representation (PDF) and the frequency domain. Through the inverse Fourier transform, all information about the random variable’s PDF is preserved and can be recovered.</p>
+</section>
+</section>
+<section id="probability-generating-functions">
+<h2>Probability Generating Functions<a class="headerlink" href="#probability-generating-functions" title="Link to this heading">#</a></h2>
+<p><strong>Connection to Signal Analysis</strong></p>
+<ul class="simple">
+<li><p>In signal analysis, <strong>Fourier transforms</strong> are widely used for analyzing continuous-time signals, while the <strong>z-transform</strong> is the standard tool for discrete-time signals.</p></li>
+<li><p>Similarly, in probability theory:</p>
+<ul>
+<li><p>The <strong>characteristic function</strong> serves as a Fourier-like tool for continuous random variables (RVs).</p></li>
+<li><p>The <strong>probability generating function (PGF)</strong> plays an analogous role for discrete RVs, offering a convenient way to work with their distributions.</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>Definition of PGF</strong><br />
+The <strong>probability generating function (PGF)</strong> of a discrete random variable <span class="math notranslate nohighlight">\( X \)</span> with a probability mass function (PMF) <span class="math notranslate nohighlight">\( p_X(k) \)</span>, defined for nonnegative integers <span class="math notranslate nohighlight">\( k = 0, 1, 2, \dots \)</span>, is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+H_X(z) = \sum_{k=0}^\infty p_X(k) z^k.
+\]</div>
+<p>We can see that this formulation highlights a direct resemblance to the <strong>unilateral z-transform</strong>, as both involve representing functions in terms of powers of <span class="math notranslate nohighlight">\( z \)</span>.</p>
+<section id="deriving-the-mean-using-the-pgf">
+<h3>Deriving the Mean Using the PGF<a class="headerlink" href="#deriving-the-mean-using-the-pgf" title="Link to this heading">#</a></h3>
+<p>The <strong>mean</strong> (expected value) of a discrete RV <span class="math notranslate nohighlight">\( X \)</span> can be obtained from the first derivative of its PGF, evaluated at <span class="math notranslate nohighlight">\( z = 1 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}[X] = \left. \frac{d}{dz} H_X(z) \right|_{z=1}.
+\]</div>
+</section>
+<section id="higher-order-derivatives-and-factorial-moments">
+<h3>Higher-Order Derivatives and Factorial Moments<a class="headerlink" href="#higher-order-derivatives-and-factorial-moments" title="Link to this heading">#</a></h3>
+<p>The <strong>factorial moments</strong> of a discrete RV <span class="math notranslate nohighlight">\( X \)</span> are derived from the higher-order derivatives of the PGF, evaluated at <span class="math notranslate nohighlight">\( z = 1 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+h_k = \left. \frac{d^k}{dz^k} H_X(z) \right|_{z=1} = \mathbb{E}[X(X - 1)(X - 2) \cdots (X - k + 1)].
+\]</div>
+<p><strong>Proof</strong>. Differentiating <span class="math notranslate nohighlight">\(k\)</span> times:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^k}{dz^k} H_X(z) = \sum_{n=k}^\infty \frac{n!}{(n-k)!} p_X(n) z^{n-k}.
+\]</div>
+<p>At <span class="math notranslate nohighlight">\(z = 1\)</span>, the result simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+h_k = \sum_{n=k}^\infty \frac{n!}{(n-k)!} p_X(n),
+\]</div>
+<p>which is equivalent to <span class="math notranslate nohighlight">\(\mathbb{E}[X(X-1)\cdots(X-k+1)]\)</span>. <span class="math notranslate nohighlight">\(\hspace{1em} \blacksquare\)</span></p>
+<p>These factorial moments are useful for analyzing higher-order properties of the distribution, such as variability and dispersion.</p>
+<p><strong>Applications</strong></p>
+<ul class="simple">
+<li><p>The PGF provides a tool to obtain key statistical measures, such as the mean and higher-order moments, in a compact and systematic form.</p></li>
+<li><p>The PGF provides a systematic way to analyze discrete random variables, e.g., <em>the number of successful transmissions</em> in a wireless system.</p></li>
+</ul>
+</section>
+</section>
+<section id="moment-generating-functions">
+<h2>Moment Generating Functions<a class="headerlink" href="#moment-generating-functions" title="Link to this heading">#</a></h2>
+<p><strong>Laplace Transform and Moment Generating Functions</strong><br />
+Many real-world random quantities are <strong>nonnegative</strong>, such as:</p>
+<ul class="simple">
+<li><p>Frequency of a random signal.</p></li>
+<li><p>Time intervals (e.g., between arrivals in a queue).</p></li>
+<li><p>Nonnegative outcomes like scores in a game.</p></li>
+</ul>
+<p>For these <strong>one-sided distributions</strong>, the <strong>Laplace transform</strong> is a standard tool in signal analysis, and the <strong>moment generating function (MGF)</strong> serves as its equivalent in probability theory.</p>
+<p><strong>Definition of MGF</strong><br />
+The <strong>moment generating function</strong> of a nonnegative random variable <span class="math notranslate nohighlight">\( X \)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+M_X(u) = \mathbb{E}[e^{uX}] = \int_{0}^\infty f_X(x) e^{ux} dx,
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( M_X(u) \)</span>: The MGF.</p></li>
+<li><p><span class="math notranslate nohighlight">\( f_X(x) \)</span>: The probability density function (PDF) of <span class="math notranslate nohighlight">\( X \)</span>.</p></li>
+</ul>
+<p>The MGF resembles the <strong>Laplace transform</strong> of the PDF, providing a frequency-domain representation for random variables.</p>
+<section id="derive-the-pdf-from-the-mgf">
+<h3>Derive the PDF from the MGF<a class="headerlink" href="#derive-the-pdf-from-the-mgf" title="Link to this heading">#</a></h3>
+<p>The PDF can, in principle, be recovered from the MGF using an operation analogous to an <strong>inverse Laplace transform</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+f_X(x) = \frac{1}{2\pi j} \int_{c-j\infty}^{c+j\infty} M_X(u)e^{-ux} du.
+\]</div>
+<p>The integral is computed along the <strong>Bromwich contour</strong>, which must be to the left of all poles of the MGF due to the sign convention in the exponential term.</p>
+</section>
+<section id="moments-from-the-mgf">
+<h3>Moments from the MGF<a class="headerlink" href="#moments-from-the-mgf" title="Link to this heading">#</a></h3>
+<p>The <strong>moments</strong> of the random variable <span class="math notranslate nohighlight">\( X \)</span> are derived from the derivatives of the MGF, evaluated at <span class="math notranslate nohighlight">\( u = 0 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{E}[X^k] = \left. \frac{d^k}{du^k} M_X(u) \right|_{u=0}.
+\]</div>
+<p>This property gives the MGF its name, as it directly generates the moments of <span class="math notranslate nohighlight">\( X \)</span>.</p>
+<p><strong>Applications</strong><br />
+The MGF approach is a mathematical technique commonly used in communication theory to evaluate the average error probability in digital communication systems.</p>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pr_c2_s1_real_Gaussian_RV_scalar.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Real Scalar Gaussian Random Variable</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pr_c3_s1_generation_RV_from_Uniform.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Generating Random Variables from a Uniform Distribution</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation">Expectation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#notations-for-expected-value">Notations for Expected Value:</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-as-function-of-the-pdf">Interpretation as Function of the PDF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expectation-for-discrete-random-variables">Expectation for Discrete Random Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-the-expectation-operator">Properties of the Expectation Operator</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-1-linearity-of-expectation">Property 1: Linearity of Expectation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-to-multiple-random-variables">Extension to Multiple Random Variables</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-2-statistical-independence">Property 2: Statistical Independence</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generalization-to-multiple-random-variables">Generalization to Multiple Random Variables</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-condition">Independence Condition</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#expected-values-of-functions-of-random-variables">Expected Values of Functions of Random Variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#linearity-of-expectation">Linearity of Expectation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moments">Moments</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zeroth-moment">Zeroth Moment</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#commonly-used-moments">Commonly Used Moments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#central-moments">Central Moments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-expected-values">Conditional Expected Values</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-expectation-of-a-function-of-a-rv">Conditional Expectation of a Function of a RV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#characteristic-functions">Characteristic Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">Use Cases</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-generating-functions">Probability Generating Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-the-mean-using-the-pgf">Deriving the Mean Using the PGF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#higher-order-derivatives-and-factorial-moments">Higher-Order Derivatives and Factorial Moments</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#moment-generating-functions">Moment Generating Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#derive-the-pdf-from-the-mgf">Derive the PDF from the MGF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#moments-from-the-mgf">Moments from the MGF</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

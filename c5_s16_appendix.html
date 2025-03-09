@@ -1,0 +1,1272 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Step-by-Step Explanation &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c5_s16_appendix';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Step-by-Step Explanation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Step-by-Step Explanation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#final-result">Final Result</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-conditional-variance-text-var-u-0-h-0-under-hypothesis-h-0">the conditional variance <span class="math notranslate nohighlight">\( \text{Var}(U_0 | H_0) \)</span> under hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-rho-complex-valued-cross-correlation-coefficient">Definition of <span class="math notranslate nohighlight">\( \rho \)</span>: Complex-Valued Cross-Correlation Coefficient</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-rho">Interpretation of <span class="math notranslate nohighlight">\( \rho \)</span>:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-rho-to-calculate-the-conditional-mean-of-u-1-given-h-0">Using <span class="math notranslate nohighlight">\( \rho \)</span> to Calculate the Conditional Mean of <span class="math notranslate nohighlight">\( U_1 \)</span> Given <span class="math notranslate nohighlight">\( H_0 \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#expanding-the-integral">Expanding the Integral</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separating-terms">Separating Terms:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-results">Combining Results:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Summary</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-conditional-variance-text-var-u-1-h-0">the conditional variance <span class="math notranslate nohighlight">\( \text{Var}\{U_1 | H_0\} \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-u-1">Definition of <span class="math notranslate nohighlight">\( U_1 \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-u-1">Variance of <span class="math notranslate nohighlight">\( U_1 \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-e-i-1-2">Compute <span class="math notranslate nohighlight">\( E\{|I_1|^2\} \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#final-expression-for-text-var-u-1-h-0">Final Expression for <span class="math notranslate nohighlight">\( \text{Var}(U_1 | H_0) \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Summary</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-conditional-covariance-text-cov-u-0-u-1-h-0">the conditional covariance <span class="math notranslate nohighlight">\( \text{Cov}(U_0, U_1 | H_0) \)</span>,</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#expression-for-u-0-and-u-1">Expression for <span class="math notranslate nohighlight">\( U_0 \)</span> and <span class="math notranslate nohighlight">\( U_1 \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-e-u-0-u-1-h-0">Covariance <span class="math notranslate nohighlight">\( E\{ U_0 U_1 | H_0 \} \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-e-i-0-i-1">Calculating <span class="math notranslate nohighlight">\( E\{ I_0 I_1^* \} \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-it-all-together">Putting It All Together</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Final Result</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-recognize-the-cross-correlation-terms">Step 1: Recognize the Cross-Correlation Terms</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-substitute-into-the-expression">Step 2: Substitute into the Expression</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-simplify-using-rho-rho-2-rho-r">Step 3: Simplify Using <span class="math notranslate nohighlight">\( \rho + \rho^* = 2 \rho_r \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Final Result</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-define-mathcal-v-and-compute-the-mean-mu-mathcal-v">Step 1: Define <span class="math notranslate nohighlight">\( \mathcal{V} \)</span> and Compute the Mean <span class="math notranslate nohighlight">\( \mu_{\mathcal{V}} \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-compute-the-variance-sigma-mathcal-v-2">Step 2: Compute the Variance <span class="math notranslate nohighlight">\( \sigma_{\mathcal{V}}^2 \)</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-variance-terms">Individual Variance Terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#substitute-and-simplify">Substitute and Simplify</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Final Result</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Step-by-Step Explanation</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <p>the calculation of <span class="math notranslate nohighlight">\( E\{U_0 | H_0\} \)</span> under the hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span>.</p>
+<section id="step-by-step-explanation">
+<h1>Step-by-Step Explanation<a class="headerlink" href="#step-by-step-explanation" title="Link to this heading">#</a></h1>
+<ol class="arabic">
+<li><p><strong>Definition of <span class="math notranslate nohighlight">\( U_0 \)</span>:</strong></p>
+<p>Under hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span>, the received signal <span class="math notranslate nohighlight">\( y(t) \)</span> is given by:
+$<span class="math notranslate nohighlight">\(
+y(t) = u_0(t) + z(t)
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span> u_0(t) <span class="math notranslate nohighlight">\( is the deterministic signal component, and \)</span> z(t) $ is a zero-mean complex Gaussian noise process.</p>
+<p>The decision variable <span class="math notranslate nohighlight">\( U_0 \)</span> is defined as:
+$<span class="math notranslate nohighlight">\(
+U_0 = \Re \left\{ \int_0^T y(t) u_0^*(t) \, dt \right\} - \mathcal{E}_0
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span> \mathcal{E}_0 = \int_0^T |u^{BP}_0(t)|^2 , dt <span class="math notranslate nohighlight">\( is the energy of **bandpass** \)</span> u^{BP}_0(t) <span class="math notranslate nohighlight">\( over the interval \)</span> [0, T] $.</p>
+</li>
+<li><p><strong>Express <span class="math notranslate nohighlight">\( E\{U_0 | H_0\} \)</span>:</strong></p>
+<p>Substitute <span class="math notranslate nohighlight">\( y(t) = u_0(t) + z(t) \)</span> into the expression for <span class="math notranslate nohighlight">\( U_0 \)</span>:
+$<span class="math notranslate nohighlight">\(
+E\{U_0 | H_0\} = E \left\{ \Re \left[ \int_0^T (u_0(t) + z(t)) u_0^*(t) \, dt \right] \right\} - \mathcal{E}_0
+\)</span>$</p>
+</li>
+<li><p><strong>Separate the Terms Inside the Integral:</strong></p>
+<p>Expand the integral:
+$<span class="math notranslate nohighlight">\(
+E\{U_0 | H_0\} = E \left\{ \Re \left[ \int_0^T \left( u_0(t) u_0^*(t) + z(t) u_0^*(t) \right) \, dt \right] \right\} - \mathcal{E}_0
+\)</span>$</p>
+</li>
+<li><p><strong>Break Down the Real Part:</strong></p>
+<p>The real part of a complex integral can be written as the average of the integral and its complex conjugate:
+$<span class="math notranslate nohighlight">\(
+E\{U_0 | H_0\} = E \left\{ \frac{1}{2} \int_0^T \left[ u_0(t) u_0^*(t) + z(t) u_0^*(t) \right] \, dt + \frac{1}{2} \int_0^T \left[ u_0^*(t) u_0(t) + z^*(t) u_0(t) \right] \, dt \right\} - \mathcal{E}_0
+\)</span>$</p>
+<p>Here, we’ve used the property <span class="math notranslate nohighlight">\( \Re\{x\} = \frac{1}{2}(x + x^*) \)</span> for a complex quantity <span class="math notranslate nohighlight">\( x \)</span>.</p>
+</li>
+<li><p><strong>Separate Terms Based on Expectations:</strong></p>
+<p>Since <span class="math notranslate nohighlight">\( u_0(t) \)</span> is deterministic, and <span class="math notranslate nohighlight">\( z(t) \)</span> is zero-mean with <span class="math notranslate nohighlight">\( E\{z(t)\} = 0 \)</span>, the expectation of terms involving <span class="math notranslate nohighlight">\( z(t) \)</span> will vanish:
+$<span class="math notranslate nohighlight">\(
+E\{U_0 | H_0\} = \frac{1}{2} \int_0^T u_0(t) u_0^*(t) \, dt + \frac{1}{2} \int_0^T u_0^*(t) u_0(t) \, dt - \mathcal{E}_0
+\)</span>$</p>
+</li>
+<li><p><strong>Simplify Using the Definition of Signal Energy:</strong></p>
+<p>Notice that <span class="math notranslate nohighlight">\( u_0(t) u_0^*(t) = |u_0(t)|^2 \)</span> and <span class="math notranslate nohighlight">\( u_0^*(t) u_0(t) = |u_0(t)|^2 \)</span>. Therefore:
+$<span class="math notranslate nohighlight">\(
+\int_0^T u_0(t) u_0^*(t) \, dt = \int_0^T |u_0(t)|^2 \, dt = 2\mathcal{E}_0
+\)</span><span class="math notranslate nohighlight">\(
+and similarly,
+\)</span><span class="math notranslate nohighlight">\(
+\int_0^T u_0^*(t) u_0(t) \, dt = 2\mathcal{E}_0
+\)</span>$</p>
+<p>Substitute these into the expression:
+$<span class="math notranslate nohighlight">\(
+E\{U_0 | H_0\} = \frac{1}{2} 2\mathcal{E}_0 + \frac{1}{2} 2\mathcal{E}_0 - \mathcal{E}_0 = \mathcal{E}_0
+\)</span>$</p>
+</li>
+</ol>
+</section>
+<section id="final-result">
+<h1>Final Result<a class="headerlink" href="#final-result" title="Link to this heading">#</a></h1>
+<p>Thus, the mean of <span class="math notranslate nohighlight">\( U_0 \)</span>, given <span class="math notranslate nohighlight">\( H_0 \)</span>, is:
+$<span class="math notranslate nohighlight">\(
+E\{U_0 | H_0\} = \mathcal{E}_0
+\)</span>$</p>
+</section>
+<section id="the-conditional-variance-text-var-u-0-h-0-under-hypothesis-h-0">
+<h1>the conditional variance <span class="math notranslate nohighlight">\( \text{Var}(U_0 | H_0) \)</span> under hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span><a class="headerlink" href="#the-conditional-variance-text-var-u-0-h-0-under-hypothesis-h-0" title="Link to this heading">#</a></h1>
+<p>Define:
+$<span class="math notranslate nohighlight">\(
+I = \int_0^T z(t) u_0^*(t) \, dt
+\)</span><span class="math notranslate nohighlight">\(
+so that:
+\)</span><span class="math notranslate nohighlight">\(
+U_0 = \Re\{I\}
+\)</span>$</p>
+<ol class="arabic" start="2">
+<li><p><strong>Variance of <span class="math notranslate nohighlight">\( U_0 \)</span>:</strong></p>
+<p>The conditional variance <span class="math notranslate nohighlight">\( \text{Var}(U_0 | H_0) \)</span> is then given by:
+$<span class="math notranslate nohighlight">\(
+\text{Var}(U_0 | H_0) = E\left\{ \left( \Re\{I\} \right)^2 \right\}
+\)</span><span class="math notranslate nohighlight">\(
+Using \)</span> \Re{I} = \frac{1}{2}(I + I^*) <span class="math notranslate nohighlight">\(, we have:
+\)</span><span class="math notranslate nohighlight">\(
+\text{Var}(U_0 | H_0) = E\left\{ \left( \frac{1}{2} (I + I^*) \right)^2 \right\} = \frac{1}{4} E\{(I + I^*)^2\}
+\)</span>$</p>
+</li>
+<li><p><strong>Expanding <span class="math notranslate nohighlight">\( (I + I^*)^2 \)</span>:</strong></p>
+<p>Expand <span class="math notranslate nohighlight">\( (I + I^*)^2 \)</span> to separate the terms:
+$<span class="math notranslate nohighlight">\(
+(I + I^*)^2 = I^2 + 2 I I^* + (I^*)^2
+\)</span><span class="math notranslate nohighlight">\(
+Since \)</span> I <span class="math notranslate nohighlight">\( is an integral involving Gaussian noise \)</span> z(t) <span class="math notranslate nohighlight">\(, it follows that \)</span> I^2 = 0 <span class="math notranslate nohighlight">\( and \)</span> (I^*)^2 = 0 <span class="math notranslate nohighlight">\( due to uncorrelated noise at different times. Thus:
+\)</span><span class="math notranslate nohighlight">\(
+E\{(I + I^*)^2\} = E\{2 I I^*\} = 2 E\{|I|^2\}
+\)</span>$</p>
+<p>Therefore:
+$<span class="math notranslate nohighlight">\(
+\text{Var}(U_0 | H_0) = \frac{1}{4} \cdot 2 E\{|I|^2\} = \frac{1}{2} E\{|I|^2\}
+\)</span>$</p>
+</li>
+<li><p><strong>Compute <span class="math notranslate nohighlight">\( E\{|I|^2\} \)</span>:</strong></p>
+<p>Now, let’s find <span class="math notranslate nohighlight">\( E\{|I|^2\} \)</span>, where <span class="math notranslate nohighlight">\( I = \int_0^T z(t) u_0^*(t) \, dt \)</span>:
+$<span class="math notranslate nohighlight">\(
+E\{|I|^2\} = E\left\{ \left( \int_0^T z(t_1) u_0^*(t_1) \, dt_1 \right) \left( \int_0^T z^*(t_3) u_0(t_3) \, dt_3 \right) \right\}
+\)</span><span class="math notranslate nohighlight">\(
+Expanding the expectation:
+\)</span><span class="math notranslate nohighlight">\(
+E\{|I|^2\} = \int_0^T \int_0^T E\{z(t_1) z^*(t_3)\} u_0^*(t_1) u_0(t_3) \, dt_1 \, dt_3
+\)</span>$</p>
+</li>
+<li><p><strong>Apply Noise Properties:</strong></p>
+<p>The noise <span class="math notranslate nohighlight">\( z(t) \)</span> is a zero-mean white Gaussian process with autocorrelation:
+$<span class="math notranslate nohighlight">\(
+E\{z(t_i) z(t_j)\} = 0, \quad E\{z^*(t_i) z^*(t_j)\} = 0
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+E\{z(t_i) z^*(t_j)\} = 2 N_0 \delta(t_i - t_j)
+\)</span>$</p>
+<p>Using these properties, only terms of the form <span class="math notranslate nohighlight">\( E\{z(t_1) z^*(t_3)\} \)</span> contribute to the expectation. Thus:
+$<span class="math notranslate nohighlight">\(
+E\{|I|^2\} = \int_0^T \int_0^T 2 N_0 \delta(t_1 - t_3) u_0^*(t_1) u_0(t_3) \, dt_1 \, dt_3
+\)</span><span class="math notranslate nohighlight">\(
+Using the delta function property \)</span> \int f(t) \delta(t - t_0) , dt = f(t_0) <span class="math notranslate nohighlight">\(, we get:
+\)</span><span class="math notranslate nohighlight">\(
+E\{|I|^2\} = 2 N_0 \int_0^T |u_0(t_1)|^2 \, dt_1
+\)</span>$</p>
+</li>
+<li><p><strong>Final Expression for <span class="math notranslate nohighlight">\( \text{Var}(U_0 | H_0) \)</span>:</strong></p>
+<p>Substitute <span class="math notranslate nohighlight">\( E\{|I|^2\} \)</span> into the expression for <span class="math notranslate nohighlight">\( \text{Var}(U_0 | H_0) \)</span>:
+$<span class="math notranslate nohighlight">\(
+\text{Var}(U_0 | H_0) = \frac{1}{2} \cdot 2 N_0 \int_0^T |u_0(t_1)|^2 \, dt_1 = N_0 \int_0^T |u_0(t_1)|^2 \, dt_1
+\)</span>$</p>
+</li>
+</ol>
+<p>Since <span class="math notranslate nohighlight">\( \int_0^T |u_0(t_1)|^2 \, dt_1 = \mathcal{E}_0 \)</span>, we can also write:
+$<span class="math notranslate nohighlight">\(
+\text{Var}(U_0 | H_0) = N_0 2\mathcal{E}_0
+\)</span>$</p>
+</section>
+<section id="summary">
+<h1>Summary<a class="headerlink" href="#summary" title="Link to this heading">#</a></h1>
+<p>The conditional variance <span class="math notranslate nohighlight">\( \text{Var}(U_0 | H_0) \)</span> is:
+$<span class="math notranslate nohighlight">\(
+\text{Var}(U_0 | H_0) = 2N_0 \mathcal{E}_0
+\)</span>$</p>
+</section>
+<section id="definition-of-rho-complex-valued-cross-correlation-coefficient">
+<h1>Definition of <span class="math notranslate nohighlight">\( \rho \)</span>: Complex-Valued Cross-Correlation Coefficient<a class="headerlink" href="#definition-of-rho-complex-valued-cross-correlation-coefficient" title="Link to this heading">#</a></h1>
+<p>The complex cross-correlation coefficient <span class="math notranslate nohighlight">\( \rho \)</span> between the signals <span class="math notranslate nohighlight">\( u_0(t) \)</span> and <span class="math notranslate nohighlight">\( u_1(t) \)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\rho = \rho_r + j \rho_i = \frac{1}{2 \sqrt{\mathcal{E}_0 \mathcal{E}_1}} \int_0^T u_0(t) u_1^*(t) \, dt
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \rho \)</span> is a complex quantity with real part <span class="math notranslate nohighlight">\( \rho_r \)</span> and imaginary part <span class="math notranslate nohighlight">\( \rho_i \)</span>.</p></li>
+</ul>
+<section id="interpretation-of-rho">
+<h2>Interpretation of <span class="math notranslate nohighlight">\( \rho \)</span>:<a class="headerlink" href="#interpretation-of-rho" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p><strong>Cross-Correlation:</strong> The integral <span class="math notranslate nohighlight">\( \int_0^T u_0(t) u_1^*(t) \, dt \)</span> measures the similarity between <span class="math notranslate nohighlight">\( u_0(t) \)</span> and <span class="math notranslate nohighlight">\( u_1(t) \)</span> over the interval <span class="math notranslate nohighlight">\( [0, T] \)</span>. When <span class="math notranslate nohighlight">\( u_0(t) \)</span> and <span class="math notranslate nohighlight">\( u_1(t) \)</span> are strongly correlated, this integral will have a larger magnitude.</p></li>
+<li><p><strong>Normalization:</strong> Dividing by <span class="math notranslate nohighlight">\( 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \)</span> normalizes this quantity, giving <span class="math notranslate nohighlight">\( \rho \)</span> a scale-invariant measure of similarity. This normalization ensures that <span class="math notranslate nohighlight">\( |\rho| \leq 1 \)</span>, similar to the standard correlation coefficient.</p></li>
+<li><p><strong>Real and Imaginary Parts:</strong> <span class="math notranslate nohighlight">\( \rho \)</span> is complex because the signals <span class="math notranslate nohighlight">\( u_0(t) \)</span> and <span class="math notranslate nohighlight">\( u_1(t) \)</span> may have phase differences. The real part <span class="math notranslate nohighlight">\( \rho_r \)</span> and imaginary part <span class="math notranslate nohighlight">\( \rho_i \)</span> capture different aspects of the correlation.</p></li>
+</ol>
+</section>
+</section>
+<section id="using-rho-to-calculate-the-conditional-mean-of-u-1-given-h-0">
+<h1>Using <span class="math notranslate nohighlight">\( \rho \)</span> to Calculate the Conditional Mean of <span class="math notranslate nohighlight">\( U_1 \)</span> Given <span class="math notranslate nohighlight">\( H_0 \)</span><a class="headerlink" href="#using-rho-to-calculate-the-conditional-mean-of-u-1-given-h-0" title="Link to this heading">#</a></h1>
+<p>Now, let’s calculate the conditional mean <span class="math notranslate nohighlight">\( E\{U_1 | H_0\} \)</span> given that hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> is true.</p>
+<p>Under <span class="math notranslate nohighlight">\( H_0 \)</span>, the received signal <span class="math notranslate nohighlight">\( y(t) \)</span> is modeled as:
+$<span class="math notranslate nohighlight">\(
+y(t) = u_0(t) + z(t)
+\)</span>$</p>
+<p>The decision variable <span class="math notranslate nohighlight">\( U_1 \)</span> is defined as:
+$<span class="math notranslate nohighlight">\(
+U_1 = \Re \left\{ \int_0^T y(t) u_1^*(t) \, dt \right\} - \mathcal{E}_1
+\)</span>$</p>
+<p>Substitute <span class="math notranslate nohighlight">\( y(t) = u_0(t) + z(t) \)</span> into the expression for <span class="math notranslate nohighlight">\( U_1 \)</span>:
+$<span class="math notranslate nohighlight">\(
+E\{U_1 | H_0\} = E \left\{ \Re \left[ \int_0^T \left( u_0(t) + z(t) \right) u_1^*(t) \, dt \right] - \mathcal{E}_1 \right\}
+\)</span>$</p>
+</section>
+<section id="expanding-the-integral">
+<h1>Expanding the Integral<a class="headerlink" href="#expanding-the-integral" title="Link to this heading">#</a></h1>
+<p>Expand the integral term in <span class="math notranslate nohighlight">\( E\{U_1 | H_0\} \)</span>:
+$<span class="math notranslate nohighlight">\(
+E\{U_1 | H_0\} = E \left\{ \Re \left[ \int_0^T u_0(t) u_1^*(t) \, dt + \int_0^T z(t) u_1^*(t) \, dt \right] - \mathcal{E}_1 \right\}
+\)</span>$</p>
+<section id="separating-terms">
+<h2>Separating Terms:<a class="headerlink" href="#separating-terms" title="Link to this heading">#</a></h2>
+<p>Now we can separate the expectation into two parts, focusing on each term individually:</p>
+<ol class="arabic simple">
+<li><p><strong>First Term <span class="math notranslate nohighlight">\( \int_0^T u_0(t) u_1^*(t) \, dt \)</span>:</strong>
+This term does not involve noise and is deterministic. Using the definition of <span class="math notranslate nohighlight">\( \rho \)</span>, we can express it in terms of <span class="math notranslate nohighlight">\( \rho \)</span>:
+$<span class="math notranslate nohighlight">\(
+\int_0^T u_0(t) u_1^*(t) \, dt = 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho
+\)</span><span class="math notranslate nohighlight">\(
+Thus:
+\)</span><span class="math notranslate nohighlight">\(
+\Re \left\{ \int_0^T u_0(t) u_1^*(t) \, dt \right\} = 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r
+\)</span>$</p></li>
+<li><p><strong>Second Term <span class="math notranslate nohighlight">\( \int_0^T z(t) u_1^*(t) \, dt \)</span>:</strong>
+This term involves the noise <span class="math notranslate nohighlight">\( z(t) \)</span>. Since <span class="math notranslate nohighlight">\( z(t) \)</span> is zero-mean, the expectation of this term is zero:
+$<span class="math notranslate nohighlight">\(
+E \left\{ \Re \left( \int_0^T z(t) u_1^*(t) \, dt \right) \right\} = 0
+\)</span>$</p></li>
+</ol>
+</section>
+<section id="combining-results">
+<h2>Combining Results:<a class="headerlink" href="#combining-results" title="Link to this heading">#</a></h2>
+<p>Now we can combine the results of these two terms:
+$<span class="math notranslate nohighlight">\(
+E\{U_1 | H_0\} = \Re \left\{ 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r \right\} - \mathcal{E}_1
+\)</span>$</p>
+<p>Thus, the conditional mean of <span class="math notranslate nohighlight">\( U_1 \)</span>, given <span class="math notranslate nohighlight">\( H_0 \)</span>, is:</p>
+<div class="math notranslate nohighlight">
+\[
+E\{U_1 | H_0\} = 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r - \mathcal{E}_1
+\]</div>
+</section>
+</section>
+<section id="id1">
+<h1>Summary<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>The complex-valued cross-correlation coefficient <span class="math notranslate nohighlight">\( \rho = \rho_r + j \rho_i \)</span> quantifies the correlation between <span class="math notranslate nohighlight">\( u_0(t) \)</span> and <span class="math notranslate nohighlight">\( u_1(t) \)</span> in a normalized manner.</p></li>
+<li><p>Using <span class="math notranslate nohighlight">\( \rho \)</span>, we express the conditional mean of <span class="math notranslate nohighlight">\( U_1 \)</span> under <span class="math notranslate nohighlight">\( H_0 \)</span> as:
+$<span class="math notranslate nohighlight">\(
+E\{U_1 | H_0\} = 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r - \mathcal{E}_1
+\)</span>$</p></li>
+<li><p>This result shows that the mean of <span class="math notranslate nohighlight">\( U_1 \)</span> depends linearly on the real part of the cross-correlation between <span class="math notranslate nohighlight">\( u_0(t) \)</span> and <span class="math notranslate nohighlight">\( u_1(t) \)</span>, represented by <span class="math notranslate nohighlight">\( \rho_r \)</span>, and adjusted by the energy term <span class="math notranslate nohighlight">\( \mathcal{E}_1 \)</span>.</p></li>
+</ul>
+</section>
+<section id="the-conditional-variance-text-var-u-1-h-0">
+<h1>the conditional variance <span class="math notranslate nohighlight">\( \text{Var}\{U_1 | H_0\} \)</span><a class="headerlink" href="#the-conditional-variance-text-var-u-1-h-0" title="Link to this heading">#</a></h1>
+</section>
+<section id="definition-of-u-1">
+<h1>Definition of <span class="math notranslate nohighlight">\( U_1 \)</span><a class="headerlink" href="#definition-of-u-1" title="Link to this heading">#</a></h1>
+<p>Given that <span class="math notranslate nohighlight">\( H_0 \)</span> is true, the received signal <span class="math notranslate nohighlight">\( y(t) \)</span> is:
+$<span class="math notranslate nohighlight">\(
+y(t) = u_0(t) + z(t)
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span> u_0(t) <span class="math notranslate nohighlight">\( is a deterministic signal and \)</span> z(t) <span class="math notranslate nohighlight">\( is a zero-mean complex Gaussian noise process with power spectral density \)</span> N_0 $.</p>
+<p>The decision variable <span class="math notranslate nohighlight">\( U_1 \)</span> is defined as:
+$<span class="math notranslate nohighlight">\(
+U_1 = \Re \left\{ \int_0^T y(t) u_1^*(t) \, dt \right\} - \mathcal{E}_1
+\)</span><span class="math notranslate nohighlight">\(
+where:
+\)</span><span class="math notranslate nohighlight">\(
+\mathcal{E}_1 = \int_0^T |u_1(t)|^2 \, dt
+\)</span>$</p>
+<p>Substitute <span class="math notranslate nohighlight">\( y(t) = u_0(t) + z(t) \)</span>:
+$<span class="math notranslate nohighlight">\(
+U_1 = \Re \left\{ \int_0^T \left( u_0(t) + z(t) \right) u_1^*(t) \, dt \right\} - \mathcal{E}_1
+\)</span><span class="math notranslate nohighlight">\(
+Expanding this, we have:
+\)</span><span class="math notranslate nohighlight">\(
+U_1 = \Re \left\{ \int_0^T u_0(t) u_1^*(t) \, dt + \int_0^T z(t) u_1^*(t) \, dt \right\} - \mathcal{E}_1
+\)</span>$</p>
+<p>Since <span class="math notranslate nohighlight">\( \int_0^T u_0(t) u_1^*(t) \, dt \)</span> is a deterministic quantity, the variance of <span class="math notranslate nohighlight">\( U_1 \)</span> is entirely due to the noise term:
+$<span class="math notranslate nohighlight">\(
+U_1 = \Re \left\{ \int_0^T z(t) u_1^*(t) \, dt \right\}
+\)</span>$</p>
+<p>Define:
+$<span class="math notranslate nohighlight">\(
+I_1 = \int_0^T z(t) u_1^*(t) \, dt
+\)</span><span class="math notranslate nohighlight">\(
+Then:
+\)</span><span class="math notranslate nohighlight">\(
+U_1 = \Re\{I_1\}
+\)</span>$</p>
+</section>
+<section id="variance-of-u-1">
+<h1>Variance of <span class="math notranslate nohighlight">\( U_1 \)</span><a class="headerlink" href="#variance-of-u-1" title="Link to this heading">#</a></h1>
+<p>The conditional variance <span class="math notranslate nohighlight">\( \text{Var}\{U_1 | H_0\} \)</span> is therefore:
+$<span class="math notranslate nohighlight">\(
+\text{Var}\{U_1 | H_0\} = \text{Var}\{\Re\{I_1\}\}
+\)</span><span class="math notranslate nohighlight">\(
+Since \)</span> \Re{I_1} = \frac{1}{2}(I_1 + I_1^*) <span class="math notranslate nohighlight">\(, we have:
+\)</span><span class="math notranslate nohighlight">\(
+\text{Var}\{\Re\{I_1\}\} = \frac{1}{4} \text{Var}\{I_1 + I_1^*\} = \frac{1}{4} E\{|I_1|^2\}
+\)</span>$</p>
+</section>
+<section id="compute-e-i-1-2">
+<h1>Compute <span class="math notranslate nohighlight">\( E\{|I_1|^2\} \)</span><a class="headerlink" href="#compute-e-i-1-2" title="Link to this heading">#</a></h1>
+<p>To compute <span class="math notranslate nohighlight">\( E\{|I_1|^2\} \)</span>, where <span class="math notranslate nohighlight">\( I_1 = \int_0^T z(t) u_1^*(t) \, dt \)</span>, we proceed as follows:</p>
+<div class="math notranslate nohighlight">
+\[
+E\{|I_1|^2\} = E\left\{ \left( \int_0^T z(t_1) u_1^*(t_1) \, dt_1 \right) \left( \int_0^T z^*(t_2) u_1(t_2) \, dt_2 \right) \right\}
+\]</div>
+<p>Expanding this expectation:
+$<span class="math notranslate nohighlight">\(
+E\{|I_1|^2\} = \int_0^T \int_0^T E\{z(t_1) z^*(t_2)\} u_1^*(t_1) u_1(t_2) \, dt_1 \, dt_2
+\)</span>$</p>
+<p>Since <span class="math notranslate nohighlight">\( z(t) \)</span> is a complex Gaussian noise process with autocorrelation:
+$<span class="math notranslate nohighlight">\(
+E\{z(t_1) z^*(t_2)\} = 2 N_0 \delta(t_1 - t_2)
+\)</span><span class="math notranslate nohighlight">\(
+we substitute this into the integral:
+\)</span><span class="math notranslate nohighlight">\(
+E\{|I_1|^2\} = \int_0^T \int_0^T 2 N_0 \delta(t_1 - t_2) u_1^*(t_1) u_1(t_2) \, dt_1 \, dt_2
+\)</span>$</p>
+<p>Using the sifting property of the delta function, <span class="math notranslate nohighlight">\( \int f(t) \delta(t - t_0) \, dt = f(t_0) \)</span>, we get:
+$<span class="math notranslate nohighlight">\(
+E\{|I_1|^2\} = 2 N_0 \int_0^T |u_1(t_1)|^2 \, dt_1
+\)</span>$</p>
+<p>Since <span class="math notranslate nohighlight">\( \int_0^T |u_1(t_1)|^2 \, dt_1 = 2\mathcal{E}_1 \)</span>, we have:
+$<span class="math notranslate nohighlight">\(
+E\{|I_1|^2\} = 2 N_0 2\mathcal{E}_1
+\)</span>$</p>
+</section>
+<section id="final-expression-for-text-var-u-1-h-0">
+<h1>Final Expression for <span class="math notranslate nohighlight">\( \text{Var}(U_1 | H_0) \)</span><a class="headerlink" href="#final-expression-for-text-var-u-1-h-0" title="Link to this heading">#</a></h1>
+<p>Now we can substitute <span class="math notranslate nohighlight">\( E\{|I_1|^2\} \)</span> back into the expression for <span class="math notranslate nohighlight">\( \text{Var}(U_1 | H_0) \)</span>:
+$<span class="math notranslate nohighlight">\(
+\text{Var}\{U_1 | H_0\} = \frac{1}{4} \times 2 N_0 2\mathcal{E}_1 = N_0 2\mathcal{E}_1
+\)</span>$</p>
+</section>
+<section id="id2">
+<h1>Summary<a class="headerlink" href="#id2" title="Link to this heading">#</a></h1>
+<p>The conditional variance of <span class="math notranslate nohighlight">\( U_1 \)</span> given <span class="math notranslate nohighlight">\( H_0 \)</span> is:
+$<span class="math notranslate nohighlight">\(
+\text{Var}\{U_1 | H_0\} = 2 N_0 \mathcal{E}_1
+\)</span>$</p>
+<p>This result shows that the variance of <span class="math notranslate nohighlight">\( U_1 \)</span> under <span class="math notranslate nohighlight">\( H_0 \)</span> depends on the noise power spectral density <span class="math notranslate nohighlight">\( N_0 \)</span> and the energy <span class="math notranslate nohighlight">\( \mathcal{E}_1 \)</span> of the signal <span class="math notranslate nohighlight">\( u_1(t) \)</span>.</p>
+</section>
+<section id="the-conditional-covariance-text-cov-u-0-u-1-h-0">
+<h1>the conditional covariance <span class="math notranslate nohighlight">\( \text{Cov}(U_0, U_1 | H_0) \)</span>,<a class="headerlink" href="#the-conditional-covariance-text-cov-u-0-u-1-h-0" title="Link to this heading">#</a></h1>
+<p><span class="math notranslate nohighlight">\( \text{Cov}(U_0, U_1 | H_0) \)</span>, which is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{Cov}(U_0, U_1 | H_0) = E\{ U_0 U_1 | H_0 \} - E\{U_0 | H_0\} E\{U_1 | H_0\}
+\]</div>
+<p>Since we already know that <span class="math notranslate nohighlight">\( E\{U_0 | H_0\} = 0 \)</span> and <span class="math notranslate nohighlight">\( E\{U_1 | H_0\} = 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r - \mathcal{E}_1 \)</span>, the covariance simplifies to:
+$<span class="math notranslate nohighlight">\(
+\text{Cov}(U_0, U_1 | H_0) = E\{ U_0 U_1 | H_0 \}
+\)</span>$</p>
+<p>This is because <span class="math notranslate nohighlight">\( E\{U_0 | H_0\} = 0 \)</span> causes the second term to vanish.</p>
+</section>
+<section id="expression-for-u-0-and-u-1">
+<h1>Expression for <span class="math notranslate nohighlight">\( U_0 \)</span> and <span class="math notranslate nohighlight">\( U_1 \)</span><a class="headerlink" href="#expression-for-u-0-and-u-1" title="Link to this heading">#</a></h1>
+<p>Given <span class="math notranslate nohighlight">\( H_0 \)</span>, the received signal <span class="math notranslate nohighlight">\( y(t) \)</span> is:
+$<span class="math notranslate nohighlight">\(
+y(t) = u_0(t) + z(t)
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span> u_0(t) <span class="math notranslate nohighlight">\( is the deterministic signal and \)</span> z(t) $ is zero-mean complex Gaussian noise.</p>
+<p>The decision variables <span class="math notranslate nohighlight">\( U_0 \)</span> and <span class="math notranslate nohighlight">\( U_1 \)</span> are defined as:
+$<span class="math notranslate nohighlight">\(
+U_0 = \Re \left\{ \int_0^T y(t) u_0^*(t) \, dt \right\} - \mathcal{E}_0
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+U_1 = \Re \left\{ \int_0^T y(t) u_1^*(t) \, dt \right\} - \mathcal{E}_1
+\)</span>$</p>
+<p>Since <span class="math notranslate nohighlight">\( U_0 \)</span> and <span class="math notranslate nohighlight">\( U_1 \)</span> only involve noise contributions in their non-deterministic parts, we can express them as:
+$<span class="math notranslate nohighlight">\(
+U_0 = \Re \left\{ \int_0^T z(t) u_0^*(t) \, dt \right\}
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+U_1 = \Re \left\{ \int_0^T z(t) u_1^*(t) \, dt \right\}
+\)</span>$</p>
+<p>Let:
+$<span class="math notranslate nohighlight">\(
+I_0 = \int_0^T z(t) u_0^*(t) \, dt
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+I_1 = \int_0^T z(t) u_1^*(t) \, dt
+\)</span>$</p>
+<p>Then we have:
+$<span class="math notranslate nohighlight">\(
+U_0 = \Re\{I_0\}, \quad U_1 = \Re\{I_1\}
+\)</span>$</p>
+</section>
+<section id="covariance-e-u-0-u-1-h-0">
+<h1>Covariance <span class="math notranslate nohighlight">\( E\{ U_0 U_1 | H_0 \} \)</span><a class="headerlink" href="#covariance-e-u-0-u-1-h-0" title="Link to this heading">#</a></h1>
+<p>To calculate <span class="math notranslate nohighlight">\( E\{ U_0 U_1 | H_0 \} \)</span>, we expand <span class="math notranslate nohighlight">\( U_0 U_1 \)</span> using the real parts of <span class="math notranslate nohighlight">\( I_0 \)</span> and <span class="math notranslate nohighlight">\( I_1 \)</span>:
+$<span class="math notranslate nohighlight">\(
+U_0 U_1 = \Re\{I_0\} \cdot \Re\{I_1\} = \frac{1}{4} (I_0 + I_0^*)(I_1 + I_1^*)
+\)</span>$</p>
+<p>Expanding this product:
+$<span class="math notranslate nohighlight">\(
+U_0 U_1 = \frac{1}{4} \left( I_0 I_1 + I_0 I_1^* + I_0^* I_1 + I_0^* I_1^* \right)
+\)</span>$</p>
+<p>Since <span class="math notranslate nohighlight">\( I_0 \)</span> and <span class="math notranslate nohighlight">\( I_1 \)</span> are integrals involving the noise <span class="math notranslate nohighlight">\( z(t) \)</span>, terms like <span class="math notranslate nohighlight">\( I_0 I_1 \)</span> and <span class="math notranslate nohighlight">\( I_0^* I_1^* \)</span> will vanish in expectation due to the independence of <span class="math notranslate nohighlight">\( z(t) \)</span> and <span class="math notranslate nohighlight">\( z^*(t) \)</span> at different times. Thus:
+$<span class="math notranslate nohighlight">\(
+E\{U_0 U_1 | H_0\} = \frac{1}{4} \left( E\{ I_0 I_1^* \} + E\{ I_0^* I_1 \} \right)
+\)</span>$</p>
+</section>
+<section id="calculating-e-i-0-i-1">
+<h1>Calculating <span class="math notranslate nohighlight">\( E\{ I_0 I_1^* \} \)</span><a class="headerlink" href="#calculating-e-i-0-i-1" title="Link to this heading">#</a></h1>
+<p>Now, we calculate <span class="math notranslate nohighlight">\( E\{ I_0 I_1^* \} \)</span>, where:
+$<span class="math notranslate nohighlight">\(
+I_0 = \int_0^T z(t_1) u_0^*(t_1) \, dt_1
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+I_1^* = \int_0^T z^*(t_3) u_1(t_3) \, dt_3
+\)</span>$</p>
+<p>Thus:
+$<span class="math notranslate nohighlight">\(
+E\{ I_0 I_1^* \} = E \left\{ \int_0^T \int_0^T z(t_1) z^*(t_3) u_0^*(t_1) u_1(t_3) \, dt_1 \, dt_3 \right\}
+\)</span>$</p>
+<p>Using the autocorrelation property of the noise <span class="math notranslate nohighlight">\( z(t) \)</span>, we have:
+$<span class="math notranslate nohighlight">\(
+E\{z(t_1) z^*(t_3)\} = 2 N_0 \delta(t_1 - t_3)
+\)</span>$</p>
+<p>Substitute this into the expectation:
+$<span class="math notranslate nohighlight">\(
+E\{ I_0 I_1^* \} = \int_0^T \int_0^T 2 N_0 \delta(t_1 - t_3) u_0^*(t_1) u_1(t_3) \, dt_1 \, dt_3
+\)</span>$</p>
+<p>The delta function <span class="math notranslate nohighlight">\( \delta(t_1 - t_3) \)</span> simplifies the double integral to a single integral:
+$<span class="math notranslate nohighlight">\(
+E\{ I_0 I_1^* \} = 2 N_0 \int_0^T u_0^*(t_1) u_1(t_1) \, dt_1
+\)</span>$</p>
+<p>Similarly, we can compute <span class="math notranslate nohighlight">\( E\{ I_0^* I_1 \} \)</span>:
+$<span class="math notranslate nohighlight">\(
+E\{ I_0^* I_1 \} = 2 N_0 \int_0^T u_0(t_2) u_1^*(t_2) \, dt_2
+\)</span>$</p>
+</section>
+<section id="putting-it-all-together">
+<h1>Putting It All Together<a class="headerlink" href="#putting-it-all-together" title="Link to this heading">#</a></h1>
+<p>Now we substitute these results back into the expression for <span class="math notranslate nohighlight">\( E\{U_0 U_1 | H_0\} \)</span>:
+$<span class="math notranslate nohighlight">\(
+E\{U_0 U_1 | H_0\} = \frac{1}{4} \left( 2 N_0 \int_0^T u_0^*(t_1) u_1(t_1) \, dt_1 + 2 N_0 \int_0^T u_0(t_2) u_1^*(t_2) \, dt_2 \right)
+\)</span>$</p>
+<p>Simplifying further:
+$<span class="math notranslate nohighlight">\(
+E\{U_0 U_1 | H_0\} = \frac{N_0}{2} \int_0^T u_0^*(t_1) u_1(t_1) \, dt_1 + \frac{N_0}{2} \int_0^T u_0(t_2) u_1^*(t_2) \, dt_2
+\)</span>$</p>
+</section>
+<section id="id3">
+<h1>Final Result<a class="headerlink" href="#id3" title="Link to this heading">#</a></h1>
+<p>Thus, the conditional complex covariance of <span class="math notranslate nohighlight">\( U_0 \)</span> and <span class="math notranslate nohighlight">\( U_1 \)</span> given <span class="math notranslate nohighlight">\( H_0 \)</span> is:
+$<span class="math notranslate nohighlight">\(
+\text{Cov}(U_0, U_1 | H_0) = \frac{N_0}{2} \int_0^T u_0^*(t_1) u_1(t_1) \, dt_1 + \frac{N_0}{2} \int_0^T u_0(t_2) u_1^*(t_2) \, dt_2
+\)</span>$</p>
+</section>
+<section id="interpretation">
+<h1>Interpretation<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h1>
+<p>This result shows that the covariance of <span class="math notranslate nohighlight">\( U_0 \)</span> and <span class="math notranslate nohighlight">\( U_1 \)</span> depends on the noise power spectral density <span class="math notranslate nohighlight">\( N_0 \)</span> and the cross-correlation between <span class="math notranslate nohighlight">\( u_0(t) \)</span> and <span class="math notranslate nohighlight">\( u_1(t) \)</span>.</p>
+<p>To compute this expression, let’s look at each term individually and simplify.</p>
+<p>The expression we want to compute is:
+$<span class="math notranslate nohighlight">\(
+\frac{N_0}{2} \int_0^T u_0^*(t_1) u_1(t_1) \, dt_1 + \frac{N_0}{2} \int_0^T u_0(t_2) u_1^*(t_2) \, dt_2
+\)</span>$</p>
+</section>
+<section id="step-1-recognize-the-cross-correlation-terms">
+<h1>Step 1: Recognize the Cross-Correlation Terms<a class="headerlink" href="#step-1-recognize-the-cross-correlation-terms" title="Link to this heading">#</a></h1>
+<p>Each term in this expression involves an integral that looks like a cross-correlation between <span class="math notranslate nohighlight">\( u_0(t) \)</span> and <span class="math notranslate nohighlight">\( u_1(t) \)</span>.</p>
+<p>Define:
+$<span class="math notranslate nohighlight">\(
+\rho = \rho_r + j \rho_i = \frac{1}{2 \sqrt{\mathcal{E}_0 \mathcal{E}_1}} \int_0^T u_0(t) u_1^*(t) \, dt
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span> \mathcal{E}_0 = \int_0^T |u_0(t)|^2 , dt <span class="math notranslate nohighlight">\( and \)</span> \mathcal{E}_1 = \int_0^T |u_1(t)|^2 , dt <span class="math notranslate nohighlight">\( are the energies of \)</span> u_0(t) <span class="math notranslate nohighlight">\( and \)</span> u_1(t) $, respectively.</p>
+<p>This means:
+$<span class="math notranslate nohighlight">\(
+\int_0^T u_0(t) u_1^*(t) \, dt = 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho
+\)</span><span class="math notranslate nohighlight">\(
+and its complex conjugate is:
+\)</span><span class="math notranslate nohighlight">\(
+\int_0^T u_0^*(t) u_1(t) \, dt = 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho^*
+\)</span>$</p>
+</section>
+<section id="step-2-substitute-into-the-expression">
+<h1>Step 2: Substitute into the Expression<a class="headerlink" href="#step-2-substitute-into-the-expression" title="Link to this heading">#</a></h1>
+<p>Now we can substitute these integrals back into the expression:
+$<span class="math notranslate nohighlight">\(
+\frac{N_0}{2} \int_0^T u_0^*(t_1) u_1(t_1) \, dt_1 + \frac{N_0}{2} \int_0^T u_0(t_2) u_1^*(t_2) \, dt_2
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+= \frac{N_0}{2} \cdot 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho^* + \frac{N_0}{2} \cdot 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+= N_0 \sqrt{\mathcal{E}_0 \mathcal{E}_1} (\rho + \rho^*)
+\)</span>$</p>
+</section>
+<section id="step-3-simplify-using-rho-rho-2-rho-r">
+<h1>Step 3: Simplify Using <span class="math notranslate nohighlight">\( \rho + \rho^* = 2 \rho_r \)</span><a class="headerlink" href="#step-3-simplify-using-rho-rho-2-rho-r" title="Link to this heading">#</a></h1>
+<p>Since <span class="math notranslate nohighlight">\( \rho = \rho_r + j \rho_i \)</span>, we have:
+$<span class="math notranslate nohighlight">\(
+\rho + \rho^* = (\rho_r + j \rho_i) + (\rho_r - j \rho_i) = 2 \rho_r
+\)</span>$</p>
+<p>Thus, the expression simplifies to:
+$<span class="math notranslate nohighlight">\(
+N_0 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \cdot 2 \rho_r = 2 N_0 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r
+\)</span>$</p>
+</section>
+<section id="id4">
+<h1>Final Result<a class="headerlink" href="#id4" title="Link to this heading">#</a></h1>
+<p>So, we have:
+$<span class="math notranslate nohighlight">\(
+\frac{N_0}{2} \int_0^T u_0^*(t_1) u_1(t_1) \, dt_1 + \frac{N_0}{2} \int_0^T u_0(t_2) u_1^*(t_2) \, dt_2 = 2 N_0 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r
+\)</span>$</p>
+<p>This result shows that the covariance of <span class="math notranslate nohighlight">\( U_0 \)</span> and <span class="math notranslate nohighlight">\( U_1 \)</span> depends on the noise power spectral density <span class="math notranslate nohighlight">\( N_0 \)</span>, the energies <span class="math notranslate nohighlight">\( \mathcal{E}_0 \)</span> and <span class="math notranslate nohighlight">\( \mathcal{E}_1 \)</span> of the signals <span class="math notranslate nohighlight">\( u_0(t) \)</span> and <span class="math notranslate nohighlight">\( u_1(t) \)</span>, and the real part of the cross-correlation coefficient <span class="math notranslate nohighlight">\( \rho_r \)</span> between <span class="math notranslate nohighlight">\( u_0(t) \)</span> and <span class="math notranslate nohighlight">\( u_1(t) \)</span>.</p>
+<hr class="docutils" />
+<p><span style="color:red"> just replace my own result </span></p>
+<p>To compute the mean <span class="math notranslate nohighlight">\( \mu_{\mathcal{V}} = E\{\mathcal{V} | H_0\} \)</span> and the variance <span class="math notranslate nohighlight">\( \sigma_{\mathcal{V}}^2 = \text{Var}\{\mathcal{V} | H_0\} \)</span> of the new random variable <span class="math notranslate nohighlight">\( \mathcal{V} = U_1 - U_0 \)</span> under the hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span>, let’s go through each part in detail.</p>
+</section>
+<section id="step-1-define-mathcal-v-and-compute-the-mean-mu-mathcal-v">
+<h1>Step 1: Define <span class="math notranslate nohighlight">\( \mathcal{V} \)</span> and Compute the Mean <span class="math notranslate nohighlight">\( \mu_{\mathcal{V}} \)</span><a class="headerlink" href="#step-1-define-mathcal-v-and-compute-the-mean-mu-mathcal-v" title="Link to this heading">#</a></h1>
+<p>The random variable <span class="math notranslate nohighlight">\( \mathcal{V} \)</span> is defined as:
+$<span class="math notranslate nohighlight">\(
+\mathcal{V} = U_1 - U_0
+\)</span>$</p>
+<p>Given <span class="math notranslate nohighlight">\( H_0 \)</span>, we know the following:</p>
+<ul class="simple">
+<li><p>The mean of <span class="math notranslate nohighlight">\( U_0 \)</span> given <span class="math notranslate nohighlight">\( H_0 \)</span> is:
+$<span class="math notranslate nohighlight">\(
+E\{U_0 | H_0\} = \mathcal{E}_0
+\)</span>$</p></li>
+<li><p>The mean of <span class="math notranslate nohighlight">\( U_1 \)</span> given <span class="math notranslate nohighlight">\( H_0 \)</span> is:
+$<span class="math notranslate nohighlight">\(
+E\{U_1 | H_0\} = 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r - \mathcal{E}_1
+\)</span>$</p></li>
+</ul>
+<p>Thus, the mean of <span class="math notranslate nohighlight">\( \mathcal{V} \)</span> under <span class="math notranslate nohighlight">\( H_0 \)</span> is:
+$<span class="math notranslate nohighlight">\(
+\mu_{\mathcal{V}} = E\{\mathcal{V} | H_0\} = E\{U_1 - U_0 | H_0\} = E\{U_1 | H_0\} - E\{U_0 | H_0\}
+\)</span>$</p>
+<p>Substitute the values of <span class="math notranslate nohighlight">\( E\{U_1 | H_0\} \)</span> and <span class="math notranslate nohighlight">\( E\{U_0 | H_0\} \)</span>:
+$<span class="math notranslate nohighlight">\(\boxed{
+\mu_{\mathcal{V}} = 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r - \mathcal{E}_0 - \mathcal{E}_1
+}
+\)</span>$</p>
+</section>
+<section id="step-2-compute-the-variance-sigma-mathcal-v-2">
+<h1>Step 2: Compute the Variance <span class="math notranslate nohighlight">\( \sigma_{\mathcal{V}}^2 \)</span><a class="headerlink" href="#step-2-compute-the-variance-sigma-mathcal-v-2" title="Link to this heading">#</a></h1>
+<p>The variance of <span class="math notranslate nohighlight">\( \mathcal{V} \)</span> given <span class="math notranslate nohighlight">\( H_0 \)</span> is:
+$<span class="math notranslate nohighlight">\(
+\sigma_{\mathcal{V}}^2 = \text{Var}\{\mathcal{V} | H_0\} = \text{Var}\{U_1 - U_0 | H_0\}
+\)</span>$</p>
+<p>Since <span class="math notranslate nohighlight">\( \mathcal{V} = U_1 - U_0 \)</span>, we can express the variance as:
+$<span class="math notranslate nohighlight">\(
+\text{Var}\{\mathcal{V} | H_0\} = \text{Var}\{U_1 | H_0\} + \text{Var}\{U_0 | H_0\} - 2 \, \text{Cov}(U_0, U_1 | H_0)
+\)</span>$</p>
+<section id="individual-variance-terms">
+<h2>Individual Variance Terms<a class="headerlink" href="#individual-variance-terms" title="Link to this heading">#</a></h2>
+<p>From previous calculations:</p>
+<ol class="arabic simple">
+<li><p>The variance of <span class="math notranslate nohighlight">\( U_0 \)</span> given <span class="math notranslate nohighlight">\( H_0 \)</span> is:
+$<span class="math notranslate nohighlight">\(
+\text{Var}\{U_0 | H_0\} = 2 N_0 \mathcal{E}_0
+\)</span>$</p></li>
+<li><p>The variance of <span class="math notranslate nohighlight">\( U_1 \)</span> given <span class="math notranslate nohighlight">\( H_0 \)</span> is:
+$<span class="math notranslate nohighlight">\(
+\text{Var}\{U_1 | H_0\} = 2 N_0 \mathcal{E}_1
+\)</span>$</p></li>
+<li><p>The covariance <span class="math notranslate nohighlight">\( \text{Cov}(U_0, U_1 | H_0) \)</span> is:
+$<span class="math notranslate nohighlight">\(
+\text{Cov}(U_0, U_1 | H_0) = 2 N_0 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r
+\)</span>$</p></li>
+</ol>
+</section>
+<section id="substitute-and-simplify">
+<h2>Substitute and Simplify<a class="headerlink" href="#substitute-and-simplify" title="Link to this heading">#</a></h2>
+<p>Now, substitute these results into the variance expression:
+$<span class="math notranslate nohighlight">\(
+\sigma_{\mathcal{V}}^2 = 2 N_0 \mathcal{E}_1 + 2 N_0 \mathcal{E}_0 - 2 \cdot 2 N_0 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r
+\)</span><span class="math notranslate nohighlight">\(
+\)</span><span class="math notranslate nohighlight">\(
+= 2 N_0 (\mathcal{E}_0 + \mathcal{E}_1) - 4 N_0 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r
+\)</span>$</p>
+<p>Factor out <span class="math notranslate nohighlight">\( N_0 \)</span>:
+$<span class="math notranslate nohighlight">\( \boxed{
+\sigma_{\mathcal{V}}^2 = 2 N_0 \left( \mathcal{E}_0 + \mathcal{E}_1 - 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r \right)
+}
+\)</span>$</p>
+</section>
+</section>
+<section id="id5">
+<h1>Final Result<a class="headerlink" href="#id5" title="Link to this heading">#</a></h1>
+<p>So, the mean and variance of <span class="math notranslate nohighlight">\( \mathcal{V} = U_1 - U_0 \)</span> given <span class="math notranslate nohighlight">\( H_0 \)</span> are:</p>
+<ol class="arabic simple">
+<li><p><strong>Mean:</strong>
+$<span class="math notranslate nohighlight">\(
+\mu_{\mathcal{V}} = E\{\mathcal{V} | H_0\} = 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r - \mathcal{E}_0 - \mathcal{E}_1
+\)</span>$</p></li>
+<li><p><strong>Variance:</strong>
+$<span class="math notranslate nohighlight">\(
+\sigma_{\mathcal{V}}^2 = \text{Var}\{\mathcal{V} | H_0\} = 2 N_0 \left( \mathcal{E}_0 + \mathcal{E}_1 - 2 \sqrt{\mathcal{E}_0 \mathcal{E}_1} \rho_r \right)
+\)</span>$</p></li>
+</ol>
+<hr class="docutils" />
+<p>Yes, this is correct. Let’s break down the reasoning for clarity.</p>
+<p>The probability of error <span class="math notranslate nohighlight">\( P_{10} = P(\mathcal{V} &gt; 0 | H_0) \)</span> represents the probability that the random variable <span class="math notranslate nohighlight">\( \mathcal{V} = U_1 - U_0 \)</span> is greater than zero given that hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> is true. Since <span class="math notranslate nohighlight">\( \mathcal{V} \)</span> is a Gaussian random variable under <span class="math notranslate nohighlight">\( H_0 \)</span>, we can use its mean <span class="math notranslate nohighlight">\( \mu_{\mathcal{V}} \)</span> and variance <span class="math notranslate nohighlight">\( \sigma_{\mathcal{V}}^2 \)</span> to calculate this probability.</p>
+</section>
+<section id="id6">
+<h1>Step-by-Step Explanation<a class="headerlink" href="#id6" title="Link to this heading">#</a></h1>
+<ol class="arabic">
+<li><p><strong>Express <span class="math notranslate nohighlight">\( P(\mathcal{V} &gt; 0 | H_0) \)</span>:</strong></p>
+<p>Given that <span class="math notranslate nohighlight">\( \mathcal{V} \)</span> is Gaussian with mean <span class="math notranslate nohighlight">\( \mu_{\mathcal{V}} \)</span> and variance <span class="math notranslate nohighlight">\( \sigma_{\mathcal{V}}^2 \)</span>, the probability <span class="math notranslate nohighlight">\( P(\mathcal{V} &gt; 0 | H_0) \)</span> can be written as:
+$<span class="math notranslate nohighlight">\(
+P(\mathcal{V} &gt; 0 | H_0) = \int_0^{\infty} f_{\mathcal{V}}(v) \, dv
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span> f_{\mathcal{V}}(v) <span class="math notranslate nohighlight">\( is the probability density function of \)</span> \mathcal{V} <span class="math notranslate nohighlight">\(, given by:
+\)</span><span class="math notranslate nohighlight">\(
+f_{\mathcal{V}}(v) = \frac{1}{\sqrt{2 \pi \sigma_{\mathcal{V}}^2}} \exp \left( -\frac{(v - \mu_{\mathcal{V}})^2}{2 \sigma_{\mathcal{V}}^2} \right)
+\)</span>$</p>
+<p>Therefore:
+$<span class="math notranslate nohighlight">\(
+P(\mathcal{V} &gt; 0 | H_0) = \frac{1}{\sqrt{2 \pi \sigma_{\mathcal{V}}^2}} \int_0^{\infty} \exp \left( -\frac{(v - \mu_{\mathcal{V}})^2}{2 \sigma_{\mathcal{V}}^2} \right) dv
+\)</span>$</p>
+</li>
+<li><p><strong>Use the Complementary Error Function (erfc):</strong></p>
+<p>The probability <span class="math notranslate nohighlight">\( P(\mathcal{V} &gt; 0 | H_0) \)</span> can be rewritten in terms of the complementary error function <span class="math notranslate nohighlight">\( \text{erfc}(x) \)</span> by recognizing that this expression is equivalent to calculating the tail probability of a Gaussian distribution.</p>
+<p>We can express <span class="math notranslate nohighlight">\( P(\mathcal{V} &gt; 0 | H_0) \)</span> as:
+$<span class="math notranslate nohighlight">\(
+P(\mathcal{V} &gt; 0 | H_0) = P \left( \frac{\mathcal{V} - \mu_{\mathcal{V}}}{\sigma_{\mathcal{V}}} &gt; \frac{-\mu_{\mathcal{V}}}{\sigma_{\mathcal{V}}} \right)
+\)</span>$</p>
+<p>Since <span class="math notranslate nohighlight">\( \frac{\mathcal{V} - \mu_{\mathcal{V}}}{\sigma_{\mathcal{V}}} \)</span> is a standard normal random variable, we have:
+$<span class="math notranslate nohighlight">\(
+P(\mathcal{V} &gt; 0 | H_0) = \frac{1}{2} \, \text{erfc} \left( \frac{-\mu_{\mathcal{V}}}{\sqrt{2 \sigma_{\mathcal{V}}^2}} \right)
+\)</span>$</p>
+</li>
+<li><p><strong>Final Result:</strong></p>
+<p>Therefore, the probability of error <span class="math notranslate nohighlight">\( P_{10} \)</span> is:
+$<span class="math notranslate nohighlight">\(
+P_{10} = \frac{1}{2} \, \text{erfc} \left( \frac{-\mu_{\mathcal{V}}}{\sqrt{2 \sigma^2_{\mathcal{V}}}} \right)
+\)</span>$</p>
+</li>
+</ol>
+<p>This expression is correct and effectively gives the probability of error in terms of the complementary error function <span class="math notranslate nohighlight">\( \text{erfc} \)</span>.</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Step-by-Step Explanation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#final-result">Final Result</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-conditional-variance-text-var-u-0-h-0-under-hypothesis-h-0">the conditional variance <span class="math notranslate nohighlight">\( \text{Var}(U_0 | H_0) \)</span> under hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-rho-complex-valued-cross-correlation-coefficient">Definition of <span class="math notranslate nohighlight">\( \rho \)</span>: Complex-Valued Cross-Correlation Coefficient</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation-of-rho">Interpretation of <span class="math notranslate nohighlight">\( \rho \)</span>:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#using-rho-to-calculate-the-conditional-mean-of-u-1-given-h-0">Using <span class="math notranslate nohighlight">\( \rho \)</span> to Calculate the Conditional Mean of <span class="math notranslate nohighlight">\( U_1 \)</span> Given <span class="math notranslate nohighlight">\( H_0 \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#expanding-the-integral">Expanding the Integral</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#separating-terms">Separating Terms:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#combining-results">Combining Results:</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Summary</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-conditional-variance-text-var-u-1-h-0">the conditional variance <span class="math notranslate nohighlight">\( \text{Var}\{U_1 | H_0\} \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-u-1">Definition of <span class="math notranslate nohighlight">\( U_1 \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#variance-of-u-1">Variance of <span class="math notranslate nohighlight">\( U_1 \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-e-i-1-2">Compute <span class="math notranslate nohighlight">\( E\{|I_1|^2\} \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#final-expression-for-text-var-u-1-h-0">Final Expression for <span class="math notranslate nohighlight">\( \text{Var}(U_1 | H_0) \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Summary</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#the-conditional-covariance-text-cov-u-0-u-1-h-0">the conditional covariance <span class="math notranslate nohighlight">\( \text{Cov}(U_0, U_1 | H_0) \)</span>,</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#expression-for-u-0-and-u-1">Expression for <span class="math notranslate nohighlight">\( U_0 \)</span> and <span class="math notranslate nohighlight">\( U_1 \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#covariance-e-u-0-u-1-h-0">Covariance <span class="math notranslate nohighlight">\( E\{ U_0 U_1 | H_0 \} \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-e-i-0-i-1">Calculating <span class="math notranslate nohighlight">\( E\{ I_0 I_1^* \} \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#putting-it-all-together">Putting It All Together</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Final Result</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-recognize-the-cross-correlation-terms">Step 1: Recognize the Cross-Correlation Terms</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-substitute-into-the-expression">Step 2: Substitute into the Expression</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-simplify-using-rho-rho-2-rho-r">Step 3: Simplify Using <span class="math notranslate nohighlight">\( \rho + \rho^* = 2 \rho_r \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">Final Result</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-define-mathcal-v-and-compute-the-mean-mu-mathcal-v">Step 1: Define <span class="math notranslate nohighlight">\( \mathcal{V} \)</span> and Compute the Mean <span class="math notranslate nohighlight">\( \mu_{\mathcal{V}} \)</span></a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-compute-the-variance-sigma-mathcal-v-2">Step 2: Compute the Variance <span class="math notranslate nohighlight">\( \sigma_{\mathcal{V}}^2 \)</span></a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#individual-variance-terms">Individual Variance Terms</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#substitute-and-simplify">Substitute and Simplify</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">Final Result</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">Step-by-Step Explanation</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

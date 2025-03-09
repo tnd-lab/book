@@ -1,0 +1,1123 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Example: Detection with Real Additive Gaussian Noise &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c5_s5_c_example_b';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The Optimum Digital Detector in Additive Gaussian Noise" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html" />
+    <link rel="prev" title="Example: Antipodal Signal Detection using Multiple Samples" href="c5_s5_b_example_a.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Example: Detection with Real Additive Gaussian Noise</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Example: Detection with Real Additive Gaussian Noise</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-finding-the-likelihood-ratio">Step 1: Finding the Likelihood Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-the-probability-density-functions-pdfs">Deriving the Probability Density Functions (PDFs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-the-vector-likelihood-ratio-l-vec-y">Formulating the Vector Likelihood Ratio <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making-process">Decision-Making Process</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-determining-the-decision-threshold">Step 2: Determining the Decision Threshold</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-the-decision-rule">Formulating the Decision Rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-decision-threshold">Finding the Decision Threshold</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule">Decision Rule</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-boundary-and-decision-region">Decision Boundary and Decision Region</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#neyman-pearson-np-criterion">Neyman-Pearson (NP) Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="example-detection-with-real-additive-gaussian-noise">
+<h1>Example: Detection with Real Additive Gaussian Noise<a class="headerlink" href="#example-detection-with-real-additive-gaussian-noise" title="Link to this heading">#</a></h1>
+<p>In this example, based on [B2, Ex. 5.1], we consider a detection problem where we use these multiple (discrete) samples to decide between the two hypotheses <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>.</p>
+<p>We assume that we have <span class="math notranslate nohighlight">\( k \)</span> <strong>real</strong> samples or measurements <span class="math notranslate nohighlight">\( \mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_k \)</span>.</p>
+<p>Furthermore, we have <span class="math notranslate nohighlight">\( 2k \)</span> values or signal samples; <span class="math notranslate nohighlight">\( s_{0j} \)</span>, <span class="math notranslate nohighlight">\( j = 1, \ldots, k \)</span>, are associated with hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( s_{1j} \)</span>, <span class="math notranslate nohighlight">\( j = 1, \ldots, k \)</span>, with hypothesis <span class="math notranslate nohighlight">\( H_1 \)</span>, respectively.</p>
+<p>The real measurements can then be written as</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{y}_j = s_{ij} + \mathbf{n}_j, \quad i = 0, 1, \quad j = 1, \ldots, k
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \mathbf{n}_j \)</span> is the random variable corresponding to the <span class="math notranslate nohighlight">\( j \)</span>-th noise sample.</p>
+<p>Consider the above model, where, under hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span>, the signal samples form a column vector <span class="math notranslate nohighlight">\( \vec{s}_0 = [s_{01}, \ldots, s_{0k}]^T \)</span> and under <span class="math notranslate nohighlight">\( H_1 \)</span> they form the column vector <span class="math notranslate nohighlight">\( \vec{s}_1 = [s_{11}, \ldots, s_{1k}]^T \)</span>.</p>
+<p>The noise samples are real zero-mean Gaussian random variables characterized by their <span class="math notranslate nohighlight">\( k \times k \)</span> cross-correlation matrix <span class="math notranslate nohighlight">\( R_n \)</span>, i.e., the <span class="math notranslate nohighlight">\( i \)</span>-th row and <span class="math notranslate nohighlight">\( j \)</span>-th column of <span class="math notranslate nohighlight">\( R_n \)</span> is <span class="math notranslate nohighlight">\( E\{n_i n_j\} \)</span>.</p>
+<section id="step-1-finding-the-likelihood-ratio">
+<h2>Step 1: Finding the Likelihood Ratio<a class="headerlink" href="#step-1-finding-the-likelihood-ratio" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>First, we derive the probability density functions <span class="math notranslate nohighlight">\( p_0(\vec{y}) \)</span> and <span class="math notranslate nohighlight">\( p_1(\vec{y}) \)</span> under hypotheses <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>, respectively.</p></li>
+<li><p>We will then derive the vector likelihood ratio <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span> and simplify it using the properties of the covariance matrix <span class="math notranslate nohighlight">\( R_n \)</span>.</p></li>
+</ul>
+</section>
+<section id="deriving-the-probability-density-functions-pdfs">
+<h2>Deriving the Probability Density Functions (PDFs)<a class="headerlink" href="#deriving-the-probability-density-functions-pdfs" title="Link to this heading">#</a></h2>
+<p><strong>Measurements</strong>: We have a <span class="math notranslate nohighlight">\( k \)</span>-dimensional real-valued measurement vector:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\vec{y} = \begin{bmatrix} \mathbf{y}_1 \\ \mathbf{y}_2 \\ \vdots \\ \mathbf{y}_k \end{bmatrix}
+\end{split}\]</div>
+<p><strong>Hypotheses</strong>:</p>
+<ul>
+<li><p><strong><span class="math notranslate nohighlight">\( H_0 \)</span></strong>: The measurement vector is modeled as:</p>
+<div class="math notranslate nohighlight">
+\[
+  \vec{y} = \vec{s}_0 + \vec{n}
+  \]</div>
+</li>
+<li><p><strong><span class="math notranslate nohighlight">\( H_1 \)</span></strong>: The measurement vector is modeled as:</p>
+<div class="math notranslate nohighlight">
+\[
+  \vec{y} = \vec{s}_1 + \vec{n}
+  \]</div>
+</li>
+</ul>
+<p><strong>Noise</strong>: The noise vector <span class="math notranslate nohighlight">\( \vec{n} \)</span> is a <span class="math notranslate nohighlight">\( k \)</span>-dimensional Gaussian random vector with zero mean and covariance matrix <span class="math notranslate nohighlight">\( R_n \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{n} \sim \mathcal{N}(\vec{0}, R_n)
+\]</div>
+<p><strong>Premilinary. The Multivariate Gaussian Distribution</strong></p>
+<p>The <strong>multivariate Gaussian distribution</strong> <span class="math notranslate nohighlight">\( \mathcal{N}(\vec{\mu}, \Sigma) \)</span> in <span class="math notranslate nohighlight">\( \mathbb{R}^k \)</span> describes a vector of <span class="math notranslate nohighlight">\( k \)</span> correlated Gaussian random variables.</p>
+<p>Its PDF is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}) = \frac{1}{(2\pi)^{k/2} |\Sigma|^{1/2}} \exp\left( -\frac{1}{2} (\vec{y} - \vec{\mu})^T \Sigma^{-1} (\vec{y} - \vec{\mu}) \right)
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \vec{\mu} \)</span> is the mean vector.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Sigma \)</span> is the covariance matrix.</p></li>
+<li><p><span class="math notranslate nohighlight">\( |\Sigma| \)</span> is the determinant of <span class="math notranslate nohighlight">\( \Sigma \)</span>.</p></li>
+</ul>
+<p>The PDF encapsulates both the spread (via <span class="math notranslate nohighlight">\( \Sigma \)</span>) and the central tendency (via <span class="math notranslate nohighlight">\( \vec{\mu} \)</span>) of the distribution.</p>
+<p><strong>Probability Density Function under <span class="math notranslate nohighlight">\( H_0 \)</span> (<span class="math notranslate nohighlight">\( p_0(\vec{y}) \)</span>)</strong></p>
+<p>Under hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span>, the measurement vector is:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{y} = \vec{s}_0 + \vec{n}
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\( \vec{n} \)</span> is Gaussian with mean <span class="math notranslate nohighlight">\( \vec{0} \)</span> and covariance <span class="math notranslate nohighlight">\( R_n \)</span>, it follows that <span class="math notranslate nohighlight">\( \vec{y} \)</span> is also Gaussian with mean <span class="math notranslate nohighlight">\( \vec{s}_0 \)</span> and covariance <span class="math notranslate nohighlight">\( R_n \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{y} \sim \mathcal{N}(\vec{s}_0, R_n)
+\]</div>
+<p>The probability density function (PDF) of a multivariate Gaussian distribution <span class="math notranslate nohighlight">\( \mathcal{N}(\vec{\mu}, \Sigma) \)</span> in <span class="math notranslate nohighlight">\( \mathbb{R}^k \)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}) = \frac{1}{(2\pi)^{k/2} |\Sigma|^{1/2}} \exp\left( -\frac{1}{2} (\vec{y} - \vec{\mu})^T \Sigma^{-1} (\vec{y} - \vec{\mu}) \right)
+\]</div>
+<p>Applying this formula to <span class="math notranslate nohighlight">\( H_0 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ 
+\boxed{
+p_0(\vec{y}) = \frac{1}{(2\pi)^{k/2} |R_n|^{1/2}} \exp\left( -\frac{1}{2} (\vec{y} - \vec{s}_0)^T R_n^{-1} (\vec{y} - \vec{s}_0) \right)
+}
+\]</div>
+<p><strong>Probability Density Function under <span class="math notranslate nohighlight">\( H_1 \)</span> (<span class="math notranslate nohighlight">\( p_1(\vec{y}) \)</span>)</strong></p>
+<p>Similarly, under hypothesis <span class="math notranslate nohighlight">\( H_1 \)</span>, the measurement vector is:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{y} = \vec{s}_1 + \vec{n}
+\]</div>
+<p>Thus, <span class="math notranslate nohighlight">\( \vec{y} \)</span> is Gaussian with mean <span class="math notranslate nohighlight">\( \vec{s}_1 \)</span> and covariance <span class="math notranslate nohighlight">\( R_n \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{y} \sim \mathcal{N}(\vec{s}_1, R_n)
+\]</div>
+<p>The PDF under <span class="math notranslate nohighlight">\( H_1 \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+p_1(\vec{y}) = \frac{1}{(2\pi)^{k/2} |R_n|^{1/2}} \exp\left( -\frac{1}{2} (\vec{y} - \vec{s}_1)^T R_n^{-1} (\vec{y} - \vec{s}_1) \right)
+}
+\]</div>
+</section>
+<section id="formulating-the-vector-likelihood-ratio-l-vec-y">
+<h2>Formulating the Vector Likelihood Ratio <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span><a class="headerlink" href="#formulating-the-vector-likelihood-ratio-l-vec-y" title="Link to this heading">#</a></h2>
+<p>The likelihood ratio <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \frac{p_1(\vec{y})}{p_0(\vec{y})}
+\]</div>
+<p>Substituting the expressions for <span class="math notranslate nohighlight">\( p_1(\vec{y}) \)</span> and <span class="math notranslate nohighlight">\( p_0(\vec{y}) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \frac{\exp\left( -\frac{1}{2} (\vec{y} - \vec{s}_1)^T R_n^{-1} (\vec{y} - \vec{s}_1) \right)}{\exp\left( -\frac{1}{2} (\vec{y} - \vec{s}_0)^T R_n^{-1} (\vec{y} - \vec{s}_0) \right)}
+\]</div>
+<p>Simplifying the ratio of exponentials:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \exp\left[ -\frac{1}{2} (\vec{y} - \vec{s}_1)^T R_n^{-1} (\vec{y} - \vec{s}_1) + \frac{1}{2} (\vec{y} - \vec{s}_0)^T R_n^{-1} (\vec{y} - \vec{s}_0) \right]
+\]</div>
+<p>Let’s denote the exponent by <span class="math notranslate nohighlight">\( \text{exponent} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{exponent} = -\frac{1}{2} (\vec{y} - \vec{s}_1)^T R_n^{-1} (\vec{y} - \vec{s}_1) + \frac{1}{2} (\vec{y} - \vec{s}_0)^T R_n^{-1} (\vec{y} - \vec{s}_0)
+\]</div>
+<p><strong>Expanding the Quadratic Forms</strong></p>
+<p>Expanding each quadratic form in <span class="math notranslate nohighlight">\( \text{exponent} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+(\vec{y} - \vec{s}_1)^T R_n^{-1} (\vec{y} - \vec{s}_1) &amp;= \vec{y}^T R_n^{-1} \vec{y} - 2 \vec{s}_1^T R_n^{-1} \vec{y} + \vec{s}_1^T R_n^{-1} \vec{s}_1 \\
+(\vec{y} - \vec{s}_0)^T R_n^{-1} (\vec{y} - \vec{s}_0) &amp;= \vec{y}^T R_n^{-1} \vec{y} - 2 \vec{s}_0^T R_n^{-1} \vec{y} + \vec{s}_0^T R_n^{-1} \vec{s}_0
+\end{align*}
+\end{split}\]</div>
+<p>Substituting these back into <span class="math notranslate nohighlight">\( \text{exponent} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\text{exponent} &amp;= -\frac{1}{2} \left( \vec{y}^T R_n^{-1} \vec{y} - 2 \vec{s}_1^T R_n^{-1} \vec{y} + \vec{s}_1^T R_n^{-1} \vec{s}_1 \right) \\
+&amp;\quad + \frac{1}{2} \left( \vec{y}^T R_n^{-1} \vec{y} - 2 \vec{s}_0^T R_n^{-1} \vec{y} + \vec{s}_0^T R_n^{-1} \vec{s}_0 \right) \\
+&amp;= -\frac{1}{2} \vec{y}^T R_n^{-1} \vec{y} + \vec{s}_1^T R_n^{-1} \vec{y} - \frac{1}{2} \vec{s}_1^T R_n^{-1} \vec{s}_1 \\
+&amp;\quad + \frac{1}{2} \vec{y}^T R_n^{-1} \vec{y} - \vec{s}_0^T R_n^{-1} \vec{y} + \frac{1}{2} \vec{s}_0^T R_n^{-1} \vec{s}_0 \\
+&amp;= (\vec{s}_1^T R_n^{-1} - \vec{s}_0^T R_n^{-1}) \vec{y} + \frac{1}{2} (\vec{s}_0^T R_n^{-1} \vec{s}_0 - \vec{s}_1^T R_n^{-1} \vec{s}_1)
+\end{align*}
+\end{split}\]</div>
+<p>Thus, the likelihood ratio becomes:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+L(\vec{y}) = \exp\left( (\vec{s}_1^T R_n^{-1} - \vec{s}_0^T R_n^{-1}) \vec{y} + \frac{1}{2} (\vec{s}_0^T R_n^{-1} \vec{s}_0 - \vec{s}_1^T R_n^{-1} \vec{s}_1) \right)
+}
+\]</div>
+<p><strong>Simpligying <span class="math notranslate nohighlight">\(L(\vec{y})\)</span> Utilizing the Symmetry of <span class="math notranslate nohighlight">\( R_n^{-1} \)</span></strong></p>
+<p>Given that <span class="math notranslate nohighlight">\( R_n \)</span> is a <strong>Toeplitz matrix</strong>, it possesses specific structural properties:</p>
+<ul>
+<li><p><strong>Toeplitz Property</strong>: A Toeplitz matrix is constant along its diagonals. This property, however, isn’t directly relevant to symmetry but plays a role in the structure of the inverse.</p></li>
+<li><p><strong>Symmetry</strong>: More importantly, <span class="math notranslate nohighlight">\( R_n \)</span> being Toeplitz and a covariance matrix implies that it is <strong>symmetric</strong>, i.e., <span class="math notranslate nohighlight">\( R_n^T = R_n \)</span>. Consequently, its inverse <span class="math notranslate nohighlight">\( R_n^{-1} \)</span> is also symmetric:</p>
+<div class="math notranslate nohighlight">
+\[
+  (R_n^{-1})^T = R_n^{-1}
+  \]</div>
+</li>
+</ul>
+<p>This symmetry is crucial because it allows us to interchange vectors in quadratic forms without changing the value.</p>
+<p>Specifically, for any vectors <span class="math notranslate nohighlight">\( \vec{a} \)</span> and <span class="math notranslate nohighlight">\( \vec{b} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{a}^T R_n^{-1} \vec{b} = \vec{b}^T R_n^{-1} \vec{a}
+\]</div>
+<p>Applying this to our case:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{y}^T R_n^{-1} \vec{s}_i = \vec{s}_i^T R_n^{-1} \vec{y} \quad \text{for } i = 0, 1
+\]</div>
+<p><strong>Simplifying the Likelihood Ratio</strong></p>
+<p>Using the symmetry property, we can rewrite the likelihood ratio expression:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+L(\vec{y}) &amp;= \exp\left( (\vec{s}_1^T R_n^{-1} - \vec{s}_0^T R_n^{-1}) \vec{y} + \frac{1}{2} (\vec{s}_0^T R_n^{-1} \vec{s}_0 - \vec{s}_1^T R_n^{-1} \vec{s}_1) \right) \\
+&amp;= \exp\left( (\vec{s}_1^T R_n^{-1} \vec{y} - \vec{s}_0^T R_n^{-1} \vec{y}) + \frac{1}{2} (\vec{s}_0^T R_n^{-1} \vec{s}_0 - \vec{s}_1^T R_n^{-1} \vec{s}_1) \right) \\
+&amp;= \exp\left( (\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \vec{y} + \frac{1}{2} (\vec{s}_0^T R_n^{-1} \vec{s}_0 - \vec{s}_1^T R_n^{-1} \vec{s}_1) \right)
+\end{align*}
+\end{split}\]</div>
+<p>Thus, we have the simplified expression:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+L(\vec{y}) = \exp\left[ (\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \vec{y} + \frac{1}{2} \vec{s}_0^T R_n^{-1} \vec{s}_0 - \frac{1}{2} \vec{s}_1^T R_n^{-1} \vec{s}_1 \right]
+}
+\]</div>
+<p><strong>Log-Likelihood Ratio</strong>:</p>
+<p>Taking the natural logarithm of <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span>, we obtain the log-likelihood ratio <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+\ell(\vec{y}) = \ln L(\vec{y}) = (\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \vec{y} + \frac{1}{2} \vec{s}_0^T R_n^{-1} \vec{s}_0 - \frac{1}{2} \vec{s}_1^T R_n^{-1} \vec{s}_1
+}
+\]</div>
+<p><strong>Discussion. Significance of the Covariance Matrix <span class="math notranslate nohighlight">\( R_n \)</span></strong></p>
+<p>The covariance matrix <span class="math notranslate nohighlight">\( R_n \)</span> encapsulates the statistical properties of the noise affecting the measurements.</p>
+<p>Its properties significantly influence the form of the likelihood ratio and, consequently, the performance of the detection algorithm:</p>
+<ul class="simple">
+<li><p><strong>Diagonal <span class="math notranslate nohighlight">\( R_n \)</span></strong>: If <span class="math notranslate nohighlight">\( R_n \)</span> is diagonal, it implies that the noise components across different measurements are uncorrelated. This simplifies computations as <span class="math notranslate nohighlight">\( R_n^{-1} \)</span> is also diagonal.</p></li>
+<li><p><strong>Toeplitz <span class="math notranslate nohighlight">\( R_n \)</span></strong>: A Toeplitz covariance matrix indicates that the noise has a specific structure, often arising in signal processing applications where noise exhibits stationarity.</p></li>
+</ul>
+<p>While <span class="math notranslate nohighlight">\( R_n^{-1} \)</span> retains the Toeplitz structure, the primary benefit is in computational efficiency and exploiting the matrix structure for optimized algorithms.</p>
+<p>Leveraging the structure of <span class="math notranslate nohighlight">\( R_n \)</span> can lead to more efficient implementations, especially for high-dimensional data where matrix operations can be computationally intensive.</p>
+</section>
+</section>
+<section id="decision-making-process">
+<h1>Decision-Making Process<a class="headerlink" href="#decision-making-process" title="Link to this heading">#</a></h1>
+<p>The decision-making process in this detection problem, focusing on how the <strong>log-likelihood ratio</strong> <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> is used to formulate a practical decision rule.</p>
+<p>Short answer: it simplifies to comparing a weighted sum of the measurements <span class="math notranslate nohighlight">\( \vec{y} \)</span> against a threshold <span class="math notranslate nohighlight">\( \eta_0 \)</span>.</p>
+<p><strong>Decision Making Using the Likelihood Ratio</strong></p>
+<p>A decision rule is established based on <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span>:</p>
+<ul class="simple">
+<li><p><strong>If <span class="math notranslate nohighlight">\( L(\vec{y}) &gt; \eta \)</span></strong>: Decide in favor of <span class="math notranslate nohighlight">\( H_1 \)</span>.</p></li>
+<li><p><strong>If <span class="math notranslate nohighlight">\( L(\vec{y}) \leq \eta \)</span></strong>: Decide in favor of <span class="math notranslate nohighlight">\( H_0 \)</span>.</p></li>
+</ul>
+<p>Here, <span class="math notranslate nohighlight">\( \eta \)</span> is a predetermined threshold that balances.</p>
+<p>If using LLR, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\eta_L = \ln \eta
+\]</div>
+<p>The choice of <span class="math notranslate nohighlight">\( \eta \)</span> can be optimized based on specific performance criteria, such as minimizing the probability of error or maximizing the detection probability for a given false alarm rate.</p>
+</section>
+<section id="step-2-determining-the-decision-threshold">
+<h1>Step 2: Determining the Decision Threshold<a class="headerlink" href="#step-2-determining-the-decision-threshold" title="Link to this heading">#</a></h1>
+<section id="formulating-the-decision-rule">
+<h2>Formulating the Decision Rule<a class="headerlink" href="#formulating-the-decision-rule" title="Link to this heading">#</a></h2>
+<p>We have the <strong>log-likelihood ratio</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) = (\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \vec{y} + \frac{1}{2} \vec{s}_0^T R_n^{-1} \vec{s}_0 - \frac{1}{2} \vec{s}_1^T R_n^{-1} \vec{s}_1
+\]</div>
+<p>In hypothesis testing, <strong>decision rules</strong> determine which hypothesis to accept based on the observed data or statistic.</p>
+<p>Here, we compare the statistic, i.e., log-likelihood ratio <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span>, against a predefined threshold <span class="math notranslate nohighlight">\( \eta_{L} \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) \underset{D_0}{\overset{D_1}{\gtrless}} \eta_{L}
+\]</div>
+<p>Here:</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\( D_0 \)</span></strong>: Decision in favor of <span class="math notranslate nohighlight">\( H_0 \)</span> (null hypothesis).</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\( D_1 \)</span></strong>: Decision in favor of <span class="math notranslate nohighlight">\( H_1 \)</span> (alternative hypothesis).</p></li>
+</ul>
+</section>
+<section id="finding-the-decision-threshold">
+<h2>Finding the Decision Threshold<a class="headerlink" href="#finding-the-decision-threshold" title="Link to this heading">#</a></h2>
+<p><strong>Analyzing the Components of <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span></strong></p>
+<p>We dissect the expression for <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) = (\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \vec{y} + \underbrace{\frac{1}{2} \vec{s}_0^T R_n^{-1} \vec{s}_0 - \frac{1}{2} \vec{s}_1^T R_n^{-1} \vec{s}_1}_{\text{Constants}}
+\]</div>
+<p>Here, where have</p>
+<p><strong>Linear Term: Weighted Sum of Measurements</strong>:</p>
+<div class="math notranslate nohighlight">
+\[ (\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \vec{y} \]</div>
+<ul class="simple">
+<li><p>This term is a <strong>linear combination</strong> of the measurement vector <span class="math notranslate nohighlight">\( \vec{y} \)</span>.</p></li>
+<li><p><strong>Weights</strong>: The weights are given by <span class="math notranslate nohighlight">\( (\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \)</span>, which depend on the signal differences between the two hypotheses and the noise covariance matrix <span class="math notranslate nohighlight">\( R_n \)</span>.</p></li>
+<li><p><strong>Interpretation</strong>: It represents how the measurements align with the direction that favors <span class="math notranslate nohighlight">\( H_1 \)</span> over <span class="math notranslate nohighlight">\( H_0 \)</span>.</p></li>
+</ul>
+<p><strong>Constant Terms: Shift in Threshold</strong></p>
+<div class="math notranslate nohighlight">
+\[ \frac{1}{2} \vec{s}_0^T R_n^{-1} \vec{s}_0 - \frac{1}{2} \vec{s}_1^T R_n^{-1} \vec{s}_1 \]</div>
+<ul class="simple">
+<li><p>These terms <strong>do not depend</strong> on the measurements <span class="math notranslate nohighlight">\( \vec{y} \)</span>.</p></li>
+<li><p>They are <strong>constants</strong> for the decision rule, determined solely by the known signal vectors <span class="math notranslate nohighlight">\( \vec{s}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{s}_1 \)</span>, and the noise covariance <span class="math notranslate nohighlight">\( R_n \)</span>.</p></li>
+<li><p><strong>Role</strong>: They effectively <strong>shift the threshold</strong> <span class="math notranslate nohighlight">\( \eta_{L} \)</span> in the decision rule.</p></li>
+</ul>
+<p><strong>Simplifying the Decision Rule</strong></p>
+<p>Given that the second and third terms in <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> are constants, we can incorporate them into the threshold <span class="math notranslate nohighlight">\( \eta_{L} \)</span> as follows:</p>
+<p><strong>Original Decision Rule</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+\ell(\vec{y}) = (\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \vec{y} + \text{Constants} \underset{D_0}{\overset{D_1}{\gtrless}} \eta_{L}
+\]</div>
+<p><strong>Isolating the Linear Term</strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+(\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \vec{y} \underset{D_0}{\overset{D_1}{\gtrless}} \eta_{L} - \text{Constants}
+\]</div>
+<p><strong>Defining the New Threshold <span class="math notranslate nohighlight">\( \eta_0 \)</span></strong>:</p>
+<p>Let:</p>
+<div class="math notranslate nohighlight">
+\[\boxed{
+\eta_0 = \eta_{L} + \frac{1}{2} \vec{s}_1^T R_n^{-1} \vec{s}_1 - \frac{1}{2} \vec{s}_0^T R_n^{-1} \vec{s}_0
+}
+\]</div>
+<p>Rearranging the inequality:</p>
+<div class="math notranslate nohighlight">
+\[
+(\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \vec{y} \underset{D_0}{\overset{D_1}{\gtrless}} \eta_0
+\]</div>
+<p>Thus, the <strong>decision rule</strong> simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+(\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \vec{y} \underset{D_0}{\overset{D_1}{\gtrless}} \eta_0
+}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \eta_0 \)</span> is a <strong>new threshold</strong> that incorporates both the original threshold <span class="math notranslate nohighlight">\( \eta_{L} \)</span> and the constant terms from <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span>.</p>
+</section>
+<section id="decision-rule">
+<h2>Decision Rule<a class="headerlink" href="#decision-rule" title="Link to this heading">#</a></h2>
+<p><strong>Test Statistic</strong></p>
+<div class="math notranslate nohighlight">
+\[ T(\vec{y}) = (\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \vec{y} \]</div>
+<p><span class="math notranslate nohighlight">\( T(\vec{y}) \)</span> is a <strong>weighted sum</strong> of the measurements <span class="math notranslate nohighlight">\( \vec{y} \)</span>.</p>
+<p><strong>Decision Criterion</strong>:</p>
+<ul class="simple">
+<li><p><strong>If <span class="math notranslate nohighlight">\( T(\vec{y}) &gt; \eta_0 \)</span></strong>: Decide <span class="math notranslate nohighlight">\( D_1 \)</span> (favor <span class="math notranslate nohighlight">\( H_1 \)</span>).</p></li>
+<li><p><strong>If <span class="math notranslate nohighlight">\( T(\vec{y}) \leq \eta_0 \)</span></strong>: Decide <span class="math notranslate nohighlight">\( D_0 \)</span> (favor <span class="math notranslate nohighlight">\( H_0 \)</span>).</p></li>
+</ul>
+<p>We can adjust the threshold based on the known signal vectors and noise characteristics.</p>
+<p><strong>Discussion.</strong></p>
+<p>In this problem, the <strong>decision threshold</strong> (e.g., <span class="math notranslate nohighlight">\( \eta_L \)</span>, <span class="math notranslate nohighlight">\( \eta_0 \)</span>, or <span class="math notranslate nohighlight">\( \eta_{NP} \)</span>) is a <strong>scalar</strong>.</p>
+<p>In binary hypothesis testing, the decision rule generally compares a <strong>scalar statistic</strong> (e.g., the log-likelihood ratio <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span>) against a <strong>scalar threshold</strong> <span class="math notranslate nohighlight">\( \eta \)</span>.</p>
+<p>Specifically, we compare <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> or a linear combination of measurements <span class="math notranslate nohighlight">\( (\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \vec{y} \)</span> to a threshold:</p>
+<div class="math notranslate nohighlight">
+\[
+(\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \vec{y} \underset{D_0}{\overset{D_1}{\gtrless}} \eta_0
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \eta_0 \)</span> is a scalar value that determines the boundary between the regions where <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span> are favored.</p>
+</section>
+</section>
+<section id="decision-boundary-and-decision-region">
+<h1>Decision Boundary and Decision Region<a class="headerlink" href="#decision-boundary-and-decision-region" title="Link to this heading">#</a></h1>
+<p>To better understand the decision rule, let’s consider the geometric interpretation:</p>
+<p><strong>Measurement Vector <span class="math notranslate nohighlight">\( \vec{y} \)</span></strong>: Represents a point in <span class="math notranslate nohighlight">\( \mathbb{R}^k \)</span>.</p>
+<p><strong>Weighted Sum <span class="math notranslate nohighlight">\( T(\vec{y}) \)</span></strong>:</p>
+<p>This is a <strong>hyperplane</strong>, which is the set of points where <span class="math notranslate nohighlight">\( T(\vec{y}) = \eta_0 \)</span> forms a hyperplane in <span class="math notranslate nohighlight">\( \mathbb{R}^k \)</span>.</p>
+<p><strong>Decision Boundary</strong>: This hyperplane separates the space into two regions:</p>
+<ul class="simple">
+<li><p>Above the Hyperplane: <span class="math notranslate nohighlight">\( T(\vec{y}) &gt; \eta_0 \)</span>, favoring <span class="math notranslate nohighlight">\( H_1 \)</span>.</p></li>
+<li><p>Below the Hyperplane: <span class="math notranslate nohighlight">\( T(\vec{y}) \leq \eta_0 \)</span>, favoring <span class="math notranslate nohighlight">\( H_0 \)</span>.</p></li>
+</ul>
+<p><strong>Orientation of Hyperplane</strong>:</p>
+<ul class="simple">
+<li><p>Normal Vector: <span class="math notranslate nohighlight">\( (\vec{s}_1 - \vec{s}_0)^T R_n^{-1} \)</span>, determining the direction orthogonal to the hyperplane.</p></li>
+<li><p>Position: Shifted by <span class="math notranslate nohighlight">\( \eta_0 \)</span>, which depends on the signal differences and noise covariance.</p></li>
+</ul>
+</section>
+<section id="neyman-pearson-np-criterion">
+<h1>Neyman-Pearson (NP) Criterion<a class="headerlink" href="#neyman-pearson-np-criterion" title="Link to this heading">#</a></h1>
+<p>The <strong>Neyman-Pearson (NP) criterion</strong> is the appropriate choice when:</p>
+<ol class="arabic simple">
+<li><p><strong>Prior Probabilities</strong>: There is no information about the prior probabilities of the hypotheses (i.e., we don’t know how likely <span class="math notranslate nohighlight">\( H_0 \)</span> or <span class="math notranslate nohighlight">\( H_1 \)</span> is a priori).</p></li>
+<li><p><strong>Costs</strong>: There is no information about the cost of different types of errors (i.e., no specified cost for false alarms or missed detections).</p></li>
+</ol>
+<p>In such cases, the NP criterion provides an optimal framework for setting the decision rule.</p>
+<p><strong>Determine <span class="math notranslate nohighlight">\( \eta_{NP} \)</span></strong> by solving:</p>
+<div class="math notranslate nohighlight">
+\[
+P_{FA} = P(L(\vec{y}) &gt; \eta_{NP} \mid H_0)
+\]</div>
+<section id="numerical-results">
+<h2>Numerical Results<a class="headerlink" href="#numerical-results" title="Link to this heading">#</a></h2>
+<p>Simulation steps:</p>
+<ol class="arabic simple">
+<li><p><strong>Define Parameters</strong>: Set up signal vectors, noise covariance, and other parameters.</p></li>
+<li><p><strong>Generate Data</strong>: Create synthetic measurements under both hypotheses.</p></li>
+<li><p><strong>Compute Statistics</strong>: Calculate <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span> or <span class="math notranslate nohighlight">\( \ell(\vec{y}) \)</span> for all samples.</p></li>
+<li><p><strong>Determine Threshold</strong>: Use a desired <span class="math notranslate nohighlight">\( P_{FA} \)</span> to set the threshold.</p></li>
+<li><p><strong>Make Decisions</strong>: Classify each sample based on the decision rule.</p></li>
+<li><p><strong>Evaluate Performance</strong>: Compute <span class="math notranslate nohighlight">\( P_D \)</span> and <span class="math notranslate nohighlight">\( P_{FA} \)</span>, and plot the ROC curve.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.linalg</span> <span class="kn">import</span> <span class="n">toeplitz</span><span class="p">,</span> <span class="n">inv</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">multivariate_normal</span>
+
+<span class="c1"># 1. Define Problem Parameters</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Dimension for 2D visualization</span>
+<span class="n">s0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>  <span class="c1"># Hypothesis H0: No signal</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>  <span class="c1"># Hypothesis H1: Signal present</span>
+<span class="n">rho</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Correlation coefficient between measurements</span>
+<span class="n">Rn</span> <span class="o">=</span> <span class="n">toeplitz</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="n">rho</span><span class="p">])</span>  <span class="c1"># Noise covariance matrix</span>
+<span class="n">Rn_inv</span> <span class="o">=</span> <span class="n">inv</span><span class="p">(</span><span class="n">Rn</span><span class="p">)</span>  <span class="c1"># Inverse of Rn</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># Number of samples per hypothesis</span>
+
+<span class="c1"># 2. Generate Synthetic Data</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>  <span class="c1"># For reproducibility</span>
+<span class="n">noise_H0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">cov</span><span class="o">=</span><span class="n">Rn</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+<span class="n">noise_H1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">multivariate_normal</span><span class="p">(</span><span class="n">mean</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">cov</span><span class="o">=</span><span class="n">Rn</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+<span class="n">y_H0</span> <span class="o">=</span> <span class="n">s0</span> <span class="o">+</span> <span class="n">noise_H0</span>  <span class="c1"># Under H0</span>
+<span class="n">y_H1</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">+</span> <span class="n">noise_H1</span>  <span class="c1"># Under H1</span>
+
+<span class="c1"># 3. Compute the Test Statistic (Log-Likelihood Ratio)</span>
+<span class="n">const_term</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">s0</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">Rn_inv</span> <span class="o">@</span> <span class="n">s0</span> <span class="o">-</span> <span class="n">s1</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">Rn_inv</span> <span class="o">@</span> <span class="n">s1</span><span class="p">)</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">s1</span> <span class="o">-</span> <span class="n">s0</span>  <span class="c1"># Weight vector</span>
+<span class="n">test_stat_H0</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span> <span class="o">@</span> <span class="n">Rn_inv</span> <span class="o">@</span> <span class="n">y_H0</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">test_stat_H1</span> <span class="o">=</span> <span class="p">(</span><span class="n">w</span> <span class="o">@</span> <span class="n">Rn_inv</span> <span class="o">@</span> <span class="n">y_H1</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">ell_H0</span> <span class="o">=</span> <span class="n">test_stat_H0</span> <span class="o">+</span> <span class="n">const_term</span>
+<span class="n">ell_H1</span> <span class="o">=</span> <span class="n">test_stat_H1</span> <span class="o">+</span> <span class="n">const_term</span>
+
+<span class="c1"># 4. Implement the Decision Rule and Compute ROC</span>
+<span class="n">thresholds</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">ell_H0</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">ell_H1</span><span class="o">.</span><span class="n">min</span><span class="p">()),</span>
+                         <span class="nb">max</span><span class="p">(</span><span class="n">ell_H0</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">ell_H1</span><span class="o">.</span><span class="n">max</span><span class="p">()),</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">P_FA</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># Probability of False Alarm</span>
+<span class="n">P_D</span> <span class="o">=</span> <span class="p">[]</span>   <span class="c1"># Probability of Detection</span>
+
+<span class="k">for</span> <span class="n">eta_L</span> <span class="ow">in</span> <span class="n">thresholds</span><span class="p">:</span>
+    <span class="c1"># Decisions for H0 samples</span>
+    <span class="n">decisions_H0</span> <span class="o">=</span> <span class="n">ell_H0</span> <span class="o">&gt;</span> <span class="n">eta_L</span>
+    <span class="n">P_FA</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">decisions_H0</span><span class="p">))</span>  <span class="c1"># False Alarm rate</span>
+    
+    <span class="c1"># Decisions for H1 samples</span>
+    <span class="n">decisions_H1</span> <span class="o">=</span> <span class="n">ell_H1</span> <span class="o">&gt;</span> <span class="n">eta_L</span>
+    <span class="n">P_D</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">decisions_H1</span><span class="p">))</span>   <span class="c1"># Detection rate</span>
+
+<span class="c1"># Convert lists to numpy arrays for plotting</span>
+<span class="n">P_FA</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">P_FA</span><span class="p">)</span>
+<span class="n">P_D</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">P_D</span><span class="p">)</span>
+
+<span class="c1"># 5. Plot ROC Curve</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">P_FA</span><span class="p">,</span> <span class="n">P_D</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;ROC Curve&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Random Guess&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Probability of False Alarm (P_FA)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability of Detection (P_D)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Receiver Operating Characteristic (ROC) Curve&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># 6. Find and Visualize the Optimal Threshold</span>
+<span class="n">desired_P_FA</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># 5% False Alarm</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argmin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">P_FA</span> <span class="o">-</span> <span class="n">desired_P_FA</span><span class="p">))</span>
+<span class="n">optimal_eta_L</span> <span class="o">=</span> <span class="n">thresholds</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+<span class="n">optimal_P_D</span> <span class="o">=</span> <span class="n">P_D</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+<span class="n">actual_P_FA</span> <span class="o">=</span> <span class="n">P_FA</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Desired P_FA: </span><span class="si">{</span><span class="n">desired_P_FA</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Selected Threshold (eta_L): </span><span class="si">{</span><span class="n">optimal_eta_L</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Actual P_FA: </span><span class="si">{</span><span class="n">actual_P_FA</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Corresponding P_D: </span><span class="si">{</span><span class="n">optimal_P_D</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># 7. Plot Observations and Decision Boundary</span>
+<span class="n">eta0</span> <span class="o">=</span> <span class="n">optimal_eta_L</span> <span class="o">+</span> <span class="n">const_term</span>  <span class="c1"># Adjust threshold based on constants</span>
+
+<span class="c1"># Define the decision boundary: w^T y = eta0</span>
+<span class="c1"># In 2D, solve for y2: y2 = (eta0 - w1 * y1) / w2</span>
+<span class="n">y1_min</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">y_H0</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y_H1</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="n">y1_max</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">y_H0</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">(),</span> <span class="n">y_H1</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">y1_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">y1_min</span><span class="p">,</span> <span class="n">y1_max</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="n">y2_vals</span> <span class="o">=</span> <span class="p">(</span><span class="n">eta0</span> <span class="o">-</span> <span class="n">w</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">y1_vals</span><span class="p">)</span> <span class="o">/</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">y2_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">full_like</span><span class="p">(</span><span class="n">y1_vals</span><span class="p">,</span> <span class="n">eta0</span> <span class="o">/</span> <span class="n">w</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Plot observations and decision boundary</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plot H0 observations</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_H0</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_H0</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;H0&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Plot H1 observations</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y_H1</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">y_H1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;H1&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Plot decision boundary</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y1_vals</span><span class="p">,</span> <span class="n">y2_vals</span><span class="p">,</span> <span class="s1">&#39;b-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Decision Boundary&#39;</span><span class="p">)</span>
+
+<span class="c1"># Optional: Shade regions (above boundary favors H1, below favors H0)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">y1_vals</span><span class="p">,</span> <span class="n">y2_vals</span><span class="p">,</span> <span class="n">y2_vals</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># Plot signal vectors for reference</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">s1</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s1</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;s1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">s0</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">s0</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">angles</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale_units</span><span class="o">=</span><span class="s1">&#39;xy&#39;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;s0&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$y_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Observations and Decision Boundary&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="n">y1_min</span><span class="p">,</span> <span class="n">y1_max</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="n">y_H0</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">()</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">y_H1</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ca39564264444c981724021ef67e2bcabe2948a2aa20b321b142ef7df5a2861e.png" src="_images/ca39564264444c981724021ef67e2bcabe2948a2aa20b321b142ef7df5a2861e.png" />
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Desired P_FA: 0.05
+Selected Threshold (eta_L): 1.2437
+Actual P_FA: 0.0501
+Corresponding P_D: 0.3129
+</pre></div>
+</div>
+<img alt="_images/9c81a21b5d3fe0c0009aa1e3a7983460f48d3cafe1a8b505a153c0667f93fc69.png" src="_images/9c81a21b5d3fe0c0009aa1e3a7983460f48d3cafe1a8b505a153c0667f93fc69.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c5_s5_b_example_a.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Example: Antipodal Signal Detection using Multiple Samples</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c5_s6_Optimum_Digital_Detector_Schonhoff.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">The Optimum Digital Detector in Additive Gaussian Noise</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Example: Detection with Real Additive Gaussian Noise</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-finding-the-likelihood-ratio">Step 1: Finding the Likelihood Ratio</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#deriving-the-probability-density-functions-pdfs">Deriving the Probability Density Functions (PDFs)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-the-vector-likelihood-ratio-l-vec-y">Formulating the Vector Likelihood Ratio <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span></a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-making-process">Decision-Making Process</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-determining-the-decision-threshold">Step 2: Determining the Decision Threshold</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formulating-the-decision-rule">Formulating the Decision Rule</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-the-decision-threshold">Finding the Decision Threshold</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-rule">Decision Rule</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-boundary-and-decision-region">Decision Boundary and Decision Region</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#neyman-pearson-np-criterion">Neyman-Pearson (NP) Criterion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

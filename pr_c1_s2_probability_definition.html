@@ -1,0 +1,1457 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Probability Definition &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pr_c1_s2_probability_definition';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Bayes’ Theorem" href="pr_c1_s3_Bayes_theorem.html" />
+    <link rel="prev" title="Set Theory" href="pr_c1_s1_set_theory.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Probability Definition</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilistic-model">Probabilistic Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-event">Definition of Event</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#three-fundamental-components-to-define-a-probability">Three Fundamental Components to Define a Probability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-types-of-events">Special Types of Events</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-rolling-a-dice-experiment">Example: Rolling a Dice Experiment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-space-mathbb-s">Sample Space (<span class="math notranslate nohighlight">\( \mathbb{S} \)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-events">Examples of Events</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-of-events-mathsf-e">Class of Events (<span class="math notranslate nohighlight">\( \mathsf{E} \)</span>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-mathsf-e">Properties of <span class="math notranslate nohighlight">\( \mathsf{E} \)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-measure-pr-a">Probability Measure <span class="math notranslate nohighlight">\( \Pr(A) \)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assigning-probabilities">Assigning Probabilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-approach">Classical Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-frequency-approach">Relative Frequency Approach</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axioms-of-probability">Axioms of Probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axiom-i-nonnegativity">Axiom I: Nonnegativity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axiom-ii-normalization">Axiom II: Normalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axiom-iii-additivity">Axiom III: Additivity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalization-of-axiom-iii">Generalization of Axiom III</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#corollary-finite-additivity">Corollary: Finite Additivity</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-infinite-additivity-axiom-iv">Theorem: Infinite Additivity (Axiom “IV”)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extended-axioms-of-probability-union-of-two-events">Extended Axioms of Probability: Union of Two Events</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-probability-of-the-union-of-two-events">Theorem: Probability of the Union of Two Events</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-joint-probability">Calculating the Joint Probability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-joint-probability-in-rolling-a-dice">Example: Joint Probability in Rolling A Dice</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-using-relative-frequency-approach">Simulation using Relative Frequency Approach</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-probability">Properties of Probability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-1-probability-of-an-impossible-event">Property 1: Probability of an Impossible Event</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-2-complement-rule">Property 2: Complement Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-3-subset-rule">Property 3: Subset Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-4-additivity-for-exhaustive-and-disjoint-events">Property 4: Additivity for Exhaustive and Disjoint Events</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability">Conditional Probability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-description">Mathematical Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-joint-probabilities">Computing Joint Probabilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-conditional-probability-in-a-rolling-a-dice-experiment">Example: Conditional Probability in a Rolling A Dice Experiment</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-to-multiple-events">Extension to Multiple Events</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem">Bayes’ Theorem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem-for-two-events">Bayes’ Theorem (for Two Events)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-representation-of-bayes-theorem">Alternative Representation of Bayes’ Theorem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalization-of-bayes-theorem">Generalization of Bayes’ Theorem</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-probability-theorem">Total Probability Theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-events">Independent Events</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">Key Concepts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-definition">Formal Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalization-of-independence">Generalization of Independence</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-of-multiple-events">Independence of Multiple Events</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="probability-definition">
+<h1>Probability Definition<a class="headerlink" href="#probability-definition" title="Link to this heading">#</a></h1>
+<section id="probabilistic-model">
+<h2>Probabilistic Model<a class="headerlink" href="#probabilistic-model" title="Link to this heading">#</a></h2>
+<p>A probabilistic model is a mathematical framework to describe an experiment or process that involves uncertainty. It captures all possible outcomes and their associated probabilities, allowing for analysis and prediction.</p>
+<section id="definition-of-event">
+<h3>Definition of Event<a class="headerlink" href="#definition-of-event" title="Link to this heading">#</a></h3>
+<p>An event represents a specific subset of outcomes from the sample space that we are interested in. For example, in a dice roll, the event of rolling an even number corresponds to the subset {2, 4, 6}.</p>
+</section>
+<section id="three-fundamental-components-to-define-a-probability">
+<h3>Three Fundamental Components to Define a Probability<a class="headerlink" href="#three-fundamental-components-to-define-a-probability" title="Link to this heading">#</a></h3>
+<p><strong>Sample Space (<span class="math notranslate nohighlight">\( \mathbb{S} \)</span>)</strong><br />
+The sample space is the universal set of all possible outcomes of a random experiment. For a coin toss, <span class="math notranslate nohighlight">\( \mathbb{S} = \{ \text{Heads}, \text{Tails} \} \)</span>. It serves as the foundational set from which events are defined.</p>
+<p><strong>Class of Events (<span class="math notranslate nohighlight">\( \mathsf{E} \)</span>)</strong><br />
+This is the collection of subsets of the sample space <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>. Each subset represents an event that could be studied. For instance, if <span class="math notranslate nohighlight">\( \mathbb{S} = \{1, 2, 3, 4, 5, 6\} \)</span> for a dice roll, possible events could be <span class="math notranslate nohighlight">\( \{2, 4, 6\} \)</span> (rolling an even number) or <span class="math notranslate nohighlight">\( \{1, 3, 5\} \)</span> (rolling an odd number).</p>
+<p><strong>Probability Law</strong><br />
+The probability law assigns a value <span class="math notranslate nohighlight">\( \Pr(A) \)</span> to each event <span class="math notranslate nohighlight">\( A \)</span>, quantifying how likely the event is to occur. It adheres to specific axioms, ensuring that probabilities are non-negative, sum to 1 across all possible outcomes, and are additive for disjoint events.</p>
+</section>
+<section id="special-types-of-events">
+<h3>Special Types of Events<a class="headerlink" href="#special-types-of-events" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Sure Event</strong><br />
+A sure event is the entire sample space <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>, representing a scenario where every possible outcome occurs. For example, when rolling a die, the event of rolling any number between 1 and 6 is a sure event.</p></li>
+<li><p><strong>Null/Impossible Event</strong><br />
+This refers to the empty set (<span class="math notranslate nohighlight">\( \varnothing \)</span>) and represents an event that cannot occur. For instance, rolling a 7 on a standard six-sided die is a null event.</p></li>
+</ul>
+</section>
+</section>
+<section id="example-rolling-a-dice-experiment">
+<h2>Example: Rolling a Dice Experiment<a class="headerlink" href="#example-rolling-a-dice-experiment" title="Link to this heading">#</a></h2>
+<section id="sample-space-mathbb-s">
+<h3>Sample Space (<span class="math notranslate nohighlight">\( \mathbb{S} \)</span>)<a class="headerlink" href="#sample-space-mathbb-s" title="Link to this heading">#</a></h3>
+<p>For a single roll of a standard six-sided die, the sample space is:</p>
+<div class="math notranslate nohighlight">
+\[ \mathbb{S} = \{1, 2, 3, 4, 5, 6\} \]</div>
+</section>
+<section id="examples-of-events">
+<h3>Examples of Events<a class="headerlink" href="#examples-of-events" title="Link to this heading">#</a></h3>
+<p>An <strong>event</strong> is any subset of <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>, which can be:</p>
+<p><strong>Single-Outcome Events</strong>:</p>
+<ul class="simple">
+<li><p>Rolling a 3: <span class="math notranslate nohighlight">\( A = \{3\} \)</span></p></li>
+<li><p>Rolling a 5: <span class="math notranslate nohighlight">\( B = \{5\} \)</span></p></li>
+</ul>
+<p><strong>Multi-Outcome Events</strong>:</p>
+<ul class="simple">
+<li><p>Rolling an even number: <span class="math notranslate nohighlight">\( C = \{2, 4, 6\} \)</span></p></li>
+<li><p>Rolling an odd number: <span class="math notranslate nohighlight">\( D = \{1, 3, 5\} \)</span></p></li>
+<li><p>Rolling a number less than 4: <span class="math notranslate nohighlight">\( E = \{1, 2, 3\} \)</span></p></li>
+</ul>
+<p><strong>Compound Events</strong>:</p>
+<ul class="simple">
+<li><p>Rolling a number greater than 4 or even: <span class="math notranslate nohighlight">\( F = \{4, 5, 6\} \)</span></p></li>
+<li><p>Rolling a prime number (prime numbers on a die: <span class="math notranslate nohighlight">\( 2, 3, 5 \)</span>): <span class="math notranslate nohighlight">\( G = \{2, 3, 5\} \)</span></p></li>
+</ul>
+<p><strong>Complementary Events</strong>:</p>
+<ul class="simple">
+<li><p>The complement of rolling a 6: <span class="math notranslate nohighlight">\( H = \{1, 2, 3, 4, 5\} \)</span></p></li>
+</ul>
+<p><strong>Null Event</strong>:</p>
+<ul class="simple">
+<li><p>Rolling a 7 on a six-sided die: <span class="math notranslate nohighlight">\( I = \varnothing \)</span></p></li>
+</ul>
+<p><strong>Sure Event</strong>:</p>
+<ul class="simple">
+<li><p>Rolling any number: <span class="math notranslate nohighlight">\( J = \mathbb{S} = \{1, 2, 3, 4, 5, 6\} \)</span></p></li>
+</ul>
+</section>
+<section id="class-of-events-mathsf-e">
+<h3>Class of Events (<span class="math notranslate nohighlight">\( \mathsf{E} \)</span>)<a class="headerlink" href="#class-of-events-mathsf-e" title="Link to this heading">#</a></h3>
+<p>The class of events is the collection of subsets of <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>, i.e., all subsets of <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>, from the null set to the entire sample space.</p>
+<p>For this example, <span class="math notranslate nohighlight">\( \mathsf{E} \)</span> includes all possible subsets of <span class="math notranslate nohighlight">\( \mathbb{S} \)</span>, including:</p>
+<p><strong>Single-Outcome Subsets</strong>:<br />
+<span class="math notranslate nohighlight">\(\{1\}, \{2\}, \{3\}, \{4\}, \{5\}, \{6\}\)</span></p>
+<p><strong>Multi-Outcome Subsets</strong>:<br />
+<span class="math notranslate nohighlight">\(\{1, 2\}, \{1, 3, 5\}, \{2, 4, 6\}, \{1, 2, 3, 4\}\)</span>, etc.</p>
+<p><strong>Special Subsets</strong>:</p>
+<ul class="simple">
+<li><p>The empty set (<span class="math notranslate nohighlight">\( \varnothing \)</span>), corresponding to the null event.</p></li>
+<li><p>The entire sample space (<span class="math notranslate nohighlight">\( \mathbb{S} \)</span>), corresponding to the sure event.</p></li>
+</ul>
+<section id="properties-of-mathsf-e">
+<h4>Properties of <span class="math notranslate nohighlight">\( \mathsf{E} \)</span><a class="headerlink" href="#properties-of-mathsf-e" title="Link to this heading">#</a></h4>
+<p>A set is said to be <strong>closed</strong> under an operation if applying that operation to elements of the set results in an element that is <em>also in</em> the set.</p>
+<ul class="simple">
+<li><p><strong>Closed Under Union</strong>: If <span class="math notranslate nohighlight">\( A, B \in \mathsf{E} \)</span>, then <span class="math notranslate nohighlight">\( A \cup B \in \mathsf{E} \)</span>.<br />
+Example: <span class="math notranslate nohighlight">\( A = \{2, 4\} \)</span>, <span class="math notranslate nohighlight">\( B = \{3, 5\} \)</span>, so <span class="math notranslate nohighlight">\( A \cup B = \{2, 3, 4, 5\} \)</span>.</p></li>
+<li><p><strong>Closed Under Intersection</strong>: If <span class="math notranslate nohighlight">\( A, B \in \mathsf{E} \)</span>, then <span class="math notranslate nohighlight">\( A \cap B \in \mathsf{E} \)</span>.<br />
+Example: <span class="math notranslate nohighlight">\( A = \{2, 4, 6\} \)</span>, <span class="math notranslate nohighlight">\( B = \{4, 5, 6\} \)</span>, so <span class="math notranslate nohighlight">\( A \cap B = \{4, 6\} \)</span>.</p></li>
+<li><p><strong>Closed Under Complement</strong>: If <span class="math notranslate nohighlight">\( A \in \mathsf{E} \)</span>, then <span class="math notranslate nohighlight">\( A^c \in \mathsf{E} \)</span>, where <span class="math notranslate nohighlight">\( A^c = \mathbb{S} \setminus A \)</span>.<br />
+Example: <span class="math notranslate nohighlight">\( A = \{2, 4, 6\} \)</span>, <span class="math notranslate nohighlight">\( A^c = \{1, 3, 5\} \)</span>.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="probability-measure-pr-a">
+<h2>Probability Measure <span class="math notranslate nohighlight">\( \Pr(A) \)</span><a class="headerlink" href="#probability-measure-pr-a" title="Link to this heading">#</a></h2>
+<p><strong>Definition</strong>: A probability measure <span class="math notranslate nohighlight">\( \Pr(A) \)</span> is a function that assigns a numerical value to an event <span class="math notranslate nohighlight">\( A \)</span>, representing the likelihood of its occurrence.</p>
+<ul class="simple">
+<li><p>Other notation: <span class="math notranslate nohighlight">\( P(A) \)</span>.</p></li>
+<li><p>Not that it is different from <span class="math notranslate nohighlight">\(p (A)\)</span> which is a value of a probability.</p></li>
+</ul>
+<section id="assigning-probabilities">
+<h3>Assigning Probabilities<a class="headerlink" href="#assigning-probabilities" title="Link to this heading">#</a></h3>
+<p>The assignment of probabilities to events is a fundamental task in probability theory.</p>
+<p>Mathematically, any assignment that satisfies the axioms of probability is valid.</p>
+<p>However, depending on the context, different approaches are used to assign probabilities to specific events.</p>
+<p>Two widely recognized approaches are the <strong>classical approach</strong> and the <strong>relative frequency approach</strong>.</p>
+</section>
+<section id="classical-approach">
+<h3>Classical Approach<a class="headerlink" href="#classical-approach" title="Link to this heading">#</a></h3>
+<p>The classical approach to probability is used in experiments where all outcomes are equally likely.</p>
+<p>This method involves specifying all possible outcomes of the experiment, referred to as <strong>atomic outcomes</strong>.</p>
+<p>Atomic outcomes are the most basic events in a sample space and cannot be decomposed further.</p>
+<p>If there are <span class="math notranslate nohighlight">\( M \)</span> mutually exclusive and exhaustive atomic outcomes, the probability of each atomic outcome is assigned as:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(\text{Atomic outcome}) = \frac{1}{M}.
+\]</div>
+<p><strong>Example:</strong><br />
+Consider rolling a fair six-sided die. The sample space consists of six atomic outcomes: <span class="math notranslate nohighlight">\( \{1, 2, 3, 4, 5, 6\} \)</span>. Since the die is fair, the probability of each outcome is:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(\text{each side}) = \frac{1}{6}.
+\]</div>
+<p>The classical approach assumes symmetry and equal likelihood among all outcomes, making it ideal for situations like dice rolls, coin tosses, or card draws from a well-shuffled deck.</p>
+</section>
+<section id="relative-frequency-approach">
+<h3>Relative Frequency Approach<a class="headerlink" href="#relative-frequency-approach" title="Link to this heading">#</a></h3>
+<p>The relative frequency approach defines probability based on repeated observations or experiments. This method is particularly useful when outcomes are not assumed to be equally likely or when probabilities need to be estimated empirically.</p>
+<p>The probability of an event <span class="math notranslate nohighlight">\( A \)</span> is calculated as the long-run relative frequency of <span class="math notranslate nohighlight">\( A \)</span> occurring in repeated trials of the experiment. Mathematically, this is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A) = \lim_{n \to \infty} \frac{n_A}{n},
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( n_A \)</span>: The number of times event <span class="math notranslate nohighlight">\( A \)</span> occurs.</p></li>
+<li><p><span class="math notranslate nohighlight">\( n \)</span>: The total number of trials.</p></li>
+</ul>
+<p><strong>Example:</strong><br />
+To estimate the probability of heads in a coin toss, the coin can be flipped <span class="math notranslate nohighlight">\( n \)</span> times. If heads appears <span class="math notranslate nohighlight">\( n_{\text{heads}} \)</span> times, the relative frequency approximation is:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(\text{Heads}) \approx \frac{n_{\text{heads}}}{n}.
+\]</div>
+<p>As <span class="math notranslate nohighlight">\( n \)</span> increases, the relative frequency converges to the true probability.</p>
+<p>The classical approach is theoretical and assumes symmetry, while the relative frequency approach is empirical and relies on observed data. Both methods are valid as long as they adhere to the axioms of probability.</p>
+</section>
+</section>
+<section id="axioms-of-probability">
+<h2>Axioms of Probability<a class="headerlink" href="#axioms-of-probability" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p>The <strong>axioms of probability</strong> are foundational principles that form the basis of probability theory.</p></li>
+<li><p>The term <strong>axiom</strong> implies that these statements are assumed to be self-evident truths and do not require proof.</p></li>
+</ul>
+<p><strong>Three Governing Axioms</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Nonnegativity</strong>: Ensures all probabilities are nonnegative.</p></li>
+<li><p><strong>Normalization</strong>: Ensures the total probability across the sample space equals 1.</p></li>
+<li><p><strong>Additivity</strong>: Governs how probabilities of disjoint events are combined.</p></li>
+</ol>
+</section>
+<section id="axiom-i-nonnegativity">
+<h2>Axiom I: Nonnegativity<a class="headerlink" href="#axiom-i-nonnegativity" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Statement</strong>: For any event <span class="math notranslate nohighlight">\( A \)</span>, the probability <span class="math notranslate nohighlight">\( \Pr(A) \geq 0 \)</span>.</p></li>
+<li><p><strong>Implication</strong>: Probabilities cannot be negative. They represent nonnegative values between 0 and 1, where 0 indicates impossibility and values closer to 1 represent higher likelihoods.</p></li>
+</ul>
+<p>This axiom ensures the mathematical consistency of probability theory, as negative probabilities are not physically or logically meaningful.</p>
+</section>
+<section id="axiom-ii-normalization">
+<h2>Axiom II: Normalization<a class="headerlink" href="#axiom-ii-normalization" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Statement</strong>: The probability of the entire sample space <span class="math notranslate nohighlight">\( \mathbb{S} \)</span> is <span class="math notranslate nohighlight">\( \Pr(\mathbb{S}) = 1 \)</span>.</p></li>
+<li><p><strong>Implication</strong>: The sum of probabilities over all possible outcomes in a sample space must equal 1, reflecting the certainty that one of the outcomes will occur.</p></li>
+</ul>
+<p>This axiom establishes a reference point, ensuring all probabilities are normalized and meaningful within a finite range.</p>
+</section>
+<section id="axiom-iii-additivity">
+<h2>Axiom III: Additivity<a class="headerlink" href="#axiom-iii-additivity" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><strong>Statement</strong>: For two disjoint events <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span>, where <span class="math notranslate nohighlight">\( A \cap B = \varnothing \)</span>, the probability of their union is <span class="math notranslate nohighlight">\( \Pr(A \cup B) = \Pr(A) + \Pr(B) \)</span>.</p></li>
+<li><p><strong>Implication</strong>: When events do not overlap (are mutually exclusive), the probability of either occurring is simply the sum of their individual probabilities.</p></li>
+</ul>
+<p>This axiom provides a foundation for combining probabilities of independent or non-overlapping events in practical scenarios.</p>
+<section id="generalization-of-axiom-iii">
+<h3>Generalization of Axiom III<a class="headerlink" href="#generalization-of-axiom-iii" title="Link to this heading">#</a></h3>
+<section id="corollary-finite-additivity">
+<h4>Corollary: Finite Additivity<a class="headerlink" href="#corollary-finite-additivity" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><strong>Statement</strong>: For <span class="math notranslate nohighlight">\( M \)</span> mutually exclusive events <span class="math notranslate nohighlight">\( A_1, A_2, \ldots, A_M \)</span>, where <span class="math notranslate nohighlight">\( A_i \cap A_j = \varnothing \)</span> for <span class="math notranslate nohighlight">\( i \neq j \)</span>, the probability of their union is the sum of their individual probabilities:</p>
+<div class="math notranslate nohighlight">
+\[
+  \Pr\left(\bigcup_{i=1}^{M} A_i\right) = \sum_{i=1}^{M} \Pr(A_i).
+  \]</div>
+</li>
+<li><p><strong>Implication</strong>: Extends Axiom III (Additivity) to a finite number of events.</p></li>
+</ul>
+<p>This principle is often applied when analyzing probabilities across a finite number of disjoint scenarios, such as rolling a die or drawing from a shuffled deck.</p>
+</section>
+<section id="theorem-infinite-additivity-axiom-iv">
+<h4>Theorem: Infinite Additivity (Axiom “IV”)<a class="headerlink" href="#theorem-infinite-additivity-axiom-iv" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><strong>Statement</strong>: For an infinite sequence of mutually exclusive events <span class="math notranslate nohighlight">\( A_1, A_2, A_3, \ldots \)</span>, where <span class="math notranslate nohighlight">\( A_i \cap A_j = \varnothing \)</span> for <span class="math notranslate nohighlight">\( i \neq j \)</span>, the probability of their union is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+  \Pr\left(\bigcup_{i=1}^{\infty} A_i\right) = \sum_{i=1}^{\infty} \Pr(A_i).
+  \]</div>
+</li>
+<li><p><strong>Implication</strong>: Extends the finite additivity rule to an infinite sequence of disjoint events. This property is fundamental to measure theory and provides the basis for dealing with infinite sample spaces, such as continuous probability distributions.</p></li>
+</ul>
+<p>This is critical for advanced applications like integration in probability, where an infinite sum of probabilities converges to a meaningful value.</p>
+<p>These results generalize the Additivity Axiom, ensuring that the probability framework holds consistently for both finite and infinite collections of mutually exclusive events.</p>
+</section>
+</section>
+</section>
+<section id="extended-axioms-of-probability-union-of-two-events">
+<h2>Extended Axioms of Probability: Union of Two Events<a class="headerlink" href="#extended-axioms-of-probability-union-of-two-events" title="Link to this heading">#</a></h2>
+<p>The basic axioms of probability provide a foundation for dealing with mutually exclusive events, but they do not directly address how to calculate the probability of the union of two events that are not mutually exclusive. This can be derived from the axioms and is formalized in the following theorem.</p>
+<section id="theorem-probability-of-the-union-of-two-events">
+<h3>Theorem: Probability of the Union of Two Events<a class="headerlink" href="#theorem-probability-of-the-union-of-two-events" title="Link to this heading">#</a></h3>
+<p><strong>Statement</strong>: For any two sets <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span>, not necessarily mutually exclusive, the probability of their union is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A \cup B) = \Pr(A) + \Pr(B) - \Pr(A \cap B).
+\]</div>
+<p><span class="math notranslate nohighlight">\( \Pr(A \cap B) \)</span> is the <strong>joint probability</strong> of <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span>, denoted alternatively as <span class="math notranslate nohighlight">\( \Pr(A, B) \)</span>. It represents the probability that both events <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span> occur simultaneously.</p>
+</section>
+<section id="calculating-the-joint-probability">
+<h3>Calculating the Joint Probability<a class="headerlink" href="#calculating-the-joint-probability" title="Link to this heading">#</a></h3>
+<p>In cases where <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span> are not mutually exclusive, the <strong>joint probability</strong> can be estimated using the relative frequency approach. Let:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( n_{A,B} \)</span>: The number of trials in which both <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span> occur simultaneously.</p></li>
+<li><p><span class="math notranslate nohighlight">\( n \)</span>: The total number of trials.</p></li>
+</ul>
+<p>The joint probability is then defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A, B) = \lim_{n \to \infty} \frac{n_{A,B}}{n}.
+\]</div>
+<p>We can see that:</p>
+<ul class="simple">
+<li><p>This formula estimates <span class="math notranslate nohighlight">\( \Pr(A, B) \)</span> by observing the proportion of trials where <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span> occur together.</p></li>
+<li><p>As the number of trials (<span class="math notranslate nohighlight">\( n \)</span>) increases, the relative frequency converges to the true probability.</p></li>
+</ul>
+<p>The formula for <span class="math notranslate nohighlight">\( \Pr(A \cup B) \)</span> accounts for the overlap between <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span> to avoid double-counting. This theorem, combined with the relative frequency approach, provides a practical way to handle probabilities for events that are not mutually exclusive.</p>
+</section>
+</section>
+<section id="example-joint-probability-in-rolling-a-dice">
+<h2>Example: Joint Probability in Rolling A Dice<a class="headerlink" href="#example-joint-probability-in-rolling-a-dice" title="Link to this heading">#</a></h2>
+<p>Consider the experiment of rolling a six-sided fair die. The sample space is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{S} = \{1, 2, 3, 4, 5, 6\}.
+\]</div>
+<p>Now, define two events:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( A \)</span>: The outcome is an even number (<span class="math notranslate nohighlight">\( A = \{2, 4, 6\} \)</span>).</p></li>
+<li><p><span class="math notranslate nohighlight">\( B \)</span>: The outcome is greater than 3 (<span class="math notranslate nohighlight">\( B = \{4, 5, 6\} \)</span>).</p></li>
+</ul>
+<p><strong>Identify the Joint Event</strong>
+The joint event <span class="math notranslate nohighlight">\( A \cap B \)</span> represents outcomes that satisfy both conditions:</p>
+<ul class="simple">
+<li><p>The number is even (<strong>from <span class="math notranslate nohighlight">\( A \)</span></strong>), and</p></li>
+<li><p>The number is greater than 3 (<strong>from <span class="math notranslate nohighlight">\( B \)</span></strong>).</p></li>
+</ul>
+<p>From the sample space, <span class="math notranslate nohighlight">\( A \cap B = \{4, 6\} \)</span>.</p>
+<p><strong>Calculate the Joint Probability</strong>
+Since the die is fair, each outcome has an equal probability of <span class="math notranslate nohighlight">\( \frac{1}{6} \)</span>. The joint probability <span class="math notranslate nohighlight">\( \Pr(A \cap B) \)</span> is the sum of probabilities of the outcomes in <span class="math notranslate nohighlight">\( A \cap B \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A \cap B) = \Pr(\{4\}) + \Pr(\{6\}) = \frac{1}{6} + \frac{1}{6} = \frac{2}{6} = \frac{1}{3}.
+\]</div>
+<p><strong>Verify with the Union Formula (Optional)</strong>
+Using the formula for the union of two events:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A \cup B) = \Pr(A) + \Pr(B) - \Pr(A \cap B),
+\]</div>
+<p>we calculate:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \Pr(A) = \frac{3}{6} = \frac{1}{2} \)</span> (even numbers: <span class="math notranslate nohighlight">\( 2, 4, 6 \)</span>),</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Pr(B) = \frac{3}{6} = \frac{1}{2} \)</span> (numbers greater than 3: <span class="math notranslate nohighlight">\( 4, 5, 6 \)</span>),</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Pr(A \cap B) = \frac{2}{6} = \frac{1}{3} \)</span>.</p></li>
+</ul>
+<p>Substitute these into the formula:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A \cup B) = \frac{1}{2} + \frac{1}{2} - \frac{1}{3} = \frac{3}{3} = 1.
+\]</div>
+<p>This confirms the probabilities are consistent.</p>
+<p>We can say that the joint probability <span class="math notranslate nohighlight">\( \Pr(A \cap B) = \frac{1}{3} \)</span> quantifies the <em>likelihood</em> of rolling a number that is both even and greater than 3.</p>
+<section id="simulation-using-relative-frequency-approach">
+<h3>Simulation using Relative Frequency Approach<a class="headerlink" href="#simulation-using-relative-frequency-approach" title="Link to this heading">#</a></h3>
+<p>The simulation implements the <strong>Relative Frequency Approach</strong> to approximate the joint probability by repeatedly observing outcomes and calculating the ratio <span class="math notranslate nohighlight">\( n_{A,B}/n \)</span>.</p>
+<p>This approach is practical for estimating probabilities empirically when theoretical calculations are difficult or when validating theoretical results.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Simulation parameters</span>
+<span class="n">num_trials</span> <span class="o">=</span> <span class="mi">100000</span>  <span class="c1"># Number of dice rolls</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_trials</span><span class="p">)</span>  <span class="c1"># Simulate dice rolls (1 to 6)</span>
+
+<span class="c1"># Define the events</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">(</span><span class="n">outcomes</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Event A: Even number (2, 4, 6)</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">(</span><span class="n">outcomes</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span>       <span class="c1"># Event B: Greater than 3 (4, 5, 6)</span>
+
+<span class="c1"># Joint event: A and B</span>
+<span class="n">joint_event</span> <span class="o">=</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span>
+<span class="n">joint_count</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">joint_event</span><span class="p">)</span>  <span class="c1"># Count the joint occurrences</span>
+
+<span class="c1"># Joint probability</span>
+<span class="n">joint_probability</span> <span class="o">=</span> <span class="n">joint_count</span> <span class="o">/</span> <span class="n">num_trials</span>
+
+<span class="n">joint_count</span><span class="p">,</span> <span class="n">joint_probability</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(33175, 0.33175)
+</pre></div>
+</div>
+</div>
+</div>
+<p>This simulation uses the <strong>Relative Frequency Approach</strong> to estimate the joint probability, i.e.:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A, B) = \lim_{n \to \infty} \frac{n_{A,B}}{n}.
+\]</div>
+<p>where:</p>
+<p><strong>Experiment Trials (<span class="math notranslate nohighlight">\( n \)</span>)</strong>:<br />
+The simulation runs <span class="math notranslate nohighlight">\( n = 100,000 \)</span> dice rolls, which represents a large number of trials.</p>
+<p><strong>Count of Joint Event (<span class="math notranslate nohighlight">\( n_{A,B} \)</span>)</strong>:<br />
+The code calculates the number of outcomes where both conditions (<span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span>) are satisfied. This count is <span class="math notranslate nohighlight">\( n_{A,B} \)</span>, the occurrences of the joint event.</p>
+<p><strong>Relative Frequency Estimate</strong>:<br />
+The joint probability is computed as:</p>
+<div class="math notranslate nohighlight">
+\[
+   \Pr(A, B) = \frac{n_{A,B}}{n}.
+   \]</div>
+<p>This is directly implemented in the code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">joint_probability</span> <span class="o">=</span> <span class="n">joint_count</span> <span class="o">/</span> <span class="n">num_trials</span>
+</pre></div>
+</div>
+<p><strong>Convergence to True Probability</strong>:<br />
+As <span class="math notranslate nohighlight">\( n \to \infty \)</span>, the relative frequency converges to the theoretical probability. While the code uses <span class="math notranslate nohighlight">\( n = 100,000 \)</span>, this large number of trials provides a good approximation of the true joint probability.</p>
+<p>The Relative Frequency Approach used in the code is closely related to the <strong>Monte Carlo simulation method</strong>.</p>
+</section>
+</section>
+<section id="properties-of-probability">
+<h2>Properties of Probability<a class="headerlink" href="#properties-of-probability" title="Link to this heading">#</a></h2>
+<p>Probability theory is governed by several important properties that follow directly from the axioms of probability.</p>
+<p>These properties provide essential tools for reasoning about and calculating probabilities.</p>
+<section id="property-1-probability-of-an-impossible-event">
+<h3>Property 1: Probability of an Impossible Event<a class="headerlink" href="#property-1-probability-of-an-impossible-event" title="Link to this heading">#</a></h3>
+<p>The probability of an <em>impossible event</em> is always zero:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(\varnothing) = 0.
+\]</div>
+<p>This means that an event that cannot occur under any circumstances has a probability of zero.</p>
+<p><strong>Example:</strong> Rolling a 7 with a standard six-sided die is impossible, so <span class="math notranslate nohighlight">\( \Pr(\text{7}) = 0 \)</span>.</p>
+</section>
+<section id="property-2-complement-rule">
+<h3>Property 2: Complement Rule<a class="headerlink" href="#property-2-complement-rule" title="Link to this heading">#</a></h3>
+<p>For any event <span class="math notranslate nohighlight">\( A \)</span>, the probability of its complement <span class="math notranslate nohighlight">\( \bar{A} \)</span> (the event that <span class="math notranslate nohighlight">\( A \)</span> does not occur) is:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(\bar{A}) = 1 - \Pr(A).
+\]</div>
+<p>The complement rule reflects the fact that the total probability of all possible outcomes in the sample space is 1.</p>
+<p><strong>Example:</strong> If the probability of rolling an even number on a die is <span class="math notranslate nohighlight">\( \Pr(A) = \frac{1}{2} \)</span>, then the probability of rolling an odd number is <span class="math notranslate nohighlight">\( \Pr(\bar{A}) = 1 - \frac{1}{2} = \frac{1}{2} \)</span>.</p>
+</section>
+<section id="property-3-subset-rule">
+<h3>Property 3: Subset Rule<a class="headerlink" href="#property-3-subset-rule" title="Link to this heading">#</a></h3>
+<p>If event <span class="math notranslate nohighlight">\( A \)</span> is a subset of event <span class="math notranslate nohighlight">\( B \)</span> (<span class="math notranslate nohighlight">\( A \subset B \)</span>), then:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A) \leq \Pr(B).
+\]</div>
+<p>This property reflects the idea that the probability of a smaller event (a subset) cannot exceed the probability of a larger event that contains it.</p>
+<p><strong>Example:</strong> Let <span class="math notranslate nohighlight">\( A \)</span> be the event of rolling a number less than 3 (<span class="math notranslate nohighlight">\( \{1, 2\} \)</span>) and <span class="math notranslate nohighlight">\( B \)</span> be the event of rolling an odd number (<span class="math notranslate nohighlight">\( \{1, 3, 5\} \)</span>). Since <span class="math notranslate nohighlight">\( A \subset B \)</span>, <span class="math notranslate nohighlight">\( \Pr(A) \leq \Pr(B) \)</span>.</p>
+</section>
+<section id="property-4-additivity-for-exhaustive-and-disjoint-events">
+<h3>Property 4: Additivity for Exhaustive and Disjoint Events<a class="headerlink" href="#property-4-additivity-for-exhaustive-and-disjoint-events" title="Link to this heading">#</a></h3>
+<p>If <span class="math notranslate nohighlight">\( A_1, A_2, \ldots, A_N \)</span> are <span class="math notranslate nohighlight">\( N \)</span> disjoint events such that their union covers the entire sample space <span class="math notranslate nohighlight">\( S \)</span> (<span class="math notranslate nohighlight">\( A_1 \cup A_2 \cup \ldots \cup A_N = S \)</span>), then:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A_1) + \Pr(A_2) + \ldots + \Pr(A_N) = 1.
+\]</div>
+<p>This property follows directly from the normalization axiom and the additivity axiom.</p>
+<p><strong>Example:</strong> In a rolling a die experiment, the six outcomes (<span class="math notranslate nohighlight">\( A_1 = \{1\}, A_2 = \{2\}, \ldots, A_6 = \{6\} \)</span>) are disjoint and exhaustive. Thus:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A_1) + \Pr(A_2) + \ldots + \Pr(A_6) = 1.
+\]</div>
+<p>We can see that these properties extend the axioms of probability, making them practical for solving problems and analyzing probabilistic systems.</p>
+</section>
+</section>
+<section id="conditional-probability">
+<h2>Conditional Probability<a class="headerlink" href="#conditional-probability" title="Link to this heading">#</a></h2>
+<p>The probability of an event <span class="math notranslate nohighlight">\( A \)</span> can often depend on the occurrence of another event <span class="math notranslate nohighlight">\( B \)</span>. When we know that <span class="math notranslate nohighlight">\( B \)</span> has occurred, the likelihood of <span class="math notranslate nohighlight">\( A \)</span> may change based on this information.</p>
+<p>This revised probability is called the <strong>conditional probability of <span class="math notranslate nohighlight">\( A \)</span> given <span class="math notranslate nohighlight">\( B \)</span></strong>. It quantifies the likelihood of <span class="math notranslate nohighlight">\( A \)</span> occurring under the assumption that <span class="math notranslate nohighlight">\( B \)</span> is true.</p>
+<p>The shorthand notation <span class="math notranslate nohighlight">\( \Pr(A|B) \)</span> is used to represent this conditional probability:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \Pr(A|B) \)</span>: The probability of <span class="math notranslate nohighlight">\( A \)</span> <strong>given that</strong> <span class="math notranslate nohighlight">\( B \)</span> has occurred.</p></li>
+<li><p>This is often referred to as “the probability of <span class="math notranslate nohighlight">\( A \)</span> conditional on <span class="math notranslate nohighlight">\( B \)</span>.”</p></li>
+</ul>
+<p>Conditional probabilities allow us to refine our assessments of likelihood when partial information about the system or experiment is available. The relationship between conditional and joint probabilities forms the foundation for deeper concepts in probability theory.</p>
+<p>This is particularly useful when additional information is available about the occurrence of related events.</p>
+<section id="mathematical-description">
+<h3>Mathematical Description<a class="headerlink" href="#mathematical-description" title="Link to this heading">#</a></h3>
+<p>For two events <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span>, the conditional probability of <span class="math notranslate nohighlight">\( A \)</span> given <span class="math notranslate nohighlight">\( B \)</span>, denoted by <span class="math notranslate nohighlight">\( \Pr(A|B) \)</span>, is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A|B) = \frac{\Pr(A, B)}{\Pr(B)},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \Pr(B) &gt; 0 \)</span>.</p>
+<p>This measures the probability of <span class="math notranslate nohighlight">\( A \)</span> happening under the condition that <span class="math notranslate nohighlight">\( B \)</span> has already occurred.</p>
+<p>Note that the denominator <span class="math notranslate nohighlight">\( \Pr(B) \)</span> ensures that the conditioning event <span class="math notranslate nohighlight">\( B \)</span> has a non-zero probability.</p>
+</section>
+<section id="computing-joint-probabilities">
+<h3>Computing Joint Probabilities<a class="headerlink" href="#computing-joint-probabilities" title="Link to this heading">#</a></h3>
+<p>The relationship between joint probability and conditional probability is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A, B) = \Pr(B|A)\Pr(A) = \Pr(A|B)\Pr(B).
+\]</div>
+<p>This formula is particularly useful because:</p>
+<ul class="simple">
+<li><p>Conditional probabilities can often be easier to calculate than joint probabilities.</p></li>
+<li><p>It provides a straightforward method for breaking down complex problems.</p></li>
+</ul>
+</section>
+<section id="example-conditional-probability-in-a-rolling-a-dice-experiment">
+<h3>Example: Conditional Probability in a Rolling A Dice Experiment<a class="headerlink" href="#example-conditional-probability-in-a-rolling-a-dice-experiment" title="Link to this heading">#</a></h3>
+<p>Consider the experiment of rolling a fair six-sided die. The sample space is:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbb{S} = \{1, 2, 3, 4, 5, 6\}.
+\]</div>
+<p><strong>Events</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Event <span class="math notranslate nohighlight">\( A \)</span></strong>: The outcome is an even number (<span class="math notranslate nohighlight">\( A = \{2, 4, 6\} \)</span>).</p></li>
+<li><p><strong>Event <span class="math notranslate nohighlight">\( B \)</span></strong>: The outcome is less than or equal to 3 (<span class="math notranslate nohighlight">\( B = \{1, 2, 3\} \)</span>).</p></li>
+</ol>
+<p><strong>Compute the Conditional Probability <span class="math notranslate nohighlight">\( \Pr(A|B) \)</span></strong><br />
+The conditional probability <span class="math notranslate nohighlight">\( \Pr(A|B) \)</span> represents the probability of rolling an even number (<span class="math notranslate nohighlight">\( A \)</span>) given that the outcome is less than or equal to 3 (<span class="math notranslate nohighlight">\( B \)</span>).</p>
+<p>From the definition of conditional probability:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A|B) = \frac{\Pr(A \cap B)}{\Pr(B)}.
+\]</div>
+<ul>
+<li><p><strong>Find <span class="math notranslate nohighlight">\( A \cap B \)</span></strong>: The intersection of <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span> (even numbers that are less than or equal to 3) is <span class="math notranslate nohighlight">\( A \cap B = \{2\} \)</span>.</p></li>
+<li><p><strong>Calculate <span class="math notranslate nohighlight">\( \Pr(A \cap B) \)</span></strong>: The probability of <span class="math notranslate nohighlight">\( A \cap B \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+  \Pr(A \cap B) = \frac{\text{Number of outcomes in } A \cap B}{\text{Total outcomes in } \mathbb{S}} = \frac{1}{6}.
+  \]</div>
+</li>
+<li><p><strong>Calculate <span class="math notranslate nohighlight">\( \Pr(B) \)</span></strong>: The probability of <span class="math notranslate nohighlight">\( B \)</span> (outcomes less than or equal to 3) is:</p>
+<div class="math notranslate nohighlight">
+\[
+  \Pr(B) = \frac{\text{Number of outcomes in } B}{\text{Total outcomes in } \mathbb{S}} = \frac{3}{6} = \frac{1}{2}.
+  \]</div>
+</li>
+<li><p><strong>Compute <span class="math notranslate nohighlight">\( \Pr(A|B) \)</span></strong>:</p>
+<div class="math notranslate nohighlight">
+\[
+  \Pr(A|B) = \frac{\Pr(A \cap B)}{\Pr(B)} = \frac{\frac{1}{6}}{\frac{1}{2}} = \frac{1}{3}.
+  \]</div>
+</li>
+</ul>
+<p>Given that the outcome is less than or equal to 3 (<span class="math notranslate nohighlight">\( B \)</span>), the probability of rolling an even number (<span class="math notranslate nohighlight">\( A \)</span>) is <span class="math notranslate nohighlight">\( \frac{1}{3} \)</span>. Without this information, the unconditional probability of <span class="math notranslate nohighlight">\( A \)</span> would be <span class="math notranslate nohighlight">\( \frac{1}{2} \)</span>.</p>
+<p>We can see that the conditional probability <span class="math notranslate nohighlight">\( \Pr(A|B) \)</span> reflects how the <em>likelihood</em> of <span class="math notranslate nohighlight">\( A \)</span> (rolling an even number) is updated based on the knowledge that <span class="math notranslate nohighlight">\( B \)</span> (the outcome is less than or equal to 3) has occurred.</p>
+<section id="numerical-results">
+<h4>Numerical Results<a class="headerlink" href="#numerical-results" title="Link to this heading">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Simulation parameters</span>
+<span class="n">num_trials</span> <span class="o">=</span> <span class="mi">100000</span>  <span class="c1"># Number of dice rolls</span>
+<span class="n">outcomes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">num_trials</span><span class="p">)</span>  <span class="c1"># Simulate dice rolls (1 to 6)</span>
+
+<span class="c1"># Define events</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">(</span><span class="n">outcomes</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>  <span class="c1"># Event A: Outcome is even</span>
+<span class="n">B</span> <span class="o">=</span> <span class="p">(</span><span class="n">outcomes</span> <span class="o">&lt;=</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Event B: Outcome is less than or equal to 3</span>
+
+<span class="c1"># Compute intersection of A and B</span>
+<span class="n">A_and_B</span> <span class="o">=</span> <span class="n">A</span> <span class="o">&amp;</span> <span class="n">B</span>  <span class="c1"># Event A ∩ B: Even numbers less than or equal to 3</span>
+
+<span class="c1"># Conditional probability</span>
+<span class="n">Pr_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">B</span><span class="p">)</span> <span class="o">/</span> <span class="n">num_trials</span>  <span class="c1"># Probability of event B</span>
+<span class="n">Pr_A_given_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">A_and_B</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">B</span><span class="p">)</span>  <span class="c1"># Conditional probability Pr(A|B)</span>
+
+<span class="n">Pr_A_given_B</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.33829458608308427
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="extension-to-multiple-events">
+<h3>Extension to Multiple Events<a class="headerlink" href="#extension-to-multiple-events" title="Link to this heading">#</a></h3>
+<p>Conditional probability can be extended to calculate joint probabilities for three or more events. For example:</p>
+<ol class="arabic">
+<li><p><strong>Three Events</strong>: The joint probability of events <span class="math notranslate nohighlight">\( A \)</span>, <span class="math notranslate nohighlight">\( B \)</span>, and <span class="math notranslate nohighlight">\( C \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+   \Pr(A, B, C) = \Pr(C|A, B)\Pr(B|A)\Pr(A).
+   \]</div>
+</li>
+<li><p><strong>General Case for <span class="math notranslate nohighlight">\( M \)</span> Events</strong>: For <span class="math notranslate nohighlight">\( M \)</span> events <span class="math notranslate nohighlight">\( A_1, A_2, \ldots, A_M \)</span>, the joint probability is:</p>
+<div class="math notranslate nohighlight">
+\[
+   \Pr(A_1, \ldots, A_M) = \Pr(A_M|A_1, \ldots, A_{M-1}) \Pr(A_{M-1}|A_1, \ldots, A_{M-2}) \cdots \Pr(A_2|A_1)\Pr(A_1).
+   \]</div>
+</li>
+</ol>
+<p>This sequential approach allows the decomposition of a complex probability into a series of conditional probabilities.</p>
+<p>We can see that conditional probability is a foundational concept in probability theory that provides a structured way to compute probabilities under known conditions. By leveraging its relationship with joint probabilities, it enables the analysis of intricate systems involving multiple events.</p>
+</section>
+</section>
+<section id="bayes-theorem">
+<h2>Bayes’ Theorem<a class="headerlink" href="#bayes-theorem" title="Link to this heading">#</a></h2>
+<p>The two fundamental theorems provide powerful tools for reasoning about probabilities in complex systems involving conditional probabilities and mutually exclusive events are Bayes’ theorem and Total probability theorem.</p>
+<section id="bayes-theorem-for-two-events">
+<h3>Bayes’ Theorem (for Two Events)<a class="headerlink" href="#bayes-theorem-for-two-events" title="Link to this heading">#</a></h3>
+<p>Bayes’ Theorem relates the conditional probabilities of two events <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span>. For <span class="math notranslate nohighlight">\( \Pr(B) \neq 0 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A|B) = \frac{\Pr(B|A)\Pr(A)}{\Pr(B)}.
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \Pr(A|B) \)</span>: The probability of <span class="math notranslate nohighlight">\( A \)</span> given <span class="math notranslate nohighlight">\( B \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Pr(B|A) \)</span>: The probability of <span class="math notranslate nohighlight">\( B \)</span> given <span class="math notranslate nohighlight">\( A \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Pr(A) \)</span>: The prior probability of <span class="math notranslate nohighlight">\( A \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Pr(B) \)</span>: The probability of <span class="math notranslate nohighlight">\( B \)</span>, which acts as a normalizing constant.</p></li>
+</ul>
+</section>
+<section id="alternative-representation-of-bayes-theorem">
+<h3>Alternative Representation of Bayes’ Theorem<a class="headerlink" href="#alternative-representation-of-bayes-theorem" title="Link to this heading">#</a></h3>
+<p>Bayes’ Theorem can be expressed in terms of a <strong>hypothesis <span class="math notranslate nohighlight">\( H \)</span></strong> and observed <strong>evidence <span class="math notranslate nohighlight">\( E \)</span></strong>.</p>
+<p>This representation is particularly useful in applications like Bayesian inference, where the goal is to update <em>beliefs</em> about a hypothesis based on observed data.</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(H \mid E) = \frac{\Pr(E \mid H)}{\Pr(E)} \Pr(H),
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \Pr(H) \)</span>: <strong>The Prior</strong><br />
+The initial belief about the probability of the hypothesis <span class="math notranslate nohighlight">\( H \)</span> before observing any evidence.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Pr(E) \)</span>: <strong>The Marginal</strong><br />
+The overall probability of observing the evidence <span class="math notranslate nohighlight">\( E \)</span>, computed as:
+$<span class="math notranslate nohighlight">\(
+\Pr(E) = \sum_{i} \Pr(E \mid H_i) \Pr(H_i),
+\)</span><span class="math notranslate nohighlight">\(
+if there are multiple hypotheses \)</span> H_i $.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Pr(E \mid H) \)</span>: <strong>The Likelihood</strong><br />
+The probability of observing the evidence <span class="math notranslate nohighlight">\( E \)</span>, assuming the hypothesis <span class="math notranslate nohighlight">\( H \)</span> is true.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Pr(H \mid E) \)</span>: <strong>The Posterior</strong><br />
+The updated belief about the probability of <span class="math notranslate nohighlight">\( H \)</span> after considering the evidence <span class="math notranslate nohighlight">\( E \)</span>.</p></li>
+</ul>
+<p>We can understand them as:</p>
+<ul class="simple">
+<li><p><strong>Prior (<span class="math notranslate nohighlight">\( \Pr(H) \)</span>)</strong>: Encodes what we initially believe about <span class="math notranslate nohighlight">\( H \)</span>.</p></li>
+<li><p><strong>Likelihood (<span class="math notranslate nohighlight">\( \Pr(E \mid H) \)</span>)</strong>: Reflects how well <span class="math notranslate nohighlight">\( H \)</span> explains <span class="math notranslate nohighlight">\( E \)</span>.</p></li>
+<li><p><strong>Marginal (<span class="math notranslate nohighlight">\( \Pr(E) \)</span>)</strong>: Normalizes the posterior to ensure probabilities sum to 1.</p></li>
+<li><p><strong>Posterior (<span class="math notranslate nohighlight">\( \Pr(H \mid E) \)</span>)</strong>: The revised belief about <span class="math notranslate nohighlight">\( H \)</span> after incorporating <span class="math notranslate nohighlight">\( E \)</span>.</p></li>
+</ul>
+</section>
+<section id="generalization-of-bayes-theorem">
+<h3>Generalization of Bayes’ Theorem<a class="headerlink" href="#generalization-of-bayes-theorem" title="Link to this heading">#</a></h3>
+<p>Bayes’ Theorem can be extended to handle scenarios involving multiple hypotheses or events. This generalized form is particularly useful when the sample space is divided into mutually exclusive and exhaustive events.</p>
+<p><strong>Statement</strong>: Let <span class="math notranslate nohighlight">\( B_1, B_2, \ldots, B_n \)</span> be a set of mutually exclusive and exhaustive events such that:</p>
+<div class="math notranslate nohighlight">
+\[
+B_i \cap B_j = \varnothing \quad \text{for all } i \neq j \quad \text{and} \quad \bigcup_{i=1}^n B_i = S.
+\]</div>
+<p>For any event <span class="math notranslate nohighlight">\( A \)</span> where <span class="math notranslate nohighlight">\( \Pr(A) &gt; 0 \)</span>, the probability of <span class="math notranslate nohighlight">\( B_i \)</span> given <span class="math notranslate nohighlight">\( A \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(B_i|A) = \frac{\Pr(A|B_i)\Pr(B_i)}{\sum_{i=1}^{n} \Pr(A|B_i)\Pr(B_i)}.
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \Pr(B_i) \)</span>: <strong>A Priori Probability</strong><br />
+The initial probability of the hypothesis <span class="math notranslate nohighlight">\( B_i \)</span>, before observing evidence <span class="math notranslate nohighlight">\( A \)</span>. This reflects prior knowledge or belief about <span class="math notranslate nohighlight">\( B_i \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Pr(A|B_i) \)</span>: <strong>Likelihood</strong><br />
+The probability of observing <span class="math notranslate nohighlight">\( A \)</span> under the assumption that <span class="math notranslate nohighlight">\( B_i \)</span> is true. This measures how well the evidence <span class="math notranslate nohighlight">\( A \)</span> supports <span class="math notranslate nohighlight">\( B_i \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Pr(B_i|A) \)</span>: <strong>A Posteriori Probability</strong><br />
+The updated probability of <span class="math notranslate nohighlight">\( B_i \)</span>, incorporating the new evidence <span class="math notranslate nohighlight">\( A \)</span>. This is the result of applying Bayes’ Theorem.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \sum_{i=1}^n \Pr(A|B_i)\Pr(B_i) \)</span>: <strong>Normalization Constant</strong><br />
+Ensures that the sum of posterior probabilities across all hypotheses equals 1.</p></li>
+</ul>
+<p>We can see that Bayes’ theorem in this form allows us to update the probabilities of multiple hypotheses <span class="math notranslate nohighlight">\( B_1, B_2, \ldots, B_n \)</span> based on new evidence <span class="math notranslate nohighlight">\( A \)</span>. This framework is foundational for probabilistic reasoning and inference.</p>
+</section>
+</section>
+<section id="total-probability-theorem">
+<h2>Total Probability Theorem<a class="headerlink" href="#total-probability-theorem" title="Link to this heading">#</a></h2>
+<p>The Total Probability theorem expands the computation of probabilities when events are partitioned into mutually exclusive and exhaustive subsets.</p>
+<p>Let <span class="math notranslate nohighlight">\( B_1, B_2, \ldots, B_n \)</span> be a set of such events, satisfying:</p>
+<ul class="simple">
+<li><p><strong>Mutually Exclusive</strong>: <span class="math notranslate nohighlight">\( B_i \cap B_j = \varnothing \)</span> for <span class="math notranslate nohighlight">\( i \neq j \)</span>.</p></li>
+<li><p><strong>Exhaustive</strong>: <span class="math notranslate nohighlight">\( \bigcup_{i=1}^n B_i = S \)</span>, meaning the events cover the entire sample space.</p></li>
+</ul>
+<p><strong>Statement</strong>: The probability of any event <span class="math notranslate nohighlight">\( A \)</span> can then be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A) = \sum_{i=1}^n \Pr(A|B_i)\Pr(B_i).
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \Pr(A|B_i) \)</span>: The probability of <span class="math notranslate nohighlight">\( A \)</span> conditioned on <span class="math notranslate nohighlight">\( B_i \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\( \Pr(B_i) \)</span>: The prior probability of <span class="math notranslate nohighlight">\( B_i \)</span>.</p></li>
+</ul>
+<p>We can see that:</p>
+<ul class="simple">
+<li><p><strong>Bayes’ Theorem</strong>: Allows for updating probabilities based on evidence.</p></li>
+<li><p><strong>Theorem of Total Probability</strong>: Breaks down probabilities into contributions from mutually exclusive cases.</p></li>
+</ul>
+<p>These theorems provide a robust framework for handling conditional and joint probabilities in diverse applications.</p>
+</section>
+<section id="independent-events">
+<h2>Independent Events<a class="headerlink" href="#independent-events" title="Link to this heading">#</a></h2>
+<section id="key-concepts">
+<h3>Key Concepts<a class="headerlink" href="#key-concepts" title="Link to this heading">#</a></h3>
+<p>Two events <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span> are considered <strong>independent</strong> if the occurrence of one provides no information about the occurrence of the other. Mathematically, this is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(B|A) = \Pr(B) \quad \text{and} \quad \Pr(A|B) = \Pr(A).
+\]</div>
+<p>We can interpret as:</p>
+<ul class="simple">
+<li><p>Knowledge of the occurrence of <span class="math notranslate nohighlight">\( A \)</span> does not affect the probability of <span class="math notranslate nohighlight">\( B \)</span>, and vice versa.</p></li>
+<li><p>The probabilities of the two events remain unaffected by each other.</p></li>
+</ul>
+<p><strong>Mathematical Implication</strong><br />
+From the definition of conditional probability:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A|B) = \frac{\Pr(A \cap B)}{\Pr(B)},
+\]</div>
+<p>the condition <span class="math notranslate nohighlight">\( \Pr(A|B) = \Pr(A) \)</span> leads to:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A \cap B) = \Pr(A)\Pr(B).
+\]</div>
+<p>This relationship is the defining criterion for <strong>statistical independence</strong>.</p>
+</section>
+<section id="formal-definition">
+<h3>Formal Definition<a class="headerlink" href="#formal-definition" title="Link to this heading">#</a></h3>
+<p>Two events <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span> are statistically independent if and only if:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(A \cap B) = \Pr(A)\Pr(B).
+\]</div>
+<p>Note that:</p>
+<ul class="simple">
+<li><p><strong>Special Case When <span class="math notranslate nohighlight">\( \Pr(B) = 0 \)</span></strong>:<br />
+Independence still holds, even if <span class="math notranslate nohighlight">\( \Pr(B) = 0 \)</span>, as conditional probabilities <span class="math notranslate nohighlight">\( \Pr(A|B) \)</span> are undefined in this case. The definition <span class="math notranslate nohighlight">\( \Pr(A \cap B) = \Pr(A)\Pr(B) \)</span> remains valid.</p></li>
+<li><p><strong>Symmetry of Independence</strong>:<br />
+If <span class="math notranslate nohighlight">\( A \)</span> is independent of <span class="math notranslate nohighlight">\( B \)</span>, then <span class="math notranslate nohighlight">\( B \)</span> is also independent of <span class="math notranslate nohighlight">\( A \)</span>. Independence is a symmetric property.</p></li>
+</ul>
+<p>We can see that:</p>
+<ul class="simple">
+<li><p>Independence implies no probabilistic influence between events.</p></li>
+<li><p>The relationship <span class="math notranslate nohighlight">\( \Pr(A \cap B) = \Pr(A)\Pr(B) \)</span> is central to reasoning about independent events.</p></li>
+<li><p>Independence does not imply mutual exclusivity; mutually exclusive events (<span class="math notranslate nohighlight">\( \Pr(A \cap B) = 0 \)</span>) are generally <strong>not</strong> independent unless <span class="math notranslate nohighlight">\( \Pr(A) = 0 \)</span> or <span class="math notranslate nohighlight">\( \Pr(B) = 0 \)</span>.</p></li>
+</ul>
+</section>
+<section id="generalization-of-independence">
+<h3>Generalization of Independence<a class="headerlink" href="#generalization-of-independence" title="Link to this heading">#</a></h3>
+<section id="independence-of-multiple-events">
+<h4>Independence of Multiple Events<a class="headerlink" href="#independence-of-multiple-events" title="Link to this heading">#</a></h4>
+<p>The concept of independence can be extended to a collection of events. A set of events <span class="math notranslate nohighlight">\( A_1, A_2, \dots, A_n \)</span> is said to be <strong>independent</strong> if the following conditions hold:</p>
+<ul>
+<li><p><strong>Subset Independence</strong>: Any subset of <span class="math notranslate nohighlight">\( k &lt; n \)</span> events from <span class="math notranslate nohighlight">\( \{A_1, A_2, \dots, A_n\} \)</span> are independent.</p></li>
+<li><p><strong>Joint Independence</strong>: The joint probability of all <span class="math notranslate nohighlight">\( n \)</span> events satisfies:</p>
+<div class="math notranslate nohighlight">
+\[
+   \Pr(A_1, A_2, \dots, A_n) = \Pr(A_1)\Pr(A_2)\dots\Pr(A_n).
+   \]</div>
+</li>
+</ul>
+<p>We can interpret it as the independence across a collection of events requires both pairwise independence and higher-order independence for all subsets.</p>
+<p>The concept of independence has two main applications:</p>
+<ul class="simple">
+<li><p><strong>Testing for Independence</strong>:</p>
+<ul>
+<li><p><strong>Approach</strong>: Compute joint or conditional probabilities and compare them against the definitions of independence.</p></li>
+<li><p><strong>Example</strong>: Use the condition <span class="math notranslate nohighlight">\( \Pr(A \cap B) = \Pr(A)\Pr(B) \)</span> to test if two events <span class="math notranslate nohighlight">\( A \)</span> and <span class="math notranslate nohighlight">\( B \)</span> are independent.</p></li>
+</ul>
+</li>
+<li><p><strong>Assuming Independence</strong>:</p>
+<ul>
+<li><p><strong>Approach</strong>: Assume independence to simplify the computation of joint or conditional probabilities, especially in complex systems where direct calculation is infeasible.</p></li>
+<li><p><strong>Use Case</strong>: This is widely applied in engineering and other fields, where modeling assumes independent components to enable tractable analysis.</p></li>
+</ul>
+</li>
+</ul>
+<p>We can see that:</p>
+<ul class="simple">
+<li><p>Independence simplifies the computation of joint probabilities.</p></li>
+<li><p>Independence assumptions are practical and frequently used in real-world applications, especially in communication systems, e.g., <em>independent and identically distributed (i.i.d)</em>, and machine learning.</p></li>
+</ul>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pr_c1_s1_set_theory.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Set Theory</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="pr_c1_s3_Bayes_theorem.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bayes’ Theorem</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probabilistic-model">Probabilistic Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-event">Definition of Event</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#three-fundamental-components-to-define-a-probability">Three Fundamental Components to Define a Probability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#special-types-of-events">Special Types of Events</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-rolling-a-dice-experiment">Example: Rolling a Dice Experiment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#sample-space-mathbb-s">Sample Space (<span class="math notranslate nohighlight">\( \mathbb{S} \)</span>)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#examples-of-events">Examples of Events</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#class-of-events-mathsf-e">Class of Events (<span class="math notranslate nohighlight">\( \mathsf{E} \)</span>)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-mathsf-e">Properties of <span class="math notranslate nohighlight">\( \mathsf{E} \)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-measure-pr-a">Probability Measure <span class="math notranslate nohighlight">\( \Pr(A) \)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assigning-probabilities">Assigning Probabilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#classical-approach">Classical Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#relative-frequency-approach">Relative Frequency Approach</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axioms-of-probability">Axioms of Probability</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axiom-i-nonnegativity">Axiom I: Nonnegativity</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axiom-ii-normalization">Axiom II: Normalization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#axiom-iii-additivity">Axiom III: Additivity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalization-of-axiom-iii">Generalization of Axiom III</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#corollary-finite-additivity">Corollary: Finite Additivity</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-infinite-additivity-axiom-iv">Theorem: Infinite Additivity (Axiom “IV”)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extended-axioms-of-probability-union-of-two-events">Extended Axioms of Probability: Union of Two Events</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theorem-probability-of-the-union-of-two-events">Theorem: Probability of the Union of Two Events</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculating-the-joint-probability">Calculating the Joint Probability</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-joint-probability-in-rolling-a-dice">Example: Joint Probability in Rolling A Dice</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation-using-relative-frequency-approach">Simulation using Relative Frequency Approach</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-of-probability">Properties of Probability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-1-probability-of-an-impossible-event">Property 1: Probability of an Impossible Event</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-2-complement-rule">Property 2: Complement Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-3-subset-rule">Property 3: Subset Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#property-4-additivity-for-exhaustive-and-disjoint-events">Property 4: Additivity for Exhaustive and Disjoint Events</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-probability">Conditional Probability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-description">Mathematical Description</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-joint-probabilities">Computing Joint Probabilities</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-conditional-probability-in-a-rolling-a-dice-experiment">Example: Conditional Probability in a Rolling A Dice Experiment</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-to-multiple-events">Extension to Multiple Events</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem">Bayes’ Theorem</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-theorem-for-two-events">Bayes’ Theorem (for Two Events)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-representation-of-bayes-theorem">Alternative Representation of Bayes’ Theorem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalization-of-bayes-theorem">Generalization of Bayes’ Theorem</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#total-probability-theorem">Total Probability Theorem</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#independent-events">Independent Events</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-concepts">Key Concepts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#formal-definition">Formal Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalization-of-independence">Generalization of Independence</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#independence-of-multiple-events">Independence of Multiple Events</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

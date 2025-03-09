@@ -1,0 +1,1051 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Standard Complex Gaussian Vector &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c1_s14';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Stochastic Process" href="c1_s15_s21_a.html" />
+    <link rel="prev" title="Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable" href="c1_s13.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <script>document.write(`<img src="_static/web_logo.png" class="logo__image only-dark" alt="Telecom Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Signal Detection and Estimation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c1_s0.html">Chapter 1: Review of Probability Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c1_s1.html">Bayes’ Theorem</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s5_s6a.html">Functions of A Single Random Variable</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s6b.html">Generating Random Variables From A Uniform Distribution</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s7.html">First Moment of a Function of Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s8.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s9.html">Real Scalar Gaussian Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c1_s10_s11.html">Real Gaussian Random Vector</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s12.html">Complex Random Vector</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s13.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Standard Complex Gaussian Vector</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a.html">Stochastic Process</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Standard Complex Gaussian Vector</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Standard Complex Gaussian Vector</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-for-the-marginal-pdf-of-real-and-imaginary-parts">Derivation for the Marginal PDF of Real and Imaginary Parts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-complex-gaussian-vector-pdf">Standard Complex Gaussian Vector PDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-distribution-of-real-and-imaginary-parts">Marginal Distribution of Real and Imaginary Parts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-pdf-of-a-single-real-or-imaginary-part">Marginal PDF of a Single Real or Imaginary Part</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformation-of-a-complex-gaussian-vector">Linear Transformation of a Complex Gaussian Vector</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-vec-mathbf-x">Distribution of <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Probability Density Function (PDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-pdfs">Marginal PDFs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-pdf-for-each-real-and-imaginary-part">Marginal PDF for Each Real and Imaginary Part</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-pdf">Marginal PDF</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#unitary-transformation-and-isotropy">Unitary Transformation and Isotropy</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-and-properties-of-unitary-matrix">Definition and Properties of Unitary Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-unitary-transformation-on-complex-gaussian-vector">Effect of Unitary Transformation on Complex Gaussian Vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isotropy">Isotropy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-to-general-complex-gaussian-vector">Extension to General Complex Gaussian Vector</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="standard-complex-gaussian-vector">
+<h1>Standard Complex Gaussian Vector<a class="headerlink" href="#standard-complex-gaussian-vector" title="Link to this heading">#</a></h1>
+<p>A <strong>complex Gaussian vector</strong> is a vector whose elements are complex-valued random variables, each following a Gaussian (normal) distribution. For a standard complex Gaussian vector, denoted as <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span>:</p>
+<ul class="simple">
+<li><p>The vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> consists of <span class="math notranslate nohighlight">\(n\)</span> independent and identically distributed (iid) elements.</p></li>
+<li><p>Each element follows a complex normal distribution with mean 0 and variance 1, denoted by <span class="math notranslate nohighlight">\(\mathcal{CN}(0, 1)\)</span>.</p></li>
+</ul>
+<p>The notation <span class="math notranslate nohighlight">\(\vec{\mathbf{w}} \sim \mathcal{CN}(0, \vec{I})\)</span> indicates that <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> is distributed according to a complex normal distribution with a mean vector of zeros and a covariance matrix equal to the identity matrix <span class="math notranslate nohighlight">\(\vec{I}\)</span>.</p>
+<section id="probability-density-function-pdf">
+<h2>Probability Density Function (PDF)<a class="headerlink" href="#probability-density-function-pdf" title="Link to this heading">#</a></h2>
+<p>The (joint) probability density function (PDF) of a standard complex Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+f_{\vec{\mathbf{w}}}(\vec{w}) = \frac{1}{\pi^n} e^{-||\vec{w}||^2}, \quad \vec{w} \in \mathbb{C}^n
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(n\)</span> is the dimension of the vector.</p></li>
+<li><p><span class="math notranslate nohighlight">\(||\vec{w}||^2\)</span> represents the squared Euclidean norm of the vector <span class="math notranslate nohighlight">\(\vec{w}\)</span>.</p></li>
+</ul>
+<p>This PDF describes the likelihood of the vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> taking on a particular value <span class="math notranslate nohighlight">\(\vec{w}\)</span> in the <span class="math notranslate nohighlight">\(n\)</span>-dimensional complex space.</p>
+</section>
+<section id="simulation">
+<h2>Simulation<a class="headerlink" href="#simulation" title="Link to this heading">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Generate standard complex Gaussian vector</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">n_dim</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">real_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">))</span>
+<span class="n">imag_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">))</span>
+<span class="n">complex_vector</span> <span class="o">=</span> <span class="n">real_part</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">imag_part</span>
+
+<span class="c1"># Flatten the complex vector for KDE</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">complex_vector</span><span class="o">.</span><span class="n">real</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">complex_vector</span><span class="o">.</span><span class="n">imag</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span>
+
+<span class="c1"># Empirical PDF using 2D KDE</span>
+<span class="n">kde</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">)</span>
+<span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">Y</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+<span class="n">empirical_pdf</span> <span class="o">=</span> <span class="n">kde</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Theoretical PDF</span>
+<span class="n">theoretical_pdf</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="p">(</span><span class="n">X</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">Y</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="s1">&#39;3d&#39;</span><span class="p">})</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">empirical_pdf</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Empirical PDF (KDE)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Re(w)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Im(w)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;PDF&#39;</span><span class="p">)</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">theoretical_pdf</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Theoretical PDF&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Re(w)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Im(w)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;PDF&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e6b458daac38d9c388d265119db5d1187b24d291730901f6a98aa29c81fb7d0b.png" src="_images/e6b458daac38d9c388d265119db5d1187b24d291730901f6a98aa29c81fb7d0b.png" />
+</div>
+</div>
+</section>
+<section id="derivation-for-the-marginal-pdf-of-real-and-imaginary-parts">
+<h2>Derivation for the Marginal PDF of Real and Imaginary Parts<a class="headerlink" href="#derivation-for-the-marginal-pdf-of-real-and-imaginary-parts" title="Link to this heading">#</a></h2>
+<p>The PDF <span class="math notranslate nohighlight">\(\frac{1}{\pi^n} e^{-||\vec{w}||^2}\)</span> describes the distribution of the <span class="math notranslate nohighlight">\(n\)</span>-dimensional standard complex Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span>. To derive the marginal PDF of the real or imaginary parts of the components of <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span>, we can look at the properties of the complex normal distribution.</p>
+<section id="standard-complex-gaussian-vector-pdf">
+<h3>Standard Complex Gaussian Vector PDF<a class="headerlink" href="#standard-complex-gaussian-vector-pdf" title="Link to this heading">#</a></h3>
+<p>For a standard complex Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}} \sim \mathcal{CN}(0, \vec{I})\)</span>, the PDF is:
+$<span class="math notranslate nohighlight">\(
+f_{\vec{\mathbf{w}}}(\vec{w}) = \frac{1}{\pi^n} e^{-||\vec{w}||^2}
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>||\vec{w}||^2 = \sum_{i=1}^{n} |w_i|^2 = \sum_{i=1}^{n} (x_i^2 + y_i^2)$.</p>
+</section>
+<section id="marginal-distribution-of-real-and-imaginary-parts">
+<h3>Marginal Distribution of Real and Imaginary Parts<a class="headerlink" href="#marginal-distribution-of-real-and-imaginary-parts" title="Link to this heading">#</a></h3>
+<p>Each component <span class="math notranslate nohighlight">\(w_i = x_i + i y_i\)</span> is a complex Gaussian random variable, where <span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(y_i\)</span> are real-valued normal random variables. Specifically, for each <span class="math notranslate nohighlight">\(i\)</span>:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(x_i\)</span> and <span class="math notranslate nohighlight">\(y_i\)</span> are independent and normally distributed with mean 0 and variance 1/2.</p></li>
+</ul>
+</section>
+<section id="marginal-pdf-of-a-single-real-or-imaginary-part">
+<h3>Marginal PDF of a Single Real or Imaginary Part<a class="headerlink" href="#marginal-pdf-of-a-single-real-or-imaginary-part" title="Link to this heading">#</a></h3>
+<p>The marginal PDF for a real or imaginary part of a single component <span class="math notranslate nohighlight">\(w_i\)</span> (say <span class="math notranslate nohighlight">\(x_i\)</span>) is given by the normal distribution with mean 0 and variance 1/2:
+$<span class="math notranslate nohighlight">\(
+f_{x_i}(x) = \sqrt{2} \cdot \frac{1}{\sqrt{2\pi}} e^{-x^2 / 2 \cdot 2} = \frac{1}{\sqrt{\pi}} e^{-x^2}
+\)</span>$</p>
+<p>However, this normalization needs to be aligned with the standard normal distribution with variance 1. For a standard normal distribution (mean 0, variance 1), the PDF is:
+$<span class="math notranslate nohighlight">\(
+f(x) = \frac{1}{\sqrt{2\pi}} e^{-x^2 / 2}
+\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">n_dim</span> <span class="o">=</span> <span class="mi">2</span>  <span class="c1"># Dimension of the complex Gaussian vector</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10000</span>  <span class="c1"># Number of samples to generate</span>
+
+<span class="c1"># Generate standard complex Gaussian vector</span>
+<span class="n">real_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">))</span>
+<span class="n">imag_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">))</span>
+<span class="n">complex_vector</span> <span class="o">=</span> <span class="n">real_part</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">imag_part</span>
+
+<span class="c1"># Flatten the complex vector to a single array for KDE</span>
+<span class="n">flattened_complex_vector</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">complex_vector</span><span class="o">.</span><span class="n">real</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">complex_vector</span><span class="o">.</span><span class="n">imag</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span>
+
+<span class="c1"># Empirical PDF using KDE</span>
+<span class="n">kde</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">flattened_complex_vector</span><span class="p">)</span>
+<span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">empirical_pdf</span> <span class="o">=</span> <span class="n">kde</span><span class="p">(</span><span class="n">x_vals</span><span class="p">)</span>
+
+<span class="c1"># Theoretical PDF for real and imaginary parts</span>
+<span class="c1"># NOT for the complex vector</span>
+<span class="n">theoretical_pdf</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x_vals</span><span class="o">**</span><span class="mi">2</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Plot the PDFs</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">empirical_pdf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical PDF&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">theoretical_pdf</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical PDF&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;PDF&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical vs Theoretical PDF of Standard Complex Gaussian Vector Components&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ab43c3f76fa95d2904f7556672623b9c4ca5c0bf5077b18d4b13c812c385e80a.png" src="_images/ab43c3f76fa95d2904f7556672623b9c4ca5c0bf5077b18d4b13c812c385e80a.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="linear-transformation-of-a-complex-gaussian-vector">
+<h1>Linear Transformation of a Complex Gaussian Vector<a class="headerlink" href="#linear-transformation-of-a-complex-gaussian-vector" title="Link to this heading">#</a></h1>
+<p>Let <span class="math notranslate nohighlight">\(\vec{A}\)</span> be a complex matrix. When the vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> is linearly transformed by <span class="math notranslate nohighlight">\(\vec{A}\)</span>, the resulting vector <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{\mathbf{x}} = \vec{A} \vec{\mathbf{w}}
+\]</div>
+<section id="distribution-of-vec-mathbf-x">
+<h2>Distribution of <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span><a class="headerlink" href="#distribution-of-vec-mathbf-x" title="Link to this heading">#</a></h2>
+<p>The transformed vector <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span> follows a complex normal distribution <span class="math notranslate nohighlight">\(\mathcal{CN}(0, \vec{K})\)</span> where <span class="math notranslate nohighlight">\(\vec{K}\)</span> is the covariance matrix of <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span>. The covariance matrix <span class="math notranslate nohighlight">\(\vec{K}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{K} = \vec{A} \vec{A}^*
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(\vec{A}^*\)</span> denotes the conjugate transpose of <span class="math notranslate nohighlight">\(\vec{A}\)</span>.</p>
+</section>
+<section id="id1">
+<h2>Probability Density Function (PDF)<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>The PDF of the vector <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+f_{\vec{\mathbf{x}}}(\vec{x}) = \frac{1}{\pi^n \det \vec{K}} e^{-\vec{x}^* \vec{K}^{-1} \vec{x}}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\det \vec{K}\)</span> is the determinant of the covariance matrix <span class="math notranslate nohighlight">\(\vec{K}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\vec{x}^*\)</span> denotes the conjugate transpose of the vector <span class="math notranslate nohighlight">\(\vec{x}\)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\vec{K}^{-1}\)</span> is the inverse of the covariance matrix <span class="math notranslate nohighlight">\(\vec{K}\)</span>.</p></li>
+</ul>
+<p>This PDF describes the likelihood of the vector <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span> taking on a particular value <span class="math notranslate nohighlight">\(\vec{x}\)</span> in the <span class="math notranslate nohighlight">\(n\)</span>-dimensional complex space.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
+
+<span class="c1"># Define the complex matrix A</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">]])</span>
+
+<span class="c1"># Generate standard complex Gaussian vector w</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">n_dim</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">real_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">))</span>
+<span class="n">imag_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">real_part</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">imag_part</span>
+
+<span class="c1"># Linear transformation to get x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Flatten the complex vector for KDE</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="o">.</span><span class="n">flatten</span><span class="p">(),</span> <span class="n">x</span><span class="o">.</span><span class="n">imag</span><span class="o">.</span><span class="n">flatten</span><span class="p">()])</span>
+
+<span class="c1"># Empirical PDF using 2D KDE</span>
+<span class="n">kde</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">)</span>
+<span class="n">positions</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">X</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">Y</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+<span class="n">empirical_pdf</span> <span class="o">=</span> <span class="n">kde</span><span class="p">(</span><span class="n">positions</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Compute the covariance matrix K</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">K_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+<span class="n">det_K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+
+<span class="c1"># Theoretical PDF</span>
+<span class="n">Z</span> <span class="o">=</span> <span class="n">X</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">Y</span>
+<span class="n">Z_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">([</span><span class="n">Z</span><span class="o">.</span><span class="n">real</span><span class="o">.</span><span class="n">ravel</span><span class="p">(),</span> <span class="n">Z</span><span class="o">.</span><span class="n">imag</span><span class="o">.</span><span class="n">ravel</span><span class="p">()])</span>
+<span class="n">theoretical_pdf</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">det_K</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">einsum</span><span class="p">(</span><span class="s1">&#39;ij,ji-&gt;i&#39;</span><span class="p">,</span> <span class="n">Z_vec</span><span class="o">.</span><span class="n">T</span> <span class="o">@</span> <span class="n">K_inv</span><span class="p">,</span> <span class="n">Z_vec</span><span class="p">)</span><span class="o">.</span><span class="n">real</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">121</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">empirical_pdf</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Empirical PDF (KDE)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Re(x)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Im(x)&#39;</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;PDF&#39;</span><span class="p">)</span>
+
+<span class="n">ax2</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">122</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="s1">&#39;3d&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">plot_surface</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">theoretical_pdf</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Theoretical PDF&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Re(x)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Im(x)&#39;</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">set_zlabel</span><span class="p">(</span><span class="s1">&#39;PDF&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/deb3336b28b4e39ddf463f257239a995d0f8d9e87021d85bd9f08d781483a095.png" src="_images/deb3336b28b4e39ddf463f257239a995d0f8d9e87021d85bd9f08d781483a095.png" />
+</div>
+</div>
+</section>
+<section id="marginal-pdfs">
+<h2>Marginal PDFs<a class="headerlink" href="#marginal-pdfs" title="Link to this heading">#</a></h2>
+<p>The PDF of the transformed complex Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+f_{\vec{\mathbf{x}}}(\vec{x}) = \frac{1}{\pi^n \det \vec{K}} e^{-\vec{x}^* \vec{K}^{-1} \vec{x}}
+\]</div>
+<p>To determine if the marginal PDF for each real and imaginary part is correct, we need to consider how the linear transformation affects these components. Given a complex matrix <span class="math notranslate nohighlight">\(\vec{A}\)</span> and a standard complex Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span>, the resulting vector <span class="math notranslate nohighlight">\(\vec{\mathbf{x}} = \vec{A} \vec{\mathbf{w}}\)</span> will follow a complex normal distribution with a mean of 0 and a covariance matrix <span class="math notranslate nohighlight">\(\vec{K} = \vec{A} \vec{A}^*\)</span>.</p>
+<section id="marginal-pdf-for-each-real-and-imaginary-part">
+<h3>Marginal PDF for Each Real and Imaginary Part<a class="headerlink" href="#marginal-pdf-for-each-real-and-imaginary-part" title="Link to this heading">#</a></h3>
+<p>For a complex Gaussian vector, each component (real and imaginary parts) can be treated as a normal distribution when marginalizing. The covariance matrix <span class="math notranslate nohighlight">\(\vec{K}\)</span> describes the variance and covariance of the transformed vector <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span>.</p>
+<p>If <span class="math notranslate nohighlight">\(\vec{K}\)</span> is the covariance matrix of <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span>, then the variance of the real part of <span class="math notranslate nohighlight">\(x_i\)</span> is given by <span class="math notranslate nohighlight">\(\mathrm{Re}(K_{ii})\)</span>, where <span class="math notranslate nohighlight">\(K_{ii}\)</span> is the diagonal element of <span class="math notranslate nohighlight">\(\vec{K}\)</span>.</p>
+<p>The marginal PDF of a single real or imaginary part (say, <span class="math notranslate nohighlight">\(x_i\)</span>) can be expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+f_{x_i}(x) = \frac{1}{\sqrt{2 \pi \sigma^2}} \exp\left( -\frac{x^2}{2 \sigma^2} \right)
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\sigma^2\)</span> is the variance.</p>
+</section>
+<section id="marginal-pdf">
+<h3>Marginal PDF<a class="headerlink" href="#marginal-pdf" title="Link to this heading">#</a></h3>
+<p>The variance <span class="math notranslate nohighlight">\(\sigma^2\)</span> of the real part of the transformed complex Gaussian vector component should be <span class="math notranslate nohighlight">\(\mathrm{Re}(K_{ii})\)</span>. When calculating the marginal PDF of the real part, we use the variance <span class="math notranslate nohighlight">\(\mathrm{Re}(K_{ii})\)</span> directly, because the complex Gaussian’s real and imaginary parts each have this variance.</p>
+<p>Therefore, the marginal PDF for the real part is:</p>
+<div class="math notranslate nohighlight">
+\[
+f_{\text{Re}(x_i)}(x) = \frac{1}{\sqrt{2 \pi \mathrm{Re}(K_{ii})}} \exp\left( -\frac{x^2}{2 \mathrm{Re}(K_{ii})} \right)
+\]</div>
+<p>Similarly, the marginal PDF for the imaginary part is:</p>
+<div class="math notranslate nohighlight">
+\[
+f_{\text{Im}(x_i)}(y) = \frac{1}{\sqrt{2 \pi \mathrm{Re}(K_{ii})}} \exp\left( -\frac{y^2}{2 \mathrm{Re}(K_{ii})} \right)
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
+
+<span class="c1"># Define the complex matrix A</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">,</span> <span class="mi">2</span><span class="o">-</span><span class="mi">1</span><span class="n">j</span><span class="p">],</span> <span class="p">[</span><span class="mi">2</span><span class="o">+</span><span class="mi">0</span><span class="n">j</span><span class="p">,</span> <span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="n">j</span><span class="p">]])</span>
+
+<span class="c1"># Generate standard complex Gaussian vector w</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">10000</span>
+<span class="n">n_dim</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">real_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">))</span>
+<span class="n">imag_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">real_part</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">imag_part</span>
+
+<span class="c1"># Linear transformation to get x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Extract real and imaginary parts</span>
+<span class="n">x_real</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">real</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">x_imag</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">imag</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+
+<span class="c1"># Empirical PDF using 1D KDE for real part</span>
+<span class="n">kde_real</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">x_real</span><span class="p">)</span>
+<span class="n">x_real_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">empirical_pdf_real</span> <span class="o">=</span> <span class="n">kde_real</span><span class="p">(</span><span class="n">x_real_vals</span><span class="p">)</span>
+
+<span class="c1"># Empirical PDF using 1D KDE for imaginary part</span>
+<span class="n">kde_imag</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">x_imag</span><span class="p">)</span>
+<span class="n">x_imag_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">empirical_pdf_imag</span> <span class="o">=</span> <span class="n">kde_imag</span><span class="p">(</span><span class="n">x_imag_vals</span><span class="p">)</span>
+
+<span class="c1"># Compute the covariance matrix K</span>
+<span class="n">K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">A</span><span class="o">.</span><span class="n">conj</span><span class="p">()</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">K_inv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+<span class="n">det_K</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">det</span><span class="p">(</span><span class="n">K</span><span class="p">)</span>
+
+<span class="c1"># Theoretical PDF for real and imaginary parts</span>
+<span class="c1"># Method 1: Using the covariance matrix</span>
+<span class="c1"># theoretical_pdf_real = (1 / np.sqrt(2 * np.pi * K[0, 0].real)) * np.exp(-0.5 * (x_real_vals ** 2) / K[0, 0].real)</span>
+<span class="c1"># Method 2: Using the square root of the covariance matrix</span>
+<span class="n">sigma_real</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="n">theoretical_pdf_real</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma_real</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x_real_vals</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma_real</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<span class="c1"># Method 1: Using the covariance matrix</span>
+<span class="c1"># theoretical_pdf_imag = (1 / np.sqrt(2 * np.pi * K[1, 1].real)) * np.exp(-0.5 * (x_imag_vals ** 2) / K[1, 1].real)</span>
+<span class="c1"># Method 2: Using the square root of the covariance matrix</span>
+<span class="n">sigma_imag</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">K</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">real</span><span class="p">)</span>
+<span class="n">theoretical_pdf_imag</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">sigma_imag</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">x_imag_vals</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">sigma_imag</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Plotting</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_real_vals</span><span class="p">,</span> <span class="n">empirical_pdf_real</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical PDF&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_real_vals</span><span class="p">,</span> <span class="n">theoretical_pdf_real</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical PDF&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;PDF of Real Part&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Re(x)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;PDF&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_imag_vals</span><span class="p">,</span> <span class="n">empirical_pdf_imag</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical PDF&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_imag_vals</span><span class="p">,</span> <span class="n">theoretical_pdf_imag</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical PDF&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;PDF of Imaginary Part&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Im(x)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;PDF&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/d473efe0a07a4ba0330267eafc3f01f2833f4f0b014d3f811aa59a6d2a72a239.png" src="_images/d473efe0a07a4ba0330267eafc3f01f2833f4f0b014d3f811aa59a6d2a72a239.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="unitary-transformation-and-isotropy">
+<h1>Unitary Transformation and Isotropy<a class="headerlink" href="#unitary-transformation-and-isotropy" title="Link to this heading">#</a></h1>
+<section id="definition-and-properties-of-unitary-matrix">
+<h2>Definition and Properties of Unitary Matrix<a class="headerlink" href="#definition-and-properties-of-unitary-matrix" title="Link to this heading">#</a></h2>
+<p>A <strong>unitary matrix</strong> <span class="math notranslate nohighlight">\(\vec{U}\)</span> is a complex square matrix that satisfies the property:
+$<span class="math notranslate nohighlight">\(
+\vec{U}^* \vec{U} = \vec{I}
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>\vec{U}^*<span class="math notranslate nohighlight">\( denotes the conjugate transpose of \)</span>\vec{U}<span class="math notranslate nohighlight">\(, and \)</span>\vec{I}<span class="math notranslate nohighlight">\( is the identity matrix. This property implies that \)</span>\vec{U}$ preserves the inner product, lengths, and angles in the complex vector space.</p>
+</section>
+<section id="effect-of-unitary-transformation-on-complex-gaussian-vector">
+<h2>Effect of Unitary Transformation on Complex Gaussian Vector<a class="headerlink" href="#effect-of-unitary-transformation-on-complex-gaussian-vector" title="Link to this heading">#</a></h2>
+<p>Consider a standard complex Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}} \sim \mathcal{CN}(0, \vec{I})\)</span>. When <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> is transformed by a unitary matrix <span class="math notranslate nohighlight">\(\vec{U}\)</span>, the resulting vector <span class="math notranslate nohighlight">\(\vec{\mathbf{x}} = \vec{U} \vec{\mathbf{w}}\)</span> will also follow the same distribution. Mathematically,
+$<span class="math notranslate nohighlight">\(
+\vec{\mathbf{w}} \sim \mathcal{CN}(0, \vec{I}) \implies \vec{U} \vec{\mathbf{w}} \sim \mathcal{CN}(0, \vec{I})
+\)</span><span class="math notranslate nohighlight">\(
+This invariance under unitary transformations indicates that the distribution of \)</span>\vec{\mathbf{w}}$ does not change, which is a hallmark of <strong>isotropy</strong>.</p>
+</section>
+<section id="isotropy">
+<h2>Isotropy<a class="headerlink" href="#isotropy" title="Link to this heading">#</a></h2>
+<p><strong>Isotropy</strong> means that the statistical properties of <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> are identical in all directions. Specifically, for a complex Gaussian vector:</p>
+<ul class="simple">
+<li><p><strong>Rotational Invariance</strong>: The distribution remains unchanged under rotations (unitary transformations).</p></li>
+<li><p><strong>Independence in Orthonormal Directions</strong>: The projections of <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> onto any set of orthonormal vectors are independent and identically distributed.</p></li>
+</ul>
+<p>These properties imply that <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> has no preferred direction, and its statistical characteristics are the same in every direction.</p>
+</section>
+<section id="extension-to-general-complex-gaussian-vector">
+<h2>Extension to General Complex Gaussian Vector<a class="headerlink" href="#extension-to-general-complex-gaussian-vector" title="Link to this heading">#</a></h2>
+<p>The properties of unitary transformations and isotropy extend to a more general complex Gaussian vector <span class="math notranslate nohighlight">\(\vec{\mathbf{w}} \sim \mathcal{CN}(0, \sigma^2 \vec{I})\)</span>, where the covariance matrix is a scaled identity matrix. In this case:
+$<span class="math notranslate nohighlight">\(
+\vec{\mathbf{w}} \sim \mathcal{CN}(0, \sigma^2 \vec{I})
+\)</span><span class="math notranslate nohighlight">\(
+A unitary transformation \)</span>\vec{U}<span class="math notranslate nohighlight">\( applied to \)</span>\vec{\mathbf{w}}<span class="math notranslate nohighlight">\( results in:
+\)</span><span class="math notranslate nohighlight">\(
+\vec{\mathbf{x}} = \vec{U} \vec{\mathbf{w}} \sim \mathcal{CN}(0, \sigma^2 \vec{I})
+\)</span>$</p>
+<p>This demonstrates that the distribution of <span class="math notranslate nohighlight">\(\vec{\mathbf{w}}\)</span> remains unchanged under unitary transformations, reinforcing the concept of isotropy for any <span class="math notranslate nohighlight">\(\vec{\mathbf{w}} \sim \mathcal{CN}(0, \sigma^2 \vec{I})\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">gaussian_kde</span>
+
+<span class="c1"># Define the size of the Gaussian vector</span>
+<span class="n">n_dim</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">num_samples</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="c1"># Generate standard complex Gaussian vector w</span>
+<span class="n">real_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">))</span>
+<span class="n">imag_part</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">num_samples</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">))</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">real_part</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">imag_part</span>
+
+<span class="c1"># Example 1: Rotation by 45 degrees</span>
+<span class="c1"># Define the unitary matrix U</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span>  <span class="c1"># 45 degrees</span>
+<span class="n">U</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)],</span>
+              <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)]])</span>
+
+<span class="c1"># Example 2: Random unitary matrix</span>
+<span class="c1"># # Generate a random unitary matrix U</span>
+<span class="c1"># # Using QR decomposition of a random complex matrix</span>
+<span class="c1"># A = np.random.randn(n_dim, n_dim) + 1j * np.random.randn(n_dim, n_dim)</span>
+<span class="c1"># Q, R = np.linalg.qr(A)</span>
+<span class="c1"># U = Q</span>
+
+<span class="c1"># Apply the unitary transformation</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">U</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Marginal PDFs</span>
+<span class="k">def</span> <span class="nf">plot_marginal_pdfs</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="n">real_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">real</span>
+    <span class="n">imag_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span>
+    
+    <span class="n">kde_real</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">real_data</span><span class="p">)</span>
+    <span class="n">kde_imag</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">imag_data</span><span class="p">)</span>
+    
+    <span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">kde_real</span><span class="p">(</span><span class="n">x_vals</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1"> Real&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">kde_imag</span><span class="p">(</span><span class="n">x_vals</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1"> Imag&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+<span class="c1"># Plot the marginal PDFs for the original and transformed vectors</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+
+<span class="n">plot_marginal_pdfs</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="s1">&#39;Original&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ax</span><span class="p">)</span>
+<span class="n">plot_marginal_pdfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;Transformed&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;Real part&#39;</span><span class="p">,</span> <span class="s1">&#39;Imaginary part&#39;</span><span class="p">]):</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Marginal PDF of </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;PDF&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9481dcd978e0b8da09579ff3c2301221d0b7a92c0487e6d050fd53e528cf5234.png" src="_images/9481dcd978e0b8da09579ff3c2301221d0b7a92c0487e6d050fd53e528cf5234.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Define the unitary matrix U</span>
+<span class="n">theta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span>  <span class="c1"># 45 degrees</span>
+<span class="n">U</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)],</span>
+              <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">theta</span><span class="p">)]])</span>
+
+<span class="c1"># Compute the conjugate transpose of U</span>
+<span class="n">U_conj_transpose</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">conjugate</span><span class="p">(</span><span class="n">U</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Check if U * U^H equals the identity matrix</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">U_conj_transpose</span><span class="p">,</span> <span class="n">U</span><span class="p">)</span>
+
+<span class="c1"># Display the result</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;U_conj_transpose * U:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">result</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Identity matrix:</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># Check if the result is close to the identity matrix</span>
+<span class="n">is_unitary</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">allclose</span><span class="p">(</span><span class="n">result</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">eye</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Is the matrix U unitary?&quot;</span><span class="p">,</span> <span class="n">is_unitary</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>U_conj_transpose * U:
+ [[1.+0.j 0.+0.j]
+ [0.+0.j 1.+0.j]]
+
+Identity matrix:
+ [[1. 0.]
+ [0. 1.]]
+
+Is the matrix U unitary? True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example 2: Random unitary matrix</span>
+<span class="c1"># Generate a random unitary matrix U</span>
+<span class="c1"># Using QR decomposition of a random complex matrix</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_dim</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="n">j</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n_dim</span><span class="p">,</span> <span class="n">n_dim</span><span class="p">)</span>
+<span class="n">Q</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">qr</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">U</span> <span class="o">=</span> <span class="n">Q</span>
+
+<span class="c1"># Apply the unitary transformation</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">U</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Marginal PDFs</span>
+<span class="k">def</span> <span class="nf">plot_marginal_pdfs</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">label</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">ax</span><span class="p">):</span>
+    <span class="n">real_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">real</span>
+    <span class="n">imag_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">imag</span>
+    
+    <span class="n">kde_real</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">real_data</span><span class="p">)</span>
+    <span class="n">kde_imag</span> <span class="o">=</span> <span class="n">gaussian_kde</span><span class="p">(</span><span class="n">imag_data</span><span class="p">)</span>
+    
+    <span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    
+    <span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">kde_real</span><span class="p">(</span><span class="n">x_vals</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1"> Real&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">kde_imag</span><span class="p">(</span><span class="n">x_vals</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1"> Imag&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">color</span><span class="p">)</span>
+
+<span class="c1"># Plot the marginal PDFs for the original and transformed vectors</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">]</span>
+
+<span class="n">plot_marginal_pdfs</span><span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="s1">&#39;Original&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">ax</span><span class="p">)</span>
+<span class="n">plot_marginal_pdfs</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="s1">&#39;Transformed&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">ax</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">title</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;Real part&#39;</span><span class="p">,</span> <span class="s1">&#39;Imaginary part&#39;</span><span class="p">]):</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Marginal PDF of </span><span class="si">{</span><span class="n">title</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Value&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;PDF&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">ax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9cf101f44789debf5729de3ee21ca13f042a4f20c5eb45e106603dd84e1a4e6d.png" src="_images/9cf101f44789debf5729de3ee21ca13f042a4f20c5eb45e106603dd84e1a4e6d.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c1_s13.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c1_s15_s21_a.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Stochastic Process</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Standard Complex Gaussian Vector</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#probability-density-function-pdf">Probability Density Function (PDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simulation">Simulation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-for-the-marginal-pdf-of-real-and-imaginary-parts">Derivation for the Marginal PDF of Real and Imaginary Parts</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#standard-complex-gaussian-vector-pdf">Standard Complex Gaussian Vector PDF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-distribution-of-real-and-imaginary-parts">Marginal Distribution of Real and Imaginary Parts</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-pdf-of-a-single-real-or-imaginary-part">Marginal PDF of a Single Real or Imaginary Part</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#linear-transformation-of-a-complex-gaussian-vector">Linear Transformation of a Complex Gaussian Vector</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#distribution-of-vec-mathbf-x">Distribution of <span class="math notranslate nohighlight">\(\vec{\mathbf{x}}\)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Probability Density Function (PDF)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-pdfs">Marginal PDFs</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-pdf-for-each-real-and-imaginary-part">Marginal PDF for Each Real and Imaginary Part</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#marginal-pdf">Marginal PDF</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#unitary-transformation-and-isotropy">Unitary Transformation and Isotropy</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-and-properties-of-unitary-matrix">Definition and Properties of Unitary Matrix</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#effect-of-unitary-transformation-on-complex-gaussian-vector">Effect of Unitary Transformation on Complex Gaussian Vector</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#isotropy">Isotropy</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extension-to-general-complex-gaussian-vector">Extension to General Complex Gaussian Vector</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

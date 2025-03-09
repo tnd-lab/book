@@ -1,0 +1,884 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Orthogonal Signaling &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'com_c2_s6_Orthogonal_Signalling';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Frequency-Shift Keying (FSK)" href="com_c2_s7_FSK.html" />
+    <link rel="prev" title="Multidimensional Signaling" href="com_c2_s5_Multidimensional_Signaling.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Orthogonal Signaling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-the-orthogonality-condition-of-equal-energy-signals">Review the Orthogonality Condition of Equal Energy Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-a-signal">Energy of a Signal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#waveform">Waveform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthonormal-basis-representation">Orthonormal Basis Representation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-representation-of-signals">Vector Representation of Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance">Minimum Distance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-distance">Euclidean Distance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Minimum Distance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-per-bit">Energy per Bit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance-in-terms-of-energy-per-bit">Minimum Distance in Terms of Energy per Bit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-space-and-euclidean-subspace">Signal Space and Euclidean Subspace</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-space-the-abstract-view">Signal Space: The Abstract View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-subspace">Euclidean Subspace</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-finite-dimensional-subspace">The Finite-Dimensional Subspace</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-structure-of-the-subspace">Euclidean Structure of the Subspace</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="orthogonal-signaling">
+<h1>Orthogonal Signaling<a class="headerlink" href="#orthogonal-signaling" title="Link to this heading">#</a></h1>
+<p>In digital communication systems, <strong>orthogonal signaling</strong> is a method of transmitting information where the individual signals are designed to be mutually independent in the sense of being orthogonal.</p>
+<p>Orthogonal signaling leverages the property of mutual orthogonality among signals to efficiently represent data with minimal interference.</p>
+<section id="review-the-orthogonality-condition-of-equal-energy-signals">
+<h2>Review the Orthogonality Condition of Equal Energy Signals<a class="headerlink" href="#review-the-orthogonality-condition-of-equal-energy-signals" title="Link to this heading">#</a></h2>
+<p>Consider a set of signals</p>
+<div class="math notranslate nohighlight">
+\[
+\{ s_1(t), s_2(t), \dots, s_M(t) \}
+\]</div>
+<p>each having <strong>equal energy</strong>. These signals are said to be <strong>orthogonal</strong> if their inner products satisfy</p>
+<div class="math notranslate nohighlight">
+\[
+\langle s_m(t), s_n(t) \rangle = 0 \quad \text{for } m \neq n
+\]</div>
+<p>where the inner product <span class="math notranslate nohighlight">\( \langle \cdot, \cdot \rangle \)</span> is typically defined as</p>
+<div class="math notranslate nohighlight">
+\[
+\langle s_m(t), s_n(t) \rangle = \int_{-\infty}^{\infty} s_m(t) \, s_n(t) \, dt
+\]</div>
+<p>The orthogonality condition means that each pair of distinct signals <span class="math notranslate nohighlight">\( s_m(t) \)</span> and <span class="math notranslate nohighlight">\( s_n(t) \)</span> (with <span class="math notranslate nohighlight">\( m \neq n \)</span>) has no overlap in the signal space, thereby reducing interference between them.</p>
+<p>This property is particularly useful in communication systems for separating different transmitted symbols at the receiver.</p>
+</section>
+<section id="energy-of-a-signal">
+<h2>Energy of a Signal<a class="headerlink" href="#energy-of-a-signal" title="Link to this heading">#</a></h2>
+<p>For each signal <span class="math notranslate nohighlight">\( s_m(t) \)</span>, the energy <span class="math notranslate nohighlight">\( \mathcal{E} \)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E} = \langle s_m(t), s_m(t) \rangle
+\]</div>
+<p>Since all signals are assumed to have equal energy, we have:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\langle s_m(t), s_n(t) \rangle =
+\begin{cases} 
+\mathcal{E}, &amp; \text{if } m = n \\
+0, &amp; \text{if } m \neq n
+\end{cases}
+\end{split}\]</div>
+<p>When <span class="math notranslate nohighlight">\( m = n \)</span>, the inner product returns the energy <span class="math notranslate nohighlight">\( \mathcal{E} \)</span> of the signal <span class="math notranslate nohighlight">\( s_m(t) \)</span>. For <span class="math notranslate nohighlight">\( m \neq n \)</span>, the inner product is zero, confirming the mutual orthogonality of the signals.</p>
+</section>
+<section id="waveform">
+<h2>Waveform<a class="headerlink" href="#waveform" title="Link to this heading">#</a></h2>
+<section id="orthonormal-basis-representation">
+<h3>Orthonormal Basis Representation<a class="headerlink" href="#orthonormal-basis-representation" title="Link to this heading">#</a></h3>
+<p>It is often useful to normalize the signals to form an <strong>orthonormal basis</strong>. By defining</p>
+<div class="math notranslate nohighlight">
+\[
+\phi_j(t) = \frac{s_j(t)}{\sqrt{\mathcal{E}}}, \quad 1 \leq j \leq M
+\]</div>
+<p>each basis function <span class="math notranslate nohighlight">\( \phi_j(t) \)</span> has unit energy:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \phi_j(t), \phi_j(t) \rangle = 1
+\]</div>
+<p>and they remain orthogonal:</p>
+<div class="math notranslate nohighlight">
+\[
+\langle \phi_j(t), \phi_k(t) \rangle = 0 \quad \text{for } j \neq k
+\]</div>
+<p>This orthonormal basis is particularly convenient for analysis and implementation because it simplifies many mathematical expressions and algorithms in communication system design.</p>
+</section>
+</section>
+<section id="vector-representation-of-signals">
+<h2>Vector Representation of Signals<a class="headerlink" href="#vector-representation-of-signals" title="Link to this heading">#</a></h2>
+<p>Orthogonal signals can be represented as vectors in an <span class="math notranslate nohighlight">\( M \)</span>-dimensional Euclidean space. A common representation is:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{s}_1 = (\sqrt{\mathcal{E}}, 0, \dots, 0)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\vec{s}_2 = (0, \sqrt{\mathcal{E}}, \dots, 0)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\vdots
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\vec{s}_M = (0, 0, \dots, \sqrt{\mathcal{E}})
+\]</div>
+<p>In this representation, each signal vector has a single nonzero component equal to <span class="math notranslate nohighlight">\( \sqrt{\mathcal{E}} \)</span>, and the vectors are mutually orthogonal.</p>
+</section>
+<section id="minimum-distance">
+<h2>Minimum Distance<a class="headerlink" href="#minimum-distance" title="Link to this heading">#</a></h2>
+<section id="euclidean-distance">
+<h3>Euclidean Distance<a class="headerlink" href="#euclidean-distance" title="Link to this heading">#</a></h3>
+<p>The derivation of the Euclidean distance <span class="math notranslate nohighlight">\( d_{mn} \)</span> between two distinct signals <span class="math notranslate nohighlight">\( s_m(t) \)</span> and <span class="math notranslate nohighlight">\( s_n(t) \)</span> (with <span class="math notranslate nohighlight">\( m \neq n \)</span>) is as follows.</p>
+<p>For any two signals <span class="math notranslate nohighlight">\( s_m(t) \)</span> and <span class="math notranslate nohighlight">\( s_n(t) \)</span>, the <strong>difference signal</strong> is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\Delta s(t) = s_m(t) - s_n(t)
+\]</div>
+<p>The Euclidean distance between the two signals is defined as the norm (or energy) of this difference signal.</p>
+<p>The squared Euclidean distance is computed using the inner product:</p>
+<div class="math notranslate nohighlight">
+\[
+d_{mn}^2 = \| \Delta s(t) \|^2 = \langle s_m(t) - s_n(t), \; s_m(t) - s_n(t) \rangle
+\]</div>
+<p>Using the properties of the inner product (linearity and symmetry), we can expand the expression:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+d_{mn}^2 &amp;= \langle s_m(t), s_m(t) \rangle - \langle s_m(t), s_n(t) \rangle \\
+&amp;\quad - \langle s_n(t), s_m(t) \rangle + \langle s_n(t), s_n(t) \rangle
+\end{aligned}
+\end{split}\]</div>
+<p>Since the inner product is symmetric, <span class="math notranslate nohighlight">\(\langle s_m(t), s_n(t) \rangle = \langle s_n(t), s_m(t) \rangle\)</span>. Thus, the expression simplifies to:</p>
+<div class="math notranslate nohighlight">
+\[
+d_{mn}^2 = \langle s_m(t), s_m(t) \rangle - 2 \langle s_m(t), s_n(t) \rangle + \langle s_n(t), s_n(t) \rangle
+\]</div>
+<p>For the signals <span class="math notranslate nohighlight">\( s_m(t) \)</span> and <span class="math notranslate nohighlight">\( s_n(t) \)</span>:</p>
+<ul>
+<li><p>The energy of each signal is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+  \langle s_m(t), s_m(t) \rangle = \mathcal{E} \quad \text{and} \quad \langle s_n(t), s_n(t) \rangle = \mathcal{E}
+  \]</div>
+</li>
+<li><p>Since the signals are orthogonal (for <span class="math notranslate nohighlight">\( m \neq n \)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+  \langle s_m(t), s_n(t) \rangle = 0
+  \]</div>
+</li>
+</ul>
+<p>Substitute these into the expanded inner product:</p>
+<div class="math notranslate nohighlight">
+\[
+d_{mn}^2 = \mathcal{E} - 2 \cdot 0 + \mathcal{E} = 2\mathcal{E}
+\]</div>
+<p>Finally, take the square root of both sides, we have that for any two distinct orthogonal signals <span class="math notranslate nohighlight">\( s_m(t) \)</span> and <span class="math notranslate nohighlight">\( s_n(t) \)</span>, the Euclidean distance between them is:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{d_{mn} = \sqrt{2\mathcal{E}}}
+\]</div>
+</section>
+<section id="id1">
+<h3>Minimum Distance<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Since all pairs of orthogonal signals have the same distance, the minimum distance <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+d_{\text{min}} = \sqrt{2\mathcal{E}}
+}
+\]</div>
+<p>A larger <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span> generally leads to improved performance (i.e., lower probability of error) because the signals are more widely separated in the signal space.</p>
+</section>
+</section>
+<section id="energy-per-bit">
+<h2>Energy per Bit<a class="headerlink" href="#energy-per-bit" title="Link to this heading">#</a></h2>
+<p>It is often useful to relate the total signal energy <span class="math notranslate nohighlight">\( \mathcal{E} \)</span> to the energy used to transmit one bit of information, denoted as <span class="math notranslate nohighlight">\( \mathcal{E}_b \)</span>. When <span class="math notranslate nohighlight">\( M \)</span> signals are used to represent symbols, each symbol conveys <span class="math notranslate nohighlight">\( \log_2 M \)</span> bits. Therefore, the energy per bit is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{E}_b = \frac{\mathcal{E}}{\log_2 M}
+\]</div>
+<section id="minimum-distance-in-terms-of-energy-per-bit">
+<h3>Minimum Distance in Terms of Energy per Bit<a class="headerlink" href="#minimum-distance-in-terms-of-energy-per-bit" title="Link to this heading">#</a></h3>
+<p>By substituting the relationship between <span class="math notranslate nohighlight">\( \mathcal{E} \)</span> and <span class="math notranslate nohighlight">\( \mathcal{E}_b \)</span> into the expression for the minimum distance, we obtain:</p>
+<div class="math notranslate nohighlight">
+\[
+d_{\text{min}} = \sqrt{2\mathcal{E}} = \sqrt{2 \log_2 M \cdot \mathcal{E}_b}
+\]</div>
+<p>This final expression shows that the minimum distance depends on both the modulation order <span class="math notranslate nohighlight">\( M \)</span> (through <span class="math notranslate nohighlight">\( \log_2 M \)</span>) and the energy per bit <span class="math notranslate nohighlight">\( \mathcal{E}_b \)</span>.</p>
+<p>Increasing <span class="math notranslate nohighlight">\( \mathcal{E}_b \)</span> or reducing <span class="math notranslate nohighlight">\( M \)</span> (thus increasing <span class="math notranslate nohighlight">\( \mathcal{E} \)</span> per bit) can lead to a larger <span class="math notranslate nohighlight">\( d_{\text{min}} \)</span>, which in turn improves the robustness of the signal against noise and interference.</p>
+</section>
+</section>
+<section id="signal-space-and-euclidean-subspace">
+<h2>Signal Space and Euclidean Subspace<a class="headerlink" href="#signal-space-and-euclidean-subspace" title="Link to this heading">#</a></h2>
+<section id="signal-space-the-abstract-view">
+<h3>Signal Space: The Abstract View<a class="headerlink" href="#signal-space-the-abstract-view" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>Abstract M-Dimensional Space</strong></p>
+<ul class="simple">
+<li><p>In communication theory, any set of <span class="math notranslate nohighlight">\(M\)</span> mutually orthogonal signals can be viewed as an <span class="math notranslate nohighlight">\(M\)</span>-dimensional orthogonal basis.</p></li>
+<li><p>Mathematically, each signal <span class="math notranslate nohighlight">\(s_m(t)\)</span> is mapped to a vector <span class="math notranslate nohighlight">\(\vec{s}_m\)</span> in this <span class="math notranslate nohighlight">\(M\)</span>-dimensional space.</p></li>
+</ul>
+</li>
+<li><p><strong>Orthonormal Basis Functions</strong></p>
+<ul>
+<li><p>Suppose we have <span class="math notranslate nohighlight">\(M\)</span> orthonormal waveforms <span class="math notranslate nohighlight">\(\{\phi_1(t), \phi_2(t), \ldots, \phi_M(t)\}\)</span>.</p></li>
+<li><p>Any signal <span class="math notranslate nohighlight">\(s_m(t)\)</span> that lies entirely along the <span class="math notranslate nohighlight">\(m\)</span>-th basis waveform can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+       s_m(t) \;=\; \sqrt{\mathcal{E}}\,\phi_m(t)
+     \]</div>
+</li>
+<li><p>In vector form, that means</p>
+<div class="math notranslate nohighlight">
+\[
+      \vec{s}_m \;=\; (0,\, 0,\, \ldots,\; \underbrace{\sqrt{\mathcal{E}}}_{\text{m-th position}},\; 0, \ldots, 0)
+     \]</div>
+</li>
+<li><p>This is precisely the idea behind writing <span class="math notranslate nohighlight">\(s_1 = \bigl(\sqrt{\mathcal{E}},\, 0,\, \dots,\, 0\bigr)\)</span>, <span class="math notranslate nohighlight">\(s_2 = \bigl(0,\, \sqrt{\mathcal{E}},\, \dots,\, 0\bigr)\)</span>, etc.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="euclidean-subspace">
+<h3>Euclidean Subspace<a class="headerlink" href="#euclidean-subspace" title="Link to this heading">#</a></h3>
+<p>When we represent signals using an orthonormal set of basis functions, we are essentially working in a finite-dimensional inner product space. This space has all the properties of a Euclidean space (distances, angles, etc.).</p>
+<p><strong>The Original Signal Space</strong><br />
+In general, the set of all signals is <strong>infinite-dimensional</strong>.</p>
+<section id="the-finite-dimensional-subspace">
+<h4>The Finite-Dimensional Subspace<a class="headerlink" href="#the-finite-dimensional-subspace" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><strong>Spanned by Basic Functions:</strong><br />
+When we select a finite number of orthonormal basis functions <span class="math notranslate nohighlight">\(\{\phi_1(t), \phi_2(t), \dots, \phi_M(t)\}\)</span>, these functions span an <span class="math notranslate nohighlight">\(M\)</span>-dimensional subspace of <span class="math notranslate nohighlight">\(L^2\)</span>.</p></li>
+<li><p><strong>Representation:</strong><br />
+Any signal <span class="math notranslate nohighlight">\(s(t)\)</span> that lies in this subspace can be written as:</p>
+<div class="math notranslate nohighlight">
+\[
+  s(t) = \sum_{j=1}^{M} s[j]\, \phi_j(t)
+  \]</div>
+<p>where <span class="math notranslate nohighlight">\(s[j] = \langle s(t), \phi_j(t) \rangle\)</span> are the <em>coefficients</em>.</p>
+</li>
+</ul>
+</section>
+<section id="euclidean-structure-of-the-subspace">
+<h4>Euclidean Structure of the Subspace<a class="headerlink" href="#euclidean-structure-of-the-subspace" title="Link to this heading">#</a></h4>
+<ul>
+<li><p><strong>Inner Product:</strong><br />
+The finite-dimensional subspace is equipped with the inner product inherited from <span class="math notranslate nohighlight">\(L^2\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+  \langle s, r \rangle = \sum_{j=1}^{M} s[j] \, r[j]
+  \]</div>
+</li>
+<li><p><strong>Euclidean Space:</strong><br />
+This inner product defines lengths (via the norm) and angles between the coefficient vectors. In other words, the subspace is isomorphic to the familiar <span class="math notranslate nohighlight">\( \mathbb{R}^M \)</span> (or <span class="math notranslate nohighlight">\(\mathbb{C}^M\)</span> for complex signals), which is exactly a Euclidean space.</p></li>
+</ul>
+<p><strong>Typical Representation</strong></p>
+<p>When we write:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{s}_1 = (\sqrt{\mathcal{E}}, 0, \dots, 0)
+\]</div>
+<p>we are representing the signal <span class="math notranslate nohighlight">\(s_1(t)\)</span> by its coordinates relative to the chosen orthonormal basis. Here, <span class="math notranslate nohighlight">\(\sqrt{\mathcal{E}}\)</span> is the coefficient along the first basis function and all other coefficients are zero.</p>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="com_c2_s5_Multidimensional_Signaling.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Multidimensional Signaling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="com_c2_s7_FSK.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Frequency-Shift Keying (FSK)</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#review-the-orthogonality-condition-of-equal-energy-signals">Review the Orthogonality Condition of Equal Energy Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-of-a-signal">Energy of a Signal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#waveform">Waveform</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#orthonormal-basis-representation">Orthonormal Basis Representation</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vector-representation-of-signals">Vector Representation of Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance">Minimum Distance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-distance">Euclidean Distance</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Minimum Distance</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#energy-per-bit">Energy per Bit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-distance-in-terms-of-energy-per-bit">Minimum Distance in Terms of Energy per Bit</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-space-and-euclidean-subspace">Signal Space and Euclidean Subspace</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#signal-space-the-abstract-view">Signal Space: The Abstract View</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-subspace">Euclidean Subspace</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#the-finite-dimensional-subspace">The Finite-Dimensional Subspace</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#euclidean-structure-of-the-subspace">Euclidean Structure of the Subspace</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

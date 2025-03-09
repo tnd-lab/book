@@ -1,0 +1,1065 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>MAP and ML Receivers, Decision Regions, and Error Probability &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'com_c3_s2_MAP_ML_Decision_Regions_Error_Prob';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Efficient Receiver" href="com_c3_s3_Efficient_Receiver.html" />
+    <link rel="prev" title="Optimal Detection in a General Vector Channel Model" href="com_c3_s1_General_Vector_Channel_Model.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>MAP and ML Receivers, Decision Regions, and Error Probability</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-a-posteriori-probability-map-receivers">Maximum a Posteriori Probability (MAP) Receivers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-rule">Bayes’ Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-decision-rule">MAP Decision Rule</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-ml-receivers">Maximum-Likelihood (ML) Receivers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equiprobable-messages">Equiprobable Messages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-ml-decision-rule">Maximum-Likelihood (ML) Decision Rule</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-regions">Decision Regions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-space">Output Space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Decision Regions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-optimal-decision-regions-for-a-map-detector">Example: Optimal Decision Regions for a MAP Detector</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-dependence-of-infinite-output-space-on-finite-set-of-transmitted-signals">Discussion: Dependence of Infinite Output Space on Finite Set of Transmitted Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-making-decision-on-new-received-signal">Discussion: Making Decision on New Received Signal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-probability-symbol-error-probability">Error Probability (Symbol Error Probability)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-error-probability">Conditional Error Probability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-error-probability">Overall Error Probability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">Proof</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#total-probability-theorem">Total Probability Theorem</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-the-total-probability-theorem">Applying the Total Probability Theorem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symbol-error-probability-and-bit-error-probability">Symbol Error Probability and Bit Error Probability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-in-determining-p-b">Challenges in Determining <span class="math notranslate nohighlight">\(P_b\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bounds-on-p-b">Bounds on <span class="math notranslate nohighlight">\(P_b\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-two-equiprobable-signals-in-exponential-noise">Example: Two Equiprobable Signals in Exponential Noise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-ml-detection">Maximum-Likelihood (ML) Detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-the-decision-regions">Determining the Decision Regions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-probability-calculation">Error Probability Calculation</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="map-and-ml-receivers-decision-regions-and-error-probability">
+<h1>MAP and ML Receivers, Decision Regions, and Error Probability<a class="headerlink" href="#map-and-ml-receivers-decision-regions-and-error-probability" title="Link to this heading">#</a></h1>
+<section id="maximum-a-posteriori-probability-map-receivers">
+<h2>Maximum a Posteriori Probability (MAP) Receivers<a class="headerlink" href="#maximum-a-posteriori-probability-map-receivers" title="Link to this heading">#</a></h2>
+<p>The goal of an optimal receiver is to decide which message <span class="math notranslate nohighlight">\( m \)</span> was transmitted based on the observation of the received vector <span class="math notranslate nohighlight">\(\vec{r}\)</span>. One common approach is to maximize the a posteriori probability, leading to the <strong>Maximum a Posteriori Probability (MAP) receiver</strong>, which we mentioned earlier, i.e.:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{m} = g_{\text{opt}}(\vec{r}) = \underset{1 \leq m \leq M}{\arg\max} \ \Pr (\vec{s}_m|\vec{r})
+\]</div>
+<section id="bayes-rule">
+<h3>Bayes’ Rule<a class="headerlink" href="#bayes-rule" title="Link to this heading">#</a></h3>
+<p>Using Bayes’ Rule, the a posteriori probability of message <span class="math notranslate nohighlight">\( m \)</span> given the observation <span class="math notranslate nohighlight">\(\vec{r}\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(m|\vec{r}) = \frac{P_m \, p(\vec{r}|\vec{s}_m)}{p(\vec{r})}
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_m = \Pr(m)\)</span> is the prior probability that the <span class="math notranslate nohighlight">\(m\)</span>-th message is transmitted,</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(\vec{r}|\vec{s}_m)\)</span> is the likelihood function (i.e., the conditional probability density of observing <span class="math notranslate nohighlight">\(\vec{r}\)</span> given that the signal vector <span class="math notranslate nohighlight">\(\vec{s}_m\)</span> was sent), and</p></li>
+<li><p><span class="math notranslate nohighlight">\(p(\vec{r})\)</span> is the marginal probability density of the received vector <span class="math notranslate nohighlight">\(\vec{r}\)</span>.</p></li>
+</ul>
+</section>
+<section id="map-decision-rule">
+<h3>MAP Decision Rule<a class="headerlink" href="#map-decision-rule" title="Link to this heading">#</a></h3>
+<p>The MAP decision rule selects the message that maximizes the posterior probability:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, \Pr(m|\vec{r})
+}
+\]</div>
+<p>Substituting the expression from Bayes’ Rule, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, \frac{P_m\, p(\vec{r}|\vec{s}_m)}{p(\vec{r})}
+\]</div>
+<p>Because the denominator <span class="math notranslate nohighlight">\( p(\vec{r}) \)</span> is independent of <span class="math notranslate nohighlight">\( m \)</span> (it is simply a normalizing constant ensuring that the probabilities sum to one), it does <em>not</em> affect the maximization. Thus, the decision rule can be simplified to</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, P_m\, p(\vec{r}|\vec{s}_m)
+}
+\]</div>
+<p>This formulation is particularly convenient because both the prior probabilities <span class="math notranslate nohighlight">\( P_m \)</span> and the likelihood <span class="math notranslate nohighlight">\( p(\vec{r}|\vec{s}_m) \)</span> are usually known or can be computed from the system model. In practice, the receiver computes the product <span class="math notranslate nohighlight">\( P_m\, p(\vec{r}|\vec{s}_m) \)</span> for each message <span class="math notranslate nohighlight">\( m \)</span> and selects the message corresponding to the largest value.</p>
+</section>
+</section>
+<section id="maximum-likelihood-ml-receivers">
+<h2>Maximum-Likelihood (ML) Receivers<a class="headerlink" href="#maximum-likelihood-ml-receivers" title="Link to this heading">#</a></h2>
+<p>When designing a receiver, our objective is to decide which message <span class="math notranslate nohighlight">\( m \)</span> was transmitted based on the observed vector <span class="math notranslate nohighlight">\(\vec{r}\)</span>. In general, the optimal decision rule according to the Maximum a Posteriori (MAP) criterion is given by
+<span class="math notranslate nohighlight">\(
+\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, P_m \, p(\vec{r}|\vec{s}_m)
+\)</span></p>
+<section id="equiprobable-messages">
+<h3>Equiprobable Messages<a class="headerlink" href="#equiprobable-messages" title="Link to this heading">#</a></h3>
+<p>In many practical systems, it is often assumed that the messages are equiprobable. This means that</p>
+<div class="math notranslate nohighlight">
+\[
+P_m = \frac{1}{M} \quad \text{for all } m = 1, 2, \dots, M
+\]</div>
+</section>
+<section id="maximum-likelihood-ml-decision-rule">
+<h3>Maximum-Likelihood (ML) Decision Rule<a class="headerlink" href="#maximum-likelihood-ml-decision-rule" title="Link to this heading">#</a></h3>
+<p>When this assumption holds, the prior probability <span class="math notranslate nohighlight">\( P_m \)</span> becomes a constant across all messages. Since a constant factor does not affect the argmax operation, the MAP decision rule simplifies to</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{m} = \underset{1 \leq m \leq M}{\arg\max}\, p(\vec{r}|\vec{s}_m)
+\]</div>
+<p>The term <span class="math notranslate nohighlight">\( p(\vec{r}|\vec{s}_m) \)</span> is known as the <strong>likelihood</strong> of message <span class="math notranslate nohighlight">\( m \)</span>. Consequently, the decision rule that selects the message <span class="math notranslate nohighlight">\( m \)</span> with the highest likelihood is called the <strong>Maximum-Likelihood (ML) receiver</strong>.</p>
+<p>Note that this rule is optimal (i.e., it minimizes the probability of error) <em>only</em> when all messages are equiprobable.</p>
+</section>
+</section>
+<section id="decision-regions">
+<h2>Decision Regions<a class="headerlink" href="#decision-regions" title="Link to this heading">#</a></h2>
+<section id="output-space">
+<h3>Output Space<a class="headerlink" href="#output-space" title="Link to this heading">#</a></h3>
+<p>The output space <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span> represents the collection of all possible <span class="math notranslate nohighlight">\(N\)</span>-dimensional received signal vectors <span class="math notranslate nohighlight">\(\vec{r}\)</span>.</p>
+<p>Under an AWGN channel, where the noise is modeled as a continuous Gaussian random vector with infinite support, the output space <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span> is accordingly infinite. This means that there are infinitely many possible received vectors because the noise can take on any value in <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span>.</p>
+<p>In practice, even though the output space is infinite, detection algorithms work by partitioning this infinite space into decision regions (which are subsets of <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span>) to decide which of the <span class="math notranslate nohighlight">\(M\)</span> possible transmitted messages (or signal vectors) is most likely to have produced the observed <span class="math notranslate nohighlight">\(\vec{r}\)</span>.</p>
+</section>
+<section id="id1">
+<h3>Decision Regions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>The receiver must decide which message was transmitted based on the observed received vector <span class="math notranslate nohighlight">\(\vec{r}\)</span> using a certain detector, e.g., a MAP (Maximum a Posteriori) or ML (Maximum Likelihood) detector.</p>
+<p>The receiver partitions the output space, <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span>, into <span class="math notranslate nohighlight">\(M\)</span> distinct regions. These regions are denoted as <span class="math notranslate nohighlight">\(D_1, D_2, \ldots, D_M\)</span>.</p>
+<p><strong>Definition:</strong><br />
+Let <span class="math notranslate nohighlight">\( g: \mathbb{R}^N \to \{1, 2, \ldots, M\} \)</span> be a decision function that maps each received <span class="math notranslate nohighlight">\(N\)</span>-dimensional vector <span class="math notranslate nohighlight">\(\vec{r}\)</span> to a message index. Then, the <strong>decision region</strong> for message <span class="math notranslate nohighlight">\(m\)</span>, denoted by <span class="math notranslate nohighlight">\( D_m \)</span>, is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+D_m = \{\vec{r} \in \mathbb{R}^N : g(\vec{r}) = m\}
+\]</div>
+<p>Each decision region <span class="math notranslate nohighlight">\(D_m\)</span> is the set of all possible outputs (or received vectors) that the detector maps to the message <span class="math notranslate nohighlight">\(m\)</span>. In other words, <span class="math notranslate nohighlight">\(D_m\)</span> contains every <span class="math notranslate nohighlight">\(\vec{r}\)</span> for which the detector “believes” message <span class="math notranslate nohighlight">\(m\)</span> was transmitted.</p>
+<ul>
+<li><p><strong>Decision Mapping:</strong><br />
+The basic idea is that if the received vector <span class="math notranslate nohighlight">\(\vec{r}\)</span> falls into a particular region <span class="math notranslate nohighlight">\(D_m\)</span>, then the detector decides in favor of message <span class="math notranslate nohighlight">\(m\)</span>; that is, the decision function <span class="math notranslate nohighlight">\(g(\vec{r})\)</span> yields</p>
+<div class="math notranslate nohighlight">
+\[
+  \hat{m} = g(\vec{r}) = m \quad \text{if } \vec{r} \in D_m
+  \]</div>
+</li>
+</ul>
+</section>
+<section id="example-optimal-decision-regions-for-a-map-detector">
+<h3>Example: Optimal Decision Regions for a MAP Detector<a class="headerlink" href="#example-optimal-decision-regions-for-a-map-detector" title="Link to this heading">#</a></h3>
+<p>For a MAP receiver, the decision region corresponding to message <span class="math notranslate nohighlight">\(m\)</span> is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+D_m = \left\{ \vec{r} \in \mathbb{R}^N : \Pr[m|\vec{r}] &gt; \Pr[m'|\vec{r}], \quad \text{for all } m' \neq m \right\}
+\]</div>
+<p>This expression means that if the received vector <span class="math notranslate nohighlight">\(\vec{r}\)</span> is such that the a posteriori probability <span class="math notranslate nohighlight">\(\Pr[m|\vec{r}]\)</span> is higher than the a posteriori probability for any other message <span class="math notranslate nohighlight">\(m'\)</span>, then <span class="math notranslate nohighlight">\(\vec{r}\)</span> is assigned to <span class="math notranslate nohighlight">\(D_m\)</span>, and the detector declares that message <span class="math notranslate nohighlight">\(m\)</span> was sent.</p>
+<p><strong>Ambiguities</strong><br />
+It is possible that for some received vector <span class="math notranslate nohighlight">\(\vec{r}\)</span>, two or more messages might achieve the same maximum a posteriori probability. In such cases, the detector can arbitrarily assign <span class="math notranslate nohighlight">\(\vec{r}\)</span> to one of the corresponding decision regions.</p>
+</section>
+</section>
+<section id="discussion-dependence-of-infinite-output-space-on-finite-set-of-transmitted-signals">
+<h2>Discussion: Dependence of Infinite Output Space on Finite Set of Transmitted Signals<a class="headerlink" href="#discussion-dependence-of-infinite-output-space-on-finite-set-of-transmitted-signals" title="Link to this heading">#</a></h2>
+<p>Although the output space <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span> is infinite—since the additive noise (such as AWGN) can take any value and thus produces infinitely many possible received vectors—the received signals are statistically centered around the <span class="math notranslate nohighlight">\(M\)</span> finite signals used in the constellation at the transmitter. This finite set of transmitted signals fundamentally determines the structure of the received signals.</p>
+<p><strong>Infinite Output Space <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span>:</strong><br />
+The channel output is modeled as <span class="math notranslate nohighlight">\(
+\vec{r} = \vec{s}_m + \vec{n}\)</span>,
+where <span class="math notranslate nohighlight">\(\vec{s}_m\)</span> is one of the <span class="math notranslate nohighlight">\(M\)</span> transmitted signal vectors and <span class="math notranslate nohighlight">\(\vec{n}\)</span> is a noise vector that can take any value in <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span> (because, for instance, Gaussian noise has infinite support). Thus, even though <span class="math notranslate nohighlight">\(\vec{s}_m\)</span> comes from a finite set, <span class="math notranslate nohighlight">\(\vec{r}\)</span> can be any vector in <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span>.</p>
+<p><strong>Dependence on the Finite Set of Transmitted Signals:</strong><br />
+The statistical distribution of <span class="math notranslate nohighlight">\(\vec{r}\)</span> is centered around the transmitted signal <span class="math notranslate nohighlight">\(\vec{s}_m\)</span>. In other words, for a given transmitted signal, the likelihood function <span class="math notranslate nohighlight">\(p(\vec{r}|\vec{s}_m)\)</span> is maximized near <span class="math notranslate nohighlight">\(\vec{s}_m\)</span> and decays as <span class="math notranslate nohighlight">\(\vec{r}\)</span> moves away. This means that the bulk of the probability mass for <span class="math notranslate nohighlight">\(\vec{r}\)</span> when <span class="math notranslate nohighlight">\(\vec{s}_m\)</span> is transmitted is concentrated in a region surrounding <span class="math notranslate nohighlight">\(\vec{s}_m\)</span>.</p>
+<p><strong>Determining Decision Regions:</strong><br />
+Given the finite set of signals and the known noise statistics, we can define decision regions <span class="math notranslate nohighlight">\(D_m\)</span> in <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span>. Each decision region <span class="math notranslate nohighlight">\(D_m\)</span> is the set of all received vectors that are “closer” (in a probabilistic sense) to the signal <span class="math notranslate nohighlight">\(\vec{s}_m\)</span> than to any other signal.</p>
+</section>
+<section id="discussion-making-decision-on-new-received-signal">
+<h2>Discussion: Making Decision on New Received Signal<a class="headerlink" href="#discussion-making-decision-on-new-received-signal" title="Link to this heading">#</a></h2>
+<p>The output space <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span> exists as the set of all possible received vectors, and the decision regions <span class="math notranslate nohighlight">\(D_m\)</span> are a predetermined partition of this space, designed according to the detection rule. When a new received signal arrives, it is simply mapped to one of these regions to make a decision.</p>
+<p><strong>Output Space <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span>:</strong><br />
+This is a mathematical model of all possible <span class="math notranslate nohighlight">\(N\)</span>-dimensional received signal vectors. It exists as a theoretical space that encompasses every possible outcome that the channel (e.g., an AWGN channel) might produce.</p>
+<p><strong>Decision Regions <span class="math notranslate nohighlight">\(D_m\)</span>:</strong><br />
+These regions are defined as a partition of the output space <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span> based on the detection rule (such as the MAP or ML rule). The decision regions are designed <em>a priori</em>—that is, before or independently of any particular received signal—based on the known or assumed statistical properties of the channel and the signal set. For example, in a MAP detector, each region <span class="math notranslate nohighlight">\(D_m\)</span> is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+D_m = \left\{ \vec{r} \in \mathbb{R}^N : \Pr(m|\vec{r}) &gt; \Pr(m'|\vec{r}), \quad \forall m' \neq m \right\}
+\]</div>
+<p>The probabilities <span class="math notranslate nohighlight">\(\Pr(m|\vec{r})\)</span> and <span class="math notranslate nohighlight">\(\Pr(m'|\vec{r})\)</span> are computed using the statistical models of the channel and the prior information about the messages. Once these posterior probabilities are derived theoretically (typically via Bayes’ rule), the decision regions <span class="math notranslate nohighlight">\(D_m\)</span> can be determined.  These regions are established based on the theoretical analysis of the channel’s statistics and are then used in the detection process for any new received signal.</p>
+<p><strong>Design and Usage</strong></p>
+<ul class="simple">
+<li><p><strong>Design Time:</strong><br />
+The decision regions are derived from the detection rule and are set up as part of the receiver design. They exist as fixed subsets of <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span>.</p></li>
+<li><p><strong>Run Time (New Observations):</strong><br />
+When a new received signal <span class="math notranslate nohighlight">\(\vec{r}\)</span> comes in, the receiver doesn’t “redefine” the decision regions. Instead, it simply checks which region <span class="math notranslate nohighlight">\(D_m\)</span> the new <span class="math notranslate nohighlight">\(\vec{r}\)</span> falls into. The decision <span class="math notranslate nohighlight">\( \hat{m} \)</span> is then made accordingly.</p></li>
+</ul>
+</section>
+<section id="error-probability-symbol-error-probability">
+<h2>Error Probability (Symbol Error Probability)<a class="headerlink" href="#error-probability-symbol-error-probability" title="Link to this heading">#</a></h2>
+<p>When a message is transmitted over a channel, an error occurs if the received vector <span class="math notranslate nohighlight">\(\vec{r}\)</span> does not fall within the decision region corresponding to the transmitted message. Assume the transmitter sends the <span class="math notranslate nohighlight">\(m\)</span>th message, whose corresponding signal vector is <span class="math notranslate nohighlight">\(\vec{s}_m\)</span>. The decision region for message <span class="math notranslate nohighlight">\(m\)</span> is denoted by <span class="math notranslate nohighlight">\(D_m\)</span>. If <span class="math notranslate nohighlight">\(\vec{r} \notin D_m\)</span>, then an error is declared.</p>
+<section id="conditional-error-probability">
+<h3>Conditional Error Probability<a class="headerlink" href="#conditional-error-probability" title="Link to this heading">#</a></h3>
+<p>Define the <strong>conditional error probability</strong> <span class="math notranslate nohighlight">\(P_{e|m}\)</span> as the probability of making an error given that message <span class="math notranslate nohighlight">\(m\)</span> (or signal <span class="math notranslate nohighlight">\(\vec{s}_m\)</span>) is transmitted:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+P_{e|m} = \Pr\left[\vec{r} \notin D_m \,\middle|\, \vec{s}_m \text{ sent}\right]
+}
+\]</div>
+<p>Since the decision regions <span class="math notranslate nohighlight">\(\{D_m\}\)</span> form a partition of the output space <span class="math notranslate nohighlight">\(\mathbb{R}^N\)</span>, the complement of <span class="math notranslate nohighlight">\(D_m\)</span>, denoted <span class="math notranslate nohighlight">\(D_m^c\)</span>, is the union of the decision regions corresponding to all other messages. Thus, we can write:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+P_{e|m} = \int_{D_m^c} p(\vec{r}|\vec{s}_m) \, d\vec{r} 
+= \sum_{\substack{1 \leq m' \leq M \\ m' \neq m}} \int_{D_{m'}} p(\vec{r}|\vec{s}_m) \, d\vec{r}
+\end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(p(\vec{r}|\vec{s}_m)\)</span> is the likelihood of receiving <span class="math notranslate nohighlight">\(\vec{r}\)</span> given that <span class="math notranslate nohighlight">\(\vec{s}_m\)</span> was transmitted.</p>
+</section>
+<section id="overall-error-probability">
+<h3>Overall Error Probability<a class="headerlink" href="#overall-error-probability" title="Link to this heading">#</a></h3>
+<p>Let <span class="math notranslate nohighlight">\(P_m = \Pr(m)\)</span> denote the prior probability that message <span class="math notranslate nohighlight">\(m\)</span> is transmitted. The <strong>overall symbol error probability</strong> <span class="math notranslate nohighlight">\(P_e\)</span> is the weighted sum of the conditional error probabilities over all messages:</p>
+<div class="math notranslate nohighlight">
+\[
+P_e = \sum_{m=1}^{M} P_m \, \Pr\left[\vec{r} \notin D_m \,\middle|\, \vec{s}_m \text{ sent}\right] 
+= \sum_{m=1}^{M} P_m \, P_{e|m}
+\]</div>
+<p>Substituting the expression for <span class="math notranslate nohighlight">\(P_{e|m}\)</span>, we obtain:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boxed{
+P_e = \sum_{m=1}^{M} P_m \left( \sum_{\substack{1 \leq m' \leq M \\ m' \neq m}} \int_{D_{m'}} p(\vec{r}|\vec{s}_m) \, d\vec{r} \right)
+}
+\end{split}\]</div>
+</section>
+<section id="proof">
+<h3>Proof<a class="headerlink" href="#proof" title="Link to this heading">#</a></h3>
+<p>The overall symbol error probability <span class="math notranslate nohighlight">\( P_e \)</span> is computed using the Total Probability Theorem.</p>
+<section id="total-probability-theorem">
+<h4>Total Probability Theorem<a class="headerlink" href="#total-probability-theorem" title="Link to this heading">#</a></h4>
+<p>The Total Probability Theorem states that if <span class="math notranslate nohighlight">\(\{A_m\}\)</span> is a partition of the sample space, then for any event <span class="math notranslate nohighlight">\(B\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(B) = \sum_{m} \Pr(B | A_m) \, \Pr(A_m)
+\]</div>
+<p>In the context of symbol error probability, the events <span class="math notranslate nohighlight">\(A_m\)</span> correspond to the different messages being transmitted, and the event <span class="math notranslate nohighlight">\(B\)</span> is the occurrence of an error (i.e., the receiver making an incorrect decision). Specifically:</p>
+<ul class="simple">
+<li><p><strong><span class="math notranslate nohighlight">\(A_m\)</span>:</strong> The event that message <span class="math notranslate nohighlight">\( m \)</span> is transmitted, which occurs with probability <span class="math notranslate nohighlight">\( P_m = \Pr(m) \)</span>.</p></li>
+<li><p><strong><span class="math notranslate nohighlight">\(B\)</span>:</strong> The event that an error occurs, i.e., the received vector <span class="math notranslate nohighlight">\(\vec{r}\)</span> does not fall in the correct decision region <span class="math notranslate nohighlight">\(D_m\)</span>.</p></li>
+</ul>
+</section>
+<section id="applying-the-total-probability-theorem">
+<h4>Applying the Total Probability Theorem<a class="headerlink" href="#applying-the-total-probability-theorem" title="Link to this heading">#</a></h4>
+<p>Using the Total Probability Theorem, the overall symbol error probability <span class="math notranslate nohighlight">\( P_e \)</span> is computed by summing the conditional error probabilities over all possible messages, weighted by the probability of each message being transmitted:</p>
+<div class="math notranslate nohighlight">
+\[
+P_e = \sum_{m=1}^{M} \Pr\left[ \text{error} \mid \vec{s}_m \text{ sent} \right] \Pr(m)
+= \sum_{m=1}^{M} P_{e|m} \, P_m
+\]</div>
+<p>This completes the proof. <span class="math notranslate nohighlight">\(\blacksquare\)</span></p>
+</section>
+</section>
+</section>
+<section id="symbol-error-probability-and-bit-error-probability">
+<h2>Symbol Error Probability and Bit Error Probability<a class="headerlink" href="#symbol-error-probability-and-bit-error-probability" title="Link to this heading">#</a></h2>
+<p><strong>Symbol Error Probability (<span class="math notranslate nohighlight">\(P_e\)</span>)</strong>:<br />
+<span class="math notranslate nohighlight">\(P_e\)</span> is defined as the probability that a transmitted symbol (or message) is detected incorrectly at the receiver.</p>
+<p><strong>Bit Error Probability (<span class="math notranslate nohighlight">\(P_b\)</span>)</strong>:<br />
+<span class="math notranslate nohighlight">\(P_b\)</span> is the probability that an individual bit is received in error.</p>
+<p>Since each symbol typically represents a group of bits, a symbol error may result in one or more bit errors.</p>
+<section id="challenges-in-determining-p-b">
+<h3>Challenges in Determining <span class="math notranslate nohighlight">\(P_b\)</span><a class="headerlink" href="#challenges-in-determining-p-b" title="Link to this heading">#</a></h3>
+<p>Calculating <span class="math notranslate nohighlight">\(P_b\)</span> directly can be challenging because:</p>
+<ul class="simple">
+<li><p><strong>Mapping Dependency</strong>:<br />
+The bit error probability depends on the specific mapping between bits and signal points (or symbols), e.g., Gray coding.</p></li>
+<li><p><strong>Constellation Symmetry</strong>:<br />
+In symmetric constellations, the structure of the constellation can simplify the calculation of <span class="math notranslate nohighlight">\(P_b\)</span>. However, for arbitrary mappings or nonuniform constellations, the relationship may be more complex.</p></li>
+</ul>
+<section id="bounds-on-p-b">
+<h4>Bounds on <span class="math notranslate nohighlight">\(P_b\)</span><a class="headerlink" href="#bounds-on-p-b" title="Link to this heading">#</a></h4>
+<p>Consider a modulation scheme where each symbol represents <span class="math notranslate nohighlight">\(k\)</span> bits, so that the number of symbols is <span class="math notranslate nohighlight">\(M = 2^k\)</span>. When a symbol error occurs, at least one bit error must occur. In the worst-case scenario, a symbol error might result in all <span class="math notranslate nohighlight">\(k\)</span> bits being in error. Therefore, the following bounds hold:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{P_e}{k} \leq P_b \leq P_e
+\]</div>
+<p>or, equivalently, since <span class="math notranslate nohighlight">\(k = \log_2 M\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\boxed{
+\frac{P_e}{\log_2 M} \leq P_b \leq P_e
+}
+\]</div>
+<ul class="simple">
+<li><p><strong>Lower Bound (<span class="math notranslate nohighlight">\(P_e/\log_2 M\)</span>)</strong>:<br />
+This bound corresponds to an ideal situation where, on average, a symbol error results in only one bit error. In many systems that use Gray coding, most symbol errors indeed lead to only a single bit error, making this bound a reasonable approximation for <span class="math notranslate nohighlight">\(P_b\)</span>.</p></li>
+<li><p><strong>Upper Bound (<span class="math notranslate nohighlight">\(P_e\)</span>)</strong>:<br />
+This bound represents the worst-case scenario where every symbol error results in all <span class="math notranslate nohighlight">\(k\)</span> bits being erroneous.</p></li>
+</ul>
+<p>This set of inequalities provides useful bounds on <span class="math notranslate nohighlight">\(P_b\)</span> when <span class="math notranslate nohighlight">\(P_e\)</span> is known, and vice versa. The exact relationship between <span class="math notranslate nohighlight">\(P_e\)</span> and <span class="math notranslate nohighlight">\(P_b\)</span> depends on the modulation format and the bit-to-symbol mapping, e.g., the channel coding schemes.</p>
+</section>
+</section>
+</section>
+<section id="example-two-equiprobable-signals-in-exponential-noise">
+<h2>Example: Two Equiprobable Signals in Exponential Noise<a class="headerlink" href="#example-two-equiprobable-signals-in-exponential-noise" title="Link to this heading">#</a></h2>
+<p>Consider two equiprobable message signals:</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{s}_1 = (0,0) \quad \text{and} \quad \vec{s}_2 = (1,1)
+\]</div>
+<p>The channel adds independent noise components <span class="math notranslate nohighlight">\(n_1\)</span> and <span class="math notranslate nohighlight">\(n_2\)</span> to the transmitted signal. Each noise component has an exponential probability density function (PDF):</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+p(n) = 
+\begin{cases}
+e^{-n} &amp; n \geq 0 \\
+0, &amp; n &lt; 0
+\end{cases}
+\end{split}\]</div>
+<p>Since the noise components are independent, the joint PDF of the noise vector <span class="math notranslate nohighlight">\(\vec{n} = (n_1, n_2)\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+p_{\vec{n}}(n_1,n_2) =
+\begin{cases}
+e^{-n_1-n_2} &amp; n_1 \ge 0,\; n_2 \ge 0 \\
+0, &amp; \text{otherwise}
+\end{cases}
+\end{split}\]</div>
+<section id="maximum-likelihood-ml-detection">
+<h3>Maximum-Likelihood (ML) Detection<a class="headerlink" href="#maximum-likelihood-ml-detection" title="Link to this heading">#</a></h3>
+<p>Because the messages are equiprobable, the Maximum a Posteriori (MAP) detector reduces to the Maximum-Likelihood (ML) detector. The ML rule chooses the message <span class="math notranslate nohighlight">\(m\)</span> that maximizes the likelihood <span class="math notranslate nohighlight">\(p(\vec{r}|\vec{s}_m)\)</span>. The decision region for message <span class="math notranslate nohighlight">\(m\)</span> is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+D_m = \{ \vec{r} \in \mathbb{R}^2 : p(\vec{r}|\vec{s}_m) &gt; p(\vec{r}|\vec{s}_{m'}), \; \forall\, m' \neq m \}
+\]</div>
+<p>Since the received vector <span class="math notranslate nohighlight">\(\vec{r}\)</span> is given by</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{r} = \vec{s}_m + \vec{n}
+\]</div>
+<p>we can write</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{r}|\vec{s}_m) = p(\vec{n} = \vec{r} - \vec{s}_m)
+\]</div>
+</section>
+<section id="determining-the-decision-regions">
+<h3>Determining the Decision Regions<a class="headerlink" href="#determining-the-decision-regions" title="Link to this heading">#</a></h3>
+<ul>
+<li><p><strong>For <span class="math notranslate nohighlight">\(\vec{s}_1 = (0,0)\)</span>:</strong><br />
+The likelihood function is</p>
+<div class="math notranslate nohighlight">
+\[
+   p(\vec{r}|\vec{s}_1) = p(n_1 = r_1,\, n_2 = r_2) = e^{-r_1-r_2}
+   \]</div>
+<p>provided <span class="math notranslate nohighlight">\(r_1 \geq 0\)</span> and <span class="math notranslate nohighlight">\(r_2 \geq 0\)</span>.</p>
+</li>
+<li><p><strong>For <span class="math notranslate nohighlight">\(\vec{s}_2 = (1,1)\)</span>:</strong><br />
+The likelihood is</p>
+<div class="math notranslate nohighlight">
+\[
+   p(\vec{r}|\vec{s}_2) = p(n_1 = r_1-1,\, n_2 = r_2-1)
+   \]</div>
+<p>This is nonzero only if <span class="math notranslate nohighlight">\(r_1-1 \ge 0\)</span> and <span class="math notranslate nohighlight">\(r_2-1 \ge 0\)</span>; that is, when <span class="math notranslate nohighlight">\(r_1 \geq 1\)</span> and <span class="math notranslate nohighlight">\(r_2 \geq 1\)</span>. In this case,</p>
+<div class="math notranslate nohighlight">
+\[
+   p(\vec{r}|\vec{s}_2) = e^{-(r_1-1)-(r_2-1)} = e^{-r_1-r_2+2}
+   \]</div>
+</li>
+<li><p><strong>Comparison of Likelihoods:</strong></p>
+<ul>
+<li><p><strong>If either <span class="math notranslate nohighlight">\(r_1 &lt; 1\)</span> or <span class="math notranslate nohighlight">\(r_2 &lt; 1\)</span>:</strong><br />
+For such <span class="math notranslate nohighlight">\(\vec{r}\)</span>, note that at least one of <span class="math notranslate nohighlight">\(r_1-1\)</span> or <span class="math notranslate nohighlight">\(r_2-1\)</span> is negative, which makes <span class="math notranslate nohighlight">\(p(\vec{r}|\vec{s}_2) = 0\)</span> (because the noise PDF is zero for negative arguments). However, <span class="math notranslate nohighlight">\(p(\vec{r}|\vec{s}_1)\)</span> is positive (since <span class="math notranslate nohighlight">\(r_1, r_2 \ge 0\)</span>). Therefore, when either coordinate is less than 1, we have</p>
+<div class="math notranslate nohighlight">
+\[
+     p(\vec{r}|\vec{s}_1) &gt; p(\vec{r}|\vec{s}_2)
+     \]</div>
+<p>and the ML detector will decide in favor of message 1. Thus,</p>
+<div class="math notranslate nohighlight">
+\[
+     D_1 \supset \{ \vec{r} \in \mathbb{R}^2 : r_1 \ge 0,\; r_2 \ge 0,\; \text{and either } r_1 &lt; 1 \text{ or } r_2 &lt; 1 \}
+     \]</div>
+</li>
+<li><p><strong>If <span class="math notranslate nohighlight">\(r_1 \geq 1\)</span> and <span class="math notranslate nohighlight">\(r_2 \geq 1\)</span>:</strong><br />
+Both likelihoods are positive. In this region,</p>
+<div class="math notranslate nohighlight">
+\[
+     p(\vec{r}|\vec{s}_1) = e^{-r_1-r_2} \quad \text{and} \quad p(\vec{r}|\vec{s}_2) = e^{-r_1-r_2+2}
+     \]</div>
+<p>Since <span class="math notranslate nohighlight">\(e^{-r_1-r_2+2} = e^2 \, e^{-r_1-r_2}\)</span> and <span class="math notranslate nohighlight">\(e^2 &gt; 1\)</span>, it follows that</p>
+<div class="math notranslate nohighlight">
+\[
+     p(\vec{r}|\vec{s}_2) &gt; p(\vec{r}|\vec{s}_1)
+     \]</div>
+<p>Hence, for <span class="math notranslate nohighlight">\(\vec{r}\)</span> satisfying <span class="math notranslate nohighlight">\(r_1 \geq 1\)</span> and <span class="math notranslate nohighlight">\(r_2 \geq 1\)</span>, the ML detector selects message 2. Thus,</p>
+<div class="math notranslate nohighlight">
+\[
+     D_2 = \{ \vec{r} \in \mathbb{R}^2 : r_1 \geq 1,\; r_2 \geq 1 \}
+     \]</div>
+</li>
+</ul>
+</li>
+</ul>
+<p>Thus, we have the decision regions are:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+D_2 &amp;= \{ \vec{r} \in \mathbb{R}^2 : r_1 \geq 1,\; r_2 \geq 1 \} \\
+D_1 &amp;= \{ \vec{r} \in \mathbb{R}^2 : r_1 \geq 0,\; r_2 \geq 0,\; \text{and either } r_1 &lt; 1 \text{ or } r_2 &lt; 1 \}
+\end{aligned}
+\end{split}\]</div>
+</section>
+<section id="error-probability-calculation">
+<h3>Error Probability Calculation<a class="headerlink" href="#error-probability-calculation" title="Link to this heading">#</a></h3>
+<p>Since the messages are equiprobable, the probability of error is determined by the event that an error occurs when message 1 is transmitted (because an error only occurs when <span class="math notranslate nohighlight">\(\vec{s}_1\)</span> is sent and the received vector falls in <span class="math notranslate nohighlight">\(D_2\)</span>). That is,</p>
+<div class="math notranslate nohighlight">
+\[
+P_e = \frac{1}{2} \Pr\big[\vec{r} \in D_2 \mid \vec{s}_1 \text{ sent}\big]
+\]</div>
+<p>When <span class="math notranslate nohighlight">\(\vec{s}_1 = (0,0)\)</span> is transmitted, the received vector is</p>
+<div class="math notranslate nohighlight">
+\[
+\vec{r} = (n_1, n_2)
+\]</div>
+<p>with <span class="math notranslate nohighlight">\(n_1\)</span> and <span class="math notranslate nohighlight">\(n_2\)</span> being independent and exponentially distributed. The event <span class="math notranslate nohighlight">\(\vec{r} \in D_2\)</span> corresponds to</p>
+<div class="math notranslate nohighlight">
+\[
+n_1 \geq 1 \quad \text{and} \quad n_2 \geq 1
+\]</div>
+<p>For an exponential random variable with PDF <span class="math notranslate nohighlight">\(e^{-n}\)</span> for <span class="math notranslate nohighlight">\(n \geq 0\)</span>, the probability that <span class="math notranslate nohighlight">\(n \geq 1\)</span> is</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(n \ge 1) = \int_1^\infty e^{-n} \, dn = e^{-1}
+\]</div>
+<p>Because <span class="math notranslate nohighlight">\(n_1\)</span> and <span class="math notranslate nohighlight">\(n_2\)</span> are independent,</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(n_1 \ge 1,\, n_2 \ge 1) = e^{-1} \cdot e^{-1} = e^{-2}
+\]</div>
+<p>Thus, the error probability is</p>
+<div class="math notranslate nohighlight">
+\[
+P_e = \frac{1}{2} e^{-2} \approx \frac{1}{2} \cdot 0.1353 \approx 0.06765 \approx 0.068
+\]</div>
+<p><span class="math notranslate nohighlight">\(\square\)</span></p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="com_c3_s1_General_Vector_Channel_Model.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Optimal Detection in a General Vector Channel Model</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="com_c3_s3_Efficient_Receiver.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Efficient Receiver</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-a-posteriori-probability-map-receivers">Maximum a Posteriori Probability (MAP) Receivers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-rule">Bayes’ Rule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#map-decision-rule">MAP Decision Rule</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-ml-receivers">Maximum-Likelihood (ML) Receivers</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#equiprobable-messages">Equiprobable Messages</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-ml-decision-rule">Maximum-Likelihood (ML) Decision Rule</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-regions">Decision Regions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#output-space">Output Space</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Decision Regions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-optimal-decision-regions-for-a-map-detector">Example: Optimal Decision Regions for a MAP Detector</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-dependence-of-infinite-output-space-on-finite-set-of-transmitted-signals">Discussion: Dependence of Infinite Output Space on Finite Set of Transmitted Signals</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion-making-decision-on-new-received-signal">Discussion: Making Decision on New Received Signal</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-probability-symbol-error-probability">Error Probability (Symbol Error Probability)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-error-probability">Conditional Error Probability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overall-error-probability">Overall Error Probability</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#proof">Proof</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#total-probability-theorem">Total Probability Theorem</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#applying-the-total-probability-theorem">Applying the Total Probability Theorem</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#symbol-error-probability-and-bit-error-probability">Symbol Error Probability and Bit Error Probability</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-in-determining-p-b">Challenges in Determining <span class="math notranslate nohighlight">\(P_b\)</span></a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#bounds-on-p-b">Bounds on <span class="math notranslate nohighlight">\(P_b\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-two-equiprobable-signals-in-exponential-noise">Example: Two Equiprobable Signals in Exponential Noise</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-ml-detection">Maximum-Likelihood (ML) Detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#determining-the-decision-regions">Determining the Decision Regions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#error-probability-calculation">Error Probability Calculation</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1407 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Bayes Estimation &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c3_s9_s11_Bayes_MSE_estimator';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Maximum a Posteriori (MAP) Estimation" href="c3_s12_MAP_estimator.html" />
+    <link rel="prev" title="Consistent Estimates" href="c3_s8_consistent_estimator.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <script>document.write(`<img src="_static/web_logo.png" class="logo__image only-dark" alt="Telecom Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Signal Detection and Estimation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c1_s0.html">Chapter 1: Review of Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s4_s6a_func_one_RV.html">Functions of A Single Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s6b_generation_RV_from_Uniform.html">Generating Random Variables From A Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c1_s7_mean_of_func_RV.html">First Moment of a Function of Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s8_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s9_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s10_s11_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s12_complex_Gaussian_RV.html">Complex Random Vector</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s13_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s14_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_a_stochastic_process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Chapter 2: Introduction to Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c3_s0.html">Chapter 3: Fundamentals of Estimation Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Bayes Estimation</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Bayes Estimation</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Bayes Estimation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-average-risk-as-a-function-of-conditional-cost">Derivation of the average risk as a function of conditional cost.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation-of-the-bayes-estimator">Mathematical Formulation of the Bayes Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-specific-cost-functions">Some Specific Cost Functions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mse-estimation">MSE Estimation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-form-of-mse-estimator">Alternative Form of MSE Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-c3-7-mse-estimator-bayes-estimation-with-an-mse-cost-function">Example C3.7: MSE Estimator (Bayes estimation with an MSE cost function)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-this-mse-estimate-biased">Is This MSE Estimate Biased ?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-mean-and-variance">General Mean and Variance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-c3-8-average-risk-r-min">Example C3.8: Average Risk <span class="math notranslate nohighlight">\( R_{min} \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-variance-of-the-estimation-error">Minimum Variance of the Estimation Error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">Appendix</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="bayes-estimation">
+<h1>Bayes Estimation<a class="headerlink" href="#bayes-estimation" title="Link to this heading">#</a></h1>
+<p>Classical estimation theory involves the estimate of unknown but deterministic parameters.</p>
+<p>However, it is often possible to model the parameter to be estimated as a random variable <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> with some postulated distribution <span class="math notranslate nohighlight">\(p(\alpha)\)</span>, referred to as the <em>a priori</em> pdf.</p>
+<p>For example, suppose there are many values for the sample mean collected over some period of time.</p>
+<p>Bayesian methods allow the introduction of this data via the assumed distribution of the sample mean.</p>
+<p><strong>Weighting Function</strong></p>
+<p>There may also be a weighting function that incorporates the cost <span class="math notranslate nohighlight">\(C(\boldsymbol{\alpha}, \hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}))\)</span>, also referred to by some authors as a loss, introduced by the error <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}_e\)</span> between the estimate and its true value and defined by</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+\boldsymbol{\alpha}_e = \boldsymbol{\alpha} - \hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}) \qquad \text{(C3.78)}
+\]</div>
+<p>An example of such a weighting function is the mean-squared error between the estimate <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}(\vec{y})\)</span> and the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>.</p>
+<p>This cost is the counterpart of that observed in detection theory as described.</p>
+<p><strong>Average Risk</strong></p>
+<p>Similarly, an average risk <span class="math notranslate nohighlight">\(\mathcal{R}\)</span> is obtained by averaging the cost over <span class="math notranslate nohighlight">\(p(\alpha, \vec{y})\)</span>, the joint pdf of the parameter <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span>, and the observable <span class="math notranslate nohighlight">\(\vec{\mathbf{y}}\)</span> according to</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+\mathcal{R} = E\{C(\boldsymbol{\alpha}, \hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}}))\} 
+= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} C(\alpha, \hat{\alpha}(\vec{y})) p(\alpha, \vec{y}) \, d\alpha \, d\vec{y} \qquad \text{(C3.79)}
+\]</div>
+<p><strong>Objective.</strong> Minimizing this average risk yields a Bayes estimate.</p>
+<p><strong>Conditional Cost</strong></p>
+<p>The conditional cost <span class="math notranslate nohighlight">\(C_c(\hat{\boldsymbol{\alpha}}(\vec{\mathbf{y}})|\vec{y})\)</span> is defined as</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+C_c(\hat{\boldsymbol{\alpha}}|\vec{y}) 
+= \int_{-\infty}^{\infty} C(\alpha, \hat{\alpha}(\vec{y})) p(\alpha|\vec{y}) \, d\alpha \qquad \text{(C3.80)}
+\]</div>
+<p>Note that this is a correction of [B2, Eq. (10.80)].</p>
+<p>so that an alternative expression for the average risk can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{R} = \int_{-\infty}^{\infty} p(\vec{y}) C_c(\hat{\alpha}(\vec{y})|\vec{y}) \, d\vec{y} \qquad \text{(C3.81)}
+\]</div>
+<p>Since the pdf of the observable is positive over the range of its outcomes, <em>minimizing the average risk is accomplished by minimizing the conditional risk</em>.</p>
+<section id="derivation-of-the-average-risk-as-a-function-of-conditional-cost">
+<h2>Derivation of the average risk as a function of conditional cost.<a class="headerlink" href="#derivation-of-the-average-risk-as-a-function-of-conditional-cost" title="Link to this heading">#</a></h2>
+<p>To derive equation (C3.81) from equations (C3.79) and (C3.80), we start by examining the expression for the average risk <span class="math notranslate nohighlight">\(\mathcal{R}\)</span> given in equation (C3.79):</p>
+<div class="math notranslate nohighlight">
+\[ 
+\mathcal{R} = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} C(\alpha, \hat{\alpha}(\vec{y}))\, p(\alpha, \vec{y}) \, d\alpha \, d\vec{y}
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(C(\alpha, \hat{\alpha}(\vec{y}))\)</span> is the cost function, and <span class="math notranslate nohighlight">\(p(\alpha, \vec{y})\)</span> is the joint probability density function (pdf) of the parameter <span class="math notranslate nohighlight">\(\alpha\)</span> and the observable <span class="math notranslate nohighlight">\(\vec{y}\)</span>.</p>
+<p>Next, we recognize that the joint pdf <span class="math notranslate nohighlight">\(p(\alpha, \vec{y})\)</span> can be factored using Bayes’ theorem:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\alpha, \vec{y}) = p(\alpha|\vec{y})\, p(\vec{y})
+\]</div>
+<p>Substituting this into the expression for <span class="math notranslate nohighlight">\(\mathcal{R}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{R} = \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} C(\alpha, \hat{\alpha}(\vec{y}))\, p(\alpha|\vec{y})\, p(\vec{y}) \, d\alpha \, d\vec{y}
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(p(\vec{y})\)</span> does not depend on <span class="math notranslate nohighlight">\(\alpha\)</span>, we can factor it out of the inner integral:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{R} = \int_{-\infty}^{\infty} \left[ p(\vec{y}) \int_{-\infty}^{\infty} C(\alpha, \hat{\alpha}(\vec{y}))\, p(\alpha|\vec{y})\, d\alpha \right] d\vec{y}
+\]</div>
+<p>The inner integral is the definition of the conditional cost <span class="math notranslate nohighlight">\(C_c(\hat{\alpha}(\vec{y})|\vec{y})\)</span> as given in equation (C3.80):</p>
+<div class="math notranslate nohighlight">
+\[
+C_c(\hat{\alpha}(\vec{y})|\vec{y}) = \int_{-\infty}^{\infty} C(\alpha, \hat{\alpha}(\vec{y}))\, p(\alpha|\vec{y})\, d\alpha
+\]</div>
+<p>Substituting this back into our expression for <span class="math notranslate nohighlight">\(\mathcal{R}\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{R} = \int_{-\infty}^{\infty} p(\vec{y})\, C_c(\hat{\alpha}(\vec{y})|\vec{y})\, d\vec{y}
+\]</div>
+<p>This is equation (C3.81), which expresses the average risk <span class="math notranslate nohighlight">\(\mathcal{R}\)</span> in terms of the observable’s pdf <span class="math notranslate nohighlight">\(p(\vec{y})\)</span> and the conditional cost <span class="math notranslate nohighlight">\(C_c(\hat{\alpha}(\vec{y})|\vec{y})\)</span>.</p>
+</section>
+<section id="mathematical-formulation-of-the-bayes-estimator">
+<h2>Mathematical Formulation of the Bayes Estimator<a class="headerlink" href="#mathematical-formulation-of-the-bayes-estimator" title="Link to this heading">#</a></h2>
+<p>An alternative and insightful way to introduce Bayes estimation is by observing that, from a mathematical standpoint, the estimator is derived from Equation (C3.80) and can be expressed as</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+\hat{\boldsymbol{\alpha}}_B 
+= \arg\min_{\hat{\boldsymbol{\alpha(\vec{\mathbf{y}})}}} E\{C(\boldsymbol{\alpha}, \hat{\boldsymbol{\alpha}})\} 
+= \arg\min_{\hat{\boldsymbol{\alpha}(\vec{\mathbf{y}})}} \int_{-\infty}^{\infty} C(\alpha, \hat{\alpha})\, p(\alpha | \vec{y})\, d\alpha
+\]</div>
+<p>The <em>a posteriori</em> distribution is obtained from Bayes’ theorem and can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+p(\alpha|\vec{y}) = \frac{p(\vec{y}|\alpha) p(\alpha)}{\int_{-\infty}^{\infty} p(\vec{y}|\alpha) p(\alpha) \, d\alpha}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( p(\vec{y}|\alpha) \)</span> is referred to as the likelihood distribution, since it provides the current observations reflecting the value of the parameter <span class="math notranslate nohighlight">\(\alpha\)</span>.</p>
+</section>
+<section id="some-specific-cost-functions">
+<h2>Some Specific Cost Functions<a class="headerlink" href="#some-specific-cost-functions" title="Link to this heading">#</a></h2>
+<p>To proceed further, a cost function must be selected.</p>
+<p>Examples of cost functions include:</p>
+<ol class="arabic">
+<li><p><strong>Squared-error cost function</strong>, defined by</p>
+<div class="math notranslate nohighlight">
+\[
+   C_S(\alpha, \hat{\alpha}(\vec{y})) = (\alpha - \hat{\alpha}(\vec{y}))^2 = \alpha_e^2
+   \]</div>
+</li>
+<li><p><strong>Uniform cost function</strong> defined by</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+   C_U(\alpha, \hat{\alpha}(\vec{y})) = 
+   \begin{cases}
+   0, &amp; |\alpha_e| &lt; \frac{\Delta}{2} \\
+   1, &amp; |\alpha_e| &gt; \frac{\Delta}{2}
+   \end{cases}
+   \end{split}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\Delta\)</span> is a small number.</p>
+</li>
+<li><p><strong>Absolute-error cost function</strong>, defined by</p>
+<div class="math notranslate nohighlight">
+\[
+   C_{AE}(\alpha, \hat{\alpha}(\vec{y})) = |\alpha_e|
+   \]</div>
+</li>
+</ol>
+<p><strong>Discussion: Sequential Learning in Bayesian Estimation</strong></p>
+<p>From the previous discussion, it becomes evident that a Bayes estimate relies on the <em>a posteriori</em> distribution, which requires knowledge of both the <em>a priori</em> distribution and the likelihood function.</p>
+<p>The <em>a priori</em> distribution encapsulates our understanding of the parameter before any data is observed.</p>
+<p>Once data is collected, this knowledge is updated, leading to a new <em>a posteriori</em> distribution.</p>
+<p>This process highlights Bayesian estimation as a form of sequential learning.</p>
+<p>If an additional independent data set <span class="math notranslate nohighlight">\(\vec{x}\)</span> becomes available after measuring <span class="math notranslate nohighlight">\(\vec{y}\)</span>, we can update our estimates using a sequential version of Bayes’ theorem:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+p(\alpha|\vec{x}, \vec{y}) 
+&amp;= \frac{p(\vec{x}, \vec{y}|\alpha)p(\alpha)}{\int_{-\infty}^{\infty} p(\vec{x}, \vec{y}|\alpha)p(\alpha) \, d\alpha} \\
+&amp;= \frac{p(\vec{x}|\alpha)p(\vec{y}|\alpha)p(\alpha)}{\int_{-\infty}^{\infty} p(\vec{x}, \vec{y}|\alpha)p(\alpha) \, d\alpha} \\
+&amp;= \frac{p(\alpha|\vec{x})p(\vec{y}|\alpha)}{\int_{-\infty}^{\infty} p(\alpha|\vec{x})p(\vec{y}|\alpha) \, d\alpha}
+\end{align*}
+\end{split}\]</div>
+<p>This equation demonstrates how to update the posterior probability <span class="math notranslate nohighlight">\(p(\alpha|\vec{x}, \vec{y})\)</span> of the parameter <span class="math notranslate nohighlight">\(\alpha\)</span> given both data sets <span class="math notranslate nohighlight">\(\vec{x}\)</span> and <span class="math notranslate nohighlight">\(\vec{y}\)</span>.</p>
+<ul class="simple">
+<li><p><strong>Joint Likelihood:</strong> The numerator <span class="math notranslate nohighlight">\(p(\vec{x}, \vec{y}|\alpha)p(\alpha)\)</span> represents the joint likelihood of observing both data sets given <span class="math notranslate nohighlight">\(\alpha\)</span>, multiplied by the prior probability of <span class="math notranslate nohighlight">\(\alpha\)</span>.</p></li>
+<li><p><strong>Independence Assumption:</strong> Since <span class="math notranslate nohighlight">\(\vec{x}\)</span> and <span class="math notranslate nohighlight">\(\vec{y}\)</span> are independent given <span class="math notranslate nohighlight">\(\alpha\)</span>, we can factor the joint likelihood as <span class="math notranslate nohighlight">\(p(\vec{x}|\alpha)p(\vec{y}|\alpha)\)</span>.</p></li>
+<li><p><strong>Sequential Updating:</strong> The expression <span class="math notranslate nohighlight">\(\frac{p(\alpha|\vec{x})p(\vec{y}|\alpha)}{\int_{-\infty}^{\infty} p(\alpha|\vec{x})p(\vec{y}|\alpha) \, d\alpha}\)</span> shows that the posterior after observing <span class="math notranslate nohighlight">\(\vec{x}\)</span> serves as the <em>new prior</em> when updating with <span class="math notranslate nohighlight">\(\vec{y}\)</span>.</p></li>
+<li><p><strong>Normalization:</strong> The denominator ensures that the posterior probability distribution <span class="math notranslate nohighlight">\(p(\alpha|\vec{x}, \vec{y})\)</span> integrates to one.</p></li>
+</ul>
+</section>
+</section>
+<section id="mse-estimation">
+<h1>MSE Estimation<a class="headerlink" href="#mse-estimation" title="Link to this heading">#</a></h1>
+<p>In Bayesian estimation, when we aim to minimize the mean squared error (MSE) between the true parameter <span class="math notranslate nohighlight">\(\alpha\)</span> and our estimate <span class="math notranslate nohighlight">\(\hat{\alpha}\)</span>, we use the squared-error cost function.</p>
+<p>The conditional cost function <span class="math notranslate nohighlight">\(C_{MS}(\hat{\alpha}|\vec{y})\)</span> represents the expected squared error given the observations <span class="math notranslate nohighlight">\(\vec{y}\)</span> and is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+C_{MS}(\hat{\alpha}|\vec{y}) = \int_{-\infty}^{\infty} (\alpha - \hat{\alpha}(\vec{y}))^2\, p(\alpha|\vec{y})\, d\alpha
+\]</div>
+<p>Note that this is not merely a definition; it’s an equation representing how the cost varies with <span class="math notranslate nohighlight">\(\hat{\alpha}\)</span>.</p>
+<p>Our goal is to find the estimate <span class="math notranslate nohighlight">\(\hat{\alpha}\)</span> that minimizes this conditional cost function.</p>
+<p>To achieve this, from the optimization theory:</p>
+<ul class="simple">
+<li><p>we treat <span class="math notranslate nohighlight">\(C_{MS}(\hat{\alpha}|\vec{y})\)</span> as a function of <span class="math notranslate nohighlight">\(\hat{\alpha}\)</span></p></li>
+<li><p>perform optimization by taking its derivative with respect to <span class="math notranslate nohighlight">\(\hat{\alpha}\)</span>,</p></li>
+<li><p>setting the derivative equal to zero,</p></li>
+<li><p>solving for <span class="math notranslate nohighlight">\(\hat{\alpha}\)</span>.</p></li>
+</ul>
+<p><strong>The Derivation</strong></p>
+<p>First, differentiating <span class="math notranslate nohighlight">\(C_{MS}(\hat{\alpha}|\vec{y})\)</span> with respect to <span class="math notranslate nohighlight">\(\hat{\alpha}\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{d\hat{\alpha}} C_{MS}(\hat{\alpha}|\vec{y}) = \int_{-\infty}^{\infty} \frac{d}{d\hat{\alpha}} \left[(\alpha - \hat{\alpha})^2\right] p(\alpha|\vec{y})\, d\alpha
+\]</div>
+<p>On the RHS, calculating the derivative inside the integral, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{d\hat{\alpha}} (\alpha - \hat{\alpha})^2 = -2(\alpha - \hat{\alpha})
+\]</div>
+<p>Thus, we obtain</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d}{d\hat{\alpha}} C_{MS}(\hat{\alpha}|\vec{y}) = -2 \int_{-\infty}^{\infty} (\alpha - \hat{\alpha})\, p(\alpha|\vec{y})\, d\alpha
+\]</div>
+<p>Next, setting the derivative equal to zero to find the minimum:</p>
+<div class="math notranslate nohighlight">
+\[
+0 = -2 \int_{-\infty}^{\infty} (\alpha - \hat{\alpha})\, p(\alpha|\vec{y})\, d\alpha
+\]</div>
+<p>Simplifying (dividing both sides by <span class="math notranslate nohighlight">\(-2\)</span>):</p>
+<div class="math notranslate nohighlight">
+\[
+0 = \int_{-\infty}^{\infty} (\alpha - \hat{\alpha})\, p(\alpha|\vec{y})\, d\alpha
+\]</div>
+<p>Next, expanding the integral:</p>
+<div class="math notranslate nohighlight">
+\[
+\int_{-\infty}^{\infty} \alpha\, p(\alpha|\vec{y})\, d\alpha - \hat{\alpha} \int_{-\infty}^{\infty} p(\alpha|\vec{y})\, d\alpha = 0
+\]</div>
+<p>Recognizing that:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\int_{-\infty}^{\infty} p(\alpha|\vec{y})\, d\alpha = 1\)</span> (since <span class="math notranslate nohighlight">\(p(\alpha|\vec{y})\)</span> is a probability density function)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\hat{\alpha}\)</span> does not depend on <span class="math notranslate nohighlight">\(\alpha\)</span> and can be taken out of the integral</p></li>
+</ul>
+<p>We get:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\alpha} = \int_{-\infty}^{\infty} \alpha\, p(\alpha|\vec{y})\, d\alpha
+\]</div>
+<p>We observe that the second derivative of <span class="math notranslate nohighlight">\(C_{MS}(\hat{\alpha}|\vec{y})\)</span> with respect to <span class="math notranslate nohighlight">\(\hat{\alpha}\)</span> is positive:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{d^2}{d\hat{\alpha}^2} C_{MS}(\hat{\alpha}|\vec{y}) = 2 \int_{-\infty}^{\infty} p(\alpha|\vec{y})\, d\alpha = 2 &gt; 0
+\]</div>
+<p>This confirms that the critical point found is indeed a minimum.</p>
+<p>The right-hand side of the equation is the expected value (mean) of RV <span class="math notranslate nohighlight">\(\boldsymbol{\alpha}\)</span> given <span class="math notranslate nohighlight">\(\vec{y}\)</span>, denoted as <span class="math notranslate nohighlight">\(E\{\boldsymbol{\alpha}|\vec{y}\}\)</span>, we have</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+\hat{\boldsymbol{\alpha}}_{MS} = \int_{-\infty}^{\infty} \alpha\, p(\alpha|\vec{y})\, d\alpha
+= E\{\boldsymbol{\alpha}|\vec{y}\}
+\]</div>
+<section id="alternative-form-of-mse-estimator">
+<h2>Alternative Form of MSE Estimator<a class="headerlink" href="#alternative-form-of-mse-estimator" title="Link to this heading">#</a></h2>
+<p>An alternative form of <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}_{MS}\)</span> can be obtained by using the identities</p>
+<div class="math notranslate nohighlight">
+\[
+p(\alpha|\vec{y}) = \frac{p(\vec{y}|\alpha)p(\alpha)}{p(\vec{y})}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}) = \int_{-\infty}^{\infty} p(\vec{y}|\alpha)p(\alpha) \, d\alpha
+\]</div>
+<p>resulting in</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+\hat{\boldsymbol{\alpha}}_{MS} = \frac{\int_{-\infty}^{\infty} \alpha p(\vec{y}|\alpha)p(\alpha) \, d\alpha}{\int_{-\infty}^{\infty} p(\vec{y}|\alpha)p(\alpha) \, d\alpha}
+\]</div>
+<p>This form requires the pdfs <span class="math notranslate nohighlight">\(p(\vec{y}|\alpha)\)</span> and <span class="math notranslate nohighlight">\(p(\alpha)\)</span> instead of the <em>a posteriori</em> pdf <span class="math notranslate nohighlight">\(p(\alpha|\vec{y})\)</span> to compute <span class="math notranslate nohighlight">\(\hat{\alpha}_{MS}\)</span> and is often simpler to evaluate.</p>
+<p><strong>Discussion: An optimal estimate for a more general class of cost functions</strong></p>
+<p>In Bayesian estimation, the conditional mean <span class="math notranslate nohighlight">\( E\{\alpha | \vec{y}\} \)</span> is well-known for minimizing the mean squared error (MSE) cost function. However, its optimality extends to a broader class of cost functions under certain conditions.</p>
+<p><strong>First Case: Convex and Symmetric Cost Functions</strong></p>
+<ul class="simple">
+<li><p><strong>Convexity and Symmetry:</strong> If the cost function <span class="math notranslate nohighlight">\( C(\alpha_e) \)</span> is <em>convex</em> and <em>symmetric</em> with respect to the estimation error <span class="math notranslate nohighlight">\( \boldsymbol{\alpha}_e = \boldsymbol{\alpha} - \hat{\boldsymbol{\alpha}} \)</span>, meaning <span class="math notranslate nohighlight">\(C(\alpha,\hat{\alpha}) = C(\alpha_e)\)</span>, and <span class="math notranslate nohighlight">\( C(\alpha_e) = C(-\alpha_e) \)</span>, then the conditional mean remains the optimal estimator.</p>
+<ul>
+<li><p><em>Convexity</em> ensures that the cost increases at an increasing rate as the error grows, penalizing larger errors more severely.</p></li>
+<li><p><em>Symmetry</em> means that overestimation and underestimation are penalized equally.</p></li>
+</ul>
+</li>
+<li><p><strong>Optimality of Conditional Mean:</strong> Under these conditions, minimizing the expected cost leads to the conditional mean because it balances the errors due to the symmetric nature of both the cost function and the posterior distribution.</p></li>
+</ul>
+<p><strong>Second Case: Symmetric, Nondecreasing Cost Functions with Specific Posterior Properties</strong></p>
+<ul>
+<li><p><strong>Symmetric and Nondecreasing Cost Function:</strong> The cost function <span class="math notranslate nohighlight">\( C(\alpha_e) \)</span> is symmetric (<span class="math notranslate nohighlight">\( C(\alpha_e) = C(-\alpha_e) \)</span>) and <strong>nondecreasing</strong> for <span class="math notranslate nohighlight">\( \alpha_e \geq 0 \)</span>, i.e., <span class="math notranslate nohighlight">\(C(\alpha_{e_2}) &gt; C(\alpha_{e_1})\)</span>, for <span class="math notranslate nohighlight">\(\alpha_{e_2} \geq \alpha_{e_1} \geq 0\)</span>. This means that the cost does not decrease as the magnitude of the error increases</p></li>
+<li><p><strong>Posterior PDF Conditions:</strong></p>
+<ul>
+<li><p>The posterior probability density function <span class="math notranslate nohighlight">\( p(\alpha | \vec{y}) \)</span> is <strong>symmetric</strong> about its mean and <strong>unimodal</strong> (has a single peak).</p></li>
+<li><p>It satisfies the condition:</p>
+<div class="math notranslate nohighlight">
+\[
+    \lim_{\alpha_e \to \infty} C(\alpha_e) p(\alpha_e | \vec{y}) = 0
+    \]</div>
+</li>
+<li><p>This condition ensures that the product of the cost and the tail of the posterior distribution diminishes to zero, making the expected cost finite and well-defined.</p></li>
+</ul>
+</li>
+<li><p><strong>Optimality of Conditional Mean:</strong> Under these circumstances, the conditional mean minimizes the expected cost because:</p>
+<ul class="simple">
+<li><p>The symmetry of <span class="math notranslate nohighlight">\( p(\alpha | \vec{y}) \)</span> ensures that the mean is at the center of the distribution.</p></li>
+<li><p>The nondecreasing nature of <span class="math notranslate nohighlight">\( C(\alpha_e) \)</span> penalizes larger errors more heavily.</p></li>
+<li><p>The diminishing product, i.e., <span class="math notranslate nohighlight">\(\to 0\)</span> as <span class="math notranslate nohighlight">\(m \to \infty\)</span>, guarantees that extreme errors contribute negligibly to the expected cost.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="example-c3-7-mse-estimator-bayes-estimation-with-an-mse-cost-function">
+<h2>Example C3.7: MSE Estimator (Bayes estimation with an MSE cost function)<a class="headerlink" href="#example-c3-7-mse-estimator-bayes-estimation-with-an-mse-cost-function" title="Link to this heading">#</a></h2>
+<p><strong>Problem Statement</strong></p>
+<p>In this example, based on [B2, Ex 10.7], we want to find the estimate <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\mu}}\)</span> of the unknown random  mean <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>, using the set of observations <span class="math notranslate nohighlight">\(\mathbf{y}_1, \ldots, \mathbf{y}_m\)</span>.</p>
+<p>Assume further that the observations are statistically independent, normal random variables, each with unknown mean <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> and known variance <span class="math notranslate nohighlight">\(\sigma^2\)</span>.</p>
+<p>The conditional pdf <span class="math notranslate nohighlight">\(p(\vec{y}|\mu)\)</span> is then</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}|\mu) = \frac{1}{(2\pi \sigma^2)^{m/2}} \exp\left(-\frac{1}{2\sigma^2} \sum_{k=1}^{m} (y_k - \mu)^2\right)
+\]</div>
+<p>Next, assume that the <em>a priori</em> pdf <span class="math notranslate nohighlight">\(p(\mu)\)</span> is normal with mean <span class="math notranslate nohighlight">\(m_1\)</span> and variance <span class="math notranslate nohighlight">\(\beta^2\)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[
+p(\mu) = \frac{1}{\sqrt{2\pi \beta^2}} \exp\left(-\frac{(\mu - m_1)^2}{2\beta^2}\right)
+\]</div>
+<p>Note that the prior <span class="math notranslate nohighlight">\( p(\mu) \)</span> represents our knowledge about <span class="math notranslate nohighlight">\(\mu\)</span> before observing any data.</p>
+<p><strong>Discussion. Conditional i.i.d.</strong></p>
+<p>In the example, the mean <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> is treated as a random variable with a prior distribution <span class="math notranslate nohighlight">\( p(\mu) \)</span>, and yet the observations <span class="math notranslate nohighlight">\( \mathbf{y}_1, \mathbf{y}_2, \ldots, \mathbf{y}_m \)</span> are considered independent and identically distributed (i.i.d.).</p>
+<p>This might seem contradictory at first, but it makes sense within the Bayesian framework due to the concept of <em>conditional independence</em>.</p>
+<ul>
+<li><p>Conditional Independence Given <span class="math notranslate nohighlight">\(\mu\)</span></p>
+<p>The observations <span class="math notranslate nohighlight">\( \mathbf{y}_i \)</span> are <em>conditionally independent</em> given the parameter <span class="math notranslate nohighlight">\(\mu\)</span> (a realization of <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>).</p>
+<p>This means that once the value of <span class="math notranslate nohighlight">\(\mu\)</span> is specified, the observations are independent of each other.</p>
+<div class="math notranslate nohighlight">
+\[
+   p(y_1, y_2, \ldots, y_m | \mu) = \prod_{i=1}^m p(y_i | \mu)
+   \]</div>
+<p>Each <span class="math notranslate nohighlight">\( y_i \)</span> (a relization of RV <span class="math notranslate nohighlight">\(\mathbf{y}_i\)</span>) is generated from the same distribution <span class="math notranslate nohighlight">\( \mathcal{N}(\mu, \sigma^2) \)</span>, making them identically distributed given <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+</li>
+<li><p>Unconditional Dependence Due to Random <span class="math notranslate nohighlight">\(\mu\)</span></p>
+<p>Dependence through <span class="math notranslate nohighlight">\(\mu\)</span>: Since <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span> is a random variable, it introduces dependence among the observations when we consider their joint distribution without conditioning on <span class="math notranslate nohighlight">\(\boldsymbol{\mu}\)</span>.</p>
+<p>Joint Distribution Without Conditioning:</p>
+<div class="math notranslate nohighlight">
+\[
+   p(y_1, y_2, \ldots, y_m) = \int_{-\infty}^\infty \left( \prod_{i=1}^m p(y_i | \mu) \right) p(\mu) d\mu
+   \]</div>
+<p>This integral over <span class="math notranslate nohighlight">\(\mu\)</span> mixes the observations together, reflecting their dependence.</p>
+</li>
+<li><p>Why We Consider i.i.d. in the Likelihood Function:</p>
+<p><em>Conditional Likelihood:</em> In Bayesian estimation, we work with the <strong>likelihood function</strong> <span class="math notranslate nohighlight">\( p(\vec{y} | \mu) \)</span>, which treats the observations as independent given <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<p>This conditional independence allows us to factor the likelihood and simplify the estimation process.</p>
+</li>
+</ul>
+<p><strong>Solution.</strong></p>
+<p>Recall that the MSE estimate is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\boldsymbol{\alpha}}_{MS} = E\{\boldsymbol{\alpha}|\vec{y}\} = \int_{-\infty}^{\infty} \alpha\, p(\alpha|\vec{y})\, d\alpha
+\]</div>
+<p>Thus, we need to find the a posteriori <span class="math notranslate nohighlight">\(p(\alpha|\vec{y})\)</span>.</p>
+<p>From</p>
+<div class="math notranslate nohighlight">
+\[
+p(\alpha|\vec{y}) = \frac{p(\vec{y}|\alpha)p(\alpha)}{p(\vec{y})}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y}) = \int_{-\infty}^{\infty} p(\vec{y}|\alpha)p(\alpha) \, d\alpha
+\]</div>
+<p>the <em>a posteriori</em> pdf can be obtained as</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+p(\mu|\vec{y}) = \frac{1}{\sqrt{2\pi \gamma^2}} \exp\left(-\frac{[\mu - \gamma^2 \omega]^2}{2\gamma^2}\right) \qquad \text{(C3.98)}
+\]</div>
+<p>where</p>
+<div class="math notranslate nohighlight">
+\[
+\gamma^2 = \frac{1}{\frac{m}{\sigma^2} + \frac{1}{\beta^2}}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\omega = \frac{m\bar{y}}{\sigma^2} + \frac{m_1}{\beta^2}
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{y} = \frac{1}{m} \sum_{k=1}^{m} y_k
+\]</div>
+<p>See Appendix for the derivation.</p>
+<p>Again, <span class="math notranslate nohighlight">\(\hat{\boldsymbol{\alpha}}_{MS} = \int_{-\infty}^{\infty} \alpha\, p(\alpha|\vec{y})\, d\alpha\)</span>, the Bayes estimate can now be obtained as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+\hat{\mu}_{MS} 
+&amp;= \int_{-\infty}^{\infty} \mu \frac{1}{\sqrt{2\pi \gamma^2}} \exp\left(-\frac{1}{2\gamma^2}[\mu - \gamma^2 \omega]^2\right) d\mu
+&amp;= \gamma^2 \omega \\
+&amp;= \frac{\beta^2 \bar{y} + m_1 \sigma^2 / m}{\beta^2 + \sigma^2 / m}
+\end{align*}
+\end{split}\]</div>
+<p>It follows that the random estimate <span class="math notranslate nohighlight">\(\hat{\mu}_{MS}\)</span> can be written as</p>
+<div class="math notranslate nohighlight">
+\[ \color{blue}
+\hat{\boldsymbol{\mu}}_{MS} = \frac{\beta^2 \bar{\mathbf{y}} + m_1 \sigma^2 / m}{\beta^2 + \sigma^2 / m}
+\]</div>
+<section id="numerical-results">
+<h3>Numerical Results<a class="headerlink" href="#numerical-results" title="Link to this heading">#</a></h3>
+<p><strong>Objective:</strong></p>
+<p>Simulate the Bayesian estimation of an unknown random mean <span class="math notranslate nohighlight">\( \mu \)</span> using observed data <span class="math notranslate nohighlight">\( y_1, y_2, \ldots, y_m \)</span>. The true mean <span class="math notranslate nohighlight">\( \mu_{\text{true}} \)</span> is a random variable drawn from the prior distribution <span class="math notranslate nohighlight">\( p(\mu) \)</span>, which is normal with mean <span class="math notranslate nohighlight">\( m_1 \)</span> and variance <span class="math notranslate nohighlight">\( \beta^2 \)</span>. Each observation <span class="math notranslate nohighlight">\( y_k \)</span> is then generated from a normal distribution with mean <span class="math notranslate nohighlight">\( \mu_{\text{true}} \)</span> and known variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>. We aim to compute the Bayesian MSE estimator <span class="math notranslate nohighlight">\( \hat{\mu}_{MS} \)</span> and compare it with the true mean <span class="math notranslate nohighlight">\( \mu_{\text{true}} \)</span>.</p>
+<p><strong>Simulation Steps:</strong></p>
+<ol class="arabic simple">
+<li><p>Set the Parameters:</p>
+<ul class="simple">
+<li><p>Prior Mean (<span class="math notranslate nohighlight">\( m_1 \)</span>): Mean of the prior distribution.</p></li>
+<li><p>Prior Variance (<span class="math notranslate nohighlight">\( \beta^2 \)</span>): Variance of the prior distribution.</p></li>
+<li><p>Observation Variance (<span class="math notranslate nohighlight">\( \sigma^2 \)</span>): Known variance of the observations.</p></li>
+<li><p>Number of Observations (<span class="math notranslate nohighlight">\( m \)</span>): The number of data points.</p></li>
+<li><p>Number of Simulations: To assess estimator performance over multiple trials.</p></li>
+</ul>
+</li>
+<li><p>Generate the True Mean (<span class="math notranslate nohighlight">\( \mu_{\text{true}} \)</span>):</p>
+<ul class="simple">
+<li><p>Sample <span class="math notranslate nohighlight">\( \mu_{\text{true}} \)</span> from the prior distribution <span class="math notranslate nohighlight">\( \mathcal{N}(m_1, \beta^2) \)</span>.</p></li>
+</ul>
+</li>
+<li><p>Generate Observations:</p>
+<ul class="simple">
+<li><p>For <span class="math notranslate nohighlight">\( k = 1 \)</span> to <span class="math notranslate nohighlight">\( m \)</span>, sample <span class="math notranslate nohighlight">\( y_k \)</span> from <span class="math notranslate nohighlight">\( \mathcal{N}(\mu_{\text{true}}, \sigma^2) \)</span>.</p></li>
+</ul>
+</li>
+<li><p>Compute the Sample Mean (<span class="math notranslate nohighlight">\( \bar{y} \)</span>):</p>
+<ul class="simple">
+<li><p>Calculate <span class="math notranslate nohighlight">\( \bar{y} = \frac{1}{m} \sum_{k=1}^m y_k \)</span>.</p></li>
+</ul>
+</li>
+<li><p>Compute the Bayesian MSE Estimator (<span class="math notranslate nohighlight">\( \hat{\mu}_{MS} \)</span>):</p>
+<ul class="simple">
+<li><p>Use the formula:
+$<span class="math notranslate nohighlight">\(
+\hat{\mu}_{MS} = \frac{\beta^2 \bar{y} + m_1 \sigma^2 / m}{\beta^2 + \sigma^2 / m}
+\)</span>$</p></li>
+</ul>
+</li>
+<li><p>Compare <span class="math notranslate nohighlight">\( \mu_{\text{true}} \)</span> and <span class="math notranslate nohighlight">\( \hat{\mu}_{MS} \)</span>:</p>
+<ul class="simple">
+<li><p>Calculate the estimation error <span class="math notranslate nohighlight">\( \hat{\mu}_{MS} - \mu_{\text{true}} \)</span>.</p></li>
+<li><p>Repeat the simulation multiple times to evaluate the estimator’s performance.</p></li>
+</ul>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Set random seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="mf">0.0</span>            <span class="c1"># Prior mean</span>
+<span class="n">beta2</span> <span class="o">=</span> <span class="mf">9.0</span>         <span class="c1"># Prior variance (β^2)</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">beta2</span><span class="p">)</span>
+<span class="n">sigma2</span> <span class="o">=</span> <span class="mf">4.0</span>        <span class="c1"># Known variance of observations (σ^2)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma2</span><span class="p">)</span>
+<span class="n">m</span> <span class="o">=</span> <span class="mi">10</span>              <span class="c1"># Number of observations</span>
+<span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Number of simulations</span>
+
+<span class="c1"># Arrays to store estimates and true means</span>
+<span class="n">mu_true_values</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mu_estimates_ms</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mu_estimates_sample_mean</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span>
+    <span class="c1"># Step 2: Generate the true mean mu_true from the prior</span>
+    <span class="n">mu_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+    <span class="n">mu_true_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mu_true</span><span class="p">)</span>
+    
+    <span class="c1"># Step 3: Generate observed data y_k ~ N(mu_true, sigma^2)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+    
+    <span class="c1"># Step 4: Compute the sample mean</span>
+    <span class="n">y_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+    
+    <span class="c1"># Step 5: Compute the Bayesian MSE estimator</span>
+    <span class="n">numerator</span> <span class="o">=</span> <span class="n">beta2</span> <span class="o">*</span> <span class="n">y_bar</span> <span class="o">+</span> <span class="n">m1</span> <span class="o">*</span> <span class="n">sigma2</span> <span class="o">/</span> <span class="n">m</span>
+    <span class="n">denominator</span> <span class="o">=</span> <span class="n">beta2</span> <span class="o">+</span> <span class="n">sigma2</span> <span class="o">/</span> <span class="n">m</span>
+    <span class="n">mu_hat_ms</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+    
+    <span class="c1"># Store the estimates</span>
+    <span class="n">mu_estimates_ms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mu_hat_ms</span><span class="p">)</span>
+    <span class="n">mu_estimates_sample_mean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_bar</span><span class="p">)</span>
+
+<span class="c1"># Convert lists to arrays</span>
+<span class="n">mu_true_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mu_true_values</span><span class="p">)</span>
+<span class="n">mu_estimates_ms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mu_estimates_ms</span><span class="p">)</span>
+<span class="n">mu_estimates_sample_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mu_estimates_sample_mean</span><span class="p">)</span>
+
+<span class="c1"># Step 6: Compute the Mean Squared Errors</span>
+<span class="n">mse_bayes</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">mu_estimates_ms</span> <span class="o">-</span> <span class="n">mu_true_values</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">mse_sample_mean</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">mu_estimates_sample_mean</span> <span class="o">-</span> <span class="n">mu_true_values</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Bayesian MSE Estimator Mean Squared Error: </span><span class="si">{</span><span class="n">mse_bayes</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Sample Mean Estimator Mean Squared Error: </span><span class="si">{</span><span class="n">mse_sample_mean</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Plotting the estimation errors</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Histogram of errors for Bayesian MSE estimator</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">errors_bayes</span> <span class="o">=</span> <span class="n">mu_estimates_ms</span> <span class="o">-</span> <span class="n">mu_true_values</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">errors_bayes</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Errors of Bayesian MSE Estimator&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Estimation Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+
+<span class="c1"># Histogram of errors for Sample Mean estimator</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">errors_sample_mean</span> <span class="o">=</span> <span class="n">mu_estimates_sample_mean</span> <span class="o">-</span> <span class="n">mu_true_values</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">errors_sample_mean</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axvline</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Errors of Sample Mean Estimator&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Estimation Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Frequency&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Bayesian MSE Estimator Mean Squared Error: 0.3754
+Sample Mean Estimator Mean Squared Error: 0.3826
+</pre></div>
+</div>
+<img alt="_images/df60e3c8ed534f696090bd27e80d18b49d367ae183baaaa32f56be1787edd737.png" src="_images/df60e3c8ed534f696090bd27e80d18b49d367ae183baaaa32f56be1787edd737.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Set random seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">m1</span> <span class="o">=</span> <span class="mf">0.0</span>            <span class="c1"># Prior mean</span>
+<span class="n">beta2</span> <span class="o">=</span> <span class="mf">9.0</span>         <span class="c1"># Prior variance (β^2)</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">beta2</span><span class="p">)</span>
+<span class="n">sigma2</span> <span class="o">=</span> <span class="mf">4.0</span>        <span class="c1"># Known variance of observations (σ^2)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma2</span><span class="p">)</span>
+<span class="n">m_values</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>  <span class="c1"># Different values of m</span>
+<span class="n">num_simulations</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Number of simulations for each m</span>
+
+<span class="c1"># Arrays to store results</span>
+<span class="n">mean_abs_errors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">std_abs_errors</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">mse_errors</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">m_values</span><span class="p">:</span>
+    <span class="n">estimation_errors</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span>
+        <span class="c1"># Step 2: Generate the true mean mu_true from the prior</span>
+        <span class="n">mu_true</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+        
+        <span class="c1"># Step 3: Generate observed data y_k ~ N(mu_true, sigma^2)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+        
+        <span class="c1"># Step 4: Compute the sample mean</span>
+        <span class="n">y_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        
+        <span class="c1"># Step 5: Compute the Bayesian MSE estimator</span>
+        <span class="n">numerator</span> <span class="o">=</span> <span class="n">beta2</span> <span class="o">*</span> <span class="n">y_bar</span> <span class="o">+</span> <span class="n">m1</span> <span class="o">*</span> <span class="n">sigma2</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="n">denominator</span> <span class="o">=</span> <span class="n">beta2</span> <span class="o">+</span> <span class="n">sigma2</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="n">mu_hat_ms</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+        
+        <span class="c1"># Compute the estimation error</span>
+        <span class="n">error</span> <span class="o">=</span> <span class="n">mu_hat_ms</span> <span class="o">-</span> <span class="n">mu_true</span>
+        <span class="n">estimation_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">error</span><span class="p">)</span>
+    
+    <span class="c1"># Convert list to array</span>
+    <span class="n">estimation_errors</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">estimation_errors</span><span class="p">)</span>
+    
+    <span class="c1"># Compute mean absolute error and standard deviation</span>
+    <span class="n">mean_abs_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">estimation_errors</span><span class="p">))</span>
+    <span class="n">std_abs_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">estimation_errors</span><span class="p">))</span>
+    <span class="n">mse_error</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">estimation_errors</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    
+    <span class="c1"># Store the results</span>
+    <span class="n">mean_abs_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mean_abs_error</span><span class="p">)</span>
+    <span class="n">std_abs_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">std_abs_error</span><span class="p">)</span>
+    <span class="n">mse_errors</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mse_error</span><span class="p">)</span>
+
+<span class="c1"># Plotting Mean Absolute Estimation Error vs. m</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">m_values</span><span class="p">,</span> <span class="n">mean_abs_errors</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">std_abs_errors</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mean Absolute Estimation Error vs. Number of Observations (m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Observations (m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Absolute Estimation Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Plotting Mean Squared Error vs. m</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">m_values</span><span class="p">,</span> <span class="n">mse_errors</span><span class="p">,</span> <span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean Squared Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Mean Squared Error vs. Number of Observations (m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Observations (m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Mean Squared Error&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/aff0fb05afb7f6f940de293d69755d04a3a26ded67e14b29caae7191e3ef331c.png" src="_images/aff0fb05afb7f6f940de293d69755d04a3a26ded67e14b29caae7191e3ef331c.png" />
+<img alt="_images/feb9df1c39fc51f33a741b6264256673e97744db6cb27ed16cd2e661c6abbd4b.png" src="_images/feb9df1c39fc51f33a741b6264256673e97744db6cb27ed16cd2e661c6abbd4b.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Fixed true mean</span>
+<span class="n">mu_true_random</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">m1</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span>
+<span class="n">mu_true</span> <span class="o">=</span> <span class="n">mu_true_random</span>  <span class="c1"># Fixed true mean for all simulations</span>
+
+<span class="c1"># Arrays to store results</span>
+<span class="n">average_mu_hat_ms</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">std_mu_hat_ms</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">m_values</span><span class="p">:</span>
+    <span class="n">mu_hat_ms_values</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">num_simulations</span><span class="p">):</span>
+        <span class="c1"># Generate observed data y_k ~ N(mu_true, sigma^2)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">sigma</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+        
+        <span class="c1"># Compute the sample mean</span>
+        <span class="n">y_bar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+        
+        <span class="c1"># Compute the Bayesian MSE estimator</span>
+        <span class="n">numerator</span> <span class="o">=</span> <span class="n">beta2</span> <span class="o">*</span> <span class="n">y_bar</span> <span class="o">+</span> <span class="n">m1</span> <span class="o">*</span> <span class="n">sigma2</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="n">denominator</span> <span class="o">=</span> <span class="n">beta2</span> <span class="o">+</span> <span class="n">sigma2</span> <span class="o">/</span> <span class="n">m</span>
+        <span class="n">mu_hat_ms</span> <span class="o">=</span> <span class="n">numerator</span> <span class="o">/</span> <span class="n">denominator</span>
+        
+        <span class="c1"># Store the estimator</span>
+        <span class="n">mu_hat_ms_values</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">mu_hat_ms</span><span class="p">)</span>
+    
+    <span class="c1"># Convert list to array</span>
+    <span class="n">mu_hat_ms_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">mu_hat_ms_values</span><span class="p">)</span>
+    
+    <span class="c1"># Compute average and standard deviation of mu_hat_ms</span>
+    <span class="n">avg_mu_hat_ms</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">mu_hat_ms_values</span><span class="p">)</span>
+    <span class="n">std_mu_hat_ms_val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">mu_hat_ms_values</span><span class="p">)</span>
+    
+    <span class="c1"># Store the results</span>
+    <span class="n">average_mu_hat_ms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">avg_mu_hat_ms</span><span class="p">)</span>
+    <span class="n">std_mu_hat_ms</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">std_mu_hat_ms_val</span><span class="p">)</span>
+
+<span class="c1"># Plotting mu_true and average mu_hat_ms vs. m</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">m_values</span><span class="p">,</span> <span class="n">average_mu_hat_ms</span><span class="p">,</span> <span class="n">yerr</span><span class="o">=</span><span class="n">std_mu_hat_ms</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o-&#39;</span><span class="p">,</span> <span class="n">capsize</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Average m-hat-MS&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axhline</span><span class="p">(</span><span class="n">mu_true</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;mu-true&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Average Bayesian MSE Estimator vs. Number of Observations (m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Number of Observations (m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Estimator Value&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/9350a9874dce23730c09aba149ab00fb11b99b72434e6df6805dea8ec7c8244c.png" src="_images/9350a9874dce23730c09aba149ab00fb11b99b72434e6df6805dea8ec7c8244c.png" />
+</div>
+</div>
+</section>
+<section id="is-this-mse-estimate-biased">
+<h3>Is This MSE Estimate Biased ?<a class="headerlink" href="#is-this-mse-estimate-biased" title="Link to this heading">#</a></h3>
+<p>Computing the expected value of this estimate, assuming that the parameter <span class="math notranslate nohighlight">\(\mu\)</span> is held constant, results in</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\hat{\mu}_{MS}|\mu\} = \frac{\beta^2 E\{\vec{y}|\mu\} + m_1 \sigma^2 / m}{\beta^2 + \sigma^2 / m}
+\]</div>
+<p>But the expected value of the sample mean <span class="math notranslate nohighlight">\(\vec{y}\)</span> for constant <span class="math notranslate nohighlight">\(\mu\)</span> is <span class="math notranslate nohighlight">\(E\{\vec{y}|\mu\} = \mu\)</span>, so that</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\hat{\mu}_{MS}|\mu\} = \frac{\beta^2 \mu + m_1 \sigma^2 / m}{\beta^2 + \sigma^2 / m}
+\]</div>
+<p>Since the expected value <span class="math notranslate nohighlight">\(E\{\hat{\mu}_{MS}|\mu\}\)</span> is not equal to <span class="math notranslate nohighlight">\(\mu\)</span>, the estimate is biased.</p>
+<p>However, for a large number of observations—i.e., as <span class="math notranslate nohighlight">\(m\)</span> becomes large—the estimate is asymptotically unbiased.</p>
+<p>To see this, we take the expectation of <span class="math notranslate nohighlight">\(E\{\hat{\mu}_{MS}|\mu\}\)</span> again over the random variable <span class="math notranslate nohighlight">\(\mu\)</span>, which can be stated as</p>
+<div class="math notranslate nohighlight">
+\[
+E\{E\{\hat{\mu}_{MS}|\mu\}\} = \frac{\beta^2 E\{\mu\} + m_1 \sigma^2 / m}{\beta^2 + \sigma^2 / m} = m_1 = E\{\mu\}
+\]</div>
+<p>where the first expectation is with respect to <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+</section>
+</section>
+<section id="general-mean-and-variance">
+<h2>General Mean and Variance<a class="headerlink" href="#general-mean-and-variance" title="Link to this heading">#</a></h2>
+<p>This last result is computed for a special case but is actually true in general. To prove this result, the expected value of the estimate is obtained, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+E\{\hat{\alpha}_{MS}\} 
+&amp;= E_{\vec{y}}\{E\{\hat{\alpha}|\vec{y}\}\} \\
+&amp;= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} \alpha p(\alpha|\vec{y}) p(\vec{y}) d\vec{y} d\alpha \\
+&amp;= \int_{-\infty}^{\infty} \alpha d\alpha \int_{-\infty}^{\infty} p(\alpha, \vec{y}) d\vec{y} \\
+&amp;= \int_{-\infty}^{\infty} \alpha p(\alpha) d\alpha \\
+&amp;= E\{\alpha\}
+\end{align*}
+\end{split}\]</div>
+<p>From Eq. (C3.78) and the foregoing result, it can be seen that <span class="math notranslate nohighlight">\(E\{\alpha_e\} = 0\)</span> for the MSE cost function. Therefore, the conditional cost in Eq. (C3.80) is the conditional error variance, and the average risk in Eq. (C3.81) is the variance of the estimation error or error variance. The relationship can be more easily seen by writing the variance of the estimation error <span class="math notranslate nohighlight">\(V\{\alpha_e\}\)</span> as</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+V\{\alpha_e\} 
+&amp;= E\{[\alpha_e - E\{\alpha_e\}]^2\} \\
+&amp;= E\{\alpha_e^2\} \\
+&amp;= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} [\alpha - \hat{\alpha}(\vec{y})]^2 p(\alpha, \vec{y}) d\alpha d\vec{y}
+\end{align*}
+\end{split}\]</div>
+<p>This equation is actually the average risk with an MSE cost function. Since the error variance is minimized using the MSE cost function, the estimate obtained is denoted <span class="math notranslate nohighlight">\(\hat{\alpha}_{MS}\)</span> and is referred to as a minimum error-variance estimate.</p>
+</section>
+<section id="example-c3-8-average-risk-r-min">
+<h2>Example C3.8: Average Risk <span class="math notranslate nohighlight">\( R_{min} \)</span><a class="headerlink" href="#example-c3-8-average-risk-r-min" title="Link to this heading">#</a></h2>
+<p>The previous example can be continued by substituting the estimate into Eq. (C3.79) to obtain the average risk, <span class="math notranslate nohighlight">\( R_{min} \)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+R_{min} 
+&amp;= \int_{-\infty}^{\infty} \int_{-\infty}^{\infty} (\mu - \hat{\mu})^2 p(\mu|\vec{y}) p(\vec{y}) d\mu d\vec{y} \\
+&amp;= \int_{-\infty}^{\infty} p(\vec{y}) \int_{-\infty}^{\infty} (\mu - \gamma^2 \omega)^2 \frac{1}{\sqrt{2\pi \gamma^2}} \exp\left(-\frac{[\mu - \gamma^2 \omega]^2}{2\gamma^2}\right) d\mu d\vec{y} \\
+&amp;= \int_{-\infty}^{\infty} p(\vec{y}) \gamma^2 d\vec{y} = \gamma^2 \\
+&amp;= \frac{1}{\frac{m}{\sigma^2} + \frac{1}{\beta^2}} \\
+&amp;= \frac{\sigma^2 / m}{\left(\frac{\beta^2}{\beta^2 + \sigma^2 / m}\right)}
+\end{align*}
+\end{split}\]</div>
+</section>
+<section id="minimum-variance-of-the-estimation-error">
+<h2>Minimum Variance of the Estimation Error<a class="headerlink" href="#minimum-variance-of-the-estimation-error" title="Link to this heading">#</a></h2>
+<p>This expression is the minimum variance of the estimation error. An alternate derivation of the preceding equation can be obtained by computing the variance of the estimation error using</p>
+<div class="math notranslate nohighlight">
+\[
+V\{\mu_e\} = E\{\mu_e^2\} - [E\{\mu_e\}]^2
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\mu_e = \mu - \hat{\mu}_{MS}\)</span>. Note that</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\mu_e\} = E\{\mu - \hat{\mu}_{MS}\} = E\{\mu\} - E\{E\{\hat{\mu}_{MS}|\mu\}\}
+= m_1 - m_1 = 0
+\]</div>
+<p>The error variance is then</p>
+<div class="math notranslate nohighlight">
+\[
+V\{\mu_e\} = E\{\mu_e^2\} = E\{E[(\mu - \hat{\mu}_{MS})^2|\mu]\}
+\]</div>
+<p>Examining the inner expectation results in</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+V\{\mu_e|\mu\} &amp;= E\{(\mu - \hat{\mu}_{MS})^2|\mu\} \\
+&amp;= E\{(\mu^2 - 2\mu \hat{\mu}_{MS} + \hat{\mu}_{MS}^2)|\mu\} \\
+&amp;= \mu^2 - 2\mu E\{\hat{\mu}_{MS}|\mu\} + E\{\hat{\mu}_{MS}^2|\mu\}
+\end{align*}
+\end{split}\]</div>
+<p>Since</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\mu}_{MS}^2 = \frac{\beta^4 \gamma^2 + 2m_1 \beta^2 (\sigma^2 / m) \vec{y} + m_1^2 \sigma^4 / m^2}{(\beta^2 + \sigma^2 / m)^2}
+\]</div>
+<p>it follows that</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\hat{\mu}_{MS}^2|\mu\} = \frac{\beta^4 E\{\vec{y}^2|\mu\} + 2m_1 \beta^2 (\sigma^2 / m) E\{\vec{y}|\mu\} + m_1^2 \sigma^4 / m^2}{(\beta^2 + \sigma^2 / m)^2}
+\]</div>
+<p>Recognizing <span class="math notranslate nohighlight">\( V\{\vec{y}|\mu\} = \sigma^2 / m \)</span>, where <span class="math notranslate nohighlight">\( E\{\vec{y}|\mu\} = \mu \)</span>, it can be seen that <span class="math notranslate nohighlight">\( E\{\vec{y}^2|\mu\} = \frac{\sigma^2}{m} + \mu^2 \)</span>, so that the previous equation can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+V\{\mu_e|\mu\} = E\left\{\mu^2 - 2\mu\left(\frac{\beta^2 \mu + m_1 \sigma^2 / m}{\beta^2 + \sigma^2 / m}\right) + \frac{\beta^4 \left(\frac{\sigma^2}{m} + \mu^2\right) + 2m_1 \beta^2 (\sigma^2 / m) \mu + m_1^2 \sigma^4 / m^2}{(\beta^2 + \sigma^2 / m)^2}\Bigg|\mu\right\}
+\]</div>
+<p>and, eliminating the condition on <span class="math notranslate nohighlight">\(\mu\)</span>, the equation becomes</p>
+<div class="math notranslate nohighlight">
+\[
+V\{\mu_e\} = E\left\{\mu^2 - 2\mu\left(\frac{\beta^2 \mu + m_1 \sigma^2 / m}{\beta^2 + \sigma^2 / m}\right) + \frac{\beta^4 \left(\frac{\sigma^2}{m} + \mu^2\right) + 2m_1 \beta^2 (\sigma^2 / m) \mu + m_1^2 \sigma^4 / m^2}{(\beta^2 + \sigma^2 / m)^2}\right\}
+\]</div>
+<p>Using <span class="math notranslate nohighlight">\( E\{\mu^2\} = \beta^2 + m_1^2 \)</span> and <span class="math notranslate nohighlight">\( E\{\mu\} = m_1 \)</span>, the preceding equation can be reduced to</p>
+<div class="math notranslate nohighlight">
+\[
+V\{\mu_e\} = \frac{\beta^2 \sigma^2 / m}{\beta^2 + \sigma^2 / m}
+\]</div>
+<p>This result is the minimum variance of the estimation error expressed as <span class="math notranslate nohighlight">\( R_{min} \)</span> in Example C3.8 above. Note that the variance of the estimate <span class="math notranslate nohighlight">\( V\{\hat{\mu}_{MS}\} \)</span> can also be computed, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\begin{align*}
+V\{\hat{\mu}_{MS}\} 
+&amp;= V\left\{\frac{\beta^2 \vec{y} + m_1 \sigma^2 / m}{\beta^2 + \sigma^2 / m}\right\} \\
+&amp;= \left(\frac{\beta^2}{\beta^2 + \sigma^2 / m}\right)^2 V(\vec{y}) \\
+&amp;= \frac{\sigma^2 / m \beta^4}{(\beta^2 + \sigma^2 / m)^2}
+\end{align*}
+\end{split}\]</div>
+</section>
+<section id="appendix">
+<h2>Appendix<a class="headerlink" href="#appendix" title="Link to this heading">#</a></h2>
+<p><strong>Derivation of Equation (C3.98):</strong></p>
+<p>We derive the posterior probability density function (pdf) <span class="math notranslate nohighlight">\( p(\mu | \vec{y}) \)</span> given by:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\mu | \vec{y}) = \frac{1}{\sqrt{2\pi \gamma^2}} \exp\left( -\frac{[\mu - \gamma^2 \omega]^2}{2\gamma^2} \right)
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( \gamma^2 = \left( \dfrac{m}{\sigma^2} + \dfrac{1}{\beta^2} \right)^{-1} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \omega = \dfrac{m \bar{y}}{\sigma^2} + \dfrac{m_1}{\beta^2} \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( \bar{y} = \dfrac{1}{m} \sum_{k=1}^{m} y_k \)</span></p></li>
+</ul>
+<p>Given that, the observations <span class="math notranslate nohighlight">\( y_1, y_2, \ldots, y_m \)</span> are independent and normally distributed with mean <span class="math notranslate nohighlight">\( \mu \)</span> and known variance <span class="math notranslate nohighlight">\( \sigma^2 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\vec{y} | \mu) = \frac{1}{(2\pi \sigma^2)^{m/2}} \exp\left( -\frac{1}{2\sigma^2} \sum_{k=1}^{m} (y_k - \mu)^2 \right)
+\]</div>
+<p>The prior pdf of <span class="math notranslate nohighlight">\( \mu \)</span> is normal with mean <span class="math notranslate nohighlight">\( m_1 \)</span> and variance <span class="math notranslate nohighlight">\( \beta^2 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\mu) = \frac{1}{\sqrt{2\pi \beta^2}} \exp\left( -\frac{(\mu - m_1)^2}{2\beta^2} \right)
+\]</div>
+<p>The posterior pdf is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\mu | \vec{y}) = \frac{p(\vec{y} | \mu) p(\mu)}{p(\vec{y})}
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\( p(\vec{y}) \)</span> does not depend on <span class="math notranslate nohighlight">\( \mu \)</span>, we can write:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\mu | \vec{y}) \propto p(\vec{y} | \mu) p(\mu)
+\]</div>
+<p>We focus on the numerator because the denominator <span class="math notranslate nohighlight">\( p(\vec{y}) \)</span> serves as a normalization constant.</p>
+<p>Combine the exponents from the likelihood and</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{1}{2\sigma^2} \sum_{k=1}^{m} (y_k - \mu)^2
+\]</div>
+<p>and the prior exponent</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{(\mu - m_1)^2}{2\beta^2}
+\]</div>
+<p>We have the likelihood term expansion as</p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{k=1}^{m} (y_k - \mu)^2 = \sum_{k=1}^{m} \left( y_k^2 - 2 y_k \mu + \mu^2 \right) = \sum_{k=1}^{m} y_k^2 - 2 \mu \sum_{k=1}^{m} y_k + m \mu^2
+\]</div>
+<p>and the prior term expansion as</p>
+<div class="math notranslate nohighlight">
+\[
+(\mu - m_1)^2 = \mu^2 - 2 \mu m_1 + m_1^2
+\]</div>
+<p>The combined exponent <span class="math notranslate nohighlight">\( S \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+S = -\frac{1}{2\sigma^2} \left( \sum_{k=1}^{m} y_k^2 - 2 \mu \sum_{k=1}^{m} y_k + m \mu^2 \right) - \frac{1}{2\beta^2} \left( \mu^2 - 2 \mu m_1 + m_1^2 \right)
+\]</div>
+<p>Combining the terms involving <span class="math notranslate nohighlight">\( \mu^2 \)</span>, <span class="math notranslate nohighlight">\( \mu \)</span>, and constants, we have</p>
+<div class="math notranslate nohighlight">
+\[
+-\frac{m}{2\sigma^2} - \frac{1}{2\beta^2} = -\frac{1}{2} \left( \frac{m}{\sigma^2} + \frac{1}{\beta^2} \right)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{\sigma^2} \sum_{k=1}^{m} y_k + \frac{m_1}{\beta^2}
+\]</div>
+<p>We can denote them collectively as <span class="math notranslate nohighlight">\( C \)</span>, which will be absorbed into the normalization constant.</p>
+<p>Thus, we have</p>
+<div class="math notranslate nohighlight">
+\[
+S = -\frac{1}{2} \left( \frac{m}{\sigma^2} + \frac{1}{\beta^2} \right) \mu^2 + \left( \frac{1}{\sigma^2} \sum_{k=1}^{m} y_k + \frac{m_1}{\beta^2} \right) \mu + C
+\]</div>
+<p>To express <span class="math notranslate nohighlight">\( S \)</span> in the form <span class="math notranslate nohighlight">\( -\dfrac{1}{2\gamma^2} (\mu - \mu_{\text{post}})^2 \)</span>, we complete the square.</p>
+<p>Let</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( a = \left( \dfrac{m}{\sigma^2} + \dfrac{1}{\beta^2} \right) \)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\( b = \left( \dfrac{1}{\sigma^2} \sum_{k=1}^{m} y_k + \dfrac{m_1}{\beta^2} \right) \)</span></p></li>
+</ul>
+<p>We have</p>
+<div class="math notranslate nohighlight">
+\[
+S = -\frac{a}{2} \mu^2 + b \mu + C
+\]</div>
+<p>and then</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+S &amp;= -\frac{a}{2} \left( \mu^2 - \frac{2b}{a} \mu \right) + C \\
+&amp;= -\frac{a}{2} \left[ \left( \mu - \frac{b}{a} \right)^2 - \left( \frac{b}{a} \right)^2 \right] + C \\
+&amp;= -\frac{a}{2} \left( \mu - \frac{b}{a} \right)^2 + \frac{b^2}{2a} + C
+\end{align*}
+\end{split}\]</div>
+<p>The term <span class="math notranslate nohighlight">\( \frac{b^2}{2a} + C \)</span> is a constant with respect to <span class="math notranslate nohighlight">\( \mu \)</span> and can be absorbed into the normalization constant.</p>
+<p>Next, identify <span class="math notranslate nohighlight">\( \gamma^2 \)</span> and <span class="math notranslate nohighlight">\( \omega \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\gamma^2 = \frac{1}{a} = \left( \frac{m}{\sigma^2} + \frac{1}{\beta^2} \right)^{-1}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\mu_{\text{post}} = \frac{b}{a} = \gamma^2 \left( \frac{1}{\sigma^2} \sum_{k=1}^{m} y_k + \frac{m_1}{\beta^2} \right) = \gamma^2 \omega
+\]</div>
+<p>where:</p>
+<div class="math notranslate nohighlight">
+\[
+\omega = \frac{1}{\sigma^2} \sum_{k=1}^{m} y_k + \frac{m_1}{\beta^2} = \frac{m \bar{y}}{\sigma^2} + \frac{m_1}{\beta^2}
+\]</div>
+<p>since <span class="math notranslate nohighlight">\( \sum_{k=1}^{m} y_k = m \bar{y} \)</span>.</p>
+<p>Substituting back into the exponent:</p>
+<div class="math notranslate nohighlight">
+\[
+S = -\frac{1}{2 \gamma^2} \left( \mu - \gamma^2 \omega \right)^2 + \text{constants}
+\]</div>
+<p>Therefore, the posterior pdf is:</p>
+<div class="math notranslate nohighlight">
+\[
+p(\mu | \vec{y}) = \frac{1}{\sqrt{2\pi \gamma^2}} \exp\left( -\frac{[\mu - \gamma^2 \omega]^2}{2\gamma^2} \right)
+\]</div>
+<p>We obtain (C3.98).</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c3_s8_consistent_estimator.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Consistent Estimates</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c3_s12_MAP_estimator.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Maximum a Posteriori (MAP) Estimation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Bayes Estimation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#derivation-of-the-average-risk-as-a-function-of-conditional-cost">Derivation of the average risk as a function of conditional cost.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-formulation-of-the-bayes-estimator">Mathematical Formulation of the Bayes Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#some-specific-cost-functions">Some Specific Cost Functions</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#mse-estimation">MSE Estimation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#alternative-form-of-mse-estimator">Alternative Form of MSE Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-c3-7-mse-estimator-bayes-estimation-with-an-mse-cost-function">Example C3.7: MSE Estimator (Bayes estimation with an MSE cost function)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#numerical-results">Numerical Results</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#is-this-mse-estimate-biased">Is This MSE Estimate Biased ?</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#general-mean-and-variance">General Mean and Variance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-c3-8-average-risk-r-min">Example C3.8: Average Risk <span class="math notranslate nohighlight">\( R_{min} \)</span></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#minimum-variance-of-the-estimation-error">Minimum Variance of the Estimation Error</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">Appendix</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

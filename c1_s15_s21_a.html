@@ -1,0 +1,1213 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Stochastic Process &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c1_s15_s21_a';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Example: White Noise Process" href="c1_s15_s21_b.html" />
+    <link rel="prev" title="Standard Complex Gaussian Vector" href="c1_s14.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <script>document.write(`<img src="_static/web_logo.png" class="logo__image only-dark" alt="Telecom Book - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Signal Detection and Estimation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c1_s0.html">Chapter 1: Review of Probability Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c1_s1.html">Bayes’ Theorem</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s5_s6a.html">Functions of A Single Random Variable</a></li>
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s6b.html">Generating Random Variables From A Uniform Distribution</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s7.html">First Moment of a Function of Random Variable</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s8.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s9.html">Real Scalar Gaussian Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c1_s10_s11.html">Real Gaussian Random Vector</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s12.html">Complex Random Vector</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s13.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c1_s14.html">Standard Complex Gaussian Vector</a></li>
+
+
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Stochastic Process</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_b.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c1_s15_s21_c.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Stochastic Process</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Stochastic Process</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationarity">Stationarity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strict-stationarity">Strict Stationarity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strict-cyclo-stationarity">Strict Cyclo-Stationarity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wide-sense-stationarity-wss">Wide-Sense Stationarity (WSS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wide-sense-cyclo-stationarity">Wide-Sense Cyclo-Stationarity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-random-square-wave">Example: Random Square Wave</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-function-for-real-and-stationary-processes">Autocorrelation Function for Real and Stationary Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-0-leq-tau-leq-t-c">For <span class="math notranslate nohighlight">\(0 \leq \tau \leq T_c\)</span>:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-tau-t-c">For <span class="math notranslate nohighlight">\(\tau &gt; T_c\)</span>:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectral-density-psd">Power Spectral Density (PSD)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-stationary-process">Continuous Stationary Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-psd">Definition of PSD</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-relationship">Inverse Relationship</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-and-implications">Properties and Implications</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-stationary-process">Discrete Stationary Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Definition of PSD</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Inverse Relationship</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Properties and Implications</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-psd-of-a-random-square-wave">Example: PSD of a Random Square Wave</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ergodicity">Ergodicity</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ergodicity-in-stationary-processes">Ergodicity in Stationary Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-definition">Mathematical Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-implications">Practical Implications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-and-assumptions">Challenges and Assumptions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-ergodicity-of-a-random-square-wave">Example: Ergodicity of a Random Square Wave</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-ergodicity">Mean Ergodicity</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-of-the-process">Mean of the Process</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-average-of-the-process">Time Average of the Process</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-function-ergodicity">Autocorrelation Function Ergodicity</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-function">Autocorrelation Function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-autocorrelation-function">Time-Averaged Autocorrelation Function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="stochastic-process">
+<h1>Stochastic Process<a class="headerlink" href="#stochastic-process" title="Link to this heading">#</a></h1>
+<p>A stochastic process, denoted as <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span>, is a mathematical object that describes a collection of random variables indexed by time or another parameter.</p>
+<p>This definition captures how the process evolves over time and how it depends on the outcome of a random experiment <span class="math notranslate nohighlight">\(\zeta\)</span>.</p>
+<section id="interpretation">
+<h2>Interpretation:<a class="headerlink" href="#interpretation" title="Link to this heading">#</a></h2>
+<p>The interpretation of <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> depends on whether we fix or vary the time <span class="math notranslate nohighlight">\(t\)</span> and the outcome <span class="math notranslate nohighlight">\(\zeta\)</span>, leading to different perspectives such as sets of functions, sample paths, random variables, or specific values.</p>
+<ol class="arabic simple">
+<li><p><strong>Both <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(\zeta\)</span> are Variable</strong>:</p>
+<ul class="simple">
+<li><p><strong>Interpretation</strong>: <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> represents a family or set of functions.</p></li>
+<li><p><strong>Details</strong>: When considering different outcomes <span class="math notranslate nohighlight">\(\zeta\)</span> and different times <span class="math notranslate nohighlight">\(t\)</span>, the process gives us different functions <span class="math notranslate nohighlight">\(x(t)\)</span>. Each function corresponds to a different realization of the stochastic process.</p></li>
+</ul>
+</li>
+<li><p><strong><span class="math notranslate nohighlight">\(t\)</span> is Variable, <span class="math notranslate nohighlight">\(\zeta\)</span> is Fixed</strong>:</p>
+<ul class="simple">
+<li><p><strong>Interpretation</strong>: <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> is a non-random function, also called a sample path.</p></li>
+<li><p><strong>Details</strong>: For a fixed outcome <span class="math notranslate nohighlight">\(\zeta = \zeta_0\)</span>, the function <span class="math notranslate nohighlight">\(x(t)\)</span> describes how the process behaves over time for that particular outcome. This function is deterministic once <span class="math notranslate nohighlight">\(\zeta\)</span> is known.</p></li>
+</ul>
+</li>
+<li><p><strong><span class="math notranslate nohighlight">\(t\)</span> is Fixed, <span class="math notranslate nohighlight">\(\zeta\)</span> is Variable</strong>:</p>
+<ul class="simple">
+<li><p><strong>Interpretation</strong>: <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> is a random variable.</p></li>
+<li><p><strong>Details</strong>: At a specific time <span class="math notranslate nohighlight">\(t = t_0\)</span>, the value of the process depends on the random experiment <span class="math notranslate nohighlight">\(\zeta\)</span>. Thus, for each fixed <span class="math notranslate nohighlight">\(t_0\)</span>, <span class="math notranslate nohighlight">\(\mathbf{x}(t_0)\)</span> is a random variable with a probability distribution that can be studied.</p></li>
+</ul>
+</li>
+<li><p><strong>Both <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(\zeta\)</span> are Fixed</strong>:</p>
+<ul class="simple">
+<li><p><strong>Interpretation</strong>: <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> takes a specific value.</p></li>
+<li><p><strong>Details</strong>: When both the time and the outcome of the random experiment are fixed, the process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> reduces to a single value, which is deterministic for that combination of <span class="math notranslate nohighlight">\(t\)</span> and <span class="math notranslate nohighlight">\(\zeta\)</span>.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="stationarity">
+<h2>Stationarity<a class="headerlink" href="#stationarity" title="Link to this heading">#</a></h2>
+<section id="strict-stationarity">
+<h3>Strict Stationarity<a class="headerlink" href="#strict-stationarity" title="Link to this heading">#</a></h3>
+<p><strong>Definition</strong>:
+A stochastic process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> is said to be <strong>strictly stationary</strong> if its joint probability distribution does not change when shifted in time. In other words, for any set of time points <span class="math notranslate nohighlight">\(t_1, t_2, \dots, t_n\)</span> and for any time shift <span class="math notranslate nohighlight">\(\tau\)</span>, the joint distribution of the process at these points is the same as the joint distribution of the process at the shifted points <span class="math notranslate nohighlight">\(t_1 + \tau, t_2 + \tau, \dots, t_n + \tau\)</span>.</p>
+<p><strong>Mathematical Expression</strong>:
+$<span class="math notranslate nohighlight">\(
+f_{\mathbf{x}(t_1),\dots,\mathbf{x}(t_n)}(x_1,\dots,x_n) = f_{\mathbf{x}(t_1+\tau),\dots,\mathbf{x}(t_n+\tau)}(x_1,\dots,x_n), \quad \forall \tau, \forall n
+\)</span>$</p>
+<p><strong>Implications</strong>:</p>
+<ul class="simple">
+<li><p><strong>Invariance</strong>: The statistical properties of the process are invariant under time shifts.</p></li>
+<li><p><strong>Dependence</strong>: The process looks the same at any point in time, meaning the distribution functions depend only on the time differences, not on the actual times.</p></li>
+</ul>
+<p><strong>Example</strong>:
+If <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> is a sequence of independent and identically distributed (i.i.d.) random variables, it is strictly stationary because the joint distribution does not change with time shifts.</p>
+</section>
+<section id="strict-cyclo-stationarity">
+<h3>Strict Cyclo-Stationarity<a class="headerlink" href="#strict-cyclo-stationarity" title="Link to this heading">#</a></h3>
+<p><strong>Definition</strong>:
+A stochastic process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> is <strong>strictly cyclo-stationary</strong> if its joint distribution function is periodic with a fixed period <span class="math notranslate nohighlight">\(T\)</span>. This means that the process’s statistical properties repeat every <span class="math notranslate nohighlight">\(T\)</span> units of time.</p>
+<p><strong>Mathematical Expression</strong>:
+$<span class="math notranslate nohighlight">\(
+f_{\mathbf{x}(t_1),\dots,\mathbf{x}(t_n)}(x_1,\dots,x_n) = f_{\mathbf{x}(t_1+\tau),\dots,\mathbf{x}(t_n+\tau)}(x_1,\dots,x_n), \quad \text{where} \quad \tau = kT, \text{ for integer } k, \forall n
+\)</span>$</p>
+<p><strong>Implications</strong>:</p>
+<ul class="simple">
+<li><p><strong>Periodic Structure</strong>: The process exhibits a repeating structure in time.</p></li>
+<li><p><strong>Applications</strong>: This is useful in modeling seasonal data or systems with inherent periodicities, such as daily temperature variations or economic cycles.</p></li>
+</ul>
+<p><strong>Example</strong>:
+Consider a process that models the daily temperature at a specific location, which tends to repeat its pattern every year. This process would be strictly cyclo-stationary with a period of one year.</p>
+</section>
+<section id="wide-sense-stationarity-wss">
+<h3>Wide-Sense Stationarity (WSS)<a class="headerlink" href="#wide-sense-stationarity-wss" title="Link to this heading">#</a></h3>
+<p><strong>Definition</strong>:
+A process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> is <strong>wide-sense stationary</strong> (or weakly stationary) if its mean and autocorrelation function do not change with time.</p>
+<p><strong>Mathematical Expressions</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>Constant Mean</strong>:
+$<span class="math notranslate nohighlight">\(
+E\{\mathbf{x}(t)\} = \mu, \quad \forall t
+\)</span><span class="math notranslate nohighlight">\(
+The mean \)</span>\mu<span class="math notranslate nohighlight">\( is the same for all \)</span>t$.</p></li>
+<li><p><strong>Time-Invariant Autocorrelation</strong>:
+$<span class="math notranslate nohighlight">\(
+R_{\mathbf{x}}(t, t+\tau) = E\{\mathbf{x}(t)\mathbf{x}(t+\tau)\} = R_{\mathbf{x}}(\tau), \quad \forall t, \forall \tau
+\)</span><span class="math notranslate nohighlight">\(
+The autocorrelation \)</span>R_{\mathbf{x}}(\tau)<span class="math notranslate nohighlight">\( depends only on the time difference \)</span>\tau<span class="math notranslate nohighlight">\(, not on the specific times \)</span>t<span class="math notranslate nohighlight">\( and \)</span>t + \tau$.</p></li>
+</ol>
+<p><strong>Implications</strong>:</p>
+<ul class="simple">
+<li><p><strong>Simplified Analysis</strong>: WSS simplifies the analysis and modeling of processes since we only need to consider the time differences.</p></li>
+<li><p><strong>Common in Applications</strong>: Many practical processes (e.g., signal processing) assume WSS due to its manageable properties.</p></li>
+</ul>
+<p><strong>Example</strong>:
+A white noise process with zero mean and constant variance is WSS because its mean and autocorrelation do not vary with time.</p>
+</section>
+<section id="wide-sense-cyclo-stationarity">
+<h3>Wide-Sense Cyclo-Stationarity<a class="headerlink" href="#wide-sense-cyclo-stationarity" title="Link to this heading">#</a></h3>
+<p><strong>Definition</strong>:
+A process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> is <strong>wide-sense cyclo-stationary</strong> if its mean and autocorrelation function are periodic with a period <span class="math notranslate nohighlight">\(T\)</span>.</p>
+<p><strong>Mathematical Expressions</strong>:</p>
+<ol class="arabic simple">
+<li><p><strong>Periodic Mean</strong>:
+$<span class="math notranslate nohighlight">\(
+E\{\mathbf{x}(t)\} = E\{\mathbf{x}(t+kT)\}, \quad \forall t, \text{for integer } k
+\)</span><span class="math notranslate nohighlight">\(
+The mean is periodic with period \)</span>T$.</p></li>
+<li><p><strong>Periodic Autocorrelation</strong>:
+$<span class="math notranslate nohighlight">\(
+R_{\mathbf{x}}(t_1, t_2) = R_{\mathbf{x}}(t_1+kT, t_2+kT), \quad \forall t_1, t_2, \text{for integer } k
+\)</span><span class="math notranslate nohighlight">\(
+The autocorrelation is also periodic with period \)</span>T$.</p></li>
+</ol>
+<p><strong>Implications</strong>:</p>
+<ul class="simple">
+<li><p><strong>Periodic Properties</strong>: The process exhibits periodic behavior in its second-order statistics (mean and autocorrelation).</p></li>
+<li><p><strong>Applications</strong>: Useful in modeling phenomena with inherent periodicity but where strict cyclo-stationarity might be too strong a requirement.</p></li>
+</ul>
+<p><strong>Transformation to WSS</strong>:
+If <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> is wide-sense cyclo-stationary, then the process <span class="math notranslate nohighlight">\(\mathbf{x}(t+\theta)\)</span>, where <span class="math notranslate nohighlight">\(\theta \sim U(0, T)\)</span>, is wide-sense stationary. This means that randomly shifting the process within one period transforms it into a WSS process.</p>
+<p><strong>Example</strong>:
+Consider an electrical signal with a periodic component superimposed on a stationary noise process. The overall process is wide-sense cyclo-stationary, but shifting it within one period results in a WSS process.</p>
+</section>
+</section>
+<section id="example-random-square-wave">
+<h2>Example: Random Square Wave<a class="headerlink" href="#example-random-square-wave" title="Link to this heading">#</a></h2>
+<p>Consider a stationary and ergodic random process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> defined by the waveform shown below. The key characteristics of this process are:</p>
+<ul class="simple">
+<li><p>The process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> is real.</p></li>
+<li><p>During each time interval <span class="math notranslate nohighlight">\(T_c\)</span>, the process takes a value of <span class="math notranslate nohighlight">\(+1\)</span> with probability <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(-1\)</span> with probability <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">)</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">T_c</span> <span class="o">=</span> <span class="mi">100</span>       <span class="c1"># Duration of each interval</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">10</span>       <span class="c1"># Total duration (from -T to +T)</span>
+<span class="n">num_intervals</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">T</span>  <span class="c1"># Number of intervals (since we go from -T to +T)</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">T</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">num_intervals</span> <span class="o">*</span> <span class="n">T_c</span><span class="p">)</span>  <span class="c1"># Time vector</span>
+
+<span class="c1"># Generate the random process x(t)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># For reproducibility</span>
+<span class="n">x_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="n">num_intervals</span><span class="p">)</span>
+<span class="n">x_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">x_values</span><span class="p">,</span> <span class="n">T_c</span><span class="p">)</span>
+
+<span class="c1"># Define different values of tau</span>
+<span class="n">taus</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">50</span><span class="p">]</span>
+
+<span class="c1"># Plot x(t) and x(t - tau) for different tau</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">12</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tau</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">taus</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">taus</span><span class="p">),</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x_t</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;x(t)&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">tau</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;shift $tau$ =</span><span class="si">{</span><span class="n">tau</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/e13053434caad65f3c8fbf78d8c92b7f5a074b809aa6b479cd0e9be7563c8c69.png" src="_images/e13053434caad65f3c8fbf78d8c92b7f5a074b809aa6b479cd0e9be7563c8c69.png" />
+</div>
+</div>
+<section id="autocorrelation-function-for-real-and-stationary-processes">
+<h3>Autocorrelation Function for Real and Stationary Processes<a class="headerlink" href="#autocorrelation-function-for-real-and-stationary-processes" title="Link to this heading">#</a></h3>
+<p>The autocorrelation function <span class="math notranslate nohighlight">\(R_{\mathbf{x}}(\tau)\)</span> for a real and stationary process is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+R_{\mathbf{x}}(\tau) = E \{ \mathbf{x}(t) \mathbf{x}(t - \tau) \}
+\]</div>
+<p>Since the process is ergodic, we can also calculate the autocorrelation function using time averages:</p>
+<div class="math notranslate nohighlight">
+\[
+R_{\mathbf{x}}(\tau) = \lim_{T \to \infty} \frac{1}{2T} \int_{-T}^{T} \mathbf{x}(t) \mathbf{x}(t - \tau) \, dt
+\]</div>
+<section id="for-0-leq-tau-leq-t-c">
+<h4>For <span class="math notranslate nohighlight">\(0 \leq \tau \leq T_c\)</span>:<a class="headerlink" href="#for-0-leq-tau-leq-t-c" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>During each interval <span class="math notranslate nohighlight">\(T_c\)</span>, <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}(t - \tau)\)</span> will be the same for a portion of the time <span class="math notranslate nohighlight">\((T_c - \tau) / T_c\)</span>.</p></li>
+<li><p>For this portion, their product will be <span class="math notranslate nohighlight">\(+1\)</span>.</p></li>
+<li><p>For the remaining <span class="math notranslate nohighlight">\(\tau / T_c\)</span> portion, the product will be <span class="math notranslate nohighlight">\(+1\)</span> with probability <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span> and <span class="math notranslate nohighlight">\(-1\)</span> with probability <span class="math notranslate nohighlight">\(\frac{1}{2}\)</span>. Thus, the average value for this portion is <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
+</ul>
+<p>Hence, the autocorrelation for this range is:</p>
+<div class="math notranslate nohighlight">
+\[
+R_{\mathbf{x}}(\tau) = \frac{T_c - \tau}{T_c} = 1 - \frac{|\tau|}{T_c}, \quad 0 \leq |\tau| \leq T_c
+\]</div>
+</section>
+<section id="for-tau-t-c">
+<h4>For <span class="math notranslate nohighlight">\(\tau &gt; T_c\)</span>:<a class="headerlink" href="#for-tau-t-c" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>The product of <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}(t - \tau)\)</span> will be equally likely to be <span class="math notranslate nohighlight">\(+1\)</span> and <span class="math notranslate nohighlight">\(-1\)</span>, leading to an average value of <span class="math notranslate nohighlight">\(0\)</span>.</p></li>
+</ul>
+<p>Thus, for this range:</p>
+<div class="math notranslate nohighlight">
+\[
+R_{\mathbf{x}}(\tau) = 0, \quad |\tau| &gt; T_c
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\(R_{\mathbf{x}}(-\tau) = R_{\mathbf{x}}(\tau)\)</span>, the autocorrelation function is symmetric.</p>
+<p>Combining the results, the autocorrelation function is:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R_{\mathbf{x}}(\tau) = 
+\begin{cases} 
+1 - \frac{|\tau|}{T_c}, &amp; 0 \leq |\tau| \leq T_c \\
+0, &amp; |\tau| &gt; T_c 
+\end{cases}
+\end{split}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute empirical autocorrelation</span>
+<span class="k">def</span> <span class="nf">empirical_autocorrelation</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">tau_values</span><span class="p">):</span>
+    <span class="n">autocorr</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x_t</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">tau</span> <span class="ow">in</span> <span class="n">tau_values</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tau</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">x_t_tau</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">tau</span><span class="p">)</span>
+            <span class="n">autocorr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_t</span><span class="p">[:</span><span class="n">N</span><span class="o">+</span><span class="n">tau</span><span class="p">],</span> <span class="n">x_t_tau</span><span class="p">[:</span><span class="n">N</span><span class="o">+</span><span class="n">tau</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span><span class="o">+</span><span class="n">tau</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">x_t_tau</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">roll</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="o">-</span><span class="n">tau</span><span class="p">)</span>
+            <span class="n">autocorr</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">x_t</span><span class="p">[</span><span class="n">tau</span><span class="p">:],</span> <span class="n">x_t_tau</span><span class="p">[</span><span class="n">tau</span><span class="p">:])</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span><span class="o">-</span><span class="n">tau</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">autocorr</span><span class="p">)</span>
+
+<span class="c1"># Define tau values for which to calculate autocorrelation</span>
+<span class="n">max_tau</span> <span class="o">=</span> <span class="n">T_c</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="n">tau_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">max_tau</span><span class="p">,</span> <span class="n">max_tau</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Calculate empirical autocorrelation</span>
+<span class="n">empirical_Rx</span> <span class="o">=</span> <span class="n">empirical_autocorrelation</span><span class="p">(</span><span class="n">x_t</span><span class="p">,</span> <span class="n">tau_values</span><span class="p">)</span>
+
+<span class="c1"># Theoretical autocorrelation function</span>
+<span class="k">def</span> <span class="nf">theoretical_autocorrelation</span><span class="p">(</span><span class="n">tau</span><span class="p">,</span> <span class="n">T_c</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">T_c</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">tau</span><span class="p">)</span> <span class="o">/</span> <span class="n">T_c</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">theoretical_Rx</span> <span class="o">=</span> <span class="n">theoretical_autocorrelation</span><span class="p">(</span><span class="n">tau_values</span><span class="p">,</span> <span class="n">T_c</span><span class="p">)</span>
+
+<span class="c1"># Plot empirical and theoretical autocorrelation functions</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tau_values</span><span class="p">,</span> <span class="n">empirical_Rx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tau_values</span><span class="p">,</span> <span class="n">theoretical_Rx</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Lag (tau)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Autocorrelation&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical and Theoretical Autocorrelation Function&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ae9712ab12307895955df3c44ad25502f3b0b0b7a287c6b7e6b10ad5a1fc9979.png" src="_images/ae9712ab12307895955df3c44ad25502f3b0b0b7a287c6b7e6b10ad5a1fc9979.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="power-spectral-density-psd">
+<h2>Power Spectral Density (PSD)<a class="headerlink" href="#power-spectral-density-psd" title="Link to this heading">#</a></h2>
+<p>The power spectral density (PSD) is a crucial tool in the analysis of stochastic processes, especially for stationary processes. It provides insight into how the power of a signal or time series is distributed over different frequency components.</p>
+<section id="continuous-stationary-process">
+<h3>Continuous Stationary Process<a class="headerlink" href="#continuous-stationary-process" title="Link to this heading">#</a></h3>
+<p>For a continuous stationary process, the PSD describes the distribution of power over frequency. Here are the detailed steps and formulas:</p>
+<section id="definition-of-psd">
+<h4>Definition of PSD<a class="headerlink" href="#definition-of-psd" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Autocorrelation Function</strong>:
+The autocorrelation function <span class="math notranslate nohighlight">\( R(\tau) \)</span> of a continuous stationary process is defined as:
+$<span class="math notranslate nohighlight">\(
+R(\tau) = E\{\mathbf{x}(t) \mathbf{x}(t + \tau)\}
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span> E {\cdot} <span class="math notranslate nohighlight">\( denotes the expectation operator, and \)</span> \tau $ is the time lag.</p></li>
+<li><p><strong>PSD via Fourier Transform</strong>:
+The PSD <span class="math notranslate nohighlight">\( S(f) \)</span> is obtained by taking the Fourier transform of the autocorrelation function <span class="math notranslate nohighlight">\( R(\tau) \)</span>:
+$<span class="math notranslate nohighlight">\(
+S(f) = \int_{-\infty}^{\infty} R(\tau) e^{-j2\pi f \tau} \, d\tau
+\)</span><span class="math notranslate nohighlight">\(
+Here, \)</span> f <span class="math notranslate nohighlight">\( represents the frequency, and \)</span> j $ is the imaginary unit.</p></li>
+</ol>
+</section>
+<section id="inverse-relationship">
+<h4>Inverse Relationship<a class="headerlink" href="#inverse-relationship" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Inverse Fourier Transform</strong>:
+Conversely, the autocorrelation function <span class="math notranslate nohighlight">\( R(\tau) \)</span> can be retrieved from the PSD <span class="math notranslate nohighlight">\( S(f) \)</span> using the inverse Fourier transform:
+$<span class="math notranslate nohighlight">\(
+R(\tau) = \int_{-\infty}^{\infty} S(f) e^{j2\pi f \tau} \, df
+\)</span>$
+This shows that the autocorrelation function and the PSD are a Fourier transform pair.</p></li>
+</ol>
+</section>
+<section id="properties-and-implications">
+<h4>Properties and Implications<a class="headerlink" href="#properties-and-implications" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Stationarity</strong>: For a process to be stationary, the statistical properties, including the autocorrelation function, do not change with time shifts.</p></li>
+<li><p><strong>Spectral Representation</strong>: The PSD provides a frequency domain representation of the process, highlighting the contribution of different frequencies to the overall power.</p></li>
+</ul>
+</section>
+</section>
+<section id="discrete-stationary-process">
+<h3>Discrete Stationary Process<a class="headerlink" href="#discrete-stationary-process" title="Link to this heading">#</a></h3>
+<p>For a discrete stationary process, the concepts are similar but involve summations instead of integrals.</p>
+<section id="id1">
+<h4>Definition of PSD<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Autocorrelation Function</strong>:
+The autocorrelation function <span class="math notranslate nohighlight">\( R(n) \)</span> of a discrete stationary process <span class="math notranslate nohighlight">\(\{\mathbf{x}(n)\}\)</span> is defined as:
+$<span class="math notranslate nohighlight">\(
+R(n) = E\{\mathbf{x}(m) \mathbf{x}(m + n)\}
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span> n $ is an integer time lag.</p></li>
+<li><p><strong>PSD via Discrete-Time Fourier Transform</strong>:
+The PSD <span class="math notranslate nohighlight">\( S(f) \)</span> is given by the discrete-time Fourier transform (DTFT) of the autocorrelation function <span class="math notranslate nohighlight">\( R(n) \)</span>:
+$<span class="math notranslate nohighlight">\(
+S(f) = \sum_{n=-\infty}^{\infty} R(n) e^{-j2\pi f n}
+\)</span><span class="math notranslate nohighlight">\(
+Here, \)</span> f $ is a normalized frequency.</p></li>
+</ol>
+</section>
+<section id="id2">
+<h4>Inverse Relationship<a class="headerlink" href="#id2" title="Link to this heading">#</a></h4>
+<ol class="arabic simple">
+<li><p><strong>Inverse DTFT</strong>:
+The autocorrelation function <span class="math notranslate nohighlight">\( R(n) \)</span> can be retrieved from the PSD <span class="math notranslate nohighlight">\( S(f) \)</span> using the inverse DTFT:
+$<span class="math notranslate nohighlight">\(
+R(n) = \int_{-\infty}^{\infty} S(f) e^{j2\pi f n} \, df
+\)</span>$</p></li>
+</ol>
+</section>
+<section id="id3">
+<h4>Properties and Implications<a class="headerlink" href="#id3" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p><strong>Stationarity</strong>: Similar to the continuous case, the statistical properties of a discrete stationary process do not change over time.</p></li>
+<li><p><strong>Spectral Representation</strong>: The PSD in the discrete case provides a frequency domain representation that shows how power is distributed among different frequency components of the discrete process.</p></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="example-psd-of-a-random-square-wave">
+<h2>Example: PSD of a Random Square Wave<a class="headerlink" href="#example-psd-of-a-random-square-wave" title="Link to this heading">#</a></h2>
+<p>Continuing from the previous example, we will now derive and understand the power spectral density (PSD) of the random square wave process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span>.</p>
+<p>We previously derived the autocorrelation function for the random square wave process as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+R_{\mathbf{x}}(\tau) = 
+\begin{cases} 
+1 - \frac{|\tau|}{T_c}, &amp; 0 \leq |\tau| \leq T_c \\
+0, &amp; |\tau| &gt; T_c 
+\end{cases}
+\end{split}\]</div>
+<p>The PSD <span class="math notranslate nohighlight">\( S_{\mathbf{x}}(f) \)</span> is obtained by taking the Fourier transform of the autocorrelation function <span class="math notranslate nohighlight">\( R_{\mathbf{x}}(\tau) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{\mathbf{x}}(f) = \int_{-\infty}^{\infty} R_{\mathbf{x}}(\tau) e^{-j2\pi f \tau} \, d\tau
+\]</div>
+<p>Given the symmetry and the fact that <span class="math notranslate nohighlight">\( R_{\mathbf{x}}(\tau) \)</span> is zero for <span class="math notranslate nohighlight">\( |\tau| &gt; T_c \)</span>, the integral can be simplified and evaluated over the interval <span class="math notranslate nohighlight">\([-T_c, T_c]\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+S_{\mathbf{x}}(f) = 2 \int_{0}^{T_c} \left(1 - \frac{\tau}{T_c}\right) \cos(2\pi f \tau) \, d\tau 
+\]</div>
+<p>Using the given integral, we have
+$<span class="math notranslate nohighlight">\(
+   S_{\mathbf{x}}(f) = 2 \int_{0}^{T_c} \left(1 - \frac{\tau}{T_c}\right) \cos(2\pi f \tau) \, d\tau
+   \)</span>$</p>
+<p>Using integration by parts and properties of trigonometric integrals, we have
+$<span class="math notranslate nohighlight">\(
+   S_{\mathbf{x}}(f) = \frac{2}{(2\pi f)^2 T_c} \left(1 - \cos(2\pi f T_c)\right)
+   \)</span>$</p>
+<p>Using trigonometric identities, the expression can be further simplified to:
+$<span class="math notranslate nohighlight">\(
+   S_{\mathbf{x}}(f) = T_c \left(\frac{\sin(\pi f T_c)}{\pi f T_c}\right)^2 
+   \)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="k">def</span> <span class="nf">theoretical_psd</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">Tc</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the theoretical PSD of a random square wave.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Tc</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f</span> <span class="o">*</span> <span class="n">Tc</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f</span> <span class="o">*</span> <span class="n">Tc</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">Tc</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Period of the square wave</span>
+<span class="n">f_limit</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">/</span> <span class="n">Tc</span>  <span class="c1"># Frequency limit for plotting</span>
+
+<span class="c1"># Frequency range</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">f_limit</span><span class="p">,</span> <span class="n">f_limit</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+
+<span class="c1"># Compute theoretical PSD</span>
+<span class="n">psd_theoretical</span> <span class="o">=</span> <span class="n">theoretical_psd</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">Tc</span><span class="p">)</span>
+
+<span class="c1"># Plot the theoretical PSD</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">psd_theoretical</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Theoretical PSD&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency f&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;S_x(f)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;S_x(f)&#39;)
+</pre></div>
+</div>
+<img alt="_images/12324e715711f3bcc5cb515014079b0d5230da851bef5318a228310358546e95.png" src="_images/12324e715711f3bcc5cb515014079b0d5230da851bef5318a228310358546e95.png" />
+</div>
+</div>
+<p>Note: this simulation is not 100% correct, there is still a small misalligment between empirical and theoretical PSD.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">scipy.fft</span> <span class="kn">import</span> <span class="n">fft</span><span class="p">,</span> <span class="n">fftfreq</span><span class="p">,</span> <span class="n">fftshift</span>
+
+<span class="k">def</span> <span class="nf">generate_random_square_wave</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Tc</span><span class="p">,</span> <span class="n">dt</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Generate a random square wave with period Tc.&quot;&quot;&quot;</span>
+    <span class="n">n_intervals</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">//</span> <span class="nb">int</span><span class="p">(</span><span class="n">Tc</span> <span class="o">/</span> <span class="n">dt</span><span class="p">)</span>
+    <span class="n">wave</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">repeat</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">n_intervals</span><span class="p">),</span> <span class="nb">int</span><span class="p">(</span><span class="n">Tc</span> <span class="o">/</span> <span class="n">dt</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">wave</span><span class="p">[:</span><span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)]</span>
+
+<span class="k">def</span> <span class="nf">theoretical_psd</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">Tc</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compute the theoretical PSD of a random square wave.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">Tc</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f</span> <span class="o">*</span> <span class="n">Tc</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">f</span> <span class="o">*</span> <span class="n">Tc</span><span class="p">))</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="c1"># Parameters</span>
+<span class="n">Tc</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Period of the square wave</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">100</span>  <span class="c1"># Total time duration</span>
+<span class="n">dt</span> <span class="o">=</span> <span class="mf">0.001</span>  <span class="c1"># Time step</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>  <span class="c1"># Number of samples</span>
+
+<span class="c1"># Generate random square wave</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">generate_random_square_wave</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">Tc</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+
+<span class="c1"># Compute empirical PSD using FFT</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">psd_empirical</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">N</span> <span class="o">*</span> <span class="n">dt</span><span class="p">)</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="n">fftfreq</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>
+
+<span class="c1"># Shift the PSD and frequency vectors for proper display</span>
+<span class="n">psd_empirical_shifted</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">psd_empirical</span><span class="p">)</span>
+<span class="n">frequencies_shifted</span> <span class="o">=</span> <span class="n">fftshift</span><span class="p">(</span><span class="n">frequencies</span><span class="p">)</span>
+
+<span class="c1"># Normalize both PSDs</span>
+<span class="n">psd_empirical_shifted</span> <span class="o">/=</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">psd_empirical_shifted</span><span class="p">)</span>
+
+<span class="c1"># Limit the frequency range to around ±3/Tc</span>
+<span class="n">freq_limit</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">/</span> <span class="n">Tc</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">frequencies_shifted</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">freq_limit</span><span class="p">)</span>
+<span class="n">frequencies_shifted</span> <span class="o">=</span> <span class="n">frequencies_shifted</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+<span class="n">psd_empirical_shifted</span> <span class="o">=</span> <span class="n">psd_empirical_shifted</span><span class="p">[</span><span class="n">indices</span><span class="p">]</span>
+
+<span class="c1"># Compute theoretical PSD</span>
+<span class="n">psd_theoretical</span> <span class="o">=</span> <span class="n">theoretical_psd</span><span class="p">(</span><span class="n">frequencies_shifted</span><span class="p">,</span> <span class="n">Tc</span><span class="p">)</span>
+
+<span class="c1"># Plot the random square wave</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Random Square Wave&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;x(t)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Random Square Wave Signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Plot the empirical and theoretical PSD</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies_shifted</span><span class="p">,</span> <span class="n">psd_empirical_shifted</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Empirical PSD&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency f&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;S_x(f)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical Power Spectral Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies_shifted</span><span class="p">,</span> <span class="n">psd_theoretical</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Theoretical PSD&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency f&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;S_x(f)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Theoretical Power Spectral Density&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Convert PSD to dB scale</span>
+<span class="n">psd_empirical_shifted_db</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">psd_empirical_shifted</span><span class="p">)</span>
+<span class="n">psd_theoretical_db</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">psd_theoretical</span><span class="p">)</span>
+
+<span class="c1"># Plot the random square wave</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Plot the empirical PSD in dB scale</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies_shifted</span><span class="p">,</span> <span class="n">psd_empirical_shifted_db</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Empirical PSD (dB)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency f&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;S_x(f) (dB)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Empirical Power Spectral Density (dB)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies_shifted</span><span class="p">,</span> <span class="n">psd_theoretical_db</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Theoretical PSD (dB)&quot;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;dashed&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency f&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;S_x(f) (dB)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Theoretical Power Spectral Density (dB)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/936da63019dea82019e44dc04f01bc7f7652ec8f8ba61a1ceef5f6dc78f29935.png" src="_images/936da63019dea82019e44dc04f01bc7f7652ec8f8ba61a1ceef5f6dc78f29935.png" />
+<img alt="_images/400fbe256c91e3d4c12ad4b239279d17bf4b3d8f7e03acee0e9a674d987fe604.png" src="_images/400fbe256c91e3d4c12ad4b239279d17bf4b3d8f7e03acee0e9a674d987fe604.png" />
+<img alt="_images/b88f4dc74c6dd4e3145fe8e2edb4bc1e5de665bbc7832b910435d19df16b8f98.png" src="_images/b88f4dc74c6dd4e3145fe8e2edb4bc1e5de665bbc7832b910435d19df16b8f98.png" />
+</div>
+</div>
+<p>Note: we must use <code class="docutils literal notranslate"><span class="pre">fftshift</span></code> to obtain correct PSD in dB scale.</p>
+<p><code class="docutils literal notranslate"><span class="pre">fftshift</span></code> is not strictly necessary, but it helps to center the zero frequency component, making the PSD plot easier to interpret. The zero frequency (DC component) is placed in the middle of the frequency axis, allowing for a symmetrical view of both positive and negative frequencies.</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="ergodicity">
+<h1>Ergodicity<a class="headerlink" href="#ergodicity" title="Link to this heading">#</a></h1>
+<section id="ergodicity-in-stationary-processes">
+<h2>Ergodicity in Stationary Processes<a class="headerlink" href="#ergodicity-in-stationary-processes" title="Link to this heading">#</a></h2>
+<p>Ergodicity is a fundamental concept in the study of stochastic processes, particularly stationary processes. A stationary process is one whose statistical properties do not change over time. Specifically, ergodicity implies that time averages of the process converge to the ensemble averages. This means that the statistical properties of a single time series realization of the process can represent the entire ensemble of possible realizations.</p>
+<section id="mathematical-definition">
+<h3>Mathematical Definition<a class="headerlink" href="#mathematical-definition" title="Link to this heading">#</a></h3>
+<p>For a stationary process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span>, ergodicity is mathematically expressed as:</p>
+<div class="math notranslate nohighlight">
+\[
+E\{\mathbf{x}^m(t_1)\} = \lim_{T \to \infty} \frac{1}{2T} \int_{-T}^T \mathbf{x}^m(t) dt
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\(E\{\mathbf{x}^m(t_1)\}\)</span> denotes the ensemble average, and the integral on the right-hand side represents the time average over a period <span class="math notranslate nohighlight">\([-T, T]\)</span>.</p>
+</section>
+<section id="practical-implications">
+<h3>Practical Implications<a class="headerlink" href="#practical-implications" title="Link to this heading">#</a></h3>
+<ol class="arabic simple">
+<li><p><strong>Single Realization Sufficiency</strong>:</p>
+<ul class="simple">
+<li><p>For an ergodic process, the statistical properties (such as mean, variance) and power spectral density can be accurately determined from a single, sufficiently long realization of the process.</p></li>
+</ul>
+</li>
+<li><p><strong>Ergodicity in the Mean</strong>:</p>
+<ul class="simple">
+<li><p>A process is ergodic in the mean if the above relation holds for <span class="math notranslate nohighlight">\(m = 1\)</span>. This means that the time average of the process converges to its mean over an infinite time horizon.</p></li>
+</ul>
+</li>
+<li><p><strong>Conditions for Ergodicity in the Mean</strong>:</p>
+<ul class="simple">
+<li><p>For a stationary process to be ergodic in the mean, it must satisfy the following condition:
+$<span class="math notranslate nohighlight">\(
+\lim_{T \to \infty} \frac{1}{T} \int_0^T (R(\tau) - \mu^2) d\tau = 0
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>R(\tau)<span class="math notranslate nohighlight">\( is the autocorrelation function of the process, and \)</span>\mu$ is the mean of the process. This condition ensures that the deviations from the mean over time diminish as the observation period becomes infinitely long.</p></li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="challenges-and-assumptions">
+<h3>Challenges and Assumptions<a class="headerlink" href="#challenges-and-assumptions" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p><strong>Demonstrating Complete Ergodicity</strong>:</p>
+<ul>
+<li><p>Proving ergodicity rigorously for a given process can be challenging due to the complexity involved in establishing the convergence of time averages to ensemble averages.</p></li>
+</ul>
+</li>
+<li><p><strong>Assumptions in Practice</strong>:</p>
+<ul>
+<li><p>Despite the difficulty in proving ergodicity, it is often assumed in practical applications. This assumption simplifies the analysis and allows for the use of time averages to estimate statistical properties.</p></li>
+</ul>
+</li>
+</ul>
+</section>
+</section>
+<section id="example-ergodicity-of-a-random-square-wave">
+<h2>Example: Ergodicity of a Random Square Wave<a class="headerlink" href="#example-ergodicity-of-a-random-square-wave" title="Link to this heading">#</a></h2>
+<p>To mathematically test if the described process is ergodic, we need to verify that its time averages converge to its ensemble averages. We will do this by checking two primary conditions:</p>
+<ol class="arabic simple">
+<li><p><strong>Mean Ergodicity</strong>: Verify if the time average of the process converges to its mean.</p></li>
+<li><p><strong>Autocorrelation Function</strong>: Verify if the time-averaged autocorrelation function converges to the ensemble-averaged autocorrelation function.</p></li>
+</ol>
+<section id="mean-ergodicity">
+<h3>Mean Ergodicity<a class="headerlink" href="#mean-ergodicity" title="Link to this heading">#</a></h3>
+<p>For a process to be mean ergodic, the time average should equal the ensemble average.</p>
+<section id="mean-of-the-process">
+<h4>Mean of the Process<a class="headerlink" href="#mean-of-the-process" title="Link to this heading">#</a></h4>
+<p>Given that the process <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> takes values <span class="math notranslate nohighlight">\(+1\)</span> and <span class="math notranslate nohighlight">\(-1\)</span> with equal probability, the ensemble mean <span class="math notranslate nohighlight">\(\mu\)</span> is:
+$<span class="math notranslate nohighlight">\(
+\mu = E[\mathbf{x}(t)] = \frac{1}{2}(1) + \frac{1}{2}(-1) = 0
+\)</span>$</p>
+</section>
+<section id="time-average-of-the-process">
+<h4>Time Average of the Process<a class="headerlink" href="#time-average-of-the-process" title="Link to this heading">#</a></h4>
+<p>The time average <span class="math notranslate nohighlight">\(\bar{x}_T\)</span> over an interval <span class="math notranslate nohighlight">\([-T, T]\)</span> is given by:
+$<span class="math notranslate nohighlight">\(
+\bar{x}_T = \frac{1}{2T} \int_{-T}^{T} \mathbf{x}(t) \, dt
+\)</span>$</p>
+<p>For ergodicity in the mean, we need:
+$<span class="math notranslate nohighlight">\(
+\lim_{T \to \infty} \bar{x}_T = \mu = 0
+\)</span>$</p>
+<p>Since <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> alternates between <span class="math notranslate nohighlight">\(+1\)</span> and <span class="math notranslate nohighlight">\(-1\)</span> with equal probability over sufficiently large intervals, the positive and negative contributions should cancel out, making <span class="math notranslate nohighlight">\(\bar{x}_T\)</span> approach 0 as <span class="math notranslate nohighlight">\(T \to \infty\)</span>.</p>
+</section>
+</section>
+<section id="autocorrelation-function-ergodicity">
+<h3>Autocorrelation Function Ergodicity<a class="headerlink" href="#autocorrelation-function-ergodicity" title="Link to this heading">#</a></h3>
+<p>Next, we consider the autocorrelation function <span class="math notranslate nohighlight">\(R(\tau)\)</span>. For ergodicity, the time-averaged autocorrelation should converge to the ensemble-averaged autocorrelation.</p>
+<section id="autocorrelation-function">
+<h4>Autocorrelation Function<a class="headerlink" href="#autocorrelation-function" title="Link to this heading">#</a></h4>
+<p>The ensemble autocorrelation function is:
+$<span class="math notranslate nohighlight">\(
+R(\tau) = E[\mathbf{x}(t) \mathbf{x}(t + \tau)]
+\)</span>$</p>
+<p>For our random square wave:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(R(0) = E[\mathbf{x}(t)^2] = 1\)</span></p></li>
+<li><p>For <span class="math notranslate nohighlight">\(\tau \neq 0\)</span>, since <span class="math notranslate nohighlight">\(\mathbf{x}(t)\)</span> and <span class="math notranslate nohighlight">\(\mathbf{x}(t + \tau)\)</span> are uncorrelated over different <span class="math notranslate nohighlight">\(T_c\)</span> intervals, <span class="math notranslate nohighlight">\(R(\tau) = 0\)</span></p></li>
+</ul>
+<p>Hence, the autocorrelation function is:
+$<span class="math notranslate nohighlight">\(
+R(\tau) = 
+\begin{cases} 
+1 &amp; \text{if } \tau = 0 \\
+0 &amp; \text{if } \tau \neq 0 
+\end{cases}
+\)</span>$</p>
+</section>
+<section id="time-averaged-autocorrelation-function">
+<h4>Time-Averaged Autocorrelation Function<a class="headerlink" href="#time-averaged-autocorrelation-function" title="Link to this heading">#</a></h4>
+<p>The time-averaged autocorrelation function over an interval <span class="math notranslate nohighlight">\([0, T]\)</span> is:
+$<span class="math notranslate nohighlight">\(
+\hat{R}_T(\tau) = \frac{1}{T} \int_{0}^{T} \mathbf{x}(t) \mathbf{x}(t + \tau) \, dt
+\)</span>$</p>
+<p>For the process to be ergodic in the autocorrelation function, we need:
+$<span class="math notranslate nohighlight">\(
+\lim_{T \to \infty} \hat{R}_T(\tau) = R(\tau)
+\)</span>$</p>
+<p>Since the process is uncorrelated over different <span class="math notranslate nohighlight">\(T_c\)</span> intervals, <span class="math notranslate nohighlight">\(\hat{R}_T(\tau)\)</span> should also approach the ensemble average <span class="math notranslate nohighlight">\(R(\tau)\)</span>.</p>
+</section>
+</section>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="references">
+<h1>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h1>
+<ul class="simple">
+<li><p>T. Schonhoff and A. Giordano, <em>Detection and Estimation Theory and its Applications</em>. Prentice Hall, 2006 , Chapter 2</p></li>
+</ul>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c1_s14.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Standard Complex Gaussian Vector</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c1_s15_s21_b.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Example: White Noise Process</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Stochastic Process</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interpretation">Interpretation:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stationarity">Stationarity</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strict-stationarity">Strict Stationarity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#strict-cyclo-stationarity">Strict Cyclo-Stationarity</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wide-sense-stationarity-wss">Wide-Sense Stationarity (WSS)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#wide-sense-cyclo-stationarity">Wide-Sense Cyclo-Stationarity</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-random-square-wave">Example: Random Square Wave</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-function-for-real-and-stationary-processes">Autocorrelation Function for Real and Stationary Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-0-leq-tau-leq-t-c">For <span class="math notranslate nohighlight">\(0 \leq \tau \leq T_c\)</span>:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#for-tau-t-c">For <span class="math notranslate nohighlight">\(\tau &gt; T_c\)</span>:</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#power-spectral-density-psd">Power Spectral Density (PSD)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#continuous-stationary-process">Continuous Stationary Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#definition-of-psd">Definition of PSD</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#inverse-relationship">Inverse Relationship</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#properties-and-implications">Properties and Implications</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#discrete-stationary-process">Discrete Stationary Process</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Definition of PSD</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Inverse Relationship</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Properties and Implications</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-psd-of-a-random-square-wave">Example: PSD of a Random Square Wave</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ergodicity">Ergodicity</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ergodicity-in-stationary-processes">Ergodicity in Stationary Processes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mathematical-definition">Mathematical Definition</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practical-implications">Practical Implications</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#challenges-and-assumptions">Challenges and Assumptions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-ergodicity-of-a-random-square-wave">Example: Ergodicity of a Random Square Wave</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-ergodicity">Mean Ergodicity</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#mean-of-the-process">Mean of the Process</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-average-of-the-process">Time Average of the Process</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-function-ergodicity">Autocorrelation Function Ergodicity</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#autocorrelation-function">Autocorrelation Function</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#time-averaged-autocorrelation-function">Time-Averaged Autocorrelation Function</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

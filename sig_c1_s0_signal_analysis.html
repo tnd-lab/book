@@ -1,0 +1,1219 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Signal Analysis &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'sig_c1_s0_signal_analysis';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Spectrum" href="sig_c1_s1_spectrum.html" />
+    <link rel="prev" title="Example: Band-Limited White Gaussian Noise Process" href="pr_c8_s3_Gaussian_process_ex_2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">Signal Analysis</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Signal Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-and-bandpass-signals">Baseband and Bandpass Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-and-bandpass-representation">Baseband and Bandpass Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-for-lowpass-representation">Rationale for Lowpass Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-human-voice-and-signal-transmission">Example: Human Voice and Signal Transmission</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-fundamental-signals">Some Fundamental Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rectangular-signal">Rectangular Signal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sinc-signal">Sinc Signal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sign-signal">Sign Signal</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-signals">Additional Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-step-signal">Unit Step Signal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#triangular-signal">Triangular Signal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-simulation">Python Simulation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transform">Fourier Transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features">Key Features:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Python Simulation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-properties-of-the-fourier-transform">Key Properties of the Fourier Transform</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transform-pairs">Fourier Transform Pairs</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="signal-analysis">
+<h1>Signal Analysis<a class="headerlink" href="#signal-analysis" title="Link to this heading">#</a></h1>
+<p>This chapter delves into the principles and methods of signal analysis, with a focus on both deterministic and random signals.</p>
+<p>It provides a comprehensive overview of various techniques for signal representation and examines the fundamental properties of random variables commonly encountered in communication systems.</p>
+<p>Additionally, the chapter explores the characteristics of random processes, including lowpass and bandpass random processes, which play a critical role in modern communication technologies.</p>
+<section id="baseband-and-bandpass-signals">
+<h2>Baseband and Bandpass Signals<a class="headerlink" href="#baseband-and-bandpass-signals" title="Link to this heading">#</a></h2>
+<p><strong>Communication Process and Signal Translation</strong></p>
+<ul class="simple">
+<li><p>Communication involves transmitting the output of an information source over a communication channel.</p></li>
+<li><p>Typically, the spectral characteristics of the information signal do <strong>not</strong> directly align with the spectral properties of the communication channel. As a result, the signal cannot be directly transmitted.</p></li>
+<li><p>Often, the information signal is a low-frequency (baseband) signal, while the communication channel operates at higher frequencies.</p></li>
+<li><p>To address this mismatch, the information signal is translated to a higher frequency range at the transmitter, aligning with the channel’s properties.</p></li>
+<li><p>This translation process is called <strong>modulation</strong>, where the baseband signal is transformed into a <strong>bandpass modulated signal</strong>.</p></li>
+</ul>
+<section id="baseband-and-bandpass-representation">
+<h3>Baseband and Bandpass Representation<a class="headerlink" href="#baseband-and-bandpass-representation" title="Link to this heading">#</a></h3>
+<p><strong>Definition:</strong><br />
+Any real, narrow-band, high-frequency signal—referred to as a <strong>bandpass signal</strong>—can be equivalently represented as a complex low-frequency signal, known as the <strong>lowpass equivalent</strong> of the bandpass signal.</p>
+</section>
+<section id="rationale-for-lowpass-representation">
+<h3>Rationale for Lowpass Representation<a class="headerlink" href="#rationale-for-lowpass-representation" title="Link to this heading">#</a></h3>
+<p>Processing lowpass signals is preferred because:</p>
+<ul class="simple">
+<li><p><strong>Lower sampling rates</strong> are required for low-frequency signals.</p></li>
+<li><p>This results in reduced data rates for sampled signals, simplifying signal processing algorithms and improving efficiency.</p></li>
+</ul>
+</section>
+<section id="example-human-voice-and-signal-transmission">
+<h3>Example: Human Voice and Signal Transmission<a class="headerlink" href="#example-human-voice-and-signal-transmission" title="Link to this heading">#</a></h3>
+<p><strong>Human Voice as a Low-Frequency Signal</strong><br />
+Our voice is a real-valued <strong>low-frequency signal</strong>, with most of its energy concentrated in the range of <strong>300 Hz to 3.4 kHz</strong> (commonly referred to as the speech bandwidth, approximately <strong>3.1 kHz</strong>).</p>
+<p>To transmit this voice signal over a high-frequency channel, such as Wi-Fi, we must modulate it into a <strong>real-valued bandpass signal</strong> that matches the channel’s frequency range.</p>
+<p><strong>Modulation to Bandpass Signal</strong><br />
+For Wi-Fi operating at <strong>2.4 GHz</strong>, the modulated voice signal will be shifted to a frequency band centered around <strong>2.4 GHz</strong>. For example, after modulation, the signal might occupy a band from <strong>2.39985 GHz to 2.40015 GHz</strong>, maintaining the same bandwidth of <strong>3.1 kHz</strong>.</p>
+<p><strong>Baseband Equivalent for Analysis</strong><br />
+To facilitate signal processing and analysis:</p>
+<ol class="arabic simple">
+<li><p>The <strong>real-valued bandpass signal</strong> is represented as a <strong>baseband equivalent signal</strong>.</p></li>
+<li><p>This baseband signal has both <strong>positive and negative frequencies</strong> centered around zero.</p></li>
+<li><p>The baseband equivalent has a frequency range of <strong>-1.55 kHz to +1.55 kHz</strong>, with a total bandwidth of <strong>3.1 kHz</strong>, effectively halving the frequency range for positive frequencies compared to the original voice signal.</p></li>
+</ol>
+</section>
+<section id="some-fundamental-signals">
+<h3>Some Fundamental Signals<a class="headerlink" href="#some-fundamental-signals" title="Link to this heading">#</a></h3>
+<p>A signal, e.g., <span class="math notranslate nohighlight">\( x(t) \)</span>, can also be referred to as a <em>function</em> or a <em>pulse</em>. For example, in our context, terms like “sinc signal,” “sinc function,” and “sinc pulse” are interchangeable.</p>
+<section id="rectangular-signal">
+<h4>Rectangular Signal<a class="headerlink" href="#rectangular-signal" title="Link to this heading">#</a></h4>
+<p>The <strong>rectangular signal</strong>, denoted as <span class="math notranslate nohighlight">\(\Pi(t)\)</span>, is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\Pi(t) = 
+\begin{cases}
+1 &amp; |t| &lt; \frac{1}{2}, \\
+\frac{1}{2} &amp; t = \pm\frac{1}{2}, \\
+0 &amp; \text{otherwise}.
+\end{cases}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Often used in baseband systems to model pulse-like signals or time-domain windows.</p></li>
+<li><p>It serves as a basic representation of data pulses in digital communication.</p></li>
+</ul>
+</section>
+<section id="sinc-signal">
+<h4>Sinc Signal<a class="headerlink" href="#sinc-signal" title="Link to this heading">#</a></h4>
+<p>The <strong>sinc function</strong>, represented as <span class="math notranslate nohighlight">\(\text{sinc}(t)\)</span>, is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\text{sinc}(t) = 
+\begin{cases}
+\frac{\sin(\pi t)}{\pi t} &amp; t \neq 0, \\
+1 &amp; t = 0.
+\end{cases}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>The sinc function is the ideal baseband signal in frequency-domain analysis because it corresponds to a perfect rectangular pulse in the frequency domain.</p></li>
+<li><p>It is crucial for understanding bandwidth-limited signals and interpolation.</p></li>
+<li><p>The sinc function is pivotal in frequency domain analysis and is the Fourier transform of the rectangular pulse.</p></li>
+</ul>
+</section>
+<section id="sign-signal">
+<h4>Sign Signal<a class="headerlink" href="#sign-signal" title="Link to this heading">#</a></h4>
+<p>The <strong>sign function</strong>, <span class="math notranslate nohighlight">\(\text{sgn}(t)\)</span>, is defined as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\text{sgn}(t) = 
+\begin{cases}
+1 &amp; t &gt; 0, \\
+-1 &amp; t &lt; 0, \\
+0 &amp; t = 0.
+\end{cases}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Used in representing the polarity of baseband signals.</p></li>
+<li><p>Commonly appears in analytical representations of signal switching or thresholding.</p></li>
+</ul>
+</section>
+</section>
+<section id="additional-signals">
+<h3>Additional Signals<a class="headerlink" href="#additional-signals" title="Link to this heading">#</a></h3>
+<section id="unit-step-signal">
+<h4>Unit Step Signal<a class="headerlink" href="#unit-step-signal" title="Link to this heading">#</a></h4>
+<p>The <strong>unit step function</strong>, denoted <span class="math notranslate nohighlight">\(u_{-1}(t)\)</span>, is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+u_{-1}(t) = 
+\begin{cases}
+1 &amp; t &gt; 0, \\
+\frac{1}{2} &amp; t = 0, \\
+0 &amp; t &lt; 0.
+\end{cases}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Fundamental for modeling signals that start or change at a specific time, e.g., a sudden transition.</p></li>
+<li><p>Widely used in system analysis for determining responses to step inputs.</p></li>
+</ul>
+</section>
+<section id="triangular-signal">
+<h4>Triangular Signal<a class="headerlink" href="#triangular-signal" title="Link to this heading">#</a></h4>
+<p>The <strong>triangular signal</strong>, <span class="math notranslate nohighlight">\(\Lambda(t)\)</span>, results from the convolution of two rectangular pulses:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\Lambda(t) = \Pi(t) \circledast \Pi(t) = 
+\begin{cases}
+t + 1 &amp; -1 \leq t &lt; 0, \\
+-t + 1 &amp; 0 \leq t &lt; 1, \\
+0 &amp; \text{otherwise}.
+\end{cases}
+\end{split}\]</div>
+<ul class="simple">
+<li><p>Represents smoothed pulses or transitions in baseband signals.</p></li>
+<li><p>Frequently used in interpolation and windowing in digital signal processing.</p></li>
+</ul>
+<p>It is noted that:</p>
+<ul class="simple">
+<li><p>The foundational signals can be used to represent baseband and passband signals.</p></li>
+<li><p>These foundational signals serve as building blocks in the analysis and representation of more complex signal behaviors in both time and frequency domains.</p></li>
+</ul>
+</section>
+<section id="python-simulation">
+<h4>Python Simulation<a class="headerlink" href="#python-simulation" title="Link to this heading">#</a></h4>
+<p><strong>Continuous-Time Rectangular Signal</strong></p>
+<p>The rectangular signal <span class="math notranslate nohighlight">\( \Pi(t) \)</span> in continuous time is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\Pi(t) = 
+\begin{cases} 
+1 &amp; \text{if } |t| &lt; \frac{T}{2}, \\\\
+0.5 &amp; \text{if } |t| = \frac{T}{2}, \\\\
+0 &amp; \text{if } |t| &gt; \frac{T}{2}.
+\end{cases}
+\end{split}\]</div>
+<p><strong>Discrete-Time Representation Using Delta Function</strong></p>
+<p>In the discrete-time simulation, the rectangular signal is represented as a sum of scaled delta functions:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pi(t) = \Delta t \sum_{n} \delta(t - n \Delta t) \cdot a_n
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\Delta t = \frac{T}{f_s}\)</span> is the time step based on the sample rate <span class="math notranslate nohighlight">\( f_s \)</span>.</p></li>
+<li><p><span class="math notranslate nohighlight">\(a_n\)</span> is the amplitude at each sample point <span class="math notranslate nohighlight">\(t = n \Delta t\)</span>, defined as:
+$<span class="math notranslate nohighlight">\(
+a_n =
+\begin{cases} 
+1 &amp; \text{if } |t_n| &lt; \frac{T}{2}, \\\\
+0.5 &amp; \text{if } |t_n| = \frac{T}{2}, \\\\
+0 &amp; \text{if } |t_n| &gt; \frac{T}{2}.
+\end{cases}
+\)</span>$</p></li>
+<li><p><span class="math notranslate nohighlight">\(\delta(t - n \Delta t)\)</span> is the Dirac delta function, representing the signal at discrete times <span class="math notranslate nohighlight">\(t = n \Delta t\)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Define the duration of the rectangular signal</span>
+<span class="n">T</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Duration of the rectangular signal</span>
+
+<span class="c1"># Define the sample rate</span>
+<span class="n">f_s</span> <span class="o">=</span> <span class="mi">1000</span>  <span class="c1"># Sample rate in Hz (samples per second)</span>
+
+<span class="n">dt</span> <span class="o">=</span> <span class="n">T</span> <span class="o">/</span> <span class="n">f_s</span>  <span class="c1"># Time step based on the duration and sample rate</span>
+
+<span class="c1"># Define the time vector</span>
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="n">T</span><span class="p">,</span> <span class="n">T</span> <span class="o">+</span> <span class="n">dt</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>  <span class="c1"># Time vector from -T to T with step size dt</span>
+
+<span class="c1"># Initialize the rectangular signal with zeros</span>
+<span class="n">rect_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="c1"># Apply the conditions for the rectangular pulse</span>
+<span class="n">rect_t</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">T</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>  <span class="c1"># Set value to 1 where |t| &lt; T/2</span>
+<span class="n">rect_t</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">==</span> <span class="n">T</span> <span class="o">/</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">0.5</span>  <span class="c1"># Set value to 1/2 where t = ±T/2</span>
+
+<span class="c1"># Plot the rectangular signal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">rect_t</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Rectangular Signal $</span><span class="se">\\</span><span class="s1">Pi(t)$ with Duration T=1&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="n">T</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">T</span> <span class="o">/</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Change Points&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Show the plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/dd68210efe0f69843d9817e1f27b0a9acb3446ae03bfc5d0689428ffb6a86155.png" src="_images/dd68210efe0f69843d9817e1f27b0a9acb3446ae03bfc5d0689428ffb6a86155.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convolve the rectangular signal with itself to generate the triangular signal</span>
+<span class="n">triangle_t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">convolve</span><span class="p">(</span><span class="n">rect_t</span><span class="p">,</span> <span class="n">rect_t</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">dt</span>  <span class="c1"># Scale by sample spacing</span>
+
+<span class="c1"># Define a new time vector for the convolved signal</span>
+<span class="n">t_conv</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">t</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">t</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="nb">len</span><span class="p">(</span><span class="n">triangle_t</span><span class="p">))</span>
+
+<span class="c1"># Normalize the triangular signal</span>
+<span class="n">triangle_t</span> <span class="o">=</span> <span class="n">triangle_t</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">triangle_t</span><span class="p">)</span>
+
+<span class="c1"># Plot for triangular signal</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t_conv</span><span class="p">,</span> <span class="n">triangle_t</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Triangular Signal from Convolution&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Time t&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
+
+<span class="c1"># Show the plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/1d5668db1ed697786d0040e1019a0a019a5ca573567d4c1817c45b09781a8abe.png" src="_images/1d5668db1ed697786d0040e1019a0a019a5ca573567d4c1817c45b09781a8abe.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="fourier-transform">
+<h3>Fourier Transform<a class="headerlink" href="#fourier-transform" title="Link to this heading">#</a></h3>
+<p>The <strong>Fourier Transform</strong> is a mathematical operation that transforms a time-domain signal into its frequency-domain representation. It decomposes a signal into its constituent sinusoidal components, providing information about the signal’s amplitude and phase at different frequencies.</p>
+<p>For a continuous-time signal <span class="math notranslate nohighlight">\(x(t)\)</span>, the Fourier Transform <span class="math notranslate nohighlight">\(X(f)\)</span> is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+X(f) = \int_{-\infty}^{\infty} x(t) e^{-j 2 \pi f t} \, dt
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(X(f)\)</span> is the Fourier Transform of <span class="math notranslate nohighlight">\(x(t)\)</span>,</p></li>
+<li><p><span class="math notranslate nohighlight">\(f\)</span> represents the frequency in hertz,</p></li>
+<li><p><span class="math notranslate nohighlight">\(j\)</span> is the imaginary unit (<span class="math notranslate nohighlight">\(j^2 = -1\)</span>).</p></li>
+</ul>
+<p>The inverse Fourier Transform reconstructs the time-domain signal from its frequency-domain representation:</p>
+<div class="math notranslate nohighlight">
+\[
+x(t) = \int_{-\infty}^{\infty} X(f) e^{j 2 \pi f t} \, df
+\]</div>
+<section id="key-features">
+<h4>Key Features:<a class="headerlink" href="#key-features" title="Link to this heading">#</a></h4>
+<ul class="simple">
+<li><p>The Fourier Transform converts time-domain signals into their frequency-domain components, making it easier to analyze signals in terms of their spectral content.</p></li>
+<li><p>It is widely used in engineering, physics, and signal processing for analyzing systems and signals.</p></li>
+</ul>
+</section>
+<section id="id1">
+<h4>Python Simulation<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
+<p>We utilize the <code class="docutils literal notranslate"><span class="pre">rect_t</span></code> signal simulated above.</p>
+<p>For the theoretical Fourier Transform of a rectangular pulse, we use a rectangular pulse of duration <span class="math notranslate nohighlight">\(T\)</span>, the theoretical Fourier Transform is:</p>
+<div class="math notranslate nohighlight">
+\[
+\text{FT}(\Pi(t)) = T \cdot \text{sinc}(f \cdot T)
+\]</div>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(T\)</span> is the duration of the rectangular pulse.</p></li>
+<li><p><span class="math notranslate nohighlight">\(\text{sinc}(x) = \frac{\sin(\pi x)}{\pi x}\)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Compute the numerical Fourier Transform of the rectangular signal using FFT</span>
+<span class="n">N</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">rect_t</span><span class="p">)</span>  <span class="c1"># Number of points in the signal</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>  <span class="c1"># Frequency vector</span>
+<span class="n">fft_rect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">rect_t</span><span class="p">)</span>  <span class="c1"># FFT of the rectangular signal</span>
+<span class="n">fft_rect_magnitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft_rect</span><span class="p">)</span>  <span class="c1"># Magnitude of the FFT</span>
+
+<span class="c1"># Sort frequencies and corresponding FFT results for better visualization</span>
+<span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">frequencies</span><span class="p">)</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="n">frequencies</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+<span class="n">fft_rect_magnitude</span> <span class="o">=</span> <span class="n">fft_rect_magnitude</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+
+<span class="c1"># Define the theoretical Fourier Transform using the sinc function</span>
+<span class="n">theoretical_ft</span> <span class="o">=</span> <span class="n">T</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sinc</span><span class="p">(</span><span class="n">frequencies</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Plot the Fourier Transform</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+
+<span class="c1"># Subplot for numerical and theoretical Fourier Transform</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">fft_rect_magnitude</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Numerical FT (FFT)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">theoretical_ft</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical FT (sinc)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fourier Transform of Rectangular Signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>  <span class="c1"># Focus on lower frequencies</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Show the plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/ac6fcaf649c310de203afc08d155bf59e5d2af598f28e17dafe1a616ad848b85.png" src="_images/ac6fcaf649c310de203afc08d155bf59e5d2af598f28e17dafe1a616ad848b85.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Normalize the numerical Fourier Transform to match the theoretical FT</span>
+<span class="n">fft_rect_magnitude</span> <span class="o">=</span> <span class="n">fft_rect_magnitude</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">fft_rect_magnitude</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span>
+
+<span class="c1"># Sort frequencies and corresponding FFT results for better visualization</span>
+<span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">frequencies</span><span class="p">)</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="n">frequencies</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+<span class="n">fft_rect_magnitude</span> <span class="o">=</span> <span class="n">fft_rect_magnitude</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+
+<span class="c1"># Define the theoretical Fourier Transform using the sinc function</span>
+<span class="n">theoretical_ft</span> <span class="o">=</span> <span class="n">T</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sinc</span><span class="p">(</span><span class="n">frequencies</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Plot the normalized Fourier Transform</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">fft_rect_magnitude</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Normalized/Manipulated Numerical FT (FFT)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">theoretical_ft</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical FT (sinc)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fourier Transform of Rectangular Signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>  <span class="c1"># Focus on lower frequencies</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Show the plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/41bc3e6c574987f1208dc282aa43c0f967cc02991bd98935f3b98769b93e65fc.png" src="_images/41bc3e6c574987f1208dc282aa43c0f967cc02991bd98935f3b98769b93e65fc.png" />
+</div>
+</div>
+<p><strong>Zero-Padding the Signal</strong></p>
+<p>Adding zeros to the signal increases the number of points in the FFT computation, leading to a higher resolution in the frequency domain. This does not alter the actual spectrum but makes the plot appear smoother.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Apply zero-padding to the rectangular signal</span>
+<span class="n">padding_length</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">rect_t</span><span class="p">)</span>  <span class="c1"># Add zeros to make the signal length 10 times longer</span>
+<span class="n">fft_rect</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft</span><span class="p">(</span><span class="n">rect_t</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="n">padding_length</span><span class="p">)</span>  <span class="c1"># FFT with zero-padding</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftfreq</span><span class="p">(</span><span class="n">padding_length</span><span class="p">,</span> <span class="n">dt</span><span class="p">)</span>  <span class="c1"># Adjusted frequency vector</span>
+<span class="n">fft_rect_magnitude</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft_rect</span><span class="p">)</span>  <span class="c1"># Magnitude of the FFT</span>
+
+<span class="c1"># Normalize the numerical Fourier Transform to match the theoretical FT</span>
+<span class="n">fft_rect_magnitude</span> <span class="o">=</span> <span class="n">fft_rect_magnitude</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">fft_rect_magnitude</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span>
+
+<span class="c1"># Sort frequencies and corresponding FFT results for better visualization</span>
+<span class="n">sorted_indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">frequencies</span><span class="p">)</span>
+<span class="n">frequencies</span> <span class="o">=</span> <span class="n">frequencies</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+<span class="n">fft_rect_magnitude</span> <span class="o">=</span> <span class="n">fft_rect_magnitude</span><span class="p">[</span><span class="n">sorted_indices</span><span class="p">]</span>
+
+<span class="c1"># Define the theoretical Fourier Transform using the sinc function</span>
+<span class="n">theoretical_ft</span> <span class="o">=</span> <span class="n">T</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sinc</span><span class="p">(</span><span class="n">frequencies</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span>
+
+<span class="c1"># Plot the rectangular signal and Fourier Transform</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">fft_rect_magnitude</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Normalized/Manipulated Numerical FT (FFT)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">frequencies</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">theoretical_ft</span><span class="p">),</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical FT (sinc)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Fourier Transform of Rectangular Signal&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Frequency (Hz)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Magnitude&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>  <span class="c1"># Focus on lower frequencies</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="c1"># Show the plots</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4705810d2fc9ea749ef276abc29e7aa339b8450bcc0bd57f90da5fb134500c0b.png" src="_images/4705810d2fc9ea749ef276abc29e7aa339b8450bcc0bd57f90da5fb134500c0b.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="key-properties-of-the-fourier-transform">
+<h3>Key Properties of the Fourier Transform<a class="headerlink" href="#key-properties-of-the-fourier-transform" title="Link to this heading">#</a></h3>
+<p><strong>Linearity</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{F}\{\alpha x_1(t) + \beta x_2(t)\} = \alpha X_1(f) + \beta X_2(f)
+\]</div>
+<p>The Fourier Transform of a linear combination of signals is the same linear combination of their individual Fourier Transforms.</p>
+<p><strong>Duality</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{F}\{X(t)\} = x(-f)
+\]</div>
+<p>The roles of the time and frequency domains are interchangeable under duality.</p>
+<p><strong>Conjugacy</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{F}\{x^*(t)\} = X^*(-f)
+\]</div>
+<p>The Fourier Transform of the complex conjugate of a signal is the conjugate of its Fourier Transform with a reversed frequency.</p>
+<p><strong>Time-Scaling</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{F}\{x(at)\} = \frac{1}{|a|} X\left(\frac{f}{a}\right)
+\]</div>
+<p>Scaling the time-domain signal compresses or stretches its frequency-domain representation inversely.</p>
+<p><strong>Time-Shift</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{F}\{x(t - t_0)\} = e^{-j2\pi f t_0} X(f)
+\]</div>
+<p>Shifting a signal in time introduces a phase shift in the frequency domain.</p>
+<p><strong>Modulation</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{F}\{e^{j2\pi f_0 t} x(t)\} = X(f - f_0)
+\]</div>
+<p>Multiplying a signal by a complex exponential shifts its spectrum in frequency.</p>
+<p><strong>Convolution</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{F}\{x(t) \ast y(t)\} = X(f) Y(f)
+\]</div>
+<p>The Fourier Transform of the convolution of two signals is the product of their Fourier Transforms.</p>
+<p><strong>Multiplication</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{F}\{x(t)y(t)\} = X(f) \ast Y(f)
+\]</div>
+<p>The Fourier Transform of the product of two signals is the convolution of their Fourier Transforms.</p>
+<p><strong>Differentiation</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{F}\left\{\frac{d^n x(t)}{dt^n}\right\} = (j2\pi f)^n X(f)
+\]</div>
+<p>Differentiating a signal <span class="math notranslate nohighlight">\(n\)</span> times in the time domain multiplies its Fourier Transform by <span class="math notranslate nohighlight">\((j2\pi f)^n\)</span>.</p>
+<p><strong>Differentiation in Frequency</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{F}\{t^n x(t)\} = \left(\frac{j}{2\pi}\right)^n \frac{d^n X(f)}{df^n}
+\]</div>
+<p>Multiplying a signal by <span class="math notranslate nohighlight">\(t^n\)</span> in the time domain corresponds to <span class="math notranslate nohighlight">\(n\)</span>-th order differentiation of its Fourier Transform.</p>
+<p><strong>Integration</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\mathcal{F}\left\{\int_{-\infty}^{t} x(\tau) d\tau\right\} = \frac{X(f)}{j2\pi f} + \frac{1}{2} X(0)\delta(f)
+\]</div>
+<p>Integration in the time domain introduces a scaling factor in the frequency domain.</p>
+<p><strong>Parseval’s Theorem</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\int_{-\infty}^{\infty} x(t) y^*(t) dt = \int_{-\infty}^{\infty} X(f) Y^*(f) df
+\]</div>
+<p>The energy of the signal in the time domain equals the energy in the frequency domain.</p>
+<p><strong>Rayleigh’s Theorem</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\int_{-\infty}^{\infty} |x(t)|^2 dt = \int_{-\infty}^{\infty} |X(f)|^2 df
+\]</div>
+<p>The total energy of the signal is conserved between the time and frequency domains.</p>
+</section>
+<section id="fourier-transform-pairs">
+<h3>Fourier Transform Pairs<a class="headerlink" href="#fourier-transform-pairs" title="Link to this heading">#</a></h3>
+<p>Fundamental relationships between signals in the time domain and their counterparts in the frequency domain.</p>
+<p><strong>Impulse and Constant Functions</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\delta(t) \overset{\mathcal{F}}{\longleftrightarrow} 1
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+1 \overset{\mathcal{F}}{\longleftrightarrow} \delta(f)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\delta(t - t_0) \overset{\mathcal{F}}{\longleftrightarrow} e^{-j2\pi f t_0}
+\]</div>
+<p><strong>Exponential and Trigonometric Functions</strong></p>
+<div class="math notranslate nohighlight">
+\[
+e^{j2\pi f_0 t} \overset{\mathcal{F}}{\longleftrightarrow} \delta(f - f_0)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\cos(2\pi f_0 t) \overset{\mathcal{F}}{\longleftrightarrow} \frac{1}{2}\delta(f - f_0) + \frac{1}{2}\delta(f + f_0)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\sin(2\pi f_0 t) \overset{\mathcal{F}}{\longleftrightarrow} \frac{1}{2j}\delta(f - f_0) - \frac{1}{2j}\delta(f + f_0)
+\]</div>
+<p><strong>Rectangular, Sinc, and Triangular Functions</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\Pi(t) \overset{\mathcal{F}}{\longleftrightarrow} \text{sinc}(f)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{sinc}(t) \overset{\mathcal{F}}{\longleftrightarrow} \Pi(f)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\Lambda(t) \overset{\mathcal{F}}{\longleftrightarrow} \text{sinc}^2(f)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\text{sinc}^2(t) \overset{\mathcal{F}}{\longleftrightarrow} \Lambda(f)
+\]</div>
+<p><strong>Exponentially Decaying Signals</strong></p>
+<div class="math notranslate nohighlight">
+\[
+e^{-\alpha t} u_{-1}(t), \alpha &gt; 0 \overset{\mathcal{F}}{\longleftrightarrow} \frac{1}{\alpha + j2\pi f}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+t e^{-\alpha t} u_{-1}(t), \alpha &gt; 0 \overset{\mathcal{F}}{\longleftrightarrow} \frac{1}{(\alpha + j2\pi f)^2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+e^{-\alpha|t|}, \alpha &gt; 0 \overset{\mathcal{F}}{\longleftrightarrow} \frac{2\alpha}{\alpha^2 + (2\pi f)^2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+e^{-\pi t^2} \overset{\mathcal{F}}{\longleftrightarrow} e^{-\pi f^2}
+\]</div>
+<p><strong>Step and Sign Functions</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\text{sgn}(t) \overset{\mathcal{F}}{\longleftrightarrow} \frac{1}{j\pi f}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+u_{-1}(t) \overset{\mathcal{F}}{\longleftrightarrow} \frac{1}{2}\delta(f) + \frac{1}{j2\pi f}
+\]</div>
+<p><strong>Differentiation and Higher-Order Operations</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\delta'(t) \overset{\mathcal{F}}{\longleftrightarrow} j2\pi f
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\delta^{(n)}(t) \overset{\mathcal{F}}{\longleftrightarrow} (j2\pi f)^n
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\frac{1}{t} \overset{\mathcal{F}}{\longleftrightarrow} -j\pi \text{sgn}(f)
+\]</div>
+<p><strong>Periodic Impulse Train</strong></p>
+<div class="math notranslate nohighlight">
+\[
+\sum_{n=-\infty}^{\infty} \delta(t - nT_0) \overset{\mathcal{F}}{\longleftrightarrow} \frac{1}{T_0} \sum_{n=-\infty}^{\infty} \delta\left(f - \frac{n}{T_0}\right)
+\]</div>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pr_c8_s3_Gaussian_process_ex_2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Example: Band-Limited White Gaussian Noise Process</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="sig_c1_s1_spectrum.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Spectrum</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-and-bandpass-signals">Baseband and Bandpass Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseband-and-bandpass-representation">Baseband and Bandpass Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-for-lowpass-representation">Rationale for Lowpass Representation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-human-voice-and-signal-transmission">Example: Human Voice and Signal Transmission</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#some-fundamental-signals">Some Fundamental Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#rectangular-signal">Rectangular Signal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sinc-signal">Sinc Signal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sign-signal">Sign Signal</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#additional-signals">Additional Signals</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unit-step-signal">Unit Step Signal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#triangular-signal">Triangular Signal</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#python-simulation">Python Simulation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transform">Fourier Transform</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#key-features">Key Features:</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Python Simulation</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#key-properties-of-the-fourier-transform">Key Properties of the Fourier Transform</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fourier-transform-pairs">Fourier Transform Pairs</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

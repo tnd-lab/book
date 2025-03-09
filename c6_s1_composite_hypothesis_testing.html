@@ -1,0 +1,1062 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Composite Hypothesis Testing &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c6_s1_composite_hypothesis_testing';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Unknown Phase" href="c6_s3_unknown_phase.html" />
+    <link rel="prev" title="Detection of Signals with Random Parameters" href="c6_s0_intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s8_consistent_estimator.html">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Composite Hypothesis Testing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-hypothesis-decision">Objective: Hypothesis Decision</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-1-known-a-priori-probability-density-functions">Condition 1: Known <em>A Priori</em> Probability Density Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-2-unknown-density-functions">Condition 2: Unknown Density Functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-density-functions">Known Density Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-risk">Bayes Risk</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplified-bayes-risk-expression">Simplified Bayes Risk Expression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-ratio">Likelihood Ratio</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#minimizing-bayes-risk">Minimizing Bayes Risk</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-ratio-and-decision-rule">Likelihood Ratio and Decision Rule</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unknown-density-functions">Unknown Density Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-technique">Maximum-Likelihood Technique</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Unknown Density Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-approach">Maximum-Likelihood Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-glrt">Advantages of GLRT</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caution-with-glrt">Caution with GLRT</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#glrt-receiver-structure">GLRT Receiver Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#least-favorable-density-function-technique">Least Favorable Density-Function Technique</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-1">Example 6.1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Least Favorable Density-Function Technique</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-application-of-lfdf-in-detection">Example: Application of LFDF in Detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-likelihood-ratio-technique">Conditional Likelihood-Ratio Technique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Conditional Likelihood Ratio Technique</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="composite-hypothesis-testing">
+<h1>Composite Hypothesis Testing<a class="headerlink" href="#composite-hypothesis-testing" title="Link to this heading">#</a></h1>
+<p>We consider a <strong>composite hypothesis testing</strong> problem, where each hypothesis, <span class="math notranslate nohighlight">\( H_0 \)</span> or <span class="math notranslate nohighlight">\( H_1 \)</span>, has a set of associated random parameters, represented by vectors <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>, respectively.</p>
+<p>Specifically, let <span class="math notranslate nohighlight">\( \vec{\theta}_0 = \{ \theta_{01}, \ldots, \theta_{0m} \} \)</span> represent a vector of random parameters associated with hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 = \{ \theta_{11}, \ldots, \theta_{1n} \} \)</span> be a vector of random parameters associated with <span class="math notranslate nohighlight">\( H_1 \)</span>.</p>
+<p><strong>Parameter Vectors <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span></strong></p>
+<p>For each hypothesis, a vector of parameters is associated with the signal model. These parameters can include elements like <strong>attenuation</strong>, <strong>time of arrival</strong>, <strong>frequency offset</strong>, etc.</p>
+<p>For example, <span class="math notranslate nohighlight">\( \theta_{01} \)</span> might be the attenuation factor for the signal <span class="math notranslate nohighlight">\( s_0(t) \)</span> under hypothesis <span class="math notranslate nohighlight">\( H_0 \)</span>, while <span class="math notranslate nohighlight">\( \theta_{1n} \)</span> could be the time of arrival for the signal <span class="math notranslate nohighlight">\( s_1(t) \)</span> under hypothesis <span class="math notranslate nohighlight">\( H_1 \)</span>.</p>
+<p>The parameter vectors for <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span> <em>do not necessarily</em> have the same number of elements, which means <span class="math notranslate nohighlight">\( m \neq n \)</span>. This flexibility allows each hypothesis to have a different structure and number of parameters.</p>
+<p><strong>Measurement Model</strong></p>
+<p>The measurement vector <span class="math notranslate nohighlight">\( \vec{y} = [y_1, y_2, \ldots, y_k] \)</span> represents a set of <span class="math notranslate nohighlight">\( k \)</span> complex observations, which depend on the hypothesis (i.e., whether <span class="math notranslate nohighlight">\( H_0 \)</span> or <span class="math notranslate nohighlight">\( H_1 \)</span> holds) and the associated random parameters <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> or <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>.</p>
+<p>Each measurement <span class="math notranslate nohighlight">\( y_j \)</span> under hypothesis <span class="math notranslate nohighlight">\( H_i \)</span> is modeled as:</p>
+<div class="math notranslate nohighlight">
+\[
+y_j = s_{ij} + z_j, \quad i = 0, 1, \quad j = 1, \ldots, k
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( s_{ij} \)</span> represents the <span class="math notranslate nohighlight">\( j \)</span>-th sample of the signal under <span class="math notranslate nohighlight">\( H_i \)</span> and <span class="math notranslate nohighlight">\( z_j \)</span> is the noise, typically modeled as a complex Gaussian random variable.</p>
+<p>Note again that the set of measurements <span class="math notranslate nohighlight">\( \vec{y} \)</span> is dependent upon the hypothesis and the values of the random parameters.</p>
+<p><strong>Conditional Probabilities</strong></p>
+<p>The probability distributions <span class="math notranslate nohighlight">\( p_0(\vec{y} | \vec{\theta}_0) \)</span> and <span class="math notranslate nohighlight">\( p_1(\vec{y} | \vec{\theta}_1) \)</span> describe the likelihood of observing the measurement vector <span class="math notranslate nohighlight">\( \vec{y} \)</span> given the parameter vectors <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> or <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span> under hypotheses <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>, respectively.</p>
+<div class="math notranslate nohighlight">
+\[
+p_0(\vec{y} | \vec{\theta}_0) = p(y_1, y_2, \ldots, y_k | H_0, \theta_{01}, \ldots, \theta_{0m})
+\]</div>
+<p>and</p>
+<div class="math notranslate nohighlight">
+\[
+p_1(\vec{y} | \vec{\theta}_1) = p(y_1, y_2, \ldots, y_k | H_1, \theta_{11}, \ldots, \theta_{1n})
+\]</div>
+<p>These likelihood functions are essential in determining which hypothesis best explains the observed data.</p>
+<section id="objective-hypothesis-decision">
+<h2>Objective: Hypothesis Decision<a class="headerlink" href="#objective-hypothesis-decision" title="Link to this heading">#</a></h2>
+<p>The goal is to decide between hypotheses <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span> based on the observed measurements <span class="math notranslate nohighlight">\( \vec{y} \)</span>.</p>
+<p>The approach depends on the availability of information about the parameter vectors <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>:</p>
+<section id="condition-1-known-a-priori-probability-density-functions">
+<h3>Condition 1: Known <em>A Priori</em> Probability Density Functions<a class="headerlink" href="#condition-1-known-a-priori-probability-density-functions" title="Link to this heading">#</a></h3>
+<p>If we know the <strong>a priori probability density functions</strong> of <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>, we can use <strong>Bayesian methods</strong> to compute posterior probabilities for each hypothesis given <span class="math notranslate nohighlight">\( \vec{y} \)</span>.</p>
+<p>This approach allows integrating the parameter uncertainty directly, leading to an optimal decision rule in a Bayesian sense.</p>
+</section>
+<section id="condition-2-unknown-density-functions">
+<h3>Condition 2: Unknown Density Functions<a class="headerlink" href="#condition-2-unknown-density-functions" title="Link to this heading">#</a></h3>
+<p>If one or both density functions are unknown, we face a more complex problem.</p>
+<p>In this case, we might resort to <strong>robust</strong> or <strong>generalized likelihood ratio</strong> approaches, which make fewer assumptions about the exact form of the parameter distributions.</p>
+<p>For example, if the parameters are completely unknown:</p>
+<ul class="simple">
+<li><p><strong>maximum likelihood estimation (MLE)</strong> could be used to estimate the parameters from the observed data</p></li>
+<li><p>and then these estimates could be plugged into the likelihood functions for hypothesis testing.</p></li>
+</ul>
+</section>
+</section>
+<section id="known-density-functions">
+<h2>Known Density Functions<a class="headerlink" href="#known-density-functions" title="Link to this heading">#</a></h2>
+<p>We review the concept of <strong>Bayes risk</strong> in the context of composite hypothesis testing, where the density functions of the parameter vectors <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span> are known.</p>
+<section id="bayes-risk">
+<h3>Bayes Risk<a class="headerlink" href="#bayes-risk" title="Link to this heading">#</a></h3>
+<p>The <strong>Bayes risk</strong> provides a measure of the expected cost of a decision-making process that considers both hypotheses and the uncertainties in their associated parameters.</p>
+<p><strong>Decision Regions <span class="math notranslate nohighlight">\( R_0 \)</span> and <span class="math notranslate nohighlight">\( R_1 \)</span></strong></p>
+<p><span class="math notranslate nohighlight">\( R_0 \)</span> and <span class="math notranslate nohighlight">\( R_1 \)</span> represent the regions in the measurement space where the decision rules favor hypotheses <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>, respectively.</p>
+<p>For instance, if <span class="math notranslate nohighlight">\( \vec{y} \in R_0 \)</span>, we decide on <span class="math notranslate nohighlight">\( H_0 \)</span>, and if <span class="math notranslate nohighlight">\( \vec{y} \in R_1 \)</span>, we decide on <span class="math notranslate nohighlight">\( H_1 \)</span>.</p>
+<p><strong>Costs Associated with Decisions</strong></p>
+<p>The cost terms <span class="math notranslate nohighlight">\( C_{00} \)</span>, <span class="math notranslate nohighlight">\( C_{10} \)</span>, <span class="math notranslate nohighlight">\( C_{01} \)</span>, and <span class="math notranslate nohighlight">\( C_{11} \)</span> represent the costs of making a correct or incorrect decision under each hypothesis.</p>
+<p>These costs can vary with the values of <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>, reflecting the influence of the parameter uncertainties.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( C_{00}(\vec{\theta}_0) \)</span>: Cost of deciding <span class="math notranslate nohighlight">\( H_0 \)</span> when <span class="math notranslate nohighlight">\( H_0 \)</span> is true.</p></li>
+<li><p><span class="math notranslate nohighlight">\( C_{10}(\vec{\theta}_0) \)</span>: Cost of deciding <span class="math notranslate nohighlight">\( H_1 \)</span> when <span class="math notranslate nohighlight">\( H_0 \)</span> is true (Type I error).</p></li>
+<li><p><span class="math notranslate nohighlight">\( C_{01}(\vec{\theta}_1) \)</span>: Cost of deciding <span class="math notranslate nohighlight">\( H_0 \)</span> when <span class="math notranslate nohighlight">\( H_1 \)</span> is true (Type II error).</p></li>
+<li><p><span class="math notranslate nohighlight">\( C_{11}(\vec{\theta}_1) \)</span>: Cost of deciding <span class="math notranslate nohighlight">\( H_1 \)</span> when <span class="math notranslate nohighlight">\( H_1 \)</span> is true.</p></li>
+</ul>
+<p><strong>Bayes Risk Expression</strong></p>
+<p>The Bayes risk <span class="math notranslate nohighlight">\( r \)</span> is the expected cost across all possible outcomes.</p>
+<p>It’s computed by integrating over the parameter vectors <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>, as well as over all possible measurements <span class="math notranslate nohighlight">\( \vec{y} \)</span>, within the respective decision regions <span class="math notranslate nohighlight">\( R_0 \)</span> and <span class="math notranslate nohighlight">\( R_1 \)</span>.</p>
+<p>The Bayes risk is expressed as:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \boxed{
+\begin{align*}
+r &amp;= \pi_0 \int_{R_0} \int_{\vec{\theta}_0} p_0(\vec{y} | \vec{\theta}_0) p(\vec{\theta}_0) C_{00}(\vec{\theta}_0) \, d\vec{\theta}_0 \, d\vec{y} \\
+&amp;+ \pi_0 \int_{R_1} \int_{\vec{\theta}_0} p_0(\vec{y} | \vec{\theta}_0) p(\vec{\theta}_0) C_{10}(\vec{\theta}_0) \, d\vec{\theta}_0 \, d\vec{y} \\
+&amp;+ \pi_1 \int_{R_0} \int_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) C_{01}(\vec{\theta}_1) \, d\vec{\theta}_1 \, d\vec{y} \\
+&amp;+ \pi_1 \int_{R_1} \int_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) C_{11}(\vec{\theta}_1) \, d\vec{\theta}_1 \, d\vec{y}
+\end{align*}
+}
+\end{split}\]</div>
+<p>where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\( p(\vec{\theta}_0) \)</span> and <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span> are the <span class="math notranslate nohighlight">\( m \)</span>-fold and <span class="math notranslate nohighlight">\( n \)</span>-fold density functions of <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>, respectively</p></li>
+<li><p><span class="math notranslate nohighlight">\( \pi_i \)</span> is again <span class="math notranslate nohighlight">\( P(H_i) \)</span> for <span class="math notranslate nohighlight">\( i = 0, 1 \)</span>.</p></li>
+</ul>
+<p>For simplicity in notation, the conditional PDFs are written in the last equation as</p>
+<div class="math notranslate nohighlight">
+\[ 
+p_i(\vec{y} | \vec{\theta}_i, H_i) = p_i(\vec{y} | \vec{\theta}_i) 
+\]</div>
+<p>The Bayes risk considers the conditional probabilities <span class="math notranslate nohighlight">\( p_0(\vec{y} | \vec{\theta}_0) \)</span> and <span class="math notranslate nohighlight">\( p_1(\vec{y} | \vec{\theta}_1) \)</span> of observing <span class="math notranslate nohighlight">\( \vec{y} \)</span> given the parameters under each hypothesis, weighted by the prior probabilities <span class="math notranslate nohighlight">\( \pi_0 \)</span> and <span class="math notranslate nohighlight">\( \pi_1 \)</span> of the hypotheses and by the density functions of the parameter vectors.</p>
+</section>
+<section id="simplified-bayes-risk-expression">
+<h3>Simplified Bayes Risk Expression<a class="headerlink" href="#simplified-bayes-risk-expression" title="Link to this heading">#</a></h3>
+<p>Next, we aim to derive the simplified form of the Bayes risk.</p>
+<p>We start by separating the terms by combining the integrals over <span class="math notranslate nohighlight">\( R_0 \)</span> and <span class="math notranslate nohighlight">\( R_1 \)</span> for each hypothesis.</p>
+<p>Terms for <span class="math notranslate nohighlight">\( H_0 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+&amp;\pi_0 \int_{R_0} \int_{\vec{\theta}_0} p_0(\vec{y} | \vec{\theta}_0) p(\vec{\theta}_0) C_{00}(\vec{\theta}_0) \, d\vec{\theta}_0 \, d\vec{y} \\
+&amp;\quad + \pi_0 \int_{R_1} \int_{\vec{\theta}_0} p_0(\vec{y} | \vec{\theta}_0) p(\vec{\theta}_0) C_{10}(\vec{\theta}_0) \, d\vec{\theta}_0 \, d\vec{y}.
+\end{align*}
+\end{split}\]</div>
+<p>Terms for <span class="math notranslate nohighlight">\( H_1 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{align*}
+&amp;\pi_1 \int_{R_0} \int_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) C_{01}(\vec{\theta}_1) \, d\vec{\theta}_1 \, d\vec{y} \\
+&amp;\quad + \pi_1 \int_{R_1} \int_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) C_{11}(\vec{\theta}_1) \, d\vec{\theta}_1 \, d\vec{y}.
+\end{align*}
+\end{split}\]</div>
+<p><strong>Complements of Integrals</strong></p>
+<p>Notice that for any conditional PDF <span class="math notranslate nohighlight">\( p_i(\vec{y} | \vec{\theta}_i) \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+\int_{R_1} p_i(\vec{y} | \vec{\theta}_i) \, d\vec{y} = 1 - \int_{R_0} p_i(\vec{y} | \vec{\theta}_i) \, d\vec{y}.
+}
+\]</div>
+<p>Apply this identity to the terms in <span class="math notranslate nohighlight">\( R_1 \)</span> for both <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span>, we have:</p>
+<p><span class="math notranslate nohighlight">\( H_0 \)</span> Terms in <span class="math notranslate nohighlight">\( R_1 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\pi_0 \int_{R_1} \int_{\vec{\theta}_0} p_0(\vec{y} | \vec{\theta}_0) p(\vec{\theta}_0) C_{10}(\vec{\theta}_0) \, d\vec{\theta}_0 \, d\vec{y} = \pi_0 \int_{\vec{\theta}_0} p(\vec{\theta}_0) C_{10}(\vec{\theta}_0) \left( 1 - \int_{R_0} p_0(\vec{y} | \vec{\theta}_0) \, d\vec{y} \right) d\vec{\theta}_0.
+\]</div>
+<p><span class="math notranslate nohighlight">\( H_1 \)</span> Terms in <span class="math notranslate nohighlight">\( R_1 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\pi_1 \int_{R_1} \int_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) C_{11}(\vec{\theta}_1) \, d\vec{\theta}_1 \, d\vec{y} = \pi_1 \int_{\vec{\theta}_1} p(\vec{\theta}_1) C_{11}(\vec{\theta}_1) \left( 1 - \int_{R_0} p_1(\vec{y} | \vec{\theta}_1) \, d\vec{y} \right) d\vec{\theta}_1.
+\]</div>
+<p>Finally, we rewrite the Bayes risk using these substitutions:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} 
+\boxed{
+\begin{align*}
+r &amp;= \pi_0 \int_{\vec{\theta}_0} p(\vec{\theta}_0) C_{10}(\vec{\theta}_0) \, d\vec{\theta}_0 + \pi_1 \int_{\vec{\theta}_1} p(\vec{\theta}_1) C_{11}(\vec{\theta}_1) \, d\vec{\theta}_1 \\
+&amp;\quad + \int_{R_0} \bigg\{ \pi_1 \int_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) \left[ C_{01}(\vec{\theta}_1) - C_{11}(\vec{\theta}_1) \right] \, d\vec{\theta}_1 \\
+&amp;\qquad\quad - \pi_0 \int_{\vec{\theta}_0} p_0(\vec{y} | \vec{\theta}_0) p(\vec{\theta}_0) \left[ C_{10}(\vec{\theta}_0) - C_{00}(\vec{\theta}_0) \right] \, d\vec{\theta}_0 \bigg\} d\vec{y}.
+\end{align*}
+}
+\end{split}\]</div>
+<p><strong>Interpretation of The Simplifed Bayes Expression</strong></p>
+<p>For the first two terms, the terms</p>
+<div class="math notranslate nohighlight">
+\[
+\pi_0 \int_{\vec{\theta}_0} p(\vec{\theta}_0) C_{10}(\vec{\theta}_0) \, d\vec{\theta}_0 + \pi_1 \int_{\vec{\theta}_1} p(\vec{\theta}_1) C_{11}(\vec{\theta}_1) \, d\vec{\theta}_1
+\]</div>
+<p>represent the <strong>prior costs</strong> associated with each hypothesis.</p>
+<p>These terms depend only on the parameter distributions <span class="math notranslate nohighlight">\( p(\vec{\theta}_0) \)</span> and <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span> and the associated costs for making decisions under each hypothesis.</p>
+<p>For the integral over <span class="math notranslate nohighlight">\( R_0 \)</span>, the remaining terms within the integral over <span class="math notranslate nohighlight">\( R_0 \)</span> capture the <strong>expected cost difference</strong> between making correct and incorrect decisions within the decision region for <span class="math notranslate nohighlight">\( H_0 \)</span>.</p>
+<p>The term</p>
+<div class="math notranslate nohighlight">
+\[
+\pi_1 \int_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) \left[ C_{01}(\vec{\theta}_1) - C_{11}(\vec{\theta}_1) \right] \, d\vec{\theta}_1
+\]</div>
+<p>represents the contribution to the Bayes risk when hypothesis <span class="math notranslate nohighlight">\( H_1 \)</span> is true, but the decision region <span class="math notranslate nohighlight">\( R_0 \)</span> favors <span class="math notranslate nohighlight">\( H_0 \)</span>.</p>
+<p>This term measures the penalty for a Type II error (incorrectly deciding <span class="math notranslate nohighlight">\( H_0 \)</span> when <span class="math notranslate nohighlight">\( H_1 \)</span> is true) and adjusts it by the probability and cost difference for this error.</p>
+<p>Similarly, the term</p>
+<div class="math notranslate nohighlight">
+\[
+- \pi_0 \int_{\vec{\theta}_0} p_0(\vec{y} | \vec{\theta}_0) p(\vec{\theta}_0) \left[ C_{10}(\vec{\theta}_0) - C_{00}(\vec{\theta}_0) \right] \, d\vec{\theta}_0
+\]</div>
+<p>represents the penalty when <span class="math notranslate nohighlight">\( H_0 \)</span> is true, but the receiver decides on <span class="math notranslate nohighlight">\( H_1 \)</span>, which would be a Type I error.</p>
+</section>
+<section id="likelihood-ratio">
+<h3>Likelihood Ratio<a class="headerlink" href="#likelihood-ratio" title="Link to this heading">#</a></h3>
+<p>Next, we introduce a <strong>likelihood ratio</strong> test to decide between hypotheses <span class="math notranslate nohighlight">\( H_0 \)</span> and <span class="math notranslate nohighlight">\( H_1 \)</span> by minimizing the Bayes risk.</p>
+<p><strong>Key Assumption: Higher Cost for Errors than for Correct Decisions</strong></p>
+<p>It’s assumed that the cost of an incorrect decision (mistake) is higher than the cost of a correct decision:</p>
+<div class="math notranslate nohighlight">
+\[
+C_{01}(\vec{\theta}_1) &gt; C_{11}(\vec{\theta}_1) \quad \text{and} \quad C_{10}(\vec{\theta}_0) &gt; C_{00}(\vec{\theta}_0).
+\]</div>
+<p>These inequalities imply that the penalty for choosing the wrong hypothesis outweighs any benefit of a correct choice.</p>
+<section id="minimizing-bayes-risk">
+<h4>Minimizing Bayes Risk<a class="headerlink" href="#minimizing-bayes-risk" title="Link to this heading">#</a></h4>
+<p>Since the first two terms in the simplified Bayes risk expression do not depend on the decision region <span class="math notranslate nohighlight">\( R_0 \)</span>, we can minimize <span class="math notranslate nohighlight">\( r \)</span> by focusing only on the terms within <span class="math notranslate nohighlight">\( R_0 \)</span>.</p>
+<p>We choose decision region <span class="math notranslate nohighlight">\( D_0 \)</span> (or <span class="math notranslate nohighlight">\( R_0 \)</span>) if:</p>
+<div class="math notranslate nohighlight">
+\[
+\pi_1 \int_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) \left[ C_{01}(\vec{\theta}_1) - C_{11}(\vec{\theta}_1) \right] \, d\vec{\theta}_1 &lt; \pi_0 \int_{\vec{\theta}_0} p_0(\vec{y} | \vec{\theta}_0) p(\vec{\theta}_0) \left[ C_{10}(\vec{\theta}_0) - C_{00}(\vec{\theta}_0) \right] \, d\vec{\theta}_0.
+\]</div>
+<p>Conversely, we choose decision region <span class="math notranslate nohighlight">\( D_1 \)</span> (or <span class="math notranslate nohighlight">\( R_1 \)</span>) if:</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{\int_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) \left[ C_{01}(\vec{\theta}_1) - C_{11}(\vec{\theta}_1) \right] \, d\vec{\theta}_1}{\int_{\vec{\theta}_0} p_0(\vec{y} | \vec{\theta}_0) p(\vec{\theta}_0) \left[ C_{10}(\vec{\theta}_0) - C_{00}(\vec{\theta}_0) \right] \, d\vec{\theta}_0} \ge \frac{\pi_0}{\pi_1}.
+\]</div>
+</section>
+<section id="likelihood-ratio-and-decision-rule">
+<h4>Likelihood Ratio and Decision Rule<a class="headerlink" href="#likelihood-ratio-and-decision-rule" title="Link to this heading">#</a></h4>
+<p>If the costs are <strong>independent of <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span></strong>, we can simplify further.</p>
+<p>In this case, the decision rule reduces to comparing a <strong>likelihood ratio</strong> <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span> against a threshold:</p>
+<p><strong>Likelihood Ratio <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span></strong></p>
+<p>Define the likelihood ratio <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span> as:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \frac{p_1(\vec{y})}{p_0(\vec{y})} = \frac{\int_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) \, d\vec{\theta}_1}{\int_{\vec{\theta}_0} p_0(\vec{y} | \vec{\theta}_0) p(\vec{\theta}_0) \, d\vec{\theta}_0}.
+\]</div>
+<p>This ratio represents the “averaged” or marginal likelihoods of observing <span class="math notranslate nohighlight">\( \vec{y} \)</span> under each hypothesis after accounting for the parameter distributions <span class="math notranslate nohighlight">\( p(\vec{\theta}_0) \)</span> and <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span>.</p>
+<p><strong>Threshold Condition</strong>:</p>
+<p>The threshold is:</p>
+<div class="math notranslate nohighlight">
+\[
+\eta = \frac{\pi_0 (C_{10} - C_{00})}{\pi_1 (C_{01} - C_{11})}.
+\]</div>
+<p>Thus, ff the costs are independent of <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>, then <span class="math notranslate nohighlight">\( D_1 \)</span> is chosen if</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+L(\vec{y}) = \frac{p_1(\vec{y})}{p_0(\vec{y})} = \frac{\int_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) \, d\vec{\theta}_1}{\int_{\vec{\theta}_0} p_0(\vec{y} | \vec{\theta}_0) p(\vec{\theta}_0) \, d\vec{\theta}_0} \ge \frac{\pi_0 (C_{10} - C_{00})}{\pi_1 (C_{01} - C_{11})}
+}
+\]</div>
+<p>In summary, by averaging over the conditional densities <span class="math notranslate nohighlight">\( p_1(\vec{y} | \vec{\theta}_1) \)</span> and <span class="math notranslate nohighlight">\( p_0(\vec{y} | \vec{\theta}_0) \)</span> with respect to the known parameter distributions, we determine an optimal decision rule based on the Bayes risk minimization.</p>
+</section>
+</section>
+</section>
+<section id="unknown-density-functions">
+<h2>Unknown Density Functions<a class="headerlink" href="#unknown-density-functions" title="Link to this heading">#</a></h2>
+<p>When the probability density functions <span class="math notranslate nohighlight">\( p(\vec{\theta}_0) \)</span> and <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span> are unknown, we cannot use the results from the previous section.</p>
+<p>There is no general approach that is always successful in this case, but a number of useful techniques have been developed.</p>
+<section id="maximum-likelihood-technique">
+<h3>Maximum-Likelihood Technique<a class="headerlink" href="#maximum-likelihood-technique" title="Link to this heading">#</a></h3>
+<p>One of the most common techniques is based upon the maximum-likelihood approach introduced in Chapter 3 (Estimation).</p>
+<p>This can be written as</p>
+<div class="math notranslate nohighlight">
+\[
+\max_{\vec{\theta}_1, \vec{\theta}_0} \left[ \frac{p_1(\vec{y} | \vec{\theta}_1)}{p_0(\vec{y} | \vec{\theta}_0)} \right]
+\]</div>
+<p>although some authors define it as</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \frac{\max_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1)}{\max_{\vec{\theta}_0} p_0(\vec{y} | \vec{\theta}_0)}
+\]</div>
+<p>(Note that the two LLR above are not necessarily equivalent.)</p>
+<p>or, more succinctly, as</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \frac{p_1(\vec{y} | \hat{\vec{\theta}}_1)}{p_0(\vec{y} | \hat{\vec{\theta}}_0)}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \hat{\vec{\theta}}_i \)</span>, <span class="math notranslate nohighlight">\( i = 0, 1 \)</span>, is the ML estimate of <span class="math notranslate nohighlight">\( \vec{\theta}_i \)</span>, <span class="math notranslate nohighlight">\( i = 0, 1 \)</span>.</p>
+<p>This approach is also referred to as the <em>generalized likelihood-ratio test (GLRT)</em>, although this term is not universally used by all authors to mean the same thing.</p>
+<p>That is, we find the ML estimates of the vectors <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>; then we use these values in the likelihood function as if the estimated vectors were known.</p>
+<p>This technique is generally most useful when <span class="math notranslate nohighlight">\( p_0(\vec{y}) \)</span> corresponds to the hypothesis of noise only.</p>
+<p>Although the technique is straightforward and somewhat intuitively pleasing, it should be used with care, because we cannot ensure optimal performance.</p>
+</section>
+</section>
+<section id="id1">
+<h2>Unknown Density Functions<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>When the density functions <span class="math notranslate nohighlight">\( p(\vec{\theta}_0) \)</span> and <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span> are unknown, direct application of Bayesian methods becomes impossible.</p>
+<p>Instead, we can apply <strong>Maximum-Likelihood (ML) techniques</strong>, which can estimate the parameters <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span> directly from the observed data <span class="math notranslate nohighlight">\( \vec{y} \)</span>.</p>
+<p>This approach is often referred to as the <strong>Generalized Likelihood-Ratio Test (GLRT)</strong>, though this terminology can vary among authors.</p>
+<section id="maximum-likelihood-approach">
+<h3>Maximum-Likelihood Approach<a class="headerlink" href="#maximum-likelihood-approach" title="Link to this heading">#</a></h3>
+<p>The goal of the ML technique is to evaluate the likelihood ratio by finding the parameter values that maximize the likelihoods under each hypothesis.</p>
+<p><strong>General Maximization of the Likelihood Ratio</strong></p>
+<p>One approach is to directly maximize the likelihood ratio over both parameter sets <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\max_{\vec{\theta}_1, \vec{\theta}_0} \left[ \frac{p_1(\vec{y} | \vec{\theta}_1)}{p_0(\vec{y} | \vec{\theta}_0)} \right].
+\]</div>
+<p>It means that we find the combination of parameter values <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> that maximizes the ratio of likelihoods for each hypothesis.</p>
+<p>This formulation is effective when we want the optimal ratio over all possible parameter values, though it’s computationally intensive and may not always yield unique results.</p>
+<p><strong>Separately Maximized Likelihood Ratio</strong></p>
+<p>Alternatively, the likelihood ratio can be calculated by maximizing each term independently:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \frac{\max_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1)}{\max_{\vec{\theta}_0} p_0(\vec{y} | \vec{\theta}_0)}.
+\]</div>
+<p>It means that we independently find the parameter values <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> that maximize the likelihoods under <span class="math notranslate nohighlight">\( H_1 \)</span> and <span class="math notranslate nohighlight">\( H_0 \)</span>, respectively.</p>
+<p>This form is computationally simpler and often used in practical applications but may yield different results from the previous formulation.</p>
+<p><strong>Simplified Form with ML Estimates</strong></p>
+<p>A compact representation uses the ML estimates <span class="math notranslate nohighlight">\( \hat{\vec{\theta}}_1 \)</span> and <span class="math notranslate nohighlight">\( \hat{\vec{\theta}}_0 \)</span> directly:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \frac{p_1(\vec{y} | \hat{\vec{\theta}}_1)}{p_0(\vec{y} | \hat{\vec{\theta}}_0)},
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( \hat{\vec{\theta}}_i \)</span> is the ML estimate for <span class="math notranslate nohighlight">\( \vec{\theta}_i \)</span> under hypothesis <span class="math notranslate nohighlight">\( H_i \)</span> (for <span class="math notranslate nohighlight">\( i = 0, 1 \)</span>).</p>
+<p>This approach treats the ML estimates as if they were the true parameter values, substituting them into the likelihood functions.</p>
+</section>
+<section id="advantages-of-glrt">
+<h3>Advantages of GLRT<a class="headerlink" href="#advantages-of-glrt" title="Link to this heading">#</a></h3>
+<p>The <strong>GLRT</strong> using the ML estimates assumes that the unknown parameters can be reasonably well approximated by their ML estimates.</p>
+<p>By substituting these estimates into the likelihood functions, we effectively reduce the problem to a simpler likelihood ratio test with fixed parameters.</p>
+<p>This technique is particularly useful when <span class="math notranslate nohighlight">\( p_0(\vec{y}) \)</span> represents a <strong>noise-only hypothesis</strong>, meaning that under <span class="math notranslate nohighlight">\( H_0 \)</span>, there’s only noise and no signal.</p>
+<p>In such cases, maximizing the likelihood under <span class="math notranslate nohighlight">\( H_1 \)</span> often identifies the presence of a signal, as the noise-only hypothesis yields relatively low likelihood values for structured signals.</p>
+</section>
+</section>
+<section id="caution-with-glrt">
+<h2>Caution with GLRT<a class="headerlink" href="#caution-with-glrt" title="Link to this heading">#</a></h2>
+<p>While the GLRT is intuitive and straightforward, it is not guaranteed to be optimal. This is because:</p>
+<ul class="simple">
+<li><p><strong>Parameter Estimation Errors</strong>: Using ML estimates does not account for the uncertainty in the parameter estimates themselves, which can lead to suboptimal decisions.</p></li>
+<li><p><strong>Potential Bias</strong>: The GLRT may favor one hypothesis if the ML estimates systematically differ from the true values due to noise or other effects.</p></li>
+</ul>
+<p>Despite these limitations, the GLRT is widely used in practice for situations with unknown parameters, offering a pragmatic solution when full Bayesian methods are infeasible.</p>
+<section id="glrt-receiver-structure">
+<h3>GLRT Receiver Structure<a class="headerlink" href="#glrt-receiver-structure" title="Link to this heading">#</a></h3>
+<p><img alt="Fig 6.2" src="_images/fig_6_2.png" /></p>
+<p>The GLRT approach is often used in practice.</p>
+<p>Figure 6.2 shows a general GLRT receiver structure where all four parameters of amplitude, phase, frequency, and time of arrival are <strong>estimated</strong> and then applied to the <strong>detection</strong> circuit.</p>
+<p>Notice the similarity between the optimal continuous receiver structure of Figure 6.1 and the GLRT receiver structure of Figure 6.2.</p>
+<p>Depending on the specific application, all four parameters need not be estimated in every situation such as shown in Figure 6.2, but the full generality of the structure is available.</p>
+<p>With regard to finding optimal or good ML estimates of each of the parameters (we will address in the next chapter).</p>
+</section>
+<section id="least-favorable-density-function-technique">
+<h3>Least Favorable Density-Function Technique<a class="headerlink" href="#least-favorable-density-function-technique" title="Link to this heading">#</a></h3>
+<p>Another technique that is useful in some situations is to assume least favorable density functions <span class="math notranslate nohighlight">\( p(\vec{\theta}_0) \)</span> and <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span>.</p>
+<p>The following example illustrates this approach.</p>
+<section id="example-6-1">
+<h4>Example 6.1<a class="headerlink" href="#example-6-1" title="Link to this heading">#</a></h4>
+<p>Assume that we are evaluating a detection problem where, under <span class="math notranslate nohighlight">\( H_0 \)</span>, the received signal is noise of a known distribution.</p>
+<p>In this example, the maximum-likelihood ratio is</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \frac{\int_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) \, d\vec{\theta}_1}{p_0(\vec{y})}
+\]</div>
+<p>We choose <span class="math notranslate nohighlight">\( D_1 \)</span> if <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span> is greater than or equal to some threshold <span class="math notranslate nohighlight">\( \tau \)</span>.</p>
+<p>The average probability of choosing <span class="math notranslate nohighlight">\( D_1 \)</span> when <span class="math notranslate nohighlight">\( H_1 \)</span> is correct is</p>
+<div class="math notranslate nohighlight">
+\[
+E \{ P(D_1 | H_1) \} = \int_{\vec{\theta}_1} \int_{R_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) \, d\vec{\theta}_1 \, d\vec{y}
+\]</div>
+<p>The least favorable density function is that <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span> which minimizes this average probability.</p>
+<p>In general, it is often difficult to determine this density function; nonetheless, in many practical cases, it is clear from the problem which density function should be used.</p>
+<p>Specific cases are given in following sections.</p>
+</section>
+</section>
+</section>
+<section id="id2">
+<h2>Least Favorable Density-Function Technique<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>The <strong>Least Favorable Density-Function (LFDF) Technique</strong> is another approach for handling detection problems with unknown parameter densities, particularly when we lack prior knowledge about the true distributions of parameters <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>.</p>
+<p>This approach involves selecting density functions that <strong>minimize</strong> the probability of correct detection under <span class="math notranslate nohighlight">\( H_1 \)</span>, thus creating a conservative or “worst-case” scenario.</p>
+<p>Specifially, the idea of the LFDF technique is to assume density functions <span class="math notranslate nohighlight">\( p(\vec{\theta}_0) \)</span> and <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span> that make the detection task <strong>hardest</strong> for the detector.</p>
+<p>By using these least favorable densities, we can design a detection strategy that performs adequately even in the worst-case distribution scenario.</p>
+<section id="example-application-of-lfdf-in-detection">
+<h3>Example: Application of LFDF in Detection<a class="headerlink" href="#example-application-of-lfdf-in-detection" title="Link to this heading">#</a></h3>
+<p>This example, based on Example 6.1 in textbook [B2], considers a detection problem where, under <span class="math notranslate nohighlight">\( H_0 \)</span>, the received signal consists only of noise with a <strong>known distribution</strong>.</p>
+<p>This setup allows us to focus on how the LFDF technique applies to the alternative hypothesis <span class="math notranslate nohighlight">\( H_1 \)</span>.</p>
+<p><strong>Likelihood Ratio</strong></p>
+<p>The likelihood ratio <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span> for deciding between <span class="math notranslate nohighlight">\( H_0 \)</span> (noise-only hypothesis) and <span class="math notranslate nohighlight">\( H_1 \)</span> (signal-present hypothesis) is:</p>
+<div class="math notranslate nohighlight">
+\[
+L(\vec{y}) = \frac{\int_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) \, d\vec{\theta}_1}{p_0(\vec{y})}.
+\]</div>
+<p>Here, <span class="math notranslate nohighlight">\( \int_{\vec{\theta}_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) \, d\vec{\theta}_1 \)</span> represents the <strong>averaged likelihood</strong> under <span class="math notranslate nohighlight">\( H_1 \)</span>, where <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span> is the distribution of the parameter vector <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>.</p>
+<p><strong>Decision Rule</strong></p>
+<p>We choose hypothesis <span class="math notranslate nohighlight">\( D_1 \)</span> (or <span class="math notranslate nohighlight">\( H_1 \)</span>) if <span class="math notranslate nohighlight">\( L(\vec{y}) \)</span> is greater than or equal to some threshold <span class="math notranslate nohighlight">\( \tau \)</span>.</p>
+<p>This threshold can be set based on desired false-alarm or detection probabilities.</p>
+<p><strong>Average Probability of Choosing <span class="math notranslate nohighlight">\( D_1 \)</span> Under <span class="math notranslate nohighlight">\( H_1 \)</span></strong></p>
+<p>The probability of correctly choosing <span class="math notranslate nohighlight">\( D_1 \)</span> when <span class="math notranslate nohighlight">\( H_1 \)</span> is true, averaged over the distribution <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span>, is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+E \{ P(D_1 | H_1) \} = \int_{\vec{\theta}_1} \int_{R_1} p_1(\vec{y} | \vec{\theta}_1) p(\vec{\theta}_1) \, d\vec{\theta}_1 \, d\vec{y}.
+\]</div>
+<p>This expression integrates over the decision region <span class="math notranslate nohighlight">\( R_1 \)</span> and all possible values of <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>, weighted by the density function <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span>.</p>
+<p><strong>Selecting the Least Favorable Density</strong></p>
+<p>The LFDF <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span> is chosen to minimize <span class="math notranslate nohighlight">\( E \{ P(D_1 | H_1) \} \)</span>. In other words, we seek a density <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span> that reduces the probability of correct detection under <span class="math notranslate nohighlight">\( H_1 \)</span> as much as possible.</p>
+<p>Although finding the least favorable density function analytically can be challenging, in many practical cases, the structure of the problem suggests an appropriate density function.</p>
+<p>For example, a uniform or broad distribution for <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span> might be least favorable if it maximizes uncertainty about the parameter values.</p>
+<p><strong>Discussion.</strong></p>
+<p>In the following sections, when we assume a uniform distribution for unknown phase and/or a Rician distribution for unknown amplitude, these assumptions reflect typical statistical models for unknown parameters in signal processing, rather than the LFDF technique specifically.</p>
+</section>
+<section id="conditional-likelihood-ratio-technique">
+<h3>Conditional Likelihood-Ratio Technique<a class="headerlink" href="#conditional-likelihood-ratio-technique" title="Link to this heading">#</a></h3>
+<p>A third technique that is occasionally useful in cases where the density functions are unknown can be understood by examining the “conditional” likelihood ratio</p>
+<div class="math notranslate nohighlight">
+\[
+L(y | \vec{\theta}_0, \vec{\theta}_1) = \frac{p_1(\vec{y} | \vec{\theta}_1)}{p_0(\vec{y} | \vec{\theta}_0)}
+\]</div>
+<p>to produce a decision.</p>
+<p>In general, the decision test will be a function of both <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>.</p>
+<p>If, however, it is not a function of either <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> or <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>, then it is the same test for all values of <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span> and is independent of the specific density functions.</p>
+<p>This is called a <em>uniformly most powerful test (UMPT)</em>.</p>
+</section>
+<section id="id3">
+<h3>Conditional Likelihood Ratio Technique<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<p>The <strong>Conditional Likelihood-Ratio Technique</strong> is another approach for hypothesis testing when the probability density functions <span class="math notranslate nohighlight">\( p(\vec{\theta}_0) \)</span> and <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span> are unknown.</p>
+<p>It involves using a <strong>conditional likelihood ratio</strong>, which compares the likelihoods of the observed data <span class="math notranslate nohighlight">\( \vec{y} \)</span> under each hypothesis, given specific values of the parameter vectors <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>.</p>
+<p>The conditional likelihood ratio is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+L(y | \vec{\theta}_0, \vec{\theta}_1) = \frac{p_1(\vec{y} | \vec{\theta}_1)}{p_0(\vec{y} | \vec{\theta}_0)}.
+\]</div>
+<p><strong>Decision Rule</strong></p>
+<p>The decision rule based on this conditional likelihood ratio involves comparing <span class="math notranslate nohighlight">\( L(y | \vec{\theta}_0, \vec{\theta}_1) \)</span> to a threshold.</p>
+<p>This test will generally depend on the values of <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>, meaning the decision criterion changes depending on the specific values of the parameters.</p>
+<p><strong>Uniformly Most Powerful Test (UMPT)</strong></p>
+<p>A UMPT occurs if the decision test derived from <span class="math notranslate nohighlight">\( L(y | \vec{\theta}_0, \vec{\theta}_1) \)</span> does <strong>not depend on the specific values of <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> or <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span></strong>.</p>
+<p>This would imply that:</p>
+<ul class="simple">
+<li><p>The test is equally valid and <strong>optimal</strong> across all possible values of <span class="math notranslate nohighlight">\( \vec{\theta}_0 \)</span> and <span class="math notranslate nohighlight">\( \vec{\theta}_1 \)</span>.</p></li>
+<li><p>The test is <strong>independent of the specific density functions</strong> <span class="math notranslate nohighlight">\( p(\vec{\theta}_0) \)</span> and <span class="math notranslate nohighlight">\( p(\vec{\theta}_1) \)</span>, meaning it remains valid even when these densities are unknown.</p></li>
+</ul>
+<p>The UMPT is valuable because it provides a consistent, optimal decision rule that maximizes detection performance regardless of the unknown parameter values.</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c6_s0_intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Detection of Signals with Random Parameters</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c6_s3_unknown_phase.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Unknown Phase</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objective-hypothesis-decision">Objective: Hypothesis Decision</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-1-known-a-priori-probability-density-functions">Condition 1: Known <em>A Priori</em> Probability Density Functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#condition-2-unknown-density-functions">Condition 2: Unknown Density Functions</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#known-density-functions">Known Density Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bayes-risk">Bayes Risk</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#simplified-bayes-risk-expression">Simplified Bayes Risk Expression</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-ratio">Likelihood Ratio</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#minimizing-bayes-risk">Minimizing Bayes Risk</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#likelihood-ratio-and-decision-rule">Likelihood Ratio and Decision Rule</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unknown-density-functions">Unknown Density Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-technique">Maximum-Likelihood Technique</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Unknown Density Functions</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-likelihood-approach">Maximum-Likelihood Approach</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantages-of-glrt">Advantages of GLRT</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#caution-with-glrt">Caution with GLRT</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#glrt-receiver-structure">GLRT Receiver Structure</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#least-favorable-density-function-technique">Least Favorable Density-Function Technique</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#example-6-1">Example 6.1</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">Least Favorable Density-Function Technique</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-application-of-lfdf-in-detection">Example: Application of LFDF in Detection</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conditional-likelihood-ratio-technique">Conditional Likelihood-Ratio Technique</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">Conditional Likelihood Ratio Technique</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,870 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Consistent Estimates &#8212; Telecom Book</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=87e54e7c" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'c3_s8_consistent_estimator';</script>
+    <link rel="icon" href="_static/web_favicon.png"/>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Bayes Estimation" href="c3_s9_s10_Bayes_estimator.html" />
+    <link rel="prev" title="Minimum Variance Estimaties" href="c3_s7_minimum_variance_estimates.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/web_logo.png" class="logo__image only-light" alt="Telecom Book - Home"/>
+    <img src="_static/web_logo.png" class="logo__image only-dark pst-js-only" alt="Telecom Book - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">PROBABILITY THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c1_s0_probability_intro.html">Introduction to Probability Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s1_set_theory.html">Set Theory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s2_probability_definition.html">Probability Definition</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c1_s3_Bayes_theorem.html">Bayes’ Theorem</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c2_s0_random_variable.html">Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c2_s1_real_Gaussian_RV_scalar.html">Real Scalar Gaussian Random Variable</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c3_s0_functions_of_RV.html">Functions of A Random Variable</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s1_generation_RV_from_Uniform.html">Generating Random Variables from a Uniform Distribution</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s2_method_compute_PDF_func_one_RV.html">Methods to Compute PDF of Functions of A Single RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s3_Rayleigh_RV.html">Rayleigh Random Variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pr_c3_s4_Rician_RV.html">Rician Random Variable</a></li>
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c4_s0_tail_probability.html">Tail Probability</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pr_c5_s0_limit_theorem.html">Central Limit Theorem</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c6_s0_multi_random_variables.html">Multiple Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s1_two_RVs.html">Distributions with Two Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c6_s2_real_Gaussian_RV_vector.html">Real Gaussian Random Vector</a></li>
+
+
+
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c7_s0_Complex_RV.html">Complex Random Variables</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s1_complex_Gaussian_RV.html">Multiple Complex Random Variables</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s2_ZMCCSG.html">Zero Mean Complex Circularly Symmetric Gaussian (ZMCCSG) RV</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c7_s3_complex_Gaussian_vector.html">Standard Complex Gaussian Vector</a></li>
+
+
+
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="pr_c8_s0_Random_Process.html">Random Processes</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s1_Stochastic_Process.html">Stochastic Process</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s2_Gaussian_process_ex_1.html">Example: White Noise Process</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="pr_c8_s3_Gaussian_process_ex_2.html">Example: Band-Limited White Gaussian Noise Process</a></li>
+
+
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">SIGNAL ANALYSIS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c1_s0_signal_analysis.html">Signal Analysis</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c1_s1_spectrum.html">Spectrum</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c2_s0_signal_representations.html">Signal Representations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s1_complex_lowpass.html">Complex Signal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s2_signal_characteristics.html">Signal Characteristics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s3_filter.html">Filter, Channel, and System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s4_baseband_signal_model.html">Equivalent Baseband Signal Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s5_baseband_channel_model.html">Equivalent Baseband Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s6_baseband_noise_model.html">Equivalent Baseband Noise Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s7_discrete_system.html">Discrete System and Equivalent Discrete Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s8_EbNo_SNR.html">Relationship Between <span class="math notranslate nohighlight">\(E_b/N_0\)</span> and <span class="math notranslate nohighlight">\(\mathtt{SNR}\)</span></a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c2_s9_Sampling_Theory.html">Sampling Theorem for Band-Limited Random Processes</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="sig_c3_s0_vector_space.html">Signal Space</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s1_signal_space.html">Signal Space</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s2_Gram_Schmidt_Procedure_for_Signals.html">Gram-Schmidt Procedure for Signals</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s3_constellation.html">Constellations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s4_more_on_orthonormality.html">Orthonormal Expansions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sig_c3_s5_KL_expansion.html">Karhunen-Loève (KL) Expansion</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">TELECOMMUNICATIONS THEORY</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="com_c1_intro.html">Introduction to Communications Theory</a></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c2_s0_Modulation.html">Modulation</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s1_Memoryless_Modulation.html">Memoryless Modulation Schemes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s2_PAM.html">Pulse Amplitude Modulation (PAM)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s3_PSK.html">Phase Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s4_QAM.html">Quadrature Amplitude Modulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s5_Multidimensional_Signaling.html">Multidimensional Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s6_Orthogonal_Signalling.html">Orthogonal Signaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s7_FSK.html">Frequency-Shift Keying (FSK)</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s8_Waveform_Binary_Codes.html">Signal Waveforms from Binary Codes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s9_Signaling_with_Memory.html">Signaling Schemes with Memory</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s10_CPFSK.html">Continuous-Phase Frequency-Shift Keying (CPFSK)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c2_s11_PSD.html">Power Spectral Density</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="com_c3_s0_Optimal_Receivers.html">Optimal Receivers</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s1_General_Vector_Channel_Model.html">Optimal Detection in a General Vector Channel Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s2_MAP_ML_Decision_Regions_Error_Prob.html">MAP and ML Receivers, Decision Regions, and Error Probability</a></li>
+<li class="toctree-l2"><a class="reference internal" href="com_c3_s3_Efficient_Receiver.html">Efficient Receiver</a></li>
+</ul>
+</details></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">DETECTION, DECISION, AND ESTIMATION THEORY</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="c2_s0.html">Fundamentals of Detection Theory</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c2_s5_MAP_ML_critera.html">MAP and ML Criteria</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s7_Bayes_criterion.html">Bayes Criterion</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c2_s9_minimax.html">MiniMax Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_s11_Neyman_Pearson.html">Neyman-Pearson Criterion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c2_x2_LLR_Sionna.html">Tutorial: Differentiable Communication Systems Using Sionna</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c2_x3_comparison.html">Perfomance Comaprison</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="c3_s0.html">Fundamentals of Estimation Theory</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="c3_s3_parameter_estimation.html">Parameter Estimation</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s5_unbiased_estimator.html">Unbiased Estimates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s6_sufficient_statistic.html">Estimators Based on Sufficient Statistics</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s7_minimum_variance_estimates.html">Minimum Variance Estimaties</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Consistent Estimates</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="c3_s9_s10_Bayes_estimator.html">Bayes Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s11_MMSE_estimator.html">Minimum Mean Squared Error (MMSE) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s12_MAP_estimator.html">Maximum a Posteriori (MAP) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s13_ML_estimator.html">Maximum Likelihood (ML) Estimation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c3_s14_comparison_of_estimators.html">Comparison of Estimators</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c5_s0_intro_copy.html">Vector and Multi-Hypothesis Detection</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c5_s3_Vector_Detection.html">Detection Problem with Multiple Samples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_a_Vector_Detection_Criteria.html">Criteria for Multiple Sample Detection of Binary Hypotheses</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_b_example_a.html">Example: Antipodal Signal Detection using Multiple Samples</a></li>
+
+
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s5_c_example_b.html">Example: Detection with Real Additive Gaussian Noise</a></li>
+
+
+
+
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_Schonhoff.html">The Optimum Digital Detector in Additive Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s6_Optimum_Digital_Detector_alternative.html">Optimum Digital Detector – Alternative Representation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s8_Filters.html">Filtering Alternatives</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s12_Optimal_Detection_Continuous_White_Noise.html">Continuous Signals with White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis.html">Perfomance of Binary Receivers in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c5_s16_Performance_Analysis_ex_5_5.html"><strong>Example 5.5</strong></a></li>
+
+
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c6_s0_intro.html">Detection of Signals with Random Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c6_s1_composite_hypothesis_testing.html">Composite Hypothesis Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s3_unknown_phase.html">Unknown Phase</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s4_unknown_amplitude.html">Unknown Amplitude</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s5_unknown_frequency.html">Unknown Frequency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c6_s6_unknown_delay.html">Unknown Delay</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="c7_s0_intro.html">Estimation of Specific Parameters</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="c7_s1_parameter_estimation.html">Parameter Estimation in White Gaussian Noise</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s2_amplitude_coherent_estimation.html">Amplitude Estimation in the Coherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s3_amplitude_non_coherent_estimation.html">Amplitude Estimation in the Noncoherent Case with AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s4_phase_estimation.html">Phase Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s5_delay_estimation.html">Time Delay Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s6_frequency_estimation.html">Frequency Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s7_simultaneous_parameter_estimation.html">Simultaneous Parameter Estimation in AWGN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s8_multiple_parameters_estimation.html">ML Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s9_MAP_Estimation_Discrete_Linear_Observation.html">MAP Estimation for a Discrete Linear Observation Model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="c7_s10_Sequential_Parameter_Estimation.html">Sequential Parameter Estimation</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Consistent Estimates</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Consistent Estimates</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-to-chebyshevs-inequality">Relationship to Chebyshev’s Inequality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-sample-mean-as-a-consistent-estimator">Example: Sample Mean as a Consistent Estimator</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-estimators">Invariant Estimators</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-sample-mean-squared-estimator">Example: Sample Mean Squared Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-linear-transformation-of-estimator">Example: Linear Transformation of Estimator</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="consistent-estimates">
+<h1>Consistent Estimates<a class="headerlink" href="#consistent-estimates" title="Link to this heading">#</a></h1>
+<p>An estimator <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}}_m \)</span> is said to be <strong>consistent</strong> if it converges stochastically (in probability) to the true parameter <span class="math notranslate nohighlight">\( \alpha \)</span> as the number of samples <span class="math notranslate nohighlight">\( m \)</span> becomes large.</p>
+<p>Consistency means that as we increase the number of observations, the estimate <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}}_m \)</span> becomes arbitrarily close to the true value <span class="math notranslate nohighlight">\( \alpha \)</span>, with high probability.</p>
+<p>Consistency can be expressed more rigorously through a probabilistic statement.</p>
+<p>For any small <span class="math notranslate nohighlight">\( \epsilon &gt; 0 \)</span>, the probability that the estimate <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}}_m \)</span> lies within an interval <span class="math notranslate nohighlight">\( (\alpha - \epsilon, \alpha + \epsilon) \)</span> around the true parameter <span class="math notranslate nohighlight">\( \alpha \)</span> should approach 1 as the number of observations <span class="math notranslate nohighlight">\( m \)</span> goes to infinity, i.e.:</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+\lim_{m \to \infty} \Pr ( \alpha - \epsilon &lt; \hat{\boldsymbol{\alpha}}_m &lt; \alpha + \epsilon ) = 1
+}
+\]</div>
+<p>In other words, an estimator <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}} \)</span> is consistent for a parameter <span class="math notranslate nohighlight">\( \alpha \)</span> if, as the sample size <span class="math notranslate nohighlight">\( m \to \infty \)</span>, the probability that the estimator is within any arbitrary distance <span class="math notranslate nohighlight">\( \epsilon \)</span> of the true parameter approaches <span class="math notranslate nohighlight">\(1\)</span>, i.e.:</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{m \to \infty} \Pr \left( |\hat{\boldsymbol{\alpha}}(\vec{y}_m) - \alpha| \leq \epsilon \right) = 1, \quad \forall \epsilon &gt; 0
+\]</div>
+<p>Alternatively:</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{m \to \infty} \Pr \left(|\hat{\boldsymbol{\alpha}}(\vec{y}_m) - \alpha| \geq \epsilon \right) = 0, \quad \forall \epsilon &gt; 0
+\]</div>
+<section id="relationship-to-chebyshevs-inequality">
+<h2>Relationship to Chebyshev’s Inequality<a class="headerlink" href="#relationship-to-chebyshevs-inequality" title="Link to this heading">#</a></h2>
+<p>Consistency can also be related to <strong>Chebyshev’s inequality</strong>.</p>
+<p>Recall that, for an unbiased estimator, Chebyshev’s inequality states that:</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr(|\hat{\boldsymbol{\alpha}} - \alpha| &gt; \epsilon) &lt; \frac{V\{\hat{\boldsymbol{\alpha}}\}}{\epsilon^2}
+\]</div>
+<p>where <span class="math notranslate nohighlight">\( V\{\hat{\boldsymbol{\alpha}}\} = E\{(\hat{\boldsymbol{\alpha}} - \alpha)^2\} \)</span> is the variance of the estimator.</p>
+<p>If we know that the variance <span class="math notranslate nohighlight">\( V\{\hat{\boldsymbol{\alpha}}(\vec{y}_m)\} \)</span> converges to 0 as <span class="math notranslate nohighlight">\( m \to \infty \)</span>, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[ \boxed{
+\lim_{m \to \infty} V\{\hat{\boldsymbol{\alpha}}(\vec{y}_m)\} = 0
+}
+\]</div>
+<p>then Chebyshev’s inequality implies that <span class="math notranslate nohighlight">\( \Pr(|\hat{\boldsymbol{\alpha}}(\vec{y}_m) - \alpha| &gt; \epsilon) \)</span> will also converge to 0, showing that <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}} \)</span> is a consistent estimator.</p>
+<p><strong>Discussion. Dependence on Sample Size <span class="math notranslate nohighlight">\( m \)</span></strong></p>
+<p>The subscript <span class="math notranslate nohighlight">\( m \)</span> is introduced to explicitly show that the estimator <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}}_m \)</span> depends on the number of observations or random variables used to compute the estimate.</p>
+<p>In practice, the number of observations directly affects the estimator’s accuracy, meaning that with more data, the estimator is expected to yield more accurate results.</p>
+<p>Often, the dependence on <span class="math notranslate nohighlight">\( m \)</span> and on the specific sample values <span class="math notranslate nohighlight">\( \vec{\mathbf{y}} \)</span> is suppressed in notation for simplicity, but when discussing consistency, it’s important to recognize this dependency since increasing <span class="math notranslate nohighlight">\( m \)</span> is crucial for the estimator to converge to the true parameter.</p>
+<p><strong>Discussion. Role of <span class="math notranslate nohighlight">\( \epsilon \)</span></strong></p>
+<p>In the formal definition of consistency, <span class="math notranslate nohighlight">\( \epsilon \)</span> represents any arbitrarily small positive number.</p>
+<p>The definition requires that no matter how small <span class="math notranslate nohighlight">\( \epsilon \)</span> is, the probability that the estimate lies within <span class="math notranslate nohighlight">\( \epsilon \)</span> of the true value approaches 1 as <span class="math notranslate nohighlight">\( m \to \infty \)</span>.</p>
+<p>This is a very strong condition that guarantees the estimator’s reliability with a sufficiently large sample size.</p>
+</section>
+<section id="example-sample-mean-as-a-consistent-estimator">
+<h2>Example: Sample Mean as a Consistent Estimator<a class="headerlink" href="#example-sample-mean-as-a-consistent-estimator" title="Link to this heading">#</a></h2>
+<p>To illustrate, consider the <strong>sample mean</strong> <span class="math notranslate nohighlight">\( \bar{\mathbf{y}}_m \)</span> as an estimator of the population mean <span class="math notranslate nohighlight">\( \mu \)</span>. Given independent, identically distributed (i.i.d.) samples <span class="math notranslate nohighlight">\( \mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_m \)</span>, the sample mean is given by:</p>
+<div class="math notranslate nohighlight">
+\[
+\bar{\mathbf{y}}_m = \frac{1}{m} \sum_{i=1}^{m} \mathbf{y}_i
+\]</div>
+<p>As the number of samples <span class="math notranslate nohighlight">\( m \to \infty \)</span>, the sample mean <span class="math notranslate nohighlight">\( \bar{\mathbf{y}}_m \)</span> converges to the true population mean <span class="math notranslate nohighlight">\( \mu \)</span> by the <strong>law of large numbers</strong>.</p>
+<p>That is, for any <span class="math notranslate nohighlight">\( \epsilon &gt; 0 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{m \to \infty} \Pr(|\bar{\mathbf{y}}_m - \mu| &lt; \epsilon) = 1
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\lim_{m \to \infty} V\{\bar{\mathbf{y}}_m\} = 0
+\]</div>
+<p>This makes <span class="math notranslate nohighlight">\( \bar{\mathbf{y}}_m \)</span> a <strong>consistent</strong> estimator of <span class="math notranslate nohighlight">\( \mu \)</span>.</p>
+<p><strong>Applying Chebyshev’s Inequality to the Sample Mean</strong></p>
+<p>We will apply Chebyshev’s Inequality to the sample mean <span class="math notranslate nohighlight">\(\bar{\mathbf{y}}_m\)</span> to evaluate its consistency as an estimator for the population mean <span class="math notranslate nohighlight">\(\mu\)</span>.</p>
+<p>The variance of the sample mean is:</p>
+<div class="math notranslate nohighlight">
+\[
+V\left\{ \bar{\mathbf{y}}_m \right\} = V\left\{ \frac{1}{m} \sum_{i=1}^{m} \mathbf{y}_i \right\} = \frac{1}{m^2} \sum_{i=1}^{m} V\left\{ \mathbf{y}_i \right\} = \frac{1}{m^2} \cdot m \sigma^2 = \frac{\sigma^2}{m}
+\]</div>
+<p>As the sample size <span class="math notranslate nohighlight">\(m \to \infty\)</span>, the variance of the sample mean:</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{m \to \infty} V\left\{ \bar{\mathbf{y}}_m \right\} = \lim_{m \to \infty} \frac{\sigma^2}{m} = 0
+\]</div>
+<p>This satisfies the condition:
+$<span class="math notranslate nohighlight">\(
+\lim_{m \to \infty} V\{\hat{\boldsymbol{\alpha}}(\vec{y}_m)\} = 0
+\)</span>$</p>
+<p>Thus, the sample mean is a consistent estimator for the true mean.</p>
+<p>Moreover, we have</p>
+<div class="math notranslate nohighlight">
+\[
+\Pr\left( \left| \bar{\mathbf{y}}_m - \mu \right| \geq \epsilon \right) \leq \frac{V\left\{ \bar{\mathbf{y}}_m \right\}}{\epsilon^2} = \frac{\sigma^2}{m \epsilon^2}
+\]</div>
+<p>Take the limit as <span class="math notranslate nohighlight">\(m \to \infty\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{m \to \infty} \Pr\left( \left| \bar{\mathbf{y}}_m - \mu \right| \geq \epsilon \right) \leq \lim_{m \to \infty} \frac{\sigma^2}{m \epsilon^2} = 0
+\]</div>
+<p>Thus,</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{m \to \infty} \Pr\left( \left| \bar{\mathbf{y}}_m - \mu \right| \geq \epsilon \right) = 0
+\]</div>
+<p>equivalently,</p>
+<div class="math notranslate nohighlight">
+\[
+\lim_{m \to \infty} \Pr\left( \left| \bar{\mathbf{y}}_m - \mu \right| &lt; \epsilon \right) = 1
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Set random seed for reproducibility</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># 1. Assumptions</span>
+<span class="n">mu</span> <span class="o">=</span> <span class="mf">10.0</span>             <span class="c1"># True population mean</span>
+<span class="n">sigma2</span> <span class="o">=</span> <span class="mf">4.0</span>         <span class="c1"># Known variance of observations (σ²)</span>
+<span class="n">sigma</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">sigma2</span><span class="p">)</span>  <span class="c1"># Standard deviation</span>
+<span class="n">epsilon</span> <span class="o">=</span> <span class="mf">1.0</span>        <span class="c1"># Epsilon for probability calculation</span>
+
+<span class="c1"># 2. Simulation Parameters</span>
+<span class="n">sample_sizes</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>  <span class="c1"># Different sample sizes to test</span>
+<span class="n">num_trials</span> <span class="o">=</span> <span class="mi">10000</span>      <span class="c1"># Number of trials for each sample size</span>
+
+<span class="c1"># Initialize lists to store results</span>
+<span class="n">probabilities</span> <span class="o">=</span> <span class="p">[]</span>            <span class="c1"># Pr(|\mathbf{y}_bar - mu| &lt; epsilon)</span>
+<span class="n">empirical_variances</span> <span class="o">=</span> <span class="p">[]</span>      <span class="c1"># Empirical variance of \mathbf{y}_bar</span>
+<span class="n">chebyshev_bounds</span> <span class="o">=</span> <span class="p">[]</span>         <span class="c1"># Chebyshev&#39;s bound for each m</span>
+
+<span class="c1"># 3. Simulation Loop</span>
+<span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">sample_sizes</span><span class="p">:</span>
+    <span class="c1"># 2. Generate m samples for each trial: shape (num_trials, m)</span>
+    <span class="n">samples</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="n">mu</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="n">sigma</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="n">num_trials</span><span class="p">,</span> <span class="n">m</span><span class="p">))</span>
+    
+    <span class="c1"># 3. Compute the sample mean for each trial: shape (num_trials,)</span>
+    <span class="n">sample_means</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">samples</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># 4. Compute the probability Pr(|\mathbf{y}_bar - mu| &lt; epsilon)</span>
+    <span class="c1"># This is the proportion of sample_means within [mu - epsilon, mu + epsilon]</span>
+    <span class="n">count_within_epsilon</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">sample_means</span> <span class="o">-</span> <span class="n">mu</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">epsilon</span><span class="p">)</span>
+    <span class="n">probability</span> <span class="o">=</span> <span class="n">count_within_epsilon</span> <span class="o">/</span> <span class="n">num_trials</span>
+    <span class="n">probabilities</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">probability</span><span class="p">)</span>
+    
+    <span class="c1"># 5. Compute the empirical variance of the sample means</span>
+    <span class="n">empirical_var</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">sample_means</span><span class="p">,</span> <span class="n">ddof</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">empirical_variances</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">empirical_var</span><span class="p">)</span>
+    
+    <span class="c1"># Compute Chebyshev&#39;s bound: sigma² / (m * epsilon²)</span>
+    <span class="n">chebyshev_bound</span> <span class="o">=</span> <span class="n">sigma2</span> <span class="o">/</span> <span class="p">(</span><span class="n">m</span> <span class="o">*</span> <span class="n">epsilon</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">chebyshev_bounds</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">chebyshev_bound</span><span class="p">)</span>
+    
+    <span class="c1"># Optional: Print progress</span>
+    <span class="c1"># print(f&quot;Sample Size m = {m}:&quot;)</span>
+    <span class="c1"># print(f&quot;  Pr(|\mathbf{y}_bar - mu| &lt; {epsilon}) = {probability:.4f}&quot;)</span>
+    <span class="c1"># print(f&quot;  Empirical Variance of \mathbf{y}_bar = {empirical_var:.4f}&quot;)</span>
+    <span class="c1"># print(f&quot;  Chebyshev&#39;s Bound = {chebyshev_bound:.4f}\n&quot;)</span>
+
+<span class="c1"># 4. Visualization</span>
+
+<span class="c1"># a. Probability Pr(|\mathbf{y}_bar - mu| &lt; epsilon) vs. Sample Size m</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">probabilities</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Size (m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pr(|ȳ - μ| &lt; </span><span class="si">{</span><span class="n">epsilon</span><span class="si">}</span><span class="s1">)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Convergence of Sample Mean to True Mean&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.05</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># b. Empirical Variance of \mathbf{y}_bar vs. Sample Size m</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">empirical_variances</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical Variance&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="p">[</span><span class="n">sigma2</span><span class="o">/</span><span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">sample_sizes</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Theoretical Variance (σ²/m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Size (m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Variance of ȳ&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Variance of Sample Mean vs. Sample Size&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># c. Chebyshev&#39;s Bound vs. Empirical Probability</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">chebyshev_bounds</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Chebyshev&#39;s Bound (σ²/mε²)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_sizes</span><span class="p">,</span> <span class="n">probabilities</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Empirical Pr(|ȳ - μ| &lt; ε)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Sample Size (m)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Probability / Chebyshev</span><span class="se">\&#39;</span><span class="s1">s Bound&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Chebyshev</span><span class="se">\&#39;</span><span class="s1">s Inequality vs. Empirical Probability&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/fa5c823173581b63a0a47216eb601bd5a9657c3eef02b0e1626d1b8547a32763.png" src="_images/fa5c823173581b63a0a47216eb601bd5a9657c3eef02b0e1626d1b8547a32763.png" />
+<img alt="_images/c8235a0cffd48946ba0fda5d910942f013e0289457013cc9a2f354e6de2d1027.png" src="_images/c8235a0cffd48946ba0fda5d910942f013e0289457013cc9a2f354e6de2d1027.png" />
+<img alt="_images/cc11efc1b74f7ff081776a9187c81ca957bdb07c445217a350e3cfc875c308f5.png" src="_images/cc11efc1b74f7ff081776a9187c81ca957bdb07c445217a350e3cfc875c308f5.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="invariant-estimators">
+<h1>Invariant Estimators<a class="headerlink" href="#invariant-estimators" title="Link to this heading">#</a></h1>
+<p>An important characteristic that an estimator is <em>invariance</em> under transformations of the parameter being estimated.</p>
+<p>Formally, consider an estimator <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}} \)</span> of a parameter <span class="math notranslate nohighlight">\( \alpha \)</span>, and let <span class="math notranslate nohighlight">\( g(\alpha) \)</span> be a function of <span class="math notranslate nohighlight">\( \alpha \)</span>.</p>
+<p>The estimator <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}} \)</span> is said to be invariant under the transformation <span class="math notranslate nohighlight">\( g \)</span> if <span class="math notranslate nohighlight">\( g(\hat{\boldsymbol{\alpha}}) \)</span> serves as a (good) estimator of <span class="math notranslate nohighlight">\( g(\alpha) \)</span>.</p>
+<p>This typically means that <span class="math notranslate nohighlight">\( g(\hat{\boldsymbol{\alpha}}) \)</span> retains desirable properties such as unbiasedness or consistency when estimating <span class="math notranslate nohighlight">\( g(\alpha) \)</span>.</p>
+<p>For instance, maximum likelihood estimators (MLEs) exhibit this invariance property.</p>
+<p>Specifically, if <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\alpha}}_{\text{MLE}} \)</span> is the MLE of <span class="math notranslate nohighlight">\( \alpha \)</span>, then <span class="math notranslate nohighlight">\( g(\hat{\boldsymbol{\alpha}}_{\text{MLE}}) \)</span> is the MLE of <span class="math notranslate nohighlight">\( g(\alpha) \)</span>.</p>
+<section id="example-sample-mean-squared-estimator">
+<h2>Example: Sample Mean Squared Estimator<a class="headerlink" href="#example-sample-mean-squared-estimator" title="Link to this heading">#</a></h2>
+<p>Consider independent and identically distributed (i.i.d.) random variables <span class="math notranslate nohighlight">\( \mathbf{y}_1, \mathbf{y}_2, \dots, \mathbf{y}_m \)</span>, each with mean <span class="math notranslate nohighlight">\( \mu \)</span> and variance 1; that is, <span class="math notranslate nohighlight">\( E[\mathbf{y}_i] = \mu \)</span> and <span class="math notranslate nohighlight">\( \operatorname{Var}(\mathbf{y}_i) = 1 \)</span> for all <span class="math notranslate nohighlight">\( i \)</span>.</p>
+<p>The sample mean is defined as:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\boldsymbol{\mu}} = \frac{1}{m} \sum_{i=1}^m \mathbf{y}_i
+\]</div>
+<p>This estimator is unbiased since:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\hat{\boldsymbol{\mu}}] = \frac{1}{m} \sum_{i=1}^m E[\mathbf{y}_i] = \frac{1}{m} \cdot m \mu = \mu
+\]</div>
+<p>Now, consider the function <span class="math notranslate nohighlight">\( g(\mu) = \mu^2 \)</span> and its estimator <span class="math notranslate nohighlight">\( g(\hat{\boldsymbol{\mu}}) = \hat{\boldsymbol{\mu}}^2 \)</span>.</p>
+<p>One might expect <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\mu}}^2 \)</span> to be a good estimator of <span class="math notranslate nohighlight">\( \mu^2 \)</span>, but let’s examine its properties.</p>
+<p>Compute the expected value of <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\mu}}^2 \)</span>:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\hat{\boldsymbol{\mu}}^2] = E\left[ \left( \frac{1}{m} \sum_{i=1}^m \mathbf{y}_i \right)^2 \right] = \operatorname{Var}(\hat{\boldsymbol{\mu}}) + \left( E[\hat{\boldsymbol{\mu}}] \right)^2
+\]</div>
+<p>Since <span class="math notranslate nohighlight">\( \operatorname{Var}(\hat{\boldsymbol{\mu}}) = \frac{1}{m^2} \sum_{i=1}^m \operatorname{Var}(\mathbf{y}_i) = \frac{1}{m^2} \cdot m \cdot 1 = \frac{1}{m} \)</span>, we have:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\hat{\boldsymbol{\mu}}^2] = \frac{1}{m} + \mu^2
+\]</div>
+<p>This shows that <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\mu}}^2 \)</span> is a biased estimator of <span class="math notranslate nohighlight">\( \mu^2 \)</span> because:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\hat{\boldsymbol{\mu}}^2] \neq \mu^2
+\]</div>
+<p>Therefore, the invariance property does not hold in this case, as <span class="math notranslate nohighlight">\( g(\hat{\boldsymbol{\mu}}) \)</span> is not an unbiased estimator of <span class="math notranslate nohighlight">\( g(\mu) \)</span>.</p>
+</section>
+<section id="example-linear-transformation-of-estimator">
+<h2>Example: Linear Transformation of Estimator<a class="headerlink" href="#example-linear-transformation-of-estimator" title="Link to this heading">#</a></h2>
+<p>Now, consider a linear transformation, such as converting measurements from pounds to kilograms or seconds to minutes. Let’s revisit the sample mean <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\mu}} \)</span> of the random variables <span class="math notranslate nohighlight">\( \mathbf{y}_i \)</span>.</p>
+<p>Suppose we multiply each observation by a scalar <span class="math notranslate nohighlight">\( a \)</span>, defining new variables <span class="math notranslate nohighlight">\( z_i = a \mathbf{y}_i \)</span>. The sample mean of the transformed data is:</p>
+<div class="math notranslate nohighlight">
+\[
+\hat{\boldsymbol{\mu}}_z = \frac{1}{m} \sum_{i=1}^m z_i = \frac{1}{m} \sum_{i=1}^m a \mathbf{y}_i = a \hat{\boldsymbol{\mu}}
+\]</div>
+<p>The expected value of <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\mu}}_z \)</span> is:</p>
+<div class="math notranslate nohighlight">
+\[
+E[\hat{\boldsymbol{\mu}}_z] = a E[\hat{\boldsymbol{\mu}}] = a \mu
+\]</div>
+<p>which means <span class="math notranslate nohighlight">\( \hat{\boldsymbol{\mu}}_z \)</span> is an unbiased estimator of <span class="math notranslate nohighlight">\( a \mu \)</span>.</p>
+<p>In this case, the estimator is invariant under the transformation <span class="math notranslate nohighlight">\( g(\mu) = a \mu \)</span> because applying the transformation to the estimator yields an unbiased estimator of the transformed parameter:</p>
+<div class="math notranslate nohighlight">
+\[
+g(\hat{\boldsymbol{\mu}}) = a \hat{\boldsymbol{\mu}} \quad \text{is an unbiased estimator of} \quad g(\mu) = a \mu
+\]</div>
+<p>Thus, invariance is achieved under linear scaling transformations.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="c3_s7_minimum_variance_estimates.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Minimum Variance Estimaties</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="c3_s9_s10_Bayes_estimator.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bayes Estimation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Consistent Estimates</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#relationship-to-chebyshevs-inequality">Relationship to Chebyshev’s Inequality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-sample-mean-as-a-consistent-estimator">Example: Sample Mean as a Consistent Estimator</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#invariant-estimators">Invariant Estimators</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-sample-mean-squared-estimator">Example: Sample Mean Squared Estimator</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#example-linear-transformation-of-estimator">Example: Linear Transformation of Estimator</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Telecom Book
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
